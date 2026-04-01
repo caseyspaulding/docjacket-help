@@ -1,0 +1,44 @@
+---
+sidebar_label: Contract Extraction
+sidebar_position: 2
+---
+
+# Contract Extraction
+
+One of DocJacket's most powerful features. Upload a contract PDF and AI reads through it — pulling out the key details so you don't have to type them in manually.
+
+## What gets extracted
+
+DocJacket's AI looks for:
+
+- **Buyer and seller names** — Including multiple buyers/sellers
+- **Property address** — Street, city, state, zip
+- **Purchase price** — Sale price and earnest money
+- **Key dates** — Contract date, closing date, inspection deadline, financing deadline
+- **Contingency periods** — Inspection, appraisal, financing timeframes
+- **Loan details** — Loan type, amount, lender information
+- **Agent information** — Listing and buying agent details
+
+## How to use it
+
+1. From the **Transactions** page, click **New Transaction** > **Upload & Extract**
+2. Drop your contract PDF into the upload area
+3. Wait a moment while AI processes the document (usually takes 10-30 seconds)
+4. Review the extracted fields — everything is editable
+5. Make any corrections needed
+6. Click **Create Transaction**
+
+<!-- Screenshot: extraction in progress with loading indicator -->
+
+<!-- Screenshot: extraction results with editable fields -->
+
+## Tips for best results
+
+- **Typed contracts work best** — AI handles typed text with high accuracy. Handwritten contracts may need more manual corrections.
+- **Standard formats help** — Common state association forms (like TAR, CAR, FAR) are well-recognized.
+- **Multi-page is fine** — The AI reads through the entire document, not just the first page.
+- **Always review** — AI is very good but not perfect. A quick scan of the extracted data takes 30 seconds and catches any misreads.
+
+## Already have a transaction?
+
+You can also run extraction on an existing transaction. Go to the **Documents** tab and click **AI Data Extraction** to have AI re-read your documents and fill in any missing fields.

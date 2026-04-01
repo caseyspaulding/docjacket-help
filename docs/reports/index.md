@@ -5,6 +5,9 @@ sidebar_position: 1
 
 # Reports
 
-View reports and analytics on your transactions and team.
+DocJacket helps you generate professional reports and visualize your transaction pipeline.
 
-Articles coming soon.
+## In this section
+
+- [Transaction Reports](./transaction-reports.md) — Generate and share status reports
+- [Pipeline View](./pipeline-view.md) — Visual Kanban board of your deals

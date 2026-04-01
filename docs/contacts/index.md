@@ -5,6 +5,14 @@ sidebar_position: 1
 
 # Contacts
 
-Manage your contacts, roles, and contact groups.
+DocJacket keeps a centralized contact database across all your transactions. Agents, clients, lenders, title companies, inspectors — everyone you work with lives here.
 
-Articles coming soon.
+The **Contacts** page in the sidebar shows your full directory. You can search, filter, import, export, and organize contacts into groups.
+
+<!-- Screenshot: contacts list page -->
+
+## In this section
+
+- [Managing Contacts](./managing-contacts.md) — Add, edit, search, and organize
+- [Contact Roles](./contact-roles.md) — Buyer, seller, agent, vendor, and more
+- [Contact Groups](./contact-groups.md) — Organize contacts for bulk operations

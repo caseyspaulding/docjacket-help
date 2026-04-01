@@ -5,6 +5,9 @@ sidebar_position: 1
 
 # Billing & Plans
 
-Manage your subscription, billing, and plan details.
+Manage your DocJacket subscription, view your plan details, and handle payment information.
 
-Articles coming soon.
+## In this section
+
+- [Plans & Pricing](./plans-and-pricing.md) — What's included in each plan
+- [Managing Your Subscription](./managing-your-subscription.md) — Upgrade, downgrade, or update payment info

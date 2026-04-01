@@ -1,0 +1,35 @@
+---
+sidebar_label: Transaction Reports
+sidebar_position: 2
+---
+
+# Transaction Reports
+
+Generate professional status reports to share with clients, agents, or your team. Reports pull live data from the transaction and can be exported as PDFs.
+
+## Generating a report
+
+1. Open a transaction
+2. Go to the **Reports** section
+3. See a live preview of the report
+
+<!-- Screenshot: report preview -->
+
+## Customizing sections
+
+Toggle which sections to include in the report:
+
+- **Milestones** — Timeline progress and upcoming deadlines
+- **Tasks** — Task completion status
+- **Documents** — Document checklist status
+- **Contacts** — Key parties involved
+- **Financials** — Purchase price, earnest money, loan details
+
+The preview updates in real time as you toggle sections on and off, so you can see exactly what the final report will look like before generating the PDF.
+
+## Sharing reports
+
+Once you're happy with the report, you can:
+
+- **Download as PDF** — Save it locally or attach it to an email
+- **Send directly** — Email the report to contacts from within DocJacket

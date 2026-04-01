@@ -1,0 +1,34 @@
+---
+sidebar_label: Google Drive
+sidebar_position: 5
+---
+
+# Google Drive Integration
+
+If you use Google Drive to store transaction documents, DocJacket can connect directly — so you can import and export files without downloading and re-uploading.
+
+## Connecting Google Drive
+
+1. Go to **Settings > Integrations**
+2. Find **Google Drive** and click **Connect**
+3. Sign in with your Google account and grant DocJacket access
+4. You're connected — the Drive button will now appear on your Documents tab
+
+## Importing from Drive
+
+1. Open a transaction's **Documents** tab
+2. Click the **Google Drive** button
+3. Browse your Drive folders and select the files you want to import
+4. Click **Import** — the files are copied into DocJacket
+
+<!-- Screenshot: Google Drive file picker within DocJacket -->
+
+## Exporting to Drive
+
+You can also send documents from DocJacket back to Google Drive. This is useful when you need to share files in a Drive folder with other parties who don't use DocJacket.
+
+## Tips
+
+- Imported files are **copies** — changes in Drive won't automatically sync to DocJacket (and vice versa)
+- You can import multiple files at once
+- Folder structure in Drive doesn't carry over — files land in the transaction's document list and get categorized by DocJacket

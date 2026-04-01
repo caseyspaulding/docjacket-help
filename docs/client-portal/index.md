@@ -5,6 +5,22 @@ sidebar_position: 1
 
 # Client Portal
 
-Give clients and agents a branded portal to track their transaction.
+The Client Portal gives your buyers, sellers, and agents a branded view of their transaction — without needing a DocJacket account. They can see milestones, documents, tasks, and status updates through a secure link you send them.
 
-Articles coming soon.
+It's a professional touch that keeps everyone informed and cuts down on "where are we?" calls and emails.
+
+<!-- Screenshot: client portal view showing transaction status -->
+
+## Key features
+
+- **Branded experience** — Customize the portal with your logo and colors
+- **Secure access** — Each portal link is unique and can be set to expire
+- **Track engagement** — See who's viewed the portal and when
+- **Selective sharing** — Control exactly which documents and milestones are visible
+
+## In this section
+
+- [Setting Up the Portal](./setting-up-the-portal.md) — Enable and brand your portal
+- [Portal for Clients](./portal-for-clients.md) — What buyers and sellers see
+- [Portal for Agents](./portal-for-agents.md) — What agents see
+- [Sharing Portal Links](./sharing-portal-links.md) — Send access to the right people

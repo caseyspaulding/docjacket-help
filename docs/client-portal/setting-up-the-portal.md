@@ -1,0 +1,29 @@
+---
+sidebar_label: Setting Up the Portal
+sidebar_position: 2
+---
+
+# Setting Up the Portal
+
+Before sharing portal links with clients and agents, you'll want to customize the look and feel to match your brand.
+
+## Branding
+
+Go to the portal settings (accessible from within a transaction's portal tab, or from **Settings > Portal**):
+
+- **Logo** — Upload your company logo. It appears at the top of the portal.
+- **Colors** — Choose colors that match your brand for a cohesive look.
+
+<!-- Screenshot: portal branding settings -->
+
+## What's shown on the portal
+
+By default, the portal shows:
+
+- Transaction status and progress
+- Key milestones and dates
+- Assigned tasks (if you've marked them as portal-visible)
+- Shared documents
+- Contact information for the key parties
+
+You control visibility at the document and task level — so sensitive items stay private unless you specifically share them.

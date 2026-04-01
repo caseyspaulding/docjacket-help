@@ -1,0 +1,38 @@
+---
+sidebar_label: Email Automation
+sidebar_position: 5
+---
+
+# Email Automation
+
+Link email templates to tasks so that emails are ready to send at the right moment — or even sent automatically.
+
+## Linking an email template
+
+1. Click a task to open its detail drawer
+2. Find the **Email** section
+3. Select an email template to link
+
+When the task is due, you can click **Send** to fire off the pre-written email without composing from scratch.
+
+## Auto-send options
+
+In the task drawer, you have two automation options:
+
+### Notify on Complete
+Enable this in the **Options** section. When you mark the task as done, the linked email is sent automatically.
+
+**Example:** You have a task "Send inspection report to seller." Link the email template, enable Notify on Complete, and when you check off the task, the email goes out.
+
+### Auto-Send Date
+Set a specific date in the **Scheduling** section. The email sends on that date regardless of task completion.
+
+**Example:** You need to send a reminder to the buyer 3 days before closing. Set the auto-send date and it fires automatically.
+
+<!-- Screenshot: task email automation options -->
+
+## Tips
+
+- Always review your email templates before enabling auto-send — make sure the content and recipients are correct
+- Auto-send respects DocJacket's approval-first design — you'll get a notification before emails go out so you can cancel if needed
+- Combine email automation with [task templates](./task-templates.md) to set up entire email workflows for a transaction type
