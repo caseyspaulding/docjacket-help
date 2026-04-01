@@ -12,6 +12,6 @@ Access Settings from the sidebar — it's at the bottom of the navigation.
 
 ## In this section
 
-- [Organization Settings](./organization-settings.md) — Branding, defaults, and company info
-- [User Management](./user-management.md) — Add and manage team members
+- [Organization Settings](./organization-settings.mdx) — Branding, defaults, and company info
+- [User Management](./user-management.mdx) — Add and manage team members
 - [Notification Preferences](./notification-preferences.md) — Control what alerts you receive

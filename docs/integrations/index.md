@@ -26,6 +26,6 @@ You can also set up custom webhooks in **Settings > Connections** to send event 
 
 ## In this section
 
-- [Google Workspace](./google-workspace.md) — Connect Gmail, Drive, Calendar, and Contacts
-- [Microsoft Outlook](./microsoft-outlook.md) — Connect Outlook Mail, Calendar, and OneDrive
-- [Webhooks](./webhooks.md) — Send events to external services
+- [Google Workspace](./google-workspace.mdx) — Connect Gmail, Drive, Calendar, and Contacts
+- [Microsoft Outlook](./microsoft-outlook.mdx) — Connect Outlook Mail, Calendar, and OneDrive
+- [Webhooks](./webhooks.mdx) — Send events to external services

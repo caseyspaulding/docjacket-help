@@ -1,0 +1,55 @@
+---
+sidebar_label: Timeline Templates
+sidebar_position: 2
+---
+
+import ScreenshotPlaceholder from '@site/src/components/ScreenshotPlaceholder';
+
+# Timeline Templates
+
+Timeline templates are pre-built sequences of milestones for different transaction types. Apply one to a transaction and your entire deadline schedule is set up automatically.
+
+## Applying a template
+
+1. Open a transaction and go to the **Timeline** tab
+2. Click **Apply Template**
+3. Choose a template that matches your transaction type and state
+4. Set your [anchor date](./anchor-dates.md) — usually the contract date
+5. All milestones populate with calculated dates
+
+<ScreenshotPlaceholder>timeline tab after applying a template</ScreenshotPlaceholder>
+
+## What's in a template
+
+Each template includes:
+
+- **Milestones** — Key deadlines like inspection period, appraisal, financing, and closing
+- **Date offsets** — Each milestone is defined relative to the anchor date (e.g., "10 days after contract", "3 days before closing")
+- **Linked tasks** — Some milestones include associated tasks that auto-populate
+
+## Viewing your timeline
+
+DocJacket offers two views:
+
+- **Pipeline view** — A horizontal visual overview. Green nodes are complete, blue is upcoming, red is overdue. Click any node for details.
+- **List view** — A vertical list with expandable milestones showing linked tasks.
+
+Toggle between them with the view switch at the top.
+
+<ScreenshotPlaceholder>pipeline view with color-coded milestone nodes</ScreenshotPlaceholder>
+
+## Adding custom milestones
+
+Templates are a starting point. You can always add custom milestones for dates the template doesn't cover:
+
+1. Click the **Add Milestone** button
+2. Enter the milestone name and date
+3. Optionally link tasks to it
+
+## Recalculating dates
+
+When a key date changes (like the closing date gets pushed back), click **Recalculate** to cascade the change to all downstream milestones and tasks. DocJacket adjusts everything based on the original offsets.
+
+## Creating your own templates
+
+Go to **Templates > Timelines** in the sidebar to create custom timeline templates for your workflow. Define milestones with date offsets, and they'll be available to apply to any future transaction.

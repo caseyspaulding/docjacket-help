@@ -10,5 +10,5 @@ DocJacket helps you generate professional reports and visualize your transaction
 
 ## In this section
 
-- [Transaction Reports](./transaction-reports.md) — Generate and share status reports
-- [Pipeline View](./pipeline-view.md) — Visual Kanban board of your deals
+- [Transaction Reports](./transaction-reports.mdx) — Generate and share status reports
+- [Pipeline View](./pipeline-view.mdx) — Visual Kanban board of your deals

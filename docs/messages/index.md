@@ -12,6 +12,6 @@ Your **Inbox** in the sidebar is a unified view — SMS, portal messages, emails
 
 ## In this section
 
-- [Inbox](./inbox.md) — Your unified communication center
-- [Sending Emails](./sending-emails.md) — Compose and send from within a transaction
+- [Inbox](./inbox.mdx) — Your unified communication center
+- [Sending Emails](./sending-emails.mdx) — Compose and send from within a transaction
 - [Email Templates](./email-templates.md) — Create reusable email content

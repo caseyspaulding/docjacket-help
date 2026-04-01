@@ -12,6 +12,6 @@ Never miss a deadline again — milestones, tasks, reminders, and custom events 
 
 ## In this section
 
-- [Timeline Templates](./timeline-templates.md) — Pre-built milestone sequences for different transaction types
+- [Timeline Templates](./timeline-templates.mdx) — Pre-built milestone sequences for different transaction types
 - [Anchor Dates](./anchor-dates.md) — How one date drives all the others
-- [Calendar View](./calendar-view.md) — See all deadlines across all transactions
+- [Calendar View](./calendar-view.mdx) — See all deadlines across all transactions
