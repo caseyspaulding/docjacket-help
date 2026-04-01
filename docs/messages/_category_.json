@@ -1,0 +1,8 @@
+{
+  "label": "Messages & Email",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "description": "Send messages, manage email, and communicate with your team."
+  }
+}

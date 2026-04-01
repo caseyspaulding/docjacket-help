@@ -1,0 +1,8 @@
+{
+  "label": "Integrations",
+  "position": 12,
+  "link": {
+    "type": "generated-index",
+    "description": "Connect DocJacket with Google, Outlook, Dotloop, and more."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "label": "Documents",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Upload, organize, and share transaction documents."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "label": "Workflows",
+  "position": 9,
+  "link": {
+    "type": "generated-index",
+    "description": "Automate repetitive processes with workflow rules."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "label": "Settings & Account",
+  "position": 14,
+  "link": {
+    "type": "generated-index",
+    "description": "Configure your organization, users, branding, and preferences."
+  }
+}

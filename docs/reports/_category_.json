@@ -1,0 +1,8 @@
+{
+  "label": "Reports",
+  "position": 13,
+  "link": {
+    "type": "generated-index",
+    "description": "View reports and analytics on your transactions and team."
+  }
+}
