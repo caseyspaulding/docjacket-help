@@ -33,3 +33,7 @@
 .footer--dark {
   background: linear-gradient(135deg, #078DEE 0%, #0351AB 100%);
 }
+
+.footer--dark a:hover {
+  color: #FFAB00;
+}
