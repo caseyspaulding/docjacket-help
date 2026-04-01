@@ -1,0 +1,2441 @@
+# DocJacket Help Center — Full Documentation
+
+> Complete help documentation for DocJacket, the AI-powered transaction coordination platform.
+> URL: https://help.docjacket.com
+> Product URL: https://docjacket.com
+
+---
+
+## Getting Started
+
+
+# Getting Started with DocJacket
+
+Welcome to DocJacket — the AI-powered platform that helps transaction coordinators, agents, and brokers manage real estate deals from contract to closing.
+
+Whether you're an independent TC juggling 30+ files or an agent keeping tabs on your deals, DocJacket keeps everything in one place: transactions, documents, timelines, tasks, contacts, and communication.
+
+## What can DocJacket do for you?
+
+- **AI Contract Extraction** — Upload a contract PDF and let AI pull out the buyer, seller, key dates, financials, and more. No more manual data entry.
+- **Smart Timelines** — Automatically calculate every deadline from your contract date. When a closing date changes, everything adjusts.
+- **Task Management** — Pre-built checklists for every transaction type. Assign tasks, set due dates, and automate email follow-ups.
+- **Client Portal** — Give your clients and agents a branded portal where they can see their transaction status, milestones, and documents.
+- **Document Management** — Upload, organize, and track every document. AI even categorizes them for you.
+- **Email Intelligence** — DocJacket monitors your email and sorts messages into the right transaction automatically.
+
+## Ready to dive in?
+
+Here's the best path for new users:
+
+1. [**Create your account**](./creating-your-account.md) — Sign up and pick your role
+2. [**Set up your first transaction**](./your-first-transaction.md) — Walk through creating a deal from scratch
+3. [**Learn the layout**](./navigating-docjacket.md) — Get comfortable with the dashboard and sidebar
+4. [**Understand roles**](./understanding-roles.md) — Learn the difference between TCs, agents, and brokers in DocJacket
+
+If you ever get stuck, hit the **help chat button** in the bottom-right corner of the app — our AI assistant can answer questions in real time.
+
+---
+
+# Creating Your Account
+
+Getting started with DocJacket takes just a couple of minutes. Here's how to set up your account and get ready to manage transactions.
+
+## Sign up
+
+1. Head to [app.docjacket.com](https://app.docjacket.com) and click **Sign Up**
+2. Enter your name, email address, and create a password
+3. Verify your email — check your inbox for a confirmation link
+## Choose your role
+
+Once you're in, DocJacket asks: **"What type of transactions do you manage?"**
+
+Pick the one that fits you best:
+
+- **Transaction Coordinator** — You manage deals end-to-end for agents and brokerages. This is the most common choice for TCs.
+- **Agent** — You represent buyers or sellers and want to track your own deals.
+- **Broker** — You manage a team or office and need visibility across all transactions.
+
+Don't overthink this — it just sets your default templates and layout. You can always change it later in Settings.
+## Pick a starting template
+
+Next, DocJacket shows you a list of timeline templates based on your role. These are pre-built task checklists and milestone timelines for different transaction types and states.
+
+Pick one that's close to what you typically work — for example, a **Residential Purchase** template for your state. DocJacket will create a sample transaction using that template so you can see how everything works.
+
+You can also skip this step and set up templates later.
+## You're in!
+
+After setup, you'll land on your **Dashboard**. From here you can:
+
+- Create your first real transaction
+- Explore the sidebar to see all the features
+- Click the **help chat** button anytime for quick answers
+
+Next up: [Set up your first transaction](./your-first-transaction.md)
+
+
+# Getting Started with DocJacket
+
+Welcome to DocJacket — the AI-powered platform that helps transaction coordinators, agents, and brokers manage real estate deals from contract to closing.
+
+Whether you're an independent TC juggling 30+ files or an agent keeping tabs on your deals, DocJacket keeps everything in one place: transactions, documents, timelines, tasks, contacts, and communication.
+
+## What can DocJacket do for you?
+
+- **AI Contract Extraction** — Upload a contract PDF and let AI pull out the buyer, seller, key dates, financials, and more. No more manual data entry.
+- **Smart Timelines** — Automatically calculate every deadline from your contract date. When a closing date changes, everything adjusts.
+- **Task Management** — Pre-built checklists for every transaction type. Assign tasks, set due dates, and automate email follow-ups.
+- **Client Portal** — Give your clients and agents a branded portal where they can see their transaction status, milestones, and documents.
+- **Document Management** — Upload, organize, and track every document. AI even categorizes them for you.
+- **Email Intelligence** — DocJacket monitors your email and sorts messages into the right transaction automatically.
+
+## Ready to dive in?
+
+Here's the best path for new users:
+
+1. [**Create your account**](./creating-your-account.md) — Sign up and pick your role
+2. [**Set up your first transaction**](./your-first-transaction.md) — Walk through creating a deal from scratch
+3. [**Learn the layout**](./navigating-docjacket.md) — Get comfortable with the dashboard and sidebar
+4. [**Understand roles**](./understanding-roles.md) — Learn the difference between TCs, agents, and brokers in DocJacket
+
+If you ever get stuck, hit the **help chat button** in the bottom-right corner of the app — our AI assistant can answer questions in real time.
+
+---
+
+# Navigating DocJacket
+
+Here's a quick tour of the DocJacket layout so you know where everything lives.
+
+## The Dashboard
+
+The dashboard is your home base. When you log in, you'll see:
+
+- **Today's Briefing** — A snapshot of your day: closings today, tasks due, overdue items, and your overall workload level
+- **Quick Actions** — Shortcuts to common tasks like creating a transaction or uploading a contract
+- **Closing Soon** — Transactions approaching their closing date, with urgency indicators
+- **Quick Tasks** — Your most pressing to-dos across all transactions
+- **Month Stats** — New transactions, closed deals, active volume, and pending tasks for the month
+## The Sidebar
+
+The sidebar on the left is your main navigation. Here's what each section does:
+
+| Menu Item | What It Does |
+|-----------|-------------|
+| **Dashboard** | Your daily overview and quick actions |
+| **Transactions** | All your deals — search, filter, and manage |
+| **Tasks** | Organization-wide task list across all transactions |
+| **Pipeline** | Visual pipeline view of your deals by status |
+| **Templates** | Create and manage timeline, task, and email templates |
+| **Inbox** | Your message center for transaction-related emails |
+| **Contacts** | Your contact database — clients, agents, vendors |
+| **Calendar** | See all milestones and deadlines in a calendar view |
+| **Listings** | Property listings you're tracking |
+| **Offices** | Manage brokerage offices |
+| **Reports** | Transaction reports and analytics |
+| **Billing** | Your subscription and payment details |
+| **Settings** | Organization settings, user management, integrations |
+## Inside a transaction
+
+When you open a transaction, you'll see a tabbed layout:
+
+- **Overview** — Everything at a glance: key dates, financials, contacts, tasks, documents, milestones, contingencies, and repairs
+- **Timeline** — Your milestones and deadlines with status tracking
+- **Tasks** — To-do list specific to this transaction
+- **Documents** — All files for this deal
+- **Contacts** — People involved in this transaction
+- **Messages** — Email threads related to this deal
+- **Notes** — Internal notes for your team (not visible to clients)
+
+The **Overview** tab is where most TCs spend their time — it's a single-page view of everything important about the deal.
+## Quick tips
+
+- **Search** is everywhere — use the search bar on the Transactions page to find deals by address, buyer name, or seller name
+- **Help chat** — Click the chat button in the bottom-right corner anytime for instant AI-powered help
+- **Keyboard shortcuts** — Press `?` to see available keyboard shortcuts on any page
+- **Dark mode** — Toggle dark mode in Settings if you prefer working at night
+
+---
+
+# Understanding Roles in DocJacket
+
+DocJacket has a few different types of roles, and they work at different levels. Here's how they all fit together.
+
+## Your account role
+
+When you first sign up, you pick one of three account types:
+
+### Transaction Coordinator (TC)
+The most common role. TCs manage deals end-to-end — handling documents, deadlines, communication, and coordination between all parties. If you're an independent TC or work on a TC team, this is you.
+
+As a TC, you get the full feature set: transaction management, timeline templates, task automation, document tracking, client portals, and AI tools.
+
+### Agent
+For real estate agents who want to track their own deals. Agents see a streamlined view focused on their transactions, tasks, and client communication.
+
+### Broker
+For managing a team or office. Brokers get visibility across all transactions in their organization, plus team management tools.
+
+## Team roles (permissions)
+
+Within your organization, team members can have different permission levels. These control what each person can see and do:
+
+- **Owner** — Full access to everything, including billing and organization settings
+- **Custom roles** — You can create custom roles in **Settings > Roles** with specific permissions for things like:
+  - Transaction management (create, edit, delete deals)
+  - Communication (send emails, access inbox)
+  - Reports and analytics
+  - User management (invite and manage team members)
+  - Billing access
+
+This is useful when you have assistants, junior TCs, or team members who need limited access.
+## Contact roles (within a transaction)
+
+Every transaction has people playing specific roles. These are the contact roles you assign when adding someone to a deal:
+
+**Clients**
+- Buyer, Seller
+
+**Agents**
+- Listing Agent, Buying Agent
+
+**Legal & Title**
+- Title Company, Closing Attorney, Escrow Officer
+
+**Lending**
+- Lender, Loan Officer
+
+**Service Providers**
+- Home Inspector, Appraiser, Surveyor, Contractor
+
+**Other**
+- Property Manager, HOA Contact, Insurance Agent
+
+Contact roles help DocJacket organize information and control what each person sees on the [Client Portal](/docs/client-portal) — for example, a buyer sees different information than the listing agent.
+
+---
+
+# Your First Transaction
+
+Let's walk through creating a transaction from scratch. By the end, you'll have a deal set up with contacts, a timeline, and tasks — ready to manage.
+
+## Two ways to create a transaction
+
+From the **Transactions** page, click the **New Transaction** button in the top right. You've got two options:
+
+- **Create Manually** — Fill in the details yourself
+- **Upload & Extract** — Upload a contract PDF and let AI do the heavy lifting
+### Option A: Upload & Extract (recommended)
+
+This is the fastest way. Upload your contract PDF and DocJacket's AI will read through it and pull out:
+
+- Buyer and seller names
+- Property address
+- Purchase price and earnest money
+- Contract date, closing date, and key deadlines
+- Contingency periods
+
+1. Click **Upload & Extract**
+2. Drag and drop your contract PDF (or click to browse)
+3. Wait a moment while AI processes the document
+4. Review the extracted data — make any corrections needed
+5. Click **Create Transaction**
+### Option B: Create manually
+
+If you don't have a contract handy or prefer to enter details yourself:
+
+1. Click **Create Manually**
+2. Fill in the basics — property address, transaction type, and side (buy/sell/both)
+3. Add the purchase price and key dates
+4. Click **Create**
+
+You can always add more details later from the transaction overview.
+
+## Add your contacts
+
+Every deal has people involved. From the transaction overview, you'll see the **Contacts & Vendors** section on the right side. Add the key players:
+
+- **Buyers and Sellers** — The principals in the deal
+- **Agents** — The listing agent, buying agent, or both
+- **Title Company** — Who's handling closing
+- **Lender** — If there's financing involved
+- **Other vendors** — Inspectors, surveyors, appraisers, etc.
+
+You can pick from your existing contacts or create new ones on the fly.
+## Apply a timeline template
+
+Timelines are what keep your deal on track. From the **Timeline** tab:
+
+1. Click **Apply Template**
+2. Choose a template that matches your transaction type and state
+3. Set your **anchor date** — usually the contract date. All other deadlines calculate from this date.
+4. Review the milestones and adjust any dates if needed
+
+Your timeline now shows every milestone from contract to closing, with automatic deadline calculations.
+## Check your tasks
+
+Head to the **Tasks** tab. If your timeline template included tasks, they're already here — organized by due date with priorities color-coded:
+
+- 🔴 **Urgent** — Do this now
+- 🟠 **High** — Don't let this slip
+- 🟡 **Medium** — Standard priority
+- 🟢 **Low** — When you get to it
+
+You can also add tasks manually with the quick-add bar at the top, or let AI generate a task checklist based on your transaction details.
+## You're all set!
+
+Your first transaction is up and running. Here's what to explore next:
+
+- [**Documents**](/docs/documents) — Upload contracts, disclosures, and other files
+- [**Client Portal**](/docs/client-portal) — Share a branded portal with your clients and agents
+- [**AI Features**](/docs/ai-features) — Let AI handle the busy work
+
+---
+
+## Transactions
+
+
+# Transactions
+
+Transactions are the heart of DocJacket. Every real estate deal you manage — from the moment a contract is signed to the day it closes — lives here.
+
+Your **Transactions** page is home base. It shows every deal you're managing in a searchable, filterable table. You can:
+
+- **Search** by property address, buyer name, or seller name
+- **Filter** by status (active, pending, closed), side (buyer/seller), price range, or closing date range
+- **Customize columns** to show exactly the info you care about
+- **Export to CSV** for reporting or backup
+Click any transaction to open it and see the full picture — overview, timeline, tasks, documents, contacts, and messages all in one place.
+
+## In this section
+
+- [Creating a Transaction](./creating-a-transaction.md) — Start a new deal manually or with AI extraction
+- [Transaction Overview](./transaction-overview.md) — Everything about a deal at a glance
+- [Key Dates & Financials](./key-dates-and-financials.md) — Managing dates, prices, and loan details
+- [Contingencies & Repairs](./contingencies-and-repairs.md) — Track contingency status and repair requests
+- [Transaction Statuses](./transaction-statuses.md) — Active, Closed, Withdrawn, and more
+
+---
+
+# Contingencies & Repairs
+
+Real estate deals come with contingencies that need to be tracked, and inspections often lead to repair requests. DocJacket helps you manage both from the transaction overview.
+
+## Contingencies
+
+Contingencies are conditions that must be met for the deal to close. Common examples include:
+
+- **Inspection contingency** — Buyer's right to inspect the property
+- **Financing contingency** — Buyer must secure a loan
+- **Appraisal contingency** — Property must appraise at or above the purchase price
+- **Sale of home contingency** — Buyer must sell their current home first
+
+### Tracking contingency status
+
+Each contingency in DocJacket has one of three statuses:
+
+- **Active** — The contingency is still in effect
+- **Satisfied** — The condition has been met
+- **Waived** — The buyer has chosen to waive the contingency
+
+As the deal progresses, update each contingency's status so everyone knows where things stand. This is especially helpful when you're coordinating between multiple parties.
+### Adding contingencies
+
+From the transaction overview, scroll to the **Contingencies** section and click **Add Contingency**. Enter the name, type, and deadline. If you used AI extraction, DocJacket may have already pulled contingencies from the contract.
+
+## Repairs
+
+After inspections, there are often repair requests. DocJacket lets you track each repair item and its resolution.
+
+### Adding repair items
+
+1. In the **Repairs** section on the overview, click **Add Repair**
+2. Enter a description of the repair needed
+3. Set a status — Requested, Approved, In Progress, or Completed
+4. Optionally add estimated cost and notes
+
+### Tracking resolution
+
+Update repair statuses as the seller addresses each item. This gives you a clear record of what was requested, what was approved, and what's been completed — helpful if there are any disputes later.
+
+
+---
+
+# Creating a Transaction
+
+There are two ways to create a new transaction in DocJacket. Both start from the **Transactions** page — click the **New Transaction** button in the top right.
+
+## Upload & Extract (recommended)
+
+The fastest way to get a deal set up. Upload your contract PDF and let AI do the data entry.
+
+1. Click **New Transaction** > **Upload & Extract**
+2. Drag and drop your contract PDF (or click to browse)
+3. DocJacket's AI reads through the document and extracts:
+   - Buyer and seller names
+   - Property address
+   - Purchase price, earnest money, and loan details
+   - Contract date, closing date, and key deadlines
+   - Contingency periods
+4. Review the extracted data — you can edit anything that needs correcting
+5. Click **Create Transaction**
+
+The AI is good, but always give the extracted data a quick once-over. Handwritten contracts or unusual formatting might need a few manual tweaks.
+:::tip
+Got a contract with multiple documents bundled into one PDF? DocJacket's AI can detect and split them automatically. See [Smart Document Splitting](/docs/ai-features/smart-document-splitting) for details.
+:::
+
+## Create manually
+
+If you don't have a contract yet or prefer to enter details yourself:
+
+1. Click **New Transaction** > **Create Manually**
+2. Enter the property address
+3. Select the transaction type and side (buy, sell, or both)
+4. Add the purchase price and key dates
+5. Click **Create**
+
+You can fill in the rest later — contacts, documents, timeline, and tasks can all be added from the transaction overview.
+## What happens next
+
+Once your transaction is created, you'll land on the [Transaction Overview](./transaction-overview.md). From there, you'll typically want to:
+
+1. [Add contacts](/docs/contacts) — buyers, sellers, agents, title company, lender
+2. [Apply a timeline template](/docs/calendar/timeline-templates) — sets up your milestones and deadlines
+3. [Upload documents](/docs/documents/uploading-documents) — contracts, disclosures, and other files
+
+
+# Transactions
+
+Transactions are the heart of DocJacket. Every real estate deal you manage — from the moment a contract is signed to the day it closes — lives here.
+
+Your **Transactions** page is home base. It shows every deal you're managing in a searchable, filterable table. You can:
+
+- **Search** by property address, buyer name, or seller name
+- **Filter** by status (active, pending, closed), side (buyer/seller), price range, or closing date range
+- **Customize columns** to show exactly the info you care about
+- **Export to CSV** for reporting or backup
+Click any transaction to open it and see the full picture — overview, timeline, tasks, documents, contacts, and messages all in one place.
+
+## In this section
+
+- [Creating a Transaction](./creating-a-transaction.md) — Start a new deal manually or with AI extraction
+- [Transaction Overview](./transaction-overview.md) — Everything about a deal at a glance
+- [Key Dates & Financials](./key-dates-and-financials.md) — Managing dates, prices, and loan details
+- [Contingencies & Repairs](./contingencies-and-repairs.md) — Track contingency status and repair requests
+- [Transaction Statuses](./transaction-statuses.md) — Active, Closed, Withdrawn, and more
+
+---
+
+# Key Dates & Financials
+
+Every transaction has dates and dollar amounts that need to be tracked carefully. DocJacket keeps all of this organized on the transaction overview.
+
+## Key dates
+
+The dates section on the overview shows your most important deadlines:
+
+- **Contract date** — When the contract was executed
+- **Closing date** — The target closing date
+- **Inspection deadline** — When inspections must be completed
+- **Appraisal deadline** — When the appraisal is due
+- **Financing deadline** — When the buyer's financing must be secured
+- **Other custom dates** — Any additional dates relevant to the deal
+
+These dates stay in sync with your timeline milestones. If you change the closing date, DocJacket recalculates all the downstream deadlines automatically.
+### Editing dates
+
+Click any date field to edit it. When you change a date that other milestones depend on (like the closing date), DocJacket will ask if you want to recalculate the rest of your timeline.
+
+## Financial summary
+
+The financials section gives you a quick snapshot of the money side:
+
+- **Purchase price** — The agreed sale price
+- **Earnest money** — The deposit amount and who's holding it
+- **Loan amount** — If the buyer is financing
+- **Down payment** — Calculated from price minus loan amount
+- **Commission** — Agent commission details
+- **Other fees** — Title fees, closing costs, etc.
+### Editing financials
+
+Click any field to update it. If you used AI extraction to create the transaction, these fields are pre-populated from the contract — just verify they're correct.
+
+:::tip
+If you're tracking commission splits or detailed closing costs, you can add custom fields in **Settings > Transaction Fields**.
+:::
+
+---
+
+# Transaction Overview
+
+The Overview tab is where most TCs spend their time. It shows everything important about a deal on one page — no clicking through multiple tabs to find what you need.
+## What's on the Overview
+
+Here's a breakdown of each section:
+
+### Upcoming Milestones
+A visual snapshot of your timeline milestones at the top. Click any milestone to jump to the Timeline tab for more details.
+
+### AI Insights
+If you've run an AI analysis, risk assessments and compliance checks appear here. Each issue has one-click actions you can approve or dismiss.
+
+### Key Dates
+Closing date, contract date, inspection deadline, and other important dates. These stay in sync when you update the transaction — change the closing date and downstream dates recalculate automatically.
+
+### Financial Summary
+Purchase price, earnest money, loan amount, and other financial terms at a glance. Quick reference so you don't have to dig through the contract.
+
+### Tasks
+Your to-do list for this transaction. Add tasks, check them off, and track what's overdue. The progress bar shows how much is complete.
+
+### Notes
+Internal notes for your team. These are **private** — they're not visible to clients or agents on the portal.
+
+### Property Images
+Upload photos of the property. Star an image to feature it on reports and the client portal.
+
+### Documents
+Contracts, disclosures, and other files for this transaction. Track approval status and upload new documents right from here.
+
+### Milestones
+Key deadlines for the transaction. Apply a timeline template or add milestones manually. The "Next Up" badge highlights what's coming next.
+
+### Contingencies
+Track contingency status throughout the deal. Mark each as Active, Satisfied, or Waived as the transaction progresses.
+
+### Repairs
+Track repair requests and their resolution status. Add repair items from inspections and mark them as resolved.
+
+### Messages
+Recent emails related to this transaction. See unread counts and click through to the full message thread.
+
+### Contacts & Vendors
+All the people involved — buyers, sellers, agents, title company, lender, and third-party vendors like inspectors and surveyors. This column runs down the right side of the overview.
+
+### System Credentials
+Store login details for MLS, tax portals, and other external systems used in this transaction. Keeps everything in one place so you're not hunting through emails for passwords.
+
+---
+
+# Transaction Statuses
+
+Every transaction in DocJacket has a status that tells you where it is in the process. Statuses help you filter your transaction list, organize your pipeline, and keep track of what needs attention.
+
+## Default statuses
+
+DocJacket comes with these built-in statuses:
+
+| Status | What it means |
+|--------|--------------|
+| **Active** | The deal is in progress — under contract and working toward closing |
+| **Pending** | Waiting on something before it can move forward (common for deals awaiting signatures) |
+| **Closed** | The deal closed successfully |
+| **Withdrawn** | The deal was cancelled or fell through |
+
+## Using statuses
+
+### Filtering your transactions
+
+On the **Transactions** page, use the status filter to see only the deals in a specific state. For example, filter to "Active" to see just your current workload, or "Closed" to review completed deals.
+### Pipeline view
+
+The **Pipeline** page shows your transactions as a Kanban board, with each column representing a status. Drag and drop transaction cards between columns to update their status instantly.
+### Changing a transaction's status
+
+You can change a transaction's status in a few ways:
+
+1. **From the transaction** — Open the transaction and update the status field
+2. **From the pipeline** — Drag the card to a different column
+3. **From the list** — Some status changes are available via right-click or inline actions
+
+## Custom statuses
+
+If the default statuses don't match your workflow, you can create custom statuses in **Settings**. For example, some TCs add statuses like:
+
+- **Under Review** — Contract received but not yet fully executed
+- **Clear to Close** — All conditions met, just waiting for the closing date
+- **Post-Closing** — Deal is closed but still has outstanding items
+
+Custom statuses appear as columns in your pipeline view and as options in your status filters.
+
+---
+
+## AI Features
+
+
+# AI Features
+
+DocJacket uses AI to handle the tedious parts of transaction coordination — so you can focus on the work that actually needs a human touch.
+
+Here's the important thing: **DocJacket never acts without your approval.** AI prepares, suggests, and drafts — but you're always in control. Nothing gets sent, saved, or changed until you say so.
+
+## What AI can do for you
+
+- **Contract Extraction** — Upload a PDF and AI reads it, pulling out names, dates, prices, and terms automatically
+- **Task Generation** — AI analyzes your transaction and suggests a task checklist tailored to the deal
+- **Risk & Compliance Insights** — Get flagged on potential issues before they become problems
+- **Smart Document Splitting** — Upload a multi-document PDF and AI separates it into individual files
+- **Communication Drafting** — AI drafts emails and messages based on your transaction context
+
+## In this section
+
+- [Contract Extraction](./contract-extraction.md) — How AI reads your contracts
+- [AI Task Generation](./ai-task-generation.md) — Let AI build your task checklist
+- [AI Insights](./ai-insights.md) — Risk assessments and compliance checks
+- [Smart Document Splitting](./smart-document-splitting.md) — Automatically split bundled PDFs
+
+---
+
+# AI Insights
+
+AI Insights runs risk assessments and compliance checks on your transactions, flagging potential issues before they become problems.
+
+## Where to find them
+
+AI Insights appear on the **Overview** tab of any transaction, in the **AI Insights** card near the top. If there are any issues, you'll see them listed with severity indicators.
+## What gets flagged
+
+AI looks for things like:
+
+- **Missing documents** — Required documents that haven't been uploaded yet
+- **Approaching deadlines** — Milestones or contingency expirations coming up soon
+- **Incomplete information** — Missing contact details, unsigned documents, or blank fields
+- **Compliance concerns** — State-specific requirements that may not be met
+- **Timeline conflicts** — Dates that don't make sense (e.g., inspection deadline after closing date)
+
+## Taking action
+
+Each insight comes with one-click actions:
+
+- **Approve** — Acknowledge the issue and mark it as addressed
+- **Dismiss** — If it's not relevant to this particular deal
+- **Take action** — Jump directly to the part of the transaction that needs attention
+
+AI Insights update as your transaction progresses. Once you resolve an issue (like uploading a missing document), the insight clears automatically.
+
+## Running a new analysis
+
+Insights can be refreshed anytime. Click the **Run Analysis** button on the AI Insights card to have AI re-evaluate the transaction based on its current state.
+
+---
+
+# AI Task Generation
+
+Don't want to build your task checklist from scratch? Let AI analyze your transaction and suggest tasks for you.
+
+## How it works
+
+1. Open a transaction and go to the **Tasks** tab
+2. Click the **AI Generate** button
+3. AI looks at your transaction details — property type, state, parties involved, timeline — and suggests a task checklist
+4. Review the suggestions — each task shows a name, priority, and estimated due date
+5. Select the tasks you want to keep (or select all)
+6. Click **Add Tasks**
+
+That's it. The tasks appear in your list with priorities and due dates already set.
+## What makes the suggestions good
+
+AI doesn't just generate a generic checklist. It considers:
+
+- **Transaction type** — A residential purchase has different tasks than a commercial lease
+- **State-specific requirements** — Different states have different disclosure and compliance requirements
+- **Your existing tasks** — AI avoids suggesting tasks you've already added
+- **Timeline** — Due dates are calculated based on your contract and closing dates
+
+## AI vs. Templates
+
+Both AI generation and [task templates](./ai-task-generation.md) can populate your task list. Here's when to use each:
+
+| Use AI generation when... | Use templates when... |
+|--------------------------|----------------------|
+| You want tasks tailored to this specific deal | You have a proven checklist you use every time |
+| It's an unusual transaction type | You want consistent tasks across all deals |
+| You're not sure what tasks you need | You've already customized a template you love |
+
+You can also use both — apply a template first, then run AI generation to catch anything the template missed.
+
+---
+
+# Contract Extraction
+
+One of DocJacket's most powerful features. Upload a contract PDF and AI reads through it — pulling out the key details so you don't have to type them in manually.
+
+## What gets extracted
+
+DocJacket's AI looks for:
+
+- **Buyer and seller names** — Including multiple buyers/sellers
+- **Property address** — Street, city, state, zip
+- **Purchase price** — Sale price and earnest money
+- **Key dates** — Contract date, closing date, inspection deadline, financing deadline
+- **Contingency periods** — Inspection, appraisal, financing timeframes
+- **Loan details** — Loan type, amount, lender information
+- **Agent information** — Listing and buying agent details
+
+## How to use it
+
+1. From the **Transactions** page, click **New Transaction** > **Upload & Extract**
+2. Drop your contract PDF into the upload area
+3. Wait a moment while AI processes the document (usually takes 10-30 seconds)
+4. Review the extracted fields — everything is editable
+5. Make any corrections needed
+6. Click **Create Transaction**
+
+## Tips for best results
+
+- **Typed contracts work best** — AI handles typed text with high accuracy. Handwritten contracts may need more manual corrections.
+- **Standard formats help** — Common state association forms (like TAR, CAR, FAR) are well-recognized.
+- **Multi-page is fine** — The AI reads through the entire document, not just the first page.
+- **Always review** — AI is very good but not perfect. A quick scan of the extracted data takes 30 seconds and catches any misreads.
+
+## Already have a transaction?
+
+You can also run extraction on an existing transaction. Go to the **Documents** tab and click **AI Data Extraction** to have AI re-read your documents and fill in any missing fields.
+
+
+# AI Features
+
+DocJacket uses AI to handle the tedious parts of transaction coordination — so you can focus on the work that actually needs a human touch.
+
+Here's the important thing: **DocJacket never acts without your approval.** AI prepares, suggests, and drafts — but you're always in control. Nothing gets sent, saved, or changed until you say so.
+
+## What AI can do for you
+
+- **Contract Extraction** — Upload a PDF and AI reads it, pulling out names, dates, prices, and terms automatically
+- **Task Generation** — AI analyzes your transaction and suggests a task checklist tailored to the deal
+- **Risk & Compliance Insights** — Get flagged on potential issues before they become problems
+- **Smart Document Splitting** — Upload a multi-document PDF and AI separates it into individual files
+- **Communication Drafting** — AI drafts emails and messages based on your transaction context
+
+## In this section
+
+- [Contract Extraction](./contract-extraction.md) — How AI reads your contracts
+- [AI Task Generation](./ai-task-generation.md) — Let AI build your task checklist
+- [AI Insights](./ai-insights.md) — Risk assessments and compliance checks
+- [Smart Document Splitting](./smart-document-splitting.md) — Automatically split bundled PDFs
+
+---
+
+# Smart Document Splitting
+
+Sometimes you get a single PDF that contains multiple documents — a contract, addenda, disclosures, and amendments all bundled together. DocJacket's AI can detect where one document ends and another begins, and split them into separate files automatically.
+
+## How to use it
+
+1. Upload a multi-document PDF to your transaction's **Documents** tab
+2. DocJacket detects that the PDF contains multiple documents
+3. AI analyzes the content and identifies the document boundaries
+4. You'll see a preview of the suggested splits with document names
+5. Review and adjust if needed
+6. Confirm, and each document is saved as its own file
+## When this is useful
+
+- **Title company packages** — Often arrive as one big PDF with dozens of documents
+- **Agent submissions** — Agents sometimes scan everything into a single file
+- **Email attachments** — Documents forwarded as a single combined PDF
+- **MLS downloads** — Property data packages that bundle multiple forms
+
+## Tips
+
+- The AI names each split document based on its content (e.g., "Purchase Agreement", "Lead Paint Disclosure")
+- You can rename any document after splitting
+- Each split document gets categorized automatically
+- If the AI misidentifies a split point, you can manually adjust the page ranges before confirming
+
+---
+
+## Documents
+
+
+# Documents
+
+Every real estate transaction generates a mountain of paperwork — contracts, disclosures, amendments, inspection reports, and more. DocJacket keeps it all organized in one place.
+
+From the **Documents** tab in any transaction, you can:
+
+- **Upload files** — Drag and drop or browse to upload. Documents are categorized automatically.
+- **Track completeness** — Toggle audit mode to see which required documents are still missing.
+- **Extract data with AI** — Let AI read your documents and pull out key transaction details.
+- **Search and filter** — Find any document by name or category, even in large transactions.
+- **Connect to Google Drive** — Import and export documents directly.
+## In this section
+
+- [Uploading Documents](./uploading-documents.md) — How to get files into DocJacket
+- [AI Data Extraction](./ai-data-extraction.md) — Let AI read your documents
+- [Audit Mode](./audit-mode.md) — Track document completeness
+- [Google Drive Integration](./google-drive-integration.md) — Sync with Drive
+- [DocDrop](./docdrop.md) — Let contacts email documents directly into the transaction
+
+---
+
+# AI Data Extraction
+
+Already have documents uploaded to a transaction? You can run AI extraction on them to automatically populate transaction fields — dates, names, amounts, and more.
+
+This is different from the "Upload & Extract" flow you use when creating a new transaction. This feature works on **existing transactions** where you want AI to read through documents and fill in missing data.
+
+## How to use it
+
+1. Open a transaction and go to the **Documents** tab
+2. Click the **AI Data Extraction** button
+3. AI reads through your uploaded documents
+4. Review the extracted data — AI shows what it found and which fields it wants to update
+5. Approve the changes you want to keep
+## What it extracts
+
+AI looks through all your uploaded documents and pulls out:
+
+- Buyer and seller names
+- Property details
+- Financial terms (price, earnest money, loan amount)
+- Key dates (contract, closing, inspection, financing deadlines)
+- Contingency periods
+- Agent and lender information
+
+If a field is already filled in, AI will show you its suggested value alongside the current one — you decide whether to update it.
+
+## When to use this
+
+- **You added documents after creating the transaction** — New documents might contain details that weren't in the original contract
+- **You created the transaction manually** — Run extraction to auto-fill fields instead of typing them in
+- **An amendment changed key terms** — Upload the amendment and re-run extraction to catch updated dates or prices
+
+---
+
+# Audit Mode
+
+Audit mode helps you track document completeness — so you can see at a glance which required documents are in hand and which are still missing.
+
+## Turning it on
+
+On the **Documents** tab, toggle the **Audit Mode** switch. The document list changes to show:
+
+- **Received documents** — Files that have been uploaded and match a required document type
+- **Missing documents** — Required documents that haven't been uploaded yet
+- **Document status** — Whether each document has been reviewed, approved, or needs attention
+## Setting up required documents
+
+Audit mode works best when you have a list of required documents for the transaction type. You can set this up in a few ways:
+
+- **Document template sets** — Create reusable document checklists in **Templates > Documents**. When applied to a transaction, they define what's required.
+- **Manual additions** — Add required documents to the checklist on the fly from the audit view.
+
+## Why this matters
+
+For TCs managing dozens of files per transaction, it's easy to lose track of what's been collected and what's still outstanding. Audit mode gives you a clear picture so you can:
+
+- Follow up on missing documents before they hold up closing
+- Verify everything is in order before the closing date
+- Generate a document status report for your team or clients
+
+---
+
+# DocDrop
+
+DocDrop gives each transaction a unique email address. When contacts send documents to that address, the attachments are automatically filed into the transaction — no manual uploads needed.
+
+## How it works
+
+Every transaction gets its own DocDrop email address. You'll find it on the **Documents** tab.
+
+1. Copy the DocDrop email address
+2. Share it with your contacts — agents, lenders, title companies, inspectors
+3. When they email documents to that address, the attachments appear in your Documents tab automatically
+## Why this is useful
+
+Instead of asking contacts to upload to a portal or send files to your personal email (where they get buried), just give them the DocDrop address. Documents arrive exactly where they need to be — organized in the right transaction.
+
+This is especially handy for:
+
+- **Lenders** sending pre-approval letters or loan documents
+- **Title companies** sending title commitments and closing statements
+- **Inspectors** sending inspection reports
+- **Agents** forwarding signed documents
+
+## Tracking activity
+
+The DocDrop section shows activity metrics — how many documents have been received, processed, and any that need attention. This way you know at a glance if something came in that you need to review.
+## Tips
+
+- The DocDrop email address is unique per transaction, so documents always land in the right place
+- Multiple attachments in a single email are each saved as separate documents
+- DocJacket auto-categorizes the incoming documents based on their content
+
+---
+
+# Google Drive Integration
+
+If you use Google Drive to store transaction documents, DocJacket can connect directly — so you can import and export files without downloading and re-uploading.
+
+## Connecting Google Drive
+
+1. Go to **Settings > Integrations**
+2. Find **Google Drive** and click **Connect**
+3. Sign in with your Google account and grant DocJacket access
+4. You're connected — the Drive button will now appear on your Documents tab
+
+## Importing from Drive
+
+1. Open a transaction's **Documents** tab
+2. Click the **Google Drive** button
+3. Browse your Drive folders and select the files you want to import
+4. Click **Import** — the files are copied into DocJacket
+## Exporting to Drive
+
+You can also send documents from DocJacket back to Google Drive. This is useful when you need to share files in a Drive folder with other parties who don't use DocJacket.
+
+## Tips
+
+- Imported files are **copies** — changes in Drive won't automatically sync to DocJacket (and vice versa)
+- You can import multiple files at once
+- Folder structure in Drive doesn't carry over — files land in the transaction's document list and get categorized by DocJacket
+
+
+# Documents
+
+Every real estate transaction generates a mountain of paperwork — contracts, disclosures, amendments, inspection reports, and more. DocJacket keeps it all organized in one place.
+
+From the **Documents** tab in any transaction, you can:
+
+- **Upload files** — Drag and drop or browse to upload. Documents are categorized automatically.
+- **Track completeness** — Toggle audit mode to see which required documents are still missing.
+- **Extract data with AI** — Let AI read your documents and pull out key transaction details.
+- **Search and filter** — Find any document by name or category, even in large transactions.
+- **Connect to Google Drive** — Import and export documents directly.
+## In this section
+
+- [Uploading Documents](./uploading-documents.md) — How to get files into DocJacket
+- [AI Data Extraction](./ai-data-extraction.md) — Let AI read your documents
+- [Audit Mode](./audit-mode.md) — Track document completeness
+- [Google Drive Integration](./google-drive-integration.md) — Sync with Drive
+- [DocDrop](./docdrop.md) — Let contacts email documents directly into the transaction
+
+---
+
+# Uploading Documents
+
+Getting documents into DocJacket is quick and easy. Here's how.
+
+## Drag and drop
+
+The fastest way. Open a transaction's **Documents** tab and:
+
+1. Click the **Upload** button (or just drag files onto the page)
+2. Drop one or more files
+3. DocJacket uploads them and automatically assigns a category based on the file name and content
+## Supported file types
+
+DocJacket accepts most common file types:
+
+- **PDF** — The most common format for contracts and disclosures
+- **Images** — JPG, PNG, TIFF (great for photos of signed documents)
+- **Office files** — Word docs, Excel spreadsheets
+- **Other** — Most standard document formats
+
+## Automatic categorization
+
+When you upload a document, DocJacket looks at the file name and content to guess the right category — things like "Purchase Agreement", "Inspection Report", or "Title Commitment". You can always change the category manually if the AI gets it wrong.
+
+## Uploading multiple files
+
+You can upload multiple files at once. Just select them all or drag a batch into the upload area. Each file is processed individually and categorized on its own.
+
+## Other ways documents get into DocJacket
+
+Documents don't only come from manual uploads:
+
+- **AI Extraction** — When you create a transaction via Upload & Extract, the contract is automatically saved to the Documents tab
+- **DocDrop** — Contacts can email documents directly into the transaction (see [DocDrop](./docdrop.md))
+- **Google Drive** — Import files from your Drive (see [Google Drive Integration](./google-drive-integration.md))
+
+---
+
+## Client Portal
+
+
+# Client Portal
+
+The Client Portal gives your buyers, sellers, and agents a branded view of their transaction — without needing a DocJacket account. They can see milestones, documents, tasks, and status updates through a secure link you send them.
+
+It's a professional touch that keeps everyone informed and cuts down on "where are we?" calls and emails.
+## Key features
+
+- **Branded experience** — Customize the portal with your logo and colors
+- **Secure access** — Each portal link is unique and can be set to expire
+- **Track engagement** — See who's viewed the portal and when
+- **Selective sharing** — Control exactly which documents and milestones are visible
+
+## In this section
+
+- [Setting Up the Portal](./setting-up-the-portal.md) — Enable and brand your portal
+- [Portal for Clients](./portal-for-clients.md) — What buyers and sellers see
+- [Portal for Agents](./portal-for-agents.md) — What agents see
+- [Sharing Portal Links](./sharing-portal-links.md) — Send access to the right people
+
+
+# Client Portal
+
+The Client Portal gives your buyers, sellers, and agents a branded view of their transaction — without needing a DocJacket account. They can see milestones, documents, tasks, and status updates through a secure link you send them.
+
+It's a professional touch that keeps everyone informed and cuts down on "where are we?" calls and emails.
+## Key features
+
+- **Branded experience** — Customize the portal with your logo and colors
+- **Secure access** — Each portal link is unique and can be set to expire
+- **Track engagement** — See who's viewed the portal and when
+- **Selective sharing** — Control exactly which documents and milestones are visible
+
+## In this section
+
+- [Setting Up the Portal](./setting-up-the-portal.md) — Enable and brand your portal
+- [Portal for Clients](./portal-for-clients.md) — What buyers and sellers see
+- [Portal for Agents](./portal-for-agents.md) — What agents see
+- [Sharing Portal Links](./sharing-portal-links.md) — Send access to the right people
+
+---
+
+# Portal for Agents
+
+Agents get their own portal view — showing the transactions they're involved in with details relevant to their role.
+
+## What agents see
+
+The agent portal shows:
+
+- **Their transactions** — Only the deals where they're assigned as an agent
+- **Transaction status and milestones** — Where each deal stands
+- **Documents** — Documents shared with the agent role
+- **Tasks** — Portal-visible tasks assigned to them or relevant to their role
+## Agent vs. Client portal
+
+The main difference is scope. Clients see a single transaction. Agents may see multiple transactions they're involved in, with a higher-level overview.
+
+Agents also typically see more detail than clients — you can control this through contact permissions in each transaction.
+
+---
+
+# Portal for Clients
+
+When a buyer or seller opens their portal link, they see a clean, simple view of their transaction — no login required, no app to download.
+
+## What clients see
+
+- **Transaction status** — Where things stand (Under Contract, Clear to Close, etc.)
+- **Timeline** — Key milestones with dates and completion status
+- **Documents** — Any documents you've shared with them
+- **Tasks** — Tasks marked as portal-visible (things they might need to complete)
+- **Contacts** — Key contacts involved in the transaction (their agent, title company, lender)
+- **Service providers** — Inspectors, appraisers, and other vendors
+## What clients don't see
+
+- Internal notes
+- Your task list (unless you mark specific tasks as portal-visible)
+- Financial details you haven't shared
+- Other transactions
+- Other contacts' portal views
+
+The portal is read-only for most items — clients can view status and documents, but they can't edit transaction data.
+
+---
+
+# Setting Up the Portal
+
+Before sharing portal links with clients and agents, you'll want to customize the look and feel to match your brand.
+
+## Branding
+
+Go to the portal settings (accessible from within a transaction's portal tab, or from **Settings > Portal**):
+
+- **Logo** — Upload your company logo. It appears at the top of the portal.
+- **Colors** — Choose colors that match your brand for a cohesive look.
+## What's shown on the portal
+
+By default, the portal shows:
+
+- Transaction status and progress
+- Key milestones and dates
+- Assigned tasks (if you've marked them as portal-visible)
+- Shared documents
+- Contact information for the key parties
+
+You control visibility at the document and task level — so sensitive items stay private unless you specifically share them.
+
+---
+
+# Sharing Portal Links
+
+Portal links are how clients and agents access their portal view. Each link is unique, secure, and can be managed individually.
+
+## Creating a portal link
+
+1. Open a transaction and go to the **Portal** tab
+2. Click **Create Link**
+3. Choose who the link is for (select a contact from the transaction)
+4. Set an expiry date (optional — links can be permanent or time-limited)
+5. Customize which documents are visible through this link (optional)
+6. Click **Create**
+
+DocJacket generates a unique URL that you can share via email.
+## Sending the link
+
+You can send the portal link by:
+
+- **Email from DocJacket** — Click the send button next to the link to compose and send an invitation email right from DocJacket
+- **Copy and paste** — Copy the link URL and share it however you prefer (email, text, etc.)
+
+## Managing links
+
+From the portal tab, you can see all active links and:
+
+- **View stats** — See how many times each link has been viewed
+- **Extend** — Push back the expiry date
+- **Revoke** — Immediately disable a link if you need to cut off access
+## Tips
+
+- Create separate links for each party — buyers, sellers, and agents each get their own link with appropriate visibility
+- Set expiration dates for sensitive transactions
+- Check the stats to see if clients have actually viewed the portal — if they haven't, follow up
+
+---
+
+## Tasks
+
+
+# Tasks
+
+Tasks are the backbone of every transaction. They track every to-do from contract to close — with due dates, priorities, assignees, email automation, and subtasks.
+
+You can access tasks in two places:
+
+- **Inside a transaction** — The Tasks tab shows tasks for that specific deal
+- **Organization-wide** — The Tasks page in the sidebar shows tasks across all your transactions
+
+Tasks are organized by due date: **Overdue** (red), **This Week**, **Next Week**, and **Later**. The colored left border shows priority at a glance — red for Urgent, orange for High, amber for Medium, green for Low.
+## In this section
+
+- [Creating Tasks](./creating-tasks.md) — Quick add and the detail drawer
+- [Task Templates](./task-templates.md) — Pre-built checklists
+- [Subtasks](./subtasks.md) — Breaking tasks into steps
+- [Email Automation](./email-automation.md) — Link emails to task completion
+- [Task Options](./task-options.md) — Portal visibility, key dates, conditional tasks, reminders
+
+---
+
+# Creating Tasks
+
+There are several ways to add tasks to a transaction.
+
+## Quick add
+
+The fastest way. At the top of the Tasks tab:
+
+1. Type a task name in the quick-add bar
+2. Press **Enter**
+3. The task is created with Medium priority by default
+
+You can customize everything else (due date, priority, assignee, instructions) by clicking the task to open its detail drawer.
+## Detail drawer
+
+Click any task to open the detail drawer on the right side. From here you can edit:
+
+- **Name and description** — What needs to be done
+- **Priority** — Urgent, High, Medium, or Low
+- **Due date** — When it's due
+- **Assignee** — Who's responsible
+- **Instructions** — Detailed notes or steps
+
+The drawer also has collapsible sections for advanced features like subtasks, email automation, and task options.
+## From a template
+
+Load a pre-built task checklist for your transaction type. Templates come with priorities, due date offsets, and linked email templates already configured.
+
+1. Click the **Apply Template** button on the Tasks tab
+2. Choose a template
+3. Tasks are added with all their settings pre-configured
+
+See [Task Templates](./task-templates.md) for more.
+
+## AI-generated
+
+Let AI analyze your transaction and suggest a task checklist. See [AI Task Generation](/docs/ai-features/ai-task-generation) for details.
+
+## Drag to reorder
+
+Tasks can be reordered by dragging them within their date group. This doesn't change due dates — it just lets you prioritize the visual order.
+
+---
+
+# Email Automation
+
+Link email templates to tasks so that emails are ready to send at the right moment — or even sent automatically.
+
+## Linking an email template
+
+1. Click a task to open its detail drawer
+2. Find the **Email** section
+3. Select an email template to link
+
+When the task is due, you can click **Send** to fire off the pre-written email without composing from scratch.
+
+## Auto-send options
+
+In the task drawer, you have two automation options:
+
+### Notify on Complete
+Enable this in the **Options** section. When you mark the task as done, the linked email is sent automatically.
+
+**Example:** You have a task "Send inspection report to seller." Link the email template, enable Notify on Complete, and when you check off the task, the email goes out.
+
+### Auto-Send Date
+Set a specific date in the **Scheduling** section. The email sends on that date regardless of task completion.
+
+**Example:** You need to send a reminder to the buyer 3 days before closing. Set the auto-send date and it fires automatically.
+## Tips
+
+- Always review your email templates before enabling auto-send — make sure the content and recipients are correct
+- Auto-send respects DocJacket's approval-first design — you'll get a notification before emails go out so you can cancel if needed
+- Combine email automation with [task templates](./task-templates.md) to set up entire email workflows for a transaction type
+
+
+# Tasks
+
+Tasks are the backbone of every transaction. They track every to-do from contract to close — with due dates, priorities, assignees, email automation, and subtasks.
+
+You can access tasks in two places:
+
+- **Inside a transaction** — The Tasks tab shows tasks for that specific deal
+- **Organization-wide** — The Tasks page in the sidebar shows tasks across all your transactions
+
+Tasks are organized by due date: **Overdue** (red), **This Week**, **Next Week**, and **Later**. The colored left border shows priority at a glance — red for Urgent, orange for High, amber for Medium, green for Low.
+## In this section
+
+- [Creating Tasks](./creating-tasks.md) — Quick add and the detail drawer
+- [Task Templates](./task-templates.md) — Pre-built checklists
+- [Subtasks](./subtasks.md) — Breaking tasks into steps
+- [Email Automation](./email-automation.md) — Link emails to task completion
+- [Task Options](./task-options.md) — Portal visibility, key dates, conditional tasks, reminders
+
+---
+
+# Subtasks
+
+Some tasks are better broken into smaller steps. Subtasks let you do that while keeping everything grouped under the parent task.
+
+## Adding subtasks
+
+1. Click a task to open its detail drawer
+2. Scroll to the **Subtasks** section
+3. Type a subtask name and press Enter
+4. Repeat for each step
+
+## Tracking progress
+
+- Check off subtasks directly in the drawer as you complete them
+- The parent task tracks progress automatically — you'll see "2 of 5 complete" style indicators
+- In the main task list, click the expand arrow next to a task to see its subtasks inline
+## Tips
+
+- Use subtasks for multi-step processes like "Order title search" → "Review title commitment" → "Clear title exceptions"
+- Subtasks are great for tasks that multiple people contribute to
+- Completing all subtasks doesn't automatically complete the parent task — you still check off the parent when everything's done
+
+---
+
+# Task Options
+
+Each task has advanced options you can configure in the detail drawer's **Options** section.
+
+## Portal Visible
+
+Show this task to agents on their portal. Useful for tasks that agents need to be aware of or complete on their end.
+
+**Example:** "Submit buyer's pre-approval letter" — mark this portal visible so the buyer's agent knows it's needed.
+
+## Key Date
+
+Mark a task as a key date to highlight it on the timeline and trigger notifications. Key dates appear prominently in the transaction overview and calendar.
+
+**Example:** "Final walkthrough" — this is important enough to show on the timeline alongside milestones.
+
+## Conditional Task
+
+Only show this task when certain conditions are met. This keeps your task list clean by hiding irrelevant tasks.
+
+**Example:** "Schedule septic inspection" — only relevant for properties with septic systems, not city sewer.
+
+## Calendar Reminder
+
+Get reminded before a task is due. Set how far in advance you want the reminder (1 day, 3 days, 1 week, etc.).
+
+**Example:** "Order home warranty" — set a reminder for 3 days before the due date so you have time to coordinate with the provider.
+
+---
+
+# Task Templates
+
+Task templates are pre-built checklists you can apply to any transaction. They save you from creating the same tasks over and over.
+
+## Applying a template
+
+1. Open a transaction's **Tasks** tab
+2. Click **Apply Template**
+3. Browse or search for the template you want
+4. Click to apply it
+
+The template's tasks are added to the transaction with priorities, due date offsets (calculated from your anchor date), and any linked email templates already configured.
+## Creating a template
+
+1. Go to **Templates** in the sidebar
+2. Navigate to **Task Templates**
+3. Click **New Template**
+4. Add tasks with:
+   - Task name and description
+   - Priority level
+   - Due date offset (e.g., "5 days before closing", "3 days after contract")
+   - Assignee role
+   - Linked email template (optional)
+5. Save the template
+
+## Tips
+
+- Create templates for each transaction type you handle (residential purchase, commercial lease, etc.)
+- Include due date offsets relative to key dates — DocJacket calculates actual dates when the template is applied
+- You can apply multiple templates to the same transaction if needed
+- After applying a template, you can still add, remove, or modify individual tasks
+
+---
+
+## Calendar & Deadlines
+
+
+# Calendar & Deadlines
+
+DocJacket gives you two ways to manage dates: **timelines** inside each transaction, and a **calendar** that shows everything across all your deals.
+
+Never miss a deadline again — milestones, tasks, reminders, and custom events all appear in one place.
+
+## In this section
+
+- [Timeline Templates](./timeline-templates.md) — Pre-built milestone sequences for different transaction types
+- [Anchor Dates](./anchor-dates.md) — How one date drives all the others
+- [Calendar View](./calendar-view.md) — See all deadlines across all transactions
+
+---
+
+# Anchor Dates
+
+An anchor date is the reference point from which all other dates in your timeline are calculated. It's the single most important date in your transaction's timeline.
+
+## How it works
+
+When you apply a timeline template, every milestone is defined as an offset from the anchor date:
+
+- "Inspection deadline: 10 days after anchor"
+- "Appraisal deadline: 21 days after anchor"
+- "Closing: 30 days after anchor"
+
+The **anchor date** is usually the **contract date** — the day the purchase agreement was executed. But it could be any date that your milestones reference.
+
+## Setting the anchor date
+
+When you apply a timeline template, DocJacket asks you to set the anchor date. It typically defaults to the contract date if one is already entered on the transaction.
+
+You can change the anchor date later from the Timeline tab. When you do, click **Recalculate** and all milestone dates update based on the new anchor.
+
+## Why this matters
+
+The anchor date system means you don't have to manually calculate dozens of deadlines. Set it once, and everything flows from there. When a closing date gets pushed back or a contract date changes, one recalculation updates your entire timeline.
+
+## Common anchor date scenarios
+
+| Scenario | Typical anchor date |
+|----------|-------------------|
+| Standard residential purchase | Contract execution date |
+| New construction | Permit approval date or contract date |
+| Commercial lease | Lease commencement date |
+| Short sale | Bank approval date |
+
+---
+
+# Calendar View
+
+The Calendar page in the sidebar shows all your upcoming dates across every transaction — milestones, tasks, reminders, and custom events in one view.
+
+## Navigating the calendar
+
+- **Month and Week views** — Switch between a monthly overview and a detailed weekly view with time slots
+- **Navigate dates** — Move forward and back by month or week, or jump to today
+- **Click any day** — The sidebar shows all events for that selected day
+## Color-coded events
+
+Events are color-coded by type so you can tell them apart at a glance:
+
+- **Milestones** — Key transaction deadlines
+- **Tasks** — Due dates for your to-dos
+- **Reminders** — Alerts you've set
+- **Custom events** — Anything you've added manually
+
+The legend at the top of the calendar shows what each color means.
+
+## Day agenda
+
+Click any day to see the full agenda in the sidebar panel. From here you can:
+
+- Click an event to see its details
+- Jump to the related transaction
+- Add a new event to that day
+## Tips
+
+- Use the calendar to spot busy days — if you have 3 closings on the same day, you'll see it immediately
+- The calendar syncs with your timeline milestones automatically — no double entry
+- You can connect Google Calendar or Outlook Calendar in **Settings > Integrations** to sync events both ways
+
+
+# Calendar & Deadlines
+
+DocJacket gives you two ways to manage dates: **timelines** inside each transaction, and a **calendar** that shows everything across all your deals.
+
+Never miss a deadline again — milestones, tasks, reminders, and custom events all appear in one place.
+
+## In this section
+
+- [Timeline Templates](./timeline-templates.md) — Pre-built milestone sequences for different transaction types
+- [Anchor Dates](./anchor-dates.md) — How one date drives all the others
+- [Calendar View](./calendar-view.md) — See all deadlines across all transactions
+
+---
+
+# Timeline Templates
+
+Timeline templates are pre-built sequences of milestones for different transaction types. Apply one to a transaction and your entire deadline schedule is set up automatically.
+
+## Applying a template
+
+1. Open a transaction and go to the **Timeline** tab
+2. Click **Apply Template**
+3. Choose a template that matches your transaction type and state
+4. Set your [anchor date](./anchor-dates.md) — usually the contract date
+5. All milestones populate with calculated dates
+## What's in a template
+
+Each template includes:
+
+- **Milestones** — Key deadlines like inspection period, appraisal, financing, and closing
+- **Date offsets** — Each milestone is defined relative to the anchor date (e.g., "10 days after contract", "3 days before closing")
+- **Linked tasks** — Some milestones include associated tasks that auto-populate
+
+## Viewing your timeline
+
+DocJacket offers two views:
+
+- **Pipeline view** — A horizontal visual overview. Green nodes are complete, blue is upcoming, red is overdue. Click any node for details.
+- **List view** — A vertical list with expandable milestones showing linked tasks.
+
+Toggle between them with the view switch at the top.
+## Adding custom milestones
+
+Templates are a starting point. You can always add custom milestones for dates the template doesn't cover:
+
+1. Click the **Add Milestone** button
+2. Enter the milestone name and date
+3. Optionally link tasks to it
+
+## Recalculating dates
+
+When a key date changes (like the closing date gets pushed back), click **Recalculate** to cascade the change to all downstream milestones and tasks. DocJacket adjusts everything based on the original offsets.
+
+## Creating your own templates
+
+Go to **Templates > Timelines** in the sidebar to create custom timeline templates for your workflow. Define milestones with date offsets, and they'll be available to apply to any future transaction.
+
+---
+
+## Messages & Email
+
+
+# Messages & Email
+
+DocJacket centralizes all your transaction communication. Send emails, manage your inbox, and keep every conversation linked to the right deal.
+
+Your **Inbox** in the sidebar is a unified view — SMS, portal messages, emails, form submissions, and notes all in one place.
+
+## In this section
+
+- [Inbox](./inbox.md) — Your unified communication center
+- [Sending Emails](./sending-emails.md) — Compose and send from within a transaction
+- [Email Templates](./email-templates.md) — Create reusable email content
+
+---
+
+# Email Templates
+
+Email templates let you create reusable email content with smart fields that auto-fill with transaction data. Instead of typing the same emails for every deal, write it once and reuse it.
+
+## Using a template
+
+When composing an email in a transaction:
+
+1. Click the **Template** button in the compose window
+2. Browse or search for the template you want
+3. Select it — the subject and body auto-fill with the template content
+4. Smart fields (like buyer name, property address, closing date) are replaced with actual transaction data
+5. Review and edit if needed, then send
+
+## Creating a template
+
+1. Go to **Templates** in the sidebar
+2. Navigate to **Email Templates**
+3. Click **New Template**
+4. Write your email content using smart fields for dynamic data
+5. Save the template
+
+## Smart fields
+
+Smart fields are placeholders that get replaced with real data when the template is used. Common examples:
+
+- `{BuyerName}` — Buyer's full name
+- `{SellerName}` — Seller's full name
+- `{PropertyAddress}` — The property address
+- `{ClosingDate}` — The closing date
+- `{AgentName}` — The agent's name
+
+## Tips
+
+- Create templates for common emails: introduction to title company, inspection scheduling, closing reminders, status updates
+- Link email templates to [tasks](../tasks/email-automation.md) for automated sending
+- Templates can include attachments and formatting
+
+---
+
+# Inbox
+
+The Inbox is your unified communication center. All your conversations live here — SMS, portal messages, emails, form submissions, and notes — organized by contact.
+## Your intake email
+
+Every organization gets a unique intake email address, shown at the top of the Inbox. Forward any transaction-related email to this address and it appears in your inbox automatically.
+
+Share this address with agents, lenders, and vendors so everything lands in one place. Click the copy button to grab it.
+
+## Filtering conversations
+
+Use the quick filters to focus on what matters:
+
+- **All** — Every conversation
+- **Unread** — Messages you haven't read yet
+- **Unassigned** — Items that need to be linked to a transaction (shown under "Needs Routing")
+
+## Conversation threads
+
+Threads are grouped by contact. Each thread shows a channel badge so you know whether it's SMS, Portal, Email, Form, or Note.
+
+Click a thread to read the full conversation and reply. SMS and Portal threads have a compose box at the bottom. Email threads show the full message with attachments.
+
+## Context panel
+
+The right sidebar shows the linked transaction, contact details, and AI routing suggestions. If a conversation hasn't been assigned to a transaction yet, you can assign it from here.
+## Searching
+
+Search across all conversations by contact name, phone number, email address, or message content to find any conversation quickly.
+
+
+# Messages & Email
+
+DocJacket centralizes all your transaction communication. Send emails, manage your inbox, and keep every conversation linked to the right deal.
+
+Your **Inbox** in the sidebar is a unified view — SMS, portal messages, emails, form submissions, and notes all in one place.
+
+## In this section
+
+- [Inbox](./inbox.md) — Your unified communication center
+- [Sending Emails](./sending-emails.md) — Compose and send from within a transaction
+- [Email Templates](./email-templates.md) — Create reusable email content
+
+---
+
+# Sending Emails
+
+You can compose and send emails directly from within a transaction — no need to switch to Gmail or Outlook.
+
+## Composing an email
+
+From a transaction's **Messages** tab:
+
+1. Click **Compose**
+2. Select recipients from the transaction's contacts (or type an email address)
+3. Write your message or select an [email template](./email-templates.md)
+4. Attach files if needed
+5. Click **Send**
+
+The email is sent, tracked, and stored with the transaction automatically.
+## Tracking
+
+After sending, you can see:
+
+- **Delivery confirmation** — Whether the email was delivered
+- **Open tracking** — If and when the recipient opened it
+- **Link clicks** — Which links were clicked
+
+These stats appear on the email in the Messages tab.
+
+## Filtering messages
+
+Switch between tabs to find what you need:
+
+- **Inbox** — Received messages
+- **Sent** — Messages you've sent
+- **Archived** — Messages you've archived
+- **Drafts** — Emails you started but haven't sent
+
+## Searching
+
+Use the search bar to find emails by subject, recipient, or content across all messages in the transaction.
+
+---
+
+## Templates
+
+
+# Templates
+
+Templates save you time by letting you reuse emails, timelines, task lists, and more. Set them up once and apply them to any transaction.
+
+The **Templates** page in the sidebar is your template hub, organized into categories:
+
+## Communication Templates
+- **Email Templates** — Reusable email content with smart fields
+- **Email Signatures** — Branded signatures for outgoing emails
+- **Intake Forms** — Forms for collecting information from contacts
+
+## Transaction Workflow
+- **Timeline Templates** — Pre-built milestone sequences with date offsets
+- **Milestones** — Individual milestone definitions
+- **Task Templates** — Pre-built task checklists with priorities and due dates
+
+## Document Templates
+- **Document Sets** — Required document checklists for different transaction types
+- **Smart Fields** — Custom fields for auto-populating document data
+
+## Report Templates
+- **Status Reports** — Structured templates for transaction status updates
+## In this section
+
+- [Timeline Templates](./timeline-templates.md) — Create milestone sequences
+- [Task Templates](./task-templates.md) — Build reusable task checklists
+- [Email Templates](./email-templates.md) — Write reusable email content
+
+---
+
+# Email Templates
+
+Create reusable email templates with smart fields that auto-populate with transaction data. Write your common emails once and reuse them across every deal.
+
+## Creating an email template
+
+1. Go to **Templates > Email Templates** in the sidebar
+2. Click **New Template**
+3. Set the subject line (can include smart fields)
+4. Write the email body with formatting and smart fields
+5. Save the template
+
+## Smart fields
+
+Smart fields are placeholders that get replaced with real transaction data:
+
+- `{BuyerName}`, `{SellerName}` — Party names
+- `{PropertyAddress}` — Full property address
+- `{ClosingDate}`, `{ContractDate}` — Key dates
+- `{AgentName}` — Agent's name
+- `{TitleCompany}` — Title company name
+
+When you use the template in a transaction, these fields fill in automatically.
+
+## Common templates to create
+
+Here are some templates most TCs find useful:
+
+- **Welcome email** — Introduction to the transaction process for new clients
+- **Title company introduction** — Connect the title company with all parties
+- **Inspection scheduling** — Coordinate inspection appointments
+- **Status update** — Weekly or milestone-based progress update
+- **Closing reminder** — Sent a few days before closing with final instructions
+- **Post-closing thank you** — A nice touch after the deal closes
+
+## Using templates with tasks
+
+Email templates become even more powerful when linked to [tasks](../tasks/email-automation.md). Set up a task like "Send closing reminder" with a linked template, and the email is ready to go when the task comes due.
+
+
+# Templates
+
+Templates save you time by letting you reuse emails, timelines, task lists, and more. Set them up once and apply them to any transaction.
+
+The **Templates** page in the sidebar is your template hub, organized into categories:
+
+## Communication Templates
+- **Email Templates** — Reusable email content with smart fields
+- **Email Signatures** — Branded signatures for outgoing emails
+- **Intake Forms** — Forms for collecting information from contacts
+
+## Transaction Workflow
+- **Timeline Templates** — Pre-built milestone sequences with date offsets
+- **Milestones** — Individual milestone definitions
+- **Task Templates** — Pre-built task checklists with priorities and due dates
+
+## Document Templates
+- **Document Sets** — Required document checklists for different transaction types
+- **Smart Fields** — Custom fields for auto-populating document data
+
+## Report Templates
+- **Status Reports** — Structured templates for transaction status updates
+## In this section
+
+- [Timeline Templates](./timeline-templates.md) — Create milestone sequences
+- [Task Templates](./task-templates.md) — Build reusable task checklists
+- [Email Templates](./email-templates.md) — Write reusable email content
+
+---
+
+# Task Templates
+
+Task templates are pre-built checklists you can apply to any transaction. They're separate from timeline templates — you can use them independently or together.
+
+## Creating a task template
+
+1. Go to **Templates > Task Templates** in the sidebar
+2. Click **New Template**
+3. Add tasks with:
+   - Task name and description
+   - Priority (Urgent, High, Medium, Low)
+   - Due date offset (relative to anchor date or closing date)
+   - Assignee role
+   - Linked email template (optional)
+4. Save the template
+
+## Applying to a transaction
+
+From a transaction's Tasks tab, click **Apply Template** and select the template. All tasks are added with their pre-configured settings, and due dates are calculated based on the transaction's dates.
+
+## Task templates vs. timeline templates
+
+| Task templates | Timeline templates |
+|---------------|-------------------|
+| Focus on to-do items and action steps | Focus on key dates and milestones |
+| Good for detailed operational checklists | Good for deadline tracking |
+| Can be applied independently | Often include linked tasks too |
+
+Many TCs use both: a timeline template for the big-picture deadlines, and a task template for the detailed day-to-day checklist.
+
+---
+
+# Timeline Templates
+
+Timeline templates define a sequence of milestones for a transaction type. When applied, they auto-populate all your deadlines based on the anchor date.
+
+## Creating a timeline template
+
+1. Go to **Templates > Timelines** in the sidebar
+2. Click **New Template**
+3. Give it a name (e.g., "Texas Residential Purchase - 30 Day Close")
+4. Add milestones, each with:
+   - **Name** — What the milestone is (e.g., "Option Period Expires")
+   - **Date offset** — How many days before or after the anchor date
+   - **Linked tasks** — Optional tasks that should be created with this milestone
+5. Save the template
+
+## Organizing templates
+
+Templates can be filtered by:
+
+- **State** — Texas, Oklahoma, Florida, etc. (since deadlines vary by state)
+- **Category** — Residential, Commercial, Land, Lease
+- **Side** — Buyer side, seller side, or both
+
+This makes it easy to find the right template when you're setting up a new transaction.
+
+## Tips
+
+- Start with the built-in templates and customize them for your specific workflow
+- Create state-specific variations — a Texas residential close has different deadlines than a Florida one
+- Include the most common tasks in your template so they auto-populate when applied
+- Review and update templates periodically as regulations or your workflow change
+
+---
+
+## Contacts
+
+
+# Contacts
+
+DocJacket keeps a centralized contact database across all your transactions. Agents, clients, lenders, title companies, inspectors — everyone you work with lives here.
+
+The **Contacts** page in the sidebar shows your full directory. You can search, filter, import, export, and organize contacts into groups.
+## In this section
+
+- [Managing Contacts](./managing-contacts.md) — Add, edit, search, and organize
+- [Contact Roles](./contact-roles.md) — Buyer, seller, agent, vendor, and more
+- [Contact Groups](./contact-groups.md) — Organize contacts for bulk operations
+
+---
+
+# Contact Groups
+
+Contact groups let you organize contacts into lists for easier management and bulk operations.
+
+## Creating a group
+
+1. Go to **Contacts** in the sidebar
+2. Click **Add Contact > Groups**
+3. Name your group
+4. Add contacts to it
+
+## Uses for groups
+
+- **Email blasts** — Send an email to everyone in a group at once
+- **Preferred vendors** — Keep a list of your go-to inspectors, title companies, or lenders
+- **Agent partners** — Track the agents you work with regularly
+- **Regional contacts** — Group contacts by area if you work across multiple markets
+
+## Managing groups
+
+You can add or remove contacts from groups at any time. A contact can belong to multiple groups. Groups appear as a filter option on the Contacts page, so you can quickly view just the contacts in a specific group.
+
+---
+
+# Contact Roles
+
+When you add a contact to a transaction, you assign them a role that describes their part in the deal.
+
+## Role categories
+
+Contacts are organized into groups on the transaction overview:
+
+**Primary (Clients)**
+- Buyer, Seller
+
+**Professional (Agents)**
+- Listing Agent, Buying Agent
+
+**Legal & Title**
+- Title Company, Closing Attorney, Escrow Officer
+
+**Lending**
+- Lender, Loan Officer
+
+**Service Providers**
+- Home Inspector, Appraiser, Surveyor, Contractor, Insurance Agent
+
+**Other**
+- Property Manager, HOA Contact, and custom roles
+
+## Why roles matter
+
+Roles do more than just label contacts:
+
+- **Portal visibility** — What a contact sees on the portal depends on their role (buyers see different info than agents)
+- **Permissions** — Roles control what contacts can access
+- **Communication** — Email templates can target contacts by role (e.g., "send to all agents")
+- **Organization** — Roles help you see at a glance who's involved and in what capacity
+
+## Custom roles
+
+If the built-in roles don't cover your needs, you can create custom contact roles in **Settings > Transaction Roles**.
+
+
+# Contacts
+
+DocJacket keeps a centralized contact database across all your transactions. Agents, clients, lenders, title companies, inspectors — everyone you work with lives here.
+
+The **Contacts** page in the sidebar shows your full directory. You can search, filter, import, export, and organize contacts into groups.
+## In this section
+
+- [Managing Contacts](./managing-contacts.md) — Add, edit, search, and organize
+- [Contact Roles](./contact-roles.md) — Buyer, seller, agent, vendor, and more
+- [Contact Groups](./contact-groups.md) — Organize contacts for bulk operations
+
+---
+
+# Managing Contacts
+
+## Adding a contact
+
+From the **Contacts** page, click **Add Contact** and enter their details:
+
+- Name, email, phone
+- Company
+- Contact type (agent, lender, client, etc.)
+- Notes
+
+You can also create contacts on the fly when adding someone to a transaction — just fill in their info and they're saved to your directory automatically.
+
+## Searching and filtering
+
+- **Search** by name, email, phone, or company
+- **Filter by type** — Narrow down to agents, attorneys, lenders, clients, or any other contact type
+- **Advanced filters** — Filter by transaction count, license status, and more
+- **Customize columns** — Show or hide table columns to display exactly what you need
+
+## Importing contacts
+
+Have an existing contact list? Click **Add Contact > Import from CSV** to bulk-import contacts. Map your CSV columns to DocJacket fields and import.
+
+## Exporting contacts
+
+Click **Export** to download your contacts as a CSV file — useful for backup, reporting, or moving data between systems.
+
+
+---
+
+## Workflows
+
+
+# Workflows
+
+DocJacket runs automated workflows behind the scenes to handle routine operations — like processing incoming emails, running compliance checks, sending reminders, and extracting data from documents.
+
+You don't create or configure workflows yourself. They run automatically based on events in your transactions. But you can **monitor** them and **approve or reject** steps that need your input.
+
+## Monitoring workflows
+
+Go to **Settings > Workflows** to see:
+
+- **Running workflows** — What's currently being processed
+- **Completed workflows** — What finished successfully
+- **Failed workflows** — Anything that hit an error (with retry options)
+- **Awaiting approval** — Steps that need your manual approval before continuing
+## Approval steps
+
+Some workflows pause and wait for your input. For example, AI might extract data from a document and ask you to approve the results before saving them. When this happens, you'll see the workflow in "Awaiting Approval" status.
+
+From the workflow detail view, you can:
+
+- **Approve** — Let the workflow continue with the suggested action
+- **Reject** — Stop the workflow from proceeding
+- **Retry** — Re-run a failed step
+- **Cancel** — Stop the workflow entirely
+
+## What workflows handle
+
+Behind the scenes, workflows power features like:
+
+- Document processing and compliance scanning
+- Email intake and routing
+- AI data extraction
+- Reminder notifications
+- Morning briefings
+- Task and milestone completion actions
+
+
+# Workflows
+
+DocJacket runs automated workflows behind the scenes to handle routine operations — like processing incoming emails, running compliance checks, sending reminders, and extracting data from documents.
+
+You don't create or configure workflows yourself. They run automatically based on events in your transactions. But you can **monitor** them and **approve or reject** steps that need your input.
+
+## Monitoring workflows
+
+Go to **Settings > Workflows** to see:
+
+- **Running workflows** — What's currently being processed
+- **Completed workflows** — What finished successfully
+- **Failed workflows** — Anything that hit an error (with retry options)
+- **Awaiting approval** — Steps that need your manual approval before continuing
+## Approval steps
+
+Some workflows pause and wait for your input. For example, AI might extract data from a document and ask you to approve the results before saving them. When this happens, you'll see the workflow in "Awaiting Approval" status.
+
+From the workflow detail view, you can:
+
+- **Approve** — Let the workflow continue with the suggested action
+- **Reject** — Stop the workflow from proceeding
+- **Retry** — Re-run a failed step
+- **Cancel** — Stop the workflow entirely
+
+## What workflows handle
+
+Behind the scenes, workflows power features like:
+
+- Document processing and compliance scanning
+- Email intake and routing
+- AI data extraction
+- Reminder notifications
+- Morning briefings
+- Task and milestone completion actions
+
+---
+
+## Integrations
+
+
+# Integrations
+
+DocJacket connects with the tools you already use. Set up integrations in **Settings > Integrations**.
+
+## Available integrations
+
+### Google Workspace
+- **Gmail** — Sync emails and attachments with transactions
+- **Google Calendar** — Push closings, milestones, and tasks to your calendar
+- **Google Drive** — Store and organize transaction documents
+- **Google Contacts** — Import and sync your contacts
+
+### Microsoft 365
+- **Outlook Mail** — Sync emails with transactions
+- **Outlook Calendar** — Sync calendar events and deadlines
+- **OneDrive** — Cloud document storage and sync
+
+### Webhooks
+You can also set up custom webhooks in **Settings > Connections** to send event notifications to external services like Zapier, Slack, or Microsoft Teams.
+
+## In this section
+
+- [Google Workspace](./google-workspace.md) — Connect Gmail, Drive, Calendar, and Contacts
+- [Microsoft Outlook](./microsoft-outlook.md) — Connect Outlook Mail, Calendar, and OneDrive
+- [Webhooks](./webhooks.md) — Send events to external services
+
+---
+
+# Google Workspace
+
+Connect your Google account to sync email, documents, and calendar events with DocJacket.
+
+## What's included
+
+### Gmail
+- Send emails from DocJacket using your Gmail account
+- Incoming emails are tracked and linked to transactions
+- Email history syncs both ways
+
+### Google Drive
+- Import documents from Drive into any transaction
+- Export documents from DocJacket back to Drive
+- Browse your Drive folders directly from the Documents tab
+
+### Google Calendar
+- Sync transaction milestones and deadlines to your Google Calendar
+- See DocJacket events alongside your personal calendar
+- Two-way sync — changes in either place are reflected in both
+
+## Connecting
+
+1. Go to **Settings > Integrations**
+2. Find **Google Workspace** and click **Connect**
+3. Sign in with your Google account
+4. Grant the requested permissions
+5. You're connected
+## Tips
+
+- Use a dedicated Google account for your TC business if you want to keep personal and work email separate
+- Google Drive imports are copies — changes in Drive won't sync to DocJacket automatically
+- Calendar sync is especially useful if you manage your schedule through Google Calendar
+
+
+# Integrations
+
+DocJacket connects with the tools you already use. Set up integrations in **Settings > Integrations**.
+
+## Available integrations
+
+### Google Workspace
+- **Gmail** — Sync emails and attachments with transactions
+- **Google Calendar** — Push closings, milestones, and tasks to your calendar
+- **Google Drive** — Store and organize transaction documents
+- **Google Contacts** — Import and sync your contacts
+
+### Microsoft 365
+- **Outlook Mail** — Sync emails with transactions
+- **Outlook Calendar** — Sync calendar events and deadlines
+- **OneDrive** — Cloud document storage and sync
+
+### Webhooks
+You can also set up custom webhooks in **Settings > Connections** to send event notifications to external services like Zapier, Slack, or Microsoft Teams.
+
+## In this section
+
+- [Google Workspace](./google-workspace.md) — Connect Gmail, Drive, Calendar, and Contacts
+- [Microsoft Outlook](./microsoft-outlook.md) — Connect Outlook Mail, Calendar, and OneDrive
+- [Webhooks](./webhooks.md) — Send events to external services
+
+---
+
+# Microsoft Outlook
+
+Connect your Microsoft 365 account to sync email, calendar, and documents with DocJacket.
+
+## What's included
+
+### Outlook Mail
+- Send emails from DocJacket using your Outlook account
+- Incoming emails are tracked and linked to transactions
+- Email history syncs both ways
+
+### Outlook Calendar
+- Sync transaction milestones and deadlines to your Outlook Calendar
+- See DocJacket events alongside your existing schedule
+
+### OneDrive
+- Store and sync transaction documents with OneDrive
+- Access your cloud files directly from DocJacket
+
+## Connecting
+
+1. Go to **Settings > Integrations**
+2. Find **Microsoft 365** and click **Connect**
+3. Sign in with your Microsoft account
+4. Grant the requested permissions
+5. You're connected
+## Tips
+
+- Works with Microsoft 365 business and personal accounts
+- Calendar sync is two-way — changes in either place are reflected in both
+- If your organization uses Microsoft 365 for email, this integration keeps everything in sync without switching between apps
+
+---
+
+# Webhooks
+
+Webhooks let you send real-time event notifications from DocJacket to external services — like Zapier, Slack, Microsoft Teams, or your own custom applications.
+
+## Setting up a webhook
+
+1. Go to **Settings > Connections**
+2. Click **Create Webhook**
+3. Enter the **URL** where you want events sent
+4. Choose which **event types** to subscribe to:
+   - Document changes (uploaded, approved, rejected)
+   - Transaction changes (created, updated, status changed)
+   - Task changes (created, completed)
+   - Milestone changes (completed, approaching)
+5. Save the webhook
+
+DocJacket will send a POST request to your URL every time a subscribed event occurs.
+## Monitoring
+
+The Connections page shows delivery stats for each webhook:
+
+- **Success rate** — How many deliveries succeeded
+- **Recent deliveries** — Status of the last several attempts
+- **Failures** — If deliveries are failing, you'll see error details
+
+DocJacket includes circuit breaker protection — if a webhook fails repeatedly, it's automatically paused to prevent flooding a down endpoint. You can re-enable it once the issue is resolved.
+
+## Common uses
+
+- **Slack notifications** — Get a message in Slack when a document is uploaded or a task is completed
+- **Zapier automations** — Connect DocJacket events to thousands of other apps through Zapier
+- **Custom dashboards** — Feed transaction events into your own reporting tools
+
+---
+
+## Reports
+
+
+# Reports
+
+DocJacket helps you generate professional reports and visualize your transaction pipeline.
+
+## In this section
+
+- [Transaction Reports](./transaction-reports.md) — Generate and share status reports
+- [Pipeline View](./pipeline-view.md) — Visual Kanban board of your deals
+
+
+# Reports
+
+DocJacket helps you generate professional reports and visualize your transaction pipeline.
+
+## In this section
+
+- [Transaction Reports](./transaction-reports.md) — Generate and share status reports
+- [Pipeline View](./pipeline-view.md) — Visual Kanban board of your deals
+
+---
+
+# Pipeline View
+
+The Pipeline page gives you a Kanban-style board of all your transactions, organized by status. It's a visual way to see your workload at a glance.
+## How it works
+
+Each column represents a transaction status (Inbox, Active, Pending, Closed, etc.). Transaction cards live in the column matching their current status.
+
+### Transaction cards
+
+Each card shows:
+
+- **Property address** — Click to jump into the transaction
+- **Transaction type** — Purchase, sale, lease, etc.
+- **Purchase price** — The deal value
+- **Closing date** — When it's expected to close
+
+### Drag and drop
+
+Move cards between columns to update their status instantly. Drag a transaction from "Active" to "Closed" and the status updates in the background.
+
+### Inbox column
+
+New intakes land in the Inbox column. Click a card to review it and convert it into a full transaction.
+
+## When to use Pipeline vs. List
+
+- **Pipeline** is great for a visual overview of where all your deals stand — especially helpful in team meetings or for quick status checks
+- **List view** (the Transactions page) is better for searching, filtering, and working with lots of transactions at once
+
+Both views show the same data — just different ways of looking at it.
+
+---
+
+# Transaction Reports
+
+Generate professional status reports to share with clients, agents, or your team. Reports pull live data from the transaction and can be exported as PDFs.
+
+## Generating a report
+
+1. Open a transaction
+2. Go to the **Reports** section
+3. See a live preview of the report
+## Customizing sections
+
+Toggle which sections to include in the report:
+
+- **Milestones** — Timeline progress and upcoming deadlines
+- **Tasks** — Task completion status
+- **Documents** — Document checklist status
+- **Contacts** — Key parties involved
+- **Financials** — Purchase price, earnest money, loan details
+
+The preview updates in real time as you toggle sections on and off, so you can see exactly what the final report will look like before generating the PDF.
+
+## Sharing reports
+
+Once you're happy with the report, you can:
+
+- **Download as PDF** — Save it locally or attach it to an email
+- **Send directly** — Email the report to contacts from within DocJacket
+
+---
+
+## Settings & Account
+
+
+# Settings & Account
+
+Configure your organization, manage team members, set up integrations, and customize how DocJacket works for you.
+
+Access Settings from the sidebar — it's at the bottom of the navigation.
+
+## In this section
+
+- [Organization Settings](./organization-settings.md) — Branding, defaults, and company info
+- [User Management](./user-management.md) — Add and manage team members
+- [Notification Preferences](./notification-preferences.md) — Control what alerts you receive
+
+
+# Settings & Account
+
+Configure your organization, manage team members, set up integrations, and customize how DocJacket works for you.
+
+Access Settings from the sidebar — it's at the bottom of the navigation.
+
+## In this section
+
+- [Organization Settings](./organization-settings.md) — Branding, defaults, and company info
+- [User Management](./user-management.md) — Add and manage team members
+- [Notification Preferences](./notification-preferences.md) — Control what alerts you receive
+
+---
+
+# Notification Preferences
+
+Control what notifications you receive and how you receive them.
+
+## Configuring notifications
+
+Go to **Settings > Notifications** to manage your preferences. You can toggle notifications for different event types:
+
+- **Task reminders** — Get notified when tasks are approaching or overdue
+- **Milestone alerts** — Notifications for upcoming or passed deadlines
+- **Document updates** — When documents are uploaded, approved, or need review
+- **Email activity** — When new emails arrive for your transactions
+- **Workflow approvals** — When a workflow step needs your approval
+
+## Daily digest
+
+DocJacket can send you a daily morning briefing email that summarizes:
+
+- Closings happening today
+- Tasks due today
+- Overdue items
+- Pending documents
+
+Toggle this on from your Dashboard or in notification settings.
+
+## Tips
+
+- Start with all notifications on, then turn off the ones that aren't useful for your workflow
+- The morning briefing is a great way to start your day with a clear picture of what needs attention
+- Notification settings are per-user — each team member controls their own preferences
+
+---
+
+# Organization Settings
+
+Customize DocJacket to match your brand and workflow preferences.
+
+## Company information
+
+Set your organization's basic info:
+
+- **Company name** — Appears in emails, reports, and the client portal
+- **Address and phone** — Contact details for your organization
+- **Logo** — Uploaded logo appears on the portal, reports, and outgoing communications
+## Branding
+
+Your brand identity carries through DocJacket:
+
+- **Logo** — Used in the client portal, email headers, and reports
+- **Colors** — Customize accent colors for the portal
+
+## Default settings
+
+Configure defaults that apply to new transactions:
+
+- **Default transaction type** — Pre-select the most common type
+- **Default timeline template** — Auto-apply a template to new transactions
+- **Custom fields** — Add custom fields to capture data specific to your workflow
+
+## Transaction roles
+
+In **Settings > Transaction Roles**, you can create and manage the contact roles available when adding contacts to a transaction. The built-in roles (Buyer, Seller, Agent, etc.) cover most needs, but you can add custom ones if your workflow requires it.
+
+---
+
+# User Management
+
+Add team members to your DocJacket organization and control what they can access.
+
+## Inviting team members
+
+1. Go to **Settings > Users**
+2. Click **Invite User**
+3. Enter their email address
+4. Assign a role (which controls their permissions)
+5. Send the invitation
+
+They'll receive an email with a link to join your organization.
+
+## Roles and permissions
+
+Each team member is assigned a role that controls what they can see and do. You can create custom roles in **Settings > Roles** with granular permissions for:
+
+- **Organization management** — Access to settings and organization config
+- **User management** — Ability to invite and manage other users
+- **Transaction management** — Create, edit, delete transactions
+- **Communication** — Send emails, access inbox
+- **Tasks & scheduling** — Manage tasks and calendar
+- **Reports & analytics** — View and generate reports
+- **Billing** — Access subscription and payment details
+- **API & integrations** — Manage integrations and webhooks
+## Managing users
+
+From the Users page in Settings, you can:
+
+- **Change a user's role** — Update their permissions
+- **Deactivate a user** — Remove their access without deleting their account
+- **Remove a user** — Permanently remove them from your organization
+
+---
+
+## Billing & Plans
+
+
+# Billing & Plans
+
+Manage your DocJacket subscription, view your plan details, and handle payment information.
+
+## In this section
+
+- [Plans & Pricing](./plans-and-pricing.md) — What's included in each plan
+- [Managing Your Subscription](./managing-your-subscription.md) — Upgrade, downgrade, or update payment info
+
+
+# Billing & Plans
+
+Manage your DocJacket subscription, view your plan details, and handle payment information.
+
+## In this section
+
+- [Plans & Pricing](./plans-and-pricing.md) — What's included in each plan
+- [Managing Your Subscription](./managing-your-subscription.md) — Upgrade, downgrade, or update payment info
+
+---
+
+# Managing Your Subscription
+
+Handle all billing and subscription tasks from **Settings > Billing** (or the **Billing** link in the sidebar).
+
+## Viewing your plan
+
+The billing page shows:
+
+- Your current plan and pricing
+- Number of seats (active users)
+- Next billing date
+- Payment method on file
+
+## Adding or removing seats
+
+As your team grows or shrinks:
+
+- **Add a seat** — Invite a new team member and a seat is added automatically. You'll be billed for the additional seat on your next billing cycle.
+- **Remove a seat** — Deactivate a user in Settings > Users. The seat is freed up and your bill adjusts on the next cycle.
+
+## Updating payment info
+
+Click **Update Payment Method** on the billing page to change your credit card or payment details.
+
+## Canceling
+
+If you need to cancel your subscription:
+
+1. Go to **Settings > Billing**
+2. Click **Cancel Subscription**
+3. Your account remains active until the end of the current billing period
+
+Your data is retained for a period after cancellation in case you want to come back.
+
+## Questions?
+
+For billing questions or issues, reach out to [hello@docjacket.com](mailto:hello@docjacket.com). We're happy to help.
+
+---
+
+# Plans & Pricing
+
+DocJacket offers simple per-seat pricing. Every user on your team gets a seat, and you can add or remove seats as your team changes.
+
+## What's included
+
+All paid plans include the full DocJacket feature set:
+
+- Unlimited transactions
+- AI contract extraction and task generation
+- Timeline and task templates
+- Document management and DocDrop
+- Client portal
+- Email integration (Gmail and Outlook)
+- Calendar sync
+- Reports and pipeline view
+- Team management and roles
+
+## Free plan
+
+DocJacket offers a free plan with limited active transactions — great for trying out the platform before committing.
+
+## Current pricing
+
+Visit [docjacket.com/pricing](https://docjacket.com/pricing) for the latest pricing details and plan options.
+
+## Early-bird pricing
+
+If you signed up during the early-bird period, your locked-in rate stays the same for as long as you maintain your subscription. This rate is grandfathered and won't increase.
+

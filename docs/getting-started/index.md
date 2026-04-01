@@ -4,6 +4,41 @@ sidebar_position: 1
 description: Get started with DocJacket — set up your account, create your first transaction, and learn how to navigate the platform.
 ---
 
+<head>
+<script type="application/ld+json">
+{JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is DocJacket?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "DocJacket is an AI-powered transaction coordination platform for real estate professionals. It helps TCs, agents, and brokers manage deals from contract to closing with AI contract extraction, smart timelines, task management, client portals, and document management."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I get started with DocJacket?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sign up at app.docjacket.com, choose your role (Transaction Coordinator, Agent, or Broker), pick a starting template, and create your first transaction. You can upload a contract PDF and let AI extract all the details automatically."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does DocJacket's AI do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "DocJacket's AI can extract data from contract PDFs, generate task checklists, run risk and compliance assessments, split multi-document PDFs, and draft communications. AI prepares the work but never acts without your approval."
+      }
+    }
+  ]
+})}
+</script>
+</head>
+
 # Getting Started with DocJacket
 
 Welcome to DocJacket — the AI-powered platform that helps transaction coordinators, agents, and brokers manage real estate deals from contract to closing.

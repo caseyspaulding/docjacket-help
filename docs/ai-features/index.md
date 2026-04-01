@@ -4,6 +4,41 @@ sidebar_position: 1
 description: Discover DocJacket's AI features — contract extraction, task generation, risk insights, and smart document splitting.
 ---
 
+<head>
+<script type="application/ld+json">
+{JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does DocJacket's contract extraction work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Upload a contract PDF and DocJacket's AI reads through it, extracting buyer and seller names, property address, purchase price, key dates, contingency periods, and loan details. You review the extracted data and approve before it's saved."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can DocJacket's AI generate task checklists?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. AI analyzes your transaction details — property type, state, parties involved, and timeline — and suggests a tailored task checklist. You review the suggestions, select the ones you want, and add them in one click."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does DocJacket's AI send emails or take actions without approval?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. DocJacket uses approval-first automation. AI prepares, suggests, and drafts — but nothing gets sent, saved, or changed until you approve it. You're always in control."
+      }
+    }
+  ]
+})}
+</script>
+</head>
+
 # AI Features
 
 DocJacket uses AI to handle the tedious parts of transaction coordination — so you can focus on the work that actually needs a human touch.

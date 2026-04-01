@@ -1,0 +1,32 @@
+# DocJacket Help Center
+
+> Help documentation for DocJacket — the AI-powered transaction coordination platform for real estate professionals.
+> URL: https://help.docjacket.com
+> Product URL: https://docjacket.com
+> App URL: https://app.docjacket.com
+
+## About DocJacket
+
+DocJacket is an AI coordination platform built for independent Transaction Coordinators (TCs) in real estate. It uses preparation-first automation where AI handles prep work (contract extraction, timeline building, email sorting, communication drafts) and TCs stay fully in control through approval-based workflows.
+
+## Help Sections
+
+- [Getting Started](https://help.docjacket.com/docs/getting-started): Account setup, first transaction, navigation, roles
+- [Transactions](https://help.docjacket.com/docs/transactions): Creating and managing deals from contract to closing
+- [AI Features](https://help.docjacket.com/docs/ai-features): Contract extraction, AI task generation, insights, smart document splitting
+- [Documents](https://help.docjacket.com/docs/documents): Uploading, AI extraction, audit mode, Google Drive, DocDrop
+- [Client Portal](https://help.docjacket.com/docs/client-portal): Branded portal for buyers, sellers, and agents
+- [Tasks](https://help.docjacket.com/docs/tasks): Task management, templates, subtasks, email automation
+- [Calendar & Deadlines](https://help.docjacket.com/docs/calendar): Timeline templates, anchor dates, calendar view
+- [Messages & Email](https://help.docjacket.com/docs/messages): Unified inbox, sending emails, email templates
+- [Templates](https://help.docjacket.com/docs/templates): Timeline, task, and email templates
+- [Contacts](https://help.docjacket.com/docs/contacts): Contact management, roles, and groups
+- [Workflows](https://help.docjacket.com/docs/workflows): Automated workflow monitoring and approvals
+- [Integrations](https://help.docjacket.com/docs/integrations): Google Workspace, Microsoft 365, webhooks
+- [Reports](https://help.docjacket.com/docs/reports): Transaction reports and pipeline view
+- [Settings](https://help.docjacket.com/docs/settings): Organization config, user management, notifications
+- [Billing](https://help.docjacket.com/docs/billing): Plans, pricing, and subscription management
+
+## Optional
+
+- [Full documentation](https://help.docjacket.com/llms-full.txt): Complete help content for all sections
