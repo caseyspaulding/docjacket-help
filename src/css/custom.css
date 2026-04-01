@@ -25,3 +25,11 @@
   --ifm-color-primary-lightest: #CCF4FE;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+.navbar__title {
+  margin-left: 0.75rem;
+}
+
+.footer--dark {
+  background: linear-gradient(135deg, #078DEE 0%, #0351AB 100%);
+}

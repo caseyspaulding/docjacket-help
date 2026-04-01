@@ -39,7 +39,7 @@ const config: Config = {
 
   themeConfig: {
     navbar: {
-      title: 'DocJacket Help',
+      title: 'Home',
       logo: {
         alt: 'DocJacket',
         src: 'img/logo-full.svg',
