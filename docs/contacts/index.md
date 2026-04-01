@@ -1,6 +1,7 @@
 ---
 sidebar_label: Overview
 sidebar_position: 1
+description: Manage your contacts — agents, clients, lenders, title companies, and vendors — all in one place.
 ---
 
 # Contacts

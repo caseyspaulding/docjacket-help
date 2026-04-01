@@ -1,6 +1,7 @@
 ---
 sidebar_label: Overview
 sidebar_position: 1
+description: Send emails, manage your inbox, and keep all transaction communication organized in DocJacket.
 ---
 
 # Messages & Email

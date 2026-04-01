@@ -1,6 +1,7 @@
 ---
 sidebar_label: Overview
 sidebar_position: 1
+description: Discover DocJacket's AI features — contract extraction, task generation, risk insights, and smart document splitting.
 ---
 
 # AI Features

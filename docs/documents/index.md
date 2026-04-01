@@ -1,6 +1,7 @@
 ---
 sidebar_label: Overview
 sidebar_position: 1
+description: Upload, organize, and manage transaction documents in DocJacket — with AI categorization, audit mode, and DocDrop.
 ---
 
 # Documents

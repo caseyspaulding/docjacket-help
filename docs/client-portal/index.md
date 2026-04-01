@@ -1,6 +1,7 @@
 ---
 sidebar_label: Overview
 sidebar_position: 1
+description: Give your clients and agents a branded portal to track their real estate transaction status, documents, and milestones.
 ---
 
 # Client Portal

@@ -1,6 +1,7 @@
 ---
 sidebar_label: Overview
 sidebar_position: 1
+description: Configure your DocJacket organization — branding, user management, roles, permissions, and notification preferences.
 ---
 
 # Settings & Account

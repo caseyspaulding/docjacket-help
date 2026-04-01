@@ -1,6 +1,7 @@
 ---
 sidebar_label: Overview
 sidebar_position: 1
+description: Manage your DocJacket subscription, view plan details, and update payment information.
 ---
 
 # Billing & Plans

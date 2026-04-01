@@ -1,6 +1,7 @@
 ---
 sidebar_label: Overview
 sidebar_position: 1
+description: Create reusable timeline templates, task checklists, and email templates to save time on every transaction.
 ---
 
 # Templates

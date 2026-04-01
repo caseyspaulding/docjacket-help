@@ -1,6 +1,7 @@
 ---
 sidebar_label: Overview
 sidebar_position: 1
+description: Learn how to create and manage real estate transactions in DocJacket — from contract to closing.
 ---
 
 # Transactions

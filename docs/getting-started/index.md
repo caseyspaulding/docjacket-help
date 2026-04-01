@@ -1,6 +1,7 @@
 ---
 sidebar_label: Overview
 sidebar_position: 1
+description: Get started with DocJacket — set up your account, create your first transaction, and learn how to navigate the platform.
 ---
 
 # Getting Started with DocJacket

@@ -1,6 +1,7 @@
 ---
 sidebar_label: Overview
 sidebar_position: 1
+description: Connect DocJacket with Google Workspace, Microsoft 365, and external services via webhooks.
 ---
 
 # Integrations

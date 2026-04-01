@@ -1,6 +1,7 @@
 ---
 sidebar_label: Overview
 sidebar_position: 1
+description: Monitor automated workflows in DocJacket — document processing, email routing, compliance checks, and more.
 ---
 
 # Workflows

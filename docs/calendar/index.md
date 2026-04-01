@@ -1,6 +1,7 @@
 ---
 sidebar_label: Overview
 sidebar_position: 1
+description: Track milestones, deadlines, and key dates across all your transactions with timeline templates and calendar views.
 ---
 
 # Calendar & Deadlines
