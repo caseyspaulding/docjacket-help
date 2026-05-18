@@ -1,0 +1,8 @@
+{
+  "label": "AI Access",
+  "position": 16,
+  "link": {
+    "type": "generated-index",
+    "description": "Connect your DocJacket pipeline to Claude, ChatGPT, Codex, and other AI assistants. OAuth 2.1, per-user consent, revocable from settings."
+  }
+}

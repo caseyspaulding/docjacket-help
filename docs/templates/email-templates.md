@@ -40,4 +40,4 @@ Here are some templates most TCs find useful:
 
 ## Using templates with tasks
 
-Email templates become even more powerful when linked to [tasks](../tasks/email-automation.md). Set up a task like "Send closing reminder" with a linked template, and the email is ready to go when the task comes due.
+Email templates become even more powerful when linked to [tasks](../tasks/email-automation.mdx). Set up a task like "Send closing reminder" with a linked template, and the email is ready to go when the task comes due.

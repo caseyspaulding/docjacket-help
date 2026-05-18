@@ -1,0 +1,164 @@
+---
+sidebar_label: Connect Claude
+sidebar_position: 1
+description: Connect DocJacket to Claude.ai, Claude Desktop, Claude Code, or Cowork using the official Claude plugin. Paste-URL-and-go via OAuth 2.1.
+---
+
+<head>
+<script type="application/ld+json">
+{JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I connect DocJacket to Claude?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In Claude.ai, open Settings → Connectors → Add custom connector. Paste https://mcp.docjacket.com/mcp as the server URL, click Continue, and complete the consent screen. Claude will load 10 tools and you can start asking questions about your DocJacket pipeline."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which Claude surfaces does DocJacket work with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All four: Claude.ai (web sidebar), Claude Desktop, Claude Code (CLI for developers), and Cowork (Anthropic's collaboration surface). The same DocJacket MCP server backs all of them — connect once per surface."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the Daily Triage skill for Claude?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Daily Triage is a pre-built skill that returns every transaction needing your attention today, pre-ranked overdue-first with rationales. In Cowork you invoke it as @docjacket. In Claude Code you run /docjacket:daily-triage. It calls get_next_required_actions under the hood and formats the result as a ranked list with what-to-do-next bullets."
+      }
+    }
+  ]
+})}
+</script>
+</head>
+
+import ScreenshotPlaceholder from '@site/src/components/ScreenshotPlaceholder';
+import VideoPlaceholder from '@site/src/components/VideoPlaceholder';
+
+# Connect Claude
+
+<VideoPlaceholder>30-second walkthrough — paste the URL, click Allow, ask "what needs attention today"</VideoPlaceholder>
+
+DocJacket works with every Claude surface:
+
+- **Claude.ai** — the web app sidebar
+- **Claude Desktop** — the Mac / Windows native app
+- **Claude Code** — Anthropic's CLI for developers
+- **Cowork** — Anthropic's collaboration surface for teams
+
+You connect each surface once. The same DocJacket MCP server backs all four.
+
+## Quick start (Claude.ai sidebar)
+
+1. Open **Claude.ai** in a browser, sign in.
+2. Bottom-left → your name → **Settings**.
+3. **Connectors** in the left nav → **+ Add custom connector**.
+4. Paste `https://mcp.docjacket.com/mcp` as the URL.
+5. Click **Continue**. Claude will redirect you to DocJacket's consent screen.
+6. **Allow** the connection. (You'll see the requested scopes — read / draft / actions. Today only read is enforced.)
+7. You're back in Claude with **DocJacket** showing as a custom connector and **10 tools** listed.
+
+<ScreenshotPlaceholder>DocJacket connector in Claude.ai's Settings → Connectors</ScreenshotPlaceholder>
+
+## Try it
+
+Start a new conversation and ask:
+
+> "What needs my attention today across DocJacket?"
+
+Claude will call `get_next_required_actions` and come back with a ranked list of transactions sorted overdue-first, with rationales like "inspection deadline passed 2 days ago, listing agent hasn't been emailed in 5 days."
+
+Other good prompts:
+
+- "Search DocJacket for any deals at 123 Main."
+- "What deadlines are coming up this week?"
+- "Show me open tasks across all transactions, sorted by due date."
+- "Which deals are missing inspection reports?"
+- "Look up the listing agent on [property]."
+
+## The 10 tools
+
+Claude will ask permission the first time it calls each tool. After approval, it remembers your choice for the conversation.
+
+| Tool | Use it for |
+|---|---|
+| `search_transactions` | "Search DocJacket for…" |
+| `get_transaction` | "Tell me everything about the [property] deal" |
+| `find_transaction_by_property` | "Find the deal at 1234 Main" (fuzzy address) |
+| `get_open_tasks` | "What's on my task list?" |
+| `get_key_dates` | "When's inspection on the [property] deal?" |
+| `get_upcoming_key_dates` | "What's closing this week?" |
+| `list_open_contingencies` | "Which contingencies haven't cleared?" |
+| `get_missing_documents` | "What documents are missing for [property]?" |
+| `get_next_required_actions` | "What needs my attention today?" (flagship) |
+| `get_contacts` | "Who's the listing agent on [property]?" |
+
+## Cowork — Daily Triage
+
+[Cowork](https://www.anthropic.com/cowork) is Anthropic's collaboration surface. In Cowork, the DocJacket plugin ships a **Daily Triage** skill and a **Status Reporter** sub-agent.
+
+**Invoke Daily Triage:** type `@docjacket` in a Cowork channel.
+
+DocJacket will respond with every transaction needing attention today, ranked overdue-first with rationales — "inspection passed, no follow-up logged" / "appraisal due in 2 days, contingency not yet cleared" / etc.
+
+**Status Reporter sub-agent:** for a weekly briefing across every active deal, mention `@docjacket-status-reporter`. It returns a structured report grouped by transaction state.
+
+To install the Claude plugin in Cowork, see [DocJacket-LLC/claude-plugin](https://github.com/DocJacket-LLC/claude-plugin) on GitHub.
+
+## Claude Code — slash command
+
+In Claude Code (the CLI), the DocJacket plugin registers a slash command:
+
+```
+/docjacket:daily-triage
+```
+
+This runs the same Daily Triage workflow without you having to type out the prompt.
+
+Install the plugin per the instructions at [DocJacket-LLC/claude-plugin](https://github.com/DocJacket-LLC/claude-plugin).
+
+## Claude Desktop
+
+Claude Desktop (Mac / Windows native app) uses the same custom-connector flow as Claude.ai:
+
+1. **Settings** → **Connectors** → **+ Add custom connector**.
+2. Paste `https://mcp.docjacket.com/mcp`.
+3. Complete the OAuth consent.
+
+Once connected, Claude Desktop has access to the same 10 tools.
+
+## Permissions, audit, and revocation
+
+Every connector gets its own `client_id`. Inside Claude, you can:
+
+- **Toggle individual tools** off if you don't want Claude to be able to call them.
+- **Set "Needs approval"** (the default) to require manual confirmation on every call.
+
+Inside DocJacket:
+
+- **Settings → AI Access** lists every connected client with last-used timestamp.
+- **Activity log** shows every tool call: who, what, when, what arguments, what result.
+- **Revoke** any client with one click. The next request from that client returns HTTP 401 — Claude will fall back to re-consent if you want to reconnect.
+
+## Troubleshooting
+
+**"Authorization with the MCP server failed"** — Disconnect the connector and re-add it. This clears any stale state on Claude's side. If it still fails, send the reference ID Claude shows on the error screen to <a href="mailto:support@docjacket.com">support@docjacket.com</a>.
+
+**Tools don't appear after connecting** — Refresh the Claude page or restart Claude Desktop. The tool list is cached client-side and sometimes needs a manual refresh.
+
+**"Token is invalid, expired, or revoked"** — Your token has been revoked (from DocJacket → Settings → AI Access) or your assistant has been disconnected for more than 30 days. Re-consent to reconnect.
+
+**Pro plan required** — Connecting is free, but actually loading tools requires a DocJacket Pro plan on the connecting user's account. If you're on Free, upgrade at [docjacket.com/pricing](https://docjacket.com/pricing).
+
+## Read more
+
+- [How the OAuth flow works](/docs/ai-access/oauth) — the underlying protocol
+- [AI Access overview](/docs/ai-access) — the umbrella feature
+- [Connect Codex / ChatGPT](/docs/mcp/codex) — sister guide for the OpenAI surfaces

@@ -38,5 +38,5 @@ Smart fields are placeholders that get replaced with real data when the template
 ## Tips
 
 - Create templates for common emails: introduction to title company, inspection scheduling, closing reminders, status updates
-- Link email templates to [tasks](../tasks/email-automation.md) for automated sending
+- Link email templates to [tasks](../tasks/email-automation.mdx) for automated sending
 - Templates can include attachments and formatting
