@@ -1,0 +1,8 @@
+{
+  "label": "MCP Server",
+  "position": 17,
+  "link": {
+    "type": "generated-index",
+    "description": "Connect DocJacket's MCP server to Claude, ChatGPT, Codex, and Gemini. Per-client setup guides."
+  }
+}

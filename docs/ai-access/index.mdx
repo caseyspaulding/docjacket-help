@@ -1,0 +1,114 @@
+---
+sidebar_label: Overview
+sidebar_position: 1
+description: Connect your DocJacket transactions, deadlines, contingencies, and contacts to Claude, ChatGPT, Codex, and other AI assistants — paste-URL-and-go via OAuth 2.1.
+---
+
+<head>
+<script type="application/ld+json">
+{JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is AI Access in DocJacket?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI Access lets you connect external AI assistants — Claude, ChatGPT, Codex, Gemini — to your DocJacket pipeline. The assistant can read your active transactions, key dates, contingencies, open tasks, missing documents, and contacts, then help you triage your day from inside the AI's chat window."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is AI Access secure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. AI Access uses OAuth 2.1 with Dynamic Client Registration — no static API keys to leak. Every connection requires your explicit consent, every tool call is logged in your AI Access activity log, and you can revoke any client at any time from DocJacket → Settings → AI Access."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can AI assistants make changes to my transactions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not yet. AI Access v0.9 is read-only — 10 tools that let assistants search, view, and report on your data. Drafting tools (prepare emails, suggest tasks) and action tools (send, update) ship in v1.0 with per-action approval gates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI assistants does AI Access support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Any MCP-capable assistant. Today that's Claude (Claude.ai sidebar, Cowork, Claude Code, Claude Desktop), ChatGPT (with MCP connectors enabled), OpenAI Codex (CLI and Codex for Work), and Google Gemini (Gemini CLI). The same DocJacket MCP server backs all four."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does AI Access require a paid plan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. AI Access is included on the DocJacket Pro plan. Connecting an assistant is free, but actually loading tools and reading your data requires Pro on the connecting user's account."
+      }
+    }
+  ]
+})}
+</script>
+</head>
+
+import ScreenshotPlaceholder from '@site/src/components/ScreenshotPlaceholder';
+
+# AI Access
+
+AI Access lets you bring DocJacket into Claude, ChatGPT, Codex, Gemini, and any other AI assistant that speaks the Model Context Protocol (MCP). Instead of switching tabs to triage your pipeline, you ask the assistant directly:
+
+> "What needs my attention today?"
+> "Which deals are missing inspection reports?"
+> "What's closing this week on the buy side?"
+> "Show me the listing agent on 1234 Main."
+
+The assistant calls into DocJacket, gets a grounded answer from your real book of business, and writes the response in the same chat where the rest of your work already happens.
+
+## How it's different from "just another integration"
+
+- **Paste-URL-and-go.** No API keys, no per-user credentials to manage. You paste `https://mcp.docjacket.com/mcp` into the assistant's connector settings, complete a one-time consent screen, and you're done.
+- **Per-user consent.** Each user on your DocJacket account authorizes their own assistant. There's no shared admin token that exposes everyone's data.
+- **Revocable from settings.** **DocJacket → Settings → AI Access** lists every assistant you've connected. Revoke any of them with one click — the next request from that client returns "unauthorized."
+- **Audited.** Every tool call goes through DocJacket's audit log: which user, which assistant, which tool, what arguments, what result. You can see exactly what an assistant has been doing on your behalf.
+- **Read-only today.** AI Access v0.9 ships 10 read tools. Drafting and action tools land in v1.0 with explicit per-action approval gates — nothing sends without you saying yes.
+
+## What's connected today
+
+DocJacket's MCP server exposes **10 tools** to every connected assistant. All read-only.
+
+| Tool | What it does |
+|---|---|
+| `search_transactions` | Search active and archived deals by address, party name, MLS number, or status |
+| `get_transaction` | Full detail on one transaction — parties, key dates, tasks, milestones |
+| `find_transaction_by_property` | Fuzzy address matching when you only remember a street or city |
+| `get_open_tasks` | Open tasks across your whole pipeline or filtered to one deal |
+| `get_key_dates` | All key dates / milestones for a transaction (inspection, appraisal, financing, close) |
+| `get_upcoming_key_dates` | Window-based query — "what's due this week" |
+| `list_open_contingencies` | Active contingencies that haven't cleared yet |
+| `get_missing_documents` | Per-deal check for missing seller disclosures, inspection reports, etc. |
+| `get_next_required_actions` | The flagship — bundled judgment across the book, ranked overdue-first |
+| `get_contacts` | Per-transaction or org-wide contact lookup |
+
+<ScreenshotPlaceholder>AI Access settings page showing connected clients + tool inventory</ScreenshotPlaceholder>
+
+## Get started
+
+Pick the assistant you want to connect:
+
+- [Connect Claude](/docs/mcp/claude) — Claude.ai sidebar, Cowork, Claude Code, Claude Desktop
+- [Connect Codex / ChatGPT](/docs/mcp/codex) — Codex CLI, Codex for Work, ChatGPT connectors
+
+Each guide walks you through the connector setup and the OAuth consent flow.
+
+## Learn more
+
+- [How the OAuth flow works](./oauth) — Discovery, Dynamic Client Registration, consent, scopes, token rotation, revocation
+- DocJacket's [AI Features](/docs/ai-features) (the assistant *inside* DocJacket) is a separate thing — AI Access is for assistants *outside* DocJacket reaching in.
+
+## Need help?
+
+If a connection fails, the most common cause is your AI assistant having stale state from a previous failed attempt. Disconnect and reconnect to clear it. If the problem persists, contact <a href="mailto:support@docjacket.com">support@docjacket.com</a> with the reference ID your assistant shows on the error screen — we can correlate it with our diagnostic logs.

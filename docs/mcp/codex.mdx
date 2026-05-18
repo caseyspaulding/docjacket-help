@@ -1,0 +1,168 @@
+---
+sidebar_label: Connect Codex / ChatGPT
+sidebar_position: 2
+description: Connect DocJacket to OpenAI Codex (CLI, Codex for Work) and ChatGPT using the official Codex plugin. Paste-URL-and-go via OAuth 2.1.
+---
+
+<head>
+<script type="application/ld+json">
+{JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I connect DocJacket to Codex or ChatGPT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In Codex (or ChatGPT with MCP connectors enabled), add a new MCP server with the URL https://mcp.docjacket.com/mcp. Complete the OAuth consent screen DocJacket shows. Codex will load 10 read tools and you can ask questions about your DocJacket pipeline."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between Codex CLI and Codex for Work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Codex CLI is the open-source command-line interface developers use locally. Codex for Work is OpenAI's hosted version for teams. ChatGPT (with MCP connectors enabled) is the consumer chat surface. DocJacket works with all three using the same plugin."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the Daily Triage skill for Codex?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Daily Triage is a pre-built skill that returns every transaction needing your attention today, pre-ranked overdue-first. In Codex you invoke it as $docjacket-daily-triage. It calls get_next_required_actions under the hood and formats the result as a ranked list."
+      }
+    }
+  ]
+})}
+</script>
+</head>
+
+import ScreenshotPlaceholder from '@site/src/components/ScreenshotPlaceholder';
+import VideoPlaceholder from '@site/src/components/VideoPlaceholder';
+
+# Connect Codex / ChatGPT
+
+<VideoPlaceholder>30-second walkthrough — paste the URL, click Allow, ask "what needs attention today"</VideoPlaceholder>
+
+DocJacket works with every OpenAI surface that speaks MCP:
+
+- **Codex CLI** — the open-source command-line tool for developers
+- **Codex for Work** — OpenAI's hosted Codex for teams
+- **ChatGPT** — with MCP connectors enabled in your account settings
+
+The same DocJacket MCP server backs all three. Connect once per surface.
+
+## Quick start (Codex CLI)
+
+1. Open your Codex configuration directory (`~/.codex/` on Mac/Linux).
+2. Open or create `connectors.json`.
+3. Add a DocJacket entry:
+
+```json
+{
+  "connectors": {
+    "docjacket": {
+      "url": "https://mcp.docjacket.com/mcp",
+      "transport": "http"
+    }
+  }
+}
+```
+
+4. Restart Codex. On first call, Codex opens a browser window with DocJacket's OAuth consent screen.
+5. **Allow** the connection. Codex stores the access + refresh tokens in your local keychain.
+6. Run `codex tools list` — you should see 10 DocJacket tools.
+
+For the full plugin (with the Daily Triage skill and `.codex-plugin` package), see [DocJacket-LLC/codex-plugin](https://github.com/DocJacket-LLC/codex-plugin) on GitHub.
+
+<ScreenshotPlaceholder>Codex CLI after connecting — 10 DocJacket tools listed</ScreenshotPlaceholder>
+
+## Quick start (ChatGPT)
+
+1. Open **ChatGPT** in a browser, sign in.
+2. **Settings** → **Connectors** → **+ Add MCP server**. (Available on Plus / Team / Enterprise.)
+3. Paste `https://mcp.docjacket.com/mcp`.
+4. Click **Continue**. ChatGPT redirects you to DocJacket's consent screen.
+5. **Allow** the connection.
+6. Start a new chat — DocJacket's 10 tools are now available.
+
+## Try it
+
+Ask Codex or ChatGPT:
+
+> "Use DocJacket to summarize what needs my attention today."
+
+The assistant will call `get_next_required_actions` and come back with a ranked list of transactions, overdue-first, with rationales explaining why each one matters.
+
+Other good prompts:
+
+- "Use DocJacket to search for any deals at 123 Main."
+- "Use DocJacket to list deadlines this week."
+- "Use DocJacket to show open tasks on the [property] deal."
+- "Use DocJacket to look up the listing agent on [property]."
+- "Use DocJacket to check what documents are missing for [property]."
+
+The "Use DocJacket to…" prefix is the convention OpenAI's surfaces follow when invoking a specific MCP connector. You can drop it once the assistant gets used to your patterns.
+
+## The 10 tools
+
+Codex / ChatGPT will use these as appropriate based on your question. You don't need to remember the names.
+
+| Tool | Use it for |
+|---|---|
+| `search_transactions` | "Search DocJacket for…" |
+| `get_transaction` | "Tell me about the [property] deal" |
+| `find_transaction_by_property` | "Find the deal at 1234 Main" (fuzzy address) |
+| `get_open_tasks` | "What's on my task list?" |
+| `get_key_dates` | "When's inspection on [property]?" |
+| `get_upcoming_key_dates` | "What's closing this week?" |
+| `list_open_contingencies` | "Which contingencies haven't cleared?" |
+| `get_missing_documents` | "What documents are missing for [property]?" |
+| `get_next_required_actions` | "What needs my attention today?" (flagship) |
+| `get_contacts` | "Who's the listing agent on [property]?" |
+
+## Daily Triage skill
+
+The Codex plugin ships a **Daily Triage** skill that wraps `get_next_required_actions` with formatting and rationale-rendering.
+
+In Codex CLI:
+
+```
+$docjacket-daily-triage
+```
+
+In ChatGPT, just ask in plain English:
+
+> "Use DocJacket to do a daily triage of my pipeline."
+
+Either way you get a ranked list grouped by urgency, with what-to-do-next bullets per transaction.
+
+## Permissions, audit, and revocation
+
+Same as the Claude side. Each Codex or ChatGPT install gets its own `client_id`.
+
+Inside DocJacket:
+
+- **Settings → AI Access** lists every connected client with last-used timestamp.
+- **Activity log** shows every tool call: who, what, when, what arguments, what result.
+- **Revoke** any client with one click. The next request returns HTTP 401 — the assistant will fall back to re-consent if you want to reconnect.
+
+## Troubleshooting
+
+**"Authorization with the MCP server failed"** — Remove the connector from Codex / ChatGPT settings and re-add it to clear stale state. If the problem persists, send the reference ID the assistant shows to <a href="mailto:support@docjacket.com">support@docjacket.com</a>.
+
+**Codex CLI auth keeps re-prompting** — Your refresh token may have been invalidated (single-use rotation — concurrent processes can race). Delete the entry from `~/.codex/credentials` and re-consent.
+
+**ChatGPT doesn't show MCP Connectors** — Custom MCP connectors require Plus, Team, or Enterprise. Free-tier ChatGPT can't add custom servers yet.
+
+**"Token is invalid, expired, or revoked"** — Either you revoked the client in DocJacket → Settings → AI Access, or the refresh token expired after 30 days of inactivity. Re-consent to reconnect.
+
+**Pro plan required** — Connecting is free, but actually loading tools requires a DocJacket Pro plan on the connecting user's account. If you're on Free, upgrade at [docjacket.com/pricing](https://docjacket.com/pricing).
+
+## Read more
+
+- [How the OAuth flow works](/docs/ai-access/oauth) — the underlying protocol
+- [AI Access overview](/docs/ai-access) — the umbrella feature
+- [Connect Claude](/docs/mcp/claude) — sister guide for Anthropic surfaces
