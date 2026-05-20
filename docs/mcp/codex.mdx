@@ -15,7 +15,7 @@ description: Connect DocJacket to OpenAI Codex (CLI, Codex for Work) and ChatGPT
       "name": "How do I connect DocJacket to Codex or ChatGPT?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "In Codex (or ChatGPT with MCP connectors enabled), add a new MCP server with the URL https://mcp.docjacket.com/mcp. Complete the OAuth consent screen DocJacket shows. Codex will load 10 read tools and you can ask questions about your DocJacket pipeline."
+        "text": "In Codex (or ChatGPT with MCP connectors enabled), add a new MCP server with the URL https://mcp.docjacket.com/mcp. Complete the OAuth consent screen DocJacket shows. Codex will load DocJacket's tools (47 today across read, send, draft, and contract-intake workflows) and you can start asking about your DocJacket pipeline."
       }
     },
     {
@@ -73,11 +73,11 @@ The same DocJacket MCP server backs all three. Connect once per surface.
 
 4. Restart Codex. On first call, Codex opens a browser window with DocJacket's OAuth consent screen.
 5. **Allow** the connection. Codex stores the access + refresh tokens in your local keychain.
-6. Run `codex tools list` — you should see 10 DocJacket tools.
+6. Run `codex tools list` — you should see the full DocJacket tool inventory (47 today).
 
-For the full plugin (with the Daily Triage skill and `.codex-plugin` package), see [DocJacket-LLC/codex-plugin](https://github.com/DocJacket-LLC/codex-plugin) on GitHub.
+For the full plugin (with the skill set and `.codex-plugin` package), see [docjacket-inc/codex-plugin](https://github.com/docjacket-inc/codex-plugin) on GitHub.
 
-<ScreenshotPlaceholder>Codex CLI after connecting — 10 DocJacket tools listed</ScreenshotPlaceholder>
+<ScreenshotPlaceholder>Codex CLI after connecting — DocJacket tools listed</ScreenshotPlaceholder>
 
 ## Quick start (ChatGPT)
 
@@ -86,7 +86,7 @@ For the full plugin (with the Daily Triage skill and `.codex-plugin` package), s
 3. Paste `https://mcp.docjacket.com/mcp`.
 4. Click **Continue**. ChatGPT redirects you to DocJacket's consent screen.
 5. **Allow** the connection.
-6. Start a new chat — DocJacket's 10 tools are now available.
+6. Start a new chat — DocJacket's full tool surface is now available.
 
 ## Try it
 
@@ -106,26 +106,31 @@ Other good prompts:
 
 The "Use DocJacket to…" prefix is the convention OpenAI's surfaces follow when invoking a specific MCP connector. You can drop it once the assistant gets used to your patterns.
 
-## The 10 tools
+## The tool surface
 
-Codex / ChatGPT will use these as appropriate based on your question. You don't need to remember the names.
+47 tools today, grouped by workflow:
 
-| Tool | Use it for |
-|---|---|
-| `search_transactions` | "Search DocJacket for…" |
-| `get_transaction` | "Tell me about the [property] deal" |
-| `find_transaction_by_property` | "Find the deal at 1234 Main" (fuzzy address) |
-| `get_open_tasks` | "What's on my task list?" |
-| `get_key_dates` | "When's inspection on [property]?" |
-| `get_upcoming_key_dates` | "What's closing this week?" |
-| `list_open_contingencies` | "Which contingencies haven't cleared?" |
-| `get_missing_documents` | "What documents are missing for [property]?" |
-| `get_next_required_actions` | "What needs my attention today?" (flagship) |
-| `get_contacts` | "Who's the listing agent on [property]?" |
+- **Find** — search transactions / contacts, fuzzy-match by address, list active deals.
+- **Read deal state** — `get_transaction`, key dates, missing docs, contingencies, open tasks, contacts, checklist status.
+- **Triage** — `get_next_required_actions` (flagship — overdue-first ranking with rationales).
+- **Send** — `send_agent_followup`, `send_client_update`, `send_document_request`, `send_email_to_agent`. All route through your connected Gmail / Outlook.
+- **Create / update** — contacts, tasks, reminders, key-date changes, checklist apply, task completion, activity log.
+- **Contract intake** — upload a PDF, run extraction, create the transaction.
+- **Forms** — list intake-form links and submissions.
+- **Templates** — list / render saved email templates with merge fields resolved.
+- **Diagnostics** — `mcp_catalog` returns the live, categorized inventory; `mcp_health_check` confirms the server is up.
 
-## Daily Triage skill
+You don't need to remember the names — Codex / ChatGPT pick the right tool based on your question. To see the current full inventory at any time, ask:
 
-The Codex plugin ships a **Daily Triage** skill that wraps `get_next_required_actions` with formatting and rationale-rendering.
+> "Use DocJacket's `mcp_catalog` to list the tools by category."
+
+## Skills shipped with the plugin
+
+The Codex plugin ships nine pre-built workflow skills the assistant picks from automatically:
+
+`daily-triage` · `email-triage` · `contract-intake` · `document-filing` · `closing-prep` · `follow-up-drafting` · `execution-workflow` · `contact-management` · `tc-context`
+
+Each is a recipe the assistant follows when you ask the corresponding question. Example invocations:
 
 In Codex CLI:
 
@@ -136,8 +141,10 @@ $docjacket-daily-triage
 In ChatGPT, just ask in plain English:
 
 > "Use DocJacket to do a daily triage of my pipeline."
+> "Use DocJacket to draft a follow-up to the listing agent on 1234 Main."
+> "Use DocJacket to extract this PDF I'm dropping in and spin up the transaction."
 
-Either way you get a ranked list grouped by urgency, with what-to-do-next bullets per transaction.
+Either way you get a ranked, structured response — the skill carries the formatting and the recipe.
 
 ## Permissions, audit, and revocation
 
