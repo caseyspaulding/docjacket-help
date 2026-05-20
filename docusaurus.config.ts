@@ -71,16 +71,6 @@ const config: Config = {
         publisher: {'@type': 'Organization', name: 'DocJacket'},
       }),
     },
-    // Google Search Console verification.
-    // TODO: replace the content value with the token from
-    //       https://search.google.com/search-console (DNS or HTML-meta verification).
-    // {
-    //   tagName: 'meta',
-    //   attributes: {
-    //     name: 'google-site-verification',
-    //     content: 'PASTE_GSC_TOKEN_HERE',
-    //   },
-    // },
     // Cloudflare Web Analytics — free, privacy-friendly, no cookies.
     // TODO: replace the token below with the one from
     //       https://dash.cloudflare.com → Analytics & Logs → Web Analytics.
