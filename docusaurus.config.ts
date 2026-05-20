@@ -37,7 +37,72 @@ const config: Config = {
     ],
   ],
 
+  // Site-wide head tags for SEO + analytics + verification.
+  // Each entry is appended to <head> on every page.
+  headTags: [
+    // Organization schema — populates Google's brand panel.
+    {
+      tagName: 'script',
+      attributes: {type: 'application/ld+json'},
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'DocJacket',
+        legalName: 'DocJacket Inc.',
+        url: 'https://docjacket.com',
+        logo: 'https://help.docjacket.com/img/logo-full.svg',
+        sameAs: [
+          'https://app.docjacket.com',
+          'https://www.facebook.com/docjacket',
+          'https://www.linkedin.com/company/DocJacket',
+          'https://github.com/docjacket-inc',
+        ],
+      }),
+    },
+    // WebSite schema — enables sitelinks search box in Google.
+    {
+      tagName: 'script',
+      attributes: {type: 'application/ld+json'},
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'DocJacket Help Center',
+        url: 'https://help.docjacket.com',
+        publisher: {'@type': 'Organization', name: 'DocJacket'},
+      }),
+    },
+    // Google Search Console verification.
+    // TODO: replace the content value with the token from
+    //       https://search.google.com/search-console (DNS or HTML-meta verification).
+    // {
+    //   tagName: 'meta',
+    //   attributes: {
+    //     name: 'google-site-verification',
+    //     content: 'PASTE_GSC_TOKEN_HERE',
+    //   },
+    // },
+    // Cloudflare Web Analytics — free, privacy-friendly, no cookies.
+    // TODO: replace the token below with the one from
+    //       https://dash.cloudflare.com → Analytics & Logs → Web Analytics.
+    // {
+    //   tagName: 'script',
+    //   attributes: {
+    //     defer: 'true',
+    //     src: 'https://static.cloudflareinsights.com/beacon.min.js',
+    //     'data-cf-beacon': '{"token": "PASTE_CF_TOKEN_HERE"}',
+    //   },
+    //   innerHTML: '',
+    // },
+  ],
+
   themeConfig: {
+    // Default social card image used by Open Graph + Twitter Card meta tags.
+    // Override per-page by setting `image:` in the page's frontmatter.
+    image: 'img/og-default.png',
+    metadata: [
+      {name: 'twitter:card', content: 'summary_large_image'},
+      {name: 'twitter:site', content: '@docjacket'},
+    ],
     navbar: {
       title: 'Home',
       logo: {
@@ -119,7 +184,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} DocJacket LLC. All rights reserved.`,
+      copyright: `Copyright © ${new Date().getFullYear()} DocJacket Inc. All rights reserved.`,
     },
     prism: {
       theme: prismThemes.github,
