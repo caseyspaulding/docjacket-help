@@ -71,18 +71,6 @@ const config: Config = {
         publisher: {'@type': 'Organization', name: 'DocJacket'},
       }),
     },
-    // Cloudflare Web Analytics — free, privacy-friendly, no cookies.
-    // TODO: replace the token below with the one from
-    //       https://dash.cloudflare.com → Analytics & Logs → Web Analytics.
-    // {
-    //   tagName: 'script',
-    //   attributes: {
-    //     defer: 'true',
-    //     src: 'https://static.cloudflareinsights.com/beacon.min.js',
-    //     'data-cf-beacon': '{"token": "PASTE_CF_TOKEN_HERE"}',
-    //   },
-    //   innerHTML: '',
-    // },
   ],
 
   themeConfig: {
