@@ -15,7 +15,7 @@ description: Connect DocJacket to Claude.ai, Claude Desktop, Claude Code, or Cow
       "name": "How do I connect DocJacket to Claude?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "In Claude.ai, open Settings → Connectors → Add custom connector. Paste https://mcp.docjacket.com/mcp as the server URL, click Continue, and complete the consent screen. Claude will load 10 tools and you can start asking questions about your DocJacket pipeline."
+        "text": "In Claude.ai, open Settings → Connectors → Add custom connector. Paste https://mcp.docjacket.com/mcp as the server URL, click Continue, and complete the consent screen. Claude will load DocJacket's tools (47 today, grouped into read-only and write-or-approve categories) and you can start asking questions about your DocJacket pipeline."
       }
     },
     {
@@ -62,8 +62,8 @@ You connect each surface once. The same DocJacket MCP server backs all four.
 3. **Connectors** in the left nav → **+ Add custom connector**.
 4. Paste `https://mcp.docjacket.com/mcp` as the URL.
 5. Click **Continue**. Claude will redirect you to DocJacket's consent screen.
-6. **Allow** the connection. (You'll see the requested scopes — read / draft / actions. Today only read is enforced.)
-7. You're back in Claude with **DocJacket** showing as a custom connector and **10 tools** listed.
+6. **Allow** the connection. (You'll see the requested scopes — **read** for lookups, **draft** for send / create / update, **actions** for higher-impact writes. All three tiers are enforced server-side; you grant exactly what you want the assistant to be able to do.)
+7. You're back in Claude with **DocJacket** showing as a custom connector and the full tool list loaded. Claude.ai groups it into **Read-only tools** and **Write tools (needs approval)** accordions automatically — read tools run inline, writes pause for your confirmation in chat.
 
 <ScreenshotPlaceholder>DocJacket connector in Claude.ai's Settings → Connectors</ScreenshotPlaceholder>
 
@@ -83,46 +83,58 @@ Other good prompts:
 - "Which deals are missing inspection reports?"
 - "Look up the listing agent on [property]."
 
-## The 10 tools
+## The tool surface
 
-Claude will ask permission the first time it calls each tool. After approval, it remembers your choice for the conversation.
+47 tools today, grouped by workflow:
 
-| Tool | Use it for |
-|---|---|
-| `search_transactions` | "Search DocJacket for…" |
-| `get_transaction` | "Tell me everything about the [property] deal" |
-| `find_transaction_by_property` | "Find the deal at 1234 Main" (fuzzy address) |
-| `get_open_tasks` | "What's on my task list?" |
-| `get_key_dates` | "When's inspection on the [property] deal?" |
-| `get_upcoming_key_dates` | "What's closing this week?" |
-| `list_open_contingencies` | "Which contingencies haven't cleared?" |
-| `get_missing_documents` | "What documents are missing for [property]?" |
-| `get_next_required_actions` | "What needs my attention today?" (flagship) |
-| `get_contacts` | "Who's the listing agent on [property]?" |
+- **Find** — search transactions / contacts, fuzzy-match by address, list active deals.
+- **Read deal state** — `get_transaction`, key dates, missing docs, contingencies, open tasks, contacts, checklist status.
+- **Triage** — `get_next_required_actions` (flagship — overdue-first ranking with rationales).
+- **Send** — `send_agent_followup`, `send_client_update`, `send_document_request`, `send_email_to_agent`. All route through your connected Gmail / Outlook.
+- **Create / update** — contacts, tasks, reminders, key-date changes, checklist apply, task completion, activity log.
+- **Contract intake** — upload a PDF, run extraction, create the transaction.
+- **Forms** — list intake-form links and submissions.
+- **Templates** — list / render saved email templates with merge fields resolved.
+- **Diagnostics** — `mcp_catalog` returns the live, categorized inventory; `mcp_health_check` confirms the server is up.
 
-## Cowork — Daily Triage
+Claude will ask permission the first time it calls each tool. Read tools approve once per conversation; write tools (send / create / update) ask for explicit confirmation per call by default. To see the current full inventory at any time, ask:
 
-[Cowork](https://www.anthropic.com/cowork) is Anthropic's collaboration surface. In Cowork, the DocJacket plugin ships a **Daily Triage** skill and a **Status Reporter** sub-agent.
+> "Call `mcp_catalog` and group the tools by what they're for."
 
-**Invoke Daily Triage:** type `@docjacket` in a Cowork channel.
+## Cowork — skills, slash commands, sub-agent
 
-DocJacket will respond with every transaction needing attention today, ranked overdue-first with rationales — "inspection passed, no follow-up logged" / "appraisal due in 2 days, contingency not yet cleared" / etc.
+[Cowork](https://www.anthropic.com/cowork) is Anthropic's collaboration surface. The DocJacket plugin for Cowork ships nine workflow skills, nine slash commands, and a sub-agent.
 
-**Status Reporter sub-agent:** for a weekly briefing across every active deal, mention `@docjacket-status-reporter`. It returns a structured report grouped by transaction state.
+**Skills** (the assistant picks the right one automatically based on what you ask):
 
-To install the Claude plugin in Cowork, see [DocJacket-LLC/claude-plugin](https://github.com/DocJacket-LLC/claude-plugin) on GitHub.
+- `daily-triage` — what needs attention today, overdue-first
+- `email-triage` — match Gmail / Outlook threads against active deals
+- `contract-intake` — PDF → extraction → new transaction
+- `document-filing` — classify uploaded docs, file them to the right deal
+- `closing-prep` — pre-closing checklist audit
+- `follow-up-drafting` — compose a chase email with the right context already loaded
+- `execution-workflow` — the confirm-then-execute pattern for write tools
+- `tc-context` — vocabulary + matching priority + safety rules
 
-## Claude Code — slash command
-
-In Claude Code (the CLI), the DocJacket plugin registers a slash command:
+**Slash commands** (typed explicitly):
 
 ```
-/docjacket:daily-triage
+/docjacket:morning-briefing      /docjacket:whats-next
+/docjacket:email-triage          /docjacket:send-template
+/docjacket:intake-contract       /docjacket:doc-check
+/docjacket:share-portal          /docjacket:weekly-report
+/docjacket:check-submissions
 ```
 
-This runs the same Daily Triage workflow without you having to type out the prompt.
+**Sub-agent:** mention `@docjacket-status-reporter` for a structured weekly briefing grouped by deal state.
 
-Install the plugin per the instructions at [DocJacket-LLC/claude-plugin](https://github.com/DocJacket-LLC/claude-plugin).
+To install the plugin in Cowork, see [docjacket-inc/claude-plugin](https://github.com/docjacket-inc/claude-plugin) on GitHub.
+
+## Claude Code — slash commands
+
+In Claude Code (the CLI), the DocJacket plugin registers the same nine slash commands listed above. Drop in `/docjacket:` to see the menu, then pick one — most TCs start with `/docjacket:morning-briefing` or `/docjacket:whats-next`.
+
+Install per the instructions at [docjacket-inc/claude-plugin](https://github.com/docjacket-inc/claude-plugin).
 
 ## Claude Desktop
 
@@ -132,7 +144,7 @@ Claude Desktop (Mac / Windows native app) uses the same custom-connector flow as
 2. Paste `https://mcp.docjacket.com/mcp`.
 3. Complete the OAuth consent.
 
-Once connected, Claude Desktop has access to the same 10 tools.
+Once connected, Claude Desktop has access to the same full DocJacket tool surface.
 
 ## Permissions, audit, and revocation
 

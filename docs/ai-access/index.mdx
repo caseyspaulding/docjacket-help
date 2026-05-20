@@ -31,7 +31,7 @@ description: Connect your DocJacket transactions, deadlines, contingencies, and 
       "name": "Can AI assistants make changes to my transactions?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Not yet. AI Access v0.9 is read-only — 10 tools that let assistants search, view, and report on your data. Drafting tools (prepare emails, suggest tasks) and action tools (send, update) ship in v1.0 with per-action approval gates."
+        "text": "Yes. Today's tool surface covers reads (search transactions, list tasks, check missing documents, etc.), drafts and writes (send agent follow-ups, create tasks, update key dates, apply checklist templates), and the contract-intake workflow (upload a PDF, run extraction, create the transaction). Every write tool runs only after you say yes in the assistant's chat — the chat conversation is the approval gate, not a separate DocJacket queue. Every tool call lands in your AI Access activity log."
       }
     },
     {
@@ -74,24 +74,23 @@ The assistant calls into DocJacket, gets a grounded answer from your real book o
 - **Per-user consent.** Each user on your DocJacket account authorizes their own assistant. There's no shared admin token that exposes everyone's data.
 - **Revocable from settings.** **DocJacket → Settings → AI Access** lists every assistant you've connected. Revoke any of them with one click — the next request from that client returns "unauthorized."
 - **Audited.** Every tool call goes through DocJacket's audit log: which user, which assistant, which tool, what arguments, what result. You can see exactly what an assistant has been doing on your behalf.
-- **Read-only today.** AI Access v0.9 ships 10 read tools. Drafting and action tools land in v1.0 with explicit per-action approval gates — nothing sends without you saying yes.
+- **Chat is the approval gate.** Read tools run immediately. Write tools (send, create, update, apply) execute only after you confirm in the assistant's chat — there is no separate DocJacket "draft queue" or "pending approvals" tray. The conversation already gates it; DocJacket trusts that and executes when called.
 
 ## What's connected today
 
-DocJacket's MCP server exposes **10 tools** to every connected assistant. All read-only.
+DocJacket's MCP server exposes **47 tools** to every connected assistant across these workflow categories:
 
-| Tool | What it does |
-|---|---|
-| `search_transactions` | Search active and archived deals by address, party name, MLS number, or status |
-| `get_transaction` | Full detail on one transaction — parties, key dates, tasks, milestones |
-| `find_transaction_by_property` | Fuzzy address matching when you only remember a street or city |
-| `get_open_tasks` | Open tasks across your whole pipeline or filtered to one deal |
-| `get_key_dates` | All key dates / milestones for a transaction (inspection, appraisal, financing, close) |
-| `get_upcoming_key_dates` | Window-based query — "what's due this week" |
-| `list_open_contingencies` | Active contingencies that haven't cleared yet |
-| `get_missing_documents` | Per-deal check for missing seller disclosures, inspection reports, etc. |
-| `get_next_required_actions` | The flagship — bundled judgment across the book, ranked overdue-first |
-| `get_contacts` | Per-transaction or org-wide contact lookup |
+- **Find** — `search_transactions`, `find_transaction_by_property`, `find_contact_by_email`, `search_contacts`, `list_active_transactions`
+- **Read deal state** — `get_transaction`, `get_key_dates`, `get_upcoming_key_dates`, `get_missing_documents`, `list_open_contingencies`, `get_open_tasks`, `get_contacts`, `get_checklist_status`
+- **Triage with judgment** — `get_next_required_actions` (the flagship — bundled overdue-first ranking with rationales)
+- **Send** — `send_agent_followup`, `send_client_update`, `send_document_request`, `send_email_to_agent` (all execute via your connected Gmail / Outlook)
+- **Create / update** — `create_contact`, `create_tasks`, `create_reminder`, `update_key_date`, `add_key_dates_batch`, `add_contact_to_transaction`, `apply_checklist`, `complete_task`, `log_activity`, `save_status_summary`
+- **Contract intake** — `upload_document_for_extraction`, `get_extraction_results`, `apply_extraction`, `classify_document`, `get_intake_status`
+- **Forms** — `list_form_links`, `list_form_submissions`, `get_form_definition`, `get_form_submission`
+- **Templates** — `list_email_templates`, `get_email_template`, `render_email_template`, `get_merge_fields`, `list_checklist_templates`
+- **Diagnostics** — `mcp_catalog` (live tool inventory), `mcp_health_check`, `get_portal_link`
+
+Tool count grows over time. **Ask the assistant to call `mcp_catalog`** to see the live inventory at any time — it returns every tool with description, scope, and example call.
 
 <ScreenshotPlaceholder>AI Access settings page showing connected clients + tool inventory</ScreenshotPlaceholder>
 
