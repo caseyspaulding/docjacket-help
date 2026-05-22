@@ -14,6 +14,12 @@ const config: Config = {
   url: 'https://help.docjacket.com',
   baseUrl: '/',
 
+  // No trailing slash: makes URLs and <link rel="canonical"> match. Without
+  // this, Docusaurus serves /docs/X/ while emitting canonical=/docs/X, and
+  // the non-slash URL 307-redirects back — Ahrefs flags this as
+  // "Canonical points to redirect" across the whole /docs tree.
+  trailingSlash: false,
+
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
