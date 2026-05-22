@@ -46,6 +46,11 @@ const config: Config = {
   // Site-wide head tags for SEO + analytics + verification.
   // Each entry is appended to <head> on every page.
   headTags: [
+    // og:type — Docusaurus's default theme emits og:title/description/url/image/
+    // locale/site_name but NOT og:type, which Ahrefs flags on every page.
+    // "website" is the right default for a help/docs site (per Open Graph spec).
+    {tagName: 'meta', attributes: {property: 'og:type', content: 'website'}},
+
     // Organization schema — populates Google's brand panel.
     {
       tagName: 'script',
