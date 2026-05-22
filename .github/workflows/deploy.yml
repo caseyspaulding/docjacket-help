@@ -32,7 +32,8 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          # Wrangler v4 requires Node 22+. Docusaurus 3.8 also fine on 22.
+          node-version: '22'
           cache: 'npm'
 
       - name: Install dependencies
