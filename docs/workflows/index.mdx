@@ -7,6 +7,41 @@ description: Monitor automated workflows in DocJacket — document processing, e
 
 import ScreenshotPlaceholder from '@site/src/components/ScreenshotPlaceholder';
 
+<head>
+<script type="application/ld+json">
+{JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are workflows in DocJacket?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Workflows are automated background processes that handle routine operations — incoming email routing, document processing, compliance scanning, AI data extraction, reminder notifications, and morning briefings. They run automatically based on events in your transactions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I create my own workflows in DocJacket?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Workflows are built-in features that run behind the scenes. You don't configure them, but you can monitor them, approve or reject steps that need input, and retry failed steps from Settings > Workflows."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does 'awaiting approval' mean in a DocJacket workflow?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Some workflows pause and wait for your input before continuing. For example, AI might extract data from a document and ask you to approve the results before saving. The workflow stays in Awaiting Approval status until you approve, reject, or cancel it."
+      }
+    }
+  ]
+})}
+</script>
+</head>
+
 # Workflows
 
 DocJacket runs automated workflows behind the scenes to handle routine operations — like processing incoming emails, running compliance checks, sending reminders, and extracting data from documents.

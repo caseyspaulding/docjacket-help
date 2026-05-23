@@ -7,6 +7,41 @@ description: Create reusable timeline templates, task checklists, and email temp
 
 import ScreenshotPlaceholder from '@site/src/components/ScreenshotPlaceholder';
 
+<head>
+<script type="application/ld+json">
+{JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What kinds of templates does DocJacket support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "DocJacket templates cover communication (email templates, signatures, intake forms), workflow (timeline templates, milestones, task templates), documents (document sets, smart fields), and reports (status reports)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I apply a template to a DocJacket transaction?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "From the relevant tab in a transaction — for example the Tasks tab for task templates or the Timeline tab for timeline templates — click Apply Template and choose the one you want. Smart fields and date offsets auto-fill with that transaction's data."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can DocJacket email templates auto-fill with transaction data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Email templates support smart fields like {BuyerName}, {PropertyAddress}, and {ClosingDate}. When you use a template inside a transaction, the fields auto-populate with that deal's actual data."
+      }
+    }
+  ]
+})}
+</script>
+</head>
+
 # Templates
 
 Templates save you time by letting you reuse emails, timelines, task lists, and more. Set them up once and apply them to any transaction.

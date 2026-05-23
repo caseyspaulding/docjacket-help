@@ -7,6 +7,41 @@ description: Manage your contacts — agents, clients, lenders, title companies,
 
 import ScreenshotPlaceholder from '@site/src/components/ScreenshotPlaceholder';
 
+<head>
+<script type="application/ld+json">
+{JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Where are contacts stored in DocJacket?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All your contacts live in a single directory accessible from the Contacts page in the sidebar — agents, clients, lenders, title companies, inspectors, vendors, and anyone else you work with. Contacts are shared across all your transactions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I organize DocJacket contacts into groups?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Create contact groups for things like preferred vendors, agents you work with regularly, or regional contacts. Groups support bulk operations and email blasts, and a single contact can belong to multiple groups."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do contact roles work in a transaction?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When you add a contact to a transaction, you assign them a role like Buyer, Seller, Listing Agent, Lender, or Title Company. Roles control portal visibility, permissions, and template targeting — agents see different information than buyers, for example."
+      }
+    }
+  ]
+})}
+</script>
+</head>
+
 # Contacts
 
 DocJacket keeps a centralized contact database across all your transactions. Agents, clients, lenders, title companies, inspectors — everyone you work with lives here.

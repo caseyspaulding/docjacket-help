@@ -8,6 +8,41 @@ description: Give your clients and agents a branded portal to track their real e
 import ScreenshotPlaceholder from '@site/src/components/ScreenshotPlaceholder';
 import VideoPlaceholder from '@site/src/components/VideoPlaceholder';
 
+<head>
+<script type="application/ld+json">
+{JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do my clients need a DocJacket account to use the portal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The DocJacket Client Portal is a secure link you send to buyers, sellers, and agents. They can view milestones, documents, tasks, and status updates without creating an account."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I brand the DocJacket Client Portal with my logo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can customize the portal with your own logo and brand colors so it looks like an extension of your business, not a generic third-party app."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I control exactly what each portal viewer sees?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Portal sharing is selective — you choose which documents and milestones are visible per recipient. Each portal link is unique, can be set to expire, and engagement (who viewed it and when) is tracked."
+      }
+    }
+  ]
+})}
+</script>
+</head>
+
 # Client Portal
 
 <VideoPlaceholder>See what your clients experience when they open their portal link</VideoPlaceholder>
