@@ -71,7 +71,7 @@ Plain English works. The assistant picks the right tools based on what you ask:
 
 The assistant walks the workflow for you. Behind the scenes:
 
-1. **Upload.** The assistant calls `upload_document_for_extraction` with the PDF you handed it. DocJacket returns an `extractionJobId` and kicks off extraction in the background.
+1. **Upload.** The assistant uses a two-step presigned upload by default: `request_upload_url` returns a short-lived URL the assistant's client PUTs the PDF bytes to directly, then `kick_off_extraction` starts the pipeline against the uploaded blob. PDF bytes never enter the chat conversation, so a 30-page contract doesn't burn your conversation's context window. For small PDFs or clients that can't follow a presigned URL, there's also a single-step `upload_document_for_extraction` fallback. Either path returns an `extractionJobId` and kicks off extraction in the background.
 2. **Classify.** `classify_document` runs concurrently to detect the doc type — purchase agreement, listing agreement, lease, addendum, disclosure, etc. The classification informs which extraction prompt and checklist to use.
 3. **Poll.** Extraction typically takes **10–60 seconds** depending on document length and complexity. The assistant polls `get_extraction_results` until the job is `completed` (or `failed`, in which case it shows the error and offers to retry).
 4. **Review.** The assistant presents the extracted fields in chat:
