@@ -5,6 +5,8 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
+    "regen-llms": "node scripts/regen-llms-full.mjs",
+    "prebuild": "node scripts/regen-llms-full.mjs",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "npm run build && wrangler deploy",

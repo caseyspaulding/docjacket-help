@@ -1,6 +1,7 @@
 ---
 sidebar_label: Plans & Pricing
 sidebar_position: 2
+description: DocJacket per-seat pricing — what's included on every paid plan, the free tier, and how grandfathered early-bird pricing works.
 ---
 
 # Plans & Pricing

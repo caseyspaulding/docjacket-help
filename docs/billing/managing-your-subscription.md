@@ -1,6 +1,7 @@
 ---
 sidebar_label: Managing Your Subscription
 sidebar_position: 3
+description: Manage your DocJacket subscription — view your plan, add or remove seats, update payment info, and cancel from Settings > Billing.
 ---
 
 # Managing Your Subscription

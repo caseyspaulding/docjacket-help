@@ -1,6 +1,7 @@
 ---
 sidebar_label: Contact Roles
 sidebar_position: 3
+description: Understand DocJacket contact roles — buyer, seller, agents, title, lending, and service providers — and how roles drive portal visibility, permissions, and communication.
 ---
 
 # Contact Roles

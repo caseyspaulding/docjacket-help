@@ -1,6 +1,7 @@
 ---
 sidebar_label: Email Templates
 sidebar_position: 4
+description: Use and create reusable email templates with smart fields that auto-fill with DocJacket transaction data — buyer, seller, property address, closing date, and more.
 ---
 
 # Email Templates

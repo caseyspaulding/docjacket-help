@@ -1,6 +1,7 @@
 ---
 sidebar_label: Timeline Templates
 sidebar_position: 2
+description: Create timeline templates with milestones that auto-calculate from the anchor date — organized by state, category, and side of the deal.
 ---
 
 # Timeline Templates

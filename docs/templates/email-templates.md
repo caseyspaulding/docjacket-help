@@ -1,6 +1,7 @@
 ---
 sidebar_label: Email Templates
 sidebar_position: 4
+description: Build reusable DocJacket email templates with smart fields and link them to tasks for automated sending across every transaction.
 ---
 
 # Email Templates

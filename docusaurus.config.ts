@@ -34,6 +34,9 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          // Populates metadata.lastUpdatedAt (used for dateModified in the
+          // per-doc TechArticle JSON-LD emitted by src/theme/DocItem/Layout).
+          showLastUpdateTime: true,
         },
         blog: false,
         theme: {
@@ -80,6 +83,40 @@ const config: Config = {
         name: 'DocJacket Help Center',
         url: 'https://help.docjacket.com',
         publisher: {'@type': 'Organization', name: 'DocJacket'},
+      }),
+    },
+    // SoftwareApplication schema — describes the DocJacket product itself so
+    // search engines and LLMs can ground answers in what the platform actually
+    // is (category, audience, pricing model, supporting docs).
+    {
+      tagName: 'script',
+      attributes: {type: 'application/ld+json'},
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        name: 'DocJacket',
+        applicationCategory: 'BusinessApplication',
+        applicationSubCategory: 'Real Estate Transaction Coordination',
+        operatingSystem: 'Web',
+        url: 'https://docjacket.com',
+        description:
+          'AI-powered transaction coordination platform for real estate professionals. DocJacket helps independent transaction coordinators, agents, and brokers manage deals from contract to closing with AI contract extraction, smart timelines, task management, client portals, and document management.',
+        audience: {
+          '@type': 'Audience',
+          audienceType:
+            'Real estate transaction coordinators, agents, and brokers',
+        },
+        offers: {
+          '@type': 'Offer',
+          url: 'https://docjacket.com/pricing',
+          priceCurrency: 'USD',
+          category: 'subscription',
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'DocJacket',
+          url: 'https://docjacket.com',
+        },
       }),
     },
   ],

@@ -1,6 +1,7 @@
 ---
 sidebar_label: Notification Preferences
 sidebar_position: 4
+description: Configure which DocJacket notifications you receive, manage your daily morning briefing, and tune alerts for tasks, deadlines, documents, and email activity.
 ---
 
 # Notification Preferences

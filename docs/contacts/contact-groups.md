@@ -1,6 +1,7 @@
 ---
 sidebar_label: Contact Groups
 sidebar_position: 4
+description: Organize DocJacket contacts into groups for email blasts, preferred vendor lists, agent partners, and regional segmentation.
 ---
 
 # Contact Groups

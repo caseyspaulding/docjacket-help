@@ -1,4 +1,66 @@
+# Default — search engines and well-behaved crawlers
 User-agent: *
+Allow: /
+
+# Explicit allows for AI training and answer-engine crawlers. These are
+# already permitted via the wildcard above; the explicit blocks make our
+# intent unambiguous for anyone auditing the policy and for crawlers that
+# look for their own user-agent first.
+
+# OpenAI — ChatGPT browsing + training crawler
+User-agent: GPTBot
+Allow: /
+
+# OpenAI — ChatGPT live-browsing user agent (per-request)
+User-agent: ChatGPT-User
+Allow: /
+
+# OpenAI — SearchGPT
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic — Claude training + browsing
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google — opt-in signal for Gemini / Vertex AI training (separate from
+# Googlebot, which handles regular search indexing)
+User-agent: Google-Extended
+Allow: /
+
+# Common Crawl — open dataset many LLMs train on
+User-agent: CCBot
+Allow: /
+
+# Meta / Apple / ByteDance / Bytespider AI crawlers
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# Mistral
+User-agent: MistralAI-User
+Allow: /
+
+# You.com
+User-agent: YouBot
 Allow: /
 
 Sitemap: https://help.docjacket.com/sitemap.xml

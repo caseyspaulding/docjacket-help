@@ -1,6 +1,7 @@
 ---
 sidebar_label: Task Templates
 sidebar_position: 3
+description: Build reusable task templates with priorities, due-date offsets, assignees, and linked email templates that you can apply to any DocJacket transaction.
 ---
 
 # Task Templates
