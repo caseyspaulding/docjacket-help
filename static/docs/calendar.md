@@ -1,0 +1,20 @@
+---
+sidebar_label: Overview
+sidebar_position: 1
+description: Track milestones, deadlines, and key dates across all your transactions with timeline templates and calendar views.
+---
+
+<!-- Canonical: https://help.docjacket.com/docs/calendar -->
+<!-- Source: docs/calendar/index.md -->
+
+# Calendar & Deadlines
+
+DocJacket gives you two ways to manage dates: **timelines** inside each transaction, and a **calendar** that shows everything across all your deals.
+
+Never miss a deadline again — milestones, tasks, reminders, and custom events all appear in one place.
+
+## In this section
+
+- [Timeline Templates](./timeline-templates.mdx) — Pre-built milestone sequences for different transaction types
+- [Anchor Dates](./anchor-dates.md) — How one date drives all the others
+- [Calendar View](./calendar-view.mdx) — See all deadlines across all transactions

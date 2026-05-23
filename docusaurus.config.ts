@@ -37,6 +37,11 @@ const config: Config = {
           // Populates metadata.lastUpdatedAt (used for dateModified in the
           // per-doc TechArticle JSON-LD emitted by src/theme/DocItem/Layout).
           showLastUpdateTime: true,
+          // "Edit this page" link target. Also signals to LLMs/crawlers
+          // that the docs are open-source and quoteable — every page links
+          // back to canonical markdown on GitHub.
+          editUrl:
+            'https://github.com/docjacket-inc/help/edit/main/',
         },
         blog: false,
         theme: {

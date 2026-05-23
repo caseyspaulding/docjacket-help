@@ -1,0 +1,29 @@
+---
+sidebar_label: Portal for Agents
+sidebar_position: 4
+description: DocJacket's agent portal lets buying and listing agents see their transactions, documents, and deadlines in one place.
+---
+
+<!-- Canonical: https://help.docjacket.com/docs/client-portal/portal-for-agents -->
+<!-- Source: docs/client-portal/portal-for-agents.mdx -->
+
+# Portal for Agents
+
+Agents get their own portal view — showing the transactions they're involved in with details relevant to their role.
+
+## What agents see
+
+The agent portal shows:
+
+- **Their transactions** — Only the deals where they're assigned as an agent
+- **Transaction status and milestones** — Where each deal stands
+- **Documents** — Documents shared with the agent role
+- **Tasks** — Portal-visible tasks assigned to them or relevant to their role
+
+agent portal showing transaction list
+
+## Agent vs. Client portal
+
+The main difference is scope. Clients see a single transaction. Agents may see multiple transactions they're involved in, with a higher-level overview.
+
+Agents also typically see more detail than clients — you can control this through contact permissions in each transaction.

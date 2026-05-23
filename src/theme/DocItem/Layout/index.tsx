@@ -33,6 +33,11 @@ export default function DocItemLayoutWrapper(props: Props): ReactNode {
       ? new Date(metadata.lastUpdatedAt).toISOString()
       : undefined;
 
+  // Raw markdown mirror of this page lives at /docs/<slug>.md
+  // (emitted by scripts/mirror-docs-md.mjs). Surface it via rel=alternate
+  // so LLMs/crawlers that prefer plain markdown can fetch it directly.
+  const markdownUrl = `${url}.md`;
+
   const schema: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'TechArticle',
@@ -73,6 +78,9 @@ export default function DocItemLayoutWrapper(props: Props): ReactNode {
   return (
     <>
       <Head>
+        {dateModified && <meta name="last-modified" content={dateModified} />}
+        {dateModified && <meta httpEquiv="last-modified" content={dateModified} />}
+        <link rel="alternate" type="text/markdown" href={markdownUrl} title="Plain-markdown version" />
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Head>
       <Layout {...props} />
