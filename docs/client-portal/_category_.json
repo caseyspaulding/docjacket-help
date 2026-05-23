@@ -1,6 +1,6 @@
 {
   "label": "Client Portal",
-  "position": 11,
+  "position": 12,
   "link": {
     "type": "generated-index",
     "description": "Give clients and agents a branded portal to track their transaction."

@@ -1,11 +1,11 @@
 ---
 sidebar_label: Connect Codex / ChatGPT
-sidebar_position: 2
+sidebar_position: 3
 description: Connect DocJacket to OpenAI Codex (CLI, Codex for Work) and ChatGPT using the official Codex plugin. Paste-URL-and-go via OAuth 2.1.
 ---
 
-<!-- Canonical: https://help.docjacket.com/docs/mcp/codex -->
-<!-- Source: docs/mcp/codex.mdx -->
+<!-- Canonical: https://help.docjacket.com/docs/ai-access/codex -->
+<!-- Source: docs/ai-access/codex.mdx -->
 
 # Connect Codex / ChatGPT
 
@@ -135,8 +135,8 @@ Inside DocJacket:
 
 ## Read more
 
-- [Contract Intake](/docs/mcp/contract-intake) — drop a PDF in chat, get a fully-set-up transaction back
-- [Tool Catalog (`mcp_catalog`)](/docs/mcp/mcp-catalog) — the self-discovery tool that returns DocJacket's live inventory
+- [Contract Intake](/docs/ai-access/contract-intake) — drop a PDF in chat, get a fully-set-up transaction back
+- [Tool Catalog (`mcp_catalog`)](/docs/ai-access/tool-catalog) — the self-discovery tool that returns DocJacket's live inventory
 - [How the OAuth flow works](/docs/ai-access/oauth) — the underlying protocol
-- [AI Access overview](/docs/ai-access) — the umbrella feature
-- [Connect Claude](/docs/mcp/claude) — sister guide for Anthropic surfaces
+- [AI Access overview](/docs/ai-access) — section index
+- [Connect Claude](/docs/ai-access/claude) — sister guide for Anthropic surfaces

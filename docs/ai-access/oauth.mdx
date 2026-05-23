@@ -1,6 +1,6 @@
 ---
 sidebar_label: How OAuth works
-sidebar_position: 2
+sidebar_position: 9
 description: How DocJacket's OAuth 2.1 flow works — discovery, Dynamic Client Registration, per-user consent, scopes, token rotation, and revocation.
 ---
 
@@ -176,6 +176,17 @@ There's no propagation delay — revocation is enforced on the next request.
 ## Resource indicators (RFC 8707)
 
 Notice the `resource=https://mcp.docjacket.com/mcp` parameter in the authorization URL. This is RFC 8707 — the access token's `aud` (audience) claim is bound to this resource URL. A token issued for one MCP server can't be replayed against another (e.g., a stolen Claude.ai token can't be used against a different MCP service).
+
+## When you'd skip OAuth and use a token instead
+
+A few clients don't (yet) support paste-URL OAuth and need a personal access token instead:
+
+- **Cowork** — org-installed plugin; a long-lived token is the right primitive for org-wide install. ([setup](/docs/ai-access/cowork))
+- **Gemini CLI** — Dynamic Client Registration support isn't shipped on Gemini's MCP client yet. ([setup](/docs/ai-access/gemini))
+- **Codex CLI** — works either way; many users prefer the token + `codex secret set` flow. ([setup](/docs/ai-access/codex))
+- **Custom HTTP clients / scripts** — paste a token straight into your `Authorization: Bearer …` header.
+
+Mint tokens at [app.docjacket.com/settings/ai-access](https://app.docjacket.com/settings/ai-access). They scope per-org, can be labeled, and can be revoked independently of OAuth-issued tokens.
 
 ## What we never see
 

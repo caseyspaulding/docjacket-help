@@ -91,7 +91,7 @@ DocJacket's MCP server exposes **47 tools** to every connected assistant across 
 - **Templates** — `list_email_templates`, `get_email_template`, `render_email_template`, `get_merge_fields`, `list_checklist_templates`
 - **Diagnostics** — `mcp_catalog` (live tool inventory), `mcp_health_check`, `get_portal_link`
 
-Tool count grows over time. **Ask the assistant to call `mcp_catalog`** to see the live inventory at any time — it returns every tool with description, scope, and example call. See the **[Tool Catalog reference](/docs/mcp/mcp-catalog)** for the exact response shape and what each field means.
+Tool count grows over time. **Ask the assistant to call `mcp_catalog`** to see the live inventory at any time — it returns every tool with description, scope, and example call. See the **[Tool Catalog reference](/docs/ai-access/tool-catalog)** for the exact response shape and what each field means.
 
 <ScreenshotPlaceholder>AI Access settings page showing connected clients + tool inventory</ScreenshotPlaceholder>
 
@@ -99,18 +99,22 @@ Tool count grows over time. **Ask the assistant to call `mcp_catalog`** to see t
 
 Pick the assistant you want to connect:
 
-- [Connect Claude](/docs/mcp/claude) — Claude.ai sidebar, Cowork, Claude Code, Claude Desktop
-- [Connect Codex / ChatGPT](/docs/mcp/codex) — Codex CLI, Codex for Work, ChatGPT connectors
+- [Connect Claude](/docs/ai-access/claude) — Claude.ai, Claude Desktop, Claude Code
+- [Connect Codex / ChatGPT](/docs/ai-access/codex) — Codex CLI, Codex for Work, ChatGPT connectors
+- [Connect Cowork](/docs/ai-access/cowork) — Anthropic's team workspace
+- [Connect Gemini](/docs/ai-access/gemini) — Google Gemini CLI
 
 Each guide walks you through the connector setup and the OAuth consent flow.
 
 ## Featured workflow
 
-- **[Contract Intake](/docs/mcp/contract-intake)** — drop a contract PDF in chat, the assistant extracts the parties, addresses, key dates, and financials, presents them for your review, and creates the transaction on your confirmation. End-to-end PDF → live deal in one conversation.
+- **[Contract Intake](/docs/ai-access/contract-intake)** — drop a contract PDF in chat, the assistant extracts the parties, addresses, key dates, and financials, presents them for your review, and creates the transaction on your confirmation. End-to-end PDF → live deal in one conversation.
 
 ## Learn more
 
-- [Slash Commands](/docs/mcp/slash-commands) — the 9 pre-built `/docjacket:` commands the plugin adds to Cowork + Claude Code
+- [Slash Commands](/docs/ai-access/slash-commands) — the 9 pre-built `/docjacket:` commands the plugin adds to Cowork + Claude Code
+- [Tool Catalog](/docs/ai-access/tool-catalog) — the live `mcp_catalog` inventory of every tool with description, scope, and example call
+- [Permissions & Scopes](/docs/ai-access/permissions) — what `read`, `draft`, and `actions` cover
 - [How the OAuth flow works](/docs/ai-access/oauth) — Discovery, Dynamic Client Registration, consent, scopes, token rotation, revocation
 - DocJacket's [AI Features](/docs/ai-features) (the assistant *inside* DocJacket) is a separate thing — AI Access is for assistants *outside* DocJacket reaching in.
 

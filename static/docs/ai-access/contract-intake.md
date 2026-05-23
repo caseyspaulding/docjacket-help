@@ -1,11 +1,11 @@
 ---
 sidebar_label: Contract Intake
-sidebar_position: 3
+sidebar_position: 6
 description: Drop a contract PDF in your AI chat — DocJacket reads the parties, addresses, key dates, and financials, then creates the matching transaction.
 ---
 
-<!-- Canonical: https://help.docjacket.com/docs/mcp/contract-intake -->
-<!-- Source: docs/mcp/contract-intake.mdx -->
+<!-- Canonical: https://help.docjacket.com/docs/ai-access/contract-intake -->
+<!-- Source: docs/ai-access/contract-intake.mdx -->
 
 # Contract Intake
 
@@ -103,7 +103,7 @@ The assistant calls `get_intake_status` and returns recent jobs with state — `
 
 The fastest way to see it work:
 
-1. Connect [Claude](/docs/mcp/claude) or [Codex / ChatGPT](/docs/mcp/codex) if you haven't.
+1. Connect [Claude](/docs/ai-access/claude) or [Codex / ChatGPT](/docs/ai-access/codex) if you haven't.
 2. Grab any sample purchase contract PDF.
 3. Drop it in chat and say: *"Open this and set up the deal."*
 4. Review the extracted fields, fix anything wrong, confirm.
@@ -111,7 +111,7 @@ The fastest way to see it work:
 
 ## Read more
 
-- **[Connect Claude](/docs/mcp/claude)** / **[Connect Codex / ChatGPT](/docs/mcp/codex)** — install the connector if you haven't
+- **[Connect Claude](/docs/ai-access/claude)** / **[Connect Codex / ChatGPT](/docs/ai-access/codex)** — install the connector if you haven't
 - **[Contract Extraction (in-app)](/docs/ai-features/contract-extraction)** — same engine, web-app workflow if you prefer not to use chat
 - **[Smart Document Splitting](/docs/ai-features/smart-document-splitting)** — split a multi-doc PDF first if you have one
-- **[AI Access overview](/docs/ai-access)** — the umbrella feature, OAuth model, scopes, audit
+- **[AI Access overview](/docs/ai-access)** — section index

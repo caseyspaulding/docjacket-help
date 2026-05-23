@@ -1,0 +1,28 @@
+# 301 redirects served by Cloudflare Workers Static Assets.
+# Format: source  destination  status
+
+# AI Access consolidation — the standalone "MCP Server" category was merged
+# into AI Access. Preserve link equity from the original /docs/mcp/* URLs.
+/docs/mcp                       /docs/ai-access                   301
+/docs/mcp/claude                /docs/ai-access/claude            301
+/docs/mcp/codex                 /docs/ai-access/codex             301
+/docs/mcp/cowork                /docs/ai-access/cowork            301
+/docs/mcp/gemini                /docs/ai-access/gemini            301
+/docs/mcp/permissions           /docs/ai-access/permissions       301
+/docs/mcp/mcp-catalog           /docs/ai-access/tool-catalog      301
+/docs/mcp/slash-commands        /docs/ai-access/slash-commands    301
+/docs/mcp/contract-intake       /docs/ai-access/contract-intake   301
+/docs/mcp/oauth                 /docs/ai-access/oauth             301
+
+# Also redirect the .md raw-mirror counterparts so LLMs holding cached
+# markdown URLs land on the new path.
+/docs/mcp.md                    /docs/ai-access.md                301
+/docs/mcp/claude.md             /docs/ai-access/claude.md         301
+/docs/mcp/codex.md              /docs/ai-access/codex.md          301
+/docs/mcp/cowork.md             /docs/ai-access/cowork.md         301
+/docs/mcp/gemini.md             /docs/ai-access/gemini.md         301
+/docs/mcp/permissions.md        /docs/ai-access/permissions.md    301
+/docs/mcp/mcp-catalog.md        /docs/ai-access/tool-catalog.md   301
+/docs/mcp/slash-commands.md     /docs/ai-access/slash-commands.md 301
+/docs/mcp/contract-intake.md    /docs/ai-access/contract-intake.md 301
+/docs/mcp/oauth.md              /docs/ai-access/oauth.md          301

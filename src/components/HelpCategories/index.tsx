@@ -30,6 +30,11 @@ const categories: Category[] = [
     link: '/docs/ai-features',
   },
   {
+    title: 'AI Access',
+    description: 'Use DocJacket from Claude, ChatGPT, Codex, and Gemini.',
+    link: '/docs/ai-access',
+  },
+  {
     title: 'Messages & Email',
     description: 'Communicate with your team and clients.',
     link: '/docs/messages',

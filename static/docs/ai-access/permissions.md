@@ -1,11 +1,11 @@
 ---
 sidebar_label: Permissions & scopes
-sidebar_position: 11
+sidebar_position: 10
 description: How DocJacket's MCP scopes work — read, draft, actions tiers; per-tool consent inside Claude / ChatGPT; the chat conversation as the approval gate.
 ---
 
-<!-- Canonical: https://help.docjacket.com/docs/mcp/permissions -->
-<!-- Source: docs/mcp/permissions.mdx -->
+<!-- Canonical: https://help.docjacket.com/docs/ai-access/permissions -->
+<!-- Source: docs/ai-access/permissions.mdx -->
 
 # Permissions & scopes
 
@@ -90,6 +90,5 @@ Tenant isolation is enforced at the SQL layer. Every MCP tool call adds `WHERE O
 ## Read more
 
 - [How OAuth works](/docs/ai-access/oauth) — the underlying protocol and token model
-- [How OAuth works (MCP summary)](/docs/mcp/oauth) — short version
-- [Tool Catalog](/docs/mcp/mcp-catalog) — the live tool inventory grouped by category
-- [AI Access overview](/docs/ai-access) — the umbrella feature
+- [Tool Catalog](/docs/ai-access/tool-catalog) — the live tool inventory grouped by category
+- [AI Access overview](/docs/ai-access) — section index

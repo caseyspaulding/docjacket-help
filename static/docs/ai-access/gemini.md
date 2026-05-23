@@ -1,11 +1,11 @@
 ---
 sidebar_label: Connect Gemini
-sidebar_position: 4
+sidebar_position: 5
 description: Connect DocJacket to Google Gemini via the Gemini CLI's MCP support. Bearer-token today, paste-URL OAuth coming.
 ---
 
-<!-- Canonical: https://help.docjacket.com/docs/mcp/gemini -->
-<!-- Source: docs/mcp/gemini.mdx -->
+<!-- Canonical: https://help.docjacket.com/docs/ai-access/gemini -->
+<!-- Source: docs/ai-access/gemini.mdx -->
 
 # Connect Gemini
 
@@ -99,8 +99,8 @@ No tokens to copy, no `mcp.json` to edit, per-user revocation. Until then, the t
 
 ## Read more
 
-- [Connect Claude](/docs/mcp/claude) — uses paste-URL OAuth today
-- [Connect Codex / ChatGPT](/docs/mcp/codex) — also paste-URL OAuth
+- [Connect Claude](/docs/ai-access/claude) — uses paste-URL OAuth today
+- [Connect Codex / ChatGPT](/docs/ai-access/codex) — also paste-URL OAuth
 - [How OAuth works](/docs/ai-access/oauth) — the underlying protocol Gemini will use once it adds DCR
-- [Permissions](/docs/mcp/permissions) — read / draft / actions scope tiers
-- [AI Access overview](/docs/ai-access) — the umbrella feature
+- [Permissions](/docs/ai-access/permissions) — read / draft / actions scope tiers
+- [AI Access overview](/docs/ai-access) — section index

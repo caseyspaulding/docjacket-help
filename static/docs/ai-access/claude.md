@@ -1,11 +1,11 @@
 ---
 sidebar_label: Connect Claude
-sidebar_position: 1
+sidebar_position: 2
 description: Connect DocJacket to Claude.ai, Claude Desktop, Claude Code, or Cowork using the official Claude plugin. Paste-URL-and-go via OAuth 2.1.
 ---
 
-<!-- Canonical: https://help.docjacket.com/docs/mcp/claude -->
-<!-- Source: docs/mcp/claude.mdx -->
+<!-- Canonical: https://help.docjacket.com/docs/ai-access/claude -->
+<!-- Source: docs/ai-access/claude.mdx -->
 
 # Connect Claude
 
@@ -144,9 +144,9 @@ Inside DocJacket:
 
 ## Read more
 
-- [Contract Intake](/docs/mcp/contract-intake) — drop a PDF in chat, get a fully-set-up transaction back
-- [Slash Commands](/docs/mcp/slash-commands) — full reference for the 9 `/docjacket:` commands the plugin adds to Cowork + Claude Code
-- [Tool Catalog (`mcp_catalog`)](/docs/mcp/mcp-catalog) — the self-discovery tool that returns DocJacket's live inventory
+- [Contract Intake](/docs/ai-access/contract-intake) — drop a PDF in chat, get a fully-set-up transaction back
+- [Slash Commands](/docs/ai-access/slash-commands) — full reference for the 9 `/docjacket:` commands the plugin adds to Cowork + Claude Code
+- [Tool Catalog (`mcp_catalog`)](/docs/ai-access/tool-catalog) — the self-discovery tool that returns DocJacket's live inventory
 - [How the OAuth flow works](/docs/ai-access/oauth) — the underlying protocol
-- [AI Access overview](/docs/ai-access) — the umbrella feature
-- [Connect Codex / ChatGPT](/docs/mcp/codex) — sister guide for the OpenAI surfaces
+- [AI Access overview](/docs/ai-access) — section index
+- [Connect Codex / ChatGPT](/docs/ai-access/codex) — sister guide for the OpenAI surfaces

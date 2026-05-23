@@ -1,11 +1,11 @@
 ---
 sidebar_label: Connect Cowork
-sidebar_position: 3
+sidebar_position: 4
 description: Install the DocJacket plugin in Claude Cowork — org-wide MCP plugin with nine skills, slash commands, and a Status Reporter sub-agent.
 ---
 
-<!-- Canonical: https://help.docjacket.com/docs/mcp/cowork -->
-<!-- Source: docs/mcp/cowork.mdx -->
+<!-- Canonical: https://help.docjacket.com/docs/ai-access/cowork -->
+<!-- Source: docs/ai-access/cowork.mdx -->
 
 # Connect Cowork
 
@@ -80,7 +80,7 @@ Drop `/docjacket:` to see the menu:
 /docjacket:check-submissions
 ```
 
-Full reference: [Slash Commands](/docs/mcp/slash-commands).
+Full reference: [Slash Commands](/docs/ai-access/slash-commands).
 
 ## Status Reporter sub-agent
 
@@ -118,8 +118,8 @@ We publish release notes in the [plugin repo](https://github.com/docjacket-inc/c
 
 ## Read more
 
-- [Connect Claude](/docs/mcp/claude) — Claude.ai, Desktop, and Claude Code (paste-URL OAuth)
-- [Slash Commands](/docs/mcp/slash-commands) — full reference for `/docjacket:*`
-- [Tool Catalog](/docs/mcp/mcp-catalog) — the self-discovery tool that lists DocJacket's live inventory
-- [AI Access overview](/docs/ai-access) — the umbrella feature
+- [Connect Claude](/docs/ai-access/claude) — Claude.ai, Desktop, and Claude Code (paste-URL OAuth)
+- [Slash Commands](/docs/ai-access/slash-commands) — full reference for `/docjacket:*`
+- [Tool Catalog](/docs/ai-access/tool-catalog) — the self-discovery tool that lists DocJacket's live inventory
+- [AI Access overview](/docs/ai-access) — section index
 - [Cowork plugin source](https://github.com/docjacket-inc/claude-plugin) — canonical install repo

@@ -13,15 +13,16 @@ DocJacket is an AI coordination platform built for independent Transaction Coord
 
 - [Getting Started](https://help.docjacket.com/docs/getting-started): Account setup, first transaction, navigation, roles
 - [Transactions](https://help.docjacket.com/docs/transactions): Creating and managing deals from contract to closing
-- [AI Features](https://help.docjacket.com/docs/ai-features): Contract extraction, AI task generation, insights, smart document splitting
 - [Documents](https://help.docjacket.com/docs/documents): Uploading, AI extraction, audit mode, Google Drive, DocDrop
-- [Client Portal](https://help.docjacket.com/docs/client-portal): Branded portal for buyers, sellers, and agents
-- [Tasks](https://help.docjacket.com/docs/tasks): Task management, templates, subtasks, email automation
+- [Contacts](https://help.docjacket.com/docs/contacts): Contact management, roles, and groups
 - [Calendar & Deadlines](https://help.docjacket.com/docs/calendar): Timeline templates, anchor dates, calendar view
+- [Tasks](https://help.docjacket.com/docs/tasks): Task management, templates, subtasks, email automation
 - [Messages & Email](https://help.docjacket.com/docs/messages): Unified inbox, sending emails, email templates
 - [Templates](https://help.docjacket.com/docs/templates): Timeline, task, and email templates
-- [Contacts](https://help.docjacket.com/docs/contacts): Contact management, roles, and groups
 - [Workflows](https://help.docjacket.com/docs/workflows): Automated workflow monitoring and approvals
+- [AI Features](https://help.docjacket.com/docs/ai-features): DocJacket's internal AI — contract extraction, AI task generation, insights, smart document splitting
+- [AI Access](https://help.docjacket.com/docs/ai-access): Bring DocJacket into Claude, ChatGPT, Codex, Cowork, Gemini, and Cursor via the Model Context Protocol — paste-URL-and-go OAuth, per-client setup guides, tool catalog, slash commands, contract intake workflow
+- [Client Portal](https://help.docjacket.com/docs/client-portal): Branded portal for buyers, sellers, and agents
 - [Integrations](https://help.docjacket.com/docs/integrations): Google Workspace, Microsoft 365, webhooks
 - [Reports](https://help.docjacket.com/docs/reports): Transaction reports and pipeline view
 - [Settings](https://help.docjacket.com/docs/settings): Organization config, user management, notifications

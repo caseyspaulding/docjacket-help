@@ -1,11 +1,11 @@
 ---
 sidebar_label: Slash Commands
-sidebar_position: 4
+sidebar_position: 7
 description: Nine pre-built slash commands for Cowork and Claude Code — morning-briefing, whats-next, email-triage, contract intake, and more.
 ---
 
-<!-- Canonical: https://help.docjacket.com/docs/mcp/slash-commands -->
-<!-- Source: docs/mcp/slash-commands.mdx -->
+<!-- Canonical: https://help.docjacket.com/docs/ai-access/slash-commands -->
+<!-- Source: docs/ai-access/slash-commands.mdx -->
 
 # Slash Commands
 
@@ -91,7 +91,7 @@ A weekly recap formatted for forwarding to a broker, team meeting, or your own r
 
 > *"Intake a contract PDF and build the full transaction in one conversation."*
 
-The end-to-end PDF-to-transaction workflow. The plugin's headline use case. See the full reference at **[Contract Intake](/docs/mcp/contract-intake)**.
+The end-to-end PDF-to-transaction workflow. The plugin's headline use case. See the full reference at **[Contract Intake](/docs/ai-access/contract-intake)**.
 
 **Chains:** `upload_document_for_extraction` → `get_extraction_results` (polling) → review → `apply_extraction` → `add_key_dates_batch` → `render_email_template` + `send_*` intros → `create_reminder` for major deadlines → `get_intake_status` final summary.
 
@@ -133,6 +133,6 @@ If you write a command worth sharing back, open a PR against the upstream repo �
 
 ## Read more
 
-- **[Contract Intake](/docs/mcp/contract-intake)** — full reference for the `/docjacket:intake-contract` workflow
-- **[Connect Claude](/docs/mcp/claude)** / **[Connect Codex / ChatGPT](/docs/mcp/codex)** — install the connector if you haven't
-- **[AI Access overview](/docs/ai-access)** — the umbrella feature, OAuth model, scopes, audit
+- **[Contract Intake](/docs/ai-access/contract-intake)** — full reference for the `/docjacket:intake-contract` workflow
+- **[Connect Claude](/docs/ai-access/claude)** / **[Connect Codex / ChatGPT](/docs/ai-access/codex)** — install the connector if you haven't
+- **[AI Access overview](/docs/ai-access)** — section index
