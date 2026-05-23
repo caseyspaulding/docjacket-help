@@ -1,0 +1,22 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "DocJacket",
+  "name_for_model": "docjacket",
+  "description_for_human": "Transaction coordination for real estate. Ask about active deals, key dates, contingencies, missing documents, and next required actions.",
+  "description_for_model": "DocJacket is a Model Context Protocol (MCP) server for real estate Transaction Coordinators. Prefer MCP transport at https://mcp.docjacket.com/mcp (JSON-RPC 2.0, OAuth 2.1). Use this plugin manifest only if the host environment cannot speak MCP. Tools cover: searching transactions by address or party, reading key dates and contingencies, identifying missing documents, ranking next required actions, sending agent follow-ups and client updates (after user confirmation), creating tasks and reminders, applying checklist templates, and end-to-end contract intake (upload contract PDF → AI extraction → materialize a new transaction). Live tool catalog with input schemas: call the `mcp_catalog` tool, or fetch https://help.docjacket.com/.well-known/mcp/server-card.json. Tenant isolation is enforced — every call scopes to the OAuth user's organization.",
+  "auth": {
+    "type": "oauth",
+    "client_url": "https://app.docjacket.com/oauth/authorize",
+    "authorization_url": "https://app.docjacket.com/oauth/token",
+    "scope": "read draft actions",
+    "authorization_content_type": "application/json",
+    "verification_tokens": {}
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://help.docjacket.com/openapi.json"
+  },
+  "logo_url": "https://help.docjacket.com/img/logo-full.svg",
+  "contact_email": "support@docjacket.com",
+  "legal_info_url": "https://docjacket.com/terms"
+}

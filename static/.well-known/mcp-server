@@ -1,0 +1,6 @@
+{
+  "mcp_version": "2025-06-18",
+  "name": "DocJacket",
+  "endpoint": "https://mcp.docjacket.com/mcp",
+  "transport": "http"
+}

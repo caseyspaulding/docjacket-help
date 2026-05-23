@@ -1,0 +1,29 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/mcp-discovery/v1.0",
+  "mcp_version": "2025-06-18",
+  "name": "DocJacket",
+  "description": "DocJacket MCP server — paste-URL-and-go access to real estate transactions, key dates, contingencies, tasks, contacts, missing documents, and contract intake for independent Transaction Coordinators.",
+  "endpoints": [
+    {
+      "url": "https://mcp.docjacket.com/mcp",
+      "transport": "streamable-http",
+      "capabilities": ["tools"],
+      "auth": {
+        "type": "oauth2",
+        "authorization_server": "https://mcp.docjacket.com/.well-known/oauth-authorization-server",
+        "protected_resource": "https://mcp.docjacket.com/.well-known/oauth-protected-resource",
+        "scopes_supported": ["read", "draft", "actions"],
+        "dynamic_client_registration": true,
+        "pkce_required": true,
+        "pkce_methods": ["S256"]
+      }
+    }
+  ],
+  "documentation": "https://help.docjacket.com/docs/ai-access",
+  "homepage": "https://docjacket.com",
+  "vendor": {
+    "name": "DocJacket Inc.",
+    "url": "https://docjacket.com",
+    "contact": "support@docjacket.com"
+  }
+}

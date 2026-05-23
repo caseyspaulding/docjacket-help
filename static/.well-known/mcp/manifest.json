@@ -1,0 +1,79 @@
+{
+  "name": "DocJacket",
+  "version": "1.0",
+  "description": "DocJacket MCP server — paste-URL-and-go AI access to real estate transactions, key dates, contingencies, tasks, contacts, missing documents, and contract intake for independent Transaction Coordinators.",
+  "vendor": {
+    "name": "DocJacket Inc.",
+    "url": "https://docjacket.com",
+    "contact": "support@docjacket.com"
+  },
+  "endpoints": {
+    "mcp": "https://mcp.docjacket.com/mcp",
+    "documentation": "https://help.docjacket.com/docs/ai-access",
+    "llms_txt": "https://help.docjacket.com/llms.txt",
+    "settings": "https://app.docjacket.com/settings/ai-access",
+    "audit_log": "https://app.docjacket.com/settings/ai-access/activity"
+  },
+  "auth": {
+    "type": "oauth2",
+    "oauth2": {
+      "discovery": {
+        "authorization_server": "https://mcp.docjacket.com/.well-known/oauth-authorization-server",
+        "protected_resource": "https://mcp.docjacket.com/.well-known/oauth-protected-resource"
+      },
+      "authorization_endpoint": "https://app.docjacket.com/oauth/authorize",
+      "token_endpoint": "https://app.docjacket.com/oauth/token",
+      "registration_endpoint": "https://app.docjacket.com/oauth/register",
+      "dynamic_client_registration": true,
+      "pkce_required": true,
+      "pkce_methods": ["S256"],
+      "scopes_supported": ["read", "draft", "actions"]
+    }
+  },
+  "protocol": {
+    "name": "Model Context Protocol",
+    "version": "2025-06-18",
+    "transport": "http",
+    "specification": "https://modelcontextprotocol.io"
+  },
+  "capabilities": {
+    "read": true,
+    "draft": true,
+    "actions": true,
+    "subscriptions": false,
+    "resources": false,
+    "prompts": false
+  },
+  "supported_clients": [
+    {"name": "Claude.ai", "status": "shipped"},
+    {"name": "Claude Desktop", "status": "shipped", "install_command": "/plugin marketplace add docjacket-inc/claude-plugin"},
+    {"name": "Claude Code", "status": "shipped"},
+    {"name": "Cowork", "status": "shipped"},
+    {"name": "ChatGPT (MCP connectors)", "status": "shipped"},
+    {"name": "OpenAI Codex CLI", "status": "shipped", "install_command": "codex plugin marketplace add docjacket-inc/codex-plugin"},
+    {"name": "OpenAI Codex for Work", "status": "shipped"},
+    {"name": "Google Gemini CLI", "status": "shipped"},
+    {"name": "Cursor", "status": "shipped", "instructions": "Paste https://mcp.docjacket.com/mcp into ~/.cursor/mcp.json under mcpServers."}
+  ],
+  "security": {
+    "tenant_isolation": "Every backing query filters on organization_id resolved from the token. Cross-tenant access returns 403 Forbidden, not 404 Not Found, so existence is not leaked.",
+    "audit_logging": "Every tool call is logged with org_id, token_id, tool_name, args_summary (PII-scrubbed), latency_ms, and outcome.",
+    "per_token_revocation": "Tokens can be revoked individually from DocJacket Settings → AI Access without affecting other AI surfaces.",
+    "approval_gate": "Write tools (send, create, update, apply) execute only after the user confirms in the assistant's chat. The conversation is the approval gate; DocJacket trusts the chat affirmation and executes when called."
+  },
+  "pricing": {
+    "model": "included",
+    "description": "Included with DocJacket Pro at no additional cost. The user provides their own AI client subscription (Claude Pro, ChatGPT Plus, Cowork seat, Codex for Work, Gemini, Cursor, etc.)."
+  },
+  "policies": {
+    "privacy": "https://docjacket.com/privacy",
+    "terms": "https://docjacket.com/terms",
+    "security": "https://docjacket.com/security",
+    "license": "https://help.docjacket.com/LICENSE",
+    "data_handling": "DocJacket reads only the data of the OAuth-authenticating user's organization. AI client prompts are not logged — only the resulting tool calls."
+  },
+  "tool_catalog": {
+    "live_inventory": "Call the `mcp_catalog` tool to get the live list of every exposed tool with description and scope.",
+    "static_listing": "https://help.docjacket.com/.well-known/mcp/server-card.json"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/server-card/v1.0",
+  "version": "1.0",
+  "protocolVersion": "2025-06-18",
+  "serverInfo": {
+    "name": "DocJacket",
+    "version": "1.0.0",
+    "description": "DocJacket MCP server. Lets Claude, ChatGPT, Codex, Gemini, Cursor, and other MCP-capable assistants read and act on a Transaction Coordinator's real estate book of business — search transactions, check key dates and contingencies, get next required actions, send agent follow-ups, run contract intake from a dropped PDF.",
+    "homepage": "https://help.docjacket.com/docs/ai-access",
+    "documentation": "https://help.docjacket.com/docs/ai-access",
+    "vendor": {
+      "name": "DocJacket Inc.",
+      "url": "https://docjacket.com",
+      "contact": "support@docjacket.com"
+    },
+    "license": "https://help.docjacket.com/LICENSE"
+  },
+  "transport": {
+    "type": "streamable-http",
+    "url": "https://mcp.docjacket.com/mcp"
+  },
+  "auth": {
+    "type": "oauth2",
+    "authorization_server": "https://mcp.docjacket.com/.well-known/oauth-authorization-server",
+    "protected_resource": "https://mcp.docjacket.com/.well-known/oauth-protected-resource",
+    "scopes_supported": ["read", "draft", "actions"],
+    "dynamic_client_registration": true,
+    "pkce_required": true,
+    "pkce_methods": ["S256"]
+  },
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "logging": true
+  },
+  "supportedClients": [
+    {"name": "Claude.ai", "status": "shipped"},
+    {"name": "Claude Desktop", "status": "shipped"},
+    {"name": "Claude Code", "status": "shipped"},
+    {"name": "Cowork", "status": "shipped"},
+    {"name": "ChatGPT (MCP connectors)", "status": "shipped"},
+    {"name": "OpenAI Codex CLI", "status": "shipped"},
+    {"name": "OpenAI Codex for Work", "status": "shipped"},
+    {"name": "Google Gemini CLI", "status": "shipped"},
+    {"name": "Cursor", "status": "shipped"}
+  ],
+  "categories": [
+    "Real Estate",
+    "Transaction Coordination",
+    "CRM",
+    "Productivity",
+    "Document Processing"
+  ],
+  "tools": [
+    {"name": "search_transactions", "description": "Search transactions by address, party name, MLS number, status, or date window."},
+    {"name": "find_transaction_by_property", "description": "Fuzzy address-to-deal matching with confidence scoring."},
+    {"name": "find_contact_by_email", "description": "Look up a DocJacket contact by email address."},
+    {"name": "search_contacts", "description": "Search contacts by name, email, phone, role, or contact type."},
+    {"name": "list_active_transactions", "description": "List the organization's currently active transactions."},
+    {"name": "get_transaction", "description": "Full transaction state — parties, prices, status, joined key dates."},
+    {"name": "get_key_dates", "description": "Per-transaction key date list with name, type, date value, status, side."},
+    {"name": "get_upcoming_key_dates", "description": "Org-wide upcoming key dates with default 14-day horizon."},
+    {"name": "get_missing_documents", "description": "Universal-baseline missing-document detection for purchase transactions."},
+    {"name": "list_open_contingencies", "description": "Active contingencies on one transaction."},
+    {"name": "get_open_tasks", "description": "Open tasks org-wide or filtered to one transaction."},
+    {"name": "get_contacts", "description": "Org contacts with type and role filtering."},
+    {"name": "get_contact", "description": "Single contact by id with full detail."},
+    {"name": "get_checklist_status", "description": "Checklist progress for a transaction — items, status, due dates."},
+    {"name": "get_next_required_actions", "description": "Flagship triage tool — bundled overdue-first ranked list of next required actions across the pipeline with rationales."},
+    {"name": "send_agent_followup", "description": "Send a follow-up email to a transaction's listing or buyer's agent via the user's connected Gmail / Outlook."},
+    {"name": "send_client_update", "description": "Send a status update to a buyer or seller on a transaction."},
+    {"name": "send_document_request", "description": "Send a templated document request email to a party."},
+    {"name": "send_email_to_agent", "description": "Compose and send an ad-hoc email to an agent on a transaction."},
+    {"name": "create_contact", "description": "Create a new contact in the organization's address book."},
+    {"name": "add_contact_to_transaction", "description": "Attach an existing contact to a transaction with a role."},
+    {"name": "create_tasks", "description": "Create one or more tasks on a transaction."},
+    {"name": "create_reminder", "description": "Create a personal reminder tied to a transaction or date."},
+    {"name": "update_key_date", "description": "Update a single key date value or status on a transaction."},
+    {"name": "add_key_dates_batch", "description": "Add multiple key dates to a transaction in one call."},
+    {"name": "apply_checklist", "description": "Apply a checklist template to a transaction."},
+    {"name": "complete_task", "description": "Mark a task complete with optional note."},
+    {"name": "log_activity", "description": "Log a free-form activity note against a transaction."},
+    {"name": "save_status_summary", "description": "Persist an LLM-generated transaction status summary back to DocJacket."},
+    {"name": "upload_document_for_extraction", "description": "Upload a contract PDF for AI extraction (parties, addresses, key dates, financials)."},
+    {"name": "get_extraction_results", "description": "Fetch the structured extraction output for an uploaded document."},
+    {"name": "apply_extraction", "description": "Materialize an extraction into a new transaction (with confirmation)."},
+    {"name": "classify_document", "description": "Classify an uploaded PDF (purchase contract, addendum, disclosure, etc.)."},
+    {"name": "get_intake_status", "description": "Check status of an in-flight contract intake workflow."},
+    {"name": "list_form_links", "description": "List shareable form links for the organization."},
+    {"name": "list_form_submissions", "description": "List submissions to a given form."},
+    {"name": "get_form_definition", "description": "Fetch a form's field definition."},
+    {"name": "get_form_submission", "description": "Fetch a single form submission with answers."},
+    {"name": "list_email_templates", "description": "List the organization's email templates."},
+    {"name": "get_email_template", "description": "Fetch one email template with body and merge field placeholders."},
+    {"name": "render_email_template", "description": "Render an email template against a transaction's merge data."},
+    {"name": "get_merge_fields", "description": "List available merge fields for email/template rendering."},
+    {"name": "list_checklist_templates", "description": "List checklist templates available to apply."},
+    {"name": "get_portal_link", "description": "Get the client portal URL for a transaction."},
+    {"name": "mcp_catalog", "description": "Live inventory of every MCP tool with description, scope, and example call."},
+    {"name": "mcp_health_check", "description": "Diagnostic — verify the MCP connection, auth, and tenant resolution."}
+  ]
+}

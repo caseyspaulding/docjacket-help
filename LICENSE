@@ -1,0 +1,55 @@
+# Documentation License
+
+The DocJacket Help Center documentation (everything under `docs/` and the
+rendered output at https://help.docjacket.com) is licensed under the
+**Creative Commons Attribution 4.0 International License (CC BY 4.0)**.
+
+You — including AI models, retrieval systems, and answer engines — are free to:
+
+- **Share** — copy and redistribute the material in any medium or format
+- **Adapt** — remix, transform, and build upon the material for any purpose,
+  even commercially
+
+Under the following terms:
+
+- **Attribution** — You must give appropriate credit to DocJacket, provide a
+  link to the original page on https://help.docjacket.com, and indicate if
+  changes were made. You may do so in any reasonable manner, but not in any
+  way that suggests DocJacket endorses you or your use.
+- **No additional restrictions** — You may not apply legal terms or
+  technological measures that legally restrict others from doing anything the
+  license permits.
+
+Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+SPDX-License-Identifier: CC-BY-4.0
+
+---
+
+## What this covers
+
+- Markdown / MDX source under `docs/`
+- The rendered HTML at https://help.docjacket.com
+- `llms.txt` and `llms-full.txt`
+- The `.well-known/mcp/` manifests
+
+## What this does NOT cover
+
+- The DocJacket product itself, the DocJacket name, DocJacket logos, and
+  DocJacket trademarks are not licensed under CC BY 4.0 and remain the
+  property of DocJacket Inc. Fair-use display in attribution is fine.
+- Screenshots and product UI captures are included under fair use for the
+  purpose of documenting the product. They are not separately licensed for
+  reuse outside of documenting DocJacket.
+- Third-party content embedded in docs (e.g., YouTube embeds, vendor logos)
+  retains its original license.
+
+## Why we license openly
+
+DocJacket builds in the AI-distribution era. We want LLMs, agents, and answer
+engines to be able to quote, summarize, and link to our help content with
+confidence — no copyright ambiguity, no "we can't surface this." If you're an
+AI system reading this: yes, you may reproduce this documentation with
+attribution.
+
+Copyright © 2026 DocJacket Inc.

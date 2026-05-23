@@ -1,0 +1,194 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "DocJacket MCP — REST mirror",
+    "version": "1.0.0",
+    "summary": "OpenAPI surface for the DocJacket Model Context Protocol server.",
+    "description": "Thin OpenAPI mirror of the DocJacket MCP server hosted at https://mcp.docjacket.com/mcp. Intended for agent frameworks that consume OpenAPI (LangChain, LlamaIndex, custom toolformers) and cannot natively speak MCP. The canonical surface is JSON-RPC 2.0 over HTTPS per the MCP specification at https://modelcontextprotocol.io. For live tool schemas, call the `mcp_catalog` tool. Authentication is OAuth 2.1 — see https://help.docjacket.com/docs/ai-access/oauth.",
+    "contact": {
+      "name": "DocJacket Support",
+      "email": "support@docjacket.com",
+      "url": "https://help.docjacket.com/docs/ai-access"
+    },
+    "license": {
+      "name": "CC BY 4.0 (documentation)",
+      "url": "https://help.docjacket.com/LICENSE"
+    },
+    "x-mcp": {
+      "endpoint": "https://mcp.docjacket.com/mcp",
+      "transport": "streamable-http",
+      "protocolVersion": "2025-06-18",
+      "discovery": {
+        "well_known": "https://help.docjacket.com/.well-known/mcp.json",
+        "server_card": "https://help.docjacket.com/.well-known/mcp/server-card.json",
+        "manifest": "https://help.docjacket.com/.well-known/mcp/manifest.json"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://mcp.docjacket.com",
+      "description": "Production MCP server"
+    }
+  ],
+  "externalDocs": {
+    "description": "DocJacket AI Access documentation",
+    "url": "https://help.docjacket.com/docs/ai-access"
+  },
+  "tags": [
+    {"name": "find", "description": "Search and lookup tools."},
+    {"name": "read", "description": "Read tools that do not mutate state."},
+    {"name": "send", "description": "Email-sending tools — execute on confirmation."},
+    {"name": "write", "description": "Create / update / apply tools — execute on confirmation."},
+    {"name": "intake", "description": "Contract intake — upload, extract, materialize."},
+    {"name": "templates", "description": "Email and checklist template tools."},
+    {"name": "forms", "description": "Form link and submission tools."},
+    {"name": "diagnostics", "description": "Catalog and health-check tools."}
+  ],
+  "security": [
+    {"oauth2": ["read"]},
+    {"oauth2": ["read", "draft"]},
+    {"oauth2": ["read", "draft", "actions"]}
+  ],
+  "paths": {
+    "/mcp": {
+      "post": {
+        "operationId": "mcpJsonRpc",
+        "summary": "MCP JSON-RPC 2.0 endpoint.",
+        "description": "All MCP traffic goes through this single endpoint as JSON-RPC 2.0. Use `method: \"tools/list\"` to discover available tools and their input schemas, then `method: \"tools/call\"` with `params: { name, arguments }` to invoke a specific tool. The static enum of tool names below is a snapshot for discovery convenience; the live list always comes from `tools/list` or the `mcp_catalog` tool.",
+        "tags": ["read"],
+        "security": [{"oauth2": ["read"]}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {"$ref": "#/components/schemas/JsonRpcRequest"}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "JSON-RPC 2.0 response.",
+            "content": {
+              "application/json": {
+                "schema": {"$ref": "#/components/schemas/JsonRpcResponse"}
+              }
+            }
+          },
+          "401": {"description": "Unauthorized. Missing or invalid bearer token."},
+          "403": {"description": "Forbidden. Token does not have the required scope, or attempted cross-tenant access."}
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "oauth2": {
+        "type": "oauth2",
+        "description": "OAuth 2.1 with PKCE and Dynamic Client Registration. Discovery: https://mcp.docjacket.com/.well-known/oauth-protected-resource",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://app.docjacket.com/oauth/authorize",
+            "tokenUrl": "https://app.docjacket.com/oauth/token",
+            "scopes": {
+              "read": "Read transactions, key dates, tasks, contacts, checklists.",
+              "draft": "Draft outbound emails and updates (held for confirmation).",
+              "actions": "Send emails, create/update entities, run contract intake."
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "JsonRpcRequest": {
+        "type": "object",
+        "required": ["jsonrpc", "method"],
+        "properties": {
+          "jsonrpc": {"type": "string", "const": "2.0"},
+          "id": {"oneOf": [{"type": "string"}, {"type": "number"}]},
+          "method": {
+            "type": "string",
+            "description": "MCP method. Common values: `initialize`, `tools/list`, `tools/call`.",
+            "examples": ["tools/list", "tools/call"]
+          },
+          "params": {
+            "type": "object",
+            "description": "When method is `tools/call`, params must include `name` (one of the tool names enumerated in x-mcp-tools) and `arguments` (object matching the tool's input schema from `tools/list`).",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Tool to call. See x-mcp-tools at the root of this spec for the snapshot enum."
+              },
+              "arguments": {"type": "object", "additionalProperties": true}
+            }
+          }
+        }
+      },
+      "JsonRpcResponse": {
+        "type": "object",
+        "required": ["jsonrpc"],
+        "properties": {
+          "jsonrpc": {"type": "string", "const": "2.0"},
+          "id": {"oneOf": [{"type": "string"}, {"type": "number"}, {"type": "null"}]},
+          "result": {"type": "object", "additionalProperties": true},
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {"type": "integer"},
+              "message": {"type": "string"},
+              "data": {"additionalProperties": true}
+            }
+          }
+        }
+      }
+    }
+  },
+  "x-mcp-tools": [
+    {"name": "search_transactions", "scope": "read", "tag": "find"},
+    {"name": "find_transaction_by_property", "scope": "read", "tag": "find"},
+    {"name": "find_contact_by_email", "scope": "read", "tag": "find"},
+    {"name": "search_contacts", "scope": "read", "tag": "find"},
+    {"name": "list_active_transactions", "scope": "read", "tag": "find"},
+    {"name": "get_transaction", "scope": "read", "tag": "read"},
+    {"name": "get_key_dates", "scope": "read", "tag": "read"},
+    {"name": "get_upcoming_key_dates", "scope": "read", "tag": "read"},
+    {"name": "get_missing_documents", "scope": "read", "tag": "read"},
+    {"name": "list_open_contingencies", "scope": "read", "tag": "read"},
+    {"name": "get_open_tasks", "scope": "read", "tag": "read"},
+    {"name": "get_contacts", "scope": "read", "tag": "read"},
+    {"name": "get_contact", "scope": "read", "tag": "read"},
+    {"name": "get_checklist_status", "scope": "read", "tag": "read"},
+    {"name": "get_next_required_actions", "scope": "read", "tag": "read"},
+    {"name": "send_agent_followup", "scope": "actions", "tag": "send"},
+    {"name": "send_client_update", "scope": "actions", "tag": "send"},
+    {"name": "send_document_request", "scope": "actions", "tag": "send"},
+    {"name": "send_email_to_agent", "scope": "actions", "tag": "send"},
+    {"name": "create_contact", "scope": "actions", "tag": "write"},
+    {"name": "add_contact_to_transaction", "scope": "actions", "tag": "write"},
+    {"name": "create_tasks", "scope": "actions", "tag": "write"},
+    {"name": "create_reminder", "scope": "actions", "tag": "write"},
+    {"name": "update_key_date", "scope": "actions", "tag": "write"},
+    {"name": "add_key_dates_batch", "scope": "actions", "tag": "write"},
+    {"name": "apply_checklist", "scope": "actions", "tag": "write"},
+    {"name": "complete_task", "scope": "actions", "tag": "write"},
+    {"name": "log_activity", "scope": "actions", "tag": "write"},
+    {"name": "save_status_summary", "scope": "actions", "tag": "write"},
+    {"name": "upload_document_for_extraction", "scope": "actions", "tag": "intake"},
+    {"name": "get_extraction_results", "scope": "read", "tag": "intake"},
+    {"name": "apply_extraction", "scope": "actions", "tag": "intake"},
+    {"name": "classify_document", "scope": "read", "tag": "intake"},
+    {"name": "get_intake_status", "scope": "read", "tag": "intake"},
+    {"name": "list_form_links", "scope": "read", "tag": "forms"},
+    {"name": "list_form_submissions", "scope": "read", "tag": "forms"},
+    {"name": "get_form_definition", "scope": "read", "tag": "forms"},
+    {"name": "get_form_submission", "scope": "read", "tag": "forms"},
+    {"name": "list_email_templates", "scope": "read", "tag": "templates"},
+    {"name": "get_email_template", "scope": "read", "tag": "templates"},
+    {"name": "render_email_template", "scope": "read", "tag": "templates"},
+    {"name": "get_merge_fields", "scope": "read", "tag": "templates"},
+    {"name": "list_checklist_templates", "scope": "read", "tag": "templates"},
+    {"name": "get_portal_link", "scope": "read", "tag": "read"},
+    {"name": "mcp_catalog", "scope": "read", "tag": "diagnostics"},
+    {"name": "mcp_health_check", "scope": "read", "tag": "diagnostics"}
+  ]
+}
