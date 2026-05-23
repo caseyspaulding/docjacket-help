@@ -1,7 +1,7 @@
 ---
 sidebar_label: Anchor Dates
 sidebar_position: 3
-description: Learn how anchor dates work in DocJacket timelines — the reference date that all milestones and deadlines calculate from, and how to recalculate when dates shift.
+description: How anchor dates work in DocJacket timelines — the reference date all milestones calculate from, and how to recalculate when dates change.
 ---
 
 # Anchor Dates
