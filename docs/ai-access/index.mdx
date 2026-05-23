@@ -86,7 +86,7 @@ DocJacket's MCP server exposes **47 tools** to every connected assistant across 
 - **Triage with judgment** — `get_next_required_actions` (the flagship — bundled overdue-first ranking with rationales)
 - **Send** — `send_agent_followup`, `send_client_update`, `send_document_request`, `send_email_to_agent` (all execute via your connected Gmail / Outlook)
 - **Create / update** — `create_contact`, `create_tasks`, `create_reminder`, `update_key_date`, `add_key_dates_batch`, `add_contact_to_transaction`, `apply_checklist`, `complete_task`, `log_activity`, `save_status_summary`
-- **Contract intake** — `request_upload_url`, `kick_off_extraction`, `upload_document_for_extraction` (fallback), `get_extraction_results`, `apply_extraction`, `classify_document`, `get_intake_status`
+- **Contract intake** — `list_documents`, `extract_existing_document` (canonical), `request_upload_url`, `kick_off_extraction` (Claude.ai paid + code exec), `upload_document_for_extraction` (small-file fallback), `get_extraction_results`, `apply_extraction`, `classify_document`, `get_intake_status`
 - **Forms** — `list_form_links`, `list_form_submissions`, `get_form_definition`, `get_form_submission`
 - **Templates** — `list_email_templates`, `get_email_template`, `render_email_template`, `get_merge_fields`, `list_checklist_templates`
 - **Diagnostics** — `mcp_catalog` (live tool inventory), `mcp_health_check`, `get_portal_link`
