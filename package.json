@@ -8,6 +8,8 @@
     "regen-llms": "node scripts/regen-llms-full.mjs",
     "prebuild": "node scripts/regen-llms-full.mjs",
     "build": "docusaurus build",
+    "postbuild": "node scripts/submit-indexnow.mjs",
+    "indexnow": "node scripts/submit-indexnow.mjs --force",
     "swizzle": "docusaurus swizzle",
     "deploy": "npm run build && wrangler deploy",
     "clear": "docusaurus clear",
