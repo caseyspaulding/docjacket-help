@@ -17,16 +17,20 @@ export default function DocItemLayoutWrapper(props: Props): ReactNode {
   const {metadata, frontMatter} = useDoc();
   const {siteConfig} = useDocusaurusContext();
 
-  const url = `${siteConfig.url}${metadata.permalink}`;
+  // metadata.permalink keeps the trailing slash for index docs even when
+  // trailingSlash:false is set, so strip it to match the canonical link.
+  const permalink = metadata.permalink.replace(/\/$/, '') || '/';
+  const url = `${siteConfig.url}${permalink}`;
   const imagePath =
     (frontMatter.image as string | undefined) ?? 'img/og-default.png';
   const image = imagePath.startsWith('http')
     ? imagePath
     : `${siteConfig.url}/${imagePath.replace(/^\//, '')}`;
 
+  // metadata.lastUpdatedAt is a Unix timestamp in milliseconds in 3.8+.
   const dateModified =
     typeof metadata.lastUpdatedAt === 'number'
-      ? new Date(metadata.lastUpdatedAt * 1000).toISOString()
+      ? new Date(metadata.lastUpdatedAt).toISOString()
       : undefined;
 
   const schema: Record<string, unknown> = {
