@@ -3519,6 +3519,16 @@ DocJacket connects with the tools you already use. Set up integrations in **Sett
 - **Outlook Calendar** — Sync calendar events and deadlines
 - **OneDrive** — Cloud document storage and sync
 
+### Follow Up Boss
+- Connect Follow Up Boss to sync contacts and deals
+- Map stages and fields
+- Review sync activity and automation behavior
+
+### SMS
+- Provision a dedicated business SMS number
+- Track monthly usage and buy additional credits
+- Send and receive direct text messages from transaction threads
+
 ### Webhooks
 You can also set up custom webhooks in **Settings > Connections** to send event notifications to external services like Zapier, Slack, or Microsoft Teams.
 
@@ -3526,6 +3536,7 @@ You can also set up custom webhooks in **Settings > Connections** to send event 
 
 - [Google Workspace](./google-workspace.mdx) — Connect Gmail, Drive, Calendar, and Contacts
 - [Microsoft Outlook](./microsoft-outlook.mdx) — Connect Outlook Mail, Calendar, and OneDrive
+- [Follow Up Boss](./follow-up-boss.md) — Connect Follow Up Boss, manage sync settings, and review activity
 - [Webhooks](./webhooks.mdx) — Send events to external services
 
 ---
@@ -3606,6 +3617,42 @@ Microsoft integration settings
 
 ---
 
+# Follow Up Boss
+
+Use **Settings > Follow Up Boss** to connect Follow Up Boss and manage how data syncs into DocJacket.
+
+## Tabs
+
+The Follow Up Boss settings page includes:
+
+- **Connections** — Add, review, and manage Follow Up Boss connections
+- **Stages** — Review stage configuration
+- **Mappings** — Map Follow Up Boss fields and stages to DocJacket fields
+- **Automations** — Manage automation behavior tied to the integration
+- **Activity** — Review recent sync events and connection activity
+
+## Add a connection
+
+1. Go to **Settings > Follow Up Boss**
+2. Open the **Connections** tab
+3. Click **New Connection**
+4. Complete the setup modal
+5. Save the connection
+
+After connecting, review sync settings so contacts, deals, and stages move the way your team expects.
+
+## Sync settings
+
+Use sync settings to decide which Follow Up Boss records should create or update DocJacket data.
+
+Review mappings before turning on broad sync. Clean mappings reduce duplicate contacts and make transaction automation more predictable.
+
+## Activity
+
+Use the **Activity** tab to confirm recent sync behavior and diagnose integration issues. If records do not appear as expected, check activity first, then confirm connection status and field mappings.
+
+---
+
 # Webhooks
 
 Webhooks let you send real-time event notifications from DocJacket to external services — like Zapier, Slack, Microsoft Teams, or your own custom applications.
@@ -3619,7 +3666,7 @@ Webhooks let you send real-time event notifications from DocJacket to external s
    - Document changes (uploaded, approved, rejected)
    - Transaction changes (created, updated, status changed)
    - Task changes (created, completed)
-   - Milestone changes (completed, approaching)
+   - Key date changes (completed, approaching)
 5. Save the webhook
 
 DocJacket will send a POST request to your URL every time a subscribed event occurs.
@@ -3736,9 +3783,16 @@ Access Settings from the sidebar — it's at the bottom of the navigation.
 
 ## In this section
 
-- [Organization Settings](./organization-settings.mdx) — Branding, defaults, and company info
+- [Organization Settings](./organization-settings.mdx) — Company info and account-wide defaults
+- [Brand and Profile](./brand-and-profile.md) — Brand presets, public-page attribution, profile details, timezone, and SMS consent
 - [Offices](./offices.md) — Office locations, states, members, approved forms, branding, and compliance defaults
 - [User Management](./user-management.mdx) — Add and manage team members
+- [Contact Settings](./contact-settings.md) — Contact types, service providers, and tags
+- [Calendar and Holidays](./calendar-and-holidays.md) — Google Calendar task syncing and organization holidays
+- [Transaction Configuration](./transaction-configuration.md) — Transaction roles, statuses, fields, contingencies, and key date statuses
+- [Document Settings](./document-settings.md) — Document types, document statuses, and file naming rules
+- [Email and Automation Settings](./email-and-automation.md) — Email identity, working hours, notifications, and automation rules
+- [SMS Settings](./sms-settings.md) — Dedicated SMS number, usage, credits, and number release
 - [Notification Preferences](./notification-preferences.md) — Control what alerts you receive
 - [Activity Log](./activity-log.md) — Review organization-wide user and system activity
 
@@ -3776,6 +3830,48 @@ Configure defaults that apply to new transactions:
 ## Transaction roles
 
 In **Settings > Transaction Roles**, you can create and manage the contact roles available when adding contacts to a transaction. The built-in roles (Buyer, Seller, Agent, etc.) cover most needs, but you can add custom ones if your workflow requires it.
+
+---
+
+# Brand and Profile
+
+Use **Settings > Brand** for organization-wide presentation and **Settings > Profile** for your personal account details.
+
+## Brand settings
+
+Brand settings control the look of DocJacket surfaces that clients, agents, and your team see.
+
+From **Settings > Brand**, you can:
+
+- Choose a brand preset or customize individual colors and fonts
+- Save changes that flow across intake forms, Front Door, email templates, and the services manual
+- Revert unsaved edits before saving
+- Control whether "Powered by DocJacket" appears on public pages when your plan allows that setting
+
+Brand changes preview in the admin experience as you edit, then apply to the organization once you click **Save Brand**.
+
+## Profile settings
+
+Use **Settings > Profile** to keep your own user details current.
+
+You can update:
+
+- Profile photo
+- First and last name
+- Phone number
+- Real estate license number
+- Timezone
+- SMS reminder consent
+
+Your email address is managed by your sign-in provider and cannot be changed from the profile page.
+
+## Timezone
+
+Your timezone affects how dates and reminders display for you. Use **Detect from browser** if you want DocJacket to choose the timezone from your current browser settings.
+
+## Email forwarding
+
+The profile page also shows your organization's intake email when email forwarding is active. Forwarding messages to that address lets DocJacket process inbound transaction documents for the organization.
 
 ---
 
@@ -3850,6 +3946,279 @@ From the Users page in Settings, you can:
 - **Change a user's role** — Update their permissions
 - **Deactivate a user** — Remove their access without deleting their account
 - **Remove a user** — Permanently remove them from your organization
+
+---
+
+# Contact Settings
+
+Use **Settings > Contacts** to control how contacts are categorized and filtered across DocJacket.
+
+## Contact types
+
+Contact types define the labels available when adding people and companies to your contact list.
+
+From the **Contact Types** tab, you can:
+
+- Add a type with an internal name and display name
+- Choose a color
+- Mark a type as a service provider
+- Hide inactive types from dropdowns
+- Edit existing types
+- Delete unused types
+
+Types with existing contacts cannot be deleted until those contacts are moved or removed.
+
+## Service providers
+
+Turn on **Service Provider** for companies such as title, escrow, lenders, inspectors, and vendors.
+
+Service provider types appear under organization and provider filters instead of being treated like individual people.
+
+## Tags
+
+Use the **Tags** tab to organize contacts and transactions with reusable labels.
+
+You can:
+
+- Create tags with a name, type, and color
+- Search and filter tags
+- Edit tag names and colors
+- Delete tags that are no longer needed
+
+Keep tags short and operational. They work best for repeatable filters such as VIP, Referral Partner, Builder, or Compliance Review.
+
+---
+
+# Calendar and Holidays
+
+Use **Settings > Calendar** and **Settings > Holidays** to control how dates sync and how business-day rules skip closed days.
+
+## Calendar sync
+
+DocJacket always syncs closings and key dates to your connected Google Calendar.
+
+In **Settings > Calendar**, you can choose whether task due dates also sync to Google Calendar.
+
+When task syncing is on:
+
+- Tasks with due dates appear on Google Calendar
+- Task dates appear alongside closings and key dates
+- Re-added task events usually appear on the next sync
+
+When task syncing is off:
+
+- Existing task events are removed from Google Calendar within a few minutes
+- Closing dates and key dates still sync
+- Task due dates remain visible inside DocJacket and in the morning brief
+
+## Holidays
+
+Organization holidays count as non-business days for business-day scheduling rules.
+
+Holidays affect:
+
+- Task rules that use business days
+- Scheduled emails that use business-day timing
+- Working-hours email deferral when **Skip on organization holidays** is enabled
+
+## Managing holidays
+
+From **Settings > Holidays**, you can:
+
+- Import US federal holidays for the current year and the next two years
+- Add a custom holiday
+- Mark a holiday as recurring every year
+- Edit existing holidays
+- Delete holidays that no longer apply
+
+Add office closures and local holidays that should delay automated reminders or task schedules.
+
+---
+
+# Transaction Configuration
+
+The **Transactions** group in Settings controls the options users see while managing transactions.
+
+## Transaction roles
+
+Use **Settings > Roles** in the Transactions group to configure contact roles used on transactions.
+
+Transaction roles determine how contacts appear in assignment dropdowns and transaction sections. Keep these role names aligned with how your team talks about buyers, sellers, agents, title, lenders, and other transaction participants.
+
+## Transaction statuses
+
+Use **Settings > Statuses** to customize pipeline statuses.
+
+You can:
+
+- Add custom statuses
+- Choose a status type
+- Pick a display color
+- Drag statuses into the order your team uses
+- Set the default status for new transactions
+- Hide statuses that should no longer appear
+
+System statuses are protected, but you can still decide which non-system statuses are active for your organization.
+
+## Fields and custom fields
+
+Use **Settings > Fields** and **Settings > Custom Fields** to control transaction data capture.
+
+Custom fields are useful for details that matter to your workflow but are not part of the default transaction form. Keep field names specific and stable so reports, templates, and saved workflows remain easy to understand.
+
+## Contingencies
+
+Use **Settings > Contingencies** to manage the contingency options available on transactions.
+
+Inactive contingencies are hidden from new transaction work while preserving historical records.
+
+## Key date statuses
+
+Use **Settings > Key Date Statuses** to control status options in the Key Date drawer.
+
+You can:
+
+- Add organization-owned statuses
+- Rename existing labels
+- Drag statuses into a preferred order
+- Archive statuses you no longer use
+- Mark statuses as terminal or in progress
+
+Terminal statuses close out a key date and can cancel related scheduled emails. In-progress statuses keep the key date open.
+
+---
+
+# Document Settings
+
+Use **Settings > Documents** to control how transaction files are categorized, reviewed, and named.
+
+## Document types
+
+Document types organize files in transactions.
+
+From the **Document Types** tab, you can:
+
+- Add document types
+- Add optional descriptions
+- Mark a document type as required for all transactions
+- Hide inactive document types
+- Edit existing types
+- Delete unused types
+
+Document types with existing usage cannot be deleted until those files are moved or removed.
+
+## Document statuses
+
+Document statuses track the review state of uploaded files.
+
+Use the **Document Statuses** tab to create statuses such as Under Review, Approved, Rejected, or Needs Signature. You can choose a color for each status and hide statuses that should no longer appear.
+
+## Naming rules
+
+Naming rules automatically name files when they are uploaded or split from a PDF packet.
+
+Rule types include:
+
+- **Upload** — Names documents uploaded without an explicit custom name
+- **Split** — Names pages created when a multi-page PDF is split
+
+Naming rules use tokens that are replaced with transaction data. Common tokens include:
+
+- `{PropertyAddress}`
+- `{ClientName}`
+- `{AgentName}`
+- `{Side}`
+- `{DocType}`
+- `{PlaceholderName}`
+- `{Date}`
+- `{OriginalName}`
+- `{TransactionType}`
+
+Set one default rule per rule type so newly uploaded or split documents use the naming pattern your team expects.
+
+---
+
+# Email and Automation Settings
+
+The **Emails & Alerts** group controls sender identity, send timing, personal notifications, and automated rule behavior.
+
+## Email settings
+
+Use **Settings > Email** to manage account-level email sending settings.
+
+If your email connection expires, reconnect it from **Settings > Integrations** so DocJacket can continue sending from the right mailbox.
+
+## Working hours
+
+Use **Settings > Working Hours** to hold automated emails until your organization's preferred send window.
+
+Working hours apply to automated emails such as:
+
+- Deadline reminders
+- E-signature chasers
+- Billing nudges
+- Other scheduled system messages
+
+Manual sends are not affected. If a user clicks **Send** on a task email, DocJacket sends it immediately.
+
+When working hours are enabled, you can choose:
+
+- Start and end time
+- Working days
+- Whether organization holidays should be skipped
+
+Times use the organization's timezone.
+
+## Notifications
+
+Use **Settings > Notifications** to choose which alerts you receive.
+
+Notification preferences are personal. Changing your notifications does not change what other team members receive.
+
+## Automation rules
+
+Use **Settings > Automation Rules** to create and manage rule-based notifications and emails.
+
+Automation rules can use templates, transaction data, and schedule logic. Keep rules narrowly named so it is clear what each rule sends and when it sends.
+
+---
+
+# SMS Settings
+
+Use **Settings > SMS** to manage texting for your organization.
+
+## Business number
+
+Organizations can use a dedicated business phone number for outbound SMS.
+
+From SMS settings, you can:
+
+- Search available phone numbers by area code
+- Choose a number
+- Provision the selected number
+- See the city or region associated with the number when available
+
+If you do not have a dedicated number, DocJacket can fall back to a shared DocJacket sending number.
+
+## Sending and replies
+
+To send a direct SMS from a transaction, open **Messages > Direct > New Message**.
+
+Replies return to the same message thread automatically, so the conversation stays attached to the transaction.
+
+Portal chat is separate from SMS and does not count against SMS usage.
+
+## Usage and credits
+
+SMS settings show monthly usage and the number of texts included in your plan.
+
+If your included texts are used up, you can buy more credits from the SMS settings page. Credits are added to the current month.
+
+## Releasing a number
+
+The **Danger Zone** appears when your organization has a dedicated number.
+
+Releasing a number permanently gives it up. Contacts who saved that number will no longer recognize your texts, and the same number may not be available again. Your account falls back to the shared DocJacket number after release.
 
 ---
 

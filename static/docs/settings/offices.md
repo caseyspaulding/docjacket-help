@@ -1,6 +1,6 @@
 ---
 sidebar_label: Offices
-sidebar_position: 3
+sidebar_position: 4
 description: Manage DocJacket office locations, states, members, approved forms, branding, and compliance defaults.
 ---
 
