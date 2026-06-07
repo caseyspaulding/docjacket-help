@@ -839,32 +839,35 @@ Custom statuses appear as columns in your pipeline view and as options in your s
 
 # Documents
 
-How to upload, organize, and manage documents in DocJacket
-
 Every real estate transaction generates a mountain of paperwork — contracts, disclosures, amendments, inspection reports, and more. DocJacket keeps it all organized in one place.
 
-From the **Documents** tab in any transaction, you can:
+Use the top-level **Documents** page when you need to search across all transaction documents. Use a transaction's **Documents** tab when you need to manage files for one deal.
 
-- **Upload files** — Drag and drop or browse to upload. Documents are categorized automatically.
-- **Track completeness** — Toggle audit mode to see which required documents are still missing.
-- **Extract data with AI** — Let AI read your documents and pull out key transaction details.
-- **Send for e-signature** — Send uploaded documents or office-approved form packets for signature.
-- **Search and filter** — Find any document by name or category, even in large transactions.
-- **Connect to Google Drive** — Import and export documents directly.
+From a transaction's **Documents** tab, you can:
 
-documents tab showing list of uploaded files
+- **Upload files** — Choose a category, then upload a PDF, Word file, or image.
+- **Track completeness** — Use **Documents Needed** to add requirements, apply document templates, link uploads, and track received/overdue/blocking items.
+- **Review received documents** — Search, filter, reorder, rename, change status, download, share, delete, and mark documents as sent.
+- **Run document checks** — Use **AI Check** for risk scans and contract signature/initial checks.
+- **Extract data** — Use **Extract Data** to run extraction on new documents for an existing transaction.
+- **Control portal visibility** — Show or hide documents on the Agent and Client Portals, and optionally restrict visibility to selected portal contacts.
+- **Connect to Google Drive** — Import from Drive, export selected/all documents, and link or change the transaction's Drive folder.
+- **Share disclosure packages** — Curate received documents and share them with recipients.
+- **Send for e-signature** — Use the **Forms & signatures** subtab for office-approved form packets and packet tracking.
+
+The transaction tab has two subtabs: **Files** for uploaded documents and **Forms & signatures** for e-sign packet workflows.
 
 ## In this section
 
 - [Uploading Documents](./uploading-documents.mdx) — How to get files into DocJacket
 - [AI Data Extraction](./ai-data-extraction.mdx) — Let AI read your documents
-- [Audit Mode](./audit-mode.mdx) — Track document completeness
+- [Documents Needed](./audit-mode.mdx) — Track required documents and link received files
 - [Signature Requests](./signature-requests.mdx) — Send documents for e-signature and track completion
 - [E-Signatures](./esignatures.md) — Review all signature requests and signing progress
 - [Approved Form Templates](./approved-form-templates.md) — Upload blank PDFs, map fields, and publish office-approved forms
 - [Form Packets](./esignature-form-packets.md) — Send approved form packets and track signer progress
 - [Disclosure Packages](./disclosure-packages.mdx) — Share disclosure packages from a transaction
-- [Google Drive Integration](./google-drive-integration.mdx) — Sync with Drive
+- [Google Drive Integration](./google-drive-integration.mdx) — Import, export, and link Drive folders
 - [DocDrop](./docdrop.mdx) — Let contacts email documents directly into the transaction
 
 ---
@@ -875,30 +878,34 @@ Getting documents into DocJacket is quick and easy. Here's how.
 
 ## Drag and drop
 
-The fastest way. Open a transaction's **Documents** tab and:
+The fastest way. Open a transaction's **Documents** tab, stay on **Files**, and:
 
-1. Click the **Upload** button (or just drag files onto the page)
-2. Drop one or more files
-3. DocJacket uploads them and automatically assigns a category based on the file name and content
+1. Click **Upload**
+2. Choose a category
+3. Drop a file into the upload drawer or click to browse
+4. Click **Upload**
 
-upload area with drag and drop zone
+The upload drawer shows progress and closes when the file is saved.
 
 ## Supported file types
 
-DocJacket accepts most common file types:
+The transaction upload drawer accepts:
 
 - **PDF** — The most common format for contracts and disclosures
-- **Images** — JPG, PNG, TIFF (great for photos of signed documents)
-- **Office files** — Word docs, Excel spreadsheets
-- **Other** — Most standard document formats
+- **Images** — JPG, JPEG, PNG
+- **Word files** — DOC, DOCX
 
-## Automatic categorization
+The file size limit is **50MB**.
 
-When you upload a document, DocJacket looks at the file name and content to guess the right category — things like "Purchase Agreement", "Inspection Report", or "Title Commitment". You can always change the category manually if the AI gets it wrong.
+## Categories and statuses
 
-## Uploading multiple files
+Pick the document category before uploading. You can change the document type or status later from the Documents table.
 
-You can upload multiple files at once. Just select them all or drag a batch into the upload area. Each file is processed individually and categorized on its own.
+Admins can manage document types, document statuses, and naming rules in **Settings > Documents**.
+
+## Required-document uploads
+
+If the file satisfies a required document, upload it from the **Documents Needed** checklist instead. That path links the uploaded file directly to the placeholder, updates the received count, and keeps the requirement history together.
 
 ## Other ways documents get into DocJacket
 
@@ -906,25 +913,28 @@ Documents don't only come from manual uploads:
 
 - **AI Extraction** — When you create a transaction via Upload & Extract, the contract is automatically saved to the Documents tab
 - **DocDrop** — Contacts can email documents directly into the transaction (see [DocDrop](./docdrop.mdx))
-- **Google Drive** — Import files from your Drive (see [Google Drive Integration](./google-drive-integration.mdx))
+- **Google Drive** — Import files from Drive or export transaction files back to Drive (see [Google Drive Integration](./google-drive-integration.mdx))
+- **E-sign packets** — Completed DocJacket e-sign packets save the signed PDF back to the transaction
 
 ---
 
 # AI Data Extraction
 
-Already have documents uploaded to a transaction? You can run AI extraction on them to automatically populate transaction fields — dates, names, amounts, and more.
+Use **Extract Data** when you already have a transaction and want DocJacket to read new documents for that deal.
 
 This is different from the "Upload & Extract" flow you use when creating a new transaction. This feature works on **existing transactions** where you want AI to read through documents and fill in missing data.
 
 ## How to use it
 
 1. Open a transaction and go to the **Documents** tab
-2. Click the **AI Data Extraction** button
-3. AI reads through your uploaded documents
-4. Review the extracted data — AI shows what it found and which fields it wants to update
-5. Approve the changes you want to keep
+2. On the **Files** subtab, click **Extract Data**
+3. Upload the documents you want DocJacket to read
+4. If you upload a single multi-page PDF, review the **Smart Split** step when it appears
+5. Open the progress page while extraction runs
+6. Review the extracted fields, citations, confidence, and warnings
+7. Save the update when the extracted data is correct
 
-AI extraction button on documents tab
+Nothing changes on the transaction until you finish the review-and-save step.
 
 ## What it extracts
 
@@ -937,7 +947,7 @@ AI looks through all your uploaded documents and pulls out:
 - Contingency periods
 - Agent and lender information
 
-If a field is already filled in, AI will show you its suggested value alongside the current one — you decide whether to update it.
+If a field is already filled in, review the suggested value before saving the update.
 
 ## When to use this
 
@@ -945,32 +955,64 @@ If a field is already filled in, AI will show you its suggested value alongside 
 - **You created the transaction manually** — Run extraction to auto-fill fields instead of typing them in
 - **An amendment changed key terms** — Upload the amendment and re-run extraction to catch updated dates or prices
 
+Use [Extraction Review](../operations/extraction-review.md) if an extraction finished scanning but still shows as awaiting save.
+
 ---
 
-# Audit Mode
+# Documents Needed
 
-Audit mode helps you track document completeness — so you can see at a glance which required documents are in hand and which are still missing.
+The **Documents Needed** checklist shows which files are required for a transaction and whether each one has been received.
 
-## Turning it on
+You will find it on the transaction's **Documents** tab, above **Documents Received**.
 
-On the **Documents** tab, toggle the **Audit Mode** switch. The document list changes to show:
+## What the checklist shows
 
-- **Received documents** — Files that have been uploaded and match a required document type
-- **Missing documents** — Required documents that haven't been uploaded yet
-- **Document status** — Whether each document has been reviewed, approved, or needs attention
+The checklist can show:
 
-audit mode showing received and missing documents
+- Required document name
+- Received checkbox
+- Due date
+- Blocking status
+- Received count
+- Overdue count
+- Blocking-missing count
+- Linked uploaded file, when one exists
 
-## Setting up required documents
+Use the **A-Z** and drag-handle controls to switch between alphabetical sorting and custom order.
 
-Audit mode works best when you have a list of required documents for the transaction type. You can set this up in a few ways:
+## Add or apply requirements
 
-- **Document template sets** — Create reusable document checklists in **Templates > Documents**. When applied to a transaction, they define what's required.
-- **Manual additions** — Add required documents to the checklist on the fly from the audit view.
+You can build the list in two ways:
+
+- **Apply template** - choose a reusable document template from **Templates > Documents**
+- **Add required document** - add one required document directly on the transaction
+
+Required documents also appear in SitRep reports, so keeping this checklist current improves status reporting.
+
+## Link or upload received files
+
+For each required document, you can:
+
+- Check it off as received
+- Link it to an existing upload
+- Upload a file directly into that required-document row
+- Review linked upload history when more than one file has been attached
+- Remove the requirement if it no longer applies
+
+Uploading from the checklist is best when a file satisfies a specific placeholder, because DocJacket links the new file to that requirement immediately.
+
+## Document checks
+
+The **Documents Received** table also has an **AI Check** column. Use it to run risk scans and contract signature/initial checks on uploaded documents.
+
+Those checks are separate from the Documents Needed checklist, but together they help answer two different questions:
+
+- Did we receive the required file?
+- Does the received file need review?
 
 ## Why this matters
 
-For TCs managing dozens of files per transaction, it's easy to lose track of what's been collected and what's still outstanding. Audit mode gives you a clear picture so you can:
+For TCs managing dozens of files per transaction, it's easy to lose track of what's been collected and what's still outstanding. Documents Needed gives you a clear picture so you can:
 
 - Follow up on missing documents before they hold up closing
 - Verify everything is in order before the closing date
@@ -992,37 +1034,54 @@ If you use Google Drive to store transaction documents, DocJacket can connect di
 ## Importing from Drive
 
 1. Open a transaction's **Documents** tab
-2. Click the **Google Drive** button
+2. On the **Files** subtab, click **Drive**
 3. Browse your Drive folders and select the files you want to import
 4. Click **Import** — the files are copied into DocJacket
-
-Google Drive file picker within DocJacket
 
 ## Exporting to Drive
 
 You can also send documents from DocJacket back to Google Drive. This is useful when you need to share files in a Drive folder with other parties who don't use DocJacket.
 
+From the Documents tab you can:
+
+- Export all transaction documents
+- Select documents and export only those files
+- Export a single document from its row actions
+
+## Linking a transaction folder
+
+The **Drive** menu also shows whether a transaction Drive folder is linked.
+
+Use it to:
+
+- Link a Drive folder
+- Change the linked folder
+- Open the folder in Google Drive
+- Unlink the folder
+
+When a folder is linked, required-document uploads can land in the transaction's persistent Drive folder.
+
 ## Tips
 
 - Imported files are **copies** — changes in Drive won't automatically sync to DocJacket (and vice versa)
 - You can import multiple files at once
-- Folder structure in Drive doesn't carry over — files land in the transaction's document list and get categorized by DocJacket
+- Folder structure in Drive doesn't carry over — imported files land in the transaction's document list
 
 ---
 
 # DocDrop
 
-DocDrop gives each transaction a unique email address. When contacts send documents to that address, the attachments are automatically filed into the transaction — no manual uploads needed.
+DocDrop gives a transaction its own email address. When contacts send documents to that address, attachments are filed into the transaction.
 
 ## How it works
 
-Every transaction gets its own DocDrop email address. You'll find it on the **Documents** tab.
+Each transaction can have a DocDrop email address. When the address is available, use **Copy DocDrop** on the transaction overview to copy it.
 
 1. Copy the DocDrop email address
 2. Share it with your contacts — agents, lenders, title companies, inspectors
-3. When they email documents to that address, the attachments appear in your Documents tab automatically
+3. When they email documents to that address, the attachments are saved to that transaction
 
-DocDrop email address with copy button
+If no address exists yet, create one from the transaction's DocDrop management area.
 
 ## Why this is useful
 
@@ -1037,15 +1096,35 @@ This is especially handy for:
 
 ## Tracking activity
 
-The DocDrop section shows activity metrics — how many documents have been received, processed, and any that need attention. This way you know at a glance if something came in that you need to review.
+The DocDrop management area shows:
 
-DocDrop activity metrics
+- Email address status
+- Emails received
+- Documents received
+- Last email received
+- Created, deactivated, and expired states
+
+## Configuration
+
+You can control how the address behaves:
+
+- Accept or stop document uploads
+- Accept or reject general emails
+- Set the maximum attachment size, up to 50MB
+- Auto-notify participants
+- Forward incoming email to an agent address
+- Forward to client contacts with **Receive Updates** enabled
+- Require sender validation
+- Allow specific sender domains
+- Block specific senders
+- Set expiration and auto-renew behavior
+- Regenerate, activate, or deactivate the address
 
 ## Tips
 
 - The DocDrop email address is unique per transaction, so documents always land in the right place
 - Multiple attachments in a single email are each saved as separate documents
-- DocJacket auto-categorizes the incoming documents based on their content
+- Deactivate the address when you no longer want it accepting incoming mail
 
 ---
 

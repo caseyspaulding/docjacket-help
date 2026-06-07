@@ -1,36 +1,66 @@
 ---
-sidebar_label: Audit Mode
+sidebar_label: Documents Needed
 sidebar_position: 4
-description: DocJacket's audit mode shows which required documents are in hand and which are still missing — closing-prep at a glance.
+description: Track required transaction documents, link received uploads, apply document templates, and spot overdue or blocking items.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/documents/audit-mode -->
 <!-- Source: docs/documents/audit-mode.mdx -->
 
-# Audit Mode
+# Documents Needed
 
-Audit mode helps you track document completeness — so you can see at a glance which required documents are in hand and which are still missing.
+The **Documents Needed** checklist shows which files are required for a transaction and whether each one has been received.
 
-## Turning it on
+You will find it on the transaction's **Documents** tab, above **Documents Received**.
 
-On the **Documents** tab, toggle the **Audit Mode** switch. The document list changes to show:
+## What the checklist shows
 
-- **Received documents** — Files that have been uploaded and match a required document type
-- **Missing documents** — Required documents that haven't been uploaded yet
-- **Document status** — Whether each document has been reviewed, approved, or needs attention
+The checklist can show:
 
-audit mode showing received and missing documents
+- Required document name
+- Received checkbox
+- Due date
+- Blocking status
+- Received count
+- Overdue count
+- Blocking-missing count
+- Linked uploaded file, when one exists
 
-## Setting up required documents
+Use the **A-Z** and drag-handle controls to switch between alphabetical sorting and custom order.
 
-Audit mode works best when you have a list of required documents for the transaction type. You can set this up in a few ways:
+## Add or apply requirements
 
-- **Document template sets** — Create reusable document checklists in **Templates > Documents**. When applied to a transaction, they define what's required.
-- **Manual additions** — Add required documents to the checklist on the fly from the audit view.
+You can build the list in two ways:
+
+- **Apply template** - choose a reusable document template from **Templates > Documents**
+- **Add required document** - add one required document directly on the transaction
+
+Required documents also appear in SitRep reports, so keeping this checklist current improves status reporting.
+
+## Link or upload received files
+
+For each required document, you can:
+
+- Check it off as received
+- Link it to an existing upload
+- Upload a file directly into that required-document row
+- Review linked upload history when more than one file has been attached
+- Remove the requirement if it no longer applies
+
+Uploading from the checklist is best when a file satisfies a specific placeholder, because DocJacket links the new file to that requirement immediately.
+
+## Document checks
+
+The **Documents Received** table also has an **AI Check** column. Use it to run risk scans and contract signature/initial checks on uploaded documents.
+
+Those checks are separate from the Documents Needed checklist, but together they help answer two different questions:
+
+- Did we receive the required file?
+- Does the received file need review?
 
 ## Why this matters
 
-For TCs managing dozens of files per transaction, it's easy to lose track of what's been collected and what's still outstanding. Audit mode gives you a clear picture so you can:
+For TCs managing dozens of files per transaction, it's easy to lose track of what's been collected and what's still outstanding. Documents Needed gives you a clear picture so you can:
 
 - Follow up on missing documents before they hold up closing
 - Verify everything is in order before the closing date

@@ -1,10 +1,8 @@
 ---
 sidebar_label: Uploading Documents
 sidebar_position: 2
-description: Upload documents to a DocJacket transaction — drag-and-drop, email forwarding, Google Drive import, and bulk upload.
+description: Upload files to a DocJacket transaction, choose categories, link required documents, and understand other document intake paths.
 ---
-
-import ScreenshotPlaceholder from '@site/src/components/ScreenshotPlaceholder';
 
 <head>
 <script type="application/ld+json">
@@ -12,7 +10,7 @@ import ScreenshotPlaceholder from '@site/src/components/ScreenshotPlaceholder';
   "@context": "https://schema.org",
   "@type": "HowTo",
   "name": "How to upload documents to a DocJacket transaction",
-  "description": "Drag and drop one or more files into a DocJacket transaction's Documents tab — PDFs, images, and Office files are accepted, and DocJacket auto-categorizes them on upload.",
+  "description": "Upload a file from a transaction's Documents tab by choosing a category and selecting a PDF, DOC, DOCX, JPG, or PNG file up to 50MB.",
   "totalTime": "PT1M",
   "step": [
     {
@@ -24,20 +22,20 @@ import ScreenshotPlaceholder from '@site/src/components/ScreenshotPlaceholder';
     {
       "@type": "HowToStep",
       "name": "Select files to upload",
-      "text": "Click the Upload button to browse for files, or simply drag the files onto the page. Multiple files can be uploaded at once.",
+      "text": "Click Upload on the Files subtab to open the upload drawer.",
       "url": "https://help.docjacket.com/docs/documents/uploading-documents#drag-and-drop"
     },
     {
       "@type": "HowToStep",
-      "name": "Drop the files",
-      "text": "Release the files in the upload zone. DocJacket accepts PDFs (most common for contracts and disclosures), images (JPG, PNG, TIFF), and Office files (Word, Excel).",
+      "name": "Choose a category and file",
+      "text": "Choose the document category, then drag in or browse for a PDF, DOC, DOCX, JPG, or PNG file up to 50MB.",
       "url": "https://help.docjacket.com/docs/documents/uploading-documents#supported-file-types"
     },
     {
       "@type": "HowToStep",
-      "name": "Review auto-categorization",
-      "text": "DocJacket reads the file name and content to assign a category — Purchase Agreement, Inspection Report, Title Commitment, and so on. Change the category manually if the AI guesses wrong.",
-      "url": "https://help.docjacket.com/docs/documents/uploading-documents#automatic-categorization"
+      "name": "Upload",
+      "text": "Click Upload. DocJacket shows progress, saves the file to the transaction, and returns you to the Documents tab.",
+      "url": "https://help.docjacket.com/docs/documents/uploading-documents#drag-and-drop"
     }
   ]
 })}
@@ -50,30 +48,34 @@ Getting documents into DocJacket is quick and easy. Here's how.
 
 ## Drag and drop
 
-The fastest way. Open a transaction's **Documents** tab and:
+The fastest way. Open a transaction's **Documents** tab, stay on **Files**, and:
 
-1. Click the **Upload** button (or just drag files onto the page)
-2. Drop one or more files
-3. DocJacket uploads them and automatically assigns a category based on the file name and content
+1. Click **Upload**
+2. Choose a category
+3. Drop a file into the upload drawer or click to browse
+4. Click **Upload**
 
-<ScreenshotPlaceholder>upload area with drag and drop zone</ScreenshotPlaceholder>
+The upload drawer shows progress and closes when the file is saved.
 
 ## Supported file types
 
-DocJacket accepts most common file types:
+The transaction upload drawer accepts:
 
 - **PDF** — The most common format for contracts and disclosures
-- **Images** — JPG, PNG, TIFF (great for photos of signed documents)
-- **Office files** — Word docs, Excel spreadsheets
-- **Other** — Most standard document formats
+- **Images** — JPG, JPEG, PNG
+- **Word files** — DOC, DOCX
 
-## Automatic categorization
+The file size limit is **50MB**.
 
-When you upload a document, DocJacket looks at the file name and content to guess the right category — things like "Purchase Agreement", "Inspection Report", or "Title Commitment". You can always change the category manually if the AI gets it wrong.
+## Categories and statuses
 
-## Uploading multiple files
+Pick the document category before uploading. You can change the document type or status later from the Documents table.
 
-You can upload multiple files at once. Just select them all or drag a batch into the upload area. Each file is processed individually and categorized on its own.
+Admins can manage document types, document statuses, and naming rules in **Settings > Documents**.
+
+## Required-document uploads
+
+If the file satisfies a required document, upload it from the **Documents Needed** checklist instead. That path links the uploaded file directly to the placeholder, updates the received count, and keeps the requirement history together.
 
 ## Other ways documents get into DocJacket
 
@@ -81,4 +83,5 @@ Documents don't only come from manual uploads:
 
 - **AI Extraction** — When you create a transaction via Upload & Extract, the contract is automatically saved to the Documents tab
 - **DocDrop** — Contacts can email documents directly into the transaction (see [DocDrop](./docdrop.mdx))
-- **Google Drive** — Import files from your Drive (see [Google Drive Integration](./google-drive-integration.mdx))
+- **Google Drive** — Import files from Drive or export transaction files back to Drive (see [Google Drive Integration](./google-drive-integration.mdx))
+- **E-sign packets** — Completed DocJacket e-sign packets save the signed PDF back to the transaction

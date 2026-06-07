@@ -1,7 +1,7 @@
 ---
 sidebar_label: DocDrop
 sidebar_position: 6
-description: Every DocJacket transaction gets a unique email address — forward documents to it and they're auto-filed into the right deal.
+description: Give a transaction its own DocDrop email address so emailed attachments can be filed into the right deal.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/documents/docdrop -->
@@ -9,17 +9,17 @@ description: Every DocJacket transaction gets a unique email address — forward
 
 # DocDrop
 
-DocDrop gives each transaction a unique email address. When contacts send documents to that address, the attachments are automatically filed into the transaction — no manual uploads needed.
+DocDrop gives a transaction its own email address. When contacts send documents to that address, attachments are filed into the transaction.
 
 ## How it works
 
-Every transaction gets its own DocDrop email address. You'll find it on the **Documents** tab.
+Each transaction can have a DocDrop email address. When the address is available, use **Copy DocDrop** on the transaction overview to copy it.
 
 1. Copy the DocDrop email address
 2. Share it with your contacts — agents, lenders, title companies, inspectors
-3. When they email documents to that address, the attachments appear in your Documents tab automatically
+3. When they email documents to that address, the attachments are saved to that transaction
 
-DocDrop email address with copy button
+If no address exists yet, create one from the transaction's DocDrop management area.
 
 ## Why this is useful
 
@@ -34,12 +34,32 @@ This is especially handy for:
 
 ## Tracking activity
 
-The DocDrop section shows activity metrics — how many documents have been received, processed, and any that need attention. This way you know at a glance if something came in that you need to review.
+The DocDrop management area shows:
 
-DocDrop activity metrics
+- Email address status
+- Emails received
+- Documents received
+- Last email received
+- Created, deactivated, and expired states
+
+## Configuration
+
+You can control how the address behaves:
+
+- Accept or stop document uploads
+- Accept or reject general emails
+- Set the maximum attachment size, up to 50MB
+- Auto-notify participants
+- Forward incoming email to an agent address
+- Forward to client contacts with **Receive Updates** enabled
+- Require sender validation
+- Allow specific sender domains
+- Block specific senders
+- Set expiration and auto-renew behavior
+- Regenerate, activate, or deactivate the address
 
 ## Tips
 
 - The DocDrop email address is unique per transaction, so documents always land in the right place
 - Multiple attachments in a single email are each saved as separate documents
-- DocJacket auto-categorizes the incoming documents based on their content
+- Deactivate the address when you no longer want it accepting incoming mail
