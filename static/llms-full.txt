@@ -10,29 +10,28 @@
 
 # Getting Started with DocJacket
 
-Welcome to DocJacket — quick overview of the platform and what it can do for you
-
 Welcome to DocJacket — the AI-powered platform that helps transaction coordinators, agents, and brokers manage real estate deals from contract to closing.
 
-Whether you're an independent TC juggling 30+ files or an agent keeping tabs on your deals, DocJacket keeps everything in one place: transactions, documents, timelines, tasks, contacts, and communication.
+Whether you're an independent TC juggling 30+ files or an agent keeping tabs on your own deals, DocJacket keeps everything in one place: transactions, documents, key dates, tasks, contacts, messages, portal access, forms, and reports.
 
 ## What can DocJacket do for you?
 
-- **AI Contract Extraction** — Upload a contract PDF and let AI pull out the buyer, seller, key dates, financials, and more. No more manual data entry.
-- **Smart Timelines** — Automatically calculate every deadline from your contract date. When a closing date changes, everything adjusts.
-- **Task Management** — Pre-built checklists for every transaction type. Assign tasks, set due dates, and automate email follow-ups.
-- **Client Portal** — Give your clients and agents a branded portal where they can see their transaction status, key dates, tasks, and documents.
-- **Document Management** — Upload, organize, and track every document. AI even categorizes them for you.
-- **Email Intelligence** — DocJacket monitors your email and sorts messages into the right transaction automatically.
+- **Document extraction** — Upload contracts and supporting documents, then review extracted buyers, sellers, property details, key dates, financials, and contingencies before saving.
+- **Smart splitting** — Split multi-document PDFs into individual documents before extraction.
+- **Key-date timelines** — Track closing, contract, inspection, financing, appraisal, possession, and other important dates.
+- **Task management** — Add one-off tasks, apply checklists, generate suggested tasks, assign work, and track status.
+- **Client portal** — Give clients and agents a branded place to see selected deal information, documents, forms, and messages.
+- **Messages and inbox** — Keep transaction communication connected to the right deal.
+- **Reports and calculators** — Prepare transaction reports, commission statements, and deal-specific calculations.
 
 ## Ready to dive in?
 
 Here's the best path for new users:
 
-1. [**Create your account**](./creating-your-account.mdx) — Sign up and pick your role
-2. [**Set up your first transaction**](./your-first-transaction.mdx) — Walk through creating a deal from scratch
+1. [**Create your account**](./creating-your-account.mdx) — Sign up, create your workspace, and land on the dashboard
+2. [**Set up your first transaction**](./your-first-transaction.mdx) — Upload documents or create a deal manually
 3. [**Learn the layout**](./navigating-docjacket.mdx) — Get comfortable with the dashboard and sidebar
-4. [**Understand roles**](./understanding-roles.mdx) — Learn the difference between TCs, agents, and brokers in DocJacket
+4. [**Understand roles**](./understanding-roles.mdx) — Learn team permissions and transaction contact roles
 
 If you ever get stuck, hit the **help chat button** in the bottom-right corner of the app — our AI assistant can answer questions in real time.
 
@@ -40,39 +39,39 @@ If you ever get stuck, hit the **help chat button** in the bottom-right corner o
 
 # Creating Your Account
 
-Getting started with DocJacket takes just a couple of minutes. Here's how to set up your account and get ready to manage transactions.
+Getting started with DocJacket takes just a couple of minutes. Here's how to create your login, set up your organization, and get ready to manage transactions.
 
 ## Sign up
 
-1. Head to [app.docjacket.com](https://app.docjacket.com) and click **Sign Up**
-2. Enter your name, email address, and create a password
-3. Verify your email — check your inbox for a confirmation link
+1. Head to [app.docjacket.com](https://app.docjacket.com)
+2. Click **Sign Up**
+3. Choose **Sign up with Google** or **Sign up with Microsoft**
+4. Complete the provider sign-in flow
 
-sign-up page
+DocJacket uses your Google or Microsoft account for authentication. There is no separate DocJacket password to create in the app.
 
-## Choose your role
+## Set up your organization
 
-Once you're in, DocJacket asks: **"What type of transactions do you manage?"**
+After your first sign-in, DocJacket asks for a few organization details:
 
-Pick the one that fits you best:
+- **Organization Name** — Your company, team, or personal TC business name
+- **Workspace URL** — The subdomain clients can use for portal access, such as `your-team.docjacket.com`
+- **First Name / Last Name** — Optional profile details
+- **Primary State** — Optional state context for your workspace
 
-- **Transaction Coordinator** — You manage deals end-to-end for agents and brokerages. This is the most common choice for TCs.
-- **Agent** — You represent buyers or sellers and want to track your own deals.
-- **Broker** — You manage a team or office and need visibility across all transactions.
+DocJacket checks whether your workspace URL is available while you type. Workspace URLs must be 3-30 characters and use lowercase letters, numbers, and hyphens.
 
-Don't overthink this — it just sets your default templates and layout. You can always change it later in Settings.
+Click **Create Organization** when the details look right.
 
-role selection step showing the three options
+## What DocJacket creates
 
-## Pick a starting template
+When setup finishes, DocJacket creates the core workspace pieces for you:
 
-Next, DocJacket shows you a list of checklist templates based on your role. These are pre-built workflows with key dates and tasks for different transaction types and states.
-
-Pick one that's close to what you typically work — for example, a **Residential Purchase** template for your state. DocJacket will create a sample transaction using that template so you can see how everything works.
-
-You can also skip this step and set up templates later.
-
-template selection step
+- Your organization
+- A default **Main Office**
+- A free starter subscription
+- System team roles like Owner, Admin, Transaction Coordinator, Agent, Assistant, and Viewer
+- Default document categories, document statuses, transaction statuses, field options, tags, SMS templates, and message board templates
 
 ## You're in!
 
@@ -80,6 +79,8 @@ After setup, you'll land on your **Dashboard**. From here you can:
 
 - Create your first real transaction
 - Explore the sidebar to see all the features
+- Invite team members from **Settings > Team Members**
+- Customize permissions from **Settings > Roles**
 - Click the **help chat** button anytime for quick answers
 
 Next up: [Set up your first transaction](./your-first-transaction.mdx)
@@ -233,62 +234,95 @@ The **Overview** tab is where most TCs spend their time — it's a single-page v
 
 # Understanding Roles in DocJacket
 
-DocJacket has a few different types of roles, and they work at different levels. Here's how they all fit together.
+DocJacket uses the word "role" in a few different places. The important thing is that each role type controls a different part of the system.
 
-## Your account role
+## Team roles
 
-When you first sign up, you pick one of three account types:
+Team roles control what people inside your organization can see and do in DocJacket.
 
-### Transaction Coordinator (TC)
-The most common role. TCs manage deals end-to-end — handling documents, deadlines, communication, and coordination between all parties. If you're an independent TC or work on a TC team, this is you.
+You manage these in **Settings > Roles** and assign them when inviting team members from **Settings > Team Members**.
 
-As a TC, you get the full feature set: transaction management, checklist templates, task automation, document tracking, client portals, and AI tools.
+DocJacket includes these system roles:
 
-### Agent
-For real estate agents who want to track their own deals. Agents see a streamlined view focused on their transactions, tasks, and client communication.
+- **Owner** — Full access to everything, including organization settings, billing, and user management
+- **Admin** — Manage team, transactions, and settings, without deleting the organization
+- **Transaction Coordinator** — Manage assigned transactions, documents, deadlines, and workflow
+- **Agent** — View assigned transactions, upload documents, and communicate with clients
+- **Assistant** — Help with administrative tasks using limited access
+- **Viewer** — Read-only access to assigned transactions and documents
 
-### Broker
-For managing a team or office. Brokers get visibility across all transactions in their organization, plus team management tools.
+You can also create **custom roles** with specific permission sets.
 
-## Team roles (permissions)
+## Custom permissions
 
-Within your organization, team members can have different permission levels. These control what each person can see and do:
+Custom roles can include permissions across these areas:
 
-- **Owner** — Full access to everything, including billing and organization settings
-- **Custom roles** — You can create custom roles in **Settings > Roles** with specific permissions for things like:
-  - Transaction management (create, edit, delete deals)
-  - Communication (send emails, access inbox)
-  - Reports and analytics
-  - User management (invite and manage team members)
-  - Billing access
+- Organization management
+- User management
+- Transaction management
+- Communication
+- Tasks and scheduling
+- Reports and analytics
+- General dashboard access
+- Billing
+- API and integrations
 
-This is useful when you have assistants, junior TCs, or team members who need limited access.
+Custom roles are useful when you have assistants, junior TCs, agents, or back-office users who need more than Viewer access but less than Admin access.
 
-settings roles page showing permission categories
+System roles cannot be edited or deleted. Custom roles can be edited, and they can be deleted when no team members are assigned to them.
 
-## Contact roles (within a transaction)
+## Transaction contact roles
 
-Every transaction has people playing specific roles. These are the contact roles you assign when adding someone to a deal:
+Transaction contact roles identify who someone is on a specific deal. They do not grant internal team permissions by themselves.
+
+You assign these roles when adding contacts to a transaction. Common examples include:
 
 **Clients**
+
 - Buyer, Seller
 
 **Agents**
-- Listing Agent, Buying Agent
+
+- Listing Agent, Buyer's Agent
 
 **Legal & Title**
+
 - Title Company, Closing Attorney, Escrow Officer
 
 **Lending**
+
 - Lender, Loan Officer
 
 **Service Providers**
+
 - Home Inspector, Appraiser, Surveyor, Contractor
 
 **Other**
+
 - Property Manager, HOA Contact, Insurance Agent
 
-Contact roles help DocJacket organize information and control what each person sees on the [Client Portal](/docs/client-portal) — for example, a buyer sees different information than the listing agent.
+These roles help DocJacket organize contacts, fill smart fields, resolve recipient roles in emails, and show the right people on reports.
+
+You can manage organization contact roles in **Settings > Transaction Roles**.
+
+## Portal roles
+
+Portal access is separate from team roles. A client, agent, lender, title contact, or other guest can receive portal access for a transaction without becoming a DocJacket team member.
+
+Use the transaction **Portal** tab to invite contacts, send portal links, and adjust guest access.
+
+## Signer roles
+
+E-sign form templates also use signer roles. These roles decide which signer completes each field on a form template, such as Buyer, Buyer 2, Seller, Seller 2, Buyer Agent, or Listing Agent.
+
+Signer roles are configured inside e-sign form templates. They are separate from team permissions and transaction contact roles, though they often use similar names.
+
+## Quick rule of thumb
+
+- Use **team roles** for internal DocJacket access
+- Use **transaction contact roles** for people on a deal
+- Use **portal roles** for external guest access
+- Use **signer roles** for e-sign field ownership
 
 ---
 

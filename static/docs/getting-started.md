@@ -10,28 +10,27 @@ description: Get started with DocJacket — set up your account, create your fir
 
 # Getting Started with DocJacket
 
-Welcome to DocJacket — quick overview of the platform and what it can do for you
-
 Welcome to DocJacket — the AI-powered platform that helps transaction coordinators, agents, and brokers manage real estate deals from contract to closing.
 
-Whether you're an independent TC juggling 30+ files or an agent keeping tabs on your deals, DocJacket keeps everything in one place: transactions, documents, timelines, tasks, contacts, and communication.
+Whether you're an independent TC juggling 30+ files or an agent keeping tabs on your own deals, DocJacket keeps everything in one place: transactions, documents, key dates, tasks, contacts, messages, portal access, forms, and reports.
 
 ## What can DocJacket do for you?
 
-- **AI Contract Extraction** — Upload a contract PDF and let AI pull out the buyer, seller, key dates, financials, and more. No more manual data entry.
-- **Smart Timelines** — Automatically calculate every deadline from your contract date. When a closing date changes, everything adjusts.
-- **Task Management** — Pre-built checklists for every transaction type. Assign tasks, set due dates, and automate email follow-ups.
-- **Client Portal** — Give your clients and agents a branded portal where they can see their transaction status, key dates, tasks, and documents.
-- **Document Management** — Upload, organize, and track every document. AI even categorizes them for you.
-- **Email Intelligence** — DocJacket monitors your email and sorts messages into the right transaction automatically.
+- **Document extraction** — Upload contracts and supporting documents, then review extracted buyers, sellers, property details, key dates, financials, and contingencies before saving.
+- **Smart splitting** — Split multi-document PDFs into individual documents before extraction.
+- **Key-date timelines** — Track closing, contract, inspection, financing, appraisal, possession, and other important dates.
+- **Task management** — Add one-off tasks, apply checklists, generate suggested tasks, assign work, and track status.
+- **Client portal** — Give clients and agents a branded place to see selected deal information, documents, forms, and messages.
+- **Messages and inbox** — Keep transaction communication connected to the right deal.
+- **Reports and calculators** — Prepare transaction reports, commission statements, and deal-specific calculations.
 
 ## Ready to dive in?
 
 Here's the best path for new users:
 
-1. [**Create your account**](./creating-your-account.mdx) — Sign up and pick your role
-2. [**Set up your first transaction**](./your-first-transaction.mdx) — Walk through creating a deal from scratch
+1. [**Create your account**](./creating-your-account.mdx) — Sign up, create your workspace, and land on the dashboard
+2. [**Set up your first transaction**](./your-first-transaction.mdx) — Upload documents or create a deal manually
 3. [**Learn the layout**](./navigating-docjacket.mdx) — Get comfortable with the dashboard and sidebar
-4. [**Understand roles**](./understanding-roles.mdx) — Learn the difference between TCs, agents, and brokers in DocJacket
+4. [**Understand roles**](./understanding-roles.mdx) — Learn team permissions and transaction contact roles
 
 If you ever get stuck, hit the **help chat button** in the bottom-right corner of the app — our AI assistant can answer questions in real time.
