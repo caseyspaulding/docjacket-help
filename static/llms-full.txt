@@ -1343,15 +1343,26 @@ Use Disclosure Packages for listing disclosures, buyer review packets, broker re
 
 DocJacket keeps a centralized contact database across all your transactions. Agents, clients, lenders, title companies, inspectors — everyone you work with lives here.
 
-The **Contacts** page in the sidebar shows your full directory. You can search, filter, import, export, and organize contacts into groups.
+The **Contacts** page in the sidebar shows your full directory. You can search, filter, inline-edit common fields, import from CSV or Google Contacts, export, merge duplicates, tag contacts, and organize contacts into groups.
 
-contacts list page
+Contacts also connect to transaction workflows. When you add a contact to a transaction, DocJacket stores that relationship with a transaction role, primary flag, merge display name, portal link status, and communication details.
+
+## What You Can Manage
+
+- People and their organizations
+- Email addresses and phone numbers, including primary labels
+- Contact types, such as agent, lender, attorney, client, or vendor
+- Tags for filtering and segmentation
+- Groups for reusable contact lists
+- Related transactions and transaction roles
+- Portal links for transaction contacts
+- SMS consent and contact communication readiness
 
 ## In this section
 
-- [Managing Contacts](./managing-contacts.mdx) — Add, edit, search, and organize
-- [Contact Roles](./contact-roles.md) — Buyer, seller, agent, vendor, and more
-- [Contact Groups](./contact-groups.md) — Organize contacts for bulk operations
+- [Managing Contacts](./managing-contacts.mdx) — Add, edit, search, import, export, merge, and tag contacts
+- [Contact Roles](./contact-roles.md) — Assign contacts to transaction roles and use those roles in communication
+- [Contact Groups](./contact-groups.md) — Organize contacts into reusable lists
 
 ---
 
@@ -1359,47 +1370,80 @@ contacts list page
 
 ## Adding a contact
 
-From the **Contacts** page, click **Add Contact** and enter their details:
+From the **Contacts** page, click **New Contact** and enter their details:
 
-- Name, email, phone
-- Company
-- Contact type (agent, lender, client, etc.)
+- First and last name
+- Contact type
+- Organization
+- Primary email and phone, with type labels
+- Additional emails and phone numbers
+- License number, website, and social links
+- Address
+- Tags
 - Notes
 
-You can also create contacts on the fly when adding someone to a transaction — just fill in their info and they're saved to your directory automatically.
+You can also create contacts while adding someone to a transaction. The transaction contact drawer can search existing contacts, filter by organization, or open a quick create dialog.
 
 ## Searching and filtering
 
 - **Search** by name, email, phone, or company
-- **Filter by type** — Narrow down to agents, attorneys, lenders, clients, or any other contact type
-- **Advanced filters** — Filter by transaction count, license status, and more
-- **Customize columns** — Show or hide table columns to display exactly what you need
+- **Filter by type** — Narrow to agents, attorneys, lenders, clients, or any custom contact type
+- **Active only** — Hide inactive contacts from the main list
+- **Advanced filters** — Filter by transaction usage, license status, and person/organization kind
+- **Saved views** — Save reusable contact grid configurations
+- **Columns** — Show, hide, reorder, resize, and reset table columns
+
+The Contacts grid also supports inline editing for common fields such as name, email, phone, company, license, notes, type, tags, and active status.
+
+## Bulk actions
+
+Select contacts from the grid to:
+
+- Export selected contacts
+- Delete selected contacts
+- Merge two selected contacts
+
+Deleting a contact marks it inactive. You can view inactive contacts by turning off **Active only**.
 
 ## Importing contacts
 
-Have an existing contact list? Click **Add Contact > Import from CSV** to bulk-import contacts. Map your CSV columns to DocJacket fields and import.
+Click **Import** from the Contacts page to import from:
+
+- **CSV Upload** — Upload a CSV, map columns to contact fields, preview the import, choose duplicate handling, and run the import
+- **Google Contacts** — Connect Google Contacts, fetch contacts, select the rows you want, and import them
+
+The CSV importer includes a downloadable template, recent import history, duplicate preview, import tags, and cancellation while an import is running.
 
 ## Exporting contacts
 
-Click **Export** to download your contacts as a CSV file — useful for backup, reporting, or moving data between systems.
+Click **Export** to download the current contact list as a CSV file. If contacts are selected, use **Export Selected** to export only those rows.
 
-contacts page with search and filter options
+## Contact detail page
+
+Open a contact to manage their full profile. From the detail page you can:
+
+- Change the profile photo
+- Edit name, organization, type, tags, emails, phones, address, and notes inline
+- Mark primary email and phone rows
+- Record SMS consent for phone numbers
+- Review related transactions and activity
+- Manage portal status for agent-style contacts
 
 ---
 
 # Contact Roles
 
-When you add a contact to a transaction, you assign them a role that describes their part in the deal.
+When you add a contact to a transaction, you assign a role that describes their part in that deal. The same contact can have different roles on different transactions.
 
 ## Role categories
 
-Contacts are organized into groups on the transaction overview:
+Transaction contacts are grouped by role category on the transaction **Contacts** tab.
 
 **Primary (Clients)**
 - Buyer, Seller
 
 **Professional (Agents)**
-- Listing Agent, Buying Agent
+- Listing Agent, Buyer Agent, cooperating agent roles
 
 **Legal & Title**
 - Title Company, Closing Attorney, Escrow Officer
@@ -1415,40 +1459,62 @@ Contacts are organized into groups on the transaction overview:
 
 ## Why roles matter
 
-Roles do more than just label contacts:
+Roles do more than label contacts:
 
-- **Portal visibility** — What a contact sees on the portal depends on their role (buyers see different info than agents)
-- **Permissions** — Roles control what contacts can access
-- **Communication** — Email templates can target contacts by role (e.g., "send to all agents")
-- **Organization** — Roles help you see at a glance who's involved and in what capacity
+- **Transaction organization** — The Contacts tab groups contacts by role category, such as primary parties, professional services, and service providers.
+- **Expected roles** — If a transaction expects certain roles, empty slots can appear until you assign a contact.
+- **Communication** — Email compose and templates can target recipients by role.
+- **Reports** — Transaction reports can show participants with their role labels.
+- **Merge display names** — Each transaction contact can have a merge name for emails, such as "Celia and Bill."
+- **Portal links** — Transaction contacts can receive portal links by email or SMS. Portal access is managed per transaction contact.
 
 ## Custom roles
 
-If the built-in roles don't cover your needs, you can create custom contact roles in **Settings > Transaction Roles**.
+If the built-in roles do not cover your workflow, create or edit roles in **Settings > Transaction Configuration**. Roles can be grouped by party so the Add Contact drawer stays organized.
+
+## Primary contacts
+
+A transaction contact can also be marked **Primary**. Use this when one buyer, seller, agent, or service contact should be treated as the main contact for that role.
 
 ---
 
 # Contact Groups
 
-Contact groups let you organize contacts into lists for easier management and bulk operations.
+Contact groups let you organize contacts into reusable lists. Use them for preferred vendors, agent partners, office-specific lists, regional contacts, or any group your team references often.
 
 ## Creating a group
 
 1. Go to **Contacts** in the sidebar
-2. Click **Add Contact > Groups**
-3. Name your group
-4. Add contacts to it
+2. Click **Groups**
+3. Click **New Group**
+4. Enter a name
+5. Optionally add a description and color
+6. Click **Create**
+
+Groups appear as cards with their name, optional description, color, and contact count.
+
+## Adding members
+
+Open a group and click **Add Members**.
+
+1. Search for a contact by name or email
+2. Click the add action next to the contact
+3. Repeat for each member
+
+DocJacket shows when a searched contact is already in the group, so you do not add the same contact twice.
 
 ## Uses for groups
 
-- **Email blasts** — Send an email to everyone in a group at once
 - **Preferred vendors** — Keep a list of your go-to inspectors, title companies, or lenders
 - **Agent partners** — Track the agents you work with regularly
 - **Regional contacts** — Group contacts by area if you work across multiple markets
+- **Recipient selection** — Use groups anywhere DocJacket supports group-based recipient picking
 
 ## Managing groups
 
-You can add or remove contacts from groups at any time. A contact can belong to multiple groups. Groups appear as a filter option on the Contacts page, so you can quickly view just the contacts in a specific group.
+You can edit a group's name, description, and color from the group card. Open the group to review members, remove members, or add more contacts.
+
+A contact can belong to multiple groups.
 
 ---
 
