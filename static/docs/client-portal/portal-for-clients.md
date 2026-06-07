@@ -14,13 +14,25 @@ When a buyer or seller opens their portal link, they see a clean, simple view of
 ## What clients see
 
 - **Transaction status** — Where things stand (Under Contract, Clear to Close, etc.)
-- **Key dates** — Important deadlines with dates and completion status
-- **Documents** — Any documents you've shared with them
+- **Key dates** — Important deadlines with dates, completion status, notes, and any TBD or not-applicable dates
+- **Documents** — Documents you've shared with them, grouped by category, with preview and download controls when downloads are allowed
 - **Tasks** — Tasks marked as portal-visible (things they might need to complete)
-- **Contacts** — Key contacts involved in the transaction (their agent, title company, lender)
+- **Contacts** — Parties, agents, title, lender, and other transaction contacts you choose to expose
 - **Service providers** — Inspectors, appraisers, and other vendors
+- **Property details** — Reference fields such as escrow number, MLS number, or APN when present
+- **Calendar subscription** — A live calendar URL they can copy into Google Calendar, Outlook, or Apple Calendar
 
 client portal view showing timeline and documents
+
+## Portal actions
+
+Clients can use the portal actions to:
+
+- Print the portal view
+- Download a branded one-page PDF summary
+- Preview PDF and image documents
+- Download shared documents when downloads are enabled
+- Switch between properties when the same contact has access to more than one active transaction
 
 ## What clients don't see
 
@@ -30,4 +42,4 @@ client portal view showing timeline and documents
 - Other transactions
 - Other contacts' portal views
 
-The portal is read-only for most items — clients can view status and documents, but they can't edit transaction data.
+The portal is read-only for transaction data. Clients can view status, dates, contacts, tasks, and documents, but they can't edit the transaction itself.

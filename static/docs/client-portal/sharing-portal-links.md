@@ -24,6 +24,19 @@ DocJacket generates a unique URL that you can share via email.
 
 create portal link dialog
 
+## What the link opens
+
+The link opens a branded portal for that recipient. Depending on their access level and the data you've shared, the portal may include:
+
+- Key dates and transaction status
+- Shared documents with preview and download controls
+- Portal-visible tasks
+- Parties, agents, title, lender, and service providers
+- A live calendar subscription link
+- Print and branded one-page PDF actions
+
+Portal links are different from Disclosure Package links. Use a portal link when someone needs an ongoing transaction view. Use a Disclosure Package when someone needs to review a specific packet of documents and optionally acknowledge receipt.
+
 ## Sending the link
 
 You can send the portal link by:

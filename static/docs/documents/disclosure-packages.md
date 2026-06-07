@@ -9,7 +9,9 @@ description: Share disclosure packages from a transaction's document workspace.
 
 # Disclosure Packages
 
-Disclosure Packages help you share a grouped set of transaction documents with the right recipients. Use them when a buyer, seller, agent, or outside party needs a clean package instead of individual file links.
+Disclosure Packages help you share a grouped set of transaction documents with the right recipients. Use them when a buyer, seller, agent, or outside party needs a clean packet instead of individual file links.
+
+Disclosure Packages are separate from Client Portal links. A portal link gives someone an ongoing transaction view. A disclosure package link gives someone access to a specific document packet, with package-level controls and activity tracking.
 
 ## Sharing a disclosure package
 
@@ -17,10 +19,55 @@ Disclosure Packages help you share a grouped set of transaction documents with t
 2. Go to the **Documents** tab
 3. Select or review the documents that belong in the package
 4. Click **Share Disclosure Package**
-5. Choose recipients and review the package
-6. Send the package
+5. Enter the package name and optional cover message
+6. Choose the documents to include
+7. Set whether recipients can download documents
+8. Set whether acknowledgement is required
+9. Click **Share now**
 
 share disclosure package action on the documents tab
+
+After DocJacket creates the package, it opens the package detail page so you can invite recipients.
+
+## Inviting recipients
+
+Use the **Recipients** tab to invite each viewer. Enter a display label and, if you want, an email address. DocJacket creates a secure share URL for that recipient.
+
+Copy the share URL when it appears. The raw share URL is shown once after the invite is created.
+
+From the recipient list you can see whether each recipient is invited, acknowledged, expired, or revoked. You can revoke a recipient's access at any time.
+
+## Recipient experience
+
+Recipients open an anonymous package link. They can:
+
+- Read the cover message
+- View each document in the package
+- Download documents when downloads are allowed
+- Acknowledge receipt when acknowledgement is required or requested
+
+Acknowledgement records that the recipient received and reviewed the package. It is not an e-signature.
+
+If a package or recipient link expires or is revoked, the recipient sees that the link is no longer active.
+
+## Activity reporting
+
+The **Activity** tab shows package engagement:
+
+- Recipient status
+- Access state
+- Last activity
+- Acknowledgement date
+- Per-document opened or downloaded status
+- A chronological activity timeline
+
+If a recipient viewed the package before the package changed, DocJacket flags them as stale so you can notify viewers of the update.
+
+You can also generate a read-only seller activity report. The seller report shows who opened, downloaded, and acknowledged the package, but it does not expose recipient email addresses or document download access.
+
+## Editing and archiving packages
+
+From the package detail page you can update the package name, cover message, download setting, acknowledgement setting, and expiry. Archiving a package stops recipient links from resolving.
 
 ## When to use packages
 

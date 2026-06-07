@@ -1265,7 +1265,9 @@ Use an approved form packet when you want DocJacket to assemble one or more reus
 
 # Disclosure Packages
 
-Disclosure Packages help you share a grouped set of transaction documents with the right recipients. Use them when a buyer, seller, agent, or outside party needs a clean package instead of individual file links.
+Disclosure Packages help you share a grouped set of transaction documents with the right recipients. Use them when a buyer, seller, agent, or outside party needs a clean packet instead of individual file links.
+
+Disclosure Packages are separate from Client Portal links. A portal link gives someone an ongoing transaction view. A disclosure package link gives someone access to a specific document packet, with package-level controls and activity tracking.
 
 ## Sharing a disclosure package
 
@@ -1273,10 +1275,55 @@ Disclosure Packages help you share a grouped set of transaction documents with t
 2. Go to the **Documents** tab
 3. Select or review the documents that belong in the package
 4. Click **Share Disclosure Package**
-5. Choose recipients and review the package
-6. Send the package
+5. Enter the package name and optional cover message
+6. Choose the documents to include
+7. Set whether recipients can download documents
+8. Set whether acknowledgement is required
+9. Click **Share now**
 
 share disclosure package action on the documents tab
+
+After DocJacket creates the package, it opens the package detail page so you can invite recipients.
+
+## Inviting recipients
+
+Use the **Recipients** tab to invite each viewer. Enter a display label and, if you want, an email address. DocJacket creates a secure share URL for that recipient.
+
+Copy the share URL when it appears. The raw share URL is shown once after the invite is created.
+
+From the recipient list you can see whether each recipient is invited, acknowledged, expired, or revoked. You can revoke a recipient's access at any time.
+
+## Recipient experience
+
+Recipients open an anonymous package link. They can:
+
+- Read the cover message
+- View each document in the package
+- Download documents when downloads are allowed
+- Acknowledge receipt when acknowledgement is required or requested
+
+Acknowledgement records that the recipient received and reviewed the package. It is not an e-signature.
+
+If a package or recipient link expires or is revoked, the recipient sees that the link is no longer active.
+
+## Activity reporting
+
+The **Activity** tab shows package engagement:
+
+- Recipient status
+- Access state
+- Last activity
+- Acknowledgement date
+- Per-document opened or downloaded status
+- A chronological activity timeline
+
+If a recipient viewed the package before the package changed, DocJacket flags them as stale so you can notify viewers of the update.
+
+You can also generate a read-only seller activity report. The seller report shows who opened, downloaded, and acknowledged the package, but it does not expose recipient email addresses or document download access.
+
+## Editing and archiving packages
+
+From the package detail page you can update the package name, cover message, download setting, acknowledgement setting, and expiry. Archiving a package stops recipient links from resolving.
 
 ## When to use packages
 
@@ -3739,7 +3786,7 @@ Tenant isolation is enforced at the SQL layer. Every MCP tool call adds `WHERE O
 
 See what your clients experience when they open their portal link
 
-The Client Portal gives your buyers, sellers, and agents a branded view of their transaction — without needing a DocJacket account. They can see key dates, documents, tasks, and status updates through a secure link you send them.
+The Client Portal gives your buyers, sellers, and agents a branded view of their transaction — without needing a DocJacket account. They can see key dates, shared documents, portal-visible tasks, transaction details, service providers, and status updates through a secure link you send them.
 
 It's a professional touch that keeps everyone informed and cuts down on "where are we?" calls and emails.
 
@@ -3751,6 +3798,7 @@ client portal view showing transaction status
 - **Secure access** — Each portal link is unique and can be set to expire
 - **Track engagement** — See who's viewed the portal and when
 - **Selective sharing** — Control exactly which documents, key dates, and tasks are visible
+- **Calendar and summary tools** — Viewers can copy a live calendar feed, print the portal, or download a branded one-page summary
 
 ## In this section
 
@@ -3796,13 +3844,25 @@ When a buyer or seller opens their portal link, they see a clean, simple view of
 ## What clients see
 
 - **Transaction status** — Where things stand (Under Contract, Clear to Close, etc.)
-- **Key dates** — Important deadlines with dates and completion status
-- **Documents** — Any documents you've shared with them
+- **Key dates** — Important deadlines with dates, completion status, notes, and any TBD or not-applicable dates
+- **Documents** — Documents you've shared with them, grouped by category, with preview and download controls when downloads are allowed
 - **Tasks** — Tasks marked as portal-visible (things they might need to complete)
-- **Contacts** — Key contacts involved in the transaction (their agent, title company, lender)
+- **Contacts** — Parties, agents, title, lender, and other transaction contacts you choose to expose
 - **Service providers** — Inspectors, appraisers, and other vendors
+- **Property details** — Reference fields such as escrow number, MLS number, or APN when present
+- **Calendar subscription** — A live calendar URL they can copy into Google Calendar, Outlook, or Apple Calendar
 
 client portal view showing timeline and documents
+
+## Portal actions
+
+Clients can use the portal actions to:
+
+- Print the portal view
+- Download a branded one-page PDF summary
+- Preview PDF and image documents
+- Download shared documents when downloads are enabled
+- Switch between properties when the same contact has access to more than one active transaction
 
 ## What clients don't see
 
@@ -3812,7 +3872,7 @@ client portal view showing timeline and documents
 - Other transactions
 - Other contacts' portal views
 
-The portal is read-only for most items — clients can view status and documents, but they can't edit transaction data.
+The portal is read-only for transaction data. Clients can view status, dates, contacts, tasks, and documents, but they can't edit the transaction itself.
 
 ---
 
@@ -3828,6 +3888,9 @@ The agent portal shows:
 - **Transaction status and key dates** — Where each deal stands
 - **Documents** — Documents shared with the agent role
 - **Tasks** — Portal-visible tasks assigned to them or relevant to their role
+- **Next action** — The next visible task due on each transaction, including overdue status
+- **Calendar shortcut** — A quick calendar-subscribe link for each transaction
+- **Recent activity** — A short activity preview inside the transaction detail portal
 
 agent portal showing transaction list
 
@@ -3835,7 +3898,11 @@ agent portal showing transaction list
 
 The main difference is scope. Clients see a single transaction. Agents may see multiple transactions they're involved in, with a higher-level overview.
 
-Agents also typically see more detail than clients — you can control this through contact permissions in each transaction.
+Agents also typically see more deal detail than clients, including agent-facing activity and role-specific transaction cards. You control access through the portal link and the visibility settings on documents, tasks, and contacts.
+
+## Opening a transaction
+
+From the agent portal, an agent can open a transaction card to see the same branded transaction portal view: key dates, shared documents, visible tasks, contacts, service providers, print/download actions, and the live calendar subscription.
 
 ---
 
@@ -3855,6 +3922,19 @@ Portal links are how clients and agents access their portal view. Each link is u
 DocJacket generates a unique URL that you can share via email.
 
 create portal link dialog
+
+## What the link opens
+
+The link opens a branded portal for that recipient. Depending on their access level and the data you've shared, the portal may include:
+
+- Key dates and transaction status
+- Shared documents with preview and download controls
+- Portal-visible tasks
+- Parties, agents, title, lender, and service providers
+- A live calendar subscription link
+- Print and branded one-page PDF actions
+
+Portal links are different from Disclosure Package links. Use a portal link when someone needs an ongoing transaction view. Use a Disclosure Package when someone needs to review a specific packet of documents and optionally acknowledge receipt.
 
 ## Sending the link
 
