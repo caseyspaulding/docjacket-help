@@ -5313,81 +5313,138 @@ DocJacket includes circuit breaker protection — if a webhook fails repeatedly,
 
 # Reports
 
-DocJacket helps you generate professional reports and visualize your transaction pipeline.
+DocJacket has two report surfaces:
+
+- **Reports** in the sidebar shows organization-wide analytics, performance metrics, pipeline totals, and CSV export.
+- **Reports** inside a transaction creates client-ready transaction summaries, checklists, commission statements, and scheduled report deliveries.
+
+Use the sidebar Reports page when you are reviewing the business. Use a transaction's Reports tab when you need to send or download a report for one deal.
 
 ## In this section
 
-- [Transaction Reports](./transaction-reports.mdx) — Generate and share status reports
-- [Pipeline View](./pipeline-view.mdx) — Visual Kanban board of your deals
+- [Transaction Reports](./transaction-reports.mdx) — Generate, send, and schedule transaction-level reports
+- [Pipeline View](./pipeline-view.mdx) — Use the Pipeline page for transaction, task, and buyer-offer boards
 
 ---
 
 # Transaction Reports
 
-Generate professional status reports to share with clients, agents, or your team. Reports pull live data from the transaction and can be exported as PDFs.
+Use a transaction's **Reports** tab to create client-ready summaries from live transaction data. Reports can include property details, contacts, tasks, documents, key dates, custom notes, and other sections defined by your SitRep templates.
 
-## Generating a report
+## Open the Reports tab
 
 1. Open a transaction
-2. Go to the **Reports** section
-3. See a live preview of the report
+2. Click **Reports**
+3. Review the transaction summary and selected report sections
 
-report preview
+The page loads the current property details, participants, task counts, document counts, and key-date rows so you can confirm the report content before sending or downloading.
 
-## Customizing sections
+## Choose a report template
 
-Toggle which sections to include in the report:
+Use **Report Template** to choose a saved SitRep template, or use **Custom** to manage the section choices manually.
 
-- **Key dates** — Timeline progress and upcoming deadlines
-- **Tasks** — Task completion status
-- **Documents** — Document checklist status
-- **Contacts** — Key parties involved
-- **Financials** — Purchase price, earnest money, loan details
+When you choose a template, DocJacket applies that template's saved sections. You can still override the section toggles on the transaction report before generating or sending.
 
-The preview updates in real time as you toggle sections on and off, so you can see exactly what the final report will look like before generating the PDF.
+See [SitRep Templates](/docs/templates/sitrep-templates) for template setup.
 
-## Sharing reports
+## Select sections
 
-Once you're happy with the report, you can:
+The **Report Sections** controls decide what goes into the generated report. If the transaction already has a delivery schedule, section changes are saved to that schedule automatically after a short delay. If there is no schedule yet, section changes apply to the current Generate PDF or Send to Client action.
 
-- **Download as PDF** — Save it locally or attach it to an email
-- **Send directly** — Email the report to contacts from within DocJacket
+Use **Custom Notes** for one-off report notes, such as a cover message or client-facing update. Internal transaction notes are separate and come from the transaction overview.
+
+## Generate files
+
+The transaction Reports tab includes these file actions:
+
+- **Generate PDF** — creates the selected transaction summary PDF
+- **Print Checklist** — generates a checklist-style PDF from the transaction tasks
+- **Commission Statement** — generates a commission statement for the transaction
+
+PDF branding uses your organization's report colors and footer text from organization settings.
+
+## Send to clients
+
+Click **Send to Client** to send the selected report sections by email. You can choose transaction contacts with email addresses and add extra email addresses manually.
+
+If Gmail or Outlook is connected, the report email sends from your connected mailbox. Otherwise, DocJacket sends it and BCCs you.
+
+## Schedule delivery
+
+Use **Schedule Delivery** to send recurring SitReps. A schedule includes:
+
+- Daily or weekly frequency
+- Day of week for weekly reports
+- Send time and time zone
+- Report template
+- Recipients from transaction contacts or typed email addresses
+
+You can pause, resume, edit, or delete the schedule from the Delivery Schedule card.
 
 ---
 
 # Pipeline View
 
-The Pipeline page gives you a Kanban-style board of all your transactions, organized by status. It's a visual way to see your workload at a glance.
+The **Pipeline** page is a visual board for active work. It has three views:
 
-pipeline board with transaction cards
+- **Transactions** — transactions grouped by status
+- **Tasks** — tasks grouped by due-date bucket across active deals
+- **Buyer Offers** — offer-stage transactions that can be promoted when they become active deals
 
-## How it works
+Use the tabs at the top of the Pipeline page to switch views.
 
-Each column represents a transaction status (Inbox, Active, Pending, Closed, etc.). Transaction cards live in the column matching their current status.
+## Transactions view
+
+The Transactions view is a Kanban board. Each column represents a transaction status configured for your organization. Transaction cards appear in the column that matches their current status.
 
 ### Transaction cards
 
 Each card shows:
 
 - **Property address** — Click to jump into the transaction
-- **Transaction type** — Purchase, sale, lease, etc.
-- **Purchase price** — The deal value
+- **Type and side** — Buyer, seller, dual, lease, and related labels
+- **Primary image** — When a property image is available
+- **Parties** — Buyer or seller names when available
 - **Closing date** — When it's expected to close
+- **Unread message badge** — When that transaction has unread messages
 
 ### Drag and drop
 
-Move cards between columns to update their status instantly. Drag a transaction from "Active" to "Closed" and the status updates in the background.
+Move a card between status columns to update the transaction's status. DocJacket saves the change in the background and rolls the card back if the update fails.
 
-### Inbox column
+## Inbox intakes
 
-New intakes land in the Inbox column. Click a card to review it and convert it into a full transaction.
+When unprocessed intakes exist, the Transactions view shows an **Inbox** column before the status columns. Click an intake card to review it, confirm the transaction details, and convert it into a transaction.
 
-## When to use Pipeline vs. List
+The Inbox column is for new inbound leads or front-door submissions that have not been processed yet.
+
+## Tasks view
+
+The Tasks view shows tasks across active transactions in due-date buckets such as past due, today, tomorrow, the next several days, later, and undated.
+
+Use this view when you want to work by deadline instead of by transaction.
+
+You can:
+
+- Search tasks
+- Filter by priority, assigned-to-me, active transactions only, past-due tasks, and undated tasks
+- Sort by due date, name, or priority
+- Mark tasks complete or incomplete
+- Click into the related transaction task
+- Edit a task due date inline
+- Drag task cards to supported date buckets to reschedule them
+- Use task color/status dots when configured
+
+## Buyer Offers view
+
+The Buyer Offers view shows offer-stage transactions separately from the active transaction pipeline. When an offer becomes an active transaction, use the promote action to move it into the main Transactions view.
+
+## When to use Pipeline vs. Transactions list
 
 - **Pipeline** is great for a visual overview of where all your deals stand — especially helpful in team meetings or for quick status checks
-- **List view** (the Transactions page) is better for searching, filtering, and working with lots of transactions at once
+- **Transactions list** is better for searching, filtering, inline editing fields, and working with many transactions at once
 
-Both views show the same data — just different ways of looking at it.
+Both surfaces work with the same transaction records; they are different ways to manage the same work.
 
 ---
 

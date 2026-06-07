@@ -1,14 +1,19 @@
 ---
 sidebar_label: Overview
 sidebar_position: 1
-description: Generate transaction status reports and visualize your deal pipeline in DocJacket.
+description: Review transaction analytics, export performance data, and generate transaction-level reports in DocJacket.
 ---
 
 # Reports
 
-DocJacket helps you generate professional reports and visualize your transaction pipeline.
+DocJacket has two report surfaces:
+
+- **Reports** in the sidebar shows organization-wide analytics, performance metrics, pipeline totals, and CSV export.
+- **Reports** inside a transaction creates client-ready transaction summaries, checklists, commission statements, and scheduled report deliveries.
+
+Use the sidebar Reports page when you are reviewing the business. Use a transaction's Reports tab when you need to send or download a report for one deal.
 
 ## In this section
 
-- [Transaction Reports](./transaction-reports.mdx) — Generate and share status reports
-- [Pipeline View](./pipeline-view.mdx) — Visual Kanban board of your deals
+- [Transaction Reports](./transaction-reports.mdx) — Generate, send, and schedule transaction-level reports
+- [Pipeline View](./pipeline-view.mdx) — Use the Pipeline page for transaction, task, and buyer-offer boards
