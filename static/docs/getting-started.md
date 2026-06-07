@@ -21,7 +21,7 @@ Whether you're an independent TC juggling 30+ files or an agent keeping tabs on 
 - **AI Contract Extraction** — Upload a contract PDF and let AI pull out the buyer, seller, key dates, financials, and more. No more manual data entry.
 - **Smart Timelines** — Automatically calculate every deadline from your contract date. When a closing date changes, everything adjusts.
 - **Task Management** — Pre-built checklists for every transaction type. Assign tasks, set due dates, and automate email follow-ups.
-- **Client Portal** — Give your clients and agents a branded portal where they can see their transaction status, milestones, and documents.
+- **Client Portal** — Give your clients and agents a branded portal where they can see their transaction status, key dates, tasks, and documents.
 - **Document Management** — Upload, organize, and track every document. AI even categorizes them for you.
 - **Email Intelligence** — DocJacket monitors your email and sorts messages into the right transaction automatically.
 

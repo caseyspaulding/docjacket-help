@@ -28,7 +28,12 @@ Plain English works. The assistant picks the right tools based on what you ask:
 
 The assistant walks the workflow for you. Behind the scenes:
 
-1. **Upload.** The assistant calls `upload_document_for_extraction` with the PDF you handed it. DocJacket returns an `extractionJobId` and kicks off extraction in the background.
+1. **Upload.** Three paths, in priority order:
+   - **(a) If the PDF is already in DocJacket** (DocDrop, email intake, the web wizard, or a prior chat call): the assistant calls `list_documents` to discover it, confirms with you ("found 'fl-buyer-purchase.pdf' uploaded at 9:14am — extract it?"), then `extract_existing_document(documentId)` starts the pipeline. PDF bytes never leave DocJacket. This is the canonical path and works in every assistant (Claude, Cowork, ChatGPT, Codex, Gemini) without any sandbox or paid-plan prerequisites. Just say *"extract the contract I uploaded this morning"* or *"process the file from earlier."*
+   - **(b) If you attached the PDF directly in chat on Claude.ai with code execution enabled** (paid plan + `mcp.docjacket.com` added to allowed domains under Settings → Capabilities → Code execution): the assistant uses a two-step presigned upload — `request_upload_url` returns a short-lived URL, the assistant `curl`s the file from its sandbox to blob storage, then `kick_off_extraction` starts the pipeline. PDF bytes never enter the chat conversation.
+   - **(c) Tiny PDF (~under 1 MB) attached in chat with no other option:** the assistant falls back to `upload_document_for_extraction`, which carries the bytes as base64 in the tool call. Avoid this path for anything larger — base64 inflates the file ~33% and lives in chat tokens for the rest of the conversation.
+
+   Either way you get an `extractionJobId` and extraction kicks off in the background.
 2. **Classify.** `classify_document` runs concurrently to detect the doc type — purchase agreement, listing agreement, lease, addendum, disclosure, etc. The classification informs which extraction prompt and checklist to use.
 3. **Poll.** Extraction typically takes **10–60 seconds** depending on document length and complexity. The assistant polls `get_extraction_results` until the job is `completed` (or `failed`, in which case it shows the error and offers to retry).
 4. **Review.** The assistant presents the extracted fields in chat:

@@ -21,7 +21,7 @@ Whether you're an independent TC juggling 30+ files or an agent keeping tabs on 
 - **AI Contract Extraction** — Upload a contract PDF and let AI pull out the buyer, seller, key dates, financials, and more. No more manual data entry.
 - **Smart Timelines** — Automatically calculate every deadline from your contract date. When a closing date changes, everything adjusts.
 - **Task Management** — Pre-built checklists for every transaction type. Assign tasks, set due dates, and automate email follow-ups.
-- **Client Portal** — Give your clients and agents a branded portal where they can see their transaction status, milestones, and documents.
+- **Client Portal** — Give your clients and agents a branded portal where they can see their transaction status, key dates, tasks, and documents.
 - **Document Management** — Upload, organize, and track every document. AI even categorizes them for you.
 - **Email Intelligence** — DocJacket monitors your email and sorts messages into the right transaction automatically.
 
@@ -66,7 +66,7 @@ role selection step showing the three options
 
 ## Pick a starting template
 
-Next, DocJacket shows you a list of timeline templates based on your role. These are pre-built task checklists and milestone timelines for different transaction types and states.
+Next, DocJacket shows you a list of checklist templates based on your role. These are pre-built workflows with key dates and tasks for different transaction types and states.
 
 Pick one that's close to what you typically work — for example, a **Residential Purchase** template for your state. DocJacket will create a sample transaction using that template so you can see how everything works.
 
@@ -90,7 +90,7 @@ Next up: [Set up your first transaction](./your-first-transaction.mdx)
 
 Step-by-step walkthrough of creating your first transaction in DocJacket
 
-Let's walk through creating a transaction from scratch. By the end, you'll have a deal set up with contacts, a timeline, and tasks — ready to manage.
+Let's walk through creating a transaction from scratch. By the end, you'll have a deal set up with contacts, key dates, and tasks — ready to manage.
 
 ## Two ways to create a transaction
 
@@ -144,22 +144,22 @@ You can pick from your existing contacts or create new ones on the fly.
 
 contacts panel showing role slots
 
-## Apply a timeline template
+## Apply a checklist
 
-Timelines are what keep your deal on track. From the **Timeline** tab:
+Checklists are what set up the reusable workflow for your deal. From the **Timeline** tab:
 
-1. Click **Apply Template**
-2. Choose a template that matches your transaction type and state
-3. Set your **anchor date** — usually the contract date. All other deadlines calculate from this date.
-4. Review the milestones and adjust any dates if needed
+1. Click **Apply Checklist**
+2. Choose a checklist that matches your transaction type and state
+3. Review the key dates, tasks, and options
+4. Adjust any dates if needed
 
-Your timeline now shows every milestone from contract to closing, with automatic deadline calculations.
+Your timeline now shows the important key dates from contract to closing, with automatic deadline calculations.
 
-timeline tab with milestones
+timeline tab with key dates
 
 ## Check your tasks
 
-Head to the **Tasks** tab. If your timeline template included tasks, they're already here — organized by due date with priorities color-coded:
+Head to the **Tasks** tab. If your checklist included tasks, they're already here — organized by due date with priorities color-coded:
 
 - 🔴 **Urgent** — Do this now
 - 🟠 **High** — Don't let this slip
@@ -206,10 +206,10 @@ The sidebar on the left is your main navigation. Here's what each section does:
 | **Transactions** | All your deals — search, filter, and manage |
 | **Tasks** | Organization-wide task list across all transactions |
 | **Pipeline** | Visual pipeline view of your deals by status |
-| **Templates** | Create and manage timeline, task, and email templates |
+| **Templates** | Create and manage checklists, key date rules, email templates, forms, document lists, and report templates |
 | **Inbox** | Your message center for transaction-related emails |
 | **Contacts** | Your contact database — clients, agents, vendors |
-| **Calendar** | See all milestones and deadlines in a calendar view |
+| **Calendar** | See all key dates, tasks, reminders, and deadlines in a calendar view |
 | **Listings** | Property listings you're tracking |
 | **Offices** | Manage brokerage offices |
 | **Reports** | Transaction reports and analytics |
@@ -222,8 +222,8 @@ sidebar with menu items visible
 
 When you open a transaction, you'll see a tabbed layout:
 
-- **Overview** — Everything at a glance: key dates, financials, contacts, tasks, documents, milestones, contingencies, and repairs
-- **Timeline** — Your milestones and deadlines with status tracking
+- **Overview** — Everything at a glance: key dates, financials, contacts, tasks, documents, contingencies, and repairs
+- **Timeline** — Your key dates and deadlines with status tracking
 - **Tasks** — To-do list specific to this transaction
 - **Documents** — All files for this deal
 - **Contacts** — People involved in this transaction
@@ -254,7 +254,7 @@ When you first sign up, you pick one of three account types:
 ### Transaction Coordinator (TC)
 The most common role. TCs manage deals end-to-end — handling documents, deadlines, communication, and coordination between all parties. If you're an independent TC or work on a TC team, this is you.
 
-As a TC, you get the full feature set: transaction management, timeline templates, task automation, document tracking, client portals, and AI tools.
+As a TC, you get the full feature set: transaction management, checklist templates, task automation, document tracking, client portals, and AI tools.
 
 ### Agent
 For real estate agents who want to track their own deals. Agents see a streamlined view focused on their transactions, tasks, and client communication.
@@ -368,7 +368,7 @@ If you don't have a contract yet or prefer to enter details yourself:
 4. Add the purchase price and key dates
 5. Click **Create**
 
-You can fill in the rest later — contacts, documents, timeline, and tasks can all be added from the transaction overview.
+You can fill in the rest later — contacts, documents, key dates, and tasks can all be added from the transaction overview.
 
 manual creation form
 
@@ -377,7 +377,7 @@ manual creation form
 Once your transaction is created, you'll land on the [Transaction Overview](./transaction-overview.mdx). From there, you'll typically want to:
 
 1. [Add contacts](/docs/contacts) — buyers, sellers, agents, title company, lender
-2. [Apply a timeline template](/docs/calendar/timeline-templates) — sets up your milestones and deadlines
+2. [Apply a checklist](/docs/calendar/timeline-templates) — sets up your key dates, tasks, and deadline rules
 3. [Upload documents](/docs/documents/uploading-documents) — contracts, disclosures, and other files
 
 ---
@@ -392,8 +392,8 @@ full transaction overview page
 
 Here's a breakdown of each section:
 
-### Upcoming Milestones
-A visual snapshot of your timeline milestones at the top. Click any milestone to jump to the Timeline tab for more details.
+### Upcoming Key Dates
+A visual snapshot of the next important dates at the top. Click any key date to jump into the full key date list for more details.
 
 ### AI Insights
 If you've run an AI analysis, risk assessments and compliance checks appear here. Each issue has one-click actions you can approve or dismiss.
@@ -416,8 +416,8 @@ Upload photos of the property. Star an image to feature it on reports and the cl
 ### Documents
 Contracts, disclosures, and other files for this transaction. Track approval status and upload new documents right from here.
 
-### Milestones
-Key deadlines for the transaction. Apply a timeline template or add milestones manually. The "Next Up" badge highlights what's coming next.
+### Key Date Timeline
+Key deadlines for the transaction. Apply a checklist or add key dates manually. The "Next Up" badge highlights what's coming next.
 
 ### Contingencies
 Track contingency status throughout the deal. Mark each as Active, Satisfied, or Waived as the transaction progresses.
@@ -451,13 +451,13 @@ The dates section on the overview shows your most important deadlines:
 - **Financing deadline** — When the buyer's financing must be secured
 - **Other custom dates** — Any additional dates relevant to the deal
 
-These dates stay in sync with your timeline milestones. If you change the closing date, DocJacket recalculates all the downstream deadlines automatically.
+These dates stay in sync with the transaction's key date rules. If you change the closing date, DocJacket recalculates downstream deadlines that depend on it.
 
 key dates section on overview
 
 ### Editing dates
 
-Click any date field to edit it. When you change a date that other milestones depend on (like the closing date), DocJacket will ask if you want to recalculate the rest of your timeline.
+Click any date field to edit it. When you change a date that other key dates depend on, like the closing date, DocJacket will ask if you want to recalculate the rest of the timeline.
 
 ## Financial summary
 
@@ -602,6 +602,8 @@ documents tab showing list of uploaded files
 - [Uploading Documents](./uploading-documents.mdx) — How to get files into DocJacket
 - [AI Data Extraction](./ai-data-extraction.mdx) — Let AI read your documents
 - [Audit Mode](./audit-mode.mdx) — Track document completeness
+- [Signature Requests](./signature-requests.mdx) — Send documents for e-signature and track completion
+- [Disclosure Packages](./disclosure-packages.mdx) — Share disclosure packages from a transaction
 - [Google Drive Integration](./google-drive-integration.mdx) — Sync with Drive
 - [DocDrop](./docdrop.mdx) — Let contacts email documents directly into the transaction
 
@@ -787,6 +789,60 @@ DocDrop activity metrics
 
 ---
 
+# Signature Requests
+
+Signature Requests let you send transaction documents for e-signature directly from DocJacket. Sent requests stay tied to the transaction, so your team can track who has signed and which signed PDF came back.
+
+## Sending a document for signature
+
+1. Open a transaction
+2. Go to the **Documents** tab
+3. Find the document that needs signatures
+4. Click **Send for Signature**
+5. Choose the signer roles and recipients
+6. Review the request and send it
+
+signature request drawer from the documents tab
+
+## Tracking status
+
+After a Signature Request is sent, the Documents tab shows signature status on the related document. Open the status view to see progress and signed-document details.
+
+## Tips
+
+- Make sure contacts are added to the transaction before sending a request.
+- Use approved form templates when your office requires standardized signature packets.
+- Sent requests are treated as locked records so in-flight signing is not changed accidentally.
+
+---
+
+# Disclosure Packages
+
+Disclosure Packages help you share a grouped set of transaction documents with the right recipients. Use them when a buyer, seller, agent, or outside party needs a clean package instead of individual file links.
+
+## Sharing a disclosure package
+
+1. Open a transaction
+2. Go to the **Documents** tab
+3. Select or review the documents that belong in the package
+4. Click **Share Disclosure Package**
+5. Choose recipients and review the package
+6. Send the package
+
+share disclosure package action on the documents tab
+
+## When to use packages
+
+Use Disclosure Packages for listing disclosures, buyer review packets, broker review, or any group of documents that should travel together.
+
+## Tips
+
+- Review document visibility before sending.
+- Confirm recipients are correct before sharing sensitive documents.
+- Keep required document lists up to date so missing files are easier to spot before sending a package.
+
+---
+
 ## Contacts
 
 # Contacts
@@ -908,92 +964,93 @@ You can add or remove contacts from groups at any time. A contact can belong to 
 
 DocJacket gives you two ways to manage dates: **timelines** inside each transaction, and a **calendar** that shows everything across all your deals.
 
-Never miss a deadline again — milestones, tasks, reminders, and custom events all appear in one place.
+Never miss a deadline again — key dates, tasks, reminders, and custom events all appear in one place.
 
 ## In this section
 
-- [Timeline Templates](./timeline-templates.mdx) — Pre-built milestone sequences for different transaction types
+- [Checklists & Key Dates](./timeline-templates.mdx) — Pre-built workflows with key dates, tasks, and automations
 - [Anchor Dates](./anchor-dates.md) — How one date drives all the others
 - [Calendar View](./calendar-view.mdx) — See all deadlines across all transactions
 
 ---
 
-# Timeline Templates
+# Checklists & Key Dates
 
-How to apply and customize timeline templates for your transactions
+How to apply and customize checklist templates for your transactions
 
-Timeline templates are pre-built sequences of milestones for different transaction types. Apply one to a transaction and your entire deadline schedule is set up automatically.
+Checklist templates are pre-built workflows for different transaction types. Apply one to a transaction and DocJacket can create the key dates, tasks, and automations that belong to that deal.
 
-## Applying a template
+## Applying a checklist
 
 1. Open a transaction and go to the **Timeline** tab
-2. Click **Apply Template**
-3. Choose a template that matches your transaction type and state
-4. Set your [anchor date](./anchor-dates.md) — usually the contract date
-5. All milestones populate with calculated dates
+2. Click **Apply Checklist**
+3. Choose a checklist that matches your transaction type and state
+4. Review the key dates, tasks, and options
+5. Apply the checklist
 
-timeline tab after applying a template
+timeline tab after applying a checklist
 
 ## What's in a template
 
 Each template includes:
 
-- **Milestones** — Key deadlines like inspection period, appraisal, financing, and closing
-- **Date offsets** — Each milestone is defined relative to the anchor date (e.g., "10 days after contract", "3 days before closing")
-- **Linked tasks** — Some milestones include associated tasks that auto-populate
+- **Key Dates** — Important dates like inspection period, appraisal, financing, final walkthrough, possession, and closing
+- **Date rules** — Each key date can calculate relative to another date, such as "10 days after Effective Date" or "1 business day before Closing"
+- **Tasks** — Work items tied to those key dates
+- **Automations** — Prepared emails or rules tied to tasks and dates
 
 ## Viewing your timeline
 
 DocJacket offers two views:
 
-- **Pipeline view** — A horizontal visual overview. Green nodes are complete, blue is upcoming, red is overdue. Click any node for details.
-- **List view** — A vertical list with expandable milestones showing linked tasks.
+- **Pipeline view** — A horizontal visual overview. Complete, upcoming, overdue, and needs-date items are easy to spot. Click any item for details.
+- **List view** — A vertical list with expandable key dates showing linked tasks.
 
 Toggle between them with the view switch at the top.
 
-pipeline view with color-coded milestone nodes
+pipeline view with color-coded key date nodes
 
-## Adding custom milestones
+## Adding custom key dates
 
-Templates are a starting point. You can always add custom milestones for dates the template doesn't cover:
+Templates are a starting point. You can always add custom key dates for dates the template doesn't cover:
 
-1. Click the **Add Milestone** button
-2. Enter the milestone name and date
+1. Click **Add Key Date**
+2. Enter the key date name and date
 3. Optionally link tasks to it
 
 ## Recalculating dates
 
-When a key date changes (like the closing date gets pushed back), click **Recalculate** to cascade the change to all downstream milestones and tasks. DocJacket adjusts everything based on the original offsets.
+When a key date changes (like the closing date gets pushed back), click **Recalculate** to cascade the change to all downstream key dates and tasks. DocJacket adjusts everything based on the original offsets.
 
 ## Creating your own templates
 
-Go to **Templates > Timelines** in the sidebar to create custom timeline templates for your workflow. Define milestones with date offsets, and they'll be available to apply to any future transaction.
+Go to **Templates > Checklists** to create custom checklist templates for your workflow. Use **Templates > Key Date Library** to manage reusable key date rules that checklists can consume.
 
 ---
 
 # Anchor Dates
 
-An anchor date is the reference point from which all other dates in your timeline are calculated. It's the single most important date in your transaction's timeline.
+An anchor date is the reference point from which dependent key dates are calculated. It's the date that lets DocJacket turn a reusable rule into a real transaction deadline.
 
 ## How it works
 
-When you apply a timeline template, every milestone is defined as an offset from the anchor date:
+When you apply a checklist, each key date rule can be defined as an offset from an anchor date:
 
 - "Inspection deadline: 10 days after anchor"
 - "Appraisal deadline: 21 days after anchor"
 - "Closing: 30 days after anchor"
 
-The **anchor date** is usually the **contract date** — the day the purchase agreement was executed. But it could be any date that your milestones reference.
+The **anchor date** is usually the **contract date** — the day the purchase agreement was executed. But it could be any date that your key date rules reference.
 
 ## Setting the anchor date
 
-When you apply a timeline template, DocJacket asks you to set the anchor date. It typically defaults to the contract date if one is already entered on the transaction.
+When you apply a checklist, DocJacket uses the transaction dates already entered on the deal. It typically defaults anchor-based calculations to the contract date when that date is available.
 
-You can change the anchor date later from the Timeline tab. When you do, click **Recalculate** and all milestone dates update based on the new anchor.
+You can change key dates later from the Timeline tab. When you do, DocJacket can recalculate dependent dates based on the original rules.
 
 ## Why this matters
 
-The anchor date system means you don't have to manually calculate dozens of deadlines. Set it once, and everything flows from there. When a closing date gets pushed back or a contract date changes, one recalculation updates your entire timeline.
+The anchor date system means you don't have to manually calculate dozens of deadlines. Set the important transaction dates once, and dependent key dates flow from there. When a closing date gets pushed back or a contract date changes, recalculation can update the downstream timeline.
 
 ## Common anchor date scenarios
 
@@ -1008,7 +1065,7 @@ The anchor date system means you don't have to manually calculate dozens of dead
 
 # Calendar View
 
-The Calendar page in the sidebar shows all your upcoming dates across every transaction — milestones, tasks, reminders, and custom events in one view.
+The Calendar page in the sidebar shows all your upcoming dates across every transaction — key dates, tasks, reminders, and custom events in one view.
 
 ## Navigating the calendar
 
@@ -1022,7 +1079,7 @@ calendar in month view with color-coded events
 
 Events are color-coded by type so you can tell them apart at a glance:
 
-- **Milestones** — Key transaction deadlines
+- **Key Dates** — Important transaction deadlines
 - **Tasks** — Due dates for your to-dos
 - **Reminders** — Alerts you've set
 - **Custom events** — Anything you've added manually
@@ -1042,7 +1099,7 @@ day agenda sidebar showing events
 ## Tips
 
 - Use the calendar to spot busy days — if you have 3 closings on the same day, you'll see it immediately
-- The calendar syncs with your timeline milestones automatically — no double entry
+- The calendar syncs with your transaction key dates automatically — no double entry
 - You can connect Google Calendar or Outlook Calendar in **Settings > Integrations** to sync events both ways
 
 ---
@@ -1051,7 +1108,7 @@ day agenda sidebar showing events
 
 # Tasks
 
-Managing tasks, templates, and email automation in DocJacket
+Managing tasks, checklists, and email automation in DocJacket
 
 Tasks are the backbone of every transaction. They track every to-do from contract to close — with due dates, priorities, assignees, email automation, and subtasks.
 
@@ -1067,7 +1124,7 @@ tasks tab with color-coded priority borders
 ## In this section
 
 - [Creating Tasks](./creating-tasks.mdx) — Quick add and the detail drawer
-- [Task Templates](./task-templates.mdx) — Pre-built checklists
+- [Checklists](./task-templates.mdx) — Reusable key date and task workflows
 - [Subtasks](./subtasks.mdx) — Breaking tasks into steps
 - [Email Automation](./email-automation.mdx) — Link emails to task completion
 - [Task Options](./task-options.md) — Portal visibility, key dates, conditional tasks, reminders
@@ -1104,15 +1161,15 @@ The drawer also has collapsible sections for advanced features like subtasks, em
 
 task detail drawer
 
-## From a template
+## From a checklist
 
-Load a pre-built task checklist for your transaction type. Templates come with priorities, due date offsets, and linked email templates already configured.
+Load a reusable checklist for your transaction type. Checklists can include key dates, tasks, due-date offsets, and linked email templates.
 
-1. Click the **Apply Template** button on the Tasks tab
-2. Choose a template
+1. Click the **Apply Checklist** button on the Tasks tab
+2. Choose a checklist
 3. Tasks are added with all their settings pre-configured
 
-See [Task Templates](./task-templates.mdx) for more.
+See [Checklists](./task-templates.mdx) for more.
 
 ## AI-generated
 
@@ -1124,40 +1181,52 @@ Tasks can be reordered by dragging them within their date group. This doesn't ch
 
 ---
 
-# Task Templates
+# Checklists
 
-Task templates are pre-built checklists you can apply to any transaction. They save you from creating the same tasks over and over.
+Checklists are reusable transaction workflows. A checklist can add the key dates, task list, due-date offsets, assignee roles, and email automation you use for a transaction type.
 
-## Applying a template
+## Applying a checklist
 
 1. Open a transaction's **Tasks** tab
-2. Click **Apply Template**
-3. Browse or search for the template you want
+2. Click **Apply Checklist**
+3. Browse or search for the checklist you want
 4. Click to apply it
 
-The template's tasks are added to the transaction with priorities, due date offsets (calculated from your anchor date), and any linked email templates already configured.
+The checklist's key dates and tasks are added to the transaction with priorities, due-date offsets, assignee roles, and any linked email templates already configured.
 
-apply template dialog
+apply checklist dialog
 
-## Creating a template
+## Creating a checklist
 
 1. Go to **Templates** in the sidebar
-2. Navigate to **Task Templates**
-3. Click **New Template**
-4. Add tasks with:
+2. Navigate to **Checklists**
+3. Click **New Checklist**
+4. Add key dates from the **Key Date Library**
+5. Add tasks with:
    - Task name and description
    - Priority level
-   - Due date offset (e.g., "5 days before closing", "3 days after contract")
+   - Due date offset from a key date, such as "5 days before Closing Date"
    - Assignee role
    - Linked email template (optional)
-5. Save the template
+6. Save the checklist
+
+## How checklists use key dates
+
+Checklist tasks should point to key dates instead of duplicating date math.
+
+| Good | Avoid |
+|------|-------|
+| Due 2 days before Inspection Deadline | Due 8 days after Effective Date because that happens to match inspection timing |
+| Due 1 business day before Closing Date | Due on a manually typed calendar date |
+
+That keeps date rules in the **Key Date Library** and task workflows in **Checklists**.
 
 ## Tips
 
-- Create templates for each transaction type you handle (residential purchase, commercial lease, etc.)
-- Include due date offsets relative to key dates — DocJacket calculates actual dates when the template is applied
-- You can apply multiple templates to the same transaction if needed
-- After applying a template, you can still add, remove, or modify individual tasks
+- Create checklists for each transaction type you handle, such as residential purchase, listing, land, or new build.
+- Include due-date offsets relative to key dates so DocJacket calculates actual dates when the checklist is applied.
+- You can apply multiple checklists to the same transaction if needed.
+- After applying a checklist, you can still add, remove, or modify individual key dates and tasks.
 
 ---
 
@@ -1220,7 +1289,7 @@ task email automation options
 
 - Always review your email templates before enabling auto-send — make sure the content and recipients are correct
 - Auto-send respects DocJacket's approval-first design — you'll get a notification before emails go out so you can cancel if needed
-- Combine email automation with [task templates](./task-templates.mdx) to set up entire email workflows for a transaction type
+- Combine email automation with [checklists](./task-templates.mdx) to set up entire email workflows for a transaction type
 
 ---
 
@@ -1238,7 +1307,7 @@ Show this task to agents on their portal. Useful for tasks that agents need to b
 
 Mark a task as a key date to highlight it on the timeline and trigger notifications. Key dates appear prominently in the transaction overview and calendar.
 
-**Example:** "Final walkthrough" — this is important enough to show on the timeline alongside milestones.
+**Example:** "Final walkthrough" — this is important enough to show on the timeline alongside the other key dates.
 
 ## Conditional Task
 
@@ -1395,51 +1464,62 @@ Smart fields are placeholders that get replaced with real data when the template
 
 # Templates
 
-Templates save you time by letting you reuse emails, timelines, task lists, and more. Set them up once and apply them to any transaction.
+Templates save you time by letting you reuse emails, checklists, key date rules, online forms, required document lists, reports, and more. Set them up once and apply them to any transaction.
 
 The **Templates** page in the sidebar is your template hub, organized into categories:
 
 ## Communication Templates
 - **Email Templates** — Reusable email content with smart fields
 - **Email Signatures** — Branded signatures for outgoing emails
-- **Intake Forms** — Forms for collecting information from contacts
+- **Online Forms** — Forms for collecting information from clients, agents, and leads
 
-## Transaction Workflow
-- **Timeline Templates** — Pre-built milestone sequences with date offsets
-- **Milestones** — Individual milestone definitions
-- **Task Templates** — Pre-built task checklists with priorities and due dates
+## Checklists & Key Dates
+- **Checklists** — Reusable transaction workflows with key dates, tasks, and automations
+- **Key Date Library** — Individual reusable date rules, such as "Final Walkthrough = 1 business day before Closing"
 
 ## Document Templates
-- **Document Sets** — Required document checklists for different transaction types
+- **Required Documents Lists** — Document requirements for different transaction types
 - **Smart Fields** — Custom fields for auto-populating document data
 
 ## Report Templates
-- **Status Reports** — Structured templates for transaction status updates
+- **SitRep Templates** — Structured templates for transaction status reports
 
 templates hub showing all categories
 
 ## In this section
 
-- [Timeline Templates](./timeline-templates.md) — Create milestone sequences
-- [Task Templates](./task-templates.md) — Build reusable task checklists
+- [Checklists](./timeline-templates.md) — Build reusable workflows with key dates, tasks, and automations
+- [Key Date Library](./task-templates.md) — Define reusable date rules that checklists consume
 - [Email Templates](./email-templates.md) — Write reusable email content
+- [Email Signatures](./email-signatures.md) — Create branded signatures for outgoing email
+- [Online Forms](./online-forms.md) — Collect structured information from clients, agents, and leads
+- [Required Documents Lists](./required-documents-lists.md) — Define required document checklists by transaction type
+- [Smart Fields](./smart-fields.md) — Manage reusable fields for document and communication data
+- [SitRep Templates](./sitrep-templates.md) — Control the sections used in transaction status reports
 
 ---
 
-# Timeline Templates
+# Checklists
 
-Timeline templates define a sequence of milestones for a transaction type. When applied, they auto-populate all your deadlines based on the anchor date.
+Checklist templates define the reusable workflow for a transaction type. A checklist can include **Key Dates**, **Tasks**, and **Automations** so a new transaction starts with the right timeline and work plan.
 
-## Creating a timeline template
+## Creating a checklist template
 
-1. Go to **Templates > Timelines** in the sidebar
-2. Click **New Template**
+1. Go to **Templates > Checklists**
+2. Click **New Checklist**
 3. Give it a name (e.g., "Texas Residential Purchase - 30 Day Close")
-4. Add milestones, each with:
-   - **Name** — What the milestone is (e.g., "Option Period Expires")
-   - **Date offset** — How many days before or after the anchor date
-   - **Linked tasks** — Optional tasks that should be created with this milestone
+4. Add key dates from the **Key Date Library**, or create new key dates as you build
+5. Add tasks and tie them to the key dates they belong to
+6. Add automations, such as prepared emails or completion rules
 5. Save the template
+
+The mental model is:
+
+| Layer | What it means |
+| --- | --- |
+| **Key Dates** | Important transaction dates and deadlines |
+| **Tasks** | Work tied to those dates |
+| **Automations** | Emails or actions triggered by tasks or dates |
 
 ## Organizing templates
 
@@ -1451,6 +1531,16 @@ Templates can be filtered by:
 
 This makes it easy to find the right template when you're setting up a new transaction.
 
+## Checklists vs. key date rules
+
+The **Key Date Library** stores individual reusable date rules. A checklist bundles those rules with tasks and automations.
+
+Example:
+
+- **Key Date rule:** Final Walkthrough = Closing Date - 1 business day
+- **Checklist task:** Schedule walkthrough = Final Walkthrough - 3 days
+- **Automation:** Prepare walkthrough reminder email when the task is due
+
 ## Tips
 
 - Start with the built-in templates and customize them for your specific workflow
@@ -1460,35 +1550,46 @@ This makes it easy to find the right template when you're setting up a new trans
 
 ---
 
-# Task Templates
+# Key Date Library
 
-Task templates are pre-built checklists you can apply to any transaction. They're separate from timeline templates — you can use them independently or together.
+The Key Date Library stores individual reusable date rules. These are the building blocks that checklist templates use to create a transaction timeline.
 
-## Creating a task template
+Examples:
 
-1. Go to **Templates > Task Templates** in the sidebar
-2. Click **New Template**
-3. Add tasks with:
-   - Task name and description
-   - Priority (Urgent, High, Medium, Low)
-   - Due date offset (relative to anchor date or closing date)
-   - Assignee role
-   - Linked email template (optional)
-4. Save the template
+- Final Walkthrough Date = Closing Date - 1 business day
+- Possession Date = Closing Date + 1 business day
+- Inspection Deadline = Effective Date + 10 calendar days
 
-## Applying to a transaction
+## Creating a key date rule
 
-From a transaction's Tasks tab, click **Apply Template** and select the template. All tasks are added with their pre-configured settings, and due dates are calculated based on the transaction's dates.
+1. Go to **Templates > Key Date Library**
+2. Click **New Key Date**
+3. Enter a name, such as "Final Walkthrough Date"
+4. Choose a **Key Date Type** when the date maps to a governed DocJacket concept
+5. Set the date calculation rule:
+   - **Anchor Date** — the date this one depends on, such as Closing Date
+   - **Offset Direction** — before or after the anchor
+   - **Days Offset** — how many days
+   - **Day Calculation** — calendar days or business days
+6. Save the key date
 
-## Task templates vs. timeline templates
+## How checklists use key dates
 
-| Task templates | Timeline templates |
-|---------------|-------------------|
-| Focus on to-do items and action steps | Focus on key dates and milestones |
-| Good for detailed operational checklists | Good for deadline tracking |
-| Can be applied independently | Often include linked tasks too |
+Checklist templates consume key dates. Tasks should reference the key date they depend on instead of recreating the same date logic.
 
-Many TCs use both: a timeline template for the big-picture deadlines, and a task template for the detailed day-to-day checklist.
+Good:
+
+- Task due = Final Walkthrough Date - 3 days
+
+Avoid:
+
+- Task due = Closing Date - 4 days because that happens to equal the walkthrough date
+
+Keeping the date rule in the Key Date Library prevents drift when the rule changes later.
+
+## Custom key dates
+
+Leave **Key Date Type** blank for organization-specific dates that do not map to a standard DocJacket concept. Custom key dates can still be used in checklists and transactions, but governed types make automation, reporting, calendar sync, and smart fields more reliable.
 
 ---
 
@@ -1523,13 +1624,154 @@ Here are some templates most TCs find useful:
 - **Welcome email** — Introduction to the transaction process for new clients
 - **Title company introduction** — Connect the title company with all parties
 - **Inspection scheduling** — Coordinate inspection appointments
-- **Status update** — Weekly or milestone-based progress update
+- **Status update** — Weekly or key-date-based progress update
 - **Closing reminder** — Sent a few days before closing with final instructions
 - **Post-closing thank you** — A nice touch after the deal closes
 
 ## Using templates with tasks
 
 Email templates become even more powerful when linked to [tasks](../tasks/email-automation.mdx). Set up a task like "Send closing reminder" with a linked template, and the email is ready to go when the task comes due.
+
+---
+
+# Email Signatures
+
+Email signatures let outgoing DocJacket messages match your brand and contact information. Create one default signature for everyday use, or keep separate signatures for different teams, brands, or roles.
+
+## Creating a signature
+
+1. Go to **Templates > Email Signatures**
+2. Click **New Signature**
+3. Enter a signature name
+4. Use a starter layout or write your own signature content
+5. Add contact details, logo, disclaimers, and links
+6. Save the signature
+
+## Using signatures
+
+When you compose an email from a transaction, DocJacket can include your default signature automatically. You can also choose a different signature in the composer before sending.
+
+Signatures work alongside [email templates](./email-templates.md). The template supplies the message content, and the signature supplies the branded closing block.
+
+## Tips
+
+- Keep your default signature concise so task emails stay easy to read.
+- Include required brokerage or compliance language if your office requires it.
+- Create a separate signature when a team, office, or role needs different branding.
+
+---
+
+# Online Forms
+
+Online Forms collect structured information without sending a spreadsheet or long email thread. Use them for intake, client updates, vendor details, listing information, or any repeatable request.
+
+## Creating a form
+
+1. Go to **Templates > Online Forms**
+2. Click **New Online Form**
+3. Add fields for the information you need
+4. Organize fields into sections when the form is longer
+5. Save and publish the form
+
+## When to use forms
+
+Use an online form when you need consistent answers from someone outside your team:
+
+- Buyer or seller intake
+- Listing preparation details
+- Vendor contact information
+- Showing or access instructions
+- Client questionnaire responses
+
+## How forms fit with transactions
+
+Form responses give you structured data that can be reviewed and used by the team. For repeatable transaction workflows, combine forms with [checklists](./timeline-templates.md), [email templates](./email-templates.md), and [smart fields](./smart-fields.md).
+
+---
+
+# Required Documents Lists
+
+Required Documents Lists define which documents should exist for a transaction type. They power document completeness checks and make it easier to see what is still missing.
+
+## Creating a list
+
+1. Go to **Templates > Required Documents Lists**
+2. Click **New Document Set**
+3. Name the list for the workflow it supports
+4. Choose the transaction type, side, and status rules if applicable
+5. Add each required document
+6. Mark the list active when it is ready to use
+
+## Where lists appear
+
+Required document lists are used from transaction document workflows. In a transaction, the Required Documents panel and document audit views can compare uploaded files against the expected list.
+
+## Tips
+
+- Create separate lists for buyer, seller, listing, land, and new-build workflows when the requirements differ.
+- Keep document names close to what your team and brokerage already use.
+- Use a default list for the most common workflow, then duplicate it for variations.
+
+---
+
+# Smart Fields
+
+Smart Fields are reusable data placeholders. They let DocJacket pull transaction information into templates, documents, reports, and messages without retyping the same values.
+
+## What smart fields are for
+
+Use smart fields for repeatable information such as:
+
+- Buyer, seller, agent, and vendor names
+- Property address and transaction details
+- Closing date, contract date, and other key dates
+- Office or brokerage information
+- Custom transaction fields your team tracks
+
+## Managing smart fields
+
+1. Go to **Templates > Smart Fields**
+2. Review the existing fields and groups
+3. Add custom fields when your team needs to track additional data
+4. Organize related fields into groups when helpful
+
+## Using smart fields
+
+Smart fields are most useful when combined with other templates:
+
+- [Email templates](./email-templates.md) can insert transaction values into subject lines and message bodies.
+- [SitRep templates](./sitrep-templates.md) can include transaction details in reports.
+- Required document and form workflows can rely on consistent field names.
+
+## Tips
+
+- Reuse existing fields before creating a new one.
+- Give custom fields clear names that match how your team talks about the data.
+- Keep governed transaction dates in the [Key Date Library](./task-templates.md) instead of creating duplicate custom date fields.
+
+---
+
+# SitRep Templates
+
+SitRep templates control the structure of transaction status reports. They let you decide which sections are included when you generate or schedule a SitRep for a transaction.
+
+## Creating a SitRep template
+
+1. Go to **Templates > SitRep Templates**
+2. Click **New Template**
+3. Choose the report category
+4. Select the sections to include
+5. Save the template
+
+DocJacket also includes system templates you can duplicate when you want a starter layout.
+
+## Using a SitRep template
+
+Open a transaction and go to the **Reports** section. From there, choose a SitRep template, preview the report, adjust sections if needed, then send or download the report.
+
+## Common sections
+
+SitRep reports can include property details, participants, key dates, task status, document status, financial summary, and notes depending on the template and transaction data.
 
 ---
 
@@ -1572,7 +1814,7 @@ Behind the scenes, workflows power features like:
 - AI data extraction
 - Reminder notifications
 - Morning briefings
-- Task and milestone completion actions
+- Task and key date completion actions
 
 ---
 
@@ -1673,7 +1915,7 @@ AI doesn't just generate a generic checklist. It considers:
 
 ## AI vs. Templates
 
-Both AI generation and [task templates](./ai-task-generation.mdx) can populate your task list. Here's when to use each:
+Both AI generation and [checklists](/docs/tasks/task-templates) can populate your task list. Here's when to use each:
 
 | Use AI generation when... | Use templates when... |
 |--------------------------|----------------------|
@@ -1700,7 +1942,7 @@ AI insights card on transaction overview
 AI looks for things like:
 
 - **Missing documents** — Required documents that haven't been uploaded yet
-- **Approaching deadlines** — Milestones or contingency expirations coming up soon
+- **Approaching deadlines** — Key dates or contingency expirations coming up soon
 - **Incomplete information** — Missing contact details, unsigned documents, or blank fields
 - **Compliance concerns** — State-specific requirements that may not be met
 - **Timeline conflicts** — Dates that don't make sense (e.g., inspection deadline after closing date)
@@ -1782,7 +2024,7 @@ DocJacket's MCP server exposes **47 tools** to every connected assistant across 
 - **Triage with judgment** — `get_next_required_actions` (the flagship — bundled overdue-first ranking with rationales)
 - **Send** — `send_agent_followup`, `send_client_update`, `send_document_request`, `send_email_to_agent` (all execute via your connected Gmail / Outlook)
 - **Create / update** — `create_contact`, `create_tasks`, `create_reminder`, `update_key_date`, `add_key_dates_batch`, `add_contact_to_transaction`, `apply_checklist`, `complete_task`, `log_activity`, `save_status_summary`
-- **Contract intake** — `upload_document_for_extraction`, `get_extraction_results`, `apply_extraction`, `classify_document`, `get_intake_status`
+- **Contract intake** — `list_documents`, `extract_existing_document` (canonical), `request_upload_url`, `kick_off_extraction` (Claude.ai paid + code exec), `upload_document_for_extraction` (small-file fallback), `get_extraction_results`, `apply_extraction`, `classify_document`, `get_intake_status`
 - **Forms** — `list_form_links`, `list_form_submissions`, `get_form_definition`, `get_form_submission`
 - **Templates** — `list_email_templates`, `get_email_template`, `render_email_template`, `get_merge_fields`, `list_checklist_templates`
 - **Diagnostics** — `mcp_catalog` (live tool inventory), `mcp_health_check`, `get_portal_link`
@@ -2342,7 +2584,12 @@ Plain English works. The assistant picks the right tools based on what you ask:
 
 The assistant walks the workflow for you. Behind the scenes:
 
-1. **Upload.** The assistant calls `upload_document_for_extraction` with the PDF you handed it. DocJacket returns an `extractionJobId` and kicks off extraction in the background.
+1. **Upload.** Three paths, in priority order:
+   - **(a) If the PDF is already in DocJacket** (DocDrop, email intake, the web wizard, or a prior chat call): the assistant calls `list_documents` to discover it, confirms with you ("found 'fl-buyer-purchase.pdf' uploaded at 9:14am — extract it?"), then `extract_existing_document(documentId)` starts the pipeline. PDF bytes never leave DocJacket. This is the canonical path and works in every assistant (Claude, Cowork, ChatGPT, Codex, Gemini) without any sandbox or paid-plan prerequisites. Just say *"extract the contract I uploaded this morning"* or *"process the file from earlier."*
+   - **(b) If you attached the PDF directly in chat on Claude.ai with code execution enabled** (paid plan + `mcp.docjacket.com` added to allowed domains under Settings → Capabilities → Code execution): the assistant uses a two-step presigned upload — `request_upload_url` returns a short-lived URL, the assistant `curl`s the file from its sandbox to blob storage, then `kick_off_extraction` starts the pipeline. PDF bytes never enter the chat conversation.
+   - **(c) Tiny PDF (~under 1 MB) attached in chat with no other option:** the assistant falls back to `upload_document_for_extraction`, which carries the bytes as base64 in the tool call. Avoid this path for anything larger — base64 inflates the file ~33% and lives in chat tokens for the rest of the conversation.
+
+   Either way you get an `extractionJobId` and extraction kicks off in the background.
 2. **Classify.** `classify_document` runs concurrently to detect the doc type — purchase agreement, listing agreement, lease, addendum, disclosure, etc. The classification informs which extraction prompt and checklist to use.
 3. **Poll.** Extraction typically takes **10–60 seconds** depending on document length and complexity. The assistant polls `get_extraction_results` until the job is `completed` (or `failed`, in which case it shows the error and offers to retry).
 4. **Review.** The assistant presents the extracted fields in chat:
@@ -2518,7 +2765,7 @@ A weekly recap formatted for forwarding to a broker, team meeting, or your own r
 
 The end-to-end PDF-to-transaction workflow. The plugin's headline use case. See the full reference at **[Contract Intake](/docs/ai-access/contract-intake)**.
 
-**Chains:** `upload_document_for_extraction` → `get_extraction_results` (polling) → review → `apply_extraction` → `add_key_dates_batch` → `render_email_template` + `send_*` intros → `create_reminder` for major deadlines → `get_intake_status` final summary.
+**Chains:** `list_documents` → `extract_existing_document` (when the PDF is already in DocJacket — canonical) **OR** `request_upload_url` → `kick_off_extraction` (Claude.ai paid + code execution) **OR** `upload_document_for_extraction` (tiny chat-attached PDFs) → `get_extraction_results` (polling) → review → `apply_extraction` → `add_key_dates_batch` → `render_email_template` + `send_*` intros → `create_reminder` for major deadlines → `get_intake_status` final summary.
 
 ### `/docjacket:send-template`
 
@@ -2586,7 +2833,7 @@ The assistant calls the tool, gets back the JSON below, and formats it for you. 
 
 ## A worked example
 
-A single `mcp_catalog` response (truncated to 4 representative entries — actual response has 47 entries today):
+A single `mcp_catalog` response (truncated to 4 representative entries — actual response has 51 entries today):
 
 ```jsonc
 {
@@ -2610,7 +2857,7 @@ A single `mcp_catalog` response (truncated to 4 representative entries — actua
     },
     {
       "name": "get_transaction",
-      "description": "Full detail on one transaction — parties, key dates, contingencies, tasks, milestones, financial terms. Pass the transactionId returned by search_transactions or list_active_transactions.",
+      "description": "Full detail on one transaction — parties, key dates, contingencies, tasks, timeline status, and financial terms. Pass the transactionId returned by search_transactions or list_active_transactions.",
       "requiredScope": "read",
       "hasOutputSchema": false,
       "gotchas": [],
@@ -2923,7 +3170,7 @@ Tenant isolation is enforced at the SQL layer. Every MCP tool call adds `WHERE O
 
 See what your clients experience when they open their portal link
 
-The Client Portal gives your buyers, sellers, and agents a branded view of their transaction — without needing a DocJacket account. They can see milestones, documents, tasks, and status updates through a secure link you send them.
+The Client Portal gives your buyers, sellers, and agents a branded view of their transaction — without needing a DocJacket account. They can see key dates, documents, tasks, and status updates through a secure link you send them.
 
 It's a professional touch that keeps everyone informed and cuts down on "where are we?" calls and emails.
 
@@ -2934,7 +3181,7 @@ client portal view showing transaction status
 - **Branded experience** — Customize the portal with your logo and colors
 - **Secure access** — Each portal link is unique and can be set to expire
 - **Track engagement** — See who's viewed the portal and when
-- **Selective sharing** — Control exactly which documents and milestones are visible
+- **Selective sharing** — Control exactly which documents, key dates, and tasks are visible
 
 ## In this section
 
@@ -2963,7 +3210,7 @@ portal branding settings
 By default, the portal shows:
 
 - Transaction status and progress
-- Key milestones and dates
+- Key dates and deadlines
 - Assigned tasks (if you've marked them as portal-visible)
 - Shared documents
 - Contact information for the key parties
@@ -2979,7 +3226,7 @@ When a buyer or seller opens their portal link, they see a clean, simple view of
 ## What clients see
 
 - **Transaction status** — Where things stand (Under Contract, Clear to Close, etc.)
-- **Timeline** — Key milestones with dates and completion status
+- **Key dates** — Important deadlines with dates and completion status
 - **Documents** — Any documents you've shared with them
 - **Tasks** — Tasks marked as portal-visible (things they might need to complete)
 - **Contacts** — Key contacts involved in the transaction (their agent, title company, lender)
@@ -3008,7 +3255,7 @@ Agents get their own portal view — showing the transactions they're involved i
 The agent portal shows:
 
 - **Their transactions** — Only the deals where they're assigned as an agent
-- **Transaction status and milestones** — Where each deal stands
+- **Transaction status and key dates** — Where each deal stands
 - **Documents** — Documents shared with the agent role
 - **Tasks** — Portal-visible tasks assigned to them or relevant to their role
 
@@ -3074,7 +3321,7 @@ DocJacket connects with the tools you already use. Set up integrations in **Sett
 
 ### Google Workspace
 - **Gmail** — Sync emails and attachments with transactions
-- **Google Calendar** — Push closings, milestones, and tasks to your calendar
+- **Google Calendar** — Push closings, key dates, and tasks to your calendar
 - **Google Drive** — Store and organize transaction documents
 - **Google Contacts** — Import and sync your contacts
 
@@ -3111,7 +3358,7 @@ Connect your Google account to sync email, documents, and calendar events with D
 - Browse your Drive folders directly from the Documents tab
 
 ### Google Calendar
-- Sync transaction milestones and deadlines to your Google Calendar
+- Sync transaction key dates and deadlines to your Google Calendar
 - See DocJacket events alongside your personal calendar
 - Two-way sync — changes in either place are reflected in both
 
@@ -3145,7 +3392,7 @@ Connect your Microsoft 365 account to sync email, calendar, and documents with D
 - Email history syncs both ways
 
 ### Outlook Calendar
-- Sync transaction milestones and deadlines to your Outlook Calendar
+- Sync transaction key dates and deadlines to your Outlook Calendar
 - See DocJacket events alongside your existing schedule
 
 ### OneDrive
@@ -3237,7 +3484,7 @@ report preview
 
 Toggle which sections to include in the report:
 
-- **Milestones** — Timeline progress and upcoming deadlines
+- **Key dates** — Timeline progress and upcoming deadlines
 - **Tasks** — Task completion status
 - **Documents** — Document checklist status
 - **Contacts** — Key parties involved
@@ -3332,7 +3579,7 @@ Your brand identity carries through DocJacket:
 Configure defaults that apply to new transactions:
 
 - **Default transaction type** — Pre-select the most common type
-- **Default timeline template** — Auto-apply a template to new transactions
+- **Default checklist** — Auto-apply a checklist to new transactions
 - **Custom fields** — Add custom fields to capture data specific to your workflow
 
 ## Transaction roles
@@ -3436,7 +3683,7 @@ All paid plans include the full DocJacket feature set:
 
 - Unlimited transactions
 - AI contract extraction and task generation
-- Timeline and task templates
+- Checklists and key date templates
 - Document management and DocDrop
 - Client portal
 - Email integration (Gmail and Outlook)

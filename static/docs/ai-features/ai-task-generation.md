@@ -35,7 +35,7 @@ AI doesn't just generate a generic checklist. It considers:
 
 ## AI vs. Templates
 
-Both AI generation and [task templates](./ai-task-generation.mdx) can populate your task list. Here's when to use each:
+Both AI generation and [checklists](/docs/tasks/task-templates) can populate your task list. Here's when to use each:
 
 | Use AI generation when... | Use templates when... |
 |--------------------------|----------------------|

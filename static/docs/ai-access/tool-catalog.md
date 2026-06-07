@@ -29,7 +29,7 @@ The assistant calls the tool, gets back the JSON below, and formats it for you. 
 
 ## A worked example
 
-A single `mcp_catalog` response (truncated to 4 representative entries — actual response has 47 entries today):
+A single `mcp_catalog` response (truncated to 4 representative entries — actual response has 51 entries today):
 
 ```jsonc
 {
@@ -53,7 +53,7 @@ A single `mcp_catalog` response (truncated to 4 representative entries — actua
     },
     {
       "name": "get_transaction",
-      "description": "Full detail on one transaction — parties, key dates, contingencies, tasks, milestones, financial terms. Pass the transactionId returned by search_transactions or list_active_transactions.",
+      "description": "Full detail on one transaction — parties, key dates, contingencies, tasks, timeline status, and financial terms. Pass the transactionId returned by search_transactions or list_active_transactions.",
       "requiredScope": "read",
       "hasOutputSchema": false,
       "gotchas": [],

@@ -44,7 +44,7 @@ If you don't have a contract yet or prefer to enter details yourself:
 4. Add the purchase price and key dates
 5. Click **Create**
 
-You can fill in the rest later — contacts, documents, timeline, and tasks can all be added from the transaction overview.
+You can fill in the rest later — contacts, documents, key dates, and tasks can all be added from the transaction overview.
 
 manual creation form
 
@@ -53,5 +53,5 @@ manual creation form
 Once your transaction is created, you'll land on the [Transaction Overview](./transaction-overview.mdx). From there, you'll typically want to:
 
 1. [Add contacts](/docs/contacts) — buyers, sellers, agents, title company, lender
-2. [Apply a timeline template](/docs/calendar/timeline-templates) — sets up your milestones and deadlines
+2. [Apply a checklist](/docs/calendar/timeline-templates) — sets up your key dates, tasks, and deadline rules
 3. [Upload documents](/docs/documents/uploading-documents) — contracts, disclosures, and other files

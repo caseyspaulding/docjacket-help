@@ -18,7 +18,7 @@ Show this task to agents on their portal. Useful for tasks that agents need to b
 
 Mark a task as a key date to highlight it on the timeline and trigger notifications. Key dates appear prominently in the transaction overview and calendar.
 
-**Example:** "Final walkthrough" — this is important enough to show on the timeline alongside milestones.
+**Example:** "Final walkthrough" — this is important enough to show on the timeline alongside the other key dates.
 
 ## Conditional Task
 

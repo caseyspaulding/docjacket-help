@@ -38,7 +38,7 @@ Here are some templates most TCs find useful:
 - **Welcome email** — Introduction to the transaction process for new clients
 - **Title company introduction** — Connect the title company with all parties
 - **Inspection scheduling** — Coordinate inspection appointments
-- **Status update** — Weekly or milestone-based progress update
+- **Status update** — Weekly or key-date-based progress update
 - **Closing reminder** — Sent a few days before closing with final instructions
 - **Post-closing thank you** — A nice touch after the deal closes
 

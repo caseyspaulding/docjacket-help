@@ -46,7 +46,7 @@ const categories: Category[] = [
   },
   {
     title: 'Calendar & Deadlines',
-    description: 'Never miss a milestone or key date.',
+    description: 'Never miss a key date, task, or reminder.',
     link: '/docs/calendar',
   },
   {

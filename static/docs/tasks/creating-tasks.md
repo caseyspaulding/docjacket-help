@@ -1,7 +1,7 @@
 ---
 sidebar_label: Creating Tasks
 sidebar_position: 2
-description: Add tasks to a DocJacket transaction — quick-add, full task drawer, AI generation, and bulk-apply via task templates.
+description: Add tasks to a DocJacket transaction — quick-add, full task drawer, AI generation, and bulk-apply via checklists.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/tasks/creating-tasks -->
@@ -37,15 +37,15 @@ The drawer also has collapsible sections for advanced features like subtasks, em
 
 task detail drawer
 
-## From a template
+## From a checklist
 
-Load a pre-built task checklist for your transaction type. Templates come with priorities, due date offsets, and linked email templates already configured.
+Load a reusable checklist for your transaction type. Checklists can include key dates, tasks, due-date offsets, and linked email templates.
 
-1. Click the **Apply Template** button on the Tasks tab
-2. Choose a template
+1. Click the **Apply Checklist** button on the Tasks tab
+2. Choose a checklist
 3. Tasks are added with all their settings pre-configured
 
-See [Task Templates](./task-templates.mdx) for more.
+See [Checklists](./task-templates.mdx) for more.
 
 ## AI-generated
 

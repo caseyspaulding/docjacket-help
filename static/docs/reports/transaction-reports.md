@@ -23,7 +23,7 @@ report preview
 
 Toggle which sections to include in the report:
 
-- **Milestones** — Timeline progress and upcoming deadlines
+- **Key dates** — Timeline progress and upcoming deadlines
 - **Tasks** — Task completion status
 - **Documents** — Document checklist status
 - **Contacts** — Key parties involved

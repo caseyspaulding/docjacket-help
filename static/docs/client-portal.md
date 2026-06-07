@@ -2,7 +2,7 @@
 title: Client Portal
 sidebar_label: Overview
 sidebar_position: 1
-description: Give your clients and agents a branded portal to track their real estate transaction status, documents, and milestones.
+description: Give your clients and agents a branded portal to track their real estate transaction status, key dates, documents, and tasks.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/client-portal -->
@@ -12,7 +12,7 @@ description: Give your clients and agents a branded portal to track their real e
 
 See what your clients experience when they open their portal link
 
-The Client Portal gives your buyers, sellers, and agents a branded view of their transaction — without needing a DocJacket account. They can see milestones, documents, tasks, and status updates through a secure link you send them.
+The Client Portal gives your buyers, sellers, and agents a branded view of their transaction — without needing a DocJacket account. They can see key dates, documents, tasks, and status updates through a secure link you send them.
 
 It's a professional touch that keeps everyone informed and cuts down on "where are we?" calls and emails.
 
@@ -23,7 +23,7 @@ client portal view showing transaction status
 - **Branded experience** — Customize the portal with your logo and colors
 - **Secure access** — Each portal link is unique and can be set to expire
 - **Track engagement** — See who's viewed the portal and when
-- **Selective sharing** — Control exactly which documents and milestones are visible
+- **Selective sharing** — Control exactly which documents, key dates, and tasks are visible
 
 ## In this section
 

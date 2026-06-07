@@ -1,7 +1,7 @@
 ---
 sidebar_label: Your First Transaction
 sidebar_position: 3
-description: Step-by-step walkthrough of creating your first DocJacket transaction — contacts, timeline, tasks, and documents.
+description: Step-by-step walkthrough of creating your first DocJacket transaction — contacts, key dates, tasks, and documents.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/getting-started/your-first-transaction -->
@@ -11,7 +11,7 @@ description: Step-by-step walkthrough of creating your first DocJacket transacti
 
 Step-by-step walkthrough of creating your first transaction in DocJacket
 
-Let's walk through creating a transaction from scratch. By the end, you'll have a deal set up with contacts, a timeline, and tasks — ready to manage.
+Let's walk through creating a transaction from scratch. By the end, you'll have a deal set up with contacts, key dates, and tasks — ready to manage.
 
 ## Two ways to create a transaction
 
@@ -65,22 +65,22 @@ You can pick from your existing contacts or create new ones on the fly.
 
 contacts panel showing role slots
 
-## Apply a timeline template
+## Apply a checklist
 
-Timelines are what keep your deal on track. From the **Timeline** tab:
+Checklists are what set up the reusable workflow for your deal. From the **Timeline** tab:
 
-1. Click **Apply Template**
-2. Choose a template that matches your transaction type and state
-3. Set your **anchor date** — usually the contract date. All other deadlines calculate from this date.
-4. Review the milestones and adjust any dates if needed
+1. Click **Apply Checklist**
+2. Choose a checklist that matches your transaction type and state
+3. Review the key dates, tasks, and options
+4. Adjust any dates if needed
 
-Your timeline now shows every milestone from contract to closing, with automatic deadline calculations.
+Your timeline now shows the important key dates from contract to closing, with automatic deadline calculations.
 
-timeline tab with milestones
+timeline tab with key dates
 
 ## Check your tasks
 
-Head to the **Tasks** tab. If your timeline template included tasks, they're already here — organized by due date with priorities color-coded:
+Head to the **Tasks** tab. If your checklist included tasks, they're already here — organized by due date with priorities color-coded:
 
 - 🔴 **Urgent** — Do this now
 - 🟠 **High** — Don't let this slip

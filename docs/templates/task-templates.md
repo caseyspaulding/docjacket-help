@@ -1,35 +1,46 @@
 ---
-sidebar_label: Task Templates
+sidebar_label: Key Date Library
 sidebar_position: 3
-description: Build reusable task templates with priorities, due-date offsets, assignees, and linked email templates that you can apply to any DocJacket transaction.
+description: Build reusable key date rules with anchor dates, offsets, business-day handling, and governed key date types.
 ---
 
-# Task Templates
+# Key Date Library
 
-Task templates are pre-built checklists you can apply to any transaction. They're separate from timeline templates — you can use them independently or together.
+The Key Date Library stores individual reusable date rules. These are the building blocks that checklist templates use to create a transaction timeline.
 
-## Creating a task template
+Examples:
 
-1. Go to **Templates > Task Templates** in the sidebar
-2. Click **New Template**
-3. Add tasks with:
-   - Task name and description
-   - Priority (Urgent, High, Medium, Low)
-   - Due date offset (relative to anchor date or closing date)
-   - Assignee role
-   - Linked email template (optional)
-4. Save the template
+- Final Walkthrough Date = Closing Date - 1 business day
+- Possession Date = Closing Date + 1 business day
+- Inspection Deadline = Effective Date + 10 calendar days
 
-## Applying to a transaction
+## Creating a key date rule
 
-From a transaction's Tasks tab, click **Apply Template** and select the template. All tasks are added with their pre-configured settings, and due dates are calculated based on the transaction's dates.
+1. Go to **Templates > Key Date Library**
+2. Click **New Key Date**
+3. Enter a name, such as "Final Walkthrough Date"
+4. Choose a **Key Date Type** when the date maps to a governed DocJacket concept
+5. Set the date calculation rule:
+   - **Anchor Date** — the date this one depends on, such as Closing Date
+   - **Offset Direction** — before or after the anchor
+   - **Days Offset** — how many days
+   - **Day Calculation** — calendar days or business days
+6. Save the key date
 
-## Task templates vs. timeline templates
+## How checklists use key dates
 
-| Task templates | Timeline templates |
-|---------------|-------------------|
-| Focus on to-do items and action steps | Focus on key dates and milestones |
-| Good for detailed operational checklists | Good for deadline tracking |
-| Can be applied independently | Often include linked tasks too |
+Checklist templates consume key dates. Tasks should reference the key date they depend on instead of recreating the same date logic.
 
-Many TCs use both: a timeline template for the big-picture deadlines, and a task template for the detailed day-to-day checklist.
+Good:
+
+- Task due = Final Walkthrough Date - 3 days
+
+Avoid:
+
+- Task due = Closing Date - 4 days because that happens to equal the walkthrough date
+
+Keeping the date rule in the Key Date Library prevents drift when the rule changes later.
+
+## Custom key dates
+
+Leave **Key Date Type** blank for organization-specific dates that do not map to a standard DocJacket concept. Custom key dates can still be used in checklists and transactions, but governed types make automation, reporting, calendar sync, and smart fields more reliable.

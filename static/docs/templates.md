@@ -2,7 +2,7 @@
 title: Templates
 sidebar_label: Overview
 sidebar_position: 1
-description: Create reusable timeline templates, task checklists, and email templates to save time on every transaction.
+description: Create reusable checklists, key date rules, email templates, forms, document lists, and report templates to save time on every transaction.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/templates -->
@@ -10,31 +10,35 @@ description: Create reusable timeline templates, task checklists, and email temp
 
 # Templates
 
-Templates save you time by letting you reuse emails, timelines, task lists, and more. Set them up once and apply them to any transaction.
+Templates save you time by letting you reuse emails, checklists, key date rules, online forms, required document lists, reports, and more. Set them up once and apply them to any transaction.
 
 The **Templates** page in the sidebar is your template hub, organized into categories:
 
 ## Communication Templates
 - **Email Templates** — Reusable email content with smart fields
 - **Email Signatures** — Branded signatures for outgoing emails
-- **Intake Forms** — Forms for collecting information from contacts
+- **Online Forms** — Forms for collecting information from clients, agents, and leads
 
-## Transaction Workflow
-- **Timeline Templates** — Pre-built milestone sequences with date offsets
-- **Milestones** — Individual milestone definitions
-- **Task Templates** — Pre-built task checklists with priorities and due dates
+## Checklists & Key Dates
+- **Checklists** — Reusable transaction workflows with key dates, tasks, and automations
+- **Key Date Library** — Individual reusable date rules, such as "Final Walkthrough = 1 business day before Closing"
 
 ## Document Templates
-- **Document Sets** — Required document checklists for different transaction types
+- **Required Documents Lists** — Document requirements for different transaction types
 - **Smart Fields** — Custom fields for auto-populating document data
 
 ## Report Templates
-- **Status Reports** — Structured templates for transaction status updates
+- **SitRep Templates** — Structured templates for transaction status reports
 
 templates hub showing all categories
 
 ## In this section
 
-- [Timeline Templates](./timeline-templates.md) — Create milestone sequences
-- [Task Templates](./task-templates.md) — Build reusable task checklists
+- [Checklists](./timeline-templates.md) — Build reusable workflows with key dates, tasks, and automations
+- [Key Date Library](./task-templates.md) — Define reusable date rules that checklists consume
 - [Email Templates](./email-templates.md) — Write reusable email content
+- [Email Signatures](./email-signatures.md) — Create branded signatures for outgoing email
+- [Online Forms](./online-forms.md) — Collect structured information from clients, agents, and leads
+- [Required Documents Lists](./required-documents-lists.md) — Define required document checklists by transaction type
+- [Smart Fields](./smart-fields.md) — Manage reusable fields for document and communication data
+- [SitRep Templates](./sitrep-templates.md) — Control the sections used in transaction status reports

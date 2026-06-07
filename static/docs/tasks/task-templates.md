@@ -1,43 +1,55 @@
 ---
-sidebar_label: Task Templates
+sidebar_label: Checklists
 sidebar_position: 3
-description: Pre-built task checklists in DocJacket — apply them to any transaction to skip building the same list of tasks over and over.
+description: Reusable DocJacket checklists — apply key dates, tasks, due-date offsets, and email automation to a transaction in one step.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/tasks/task-templates -->
 <!-- Source: docs/tasks/task-templates.mdx -->
 
-# Task Templates
+# Checklists
 
-Task templates are pre-built checklists you can apply to any transaction. They save you from creating the same tasks over and over.
+Checklists are reusable transaction workflows. A checklist can add the key dates, task list, due-date offsets, assignee roles, and email automation you use for a transaction type.
 
-## Applying a template
+## Applying a checklist
 
 1. Open a transaction's **Tasks** tab
-2. Click **Apply Template**
-3. Browse or search for the template you want
+2. Click **Apply Checklist**
+3. Browse or search for the checklist you want
 4. Click to apply it
 
-The template's tasks are added to the transaction with priorities, due date offsets (calculated from your anchor date), and any linked email templates already configured.
+The checklist's key dates and tasks are added to the transaction with priorities, due-date offsets, assignee roles, and any linked email templates already configured.
 
-apply template dialog
+apply checklist dialog
 
-## Creating a template
+## Creating a checklist
 
 1. Go to **Templates** in the sidebar
-2. Navigate to **Task Templates**
-3. Click **New Template**
-4. Add tasks with:
+2. Navigate to **Checklists**
+3. Click **New Checklist**
+4. Add key dates from the **Key Date Library**
+5. Add tasks with:
    - Task name and description
    - Priority level
-   - Due date offset (e.g., "5 days before closing", "3 days after contract")
+   - Due date offset from a key date, such as "5 days before Closing Date"
    - Assignee role
    - Linked email template (optional)
-5. Save the template
+6. Save the checklist
+
+## How checklists use key dates
+
+Checklist tasks should point to key dates instead of duplicating date math.
+
+| Good | Avoid |
+|------|-------|
+| Due 2 days before Inspection Deadline | Due 8 days after Effective Date because that happens to match inspection timing |
+| Due 1 business day before Closing Date | Due on a manually typed calendar date |
+
+That keeps date rules in the **Key Date Library** and task workflows in **Checklists**.
 
 ## Tips
 
-- Create templates for each transaction type you handle (residential purchase, commercial lease, etc.)
-- Include due date offsets relative to key dates — DocJacket calculates actual dates when the template is applied
-- You can apply multiple templates to the same transaction if needed
-- After applying a template, you can still add, remove, or modify individual tasks
+- Create checklists for each transaction type you handle, such as residential purchase, listing, land, or new build.
+- Include due-date offsets relative to key dates so DocJacket calculates actual dates when the checklist is applied.
+- You can apply multiple checklists to the same transaction if needed.
+- After applying a checklist, you can still add, remove, or modify individual key dates and tasks.

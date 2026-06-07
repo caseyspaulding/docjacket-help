@@ -39,4 +39,4 @@ task email automation options
 
 - Always review your email templates before enabling auto-send — make sure the content and recipients are correct
 - Auto-send respects DocJacket's approval-first design — you'll get a notification before emails go out so you can cancel if needed
-- Combine email automation with [task templates](./task-templates.mdx) to set up entire email workflows for a transaction type
+- Combine email automation with [checklists](./task-templates.mdx) to set up entire email workflows for a transaction type

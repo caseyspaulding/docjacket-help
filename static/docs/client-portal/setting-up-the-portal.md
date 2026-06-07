@@ -25,7 +25,7 @@ portal branding settings
 By default, the portal shows:
 
 - Transaction status and progress
-- Key milestones and dates
+- Key dates and deadlines
 - Assigned tasks (if you've marked them as portal-visible)
 - Shared documents
 - Contact information for the key parties

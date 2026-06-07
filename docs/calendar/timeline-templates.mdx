@@ -1,59 +1,60 @@
 ---
-sidebar_label: Timeline Templates
+sidebar_label: Checklists & Key Dates
 sidebar_position: 2
-description: Apply pre-built milestone sequences to a DocJacket transaction. Set up the entire deadline schedule automatically by transaction type.
+description: Apply checklist templates to a DocJacket transaction. Set up key dates, tasks, and automations automatically by transaction type.
 ---
 
 import ScreenshotPlaceholder from '@site/src/components/ScreenshotPlaceholder';
 import VideoPlaceholder from '@site/src/components/VideoPlaceholder';
 
-# Timeline Templates
+# Checklists & Key Dates
 
-<VideoPlaceholder>How to apply and customize timeline templates for your transactions</VideoPlaceholder>
+<VideoPlaceholder>How to apply and customize checklist templates for your transactions</VideoPlaceholder>
 
-Timeline templates are pre-built sequences of milestones for different transaction types. Apply one to a transaction and your entire deadline schedule is set up automatically.
+Checklist templates are pre-built workflows for different transaction types. Apply one to a transaction and DocJacket can create the key dates, tasks, and automations that belong to that deal.
 
-## Applying a template
+## Applying a checklist
 
 1. Open a transaction and go to the **Timeline** tab
-2. Click **Apply Template**
-3. Choose a template that matches your transaction type and state
-4. Set your [anchor date](./anchor-dates.md) — usually the contract date
-5. All milestones populate with calculated dates
+2. Click **Apply Checklist**
+3. Choose a checklist that matches your transaction type and state
+4. Review the key dates, tasks, and options
+5. Apply the checklist
 
-<ScreenshotPlaceholder>timeline tab after applying a template</ScreenshotPlaceholder>
+<ScreenshotPlaceholder>timeline tab after applying a checklist</ScreenshotPlaceholder>
 
 ## What's in a template
 
 Each template includes:
 
-- **Milestones** — Key deadlines like inspection period, appraisal, financing, and closing
-- **Date offsets** — Each milestone is defined relative to the anchor date (e.g., "10 days after contract", "3 days before closing")
-- **Linked tasks** — Some milestones include associated tasks that auto-populate
+- **Key Dates** — Important dates like inspection period, appraisal, financing, final walkthrough, possession, and closing
+- **Date rules** — Each key date can calculate relative to another date, such as "10 days after Effective Date" or "1 business day before Closing"
+- **Tasks** — Work items tied to those key dates
+- **Automations** — Prepared emails or rules tied to tasks and dates
 
 ## Viewing your timeline
 
 DocJacket offers two views:
 
-- **Pipeline view** — A horizontal visual overview. Green nodes are complete, blue is upcoming, red is overdue. Click any node for details.
-- **List view** — A vertical list with expandable milestones showing linked tasks.
+- **Pipeline view** — A horizontal visual overview. Complete, upcoming, overdue, and needs-date items are easy to spot. Click any item for details.
+- **List view** — A vertical list with expandable key dates showing linked tasks.
 
 Toggle between them with the view switch at the top.
 
-<ScreenshotPlaceholder>pipeline view with color-coded milestone nodes</ScreenshotPlaceholder>
+<ScreenshotPlaceholder>pipeline view with color-coded key date nodes</ScreenshotPlaceholder>
 
-## Adding custom milestones
+## Adding custom key dates
 
-Templates are a starting point. You can always add custom milestones for dates the template doesn't cover:
+Templates are a starting point. You can always add custom key dates for dates the template doesn't cover:
 
-1. Click the **Add Milestone** button
-2. Enter the milestone name and date
+1. Click **Add Key Date**
+2. Enter the key date name and date
 3. Optionally link tasks to it
 
 ## Recalculating dates
 
-When a key date changes (like the closing date gets pushed back), click **Recalculate** to cascade the change to all downstream milestones and tasks. DocJacket adjusts everything based on the original offsets.
+When a key date changes (like the closing date gets pushed back), click **Recalculate** to cascade the change to all downstream key dates and tasks. DocJacket adjusts everything based on the original offsets.
 
 ## Creating your own templates
 
-Go to **Templates > Timelines** in the sidebar to create custom timeline templates for your workflow. Define milestones with date offsets, and they'll be available to apply to any future transaction.
+Go to **Templates > Checklists** to create custom checklist templates for your workflow. Use **Templates > Key Date Library** to manage reusable key date rules that checklists can consume.

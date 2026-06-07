@@ -12,7 +12,7 @@ DocJacket connects with the tools you already use. Set up integrations in **Sett
 
 ### Google Workspace
 - **Gmail** — Sync emails and attachments with transactions
-- **Google Calendar** — Push closings, milestones, and tasks to your calendar
+- **Google Calendar** — Push closings, key dates, and tasks to your calendar
 - **Google Drive** — Store and organize transaction documents
 - **Google Contacts** — Import and sync your contacts
 

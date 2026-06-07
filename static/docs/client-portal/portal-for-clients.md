@@ -14,7 +14,7 @@ When a buyer or seller opens their portal link, they see a clean, simple view of
 ## What clients see
 
 - **Transaction status** — Where things stand (Under Contract, Clear to Close, etc.)
-- **Timeline** — Key milestones with dates and completion status
+- **Key dates** — Important deadlines with dates and completion status
 - **Documents** — Any documents you've shared with them
 - **Tasks** — Tasks marked as portal-visible (things they might need to complete)
 - **Contacts** — Key contacts involved in the transaction (their agent, title company, lender)

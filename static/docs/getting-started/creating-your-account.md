@@ -35,7 +35,7 @@ role selection step showing the three options
 
 ## Pick a starting template
 
-Next, DocJacket shows you a list of timeline templates based on your role. These are pre-built task checklists and milestone timelines for different transaction types and states.
+Next, DocJacket shows you a list of checklist templates based on your role. These are pre-built workflows with key dates and tasks for different transaction types and states.
 
 Pick one that's close to what you typically work — for example, a **Residential Purchase** template for your state. DocJacket will create a sample transaction using that template so you can see how everything works.
 

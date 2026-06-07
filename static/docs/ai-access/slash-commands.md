@@ -93,7 +93,7 @@ A weekly recap formatted for forwarding to a broker, team meeting, or your own r
 
 The end-to-end PDF-to-transaction workflow. The plugin's headline use case. See the full reference at **[Contract Intake](/docs/ai-access/contract-intake)**.
 
-**Chains:** `upload_document_for_extraction` → `get_extraction_results` (polling) → review → `apply_extraction` → `add_key_dates_batch` → `render_email_template` + `send_*` intros → `create_reminder` for major deadlines → `get_intake_status` final summary.
+**Chains:** `list_documents` → `extract_existing_document` (when the PDF is already in DocJacket — canonical) **OR** `request_upload_url` → `kick_off_extraction` (Claude.ai paid + code execution) **OR** `upload_document_for_extraction` (tiny chat-attached PDFs) → `get_extraction_results` (polling) → review → `apply_extraction` → `add_key_dates_batch` → `render_email_template` + `send_*` intros → `create_reminder` for major deadlines → `get_intake_status` final summary.
 
 ### `/docjacket:send-template`
 

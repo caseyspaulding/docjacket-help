@@ -10,7 +10,7 @@ description: Manage tasks and checklists for your real estate transactions — w
 
 # Tasks
 
-Managing tasks, templates, and email automation in DocJacket
+Managing tasks, checklists, and email automation in DocJacket
 
 Tasks are the backbone of every transaction. They track every to-do from contract to close — with due dates, priorities, assignees, email automation, and subtasks.
 
@@ -26,7 +26,7 @@ tasks tab with color-coded priority borders
 ## In this section
 
 - [Creating Tasks](./creating-tasks.mdx) — Quick add and the detail drawer
-- [Task Templates](./task-templates.mdx) — Pre-built checklists
+- [Checklists](./task-templates.mdx) — Reusable key date and task workflows
 - [Subtasks](./subtasks.mdx) — Breaking tasks into steps
 - [Email Automation](./email-automation.mdx) — Link emails to task completion
 - [Task Options](./task-options.md) — Portal visibility, key dates, conditional tasks, reminders

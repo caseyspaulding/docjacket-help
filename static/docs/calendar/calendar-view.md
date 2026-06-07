@@ -1,7 +1,7 @@
 ---
 sidebar_label: Calendar View
 sidebar_position: 4
-description: Month and week views of every DocJacket deadline — milestones, tasks, reminders, and custom events across all transactions.
+description: Month and week views of every DocJacket deadline — key dates, tasks, reminders, and custom events across all transactions.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/calendar/calendar-view -->
@@ -9,7 +9,7 @@ description: Month and week views of every DocJacket deadline — milestones, ta
 
 # Calendar View
 
-The Calendar page in the sidebar shows all your upcoming dates across every transaction — milestones, tasks, reminders, and custom events in one view.
+The Calendar page in the sidebar shows all your upcoming dates across every transaction — key dates, tasks, reminders, and custom events in one view.
 
 ## Navigating the calendar
 
@@ -23,7 +23,7 @@ calendar in month view with color-coded events
 
 Events are color-coded by type so you can tell them apart at a glance:
 
-- **Milestones** — Key transaction deadlines
+- **Key Dates** — Important transaction deadlines
 - **Tasks** — Due dates for your to-dos
 - **Reminders** — Alerts you've set
 - **Custom events** — Anything you've added manually
@@ -43,5 +43,5 @@ day agenda sidebar showing events
 ## Tips
 
 - Use the calendar to spot busy days — if you have 3 closings on the same day, you'll see it immediately
-- The calendar syncs with your timeline milestones automatically — no double entry
+- The calendar syncs with your transaction key dates automatically — no double entry
 - You can connect Google Calendar or Outlook Calendar in **Settings > Integrations** to sync events both ways

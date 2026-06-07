@@ -14,7 +14,7 @@ All paid plans include the full DocJacket feature set:
 
 - Unlimited transactions
 - AI contract extraction and task generation
-- Timeline and task templates
+- Checklists and key date templates
 - Document management and DocDrop
 - Client portal
 - Email integration (Gmail and Outlook)
