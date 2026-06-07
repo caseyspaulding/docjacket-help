@@ -88,22 +88,18 @@ Next up: [Set up your first transaction](./your-first-transaction.mdx)
 
 # Your First Transaction
 
-Step-by-step walkthrough of creating your first transaction in DocJacket
-
 Let's walk through creating a transaction from scratch. By the end, you'll have a deal set up with contacts, key dates, and tasks — ready to manage.
 
 ## Two ways to create a transaction
 
-From the **Transactions** page, click the **New Transaction** button in the top right. You've got two options:
+From the **Transactions** page, click **New Transaction** to start with document upload and extraction. If you prefer to enter everything yourself, use the manual transaction form.
 
-- **Create Manually** — Fill in the details yourself
 - **Upload & Extract** — Upload a contract PDF and let AI do the heavy lifting
-
-new transaction button with dropdown options
+- **Create manually** — Fill in the deal details yourself
 
 ### Option A: Upload & Extract (recommended)
 
-This is the fastest way. Upload your contract PDF and DocJacket's AI will read through it and pull out:
+This is the fastest way. Upload contract documents and DocJacket will read through them and pull out:
 
 - Buyer and seller names
 - Property address
@@ -111,28 +107,28 @@ This is the fastest way. Upload your contract PDF and DocJacket's AI will read t
 - Contract date, closing date, and key deadlines
 - Contingency periods
 
-1. Click **Upload & Extract**
-2. Drag and drop your contract PDF (or click to browse)
-3. Wait a moment while AI processes the document
-4. Review the extracted data — make any corrections needed
-5. Click **Create Transaction**
-
-AI extraction review screen with extracted fields
+1. Click **New Transaction**
+2. Choose **Create New Transaction**
+3. Choose the transaction side
+4. Drop in PDFs, JPGs, or PNGs
+5. Click **Upload & Continue**
+6. Review **Smart Split** if it appears
+7. Review the extracted data and save the transaction
 
 ### Option B: Create manually
 
 If you don't have a contract handy or prefer to enter details yourself:
 
-1. Click **Create Manually**
-2. Fill in the basics — property address, transaction type, and side (buy/sell/both)
-3. Add the purchase price and key dates
-4. Click **Create**
+1. Open the manual transaction form
+2. Fill in the basics: property address, status, type, and side
+3. Add any known key dates, financials, agents, and parties
+4. Click **Create Transaction**
 
 You can always add more details later from the transaction overview.
 
 ## Add your contacts
 
-Every deal has people involved. From the transaction overview, you'll see the **Contacts & Vendors** section on the right side. Add the key players:
+Every deal has people involved. Use the transaction **Contacts** tab or contacts section to add the key players:
 
 - **Buyers and Sellers** — The principals in the deal
 - **Agents** — The listing agent, buying agent, or both
@@ -142,33 +138,29 @@ Every deal has people involved. From the transaction overview, you'll see the **
 
 You can pick from your existing contacts or create new ones on the fly.
 
-contacts panel showing role slots
+## Add your workflow
 
-## Apply a checklist
+Use the **Tasks** tab to get the work moving:
 
-Checklists are what set up the reusable workflow for your deal. From the **Timeline** tab:
+1. Add one-off tasks with the quick-add bar
+2. Use **Add checklist** when you have a reusable checklist ready
+3. Use **Generate** to get suggested tasks for this transaction
+4. Review due dates, assignees, priorities, and task status
 
-1. Click **Apply Checklist**
-2. Choose a checklist that matches your transaction type and state
-3. Review the key dates, tasks, and options
-4. Adjust any dates if needed
-
-Your timeline now shows the important key dates from contract to closing, with automatic deadline calculations.
-
-timeline tab with key dates
+Use the key-date timeline on the **Overview** to track closing, contract, inspection, financing, appraisal, possession, and other important dates.
 
 ## Check your tasks
 
-Head to the **Tasks** tab. If your checklist included tasks, they're already here — organized by due date with priorities color-coded:
+Head to the **Tasks** tab. Tasks can be grouped by checklist and filtered by status or assignee.
 
-- 🔴 **Urgent** — Do this now
-- 🟠 **High** — Don't let this slip
-- 🟡 **Medium** — Standard priority
-- 🟢 **Low** — When you get to it
+Priorities are:
 
-You can also add tasks manually with the quick-add bar at the top, or let AI generate a task checklist based on your transaction details.
+- **Urgent**
+- **High**
+- **Medium**
+- **Low**
 
-tasks tab with color-coded priorities
+You can add tasks manually, add a checklist, or let AI suggest tasks based on the transaction details.
 
 ## You're all set!
 
@@ -189,12 +181,10 @@ Here's a quick tour of the DocJacket layout so you know where everything lives.
 The dashboard is your home base. When you log in, you'll see:
 
 - **Today's Briefing** — A snapshot of your day: closings today, tasks due, overdue items, and your overall workload level
-- **Quick Actions** — Shortcuts to common tasks like creating a transaction or uploading a contract
+- **Quick Actions** — Shortcuts to common work like creating a transaction or uploading a contract
 - **Closing Soon** — Transactions approaching their closing date, with urgency indicators
 - **Quick Tasks** — Your most pressing to-dos across all transactions
 - **Month Stats** — New transactions, closed deals, active volume, and pending tasks for the month
-
-dashboard showing briefing, quick actions, and closing soon sections
 
 ## The Sidebar
 
@@ -204,51 +194,40 @@ The sidebar on the left is your main navigation. Here's what each section does:
 |-----------|-------------|
 | **Dashboard** | Your daily overview and quick actions |
 | **Transactions** | All your deals — search, filter, and manage |
-| **Intake Queue** | Route inbound emails, SMS, intake forms, and notes to transactions |
-| **Pending Review** | Approve, edit, or reject AI-proposed drafts before they run |
 | **Tasks** | Organization-wide task list across all transactions |
-| **Documents** | Organization-wide document list and document detail pages |
+| **Pipeline** | Visual pipeline view of your deals by status |
+| **Templates** | Create and manage checklists, key date rules, email templates, forms, document lists, and report templates |
 | **Inbox** | Your message center for transaction-related emails |
 | **Contacts** | Your contact database — clients, agents, vendors |
-| **Offices** | Manage office locations, approved forms, members, branding, and compliance defaults |
-| **Front Door** | Manage your public-facing contact card, services, packages, leads, listings, and custom domain |
-| **Pipeline** | Visual pipeline view of your deals by status |
 | **Calendar** | See all key dates, tasks, reminders, and deadlines in a calendar view |
-| **Key Dates** | Upcoming and overdue key dates across every transaction |
-| **Waiting Items** | Items your team is waiting on from clients, agents, vendors, or other parties |
-| **E-Signatures** | Signature requests and signer completion status |
-| **Portal Links** | Active, expiring, and revoked portal links across all transactions |
-| **Templates** | Create and manage checklists, key date rules, email templates, forms, document lists, and report templates |
 | **Reports** | Transaction reports and analytics |
+| **Video Courses** | Structured help and training content |
 | **Billing** | Your subscription and payment details |
-| **Activity Log** | Organization-wide audit trail of user and system activity |
 | **Settings** | Organization settings, user management, integrations |
-
-sidebar with menu items visible
 
 ## Inside a transaction
 
 When you open a transaction, you'll see a tabbed layout:
 
 - **Overview** — Everything at a glance: key dates, financials, contacts, tasks, documents, contingencies, and repairs
-- **Timeline** — Your key dates and deadlines with status tracking
 - **Tasks** — To-do list specific to this transaction
 - **Documents** — All files for this deal
 - **Contacts** — People involved in this transaction
-- **Messages** — Email threads related to this deal
-- **Notes** — Internal notes for your team (not visible to clients)
+- **Messages** — Email, SMS, portal chat, and scheduled communication surfaces
+- **Portal** — Client and agent portal controls
+- **Forms** — Online form links and submissions
+- **Activity** — Recent activity for the deal
+- **Reports** — Transaction reports and report scheduling
+- **Calculators** — Transaction calculators
 
 The **Overview** tab is where most TCs spend their time — it's a single-page view of everything important about the deal.
-
-transaction overview tab showing the full layout
 
 ## Quick tips
 
 - **Pending uploads are not finished transactions** — review and save completed extractions before expecting them in the transaction list
 - **Search** is everywhere — use the search bar on the Transactions page to find deals by address, buyer name, or seller name
 - **Help chat** — Click the chat button in the bottom-right corner anytime for instant AI-powered help
-- **Keyboard shortcuts** — Press `?` to see available keyboard shortcuts on any page
-- **Dark mode** — Toggle dark mode in Settings if you prefer working at night
+- **Review queue** — Use the document-tasks icon in the topbar for ready drafts, scheduled sends, recent activity, and pending uploads
 
 ---
 
@@ -545,12 +524,12 @@ Your **Transactions** page is home base. It shows every deal you're managing in 
 
 - **Search** by property address, buyer name, or seller name
 - **Filter** by status (active, pending, closed), side (buyer/seller), price range, or closing date range
+- **Switch between Transactions and Listings**
+- **Open saved views** for repeat reporting layouts
 - **Customize columns** to show exactly the info you care about
 - **Export to CSV** for reporting or backup
 
-transactions list page showing table with filters
-
-Click any transaction to open it and see the full picture — overview, timeline, tasks, documents, contacts, and messages all in one place.
+Click any transaction to open it and see the full picture: overview, tasks, documents, contacts, messages, portal, forms, activity, reports, and calculators.
 
 ## In this section
 
@@ -565,26 +544,30 @@ Click any transaction to open it and see the full picture — overview, timeline
 
 # Creating a Transaction
 
-There are two ways to create a new transaction in DocJacket. Both start from the **Transactions** page — click the **New Transaction** button in the top right.
+There are two main ways to create a transaction in DocJacket: upload documents and extract the details, or use the manual transaction form.
 
 ## Upload & Extract (recommended)
 
-The fastest way to get a deal set up. Upload your contract PDF and let AI do the data entry.
+The fastest way to get a deal set up is the **Upload Documents** flow.
 
-1. Click **New Transaction** > **Upload & Extract**
-2. Drag and drop your contract PDF (or click to browse)
-3. DocJacket's AI reads through the document and extracts:
+1. From **Transactions**, click **New Transaction**
+2. Choose **Create New Transaction**
+3. Choose the transaction side
+4. Drop in PDFs, JPGs, or PNGs
+5. Click **Upload & Continue**
+6. If **Smart Split** appears, review the detected documents and continue
+7. Open the progress page while extraction runs
+8. Review the extracted data and save the transaction
+
+DocJacket can extract:
+
    - Buyer and seller names
    - Property address
    - Purchase price, earnest money, and loan details
    - Contract date, closing date, and key deadlines
    - Contingency periods
-4. Review the extracted data — you can edit anything that needs correcting
-5. Click **Create Transaction**
 
-The AI is good, but always give the extracted data a quick once-over. Handwritten contracts or unusual formatting might need a few manual tweaks.
-
-AI extraction review screen
+Always review the extracted data before saving. Nothing is final until you complete the review-and-save step.
 
 :::tip
 Got a contract with multiple documents bundled into one PDF? DocJacket's AI can detect and split them automatically. See [Smart Document Splitting](/docs/ai-features/smart-document-splitting) for details.
@@ -594,22 +577,21 @@ Got a contract with multiple documents bundled into one PDF? DocJacket's AI can 
 
 If you don't have a contract yet or prefer to enter details yourself:
 
-1. Click **New Transaction** > **Create Manually**
-2. Enter the property address
-3. Select the transaction type and side (buy, sell, or both)
-4. Add the purchase price and key dates
-5. Click **Create**
+1. Open the manual transaction form
+2. Enter the required property address
+3. Choose status, type, and side
+4. Add workflow details such as waiting-on status, assignee, or FUB account if needed
+5. Add key dates, financials, parties, agents, and other details you already know
+6. Click **Create Transaction**
 
 You can fill in the rest later — contacts, documents, key dates, and tasks can all be added from the transaction overview.
-
-manual creation form
 
 ## What happens next
 
 Once your transaction is created, you'll land on the [Transaction Overview](./transaction-overview.mdx). From there, you'll typically want to:
 
 1. [Add contacts](/docs/contacts) — buyers, sellers, agents, title company, lender
-2. [Apply a checklist](/docs/calendar/timeline-templates) — sets up your key dates, tasks, and deadline rules
+2. [Apply a checklist](/docs/templates/task-templates) — sets up reusable task work for the deal
 3. [Upload documents](/docs/documents/uploading-documents) — contracts, disclosures, and other files
 
 ---
@@ -668,46 +650,48 @@ Store login details for MLS, tax portals, and other external systems used in thi
 
 # Key Dates & Financials
 
-Every transaction has dates and dollar amounts that need to be tracked carefully. DocJacket keeps all of this organized on the transaction overview.
+Every transaction has dates and dollar amounts that need to be tracked carefully. DocJacket keeps the timeline and financial summary organized on the transaction overview.
 
 ## Key dates
 
-The dates section on the overview shows your most important deadlines:
+The key-date timeline on the overview shows your most important deadlines:
 
 - **Contract date** — When the contract was executed
 - **Closing date** — The target closing date
 - **Inspection deadline** — When inspections must be completed
 - **Appraisal deadline** — When the appraisal is due
 - **Financing deadline** — When the buyer's financing must be secured
-- **Other custom dates** — Any additional dates relevant to the deal
+- **Possession date** — When possession transfers
+- **Final walkthrough** — When the final walkthrough is scheduled
+- **Other key dates** — Any additional dates relevant to the deal
 
-These dates stay in sync with the transaction's key date rules. If you change the closing date, DocJacket recalculates downstream deadlines that depend on it.
-
-key dates section on overview
+Some dates also appear as canonical key dates on the calendar so tasks, reminders, and reporting can use the same anchor date.
 
 ### Editing dates
 
-Click any date field to edit it. When you change a date that other key dates depend on, like the closing date, DocJacket will ask if you want to recalculate the rest of the timeline.
+Use the transaction edit page or the key-date timeline controls to adjust dates. If a date came from extraction, review it before saving so downstream tasks and reminders use the correct anchor.
 
 ## Financial summary
 
 The financials section gives you a quick snapshot of the money side:
 
 - **Purchase price** — The agreed sale price
+- **List price** — For listings or listing-side reporting
 - **Earnest money** — The deposit amount and who's holding it
+- **Additional deposit** — A second earnest-money or deposit amount when applicable
 - **Loan amount** — If the buyer is financing
 - **Down payment** — Calculated from price minus loan amount
-- **Commission** — Agent commission details
-- **Other fees** — Title fees, closing costs, etc.
-
-financial summary section on overview
+- **Seller concession** — Seller-paid credits or concessions
+- **Appraisal gap** — Any appraisal-gap amount tracked on the deal
+- **Home warranty amounts** — Buyer-paid or seller-paid home warranty amounts
+- **Financing type** — Cash, financed, or other financing category
 
 ### Editing financials
 
-Click any field to update it. If you used AI extraction to create the transaction, these fields are pre-populated from the contract — just verify they're correct.
+Use the transaction edit page to update financial fields. If you used AI extraction to create the transaction, these fields may be pre-populated from the contract — just verify they're correct before saving.
 
 :::tip
-If you're tracking commission splits or detailed closing costs, you can add custom fields in **Settings > Transaction Fields**.
+If you're tracking commission splits or detailed closing costs, you can add custom fields in **Settings > Custom Fields**.
 :::
 
 ---
@@ -727,36 +711,33 @@ Contingencies are conditions that must be met for the deal to close. Common exam
 
 ### Tracking contingency status
 
-Each contingency in DocJacket has one of three statuses:
+Each configured contingency in DocJacket has a status:
 
 - **Active** — The contingency is still in effect
 - **Satisfied** — The condition has been met
 - **Waived** — The buyer has chosen to waive the contingency
+- **Not applicable** — The contingency does not apply to this deal
 
-As the deal progresses, update each contingency's status so everyone knows where things stand. This is especially helpful when you're coordinating between multiple parties.
+As the deal progresses, use the status buttons in the **Contingencies** section to update each contingency. This is especially helpful when you're coordinating between multiple parties.
 
-contingencies section showing different statuses
+### Configuring contingencies
 
-### Adding contingencies
-
-From the transaction overview, scroll to the **Contingencies** section and click **Add Contingency**. Enter the name, type, and deadline. If you used AI extraction, DocJacket may have already pulled contingencies from the contract.
+The transaction overview shows the contingency types configured for your organization. If the section says no contingencies are configured, add or restore them in **Settings > Contingencies**.
 
 ## Repairs
 
-After inspections, there are often repair requests. DocJacket lets you track each repair item and its resolution.
+After inspections, there are often repair requests. DocJacket lets you track common repair categories and their resolution from the transaction overview.
 
-### Adding repair items
+### Tracking repair items
 
-1. In the **Repairs** section on the overview, click **Add Repair**
-2. Enter a description of the repair needed
-3. Set a status — Requested, Approved, In Progress, or Completed
-4. Optionally add estimated cost and notes
+1. Open the **Repairs** section on the overview
+2. Use the status buttons for each repair category
+3. Choose **N/A**, **Pending**, or **Resolved**
+4. Click a repair item name to add notes
 
 ### Tracking resolution
 
-Update repair statuses as the seller addresses each item. This gives you a clear record of what was requested, what was approved, and what's been completed — helpful if there are any disputes later.
-
-repairs section showing items with different statuses
+Update repair statuses as the seller addresses each item. This gives you a clear record of what still needs attention and what has been resolved — helpful if there are any disputes later.
 
 ---
 
@@ -805,25 +786,21 @@ DocJacket comes with these built-in statuses:
 
 On the **Transactions** page, use the status filter to see only the deals in a specific state. For example, filter to "Active" to see just your current workload, or "Closed" to review completed deals.
 
-status filter dropdown on transactions list
-
 ### Pipeline view
 
 The **Pipeline** page shows your transactions as a Kanban board, with each column representing a status. Drag and drop transaction cards between columns to update their status instantly.
-
-pipeline board with status columns
 
 ### Changing a transaction's status
 
 You can change a transaction's status in a few ways:
 
-1. **From the transaction** — Open the transaction and update the status field
+1. **From the transaction header** — Open the transaction and click the status chip
 2. **From the pipeline** — Drag the card to a different column
-3. **From the list** — Some status changes are available via right-click or inline actions
+3. **From the list** — Use inline status controls when available
 
 ## Custom statuses
 
-If the default statuses don't match your workflow, you can create custom statuses in **Settings**. For example, some TCs add statuses like:
+If the default statuses don't match your workflow, you can create custom statuses in **Settings > Transaction Statuses**. For example, some TCs add statuses like:
 
 - **Under Review** — Contract received but not yet fully executed
 - **Clear to Close** — All conditions met, just waiting for the closing date
