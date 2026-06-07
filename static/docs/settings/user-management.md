@@ -13,7 +13,7 @@ Add team members to your DocJacket organization and control what they can access
 
 ## Inviting team members
 
-1. Go to **Settings > Users**
+1. Go to **Settings > Team Members**
 2. Click **Invite User**
 3. Enter their email address
 4. Assign a role (which controls their permissions)
@@ -38,7 +38,7 @@ roles settings showing permission categories
 
 ## Managing users
 
-From the Users page in Settings, you can:
+From the Team Members page in Settings, you can:
 
 - **Change a user's role** — Update their permissions
 - **Deactivate a user** — Remove their access without deleting their account

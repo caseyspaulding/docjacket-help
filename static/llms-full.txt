@@ -4153,7 +4153,7 @@ Add team members to your DocJacket organization and control what they can access
 
 ## Inviting team members
 
-1. Go to **Settings > Users**
+1. Go to **Settings > Team Members**
 2. Click **Invite User**
 3. Enter their email address
 4. Assign a role (which controls their permissions)
@@ -4178,7 +4178,7 @@ roles settings showing permission categories
 
 ## Managing users
 
-From the Users page in Settings, you can:
+From the Team Members page in Settings, you can:
 
 - **Change a user's role** — Update their permissions
 - **Deactivate a user** — Remove their access without deleting their account
@@ -4468,7 +4468,7 @@ Control what notifications you receive and how you receive them.
 Go to **Settings > Notifications** to manage your preferences. You can toggle notifications for different event types:
 
 - **Task reminders** — Get notified when tasks are approaching or overdue
-- **Milestone alerts** — Notifications for upcoming or passed deadlines
+- **Key date alerts** — Notifications for upcoming or passed deadlines
 - **Document updates** — When documents are uploaded, approved, or need review
 - **Email activity** — When new emails arrive for your transactions
 - **Workflow approvals** — When a workflow step needs your approval
@@ -4584,7 +4584,7 @@ The billing page shows:
 As your team grows or shrinks:
 
 - **Add a seat** — Invite a new team member and a seat is added automatically. You'll be billed for the additional seat on your next billing cycle.
-- **Remove a seat** — Deactivate a user in Settings > Users. The seat is freed up and your bill adjusts on the next cycle.
+- **Remove a seat** — Deactivate a user in Settings > Team Members. The seat is freed up and your bill adjusts on the next cycle.
 
 ## Updating payment info
 

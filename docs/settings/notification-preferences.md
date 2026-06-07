@@ -13,7 +13,7 @@ Control what notifications you receive and how you receive them.
 Go to **Settings > Notifications** to manage your preferences. You can toggle notifications for different event types:
 
 - **Task reminders** — Get notified when tasks are approaching or overdue
-- **Milestone alerts** — Notifications for upcoming or passed deadlines
+- **Key date alerts** — Notifications for upcoming or passed deadlines
 - **Document updates** — When documents are uploaded, approved, or need review
 - **Email activity** — When new emails arrive for your transactions
 - **Workflow approvals** — When a workflow step needs your approval

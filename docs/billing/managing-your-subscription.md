@@ -22,7 +22,7 @@ The billing page shows:
 As your team grows or shrinks:
 
 - **Add a seat** — Invite a new team member and a seat is added automatically. You'll be billed for the additional seat on your next billing cycle.
-- **Remove a seat** — Deactivate a user in Settings > Users. The seat is freed up and your bill adjusts on the next cycle.
+- **Remove a seat** — Deactivate a user in Settings > Team Members. The seat is freed up and your bill adjusts on the next cycle.
 
 ## Updating payment info
 
