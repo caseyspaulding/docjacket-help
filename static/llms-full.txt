@@ -618,8 +618,6 @@ Once your transaction is created, you'll land on the [Transaction Overview](./tr
 
 The Overview tab is where most TCs spend their time. It shows everything important about a deal on one page — no clicking through multiple tabs to find what you need.
 
-full transaction overview page
-
 ## What's on the Overview
 
 Here's a breakdown of each section:
@@ -627,8 +625,8 @@ Here's a breakdown of each section:
 ### Upcoming Key Dates
 A visual snapshot of the next important dates at the top. Click any key date to jump into the full key date list for more details.
 
-### AI Insights
-If you've run an AI analysis, risk assessments and compliance checks appear here. Each issue has one-click actions you can approve or dismiss.
+### Risk Insights
+When a transaction has a stored risk assessment, a risk chip appears in the transaction header. Click it to review the summary, risk factors, mitigations, recommendations, and to re-run the assessment.
 
 ### Key Dates
 Closing date, contract date, inspection deadline, and other important dates. These stay in sync when you update the transaction — change the closing date and downstream dates recalculate automatically.
@@ -1140,11 +1138,12 @@ This page covers sending an existing uploaded document. To send reusable office-
 2. Go to the **Documents** tab
 3. Find the document that needs signatures
 4. Click **Send for Signature**
-5. Choose the signer roles and recipients
-6. Turn on ordered signing if signers must sign one at a time
-7. Review the request and send it
+5. Add signer name, email, and role
+6. Add more signers if needed
+7. Turn on ordered signing if signers must sign one at a time
+8. Click **Send for Signature**
 
-signature request drawer from the documents tab
+When a document has transaction contacts available, DocJacket can suggest signers so you do not have to retype every recipient.
 
 ## Tracking status
 
@@ -1157,6 +1156,7 @@ From the status view, you can resend a reminder or cancel a pending signer reque
 - Make sure contacts are added to the transaction before sending a request.
 - Use approved form templates when your office requires standardized signature packets.
 - Sent requests are treated as locked records so in-flight signing is not changed accidentally.
+- If a completed signed PDF appears in Documents, use the signed-status chip to open the related signature status.
 
 ---
 
@@ -1354,9 +1354,7 @@ Disclosure Packages are separate from Client Portal links. A portal link gives s
 8. Set whether acknowledgement is required
 9. Click **Share now**
 
-share disclosure package action on the documents tab
-
-After DocJacket creates the package, it opens the package detail page so you can invite recipients.
+DocJacket creates the package, attaches the selected documents, activates the package, and opens the package detail page on the **Recipients** tab so you can invite viewers.
 
 ## Inviting recipients
 
@@ -3715,7 +3713,7 @@ Here's the important thing: **DocJacket separates AI suggestions from the final 
 
 - **Contract Extraction** — Upload a contract packet and AI pulls out names, dates, prices, terms, and source citations
 - **Task Generation** — AI analyzes your transaction and suggests a task checklist tailored to the deal
-- **Risk & Compliance Insights** — Get flagged on potential issues before they become problems
+- **Risk Insights** — Review transaction-level risk assessments and document-level checks
 - **Smart Document Splitting** — Upload a multi-document PDF and AI detects the documents, page ranges, and primary contract
 - **Communication Drafting** — AI drafts emails and messages that can be reviewed before they send
 
@@ -3723,7 +3721,7 @@ Here's the important thing: **DocJacket separates AI suggestions from the final 
 
 - [Contract Extraction](./contract-extraction.mdx) — How AI reads your contracts
 - [AI Task Generation](./ai-task-generation.mdx) — Let AI build your task checklist
-- [AI Insights](./ai-insights.mdx) — Risk assessments and compliance checks
+- [Risk Insights](./ai-insights.mdx) — Risk assessments and document checks
 - [Smart Document Splitting](./smart-document-splitting.mdx) — Automatically split bundled PDFs
 
 ---
@@ -3785,28 +3783,27 @@ Don't want to build your task checklist from scratch? Let AI analyze your transa
 ## How it works
 
 1. Open a transaction and go to the **Tasks** tab
-2. Click the **AI Generate** button
-3. AI looks at your transaction details — property type, state, parties involved, timeline — and suggests a task checklist
-4. Review the suggestions — each task shows a name, priority, and estimated due date
-5. Select the tasks you want to keep (or select all)
-6. Click **Add Tasks**
+2. Click **Generate**
+3. DocJacket looks at the transaction details and existing tasks
+4. Review the **Suggested Tasks** panel
+5. Select the suggestions you want to keep, or use **Select All**
+6. Click **Add Selected**
 
-That's it. The tasks appear in your list with priorities and due dates already set.
-
-AI task generation suggestions with checkboxes
+The selected tasks are added to the transaction with their suggested name, description, and priority.
 
 ## What makes the suggestions good
 
-AI doesn't just generate a generic checklist. It considers:
+The generator uses:
 
 - **Transaction type** — A residential purchase has different tasks than a commercial lease
-- **State-specific requirements** — Different states have different disclosure and compliance requirements
+- **Transaction side** — Buyer-side and seller-side workflows differ
+- **Financing type** — Financing can change the work that needs to happen
+- **Contract and closing dates** — When available, these provide timeline context
 - **Your existing tasks** — AI avoids suggesting tasks you've already added
-- **Timeline** — Due dates are calculated based on your contract and closing dates
 
 ## AI vs. Templates
 
-Both AI generation and [checklists](/docs/tasks/task-templates) can populate your task list. Here's when to use each:
+Both AI generation and [checklists](/docs/templates/task-templates) can populate your task list. Here's when to use each:
 
 | Use AI generation when... | Use templates when... |
 |--------------------------|----------------------|
@@ -3818,39 +3815,43 @@ You can also use both — apply a template first, then run AI generation to catc
 
 ---
 
-# AI Insights
+# Risk Insights
 
-AI Insights runs risk assessments and compliance checks on your transactions, flagging potential issues before they become problems.
+DocJacket surfaces risk and review signals in two places: the transaction header and the Documents tab.
 
-## Where to find them
+## Transaction risk assessment
 
-AI Insights appear on the **Overview** tab of any transaction, in the **AI Insights** card near the top. If there are any issues, you'll see them listed with severity indicators.
+When a transaction has a stored risk assessment, a risk chip appears in the transaction header.
 
-AI insights card on transaction overview
+Click the chip to open the risk drawer. The drawer shows:
 
-## What gets flagged
+- Overall risk level
+- Summary
+- Risk factors
+- Severity for each factor
+- Mitigation notes when available
+- Recommendations
+- When the assessment was computed
 
-AI looks for things like:
+Use **Re-run assessment** in the drawer to refresh the assessment from the current transaction state.
 
-- **Missing documents** — Required documents that haven't been uploaded yet
-- **Approaching deadlines** — Key dates or contingency expirations coming up soon
-- **Incomplete information** — Missing contact details, unsigned documents, or blank fields
-- **Compliance concerns** — State-specific requirements that may not be met
-- **Timeline conflicts** — Dates that don't make sense (e.g., inspection deadline after closing date)
+## Document checks
 
-## Taking action
+On the transaction **Documents** tab, the **AI Check** column handles document-level review.
 
-Each insight comes with one-click actions:
+Use it to:
 
-- **Approve** — Acknowledge the issue and mark it as addressed
-- **Dismiss** — If it's not relevant to this particular deal
-- **Take action** — Jump directly to the part of the transaction that needs attention
+- Run a risk scan on an uploaded document
+- View risk findings
+- Dismiss findings after review
+- Check a contract for missing signatures or initials
+- Open the contract-check viewer when issues are found
 
-AI Insights update as your transaction progresses. Once you resolve an issue (like uploading a missing document), the insight clears automatically.
+## How to use insights
 
-## Running a new analysis
+Treat risk insights as review prompts. They help you decide where to look, but they do not replace your normal transaction review.
 
-Insights can be refreshed anytime. Click the **Run Analysis** button on the AI Insights card to have AI re-evaluate the transaction based on its current state.
+If you resolve a concern, re-run the relevant assessment or document check so the displayed result reflects the latest transaction state.
 
 ---
 

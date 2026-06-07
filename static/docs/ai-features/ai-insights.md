@@ -1,42 +1,46 @@
 ---
-sidebar_label: AI Insights
+sidebar_label: Risk Insights
 sidebar_position: 4
-description: AI runs compliance and risk checks on your DocJacket transactions, flagging issues before they become problems.
+description: Review transaction-level risk assessments and document-level checks in DocJacket.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/ai-features/ai-insights -->
 <!-- Source: docs/ai-features/ai-insights.mdx -->
 
-# AI Insights
+# Risk Insights
 
-AI Insights runs risk assessments and compliance checks on your transactions, flagging potential issues before they become problems.
+DocJacket surfaces risk and review signals in two places: the transaction header and the Documents tab.
 
-## Where to find them
+## Transaction risk assessment
 
-AI Insights appear on the **Overview** tab of any transaction, in the **AI Insights** card near the top. If there are any issues, you'll see them listed with severity indicators.
+When a transaction has a stored risk assessment, a risk chip appears in the transaction header.
 
-AI insights card on transaction overview
+Click the chip to open the risk drawer. The drawer shows:
 
-## What gets flagged
+- Overall risk level
+- Summary
+- Risk factors
+- Severity for each factor
+- Mitigation notes when available
+- Recommendations
+- When the assessment was computed
 
-AI looks for things like:
+Use **Re-run assessment** in the drawer to refresh the assessment from the current transaction state.
 
-- **Missing documents** — Required documents that haven't been uploaded yet
-- **Approaching deadlines** — Key dates or contingency expirations coming up soon
-- **Incomplete information** — Missing contact details, unsigned documents, or blank fields
-- **Compliance concerns** — State-specific requirements that may not be met
-- **Timeline conflicts** — Dates that don't make sense (e.g., inspection deadline after closing date)
+## Document checks
 
-## Taking action
+On the transaction **Documents** tab, the **AI Check** column handles document-level review.
 
-Each insight comes with one-click actions:
+Use it to:
 
-- **Approve** — Acknowledge the issue and mark it as addressed
-- **Dismiss** — If it's not relevant to this particular deal
-- **Take action** — Jump directly to the part of the transaction that needs attention
+- Run a risk scan on an uploaded document
+- View risk findings
+- Dismiss findings after review
+- Check a contract for missing signatures or initials
+- Open the contract-check viewer when issues are found
 
-AI Insights update as your transaction progresses. Once you resolve an issue (like uploading a missing document), the insight clears automatically.
+## How to use insights
 
-## Running a new analysis
+Treat risk insights as review prompts. They help you decide where to look, but they do not replace your normal transaction review.
 
-Insights can be refreshed anytime. Click the **Run Analysis** button on the AI Insights card to have AI re-evaluate the transaction based on its current state.
+If you resolve a concern, re-run the relevant assessment or document check so the displayed result reflects the latest transaction state.

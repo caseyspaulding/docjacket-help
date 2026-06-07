@@ -25,9 +25,7 @@ Disclosure Packages are separate from Client Portal links. A portal link gives s
 8. Set whether acknowledgement is required
 9. Click **Share now**
 
-share disclosure package action on the documents tab
-
-After DocJacket creates the package, it opens the package detail page so you can invite recipients.
+DocJacket creates the package, attaches the selected documents, activates the package, and opens the package detail page on the **Recipients** tab so you can invite viewers.
 
 ## Inviting recipients
 

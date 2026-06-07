@@ -1,7 +1,7 @@
 ---
 sidebar_label: Transaction Overview
 sidebar_position: 3
-description: The DocJacket transaction overview page — single-page view of contacts, key dates, tasks, documents, and AI insights.
+description: The DocJacket transaction overview page — single-page view of contacts, key dates, tasks, documents, and risk signals.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/transactions/transaction-overview -->
@@ -11,8 +11,6 @@ description: The DocJacket transaction overview page — single-page view of con
 
 The Overview tab is where most TCs spend their time. It shows everything important about a deal on one page — no clicking through multiple tabs to find what you need.
 
-full transaction overview page
-
 ## What's on the Overview
 
 Here's a breakdown of each section:
@@ -20,8 +18,8 @@ Here's a breakdown of each section:
 ### Upcoming Key Dates
 A visual snapshot of the next important dates at the top. Click any key date to jump into the full key date list for more details.
 
-### AI Insights
-If you've run an AI analysis, risk assessments and compliance checks appear here. Each issue has one-click actions you can approve or dismiss.
+### Risk Insights
+When a transaction has a stored risk assessment, a risk chip appears in the transaction header. Click it to review the summary, risk factors, mitigations, recommendations, and to re-run the assessment.
 
 ### Key Dates
 Closing date, contract date, inspection deadline, and other important dates. These stay in sync when you update the transaction — change the closing date and downstream dates recalculate automatically.

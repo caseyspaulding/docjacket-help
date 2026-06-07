@@ -18,7 +18,7 @@ Here's the important thing: **DocJacket separates AI suggestions from the final 
 
 - **Contract Extraction** — Upload a contract packet and AI pulls out names, dates, prices, terms, and source citations
 - **Task Generation** — AI analyzes your transaction and suggests a task checklist tailored to the deal
-- **Risk & Compliance Insights** — Get flagged on potential issues before they become problems
+- **Risk Insights** — Review transaction-level risk assessments and document-level checks
 - **Smart Document Splitting** — Upload a multi-document PDF and AI detects the documents, page ranges, and primary contract
 - **Communication Drafting** — AI drafts emails and messages that can be reviewed before they send
 
@@ -26,5 +26,5 @@ Here's the important thing: **DocJacket separates AI suggestions from the final 
 
 - [Contract Extraction](./contract-extraction.mdx) — How AI reads your contracts
 - [AI Task Generation](./ai-task-generation.mdx) — Let AI build your task checklist
-- [AI Insights](./ai-insights.mdx) — Risk assessments and compliance checks
+- [Risk Insights](./ai-insights.mdx) — Risk assessments and document checks
 - [Smart Document Splitting](./smart-document-splitting.mdx) — Automatically split bundled PDFs
