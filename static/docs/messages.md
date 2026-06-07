@@ -1,7 +1,7 @@
 ---
 sidebar_label: Overview
 sidebar_position: 1
-description: Send emails, manage your inbox, and keep all transaction communication organized in DocJacket.
+description: Send emails, schedule follow-ups, text contacts, and keep transaction communication organized in DocJacket.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/messages -->
@@ -9,12 +9,12 @@ description: Send emails, manage your inbox, and keep all transaction communicat
 
 # Messages & Email
 
-DocJacket centralizes all your transaction communication. Send emails, manage your inbox, and keep every conversation linked to the right deal.
+DocJacket keeps communication attached to the transaction where the work is happening. Open a transaction's **Messages** tab to review email, scheduled email, SMS or portal conversations, and internal notes for that deal.
 
-Your **Inbox** in the sidebar is a unified view — SMS, portal messages, emails, form submissions, and notes all in one place.
+The **Messages** item in the sidebar takes you back to the transaction list because message history is managed inside each transaction workspace.
 
 ## In this section
 
-- [Inbox](./inbox.mdx) — Your unified communication center
-- [Sending Emails](./sending-emails.mdx) — Compose and send from within a transaction
+- [Transaction Messages](./inbox.mdx) — Use the Email, Scheduled, SMS, and Notes tabs on a transaction
+- [Sending Emails](./sending-emails.mdx) — Compose, send, schedule, and attach files from a transaction
 - [Email Templates](./email-templates.md) — Create reusable email content
