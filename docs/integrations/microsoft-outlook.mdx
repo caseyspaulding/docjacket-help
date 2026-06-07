@@ -1,42 +1,45 @@
 ---
 sidebar_label: Microsoft Outlook
 sidebar_position: 3
-description: Connect Microsoft 365 to DocJacket — send Outlook email, sync calendar, and link incoming mail to transactions automatically.
+description: Connect Microsoft 365 to DocJacket to send Outlook email and manage Microsoft integration access.
 ---
-
-import ScreenshotPlaceholder from '@site/src/components/ScreenshotPlaceholder';
 
 # Microsoft Outlook
 
-Connect your Microsoft 365 account to sync email, calendar, and documents with DocJacket.
+Connect Microsoft services from **Settings > Integrations**. Each Microsoft card has its own connection status and connect, reconnect, or disconnect action.
 
 ## What's included
 
 ### Outlook Mail
-- Send emails from DocJacket using your Outlook account
-- Incoming emails are tracked and linked to transactions
-- Email history syncs both ways
+
+Connect Outlook Mail to send transaction email through Microsoft 365. Outlook Mail powers:
+
+- Transaction email compose, reply, reply-all, and forward
+- Scheduled one-off emails from the Email tab
+- Scheduled emails from tasks, key dates, reports, and automation rules
+- Sent-message history stored with the transaction in DocJacket
+- Attachment sending from transaction documents or uploaded files
 
 ### Outlook Calendar
-- Sync transaction key dates and deadlines to your Outlook Calendar
-- See DocJacket events alongside your existing schedule
+
+The Outlook Calendar card connects Microsoft calendar access from the integrations page. Use it when your workflow depends on Microsoft calendar permissions.
 
 ### OneDrive
-- Store and sync transaction documents with OneDrive
-- Access your cloud files directly from DocJacket
+
+The OneDrive card connects Microsoft file access from the integrations page. The current transaction document import and linked-folder workflow is Google Drive-specific.
 
 ## Connecting
 
 1. Go to **Settings > Integrations**
-2. Find **Microsoft 365** and click **Connect**
-3. Sign in with your Microsoft account
-4. Grant the requested permissions
-5. You're connected
+2. Find the Microsoft service you want to connect
+3. Click **Connect**
+4. Sign in with your Microsoft account
+5. Grant the requested permissions
 
-<ScreenshotPlaceholder>Microsoft integration settings</ScreenshotPlaceholder>
+If the card shows **Expired**, click **Reconnect** so DocJacket can refresh the permission.
 
 ## Tips
 
-- Works with Microsoft 365 business and personal accounts
-- Calendar sync is two-way — changes in either place are reflected in both
-- If your organization uses Microsoft 365 for email, this integration keeps everything in sync without switching between apps
+- Connect Outlook Mail if your organization sends transaction email from Microsoft 365.
+- If Outlook Mail disconnects, reconnect it before relying on scheduled email sends.
+- Gmail supports multi-account management in DocJacket today. Outlook account management is handled by reconnecting or disconnecting the Outlook Mail card.

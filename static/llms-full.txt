@@ -5205,15 +5205,15 @@ DocJacket connects with the tools you already use. Set up integrations in **Sett
 ## Available integrations
 
 ### Google Workspace
-- **Gmail** — Sync emails and attachments with transactions
-- **Google Calendar** — Push closings, key dates, and tasks to your calendar
-- **Google Drive** — Store and organize transaction documents
-- **Google Contacts** — Import and sync your contacts
+- **Gmail** — Send, reply, schedule, and manage transaction email from a connected Gmail account
+- **Google Calendar** — Push closings, key dates, and optionally task due dates to Google Calendar
+- **Google Drive** — Import files from Drive, upload transaction documents, and link a transaction folder
+- **Google Contacts** — Preview and import Google contacts into DocJacket
 
 ### Microsoft 365
-- **Outlook Mail** — Sync emails with transactions
-- **Outlook Calendar** — Sync calendar events and deadlines
-- **OneDrive** — Cloud document storage and sync
+- **Outlook Mail** — Send, reply, and schedule transaction email from Outlook
+- **Outlook Calendar** — Connect Microsoft calendar access from the integrations page
+- **OneDrive** — Connect Microsoft file access from the integrations page
 
 ### Follow Up Boss
 - Connect Follow Up Boss to sync contacts and deals
@@ -5226,7 +5226,7 @@ DocJacket connects with the tools you already use. Set up integrations in **Sett
 - Send and receive direct text messages from transaction threads
 
 ### Webhooks
-You can also set up custom webhooks in **Settings > Connections** to send event notifications to external services like Zapier, Slack, or Microsoft Teams.
+You can also set up custom webhooks in **Settings > Connections** to send event notifications to external services.
 
 ## In this section
 
@@ -5239,77 +5239,98 @@ You can also set up custom webhooks in **Settings > Connections** to send event 
 
 # Google Workspace
 
-Connect your Google account to sync email, documents, and calendar events with DocJacket.
+Connect Google services from **Settings > Integrations**. Each service has its own card, connection status, and connect or reconnect action.
 
 ## What's included
 
 ### Gmail
-- Send emails from DocJacket using your Gmail account
-- Incoming emails are tracked and linked to transactions
-- Email history syncs both ways
+
+Connect Gmail to send transaction email from your Gmail account. Gmail powers:
+
+- Transaction email compose, reply, reply-all, and forward
+- Scheduled one-off emails from the Email tab
+- Scheduled emails from tasks, key dates, reports, and automation rules
+- Drafts and sent-message history stored with the transaction in DocJacket
+- Attachment sending from transaction documents or uploaded files
+
+Gmail also supports multiple connected accounts. After Gmail is connected, click **Manage accounts** to add another Gmail account, choose the primary account, or remove an account.
 
 ### Google Drive
-- Import documents from Drive into any transaction
-- Export documents from DocJacket back to Drive
-- Browse your Drive folders directly from the Documents tab
+
+Connect Google Drive to work with transaction files from the Documents tab:
+
+- Import files from Drive into DocJacket
+- Upload selected transaction documents to Drive
+- Link or change a persistent Drive folder for a transaction
+- Open the linked folder in Google Drive
 
 ### Google Calendar
-- Sync transaction key dates and deadlines to your Google Calendar
-- See DocJacket events alongside your personal calendar
-- Two-way sync — changes in either place are reflected in both
+
+Connect Google Calendar to push DocJacket dates to your calendar. Calendar sync can include closings, key dates, and task due dates when enabled in calendar settings.
+
+DocJacket treats DocJacket as the source of truth for transaction dates. Update transaction dates in DocJacket, then let sync push those changes to Google Calendar.
+
+### Google Contacts
+
+Connect Google Contacts when you want to preview and import contacts into DocJacket from the Contacts import workflow.
 
 ## Connecting
 
 1. Go to **Settings > Integrations**
-2. Find **Google Workspace** and click **Connect**
-3. Sign in with your Google account
-4. Grant the requested permissions
-5. You're connected
+2. Find the Google service you want to connect
+3. Click **Connect**
+4. Sign in with your Google account
+5. Grant the requested permissions
 
-Google integration settings page
+If the card shows **Expired**, click **Reconnect** so DocJacket can refresh the permission.
 
 ## Tips
 
-- Use a dedicated Google account for your TC business if you want to keep personal and work email separate
-- Google Drive imports are copies — changes in Drive won't sync to DocJacket automatically
-- Calendar sync is especially useful if you manage your schedule through Google Calendar
+- Use **Manage accounts** under Gmail if you send from more than one Gmail address.
+- Google Drive imports create DocJacket documents. Changes made later in Drive do not automatically edit the imported DocJacket copy.
+- Calendar sync is most useful when transaction dates are maintained in DocJacket first.
 
 ---
 
 # Microsoft Outlook
 
-Connect your Microsoft 365 account to sync email, calendar, and documents with DocJacket.
+Connect Microsoft services from **Settings > Integrations**. Each Microsoft card has its own connection status and connect, reconnect, or disconnect action.
 
 ## What's included
 
 ### Outlook Mail
-- Send emails from DocJacket using your Outlook account
-- Incoming emails are tracked and linked to transactions
-- Email history syncs both ways
+
+Connect Outlook Mail to send transaction email through Microsoft 365. Outlook Mail powers:
+
+- Transaction email compose, reply, reply-all, and forward
+- Scheduled one-off emails from the Email tab
+- Scheduled emails from tasks, key dates, reports, and automation rules
+- Sent-message history stored with the transaction in DocJacket
+- Attachment sending from transaction documents or uploaded files
 
 ### Outlook Calendar
-- Sync transaction key dates and deadlines to your Outlook Calendar
-- See DocJacket events alongside your existing schedule
+
+The Outlook Calendar card connects Microsoft calendar access from the integrations page. Use it when your workflow depends on Microsoft calendar permissions.
 
 ### OneDrive
-- Store and sync transaction documents with OneDrive
-- Access your cloud files directly from DocJacket
+
+The OneDrive card connects Microsoft file access from the integrations page. The current transaction document import and linked-folder workflow is Google Drive-specific.
 
 ## Connecting
 
 1. Go to **Settings > Integrations**
-2. Find **Microsoft 365** and click **Connect**
-3. Sign in with your Microsoft account
-4. Grant the requested permissions
-5. You're connected
+2. Find the Microsoft service you want to connect
+3. Click **Connect**
+4. Sign in with your Microsoft account
+5. Grant the requested permissions
 
-Microsoft integration settings
+If the card shows **Expired**, click **Reconnect** so DocJacket can refresh the permission.
 
 ## Tips
 
-- Works with Microsoft 365 business and personal accounts
-- Calendar sync is two-way — changes in either place are reflected in both
-- If your organization uses Microsoft 365 for email, this integration keeps everything in sync without switching between apps
+- Connect Outlook Mail if your organization sends transaction email from Microsoft 365.
+- If Outlook Mail disconnects, reconnect it before relying on scheduled email sends.
+- Gmail supports multi-account management in DocJacket today. Outlook account management is handled by reconnecting or disconnecting the Outlook Mail card.
 
 ---
 
@@ -5953,13 +5974,13 @@ Set one default rule per rule type so newly uploaded or split documents use the 
 
 # Email and Automation Settings
 
-The **Emails & Alerts** group controls sender identity, send timing, personal notifications, and automated rule behavior.
+The **Emails & Alerts** group controls template organization, automated send timing, personal notifications, and rule-based email automation.
 
 ## Email settings
 
-Use **Settings > Email** to manage account-level email sending settings.
+Use **Settings > Email** to organize email templates into categories. Categories can have a name, description, color, and active or inactive status.
 
-If your email connection expires, reconnect it from **Settings > Integrations** so DocJacket can continue sending from the right mailbox.
+This page does not connect your mailbox. To send from Gmail or Outlook, connect or reconnect your mailbox from **Settings > Integrations**.
 
 ## Working hours
 
@@ -5992,7 +6013,9 @@ Notification preferences are personal. Changing your notifications does not chan
 
 Use **Settings > Automation Rules** to create and manage rule-based notifications and emails.
 
-Automation rules can use templates, transaction data, and schedule logic. Keep rules narrowly named so it is clear what each rule sends and when it sends.
+Automation rules can send emails when a transaction enters a status or when a configured task is completed. Rules use email templates and recipient logic, and can either send automatically or require review before sending.
+
+If organization-wide review-first is enabled, automated email drafts land in the **Review queue** before they send. You can also choose review behavior on individual rules.
 
 ---
 

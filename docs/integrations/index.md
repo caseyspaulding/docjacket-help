@@ -1,7 +1,7 @@
 ---
 sidebar_label: Overview
 sidebar_position: 1
-description: Connect DocJacket with Google Workspace, Microsoft 365, Follow Up Boss, SMS, and external services via webhooks.
+description: Connect DocJacket with Google Workspace, Microsoft 365, Follow Up Boss, SMS, and external services.
 ---
 
 # Integrations
@@ -11,15 +11,15 @@ DocJacket connects with the tools you already use. Set up integrations in **Sett
 ## Available integrations
 
 ### Google Workspace
-- **Gmail** — Sync emails and attachments with transactions
-- **Google Calendar** — Push closings, key dates, and tasks to your calendar
-- **Google Drive** — Store and organize transaction documents
-- **Google Contacts** — Import and sync your contacts
+- **Gmail** — Send, reply, schedule, and manage transaction email from a connected Gmail account
+- **Google Calendar** — Push closings, key dates, and optionally task due dates to Google Calendar
+- **Google Drive** — Import files from Drive, upload transaction documents, and link a transaction folder
+- **Google Contacts** — Preview and import Google contacts into DocJacket
 
 ### Microsoft 365
-- **Outlook Mail** — Sync emails with transactions
-- **Outlook Calendar** — Sync calendar events and deadlines
-- **OneDrive** — Cloud document storage and sync
+- **Outlook Mail** — Send, reply, and schedule transaction email from Outlook
+- **Outlook Calendar** — Connect Microsoft calendar access from the integrations page
+- **OneDrive** — Connect Microsoft file access from the integrations page
 
 ### Follow Up Boss
 - Connect Follow Up Boss to sync contacts and deals
@@ -32,7 +32,7 @@ DocJacket connects with the tools you already use. Set up integrations in **Sett
 - Send and receive direct text messages from transaction threads
 
 ### Webhooks
-You can also set up custom webhooks in **Settings > Connections** to send event notifications to external services like Zapier, Slack, or Microsoft Teams.
+You can also set up custom webhooks in **Settings > Connections** to send event notifications to external services.
 
 ## In this section
 
