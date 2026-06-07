@@ -1,6 +1,6 @@
 ---
 sidebar_label: Transaction Configuration
-sidebar_position: 8
+sidebar_position: 9
 description: Configure transaction roles, statuses, fields, custom fields, contingencies, and key date statuses.
 ---
 

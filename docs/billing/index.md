@@ -12,3 +12,4 @@ Manage your DocJacket subscription, view your plan details, and handle payment i
 
 - [Plans & Pricing](./plans-and-pricing.md) — What's included in each plan
 - [Managing Your Subscription](./managing-your-subscription.md) — Upgrade, downgrade, or update payment info
+- [Referrals](../settings/referrals.md) — Share your referral link and track earned credits

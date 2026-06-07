@@ -1,6 +1,6 @@
 ---
 sidebar_label: Document Settings
-sidebar_position: 9
+sidebar_position: 10
 description: Configure document types, document statuses, and automatic file naming rules.
 ---
 

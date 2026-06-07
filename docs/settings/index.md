@@ -16,6 +16,7 @@ Access Settings from the sidebar — it's at the bottom of the navigation.
 - [Brand and Profile](./brand-and-profile.md) — Brand presets, public-page attribution, profile details, timezone, and SMS consent
 - [Offices](./offices.md) — Office locations, states, members, approved forms, branding, and compliance defaults
 - [User Management](./user-management.mdx) — Add and manage team members
+- [Referrals](./referrals.md) — Share your referral link and track earned credits
 - [Contact Settings](./contact-settings.md) — Contact types, service providers, and tags
 - [Calendar and Holidays](./calendar-and-holidays.md) — Google Calendar task syncing and organization holidays
 - [Transaction Configuration](./transaction-configuration.md) — Transaction roles, statuses, fields, contingencies, and key date statuses

@@ -1,6 +1,6 @@
 ---
 sidebar_label: Email and Automation
-sidebar_position: 10
+sidebar_position: 11
 description: Configure email identity, working hours, notification preferences, and automation rules.
 ---
 

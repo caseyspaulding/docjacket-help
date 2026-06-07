@@ -1,6 +1,6 @@
 ---
 sidebar_label: Contact Settings
-sidebar_position: 6
+sidebar_position: 7
 description: Manage contact types, service provider grouping, and tags used across contacts and transactions.
 ---
 
