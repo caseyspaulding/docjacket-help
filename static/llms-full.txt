@@ -1883,7 +1883,7 @@ When the item comes in, click the check action to mark it as received. The statu
 
 # Front Door
 
-Front Door is your public-facing DocJacket page. Use it to show who you are, what you offer, which packages you provide, recent closings, active listings, and a lead form for people who want to work with you.
+Front Door is your public-facing DocJacket page. Use it to show who you are, what you offer, which packages you provide, recent closings, active listings, and calls to action for people who want to work with you.
 
 Go to **Front Door** from the app sidebar to manage the page.
 
@@ -1891,7 +1891,7 @@ Front Door admin page with preview and sections
 
 ## What you can manage
 
-- **Sections** — The building blocks of your page, including hero, contact info, services, packages, listings, and lead forms
+- **Sections** — The building blocks of your page, including hero, primary CTA, quick actions, services, packages, testimonials, share card, contact info, listings, closings, payment methods, and more
 - **Services** — The offerings catalog that powers the "What I Offer" section
 - **Packages** — Public package options you can show to prospects
 - **Leads** — Incoming Front Door form submissions
@@ -1902,13 +1902,293 @@ Front Door admin page with preview and sections
 
 ## Publishing
 
-Front Door can be drafted before it is live. Use the preview to check your sections, then publish when the page is ready to share.
+Front Door can be drafted before it is live. Use the preview to check desktop, tablet, mobile, and card views, then publish when the page is ready to share.
+
+Once published, you can share the public URL anywhere: email signature, Instagram bio, text messages, printed QR cards, or your own website.
+
+## In this section
+
+- [Builder and Sections](./builder-and-sections.md) — Starter templates, section blocks, previews, publishing, analytics, and SEO
+- [Services and Packages](./services-and-packages.md) — Build your public offerings catalog and bundle services into packages
+- [Leads and CTAs](./leads-and-ctas.md) — Configure primary actions, route form submissions, and manage incoming leads
+- [Branding and Domains](./branding-and-domains.md) — Theme your page and connect a custom domain
 
 ## Tips
 
 - Add services before building packages so your public page has clear offerings.
-- Feature only closings or listings you are comfortable showing publicly.
+- Use a starter template if you want DocJacket to create the first section layout for you.
+- Feature only closings, listings, payment methods, or contact details you are comfortable showing publicly.
 - Use the custom domain page if you want a branded URL instead of a DocJacket subdomain.
+
+---
+
+# Builder and Sections
+
+The Front Door builder controls the public page visitors see. Use it to create the page layout, reorder sections, preview the page, publish or unpublish it, and track basic engagement.
+
+## Starter templates
+
+If your Front Door has no sections yet, click **Choose a starter template**. DocJacket can seed a starting layout for:
+
+- TC
+- Agent
+- Broker
+- Mix
+
+Each starter shows the sections it will create before you continue. After the starter is created, you can edit, reorder, hide, or remove any section.
+
+## Section blocks
+
+Front Door sections are modular blocks. Current section types include:
+
+- **Hero** — Logo, name, title, tagline, and first impression
+- **Primary CTA** — The main button you want visitors to click
+- **Secondary actions** — Up to three smaller CTA buttons
+- **Services** — Your public offerings catalog
+- **Packages** — Bundled service packages
+- **Testimonials** — Client quotes
+- **Share card** — QR code, copy link, and vCard contact save
+- **About** — Bio and photo
+- **Contact** — Phone, text, email, social links, address, and map
+- **Brokerage** — Brokerage name and logo
+- **Credentials** — Designations and certifications
+- **Service area** — Cities, counties, or zip codes you cover
+- **Social proof** — Public stats such as transactions closed or years of experience
+- **Active listings** — Listings you choose to feature
+- **Recent closings** — Sold homes you choose to feature
+- **Payment methods** — Venmo, Zelle, Cash App, PayPal, or Stripe Checkout links
+
+## Editing layout
+
+From the section list you can:
+
+- Drag sections to reorder them
+- Toggle a section visible or hidden
+- Click a section to customize it
+- Remove a section
+- Add another section that is not already on the page
+
+Hidden sections stay in the builder but do not appear on the public page.
+
+## Previewing
+
+The preview panel shows how the page will render. Use the device controls to check:
+
+- Desktop
+- Tablet
+- Mobile
+- Card
+
+The **Card** view is the compact scan-optimized contact card used by QR-code sharing.
+
+## Publishing
+
+Use **Publish** when the page is ready. Until the page is published, visitors who open the public URL see that the page is not set up yet. The owner can still preview the draft.
+
+After publishing, the page can be opened from **View site**. Use **Unpublish** if you need to take the page offline.
+
+## Analytics and SEO
+
+The builder includes:
+
+- Page views
+- Unique visitors
+- CTA clicks
+- QR scans
+- vCard downloads
+- Link copies
+- Lead submits
+- View-to-lead conversion
+- CTA and lead activity by preset
+- Traffic source
+- Daily activity chart
+
+You can also set the page title, meta description, and social share image used when the Front Door URL is shared.
+
+---
+
+# Services and Packages
+
+Services and Packages power the public offering sections on your Front Door.
+
+## Services
+
+Go to **Front Door > Services** to manage the services catalog.
+
+Each service can include:
+
+- Name
+- Short description
+- Price
+- Price qualifier such as starting at, flat, per deal, or per hour
+- Timeline description
+- Payment trigger
+- Status: active, draft, or retired
+- Public pricing visibility
+- Scope notes
+- Long description
+
+Services can be reordered by dragging them in the services list. The public services section follows that ordering.
+
+## Public pricing
+
+Leave the price blank when the service should show as **Contact for quote**. Use **Hide price on public page** when the service should be public but the price should not be displayed.
+
+## Service filters
+
+Services can optionally be filtered by:
+
+- Property type
+- Transaction type
+- Client type
+
+Leaving a filter blank means the service applies broadly. Use filters when the same Front Door needs to support different kinds of prospects or intake paths.
+
+## Checklist template link
+
+A service can link to a checklist template. When an intake flow creates a transaction from that service, DocJacket can use the linked checklist template so the work plan is ready faster.
+
+## Packages
+
+Go to **Front Door > Packages** to bundle multiple services into one public offer.
+
+Each package can include:
+
+- Name
+- Short description
+- Bundle price
+- Price qualifier
+- Client type applicability
+- Stage applicability
+- Public visibility
+- Status
+- Included services
+- Long description
+
+Packages can show a savings amount when the individual service prices add up to more than the bundle price.
+
+## When to use each
+
+Use **Services** for individual offerings such as transaction coordination, listing prep, document review, or consultation.
+
+Use **Packages** when you want to sell a bundle, such as a contract-to-close package that includes multiple services at one price.
+
+---
+
+# Leads and CTAs
+
+Front Door CTAs are the buttons visitors use to contact you, submit files, request quotes, or start a buyer or seller conversation.
+
+## Primary CTA
+
+The **Primary CTA** section is the main button on your Front Door. Presets include:
+
+- Submit a File
+- Get a Home Valuation
+- Start a Home Search
+- Book a Consultation
+- Schedule a Call
+- Book a Call
+- Request a Quote
+- Work with Me
+- Custom
+
+Use **Custom** when you want your own button label and destination URL.
+
+## Submit a File
+
+The **Submit a File** preset can route to a form from the form builder.
+
+To use it:
+
+1. Build a form in **Templates > Forms**
+2. Set the form purpose to create a transaction
+3. Generate an active share link for the form
+4. Return to **Front Door**
+5. Edit the **Primary CTA**
+6. Choose **Submit a File**
+7. Select the form to route submissions to
+
+Submissions through this path follow the form-builder flow and can create a draft transaction with uploaded files attached.
+
+## Built-in lead intake forms
+
+Other CTA presets open branded public intake forms, depending on the preset. These forms collect details such as name, email, phone, address, preferred time, and message.
+
+Built-in lead presets include:
+
+- Home valuation
+- Consultation
+- Schedule call
+- Book call
+- Request quote
+- Work with me
+- Home search
+
+After the visitor submits the form, they see a thank-you message and the lead appears in **Front Door > Leads**.
+
+## Secondary actions
+
+The **Secondary actions** section can show up to three smaller CTA buttons. Use these for supporting actions that should not replace the primary button.
+
+## Managing leads
+
+Go to **Front Door > Leads** to review incoming built-in intake submissions.
+
+The Leads page lets you:
+
+- Search by name, email, phone, address, preferred time, or message
+- Filter by lead type
+- See the submission source
+- Export leads as CSV
+- Refresh the list
+- Open the linked contact when available
+- Mark a lead as New, Contacted, or Closed
+
+Lead statuses update inline so you can use the page as a lightweight follow-up queue.
+
+---
+
+# Branding and Domains
+
+Front Door uses your DocJacket brand settings so the public page, intake forms, and related public surfaces feel consistent.
+
+## Theme
+
+Go to **Front Door > Theme** to edit the page theme.
+
+The theme editor controls brand settings such as colors, fonts, hero style, and layout. Changes stay in sync with **Settings > Brand and Profile**, so updating Front Door branding also updates other branded surfaces that use the same brand profile.
+
+The page includes a live preview so you can see how changes affect the public Front Door.
+
+## Custom domain
+
+Go to **Front Door > Domain** to connect your own domain, such as `www.yourbrand.com`.
+
+Custom domains are available on paid plans. If your organization is on the free tier, DocJacket shows an upgrade prompt before the domain setup form.
+
+## DNS setup
+
+After you enter a domain, DocJacket shows the DNS records to add.
+
+For a subdomain such as `www.yourbrand.com`, add the CNAME record shown on the page.
+
+For an apex domain such as `yourbrand.com`, add the A records shown on the page. Some DNS providers also support CNAME flattening with ALIAS or ANAME records.
+
+Most DNS providers propagate within a few minutes, but some can take longer.
+
+## Domain status
+
+Domain statuses include:
+
+- **Waiting for DNS** — The domain is saved, but DNS has not resolved yet
+- **Verifying** — DocJacket is checking the domain
+- **Live** — The domain is active with SSL
+- **Failed** — Verification failed; review the failure message and DNS records
+
+Use **Check status** after adding DNS records. DocJacket also keeps checking while the domain is waiting or verifying.
+
+You can remove a custom domain if traffic should stop resolving to your Front Door.
 
 ---
 
