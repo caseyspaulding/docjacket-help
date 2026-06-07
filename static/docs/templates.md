@@ -17,7 +17,7 @@ The **Templates** page in the sidebar is your template hub, organized into categ
 ## Communication Templates
 - **Email Templates** — Reusable email content with smart fields
 - **Email Signatures** — Branded signatures for outgoing emails
-- **Online Forms** — Forms for collecting information from clients, agents, and leads
+- **Online Forms** — Public and transaction-specific forms for collecting information, creating transactions, and routing Front Door submissions
 
 ## Checklists & Key Dates
 - **Checklists** — Reusable transaction workflows with key dates, tasks, and automations
@@ -39,7 +39,7 @@ templates hub showing all categories
 - [Key Date Library](./task-templates.md) — Define reusable date rules that checklists consume
 - [Email Templates](./email-templates.md) — Write reusable email content
 - [Email Signatures](./email-signatures.md) — Create branded signatures for outgoing email
-- [Online Forms](./online-forms.md) — Collect structured information from clients, agents, and leads
+- [Online Forms](./online-forms.md) — Build public and transaction-specific forms for intake, updates, and Front Door CTAs
 - [Required Documents Lists](./required-documents-lists.md) — Define required document checklists by transaction type
 - [Approved Form Templates](../documents/approved-form-templates.md) — Build office-approved PDFs for e-signature packets
 - [Smart Fields](./smart-fields.md) — Manage reusable fields for document and communication data

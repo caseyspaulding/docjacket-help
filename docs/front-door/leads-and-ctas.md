@@ -30,7 +30,7 @@ The **Submit a File** preset can route to a form from the form builder.
 
 To use it:
 
-1. Build a form in **Templates > Forms**
+1. Build a form in **Templates > Online Forms**
 2. Set the form purpose to create a transaction
 3. Generate an active share link for the form
 4. Return to **Front Door**
