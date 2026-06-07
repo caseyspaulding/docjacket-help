@@ -9,34 +9,82 @@ description: Link email templates to tasks in DocJacket so emails are ready to s
 
 # Email Automation
 
-Link email templates to tasks so that emails are ready to send at the right moment — or even sent automatically.
+Link email templates to tasks so the right email is ready at the right point in the workflow. Task email automation can prepare an email for review, send an email automatically, schedule an email relative to a task due date, and include configured recipients or documents.
 
-## Linking an email template
+Most task email automation is configured in checklist templates, then created on the transaction when the checklist is applied.
 
-1. Click a task to open its detail drawer
-2. Find the **Email** section
-3. Select an email template to link
+## Two automation types
 
-When the task is due, you can click **Send** to fire off the pre-written email without composing from scratch.
+DocJacket supports two main task-email patterns.
 
-## Auto-send options
+### Scheduled emails
 
-In the task drawer, you have two automation options:
+Scheduled emails fire against the task's due date, not task completion.
 
-### Notify on Complete
-Enable this in the **Options** section. When you mark the task as done, the linked email is sent automatically.
+For each scheduled email, configure:
 
-**Example:** You have a task "Send inspection report to seller." Link the email template, enable Notify on Complete, and when you check off the task, the email goes out.
+- Email template
+- Offset, such as 3 days before or 1 day after the task due date
+- Send time
+- Weekend or holiday fallback rule
+- Recipients
+- Attached documents
 
-### Auto-Send Date
-Set a specific date in the **Scheduling** section. The email sends on that date regardless of task completion.
+Example:
 
-**Example:** You need to send a reminder to the buyer 3 days before closing. Set the auto-send date and it fires automatically.
+- Task: Confirm closing appointment
+- Due: Closing Date - 3 days
+- Scheduled email: Send closing reminder 1 day before the task due date at 8:00 AM
 
-task email automation options
+Scheduled emails send from the TC's connected Gmail or Outlook account when available.
+
+### On-completion actions
+
+On-completion actions fire when the TC marks the task complete.
+
+For each on-completion action, configure:
+
+- Email template
+- Whether the email waits for review or auto-sends
+- Recipients
+- Attached documents
+- Optional offset and anchor date
+
+If **Require review before sending** is enabled, the email waits in the prepared-work flow for review before sending. If it is disabled, the email can send automatically when the task is completed.
+
+## Configuring automation in a checklist
+
+1. Go to **Templates > Checklists**
+2. Open a checklist in **My Templates**
+3. Expand a task
+4. Add a scheduled email or on-completion action
+5. Choose the email template
+6. Set recipients and document attachments
+7. Save the checklist
+
+Shared system checklists are read-only. Copy a shared checklist before adding or changing email automations.
+
+## Recipients and documents
+
+Task email automation can use:
+
+- To, Cc, and Bcc recipient types
+- Contact roles from the transaction
+- Direct email addresses where supported
+- Document categories or selected document attachments
+
+The linked email template still controls the subject, body, smart fields, and any template-level auto-attachments.
+
+## Runtime review
+
+When the checklist is applied to a transaction, DocJacket creates the tasks and their email automation rules. Before sending, DocJacket renders smart fields against that transaction.
+
+If data is missing or a placeholder is unrecognized, review the email before sending. Missing transaction data should be fixed on the transaction. Unrecognized placeholders should be fixed in the email template.
 
 ## Tips
 
-- Always review your email templates before enabling auto-send — make sure the content and recipients are correct
-- Auto-send respects DocJacket's approval-first design — you'll get a notification before emails go out so you can cancel if needed
-- Combine email automation with [checklists](./task-templates.mdx) to set up entire email workflows for a transaction type
+- Use **Require review before sending** for client-facing or high-risk emails.
+- Use scheduled emails for deadline reminders.
+- Use on-completion actions for handoff emails, confirmations, and "next step" messages.
+- Test the linked [email template](../templates/email-templates.md) before attaching it to automation.
+- Combine email automation with [checklists](./task-templates.mdx) to set up entire email workflows for a transaction type.

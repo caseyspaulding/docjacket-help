@@ -4,36 +4,40 @@ sidebar_position: 3
 description: Reusable DocJacket checklists — apply key dates, tasks, due-date offsets, and email automation to a transaction in one step.
 ---
 
-import ScreenshotPlaceholder from '@site/src/components/ScreenshotPlaceholder';
-
 # Checklists
 
 Checklists are reusable transaction workflows. A checklist can add the key dates, task list, due-date offsets, assignee roles, and email automation you use for a transaction type.
 
 ## Applying a checklist
 
-1. Open a transaction's **Tasks** tab
-2. Click **Apply Checklist**
-3. Browse or search for the checklist you want
-4. Click to apply it
+1. Open a transaction
+2. Go to the key dates or closing timeline area
+3. Click **Generate Closing Timeline**
+4. Pick the checklist you want
+5. Review the preview
+6. Assign task owners if needed
+7. Choose which phases to include if the checklist has phases
+8. Apply the checklist
 
-The checklist's key dates and tasks are added to the transaction with priorities, due-date offsets, assignee roles, and any linked email templates already configured.
+The checklist's key dates and tasks are added to the transaction with priorities, due-date offsets, assignments, phases, and any configured email automation.
 
-<ScreenshotPlaceholder>apply checklist dialog</ScreenshotPlaceholder>
+If a transaction already has an applied checklist, DocJacket warns you before stacking another one. You can add the new checklist alongside existing work, or replace previously-applied template items when appropriate.
+
+Manually added items and contract-extracted dates are preserved when replacing template-generated items.
 
 ## Creating a checklist
 
-1. Go to **Templates** in the sidebar
-2. Navigate to **Checklists**
+1. Go to **Templates > Checklists**
 3. Click **New Checklist**
-4. Add key dates from the **Key Date Library**
-5. Add tasks with:
-   - Task name and description
-   - Priority level
-   - Due date offset from a key date, such as "5 days before Closing Date"
-   - Assignee role
-   - Linked email template (optional)
-6. Save the checklist
+4. Choose the property category, state, and side if applicable
+5. Add key dates from the **Key Date Library**
+6. Add tasks with names, phases, priorities, assignments, and due-date rules
+7. Link tasks to the key dates they depend on
+8. Add scheduled emails or on-completion actions if needed
+9. Test the checklist against a sample effective date
+10. Save the checklist
+
+See [Checklists](../templates/timeline-templates.md) for the full builder guide.
 
 ## How checklists use key dates
 
@@ -46,9 +50,33 @@ Checklist tasks should point to key dates instead of duplicating date math.
 
 That keeps date rules in the **Key Date Library** and task workflows in **Checklists**.
 
+## Task phases and assignments
+
+Checklist tasks can be grouped by phase. When applying a checklist, phases let you apply only the portion of the workflow you need.
+
+The apply flow can also assign tasks by owner or label. If you use the same assignments often, save them as defaults for future applies.
+
+## Email automation
+
+Checklist tasks can include email automation:
+
+- Scheduled emails based on the task due date
+- On-completion actions
+- Review-before-send email actions
+- Auto-send actions
+- Recipients and attached documents
+
+See [Email Automation](./email-automation.mdx) for the task-email behavior.
+
+## Saving a transaction as a checklist
+
+If a transaction has a useful set of key dates, tasks, and automation rules, save it as a new checklist template. Then open the new checklist in the builder to clean it up before using it as a standard workflow.
+
 ## Tips
 
 - Create checklists for each transaction type you handle, such as residential purchase, listing, land, or new build.
 - Include due-date offsets relative to key dates so DocJacket calculates actual dates when the checklist is applied.
-- You can apply multiple checklists to the same transaction if needed.
+- Use phases to apply only part of a checklist.
+- You can apply multiple checklists to the same transaction when needed.
 - After applying a checklist, you can still add, remove, or modify individual key dates and tasks.
+- Keep reusable date rules in the **Key Date Library** and keep work steps in **Checklists**.
