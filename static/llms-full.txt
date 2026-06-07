@@ -1635,8 +1635,6 @@ day agenda sidebar showing events
 
 # Tasks
 
-Managing tasks, checklists, and email automation in DocJacket
-
 Tasks are the backbone of every transaction. They track every to-do from contract to close — with due dates, priorities, assignees, email automation, and subtasks.
 
 You can access tasks in two places:
@@ -1644,68 +1642,93 @@ You can access tasks in two places:
 - **Inside a transaction** — The Tasks tab shows tasks for that specific deal
 - **Organization-wide** — The Tasks page in the sidebar shows tasks across all your transactions
 
-Tasks are organized by due date: **Overdue** (red), **This Week**, **Next Week**, and **Later**. The colored left border shows priority at a glance — red for Urgent, orange for High, amber for Medium, green for Low.
+Inside a transaction, tasks are grouped by checklist section. Each section shows progress, can be collapsed, and can be saved back as a checklist template. Rows show the task name, planned date, completed date, notes, email/send indicators, and portal visibility.
 
-tasks tab with color-coded priority borders
+The organization-wide **Tasks** page is for daily work across all transactions. Use it to search, filter by status or priority, show only tasks assigned to you, review broker-only work, or switch to a checklist-grouped view.
+
+## Common actions
+
+- Quick-add a one-off task from a transaction
+- Apply a checklist to add a saved workflow
+- Generate suggested tasks for the transaction
+- Complete, skip, or reopen tasks
+- Assign tasks to team members
+- Link email templates or schedule emails from task dates
+- Show selected tasks on the client portal
+- Track subtasks and team comments in the drawer
 
 ## In this section
 
-- [Creating Tasks](./creating-tasks.mdx) — Quick add and the detail drawer
+- [Creating Tasks](./creating-tasks.mdx) — Quick add, checklists, generation, and task table controls
 - [Checklists](./task-templates.mdx) — Reusable key date and task workflows
 - [Subtasks](./subtasks.mdx) — Breaking tasks into steps
 - [Email Automation](./email-automation.mdx) — Link emails to task completion
-- [Task Options](./task-options.md) — Portal visibility, key dates, conditional tasks, reminders
+- [Task Options](./task-options.md) — Portal visibility, completion behavior, conditional tasks, reminders, and tracking fields
 - [Waiting Items](./waiting-items.md) — Track items you are waiting on from other people
 
 ---
 
 # Creating Tasks
 
-There are several ways to add tasks to a transaction.
+There are several ways to add tasks to a transaction. Use quick add for one-off work, apply a checklist when you want a full saved workflow, or let DocJacket suggest tasks from the transaction.
 
 ## Quick add
 
-The fastest way. At the top of the Tasks tab:
+The fastest way to create a single task is from a transaction's **Tasks** tab.
 
 1. Type a task name in the quick-add bar
-2. Press **Enter**
+2. Press **Enter** or click **Add**
 3. The task is created with Medium priority by default
 
-You can customize everything else (due date, priority, assignee, instructions) by clicking the task to open its detail drawer.
-
-quick add bar at top of tasks tab
+Click the task name or edit icon to open the detail drawer and add the due date, assignee, dependency, instructions, portal visibility, email automation, reminders, and comments.
 
 ## Detail drawer
 
-Click any task to open the detail drawer on the right side. From here you can edit:
+Click any task to open the detail drawer on the right side. The main fields are:
 
 - **Name and description** — What needs to be done
-- **Priority** — Urgent, High, Medium, or Low
 - **Due date** — When it's due
 - **Assignee** — Who's responsible
+- **Depends On** — Another task that should be finished first
 - **Instructions** — Detailed notes or steps
 
-The drawer also has collapsible sections for advanced features like subtasks, email automation, and task options.
-
-task detail drawer
+The drawer also includes sections for subtasks, task email templates, scheduled emails, reminders, portal visibility, task options, comments, and read-only completion info.
 
 ## From a checklist
 
-Load a reusable checklist for your transaction type. Checklists can include key dates, tasks, due-date offsets, and linked email templates.
+Use a checklist when you want a repeatable set of tasks and date rules.
 
-1. Click the **Apply Checklist** button on the Tasks tab
-2. Choose a checklist
-3. Tasks are added with all their settings pre-configured
+From a transaction's **Tasks** tab:
+
+1. Click **Add checklist**
+2. Select one or more checklists
+3. Apply the selected checklist
+
+DocJacket adds the checklist's tasks and keeps them grouped under the checklist name. If the checklist includes due-date rules, those dates are calculated from the transaction's key dates. You can also apply or replace checklist workflows from the transaction's closing timeline flow with **Generate Closing Timeline**.
 
 See [Checklists](./task-templates.mdx) for more.
 
 ## AI-generated
 
-Let AI analyze your transaction and suggest a task checklist. See [AI Task Generation](/docs/ai-features/ai-task-generation) for details.
+Click **Generate** on the transaction's **Tasks** tab to let DocJacket suggest tasks for that transaction. Review the suggestions, select the tasks you want, and click **Add Selected**.
 
-## Drag to reorder
+See [AI Task Generation](/docs/ai-features/ai-task-generation) for details.
 
-Tasks can be reordered by dragging them within their date group. This doesn't change due dates — it just lets you prioritize the visual order.
+## Working in the task table
+
+The transaction **Tasks** tab shows tasks in checklist sections. Each section shows completed and total task counts, and each row includes the task name, planned date, completed date, notes, sent indicators, and portal visibility.
+
+You can:
+
+- Search tasks by name
+- Filter by status or assignee
+- Sort by task, planned date, completed date, or notes
+- Resize the table columns
+- Select multiple tasks for bulk complete or bulk delete
+- Drag rows within a checklist section to adjust visual order
+- Save a checklist section as a new checklist template
+
+Changing row order does not change due dates.
 
 ---
 
@@ -1795,17 +1818,19 @@ Some tasks are better broken into smaller steps. Subtasks let you do that while 
 ## Adding subtasks
 
 1. Click a task to open its detail drawer
-2. Scroll to the **Subtasks** section
-3. Type a subtask name and press Enter
-4. Repeat for each step
+2. Open the **Subtasks** section
+3. Click **Add**
+4. Enter the subtask name
+5. Click **Add Subtask**
+
+If the parent task already has subtasks, the section opens with the progress count visible.
 
 ## Tracking progress
 
 - Check off subtasks directly in the drawer as you complete them
-- The parent task tracks progress automatically — you'll see "2 of 5 complete" style indicators
-- In the main task list, click the expand arrow next to a task to see its subtasks inline
-
-task with subtasks expanded in the list
+- The parent task tracks progress automatically with counts like "2/5"
+- A checked subtask is shown with completed styling
+- Subtasks can have their own due dates when they are created from templates or automation
 
 ## Tips
 
@@ -1901,37 +1926,85 @@ If data is missing or a placeholder is unrecognized, review the email before sen
 
 # Task Options
 
-Each task has advanced options you can configure in the detail drawer's **Options** section.
+Click a task to open its detail drawer. The drawer starts with the core task fields, then includes collapsible sections for the settings that affect visibility, automation, reminders, comments, and reporting.
 
-## Portal Visible
+## Core fields
 
-Show this task to agents on their portal. Useful for tasks that agents need to be aware of or complete on their end.
+Use the top of the drawer for the basics:
 
-**Example:** "Submit buyer's pre-approval letter" — mark this portal visible so the buyer's agent knows it's needed.
+- **Due Date** — the planned date for the task
+- **Assignee** — the team member responsible for the work
+- **Depends On** — another task that should be completed first
+- **Instructions** — internal steps or guidance for the assignee
 
-## Key Date
+If a task is blocked by another task, DocJacket shows a blocked indicator until the dependency is cleared.
 
-Mark a task as a key date to highlight it on the timeline and trigger notifications. Key dates appear prominently in the transaction overview and calendar.
+## Portal Visibility
 
-**Example:** "Final walkthrough" — this is important enough to show on the timeline alongside the other key dates.
+Use **Portal Visibility** when a task should be visible to transaction parties in the portal.
+
+You can:
+
+- Turn **Show on Portal** on or off
+- Leave contact selection empty so all portal contacts can see it
+- Select specific portal contacts when only certain people should see it
+
+**Example:** Show "Submit buyer's pre-approval letter" to the buyer-side portal contact, but keep internal compliance tasks hidden.
+
+## Reminders
+
+Use **Reminders** to get notified before the task is due. Reminder choices include 1, 2, 3, 5, 7, or 14 days before the due date.
+
+**Example:** Set a 3-day reminder for "Order home warranty" so your team has time to coordinate before closing.
+
+## Task emails
+
+Use **Task emails** to link an email template to the task. Linked task emails can be reviewed and sent from the task, and completion can prompt you to send or skip any pending linked emails.
+
+Linked emails can use:
+
+- The task's due date
+- The task's auto-send date
+- A transaction key date such as Closing Date or Inspection Deadline
+- A before/on/after offset from that anchor
+
+See [Email Automation](./email-automation.mdx) for the full workflow.
+
+## Scheduled emails
+
+Use **Scheduled emails** when the message should send from the task due date, instead of waiting for the task to be completed.
+
+From the drawer, you can schedule a new email, edit pending or held scheduled emails, send one now, or cancel it.
+
+## Options
+
+The drawer's **Options** section includes settings for how the task behaves:
+
+- **Key Date** — highlights the task as an important date-style item in task and calendar views. This is not a replacement for the transaction's canonical key dates.
+- **Notify on Complete** — sends linked emails when the task is marked complete
+- **Notify Contact** — chooses the contact for completion notification when enabled
+- **Conditional Task** — labels the task as only relevant under certain conditions
+- **Est. Hours** and **Actual Hours** — track estimated and actual work time
 
 ## Conditional Task
 
-Only show this task when certain conditions are met. This keeps your task list clean by hiding irrelevant tasks.
+Use a conditional label when the task only applies in some transactions. The label appears on the task row so your team can see why it exists.
 
 **Example:** "Schedule septic inspection" — only relevant for properties with septic systems, not city sewer.
 
-## Calendar Reminder
+## Comments
 
-Get reminded before a task is due. Set how far in advance you want the reminder (1 day, 3 days, 1 week, etc.).
+Use **Comments** for team notes about the task. Comments are visible to team members and can be edited or deleted by their author.
 
-**Example:** "Order home warranty" — set a reminder for 3 days before the due date so you have time to coordinate with the provider.
+**Example:** Add a comment when the lender says the appraisal is delayed, so the next person opening the task sees the latest update.
 
 ---
 
 # Waiting Items
 
 Waiting Items help you track things that are blocked on someone else. Use them for documents, confirmations, signatures, answers, or vendor updates that your team needs before moving forward.
+
+Waiting Items are different from a transaction's **Waiting On** field. **Waiting On** is the single headline blocker on a transaction. **Waiting Items** are individual follow-up items that can be listed and resolved.
 
 ## Where to find them
 
@@ -1945,15 +2018,20 @@ The list shows:
 - Status
 - Due date
 
+Use the transaction link to open the related deal when you need more context.
+
 ## Marking an item received
 
 When the item comes in, click the check action to mark it as received. The status updates so your team can see the blocker is cleared.
+
+Statuses can include **Waiting**, **Received**, **Overdue**, or **Cancelled**. Only items still marked **Waiting** show the mark-received action.
 
 ## Tips
 
 - Use waiting items for external blockers, not ordinary internal tasks.
 - Add due dates when you need to follow up by a specific day.
 - Keep descriptions short and specific so the list is easy to scan.
+- Use the transaction's **Waiting On** field for the main blocker that should appear on the dashboard and transaction list.
 
 ---
 
