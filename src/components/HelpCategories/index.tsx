@@ -20,6 +20,11 @@ const categories: Category[] = [
     link: '/docs/transactions',
   },
   {
+    title: 'Operations',
+    description: 'Work daily queues, intake, reviews, and extraction saves.',
+    link: '/docs/operations',
+  },
+  {
     title: 'Documents',
     description: 'Upload, organize, and share files.',
     link: '/docs/documents',
@@ -61,7 +66,7 @@ const categories: Category[] = [
   },
   {
     title: 'Integrations',
-    description: 'Connect with Google, Outlook, Dotloop, and more.',
+    description: 'Connect with Google, Outlook, Follow Up Boss, and more.',
     link: '/docs/integrations',
   },
 ];

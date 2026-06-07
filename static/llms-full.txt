@@ -204,6 +204,8 @@ The sidebar on the left is your main navigation. Here's what each section does:
 |-----------|-------------|
 | **Dashboard** | Your daily overview and quick actions |
 | **Transactions** | All your deals — search, filter, and manage |
+| **Intake Queue** | Route inbound emails, SMS, intake forms, and notes to transactions |
+| **Pending Review** | Approve, edit, or reject AI-proposed drafts before they run |
 | **Tasks** | Organization-wide task list across all transactions |
 | **Documents** | Organization-wide document list and document detail pages |
 | **Inbox** | Your message center for transaction-related emails |
@@ -242,6 +244,7 @@ transaction overview tab showing the full layout
 
 ## Quick tips
 
+- **Pending uploads are not finished transactions** — review and save completed extractions before expecting them in the transaction list
 - **Search** is everywhere — use the search bar on the Transactions page to find deals by address, buyer name, or seller name
 - **Help chat** — Click the chat button in the bottom-right corner anytime for instant AI-powered help
 - **Keyboard shortcuts** — Press `?` to see available keyboard shortcuts on any page
@@ -307,6 +310,234 @@ Every transaction has people playing specific roles. These are the contact roles
 - Property Manager, HOA Contact, Insurance Agent
 
 Contact roles help DocJacket organize information and control what each person sees on the [Client Portal](/docs/client-portal) — for example, a buyer sees different information than the listing agent.
+
+---
+
+## Operations
+
+# Operations
+
+Operations pages are the surfaces your team checks during the day to decide what needs attention next.
+
+## In this section
+
+- [Dashboard](./dashboard.md) - Your daily overview, quick actions, pending uploads, closings, tasks, and briefing
+- [Intake Queue](./intake-queue.md) - Route inbound emails, SMS, intake forms, and notes to the right transaction
+- [Pending Review](./pending-review.md) - Approve, edit, or reject AI-proposed drafts before they run
+- [Extraction Review](./extraction-review.md) - Finish saving extracted contract data and review extraction history
+
+## How the queues fit together
+
+Use the **Dashboard** as your morning check-in. It points you toward closings, overdue tasks, waiting items, outstanding payments, and uploads that still need review.
+
+Use the **Intake Queue** when inbound items need routing to a transaction.
+
+Use **Pending Review** when AI or connected tools prepared something that needs approval before DocJacket sends or applies it.
+
+Use **AI Extractions** when uploaded documents were scanned but still need to be reviewed and saved.
+
+---
+
+# Dashboard
+
+The dashboard is your daily command center. It shows what changed, what is due, and what needs attention across your transactions.
+
+## First-time view
+
+New users see a guided first step:
+
+- Upload a first contract
+- Try a sample contract
+- Watch the walkthrough
+- Review quick facts about the account
+
+After your workspace has activity, the dashboard shifts into daily operations mode.
+
+## Daily sections
+
+The dashboard includes collapsible sections. Your layout may vary by screen size and plan, but the main sections are:
+
+- **Today's Briefing** - Closings today, overdue tasks, tasks due today, upcoming deadlines, new emails, completed extractions, new assignments, and workload level
+- **Pending Uploads** - Documents that finished extracting but have not been saved as a transaction or update yet
+- **Closing Soon** - Transactions with closing dates in the next seven days
+- **Tasks** - Tasks due today or overdue and assigned to you
+- **Waiting On** - Deals currently blocked, grouped by phase
+- **Outstanding Payments** - Logged TC fees that are not paid yet, when the payments widget applies
+- **This Month** - New transactions, closed transactions, active volume, and pending tasks
+- **Quick Actions** - Shortcuts for common work such as uploading a contract or creating a transaction
+
+## Daily digest
+
+From **Today's Briefing**, you can turn the daily digest email on or off. The digest summarizes the same operational signals in email form.
+
+## Pending uploads
+
+If **Pending Uploads** appears, open it before assuming the upload is finished. A completed extraction still needs review and a final save action before it becomes a new transaction, listing, or update to an existing transaction.
+
+## Tips
+
+- Start with **Today's Briefing** for urgent dates and workload.
+- Check **Pending Uploads** if a contract was uploaded but no transaction appears yet.
+- Use **Waiting On** to find blocked deals that need follow-up.
+- Use **Quick Actions** for upload-heavy workflows.
+
+---
+
+# Intake Queue
+
+The Intake Queue is where inbound work waits until it is assigned, accepted, or dismissed.
+
+Use it for:
+
+- Incoming emails
+- Incoming SMS items
+- Online intake form submissions
+- Internal intake notes
+
+## Intake email
+
+If your organization has an intake subdomain, the queue shows an intake email address in the header. Copy that address and forward transaction-related messages to it so DocJacket can route them.
+
+## Tabs and counts
+
+The queue groups work by item type. The header shows counts for emails, SMS, and intake form submissions.
+
+Use the tabs to narrow the table when you only want to process one kind of inbound item.
+
+## AI routing suggestions
+
+DocJacket may suggest a transaction for an item. Suggested matches show:
+
+- Transaction address
+- Confidence percentage
+- Optional match reason
+
+Click **Accept** when the suggestion is correct. The item is assigned to that transaction.
+
+## Manual assignment
+
+If there is no good suggestion, click **Assign to Transaction**.
+
+Search by address, buyer, or seller, choose the transaction, and assign the item. The detail drawer is useful when you need to read the message content before deciding.
+
+## Bulk actions
+
+Select multiple items to assign or dismiss them together. Bulk assignment is useful when several forwarded emails belong to the same transaction.
+
+## Dismissing items
+
+Dismiss items that do not need to be routed. Form submissions are rejected when dismissed; other item types are archived.
+
+Use dismissal for spam, duplicates, or messages that do not belong in a transaction record.
+
+---
+
+# Pending Review
+
+Pending Review is the approval tray for AI-proposed work. Drafts wait here until a user approves, edits, or rejects them.
+
+Drafts expire 72 hours after they are created.
+
+## What appears here
+
+Pending Review can include:
+
+- Client update email drafts
+- Document request drafts
+- Agent follow-up drafts
+- Proposed task bundles
+- Proposed key date changes
+- Transaction summaries
+
+Drafts may come from connected AI clients, built-in DocJacket AI review, forwarded email workflows, or manual workflows.
+
+## Filters
+
+Use the source and type filters to narrow the tray.
+
+Source filters include:
+
+- AI clients
+- QA Review
+- Forwarded
+- Manual
+
+Type filters include:
+
+- Emails
+- Tasks
+- Key dates
+- Summaries
+
+## Reviewing a draft
+
+Open a draft to see:
+
+- Source and artifact type
+- Transaction, when linked
+- Expiration time
+- Draft content or proposed structured change
+- Reason the draft was proposed
+
+Email-shaped drafts and transaction summaries can be edited before approval. Structured drafts, such as task bundles and key date changes, are validated as proposed. Reject and ask for a new proposal if a structured draft needs different details.
+
+## Approve, edit, or reject
+
+Use:
+
+- **Approve** to run the action
+- **Edit** to adjust supported text drafts before approving
+- **Save & approve** to edit and immediately approve
+- **Reject** to archive the draft with an optional reason
+
+For email drafts, approval sends the email right away using the organization's configured send mode.
+
+---
+
+# Extraction Review
+
+The **AI Extractions** page lists extraction jobs created from uploaded documents.
+
+Use it when a document was scanned but the transaction, listing, or update has not been saved yet.
+
+## Save states
+
+The extraction list focuses on the question that matters most: did this become a transaction?
+
+Common save states are:
+
+- **Saved** - The extraction has been applied to a transaction
+- **Awaiting save** - The extraction completed, but no transaction or update has been saved yet
+- **Pending** or **Processing** - The extraction is still running
+- **Failed** or **Cancelled** - The extraction did not complete
+
+When there are completed extractions awaiting save, the page shows a banner. Use **Show only awaiting save** to focus on unfinished work.
+
+## Finish saving
+
+Click **Finish saving** for a completed extraction that is awaiting save.
+
+Review the extracted fields, correct anything that is wrong, then choose the final save action:
+
+- Create a new transaction
+- Create a new listing
+- Update an existing transaction
+
+Nothing is final until you complete the review and save step.
+
+## Progress pages
+
+For pending or processing jobs, open **Progress** to see where the extraction is in the workflow.
+
+For multi-document uploads, group progress shows each document and the overall extraction progress. When the group is complete, review the merged results before applying them.
+
+## Review history
+
+Saved extractions can still be opened with **Review**. Use review history when you need to confirm what the AI extracted, inspect confidence, or understand what was applied.
+
+## Best practice
+
+After uploading a contract, check the dashboard's **Pending Uploads** section or the **AI Extractions** page. If an extraction is awaiting save, open it and finish the review so the deal appears in the right transaction workflow.
 
 ---
 
@@ -2039,6 +2270,12 @@ extraction results with editable fields
 ## Already have a transaction?
 
 You can also run extraction on an existing transaction. Go to the **Documents** tab and click **AI Data Extraction** to have AI re-read your documents and fill in any missing fields.
+
+## If an upload is awaiting save
+
+An extraction can finish scanning before it has been saved into a transaction. If you see **Pending Uploads** on the Dashboard or **Awaiting save** on the AI Extractions page, open the extraction and finish the review step.
+
+See [Extraction Review](../operations/extraction-review.md) for the full save-state workflow.
 
 ---
 
