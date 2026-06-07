@@ -9,19 +9,19 @@ description: Apply checklist templates to a DocJacket transaction. Set up key da
 
 # Checklists & Key Dates
 
-How to apply and customize checklist templates for your transactions
+Checklist templates are pre-built workflows for different transaction types. Use one on a transaction and DocJacket can create the key dates, tasks, and automations that belong to that deal.
 
-Checklist templates are pre-built workflows for different transaction types. Apply one to a transaction and DocJacket can create the key dates, tasks, and automations that belong to that deal.
+## Generating a closing timeline
 
-## Applying a checklist
+1. Open a transaction
+2. Go to the **Overview** tab
+3. Find the key-date timeline at the top of the overview
+4. Click **Generate Timeline**
+5. Choose a checklist template that matches the transaction type, side, and state
+6. Review the anchor dates, key dates, task counts, owner assignments, phases, and replacement option
+7. Apply the template
 
-1. Open a transaction and go to the **Timeline** tab
-2. Click **Apply Checklist**
-3. Choose a checklist that matches your transaction type and state
-4. Review the key dates, tasks, and options
-5. Apply the checklist
-
-timeline tab after applying a checklist
+When the template is applied, DocJacket creates the calculated key dates and any linked tasks for that transaction.
 
 ## What's in a template
 
@@ -32,16 +32,14 @@ Each template includes:
 - **Tasks** — Work items tied to those key dates
 - **Automations** — Prepared emails or rules tied to tasks and dates
 
-## Viewing your timeline
+## Viewing your key-date timeline
 
 DocJacket offers two views:
 
-- **Pipeline view** — A horizontal visual overview. Complete, upcoming, overdue, and needs-date items are easy to spot. Click any item for details.
-- **List view** — A vertical list with expandable key dates showing linked tasks.
+- **Pipeline view** — A horizontal visual overview of key dates. Complete, upcoming, overdue, and needs-date items are easy to spot.
+- **Vertical checklist view** — A vertical list with expandable key dates showing linked tasks.
 
 Toggle between them with the view switch at the top.
-
-pipeline view with color-coded key date nodes
 
 ## Adding custom key dates
 
@@ -51,10 +49,10 @@ Templates are a starting point. You can always add custom key dates for dates th
 2. Enter the key date name and date
 3. Optionally link tasks to it
 
-## Recalculating dates
+## When dates change
 
-When a key date changes (like the closing date gets pushed back), click **Recalculate** to cascade the change to all downstream key dates and tasks. DocJacket adjusts everything based on the original offsets.
+When a transaction date changes, review the affected key dates and tasks in the Overview timeline. Template-generated items keep their anchor-date relationship so the transaction timeline can stay tied to the same source dates.
 
 ## Creating your own templates
 
-Go to **Templates > Checklists** to create custom checklist templates for your workflow. Use **Templates > Key Date Library** to manage reusable key date rules that checklists can consume.
+Go to **Templates > Checklists** to create custom checklist templates for your workflow. Use **Templates > Key Date Library** to manage reusable key date types and rules that checklists can consume.

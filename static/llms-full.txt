@@ -636,19 +636,22 @@ The Overview tab is where most TCs spend their time. It shows everything importa
 
 ## What's on the Overview
 
-Here's a breakdown of each section:
+The Overview is customizable, so your organization may hide, pin, or collapse some sections. Common sections include:
 
-### Upcoming Key Dates
-A visual snapshot of the next important dates at the top. Click any key date to jump into the full key date list for more details.
+### Key Date Timeline
+The key-date timeline appears near the top of the overview when visible. Use **Generate Timeline** to calculate key dates and linked tasks from a checklist template, or add key dates manually. The timeline can show a pipeline view or a vertical checklist view.
 
 ### Risk Insights
 When a transaction has a stored risk assessment, a risk chip appears in the transaction header. Click it to review the summary, risk factors, mitigations, recommendations, and to re-run the assessment.
 
-### Key Dates
-Closing date, contract date, inspection deadline, and other important dates. These stay in sync when you update the transaction — change the closing date and downstream dates recalculate automatically.
+### Waiting On
+The headline blocker for the deal. Use it to show what the transaction is currently waiting on, such as client action, signatures, title, lender, inspection, or closing.
 
 ### Financial Summary
 Purchase price, earnest money, loan amount, and other financial terms at a glance. Quick reference so you don't have to dig through the contract.
+
+### Additional Details
+Deal details that do not fit into the main summary cards, such as listing, occupancy, financing, and other transaction fields your organization tracks.
 
 ### Tasks
 Your to-do list for this transaction. Add tasks, check them off, and track what's overdue. The progress bar shows how much is complete.
@@ -662,20 +665,20 @@ Upload photos of the property. Star an image to feature it on reports and the cl
 ### Documents
 Contracts, disclosures, and other files for this transaction. Track approval status and upload new documents right from here.
 
-### Key Date Timeline
-Key deadlines for the transaction. Apply a checklist or add key dates manually. The "Next Up" badge highlights what's coming next.
+### Calendar Sync
+If your account has Google Calendar connected, this card controls whether this transaction's key dates and overdue tasks appear on your synced calendar.
 
 ### Contingencies
-Track contingency status throughout the deal. Mark each as Active, Satisfied, or Waived as the transaction progresses.
+Track configured contingency status throughout the deal. Mark each as Active, Satisfied, Waived, or Not Applicable as the transaction progresses.
 
 ### Repairs
-Track repair requests and their resolution status. Add repair items from inspections and mark them as resolved.
+Track common repair categories and their resolution status. Mark items as N/A, Pending, or Resolved, and add notes when needed.
 
 ### Messages
 Recent emails related to this transaction. See unread counts and click through to the full message thread.
 
-### Contacts & Vendors
-All the people involved — buyers, sellers, agents, title company, lender, and third-party vendors like inspectors and surveyors. This column runs down the right side of the overview.
+### Parties and Contacts
+The people involved in the deal. The overview can show buyers, sellers, agents, title company, lender, vendors, and additional contacts, with links into the full Contacts tab.
 
 ### System Credentials
 Store login details for MLS, tax portals, and other external systems used in this transaction. Keeps everything in one place so you're not hunting through emails for passwords.
@@ -1619,19 +1622,19 @@ Never miss a deadline again — key dates, tasks, reminders, and custom events a
 
 # Checklists & Key Dates
 
-How to apply and customize checklist templates for your transactions
+Checklist templates are pre-built workflows for different transaction types. Use one on a transaction and DocJacket can create the key dates, tasks, and automations that belong to that deal.
 
-Checklist templates are pre-built workflows for different transaction types. Apply one to a transaction and DocJacket can create the key dates, tasks, and automations that belong to that deal.
+## Generating a closing timeline
 
-## Applying a checklist
+1. Open a transaction
+2. Go to the **Overview** tab
+3. Find the key-date timeline at the top of the overview
+4. Click **Generate Timeline**
+5. Choose a checklist template that matches the transaction type, side, and state
+6. Review the anchor dates, key dates, task counts, owner assignments, phases, and replacement option
+7. Apply the template
 
-1. Open a transaction and go to the **Timeline** tab
-2. Click **Apply Checklist**
-3. Choose a checklist that matches your transaction type and state
-4. Review the key dates, tasks, and options
-5. Apply the checklist
-
-timeline tab after applying a checklist
+When the template is applied, DocJacket creates the calculated key dates and any linked tasks for that transaction.
 
 ## What's in a template
 
@@ -1642,16 +1645,14 @@ Each template includes:
 - **Tasks** — Work items tied to those key dates
 - **Automations** — Prepared emails or rules tied to tasks and dates
 
-## Viewing your timeline
+## Viewing your key-date timeline
 
 DocJacket offers two views:
 
-- **Pipeline view** — A horizontal visual overview. Complete, upcoming, overdue, and needs-date items are easy to spot. Click any item for details.
-- **List view** — A vertical list with expandable key dates showing linked tasks.
+- **Pipeline view** — A horizontal visual overview of key dates. Complete, upcoming, overdue, and needs-date items are easy to spot.
+- **Vertical checklist view** — A vertical list with expandable key dates showing linked tasks.
 
 Toggle between them with the view switch at the top.
-
-pipeline view with color-coded key date nodes
 
 ## Adding custom key dates
 
@@ -1661,13 +1662,13 @@ Templates are a starting point. You can always add custom key dates for dates th
 2. Enter the key date name and date
 3. Optionally link tasks to it
 
-## Recalculating dates
+## When dates change
 
-When a key date changes (like the closing date gets pushed back), click **Recalculate** to cascade the change to all downstream key dates and tasks. DocJacket adjusts everything based on the original offsets.
+When a transaction date changes, review the affected key dates and tasks in the Overview timeline. Template-generated items keep their anchor-date relationship so the transaction timeline can stay tied to the same source dates.
 
 ## Creating your own templates
 
-Go to **Templates > Checklists** to create custom checklist templates for your workflow. Use **Templates > Key Date Library** to manage reusable key date rules that checklists can consume.
+Go to **Templates > Checklists** to create custom checklist templates for your workflow. Use **Templates > Key Date Library** to manage reusable key date types and rules that checklists can consume.
 
 ---
 
@@ -1709,7 +1710,7 @@ An anchor date is the reference point from which dependent key dates are calcula
 
 ## How it works
 
-When you apply a checklist, each key date rule can be defined as an offset from an anchor date:
+When you generate a closing timeline from a checklist template, each key date rule can be defined as an offset from an anchor date:
 
 - "Inspection deadline: 10 days after anchor"
 - "Appraisal deadline: 21 days after anchor"
@@ -1719,13 +1720,13 @@ The **anchor date** is usually the **contract date** — the day the purchase ag
 
 ## Setting the anchor date
 
-When you apply a checklist, DocJacket uses the transaction dates already entered on the deal. It typically defaults anchor-based calculations to the contract date when that date is available.
+When you generate a timeline, DocJacket uses the transaction dates already entered on the deal. The Generate Timeline dialog shows the available anchor dates before you apply the template.
 
-You can change key dates later from the Timeline tab. When you do, DocJacket can recalculate dependent dates based on the original rules.
+You can review and adjust key dates later from the key-date timeline on the transaction **Overview** tab.
 
 ## Why this matters
 
-The anchor date system means you don't have to manually calculate dozens of deadlines. Set the important transaction dates once, and dependent key dates flow from there. When a closing date gets pushed back or a contract date changes, recalculation can update the downstream timeline.
+The anchor date system means you don't have to manually calculate dozens of deadlines. Set the important transaction dates once, and dependent key dates can flow from there. When a closing date gets pushed back or a contract date changes, review the key-date timeline and related tasks so the workflow stays aligned.
 
 ## Common anchor date scenarios
 
@@ -2688,8 +2689,6 @@ The **Templates** page in the sidebar is your template hub, organized into categ
 
 ## Report Templates
 - **SitRep Templates** — Structured templates for transaction status reports
-
-templates hub showing all categories
 
 ## In this section
 

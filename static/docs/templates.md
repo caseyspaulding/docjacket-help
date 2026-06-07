@@ -31,8 +31,6 @@ The **Templates** page in the sidebar is your template hub, organized into categ
 ## Report Templates
 - **SitRep Templates** — Structured templates for transaction status reports
 
-templates hub showing all categories
-
 ## In this section
 
 - [Checklists](./timeline-templates.md) — Build reusable workflows with key dates, tasks, and automations
