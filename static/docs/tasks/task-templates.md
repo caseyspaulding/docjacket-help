@@ -14,8 +14,8 @@ Checklists are reusable transaction workflows. A checklist can add the key dates
 ## Applying a checklist
 
 1. Open a transaction
-2. Go to the key dates or closing timeline area
-3. Click **Generate Closing Timeline**
+2. Go to the key-date timeline on the **Overview** tab
+3. Click **Generate Timeline**
 4. Pick the checklist you want
 5. Review the preview
 6. Assign task owners if needed
@@ -31,14 +31,14 @@ Manually added items and contract-extracted dates are preserved when replacing t
 ## Creating a checklist
 
 1. Go to **Templates > Checklists**
-3. Click **New Checklist**
-4. Choose the property category, state, and side if applicable
-5. Add key dates from the **Key Date Library**
-6. Add tasks with names, phases, priorities, assignments, and due-date rules
-7. Link tasks to the key dates they depend on
-8. Add scheduled emails or on-completion actions if needed
-9. Test the checklist against a sample effective date
-10. Save the checklist
+2. Click **New Checklist**
+3. Choose the property category, state, and side if applicable
+4. Add key dates from the **Key Date Library**
+5. Add tasks with names, phases, priorities, assignments, and due-date rules
+6. Link tasks to the key dates they depend on
+7. Add scheduled emails or on-completion actions if needed
+8. Test the checklist against a sample effective date
+9. Save the checklist
 
 See [Checklists](../templates/timeline-templates.md) for the full builder guide.
 

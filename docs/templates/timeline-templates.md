@@ -123,7 +123,7 @@ The preview is for template review. Real transactions also use the transaction's
 
 ## Applying a checklist to a transaction
 
-From a transaction's key dates area, click **Generate Closing Timeline** and pick a checklist.
+From the transaction overview's key-date timeline, click **Generate Timeline** and pick a checklist.
 
 DocJacket can:
 
@@ -158,7 +158,7 @@ Example:
 
 - Start with the built-in templates and customize them for your specific workflow
 - Create state-specific variations — a Texas residential close has different deadlines than a Florida one
-- Include the most common tasks in your template so they auto-populate when applied
+- Include the most common tasks in your template so they are created when the checklist is applied
 - Keep date calculation logic in the Key Date Library when the same rule will be reused
 - Use task phases so users can apply only the work they need
 - Test the checklist before applying it to a live transaction

@@ -12,7 +12,7 @@ Waiting Items are different from a transaction's **Waiting On** field. **Waiting
 
 ## Where to find them
 
-Open **Waiting Items** from the sidebar to see all waiting items across transactions.
+Open the **Waiting Items** page to see waiting items across transactions. The list is an operational view for blockers that already exist on transactions.
 
 The list shows:
 
@@ -23,6 +23,10 @@ The list shows:
 - Due date
 
 Use the transaction link to open the related deal when you need more context.
+
+:::note
+Waiting Items is not the same as the **Waiting On** card on the transaction overview. Use **Waiting On** for the single headline blocker that should appear on dashboard and transaction-list surfaces.
+:::
 
 ## Marking an item received
 
