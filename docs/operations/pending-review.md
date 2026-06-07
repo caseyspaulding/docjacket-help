@@ -6,9 +6,14 @@ description: Review AI-proposed email drafts, task bundles, key date changes, an
 
 # Pending Review
 
-Pending Review is the approval tray for AI-proposed work. Drafts wait here until a user approves, edits, or rejects them.
+Pending Review is the approval area for AI-proposed work. Drafts wait until a user approves, edits, or rejects them.
 
 Drafts expire 72 hours after they are created.
+
+There are two review surfaces:
+
+- The **Review queue** drawer in the topbar, used for day-to-day review of ready drafts, scheduled items, recent done items, and pending uploads
+- The **Pending Review** page, used for full-page review of prepared work drafts
 
 ## What appears here
 
@@ -23,9 +28,11 @@ Pending Review can include:
 
 Drafts may come from connected AI clients, built-in DocJacket AI review, forwarded email workflows, or manual workflows.
 
+The Review queue drawer can also show pending uploads. Those are extraction groups that finished scanning but have not been reviewed and saved yet.
+
 ## Filters
 
-Use the source and type filters to narrow the tray.
+On the Pending Review page, use the source and type filters to narrow the tray.
 
 Source filters include:
 
@@ -43,7 +50,7 @@ Type filters include:
 
 ## Reviewing a draft
 
-Open a draft to see:
+Open a draft or review card to see:
 
 - Source and artifact type
 - Transaction, when linked
@@ -62,4 +69,4 @@ Use:
 - **Save & approve** to edit and immediately approve
 - **Reject** to archive the draft with an optional reason
 
-For email drafts, approval sends the email right away using the organization's configured send mode.
+For prepared email drafts, approval sends the email right away using the configured sender path. For automation-rule drafts in the Review queue, use the Ready tab to send, edit, or skip them.

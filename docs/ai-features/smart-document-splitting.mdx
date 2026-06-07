@@ -4,22 +4,20 @@ sidebar_position: 5
 description: DocJacket's AI detects document boundaries in multi-document PDFs and splits them into separate files automatically.
 ---
 
-import ScreenshotPlaceholder from '@site/src/components/ScreenshotPlaceholder';
-
 # Smart Document Splitting
 
 Sometimes you get a single PDF that contains multiple documents — a contract, addenda, disclosures, and amendments all bundled together. DocJacket's AI can detect where one document ends and another begins, and split them into separate files automatically.
 
 ## How to use it
 
-1. Upload a multi-document PDF to your transaction's **Documents** tab
-2. DocJacket detects that the PDF contains multiple documents
-3. AI analyzes the content and identifies the document boundaries
-4. You'll see a preview of the suggested splits with document names
-5. Review and adjust if needed
-6. Confirm, and each document is saved as its own file
+1. Start **Upload & Extract** and upload one PDF
+2. If the PDF has multiple pages and Smart Split is enabled, DocJacket opens the **Smart Split** step
+3. AI identifies the documents, page ranges, document types, and likely primary contract
+4. Review the selected documents and the primary contract
+5. Edit boundaries, split a document, remove a document, add a document, or change the selected contract if needed
+6. Click **Split & Extract** to create the split files and start extraction
 
-<ScreenshotPlaceholder>smart split preview showing detected document boundaries</ScreenshotPlaceholder>
+If DocJacket detects one document spanning the full PDF, it skips the split step and starts extraction. If the detected split is high-confidence, DocJacket may show a short countdown and continue automatically unless you cancel to review manually.
 
 ## When this is useful
 
@@ -33,4 +31,5 @@ Sometimes you get a single PDF that contains multiple documents — a contract, 
 - The AI names each split document based on its content (e.g., "Purchase Agreement", "Lead Paint Disclosure")
 - You can rename any document after splitting
 - Each split document gets categorized automatically
-- If the AI misidentifies a split point, you can manually adjust the page ranges before confirming
+- If the AI misidentifies a split point, adjust the page ranges before confirming
+- Low-confidence selected documents trigger a warning before extraction continues

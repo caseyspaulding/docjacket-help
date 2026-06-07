@@ -434,9 +434,14 @@ Use dismissal for spam, duplicates, or messages that do not belong in a transact
 
 # Pending Review
 
-Pending Review is the approval tray for AI-proposed work. Drafts wait here until a user approves, edits, or rejects them.
+Pending Review is the approval area for AI-proposed work. Drafts wait until a user approves, edits, or rejects them.
 
 Drafts expire 72 hours after they are created.
+
+There are two review surfaces:
+
+- The **Review queue** drawer in the topbar, used for day-to-day review of ready drafts, scheduled items, recent done items, and pending uploads
+- The **Pending Review** page, used for full-page review of prepared work drafts
 
 ## What appears here
 
@@ -451,9 +456,11 @@ Pending Review can include:
 
 Drafts may come from connected AI clients, built-in DocJacket AI review, forwarded email workflows, or manual workflows.
 
+The Review queue drawer can also show pending uploads. Those are extraction groups that finished scanning but have not been reviewed and saved yet.
+
 ## Filters
 
-Use the source and type filters to narrow the tray.
+On the Pending Review page, use the source and type filters to narrow the tray.
 
 Source filters include:
 
@@ -471,7 +478,7 @@ Type filters include:
 
 ## Reviewing a draft
 
-Open a draft to see:
+Open a draft or review card to see:
 
 - Source and artifact type
 - Transaction, when linked
@@ -490,7 +497,7 @@ Use:
 - **Save & approve** to edit and immediately approve
 - **Reject** to archive the draft with an optional reason
 
-For email drafts, approval sends the email right away using the organization's configured send mode.
+For prepared email drafts, approval sends the email right away using the configured sender path. For automation-rule drafts in the Review queue, use the Ready tab to send, edit, or skip them.
 
 ---
 
@@ -498,7 +505,7 @@ For email drafts, approval sends the email right away using the organization's c
 
 The **AI Extractions** page lists extraction jobs created from uploaded documents.
 
-Use it when a document was scanned but the transaction, listing, or update has not been saved yet.
+Use it when a document was scanned but the transaction, listing, or update has not been saved yet, or when you need to inspect extraction history.
 
 ## Save states
 
@@ -525,11 +532,15 @@ Review the extracted fields, correct anything that is wrong, then choose the fin
 
 Nothing is final until you complete the review and save step.
 
+Pending uploads can also appear in the Review queue drawer and on the dashboard. Those cards take you back to the same review-and-save workflow. Use **Discard** only when the upload should stop appearing as unfinished work.
+
 ## Progress pages
 
 For pending or processing jobs, open **Progress** to see where the extraction is in the workflow.
 
 For multi-document uploads, group progress shows each document and the overall extraction progress. When the group is complete, review the merged results before applying them.
+
+Smart Split uploads may create a group from one original packet. Review the merged results before creating or updating the transaction.
 
 ## Review history
 
@@ -3636,15 +3647,15 @@ Behind the scenes, workflows power features like:
 
 DocJacket uses AI to handle the tedious parts of transaction coordination — so you can focus on the work that actually needs a human touch.
 
-Here's the important thing: **DocJacket never acts without your approval.** AI prepares, suggests, and drafts — but you're always in control. Nothing gets sent, saved, or changed until you say so.
+Here's the important thing: **DocJacket separates AI suggestions from the final action.** Extraction results, review-queue drafts, and automation output are surfaced for review so you can approve, edit, reject, or save the work intentionally.
 
 ## What AI can do for you
 
-- **Contract Extraction** — Upload a PDF and AI reads it, pulling out names, dates, prices, and terms automatically
+- **Contract Extraction** — Upload a contract packet and AI pulls out names, dates, prices, terms, and source citations
 - **Task Generation** — AI analyzes your transaction and suggests a task checklist tailored to the deal
 - **Risk & Compliance Insights** — Get flagged on potential issues before they become problems
-- **Smart Document Splitting** — Upload a multi-document PDF and AI separates it into individual files
-- **Communication Drafting** — AI drafts emails and messages based on your transaction context
+- **Smart Document Splitting** — Upload a multi-document PDF and AI detects the documents, page ranges, and primary contract
+- **Communication Drafting** — AI drafts emails and messages that can be reviewed before they send
 
 ## In this section
 
@@ -3657,9 +3668,7 @@ Here's the important thing: **DocJacket never acts without your approval.** AI p
 
 # Contract Extraction
 
-Watch AI extract data from a real contract PDF in seconds
-
-One of DocJacket's most powerful features. Upload a contract PDF and AI reads through it — pulling out the key details so you don't have to type them in manually.
+One of DocJacket's most powerful features. Upload a contract or packet and AI reads through it, then gives you a review screen before anything is saved.
 
 ## What gets extracted
 
@@ -3672,30 +3681,32 @@ DocJacket's AI looks for:
 - **Contingency periods** — Inspection, appraisal, financing timeframes
 - **Loan details** — Loan type, amount, lender information
 - **Agent information** — Listing and buying agent details
+- **Source citations** — Page references for extracted fields when available
 
 ## How to use it
 
-1. From the **Transactions** page, click **New Transaction** > **Upload & Extract**
-2. Drop your contract PDF into the upload area
-3. Wait a moment while AI processes the document (usually takes 10-30 seconds)
-4. Review the extracted fields — everything is editable
-5. Make any corrections needed
-6. Click **Create Transaction**
+1. From the **Transactions** page, click **Upload & Extract**
+2. Choose whether the upload should create a transaction, create a listing, or update an existing transaction
+3. Drop in the contract files
+4. If you upload a single multi-page PDF, review the **Smart Split** step when it appears
+5. Open the progress page while AI scans the documents
+6. Review the extracted fields, citations, confidence, and any warnings
+7. Correct anything needed
+8. Click the final create or update action to save the result
 
-extraction in progress with loading indicator
-
-extraction results with editable fields
+The upload wizard also shows pending uploads before you start. If a prior extraction finished but was never saved, continue that review instead of uploading the same file again.
 
 ## Tips for best results
 
 - **Typed contracts work best** — AI handles typed text with high accuracy. Handwritten contracts may need more manual corrections.
 - **Standard formats help** — Common state association forms (like TAR, CAR, FAR) are well-recognized.
 - **Multi-page is fine** — The AI reads through the entire document, not just the first page.
-- **Always review** — AI is very good but not perfect. A quick scan of the extracted data takes 30 seconds and catches any misreads.
+- **Packets are fine** — Smart Split can separate a packet into individual documents before extraction.
+- **Always review** — AI is very good but not perfect. A quick scan of the extracted data catches misreads before the transaction is created or updated.
 
 ## Already have a transaction?
 
-You can also run extraction on an existing transaction. Go to the **Documents** tab and click **AI Data Extraction** to have AI re-read your documents and fill in any missing fields.
+You can also run extraction against an existing transaction. Use the upload wizard's existing-transaction destination, or open a transaction's **Documents** tab and use **AI Data Extraction** when available.
 
 ## If an upload is awaiting save
 
@@ -3787,14 +3798,14 @@ Sometimes you get a single PDF that contains multiple documents — a contract, 
 
 ## How to use it
 
-1. Upload a multi-document PDF to your transaction's **Documents** tab
-2. DocJacket detects that the PDF contains multiple documents
-3. AI analyzes the content and identifies the document boundaries
-4. You'll see a preview of the suggested splits with document names
-5. Review and adjust if needed
-6. Confirm, and each document is saved as its own file
+1. Start **Upload & Extract** and upload one PDF
+2. If the PDF has multiple pages and Smart Split is enabled, DocJacket opens the **Smart Split** step
+3. AI identifies the documents, page ranges, document types, and likely primary contract
+4. Review the selected documents and the primary contract
+5. Edit boundaries, split a document, remove a document, add a document, or change the selected contract if needed
+6. Click **Split & Extract** to create the split files and start extraction
 
-smart split preview showing detected document boundaries
+If DocJacket detects one document spanning the full PDF, it skips the split step and starts extraction. If the detected split is high-confidence, DocJacket may show a short countdown and continue automatically unless you cancel to review manually.
 
 ## When this is useful
 
@@ -3808,7 +3819,8 @@ smart split preview showing detected document boundaries
 - The AI names each split document based on its content (e.g., "Purchase Agreement", "Lead Paint Disclosure")
 - You can rename any document after splitting
 - Each split document gets categorized automatically
-- If the AI misidentifies a split point, you can manually adjust the page ranges before confirming
+- If the AI misidentifies a split point, adjust the page ranges before confirming
+- Low-confidence selected documents trigger a warning before extraction continues
 
 ---
 
