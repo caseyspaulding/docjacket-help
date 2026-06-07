@@ -1,6 +1,6 @@
 ---
 sidebar_label: Calendar View
-sidebar_position: 4
+sidebar_position: 5
 description: Month and week views of every DocJacket deadline — key dates, tasks, reminders, and custom events across all transactions.
 ---
 

@@ -1,6 +1,6 @@
 ---
 sidebar_label: Transaction Statuses
-sidebar_position: 6
+sidebar_position: 7
 description: How DocJacket transaction statuses work — filter your pipeline, organize deals, and customize statuses to match your workflow.
 ---
 

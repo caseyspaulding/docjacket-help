@@ -1,6 +1,6 @@
 ---
 sidebar_label: Anchor Dates
-sidebar_position: 3
+sidebar_position: 4
 description: How anchor dates work in DocJacket timelines — the reference date key dates calculate from, and how to recalculate when dates change.
 ---
 

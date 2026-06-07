@@ -30,3 +30,4 @@ tasks tab with color-coded priority borders
 - [Subtasks](./subtasks.mdx) — Breaking tasks into steps
 - [Email Automation](./email-automation.mdx) — Link emails to task completion
 - [Task Options](./task-options.md) — Portal visibility, key dates, conditional tasks, reminders
+- [Waiting Items](./waiting-items.md) — Track items you are waiting on from other people

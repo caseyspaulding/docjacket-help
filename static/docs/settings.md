@@ -16,5 +16,7 @@ Access Settings from the sidebar — it's at the bottom of the navigation.
 ## In this section
 
 - [Organization Settings](./organization-settings.mdx) — Branding, defaults, and company info
+- [Offices](./offices.md) — Office locations, states, members, approved forms, branding, and compliance defaults
 - [User Management](./user-management.mdx) — Add and manage team members
 - [Notification Preferences](./notification-preferences.md) — Control what alerts you receive
+- [Activity Log](./activity-log.md) — Review organization-wide user and system activity

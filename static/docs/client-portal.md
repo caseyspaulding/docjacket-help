@@ -31,3 +31,4 @@ client portal view showing transaction status
 - [Portal for Clients](./portal-for-clients.mdx) — What buyers and sellers see
 - [Portal for Agents](./portal-for-agents.mdx) — What agents see
 - [Sharing Portal Links](./sharing-portal-links.mdx) — Send access to the right people
+- [Portal Links](./portal-links.md) — Manage portal links across every transaction

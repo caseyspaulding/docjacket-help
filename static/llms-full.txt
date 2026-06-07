@@ -205,15 +205,21 @@ The sidebar on the left is your main navigation. Here's what each section does:
 | **Dashboard** | Your daily overview and quick actions |
 | **Transactions** | All your deals — search, filter, and manage |
 | **Tasks** | Organization-wide task list across all transactions |
-| **Pipeline** | Visual pipeline view of your deals by status |
-| **Templates** | Create and manage checklists, key date rules, email templates, forms, document lists, and report templates |
+| **Documents** | Organization-wide document list and document detail pages |
 | **Inbox** | Your message center for transaction-related emails |
 | **Contacts** | Your contact database — clients, agents, vendors |
+| **Offices** | Manage office locations, approved forms, members, branding, and compliance defaults |
+| **Front Door** | Manage your public-facing contact card, services, packages, leads, listings, and custom domain |
+| **Pipeline** | Visual pipeline view of your deals by status |
 | **Calendar** | See all key dates, tasks, reminders, and deadlines in a calendar view |
-| **Listings** | Property listings you're tracking |
-| **Offices** | Manage brokerage offices |
+| **Key Dates** | Upcoming and overdue key dates across every transaction |
+| **Waiting Items** | Items your team is waiting on from clients, agents, vendors, or other parties |
+| **E-Signatures** | Signature requests and signer completion status |
+| **Portal Links** | Active, expiring, and revoked portal links across all transactions |
+| **Templates** | Create and manage checklists, key date rules, email templates, forms, document lists, and report templates |
 | **Reports** | Transaction reports and analytics |
 | **Billing** | Your subscription and payment details |
+| **Activity Log** | Organization-wide audit trail of user and system activity |
 | **Settings** | Organization settings, user management, integrations |
 
 sidebar with menu items visible
@@ -327,6 +333,7 @@ Click any transaction to open it and see the full picture — overview, timeline
 - [Transaction Overview](./transaction-overview.mdx) — Everything about a deal at a glance
 - [Key Dates & Financials](./key-dates-and-financials.mdx) — Managing dates, prices, and loan details
 - [Contingencies & Repairs](./contingencies-and-repairs.mdx) — Track contingency status and repair requests
+- [Listings](./listings.md) — Manage listing workflows inside Transactions
 - [Transaction Statuses](./transaction-statuses.mdx) — Active, Closed, Withdrawn, and more
 
 ---
@@ -530,6 +537,30 @@ repairs section showing items with different statuses
 
 ---
 
+# Listings
+
+Listings are managed through **Transactions**. The old standalone Listings route now sends you to the Transactions page filtered for listing-type records.
+
+## Finding listings
+
+1. Open **Transactions**
+2. Filter the transaction type to **Listing**
+3. Open the listing record you want to work on
+
+Creating a new listing also starts from the transaction creation flow with the listing transaction type selected.
+
+## Working a listing
+
+A listing record uses the same transaction workspace: overview, contacts, documents, tasks, messages, notes, and reports. Listing-specific details appear inside the transaction when the record is a listing.
+
+## Tips
+
+- Use transaction filters instead of looking for a separate Listings page.
+- Use checklists and required document lists that are built for listing workflows.
+- Keep listing documents and disclosure packages in the same Documents tab as the rest of the transaction files.
+
+---
+
 # Transaction Statuses
 
 Every transaction in DocJacket has a status that tells you where it is in the process. Statuses help you filter your transaction list, organize your pipeline, and keep track of what needs attention.
@@ -603,6 +634,7 @@ documents tab showing list of uploaded files
 - [AI Data Extraction](./ai-data-extraction.mdx) — Let AI read your documents
 - [Audit Mode](./audit-mode.mdx) — Track document completeness
 - [Signature Requests](./signature-requests.mdx) — Send documents for e-signature and track completion
+- [E-Signatures](./esignatures.md) — Review all signature requests and signing progress
 - [Disclosure Packages](./disclosure-packages.mdx) — Share disclosure packages from a transaction
 - [Google Drive Integration](./google-drive-integration.mdx) — Sync with Drive
 - [DocDrop](./docdrop.mdx) — Let contacts email documents directly into the transaction
@@ -816,6 +848,34 @@ After a Signature Request is sent, the Documents tab shows signature status on t
 
 ---
 
+# E-Signatures
+
+The **E-Signatures** page gives you one place to review signature requests and signing progress.
+
+Signature requests are usually created from a transaction document. The E-Signatures page then tracks the request across statuses such as pending, partially completed, completed, cancelled, declined, or expired.
+
+## What you see
+
+The list includes:
+
+- Document name
+- Related transaction address
+- Signature status
+- Number of signers
+- Completion progress
+- Created date
+
+## Cancelling a request
+
+Pending or partially completed requests can be cancelled from the E-Signatures page. Completed requests remain as signed records.
+
+## Related docs
+
+- [Signature Requests](./signature-requests.mdx) explains how to send a document for signature from a transaction.
+- [Offices](../settings/offices.md) explains where office-approved forms and signer defaults are managed.
+
+---
+
 # Disclosure Packages
 
 Disclosure Packages help you share a grouped set of transaction documents with the right recipients. Use them when a buyer, seller, agent, or outside party needs a clean package instead of individual file links.
@@ -969,6 +1029,7 @@ Never miss a deadline again — key dates, tasks, reminders, and custom events a
 ## In this section
 
 - [Checklists & Key Dates](./timeline-templates.mdx) — Pre-built workflows with key dates, tasks, and automations
+- [Key Dates List](./key-dates.md) — See upcoming and overdue key dates across every transaction
 - [Anchor Dates](./anchor-dates.md) — How one date drives all the others
 - [Calendar View](./calendar-view.mdx) — See all deadlines across all transactions
 
@@ -1025,6 +1086,38 @@ When a key date changes (like the closing date gets pushed back), click **Recalc
 ## Creating your own templates
 
 Go to **Templates > Checklists** to create custom checklist templates for your workflow. Use **Templates > Key Date Library** to manage reusable key date rules that checklists can consume.
+
+---
+
+# Key Dates List
+
+The **Key Dates** page shows upcoming and overdue dates across every transaction in your organization. It is useful when you want one operational list instead of opening each deal.
+
+## What you see
+
+The page summarizes:
+
+- Upcoming key dates
+- Overdue dates
+- Dates due today
+- Dates due this week or this month
+- Critical and high-urgency dates
+
+Each row links back to the related transaction so you can open the deal and take action.
+
+## Filtering
+
+Use the filters at the top of the page to narrow the list by:
+
+- Category
+- All dates
+- Overdue
+- This week
+- This month
+
+## How this relates to the calendar
+
+The Calendar view is best for seeing dates on a calendar grid. The Key Dates list is best for scanning urgency, overdue items, and transaction links in one table.
 
 ---
 
@@ -1128,6 +1221,7 @@ tasks tab with color-coded priority borders
 - [Subtasks](./subtasks.mdx) — Breaking tasks into steps
 - [Email Automation](./email-automation.mdx) — Link emails to task completion
 - [Task Options](./task-options.md) — Portal visibility, key dates, conditional tasks, reminders
+- [Waiting Items](./waiting-items.md) — Track items you are waiting on from other people
 
 ---
 
@@ -1320,6 +1414,67 @@ Only show this task when certain conditions are met. This keeps your task list c
 Get reminded before a task is due. Set how far in advance you want the reminder (1 day, 3 days, 1 week, etc.).
 
 **Example:** "Order home warranty" — set a reminder for 3 days before the due date so you have time to coordinate with the provider.
+
+---
+
+# Waiting Items
+
+Waiting Items help you track things that are blocked on someone else. Use them for documents, confirmations, signatures, answers, or vendor updates that your team needs before moving forward.
+
+## Where to find them
+
+Open **Waiting Items** from the sidebar to see all waiting items across transactions.
+
+The list shows:
+
+- Item title and description
+- Related transaction
+- Who you are waiting on
+- Status
+- Due date
+
+## Marking an item received
+
+When the item comes in, click the check action to mark it as received. The status updates so your team can see the blocker is cleared.
+
+## Tips
+
+- Use waiting items for external blockers, not ordinary internal tasks.
+- Add due dates when you need to follow up by a specific day.
+- Keep descriptions short and specific so the list is easy to scan.
+
+---
+
+## Front Door
+
+# Front Door
+
+Front Door is your public-facing DocJacket page. Use it to show who you are, what you offer, which packages you provide, recent closings, active listings, and a lead form for people who want to work with you.
+
+Go to **Front Door** from the app sidebar to manage the page.
+
+Front Door admin page with preview and sections
+
+## What you can manage
+
+- **Sections** — The building blocks of your page, including hero, contact info, services, packages, listings, and lead forms
+- **Services** — The offerings catalog that powers the "What I Offer" section
+- **Packages** — Public package options you can show to prospects
+- **Leads** — Incoming Front Door form submissions
+- **Theme** — Brand colors and visual styling
+- **Closings** — Closed deals you choose to feature
+- **Listings** — Active listings you choose to feature
+- **Custom domain** — Point your own domain at Front Door on eligible plans
+
+## Publishing
+
+Front Door can be drafted before it is live. Use the preview to check your sections, then publish when the page is ready to share.
+
+## Tips
+
+- Add services before building packages so your public page has clear offerings.
+- Feature only closings or listings you are comfortable showing publicly.
+- Use the custom domain page if you want a branded URL instead of a DocJacket subdomain.
 
 ---
 
@@ -3189,6 +3344,7 @@ client portal view showing transaction status
 - [Portal for Clients](./portal-for-clients.mdx) — What buyers and sellers see
 - [Portal for Agents](./portal-for-agents.mdx) — What agents see
 - [Sharing Portal Links](./sharing-portal-links.mdx) — Send access to the right people
+- [Portal Links](./portal-links.md) — Manage portal links across every transaction
 
 ---
 
@@ -3308,6 +3464,39 @@ portal link management showing active links with stats
 - Create separate links for each party — buyers, sellers, and agents each get their own link with appropriate visibility
 - Set expiration dates for sensitive transactions
 - Check the stats to see if clients have actually viewed the portal — if they haven't, follow up
+
+---
+
+# Portal Links
+
+The **Portal Links** page shows portal access across every transaction. Use it to monitor active links, extend expiring links, and revoke access when needed.
+
+## What you see
+
+Portal Links includes summary cards for:
+
+- Total links
+- Active links
+- Total access count
+- Buyer/seller and agent link counts
+- Links expiring soon
+
+The table shows each portal link's transaction, recipient, portal type, status, access count, last accessed date, and expiration date.
+
+## Managing links
+
+From the Portal Links page you can:
+
+- Include or hide revoked links
+- Filter by status
+- Filter by portal type
+- Extend expiring links
+- Revoke links in bulk
+- Open the related transaction
+
+## When to use this page
+
+Use the transaction's Portal tab when you are managing one deal. Use the Portal Links page when you need organization-wide visibility across all shared portal access.
 
 ---
 
@@ -3548,8 +3737,10 @@ Access Settings from the sidebar — it's at the bottom of the navigation.
 ## In this section
 
 - [Organization Settings](./organization-settings.mdx) — Branding, defaults, and company info
+- [Offices](./offices.md) — Office locations, states, members, approved forms, branding, and compliance defaults
 - [User Management](./user-management.mdx) — Add and manage team members
 - [Notification Preferences](./notification-preferences.md) — Control what alerts you receive
+- [Activity Log](./activity-log.md) — Review organization-wide user and system activity
 
 ---
 
@@ -3585,6 +3776,41 @@ Configure defaults that apply to new transactions:
 ## Transaction roles
 
 In **Settings > Transaction Roles**, you can create and manage the contact roles available when adding contacts to a transaction. The built-in roles (Buyer, Seller, Agent, etc.) cover most needs, but you can add custom ones if your workflow requires it.
+
+---
+
+# Offices
+
+Offices let brokerages and teams manage location-specific configuration. Each office can have its own states, members, branding, approved forms, and signing defaults.
+
+## Creating an office
+
+1. Open **Offices** from the sidebar or from **Settings > Offices**
+2. Click **Add Office**
+3. Enter the office name and slug
+4. Add branding details if needed
+5. Save the office
+
+The slug is used for office-specific intake URLs.
+
+## Office detail tabs
+
+Inside an office, you can manage:
+
+- **Approved forms** — Form templates used for signature requests
+- **Members** — Users associated with that office
+- **Branding** — Office-specific logo and brand styling
+- **Defaults & compliance** — Signing, reminder, and compliance defaults
+
+## States
+
+Use **Manage States** to select the states where an office operates and choose a primary state when applicable.
+
+## Tips
+
+- Create separate offices when branding, approved forms, or compliance defaults differ.
+- Keep office members current so requests and forms route correctly.
+- Review approved forms before sending signature requests tied to that office.
 
 ---
 
@@ -3657,6 +3883,35 @@ Toggle this on from your Dashboard or in notification settings.
 - Start with all notifications on, then turn off the ones that aren't useful for your workflow
 - The morning briefing is a great way to start your day with a clear picture of what needs attention
 - Notification settings are per-user — each team member controls their own preferences
+
+---
+
+# Activity Log
+
+The **Activity Log** shows actions across your organization. It helps you understand who did what, when it happened, and which system events were recorded.
+
+## What appears in the log
+
+Activity entries can include:
+
+- User name or system actor
+- Action label
+- Action type
+- Timestamp
+- Additional details when available
+
+## Filtering
+
+Use the action-type filter at the top of the page to narrow the log to a specific kind of activity.
+
+## Loading more
+
+The log loads recent activity first. Click **Load more** to continue reviewing older entries.
+
+## Tips
+
+- Use the Activity Log when investigating who changed or completed something.
+- For transaction-specific context, open the related transaction and review its tabs alongside the activity trail.
 
 ---
 

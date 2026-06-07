@@ -1,6 +1,6 @@
 ---
 sidebar_label: Disclosure Packages
-sidebar_position: 7
+sidebar_position: 9
 description: Share disclosure packages from a transaction's document workspace.
 ---
 

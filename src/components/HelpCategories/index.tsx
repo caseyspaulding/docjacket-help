@@ -25,6 +25,11 @@ const categories: Category[] = [
     link: '/docs/documents',
   },
   {
+    title: 'Front Door',
+    description: 'Publish services, packages, listings, and lead forms.',
+    link: '/docs/front-door',
+  },
+  {
     title: 'AI Features',
     description: 'Contract extraction, smart timelines, and more.',
     link: '/docs/ai-features',

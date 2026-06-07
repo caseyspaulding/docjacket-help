@@ -30,6 +30,7 @@ documents tab showing list of uploaded files
 - [AI Data Extraction](./ai-data-extraction.mdx) — Let AI read your documents
 - [Audit Mode](./audit-mode.mdx) — Track document completeness
 - [Signature Requests](./signature-requests.mdx) — Send documents for e-signature and track completion
+- [E-Signatures](./esignatures.md) — Review all signature requests and signing progress
 - [Disclosure Packages](./disclosure-packages.mdx) — Share disclosure packages from a transaction
 - [Google Drive Integration](./google-drive-integration.mdx) — Sync with Drive
 - [DocDrop](./docdrop.mdx) — Let contacts email documents directly into the transaction

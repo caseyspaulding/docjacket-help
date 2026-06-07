@@ -13,5 +13,6 @@ Never miss a deadline again — key dates, tasks, reminders, and custom events a
 ## In this section
 
 - [Checklists & Key Dates](./timeline-templates.mdx) — Pre-built workflows with key dates, tasks, and automations
+- [Key Dates List](./key-dates.md) — See upcoming and overdue key dates across every transaction
 - [Anchor Dates](./anchor-dates.md) — How one date drives all the others
 - [Calendar View](./calendar-view.mdx) — See all deadlines across all transactions

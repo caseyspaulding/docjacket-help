@@ -1,0 +1,38 @@
+---
+title: Front Door
+sidebar_label: Overview
+sidebar_position: 1
+description: Set up your DocJacket Front Door — public profile, services, packages, listings, leads, branding, and custom domain.
+---
+
+<!-- Canonical: https://help.docjacket.com/docs/front-door -->
+<!-- Source: docs/front-door/index.mdx -->
+
+# Front Door
+
+Front Door is your public-facing DocJacket page. Use it to show who you are, what you offer, which packages you provide, recent closings, active listings, and a lead form for people who want to work with you.
+
+Go to **Front Door** from the app sidebar to manage the page.
+
+Front Door admin page with preview and sections
+
+## What you can manage
+
+- **Sections** — The building blocks of your page, including hero, contact info, services, packages, listings, and lead forms
+- **Services** — The offerings catalog that powers the "What I Offer" section
+- **Packages** — Public package options you can show to prospects
+- **Leads** — Incoming Front Door form submissions
+- **Theme** — Brand colors and visual styling
+- **Closings** — Closed deals you choose to feature
+- **Listings** — Active listings you choose to feature
+- **Custom domain** — Point your own domain at Front Door on eligible plans
+
+## Publishing
+
+Front Door can be drafted before it is live. Use the preview to check your sections, then publish when the page is ready to share.
+
+## Tips
+
+- Add services before building packages so your public page has clear offerings.
+- Feature only closings or listings you are comfortable showing publicly.
+- Use the custom domain page if you want a branded URL instead of a DocJacket subdomain.

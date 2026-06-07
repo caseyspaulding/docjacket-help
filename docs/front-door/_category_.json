@@ -1,0 +1,8 @@
+{
+  "label": "Front Door",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "description": "Publish and manage your public DocJacket Front Door."
+  }
+}

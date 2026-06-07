@@ -29,4 +29,5 @@ Click any transaction to open it and see the full picture — overview, timeline
 - [Transaction Overview](./transaction-overview.mdx) — Everything about a deal at a glance
 - [Key Dates & Financials](./key-dates-and-financials.mdx) — Managing dates, prices, and loan details
 - [Contingencies & Repairs](./contingencies-and-repairs.mdx) — Track contingency status and repair requests
+- [Listings](./listings.md) — Manage listing workflows inside Transactions
 - [Transaction Statuses](./transaction-statuses.mdx) — Active, Closed, Withdrawn, and more
