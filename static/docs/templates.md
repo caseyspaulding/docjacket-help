@@ -25,6 +25,7 @@ The **Templates** page in the sidebar is your template hub, organized into categ
 
 ## Document Templates
 - **Required Documents Lists** — Document requirements for different transaction types
+- **Approved Form Templates** — Office-owned blank PDFs for reusable e-signature packets
 - **Smart Fields** — Custom fields for auto-populating document data
 
 ## Report Templates
@@ -40,5 +41,6 @@ templates hub showing all categories
 - [Email Signatures](./email-signatures.md) — Create branded signatures for outgoing email
 - [Online Forms](./online-forms.md) — Collect structured information from clients, agents, and leads
 - [Required Documents Lists](./required-documents-lists.md) — Define required document checklists by transaction type
+- [Approved Form Templates](../documents/approved-form-templates.md) — Build office-approved PDFs for e-signature packets
 - [Smart Fields](./smart-fields.md) — Manage reusable fields for document and communication data
 - [SitRep Templates](./sitrep-templates.md) — Control the sections used in transaction status reports

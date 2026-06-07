@@ -854,6 +854,7 @@ From the **Documents** tab in any transaction, you can:
 - **Upload files** — Drag and drop or browse to upload. Documents are categorized automatically.
 - **Track completeness** — Toggle audit mode to see which required documents are still missing.
 - **Extract data with AI** — Let AI read your documents and pull out key transaction details.
+- **Send for e-signature** — Send uploaded documents or office-approved form packets for signature.
 - **Search and filter** — Find any document by name or category, even in large transactions.
 - **Connect to Google Drive** — Import and export documents directly.
 
@@ -866,6 +867,8 @@ documents tab showing list of uploaded files
 - [Audit Mode](./audit-mode.mdx) — Track document completeness
 - [Signature Requests](./signature-requests.mdx) — Send documents for e-signature and track completion
 - [E-Signatures](./esignatures.md) — Review all signature requests and signing progress
+- [Approved Form Templates](./approved-form-templates.md) — Upload blank PDFs, map fields, and publish office-approved forms
+- [Form Packets](./esignature-form-packets.md) — Send approved form packets and track signer progress
 - [Disclosure Packages](./disclosure-packages.mdx) — Share disclosure packages from a transaction
 - [Google Drive Integration](./google-drive-integration.mdx) — Sync with Drive
 - [DocDrop](./docdrop.mdx) — Let contacts email documents directly into the transaction
@@ -1056,6 +1059,8 @@ DocDrop activity metrics
 
 Signature Requests let you send transaction documents for e-signature directly from DocJacket. Sent requests stay tied to the transaction, so your team can track who has signed and which signed PDF came back.
 
+This page covers sending an existing uploaded document. To send reusable office-approved forms, see [Form Packets](./esignature-form-packets.md).
+
 ## Sending a document for signature
 
 1. Open a transaction
@@ -1063,13 +1068,16 @@ Signature Requests let you send transaction documents for e-signature directly f
 3. Find the document that needs signatures
 4. Click **Send for Signature**
 5. Choose the signer roles and recipients
-6. Review the request and send it
+6. Turn on ordered signing if signers must sign one at a time
+7. Review the request and send it
 
 signature request drawer from the documents tab
 
 ## Tracking status
 
-After a Signature Request is sent, the Documents tab shows signature status on the related document. Open the status view to see progress and signed-document details.
+After a Signature Request is sent, the Documents tab shows signature status on the related document. Open the status view to see signer progress, viewed dates, signed dates, declined dates, and pending recipients.
+
+From the status view, you can resend a reminder or cancel a pending signer request when allowed.
 
 ## Tips
 
@@ -1079,11 +1087,151 @@ After a Signature Request is sent, the Documents tab shows signature status on t
 
 ---
 
+# Approved Form Templates
+
+Approved form templates are blank PDF forms your office can reuse for e-signature packets.
+
+They live inside an office, not the main Templates page. Open **Offices**, choose an office, then use the **Approved forms** tab.
+
+## What form templates are for
+
+Use approved form templates when your team repeatedly sends the same blank forms, such as office disclosures, brokerage forms, or state-specific packets.
+
+Each template can include:
+
+- Signer signature, initials, and date fields
+- Autofill fields populated from transaction data
+- Flexible text fields completed during send prep
+- Flexible checkboxes completed during send prep
+- Signer roles, such as Buyer, Seller, Agent, or Broker
+
+## Upload a template
+
+1. Open **Offices**
+2. Choose the office that owns the form
+3. Open **Approved forms**
+4. Click **Upload Template**
+5. Enter the template name and optional description
+6. Upload the blank PDF
+
+After upload, DocJacket opens the template editor.
+
+## Map fields
+
+In the template editor, place fields on the PDF:
+
+- **Signer fields** - Signature, initials, and date fields completed by the signer
+- **Smart fields** - Transaction values filled by DocJacket, such as address, party names, dates, or price
+- **Flexible fields** - Text inputs or checkboxes completed before sending
+
+Click a field to edit its role, label, binding, or placement. Use zoom and page controls when working with long forms.
+
+## Save and publish
+
+Click **Save Draft** while mapping fields. Drafts do not send.
+
+Click **Publish** when the template is ready. Published versions are locked so Signature Requests already in flight continue to render against a stable form layout.
+
+To change a published template, create a new draft, edit it, and publish the next version.
+
+## Archive and duplicate
+
+From the Approved forms tab, you can:
+
+- Duplicate a template to start a similar form quickly
+- Archive a template when it should no longer be used for new Signature Requests
+- Show archived templates when reviewing older forms
+
+Archiving a template does not break in-flight Signature Requests.
+
+---
+
+# E-Signature Form Packets
+
+Form packets let you send one or more office-approved form templates for e-signature from a transaction.
+
+Use packets when you want DocJacket to prepare reusable approved forms, fill known transaction data, collect any remaining agent-entered fields, and then route the forms to signers.
+
+## Start a packet
+
+1. Open a transaction
+2. Go to the **Documents** tab
+3. Find the **Forms & signatures** panel
+4. Click **Send for e-signature**
+5. Choose the approved form templates to include
+
+Only published templates for the transaction's office are available.
+
+## Prepare
+
+In the prepare step, choose the templates for the packet and review the autofill preview.
+
+DocJacket shows:
+
+- Which fields were filled automatically
+- Which fields are missing values
+- Links to fix missing transaction or office data when available
+- Whether the office has the required designated broker setup
+
+If required office data is missing, sending can be blocked until the office setup is corrected.
+
+## Fill out fields
+
+Some templates include flexible fields that the agent or TC completes before sending.
+
+These can include:
+
+- Text fields
+- Checkboxes
+
+Values entered during this step are locked into the PDF when the packet is sent.
+
+## Assign signers
+
+The signer step lets you:
+
+- Match signers from transaction contacts
+- Enter signer names and emails manually
+- Assign each signer to a template role
+- Choose parallel signing or sequential signing
+- Reorder signers when sequential signing is enabled
+
+Sequential signing sends to the next signer only after the previous signer completes.
+
+## Review and send
+
+Before sending, review:
+
+- Included forms
+- Signers
+- Subject and message
+- CC recipients, if used
+- Signing order
+
+After sending, the Signature Request is immutable. Sent packets cannot be edited or added to because the audit trail and signed PDF must remain stable.
+
+## Track packets
+
+The transaction Documents tab includes a **Forms & signatures** panel that lists packets for the transaction.
+
+Open a packet to see:
+
+- Packet status
+- Signer timeline
+- Per-document state
+- Signing order
+- Last activity
+- Completion progress
+
+In-flight packets refresh automatically. You can also refresh manually or cancel a packet while cancellation is still allowed.
+
+---
+
 # E-Signatures
 
 The **E-Signatures** page gives you one place to review signature requests and signing progress.
 
-Signature requests are usually created from a transaction document. The E-Signatures page then tracks the request across statuses such as pending, partially completed, completed, cancelled, declined, or expired.
+Signature requests can come from a transaction document or from a form packet built from office-approved templates. The E-Signatures page tracks requests across statuses such as pending, partially completed, completed, cancelled, declined, or expired.
 
 ## What you see
 
@@ -1100,9 +1248,17 @@ The list includes:
 
 Pending or partially completed requests can be cancelled from the E-Signatures page. Completed requests remain as signed records.
 
+## Document requests vs form packets
+
+Use a document-level Signature Request when you already have the exact PDF in the transaction Documents tab and only need to send that document for signing.
+
+Use an approved form packet when you want DocJacket to assemble one or more reusable office forms, autofill transaction data, collect any remaining agent-entered fields, and send the packet for signing.
+
 ## Related docs
 
 - [Signature Requests](./signature-requests.mdx) explains how to send a document for signature from a transaction.
+- [Approved Form Templates](./approved-form-templates.md) explains how to build reusable office forms.
+- [Form Packets](./esignature-form-packets.md) explains how to send approved forms for signature.
 - [Offices](../settings/offices.md) explains where office-approved forms and signer defaults are managed.
 
 ---
@@ -1865,6 +2021,7 @@ The **Templates** page in the sidebar is your template hub, organized into categ
 
 ## Document Templates
 - **Required Documents Lists** — Document requirements for different transaction types
+- **Approved Form Templates** — Office-owned blank PDFs for reusable e-signature packets
 - **Smart Fields** — Custom fields for auto-populating document data
 
 ## Report Templates
@@ -1880,6 +2037,7 @@ templates hub showing all categories
 - [Email Signatures](./email-signatures.md) — Create branded signatures for outgoing email
 - [Online Forms](./online-forms.md) — Collect structured information from clients, agents, and leads
 - [Required Documents Lists](./required-documents-lists.md) — Define required document checklists by transaction type
+- [Approved Form Templates](../documents/approved-form-templates.md) — Build office-approved PDFs for e-signature packets
 - [Smart Fields](./smart-fields.md) — Manage reusable fields for document and communication data
 - [SitRep Templates](./sitrep-templates.md) — Control the sections used in transaction status reports
 
@@ -4130,10 +4288,24 @@ The slug is used for office-specific intake URLs.
 
 Inside an office, you can manage:
 
-- **Approved forms** — Form templates used for signature requests
+- **Approved forms** — Office-owned blank PDF templates used for reusable e-signature packets
 - **Members** — Users associated with that office
 - **Branding** — Office-specific logo and brand styling
 - **Defaults & compliance** — Signing, reminder, and compliance defaults
+
+## Approved forms
+
+The **Approved forms** tab is where an office manages its reusable signing library.
+
+Use it to:
+
+- Upload blank PDF form templates
+- Open the field editor
+- Save drafts and publish locked versions
+- Duplicate similar forms
+- Archive forms that should no longer be used for new Signature Requests
+
+See [Approved Form Templates](../documents/approved-form-templates.md) for the full template workflow.
 
 ## States
 
