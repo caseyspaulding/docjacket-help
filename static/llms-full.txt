@@ -5509,7 +5509,7 @@ Tenant isolation is enforced at the SQL layer. Every MCP tool call adds `WHERE O
 
 See what your clients experience when they open their portal link
 
-The Client Portal gives your buyers, sellers, and agents a branded view of their transaction — without needing a DocJacket account. They can see key dates, shared documents, portal-visible tasks, transaction details, service providers, and status updates through a secure link you send them.
+The Client Portal gives your buyers, sellers, and agents a branded transaction overview — without requiring a DocJacket account. They can see key dates, shared documents, portal-visible tasks, transaction details, service providers, and status updates through a secure link you send them.
 
 Portal links are recipient-specific. A transaction can have separate buyer/seller, agent, and vendor links, and agents can also receive an agent hub link that shows all of their active transactions in one place.
 
@@ -5521,62 +5521,93 @@ client portal view showing transaction status
 
 - **Branded experience** — Customize the portal with your logo and colors
 - **Secure access** — Each portal link is unique and can be set to expire
-- **Track engagement** — See who's viewed the portal and when
+- **Track engagement** — See visits, unique visitors, document downloads, and recent access activity
 - **Selective sharing** — Control which documents and tasks are visible on the portal
+- **Multi-property support** — If the same contact has portal access to multiple active deals, they can switch between properties
 - **Calendar and summary tools** — Viewers can copy a live calendar feed, print the portal, or download a branded one-page summary
 
 ## In this section
 
-- [Setting Up the Portal](./setting-up-the-portal.mdx) — Enable and brand your portal
-- [Portal for Clients](./portal-for-clients.mdx) — What buyers and sellers see
-- [Portal for Agents](./portal-for-agents.mdx) — What agents see
-- [Sharing Portal Links](./sharing-portal-links.mdx) — Send access to the right people
+- [Setting Up the Portal](./setting-up-the-portal.mdx) — Brand, preview, and manage the transaction portal
+- [Portal for Clients](./portal-for-clients.mdx) — What buyers and sellers see from their secure link
+- [Portal for Agents](./portal-for-agents.mdx) — Agent hub and transaction-detail portal behavior
+- [Sharing Portal Links](./sharing-portal-links.mdx) — Create, send, expire, revoke, and track portal links
 - [Portal Links](./portal-links.md) — Manage portal links across every transaction
 
 ---
 
 # Setting Up the Portal
 
-Before sharing portal links with clients and agents, you'll want to customize the look and feel to match your brand.
+Before sharing portal links with clients and agents, use the transaction **Portal** tab to check the visitor experience, manage links, and customize the look and feel for that transaction.
+
+## Portal tab workspace
+
+Open a transaction and go to **Portal**. The page is split into a management area and a live preview:
+
+- **Stats** — Active links, total visits, unique visitors, and document downloads for that transaction.
+- **Portal links** — Each link shows portal type, status, recipient, visit count, and last access date when available.
+- **Share Portal** — Send portal-link invitations to selected contacts or manual email addresses.
+- **Branding** — Override the portal logo, colors, and banner text for this transaction.
+- **Recent activity** — Review recent visitor activity when tracking data is available.
+- **Preview** — Select a link and view the portal in mobile or desktop mode before sending it.
 
 ## Branding
 
-Go to the **Portal** tab on a transaction. The branding panel lets you override the organization defaults for that transaction:
+The branding panel uses your organization defaults unless you set a transaction-specific override:
 
-- **Logo** — Upload the logo that appears in the portal header.
-- **Primary and accent colors** — Choose colors for portal buttons, links, and headers.
-- **Banner text** — Add a short message at the top of the portal.
+- **Logo** — Upload the logo that appears in the portal header. Supported image types are JPG, PNG, GIF, and WebP, up to 5 MB.
+- **Primary color** — Used for the portal navbar, buttons, and links.
+- **Accent color** — Used with the primary color in the hero area and banner styling.
+- **Banner text** — Adds a short colored message bar above the portal header.
+- **Reset** — Remove transaction overrides and return to organization defaults.
 
 portal branding settings
 
+## Live preview
+
+The preview panel shows the selected portal link in an embedded mobile or desktop frame. Use it to confirm what that exact recipient will see before you send the link.
+
+You can also refresh the preview or open the portal in a new browser tab. If no link exists yet, create a portal link first so DocJacket has a recipient-specific portal view to preview.
+
 ## What's shown on the portal
 
-By default, the portal shows:
+The public portal is primarily a branded overview page. Depending on the portal type, shared data, and visibility settings, it can show:
 
-- Transaction status and progress
+- Transaction address, status, and portal type badge
 - Key dates and deadlines
-- Assigned tasks (if you've marked them as portal-visible)
-- Shared documents
-- Contact information for the key parties
+- Shared documents grouped by category
+- Portal-visible tasks with completion progress
+- Buyers, sellers, agents, title, lender, and service providers
+- Property reference fields such as escrow number, MLS number, or APN
+- Calendar subscription, print, and one-page PDF actions
+- A property switcher when the same contact has access to multiple active transactions
 
-You control visibility at the document and task level — so sensitive items stay private unless you specifically share them. Use the Portal tab preview to see the current link in mobile or desktop view before sending it.
+You control visibility at the document and task level, so sensitive items stay private unless you specifically share them. Agent portals may also show agent-facing financial details and recent activity that client portals do not show.
+
+## Link management
+
+From a link's detail drawer, you can copy or open the URL, send it by email, review access counts and last access details, check the calendar feed status, extend expiration by 7 days, revoke access, reactivate a revoked or inactive link, or delete a link you no longer need.
+
+Use revocation when access should stop immediately. Use expiration when you want the link to stop working automatically after a set period.
 
 ---
 
 # Portal for Clients
 
-When a buyer or seller opens their portal link, they see a clean, simple view of their transaction — no login required, no app to download.
+When a buyer or seller opens their portal link, they see a clean, branded overview of their transaction — no login required, no app to download.
 
 ## What clients see
 
-- **Transaction status** — Where things stand (Under Contract, Clear to Close, etc.)
-- **Key dates** — Important deadlines with dates, completion status, notes, and any TBD or not-applicable dates
-- **Documents** — Documents you've shared with them, grouped by category, with preview and download controls when downloads are allowed
+- **Transaction header** — Address, current status, organization branding, and any banner message you added
+- **On-track banner** — A reassuring client-facing status message, including the estimated closing date when available
+- **Key dates** — Important deadlines with progress, completion status, notes, and dates marked TBD, N/A, waived, overdue, pending, or in progress
+- **Calendar subscription** — A live calendar URL they can copy into Google Calendar, Outlook, or Apple Calendar
+- **Documents** — Documents you've shared with them, grouped by category, with preview and download controls only when downloads are allowed
+- **Summary** — Transaction type, side, contract date, estimated closing date, purchase price, and address details when available
 - **Tasks** — Tasks marked as portal-visible (things they might need to complete)
-- **Contacts** — Parties, agents, title, lender, and other transaction contacts you choose to expose
+- **Contacts** — Buyers, sellers, agents, title, lender, and other transaction contacts you choose to expose
 - **Service providers** — Inspectors, appraisers, and other vendors
 - **Property details** — Reference fields such as escrow number, MLS number, or APN when present
-- **Calendar subscription** — A live calendar URL they can copy into Google Calendar, Outlook, or Apple Calendar
 
 client portal view showing timeline and documents
 
@@ -5588,8 +5619,8 @@ Clients can use the portal actions to:
 - Download a branded one-page PDF summary
 - Preview PDF and image documents
 - Download shared documents when downloads are enabled
-- Switch between properties when the same contact has access to more than one active transaction
 - Copy a live calendar feed for the visible key dates
+- Switch between properties when the same contact has access to more than one active transaction
 
 ## What clients don't see
 
@@ -5599,8 +5630,13 @@ Clients can use the portal actions to:
 - Other transactions
 - Other contacts' portal views
 - Agent-facing financial/provider detail that is reserved for agent portals
+- Agent-facing recent activity
 
 The portal is read-only for transaction data. Clients can view status, dates, contacts, tasks, and documents, but they can't edit the transaction itself.
+
+## Multiple active properties
+
+If the same contact has portal access to more than one active transaction in your organization, DocJacket shows a **Your properties** switcher near the top of the portal. Each property opens its own secure portal link, so the contact can move between active deals without mixing the underlying transaction views.
 
 ---
 
@@ -5608,31 +5644,40 @@ The portal is read-only for transaction data. Clients can view status, dates, co
 
 Agents can receive two related portal experiences: a transaction portal for a specific deal, and an agent hub that lists all active transactions where that agent has access.
 
-## What agents see
+## Agent hub
 
-The agent portal shows:
+The agent hub opens from an agent-level portal link. It uses your organization branding and shows cards for that agent's active transactions.
 
-- **Their transactions** — Only the active deals where they're assigned as an agent
-- **Transaction status and key dates** — Where each deal stands
-- **Documents** — Documents shared with the agent role
-- **Tasks** — Portal-visible tasks assigned to them or relevant to their role
-- **Next action** — The next visible task due on each transaction, including overdue status
-- **Calendar shortcut** — A quick calendar-subscribe link for each transaction
-- **Recent activity** — A short activity preview inside the transaction detail portal
+Each transaction card can show:
+
+- **Address and status** — The property address and current transaction status
+- **Closing date** — The expected closing date when present
+- **Role, type, and side** — The agent's transaction role plus deal type/side context
+- **Document count** — How many documents are visible through the portal
+- **Pending task count** — How many visible tasks remain open
+- **Next action** — The next visible task due on the transaction, including overdue status
+- **Calendar shortcut** — A quick calendar-subscribe action for that transaction
+- **View Details** — Opens the transaction-specific branded portal
 
 agent portal showing transaction list
 
-## Agent vs. Client portal
+## Transaction detail portal
 
-The main difference is scope and detail. Clients usually see one transaction. Agents may see an agent hub with multiple transaction cards, then open a transaction for the full branded portal view.
+From the agent hub, an agent can open a transaction card to see the full branded portal view for that deal: key dates, shared documents, visible tasks, contacts, service providers, print/download actions, and the live calendar subscription.
 
-Agents also typically see more deal detail than clients, including agent-facing activity, financial fields, title/lender/provider information, and role-specific transaction cards. You control access through the portal link and the visibility settings on documents, tasks, and contacts.
+Agent transaction portals can show more deal detail than client portals, including:
 
-## Opening a transaction
+- Agent-facing financial fields such as loan amount, earnest money, down payment, seller concession, and financing type when available
+- Title and lender details
+- Service-provider information that has been exposed to the portal
+- A recent activity card when activity is available
+- The same print, calendar, and branded one-page PDF tools clients can use
 
-From the agent hub, an agent can open a transaction card to see the same branded transaction portal view: key dates, shared documents, visible tasks, contacts, service providers, print/download actions, and the live calendar subscription.
+## Agent vs. client portal
 
-From a contact's detail page, you can also manage an agent-level portal link: copy it, open it, resend it, revoke it, and review portal activity or message history for that contact.
+The main difference is scope and detail. Clients usually open a single transaction overview. Agents may open an agent hub with multiple transaction cards, then drill into a transaction-specific portal.
+
+You still control access through the portal link and visibility settings. Documents and tasks only appear when they are portal-visible, and link status, expiration, revocation, and access tracking are managed from the transaction **Portal** tab or the contact's portal-link controls.
 
 ---
 

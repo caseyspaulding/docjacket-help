@@ -8,26 +8,54 @@ import ScreenshotPlaceholder from '@site/src/components/ScreenshotPlaceholder';
 
 # Setting Up the Portal
 
-Before sharing portal links with clients and agents, you'll want to customize the look and feel to match your brand.
+Before sharing portal links with clients and agents, use the transaction **Portal** tab to check the visitor experience, manage links, and customize the look and feel for that transaction.
+
+## Portal tab workspace
+
+Open a transaction and go to **Portal**. The page is split into a management area and a live preview:
+
+- **Stats** — Active links, total visits, unique visitors, and document downloads for that transaction.
+- **Portal links** — Each link shows portal type, status, recipient, visit count, and last access date when available.
+- **Share Portal** — Send portal-link invitations to selected contacts or manual email addresses.
+- **Branding** — Override the portal logo, colors, and banner text for this transaction.
+- **Recent activity** — Review recent visitor activity when tracking data is available.
+- **Preview** — Select a link and view the portal in mobile or desktop mode before sending it.
 
 ## Branding
 
-Go to the **Portal** tab on a transaction. The branding panel lets you override the organization defaults for that transaction:
+The branding panel uses your organization defaults unless you set a transaction-specific override:
 
-- **Logo** — Upload the logo that appears in the portal header.
-- **Primary and accent colors** — Choose colors for portal buttons, links, and headers.
-- **Banner text** — Add a short message at the top of the portal.
+- **Logo** — Upload the logo that appears in the portal header. Supported image types are JPG, PNG, GIF, and WebP, up to 5 MB.
+- **Primary color** — Used for the portal navbar, buttons, and links.
+- **Accent color** — Used with the primary color in the hero area and banner styling.
+- **Banner text** — Adds a short colored message bar above the portal header.
+- **Reset** — Remove transaction overrides and return to organization defaults.
 
 <ScreenshotPlaceholder>portal branding settings</ScreenshotPlaceholder>
 
+## Live preview
+
+The preview panel shows the selected portal link in an embedded mobile or desktop frame. Use it to confirm what that exact recipient will see before you send the link.
+
+You can also refresh the preview or open the portal in a new browser tab. If no link exists yet, create a portal link first so DocJacket has a recipient-specific portal view to preview.
+
 ## What's shown on the portal
 
-By default, the portal shows:
+The public portal is primarily a branded overview page. Depending on the portal type, shared data, and visibility settings, it can show:
 
-- Transaction status and progress
+- Transaction address, status, and portal type badge
 - Key dates and deadlines
-- Assigned tasks (if you've marked them as portal-visible)
-- Shared documents
-- Contact information for the key parties
+- Shared documents grouped by category
+- Portal-visible tasks with completion progress
+- Buyers, sellers, agents, title, lender, and service providers
+- Property reference fields such as escrow number, MLS number, or APN
+- Calendar subscription, print, and one-page PDF actions
+- A property switcher when the same contact has access to multiple active transactions
 
-You control visibility at the document and task level — so sensitive items stay private unless you specifically share them. Use the Portal tab preview to see the current link in mobile or desktop view before sending it.
+You control visibility at the document and task level, so sensitive items stay private unless you specifically share them. Agent portals may also show agent-facing financial details and recent activity that client portals do not show.
+
+## Link management
+
+From a link's detail drawer, you can copy or open the URL, send it by email, review access counts and last access details, check the calendar feed status, extend expiration by 7 days, revoke access, reactivate a revoked or inactive link, or delete a link you no longer need.
+
+Use revocation when access should stop immediately. Use expiration when you want the link to stop working automatically after a set period.
