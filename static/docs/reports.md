@@ -16,6 +16,8 @@ DocJacket has two report surfaces:
 
 Use the sidebar Reports page when you are reviewing the business. Use a transaction's Reports tab when you need to send or download a report for one deal.
 
+The **Pipeline** page is a separate sidebar page. It is documented here because it is closely related to pipeline reporting and transaction status review, but it is not the same screen as the Reports page.
+
 ## In this section
 
 - [Transaction Reports](./transaction-reports.mdx) — Generate, send, and schedule transaction-level reports

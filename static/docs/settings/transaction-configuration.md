@@ -19,18 +19,20 @@ Transaction roles determine how contacts appear in assignment dropdowns and tran
 
 ## Transaction statuses
 
-Use **Settings > Statuses** to customize pipeline statuses.
+Use **Settings > Transactions > Statuses** to customize transaction statuses.
 
 You can:
 
 - Add custom statuses
-- Choose a status type
+- Choose an **Open**, **Closed**, or **Cancelled** status type
 - Pick a display color
 - Drag statuses into the order your team uses
 - Set the default status for new transactions
 - Hide statuses that should no longer appear
 
-System statuses are protected, but you can still decide which non-system statuses are active for your organization.
+Active non-offer statuses appear as columns on the Pipeline page's **Transactions** tab and as options in transaction status filters. Closed and cancelled status types are terminal; moving a transaction from an open status into one of those types closes out related pending workflow.
+
+System statuses are protected. You can hide or reorder them, but you cannot rename, edit, or delete system statuses. The default status cannot be hidden until another status is set as the default. Non-system statuses can be edited or deleted when allowed by the current data; statuses currently used by transactions must be reassigned before deletion.
 
 ## Fields and custom fields
 
