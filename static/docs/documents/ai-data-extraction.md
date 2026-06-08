@@ -11,19 +11,28 @@ description: Use Extract Data on an existing transaction to upload documents, ru
 
 Use **Extract Data** when you already have a transaction and want DocJacket to read new documents for that deal.
 
-This is different from the "Upload & Extract" flow you use when creating a new transaction. This feature works on **existing transactions** where you want AI to read through documents and fill in missing data.
+This is different from the **Upload Documents** flow you use when creating a new transaction, listing, or existing-transaction extraction run. This page covers the transaction **Documents > Files > Extract Data** shortcut for an existing transaction.
 
 ## How to use it
 
 1. Open a transaction and go to the **Documents** tab
 2. On the **Files** subtab, click **Extract Data**
 3. Upload the documents you want DocJacket to read
-4. If you upload a single multi-page PDF, review the **Smart Split** step when it appears
+4. Click **Extract Data**
 5. Open the progress page while extraction runs
-6. Review the extracted fields, citations, confidence, and warnings
-7. Save the update when the extracted data is correct
+6. Review the extracted fields, citations, confidence, warnings, and changed-field comparison
+7. Select which changes to apply
+8. Click **Update Transaction** when the extracted data is correct
 
 Nothing changes on the transaction until you finish the review-and-save step.
+
+## What happens to uploaded files
+
+Files uploaded through transaction **Extract Data** are linked to that transaction and appear in the **Documents Received** table. The upload accepts PDFs, JPGs, JPEGs, and PNGs up to 25MB each. Multiple files are supported.
+
+If you upload multiple files, DocJacket runs grouped extraction and then opens a merged review. If only one document succeeds, DocJacket can send you straight to the single-document review screen.
+
+Smart Split is part of the broader **Upload Documents** extraction wizard. From an existing transaction's **Extract Data** page, uploaded files go directly into extraction.
 
 ## What it extracts
 
@@ -37,6 +46,19 @@ AI looks through all your uploaded documents and pulls out:
 - Agent and lender information
 
 If a field is already filled in, review the suggested value before saving the update.
+
+## Review and apply changes
+
+For existing transactions, DocJacket compares extracted values with the current transaction data. The review screen shows:
+
+- Current value
+- New extracted value
+- A checkbox for each changed field
+- **Select All** and **None** controls
+
+Only selected differences are sent when you update the transaction. If no differences are found, there is nothing to apply.
+
+Extracted dates can update transaction fields, but timeline key dates are opt-in from the review screen. Toggle on only the extracted dates you want tracked as key dates on the transaction timeline.
 
 ## When to use this
 

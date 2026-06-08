@@ -6,18 +6,40 @@ description: DocJacket's AI detects document boundaries in multi-document PDFs, 
 
 # Smart Document Splitting
 
-Sometimes you get a single PDF that contains multiple documents — a contract, addenda, disclosures, and amendments all bundled together. DocJacket's AI can detect where one document ends and another begins, pick likely extractable documents, and split the selected files before extraction.
+Sometimes you get a single PDF that contains multiple documents — a contract, addenda, disclosures, and amendments all bundled together. DocJacket's AI can detect where one document ends and another begins, pick likely extractable documents, and send the selected documents into extraction.
 
 ## How to use it
 
-1. Start **Upload & Extract** and upload one PDF
-2. If the PDF has multiple pages and Smart Split is enabled, DocJacket opens the **Smart Split** step
+1. Start **Upload Documents** and upload one PDF
+2. If the PDF has multiple pages, DocJacket opens the **Smart Split** step
 3. AI identifies the documents, page ranges, document types, and likely primary contract
 4. Review the selected documents, extractable-document selection, and primary contract
 5. Edit boundaries, split a document, remove a document, add a document, or change the selected contract if needed
 6. Click **Split & Extract** to create the split files and start extraction
 
-If DocJacket detects one document spanning the full PDF, it skips the split step and starts extraction. If the detected split is high-confidence, DocJacket may show a short countdown and continue automatically unless you cancel to review manually. Low-confidence selected documents trigger a warning before extraction continues.
+If DocJacket detects one document spanning the full PDF, it skips the split step and continues to extraction. If the detected split is high-confidence, DocJacket shows a 5-second auto-extract countdown. Click **Cancel & review** during that countdown if you want to inspect or change the split before extraction starts.
+
+Smart Split appears in the broader **Upload Documents** extraction wizard. The transaction **Documents > Files > Extract Data** flow uploads directly into an existing transaction and then opens extraction progress/review.
+
+## What the review screen shows
+
+The Smart Split review screen includes:
+
+- A detected-document list with selected count
+- The likely primary contract
+- Document type and page range for each detected document
+- Confidence labels for each detected document
+- A PDF preview and page map
+- **All** and **None** selection controls
+- Edit tools for boundaries, split points, added documents, and removed documents
+
+DocJacket auto-selects extractable document types, such as purchase agreements, listing agreements, amendments, addenda, counterproposals, and similar contract documents. You can select or clear documents before extracting.
+
+## Confidence and warnings
+
+Documents below the review threshold are marked for review. If any selected document is below 70% confidence, DocJacket warns before continuing because a bad page boundary can produce inaccurate extraction results.
+
+Low confidence does not mean the AI failed. It means you should verify the page range and document type before sending the selected pages into extraction.
 
 ## When this is useful
 
@@ -33,3 +55,4 @@ If DocJacket detects one document spanning the full PDF, it skips the split step
 - Each split document gets categorized automatically
 - If the AI misidentifies a split point, adjust the page ranges before confirming
 - If you only want some files extracted, adjust the selected documents before continuing
+- Use **Skip Split** only when you want to extract from the original uploaded PDF without creating split files first

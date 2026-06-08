@@ -57,7 +57,7 @@ Each guide walks you through the connector setup and the OAuth consent flow.
 
 ## Featured workflow
 
-- **[Contract Intake](/docs/ai-access/contract-intake)** — when action tools are enabled, drop a contract PDF in chat, review extracted parties, addresses, key dates, and financials, then confirm before creating the transaction. In the standard read-first setup, use the in-app Upload & Extract wizard.
+- **[Contract Intake](/docs/ai-access/contract-intake)** — when action tools are enabled, drop a contract PDF in chat, review extracted parties, addresses, key dates, and financials, then confirm before creating the transaction. In the standard read-first setup, use the in-app Upload Documents wizard.
 
 ## Learn more
 

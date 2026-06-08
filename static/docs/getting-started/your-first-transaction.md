@@ -15,10 +15,10 @@ Let's walk through creating a transaction from scratch. By the end, you'll have 
 
 From the **Transactions** page, click **New Transaction** to start with document upload and extraction. If you prefer to enter everything yourself, use the manual transaction form.
 
-- **Upload & Extract** — Upload a contract PDF and let AI do the heavy lifting
+- **Upload Documents** — Upload a contract PDF and let AI do the heavy lifting
 - **Create manually** — Fill in the deal details yourself
 
-### Option A: Upload & Extract (recommended)
+### Option A: Upload Documents (recommended)
 
 This is the fastest way. Upload contract documents and DocJacket will read through them and pull out:
 

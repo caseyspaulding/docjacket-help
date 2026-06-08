@@ -1,7 +1,7 @@
 ---
 sidebar_label: Contract Intake
 sidebar_position: 6
-description: External PDF intake for AI Access action-tool accounts; read-first users should use the in-app Upload & Extract wizard.
+description: External PDF intake for AI Access action-tool accounts; read-first users should use the in-app Upload Documents wizard.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/ai-access/contract-intake -->
