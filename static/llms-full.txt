@@ -1674,6 +1674,8 @@ From the **Contacts** page, use the **People** view for individual contacts or t
 
 You can also create contacts while adding someone to a transaction. The transaction contact drawer can search existing contacts, filter by organization, or open a quick create dialog.
 
+When quick-creating a transaction contact, DocJacket checks for likely duplicates by name, email, or phone before creating the new record. If a match exists, you can use the existing contact instead of creating another row.
+
 ## Searching and filtering
 
 - **Search** by name, email, phone, or company
@@ -1685,6 +1687,8 @@ You can also create contacts while adding someone to a transaction. The transact
 
 The Contacts grid also supports inline editing for common fields such as name, email, phone, company, license, notes, type, tags, and active status.
 
+The column menu lets you show, hide, reorder, resize, and reset columns. Saved views preserve reusable grid layouts for repeat workflows.
+
 ## Bulk actions
 
 Select contacts from the grid to:
@@ -1695,6 +1699,8 @@ Select contacts from the grid to:
 
 Deleting a contact marks it inactive. You can view inactive contacts by turning off **Active only**.
 
+Merging is available when exactly two contacts are selected. Choose the contact to keep, review both records, and confirm. DocJacket moves related transaction links from the duplicate into the kept contact and removes duplicate relationships where the same transaction role already exists.
+
 ## Importing contacts
 
 Click **Import** from the Contacts page to import from:
@@ -1702,7 +1708,9 @@ Click **Import** from the Contacts page to import from:
 - **CSV Upload** — Upload a CSV, map columns to contact fields, preview the import, choose duplicate handling, and run the import
 - **Google Contacts** — Connect Google Contacts, fetch contacts, select the rows you want, and import them
 
-The CSV importer includes a downloadable template, recent import history, duplicate preview, import tags, and cancellation while an import is running.
+The CSV importer includes a downloadable template, drag-and-drop upload, a 5 MB file limit, column mapping, recent import history, duplicate preview, import tags, and cancellation while an import is running.
+
+The Google Contacts importer checks whether your Google account is connected, fetches contacts for preview, lets you select or deselect rows, and reports imported, skipped, and errored contacts when the import finishes.
 
 ## Exporting contacts
 
@@ -1713,16 +1721,24 @@ Click **Export** to download the current contact list as a CSV file. If contacts
 Open a contact to manage their full profile. From the detail page you can:
 
 - Change the profile photo
-- Edit name, organization, type, tags, emails, phones, address, and notes inline
+- Edit name, organization, type, tags, emails, phones, address, website, social links, license number, and notes inline
 - Mark primary email and phone rows
-- Record SMS consent for phone numbers
-- Review related transactions and activity
-- Manage portal status for agent-style contacts
+- Record SMS consent for each phone number
+- Review related transactions, offers, and activity
+- Manage agent portal status for agent-style contacts
 - Review offers tied to that contact from the Buyer Offers pipeline
-- Open the portal tab to copy, open, resend, or revoke an agent portal link when one exists
+- Open the agent portal tab to create, copy, open, resend, or revoke an agent portal link
 - Review portal activity and SMS/portal message threads for that contact
 
 Most common edits happen directly on the detail page. Use **Edit all fields** when you need the fuller form for fields that still live there.
+
+## SMS consent and readiness
+
+Phone numbers can be marked with SMS consent from the contact detail page. Consent is tracked per phone number, not just per contact, so a contact with multiple phone rows can have one consented mobile number and one non-consented office number.
+
+Use the primary-phone star to control which number DocJacket treats as the default contact number. Use the SMS consent icon to record or remove consent before relying on SMS reminders, portal-link texts, or direct SMS workflows.
+
+Portal chat does not require SMS consent and does not consume SMS credits. SMS sends still require a usable phone number, organization SMS access, and the sending safeguards described in **Settings > SMS**.
 
 ---
 
@@ -1757,11 +1773,29 @@ Transaction contacts are grouped by role category on the transaction **Contacts*
 Roles do more than label contacts:
 
 - **Transaction organization** — The Contacts tab groups contacts by role category, such as primary parties, professional services, and service providers.
-- **Expected roles** — If a transaction expects certain roles, empty slots can appear until you assign a contact.
+- **Expected roles** — If a transaction expects certain roles, empty role slots appear until you assign a contact.
 - **Communication** — Email compose and templates can target recipients by role.
 - **Reports** — Transaction reports can show participants with their role labels.
 - **Merge display names** — Each transaction contact can have a merge name for emails, such as "Celia and Bill."
 - **Portal links** — Transaction contacts can receive portal links by email or SMS. Portal access is managed per transaction contact.
+
+## Transaction Contacts tab
+
+Open a transaction and go to **Contacts** to manage the contacts for that deal.
+
+From this tab you can:
+
+- Fill expected role slots
+- Add an existing contact or quick-create a new one
+- Filter the contact picker by organization
+- Choose a role from party-grouped role lists
+- Mark a transaction contact as primary
+- Edit the merge display name used in email templates
+- Send email or SMS from a contact card when the contact has the needed details
+- Create, copy, regenerate, or revoke a portal link for that transaction contact
+- Remove the contact from the transaction without deleting the contact from the directory
+
+The same person can appear on multiple transactions with different roles. The transaction role and merge display name live on the transaction relationship, not on the global contact record.
 
 ## Custom roles
 
@@ -5604,7 +5638,12 @@ From a contact's detail page, you can also manage an agent-level portal link: co
 
 # Sharing Portal Links
 
-Portal links are how clients and agents access their portal view. Each link is unique, secure, and can be managed individually.
+Portal links are how clients, agents, and other transaction parties access their portal view. Each link is unique, secure, and managed individually.
+
+There are two transaction-level places to work with portal links:
+
+- **Portal tab** — Create links, preview the portal, manage branding, review analytics, send portal-link emails, and manage link details.
+- **Contacts tab** — Manage each transaction contact's link from their contact card, including create, copy, regenerate, revoke, and send portal-link delivery options.
 
 ## Creating a portal link
 
@@ -5616,6 +5655,8 @@ Portal links are how clients and agents access their portal view. Each link is u
 6. Click **Create**
 
 DocJacket generates a unique URL for that recipient. The Portal tab also shows a live preview so you can check the mobile or desktop view before sending.
+
+You can also create a portal link directly from the transaction **Contacts** tab. On a contact card, click the portal-link action. DocJacket creates the link, copies it to your clipboard, and marks that contact as having an active portal link.
 
 create portal link dialog
 
@@ -5637,19 +5678,24 @@ Portal links are different from Disclosure Package links. Use a portal link when
 You can send the portal link by:
 
 - **Email from DocJacket** — Click the send button next to the link to compose and send an invitation email right from DocJacket
-- **Send Portal Links** — Select transaction contacts, choose email or SMS delivery where contact details exist, or add a manual email address
+- **Portal tab > Send Portal Links** — Select transaction contacts with email addresses, or add manual email addresses, and send portal-link invitations
+- **Contacts tab > Send Portal Links** — Select transaction contacts and choose email delivery where contact emails exist, or SMS delivery for contacts that already have an active portal link and phone number
 - **Copy and paste** — Copy the link URL and share it however you prefer (email, text, etc.)
 - **Transaction Contacts tab** — Use each contact card to create, copy, regenerate, or revoke that contact's portal link
 
+SMS delivery uses the organization's SMS setup and safeguards. If you want to text a portal link from the transaction **Contacts** tab, create or regenerate that contact's portal link first so the text includes the active URL. Portal chat remains separate from SMS credits.
+
 ## Managing links
 
-From the portal tab, you can see all active links and:
+From the transaction **Portal** tab, you can see active and inactive links for that transaction and:
 
 - **View stats** — See how many times each link has been viewed
 - **Extend** — Push back the expiry date
 - **Revoke** — Immediately disable a link if you need to cut off access
 - **Reactivate or delete** — Restore an expired/revoked link when appropriate, or delete a link you no longer want to keep
 - **Preview** — Select a link to view the portal in the embedded mobile or desktop preview
+- **Send by email** — Open a portal-link email composer from the link detail drawer
+- **Review access details** — See last access time, last IP when available, calendar feed status, and revocation information
 
 portal link management showing active links with stats
 
@@ -5658,12 +5704,14 @@ portal link management showing active links with stats
 - Create separate links for each party — buyers, sellers, and agents each get their own link with appropriate visibility
 - Set expiration dates for sensitive transactions
 - Check the stats to see if clients have actually viewed the portal — if they haven't, follow up
+- Regenerate a contact's portal link when you need a new URL but want to keep portal access available
+- Revoke a link when access should stop immediately
 
 ---
 
 # Portal Links
 
-The **Portal Links** page shows portal access across every transaction. Use it to monitor active links, extend expiring links, and revoke access when needed.
+The **Portal Links** page shows portal access across every transaction. Use it to monitor active links, extend expiring links, include revoked links, and revoke access when needed.
 
 ## What you see
 
@@ -5674,6 +5722,8 @@ Portal Links includes summary cards for:
 - Total access count
 - Buyer/seller and agent link counts
 - Links expiring soon
+
+The page also highlights links expiring within 7 days and recently accessed links.
 
 The table shows each portal link's transaction, recipient, portal type, status, access count, last accessed date, and expiration date.
 
@@ -5686,13 +5736,14 @@ From the Portal Links page you can:
 - Filter by portal type
 - Extend expiring links
 - Quick-extend a single active link by 7 days
+- Select active links and bulk extend them
 - Revoke links in bulk
 - Open the related transaction
 - Review recently accessed links and links expiring within 7 days
 
 ## When to use this page
 
-Use the transaction's Portal tab when you are managing one deal. Use the Portal Links page when you need organization-wide visibility across all shared portal access.
+Use the transaction's **Portal** tab when you are creating or previewing links for one deal. Use the transaction's **Contacts** tab when you are managing a specific transaction contact's portal link. Use the organization-wide **Portal Links** page when you need cross-transaction visibility, expiring-link review, or bulk portal-link cleanup.
 
 ---
 
