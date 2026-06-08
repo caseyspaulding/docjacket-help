@@ -54,6 +54,8 @@ The progress screen shows extraction steps, elapsed time, confidence when comple
 
 The review screen is the approval gate. Depending on the destination, the final action is **Create Transaction**, **Create Listing**, or **Update Transaction**. Existing-transaction updates show a changed-field comparison so you can choose which extracted values should overwrite current transaction data.
 
+If you leave after extraction finishes but before clicking the final save action, the upload can appear in **Pending Uploads**, the topbar **Review queue**, and **AI Extractions** as awaiting save.
+
 ## Already have a transaction?
 
 You can also run extraction against an existing transaction. Use the upload wizard's existing-transaction destination, or open a transaction's **Documents** tab and use **Extract Data** from the **Files** subtab.

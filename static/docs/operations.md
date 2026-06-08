@@ -27,3 +27,14 @@ Use the **Intake Queue** when inbound items need routing to a transaction.
 Use the **Review Queue** when drafts, automation output, scheduled sends, or pending uploads need a human decision. The old sidebar **Pending Review** page was retired; current review work lives in the document-tasks icon in the topbar.
 
 Use **AI Extractions** when uploaded documents were scanned but still need to be reviewed and saved.
+
+## Extraction lifecycle
+
+Uploading a contract starts a workflow, but it does not create or update transaction data by itself. The normal lifecycle is:
+
+1. **Upload** - Add documents through **Upload Documents** or transaction **Extract Data**.
+2. **Scan** - DocJacket runs extraction and shows progress.
+3. **Review** - Open the extracted data, citations, confidence, warnings, and changed-field comparison.
+4. **Save** - Click **Create Transaction**, **Create Listing**, or **Update Transaction**.
+
+If the scan finishes but the save step does not happen, the work is unfinished. Look for it in **Pending Uploads**, the topbar **Review queue**, or the **AI Extractions** page.

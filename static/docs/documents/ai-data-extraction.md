@@ -26,6 +26,8 @@ This is different from the **Upload Documents** flow you use when creating a new
 
 Nothing changes on the transaction until you finish the review-and-save step.
 
+If extraction finishes but you leave before clicking **Update Transaction**, return from **AI Extractions**, **Pending Uploads**, or the topbar **Review queue** to finish saving.
+
 ## What happens to uploaded files
 
 Files uploaded through transaction **Extract Data** are linked to that transaction and appear in the **Documents Received** table. The upload accepts PDFs, JPGs, JPEGs, and PNGs up to 25MB each. Multiple files are supported.

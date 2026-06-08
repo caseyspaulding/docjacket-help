@@ -10,6 +10,8 @@ The **Review queue** is the topbar drawer for work that needs a quick decision. 
 
 Open it from the document-tasks icon in the topbar.
 
+The badge on the icon counts review actions plus pending uploads, so a number on the icon means at least one item needs attention.
+
 ## What appears here
 
 The drawer can include:
@@ -21,9 +23,11 @@ The drawer can include:
 
 ## Pending uploads
 
-If the drawer shows **Pending Uploads**, those uploads were scanned but never saved into a transaction, listing, or existing-transaction update.
+If the drawer shows **Pending Uploads**, those uploads were scanned but never saved into a transaction, listing, or existing-transaction update. This section sits above the tabs because it is action-required work, but it comes from extraction history rather than the automation-action queue.
 
-Use **Review** to return to the extraction review flow. Use **Discard** only when the upload should stop appearing as unfinished work. Discard soft-dismisses the pending-upload card; it does not erase the underlying extraction history.
+Pending upload rows can show the extracted address or file name, document count, age, and file list. Use **Review** to return to the extraction review flow.
+
+Use **Discard** only when the upload should stop appearing as unfinished work. Discard soft-dismisses the pending-upload card; it does not erase the underlying extraction history.
 
 ## Ready for Review
 
@@ -42,13 +46,17 @@ Depending on the draft, you may be able to:
 
 Use the **Scheduled** tab to review upcoming reminders, scheduled emails, and one-off scheduled messages.
 
-Scheduled emails can be edited, sent now, or cancelled. Scheduled messages can be cancelled.
+Scheduled email cards can show the related transaction, anchor label, schedule state, recipients, and attention labels for held or failed sends. Scheduled emails can be edited, sent now, or cancelled. Scheduled one-off messages can be cancelled.
 
 ## Done
 
 Use the **Done** tab to check recent activity from the last several days.
 
 Done items can show what was sent, approved, skipped, dismissed, rejected, or completed, along with the related transaction when available.
+
+## How it differs from AI Extractions
+
+The **Review queue** is the fast topbar drawer for decisions that need attention. **AI Extractions** is the full extraction history page. If a pending upload is confusing, open **AI Extractions** to see the underlying job status, confidence, start time, and save state.
 
 ## If you have an old Pending Review link
 
