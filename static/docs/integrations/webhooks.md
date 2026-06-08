@@ -25,7 +25,7 @@ Webhooks let you send real-time event notifications from DocJacket to external s
 
 DocJacket will send a POST request to your URL every time a subscribed event occurs.
 
-webhook configuration page
+![Connections page for webhook setup](/img/integrations/webhooks-connections.png)
 
 ## Monitoring
 

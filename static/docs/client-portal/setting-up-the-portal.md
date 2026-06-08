@@ -22,6 +22,8 @@ Open a transaction and go to **Portal**. The page is split into a management are
 - **Recent activity** — Review recent visitor activity when tracking data is available.
 - **Preview** — Select a link and view the portal in mobile or desktop mode before sending it.
 
+![Transaction Portal tab with link management, branding, and live preview](/img/client-portal/transaction-portal-tab.png)
+
 ## Branding
 
 The branding panel uses your organization defaults unless you set a transaction-specific override:
@@ -31,8 +33,6 @@ The branding panel uses your organization defaults unless you set a transaction-
 - **Accent color** — Used with the primary color in the hero area and banner styling.
 - **Banner text** — Adds a short colored message bar above the portal header.
 - **Reset** — Remove transaction overrides and return to organization defaults.
-
-portal branding settings
 
 ## Live preview
 

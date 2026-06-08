@@ -14,7 +14,7 @@ Front Door is your public-facing DocJacket page. Use it to show who you are, wha
 
 Go to **Front Door** from the app sidebar to manage the page.
 
-Front Door admin page with preview and sections
+![Front Door admin page with section controls and live preview](/img/front-door/front-door-admin.png)
 
 ## What you can manage
 

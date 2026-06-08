@@ -32,6 +32,8 @@ agent portal showing transaction list
 
 From the agent hub, an agent can open a transaction card to see the full branded portal view for that deal: key dates, shared documents, visible tasks, contacts, service providers, print/download actions, and the live calendar subscription.
 
+![Agent portal transaction overview](/img/client-portal/agent-portal-overview.png)
+
 Agent transaction portals can show more deal detail than client portals, including:
 
 - Agent-facing financial fields such as loan amount, earnest money, down payment, seller concession, and financing type when available
@@ -39,6 +41,10 @@ Agent transaction portals can show more deal detail than client portals, includi
 - Service-provider information that has been exposed to the portal
 - A recent activity card when activity is available
 - The same print, calendar, and branded one-page PDF tools clients can use
+
+Visible tasks appear in the portal with progress, priority, and due-date context so agents can quickly see what still needs attention.
+
+![Agent portal tasks card](/img/client-portal/agent-portal-tasks-card.png)
 
 ## Agent vs. client portal
 
