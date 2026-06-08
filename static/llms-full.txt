@@ -998,7 +998,7 @@ From a transaction's **Documents** tab, you can:
 - **Review received documents** — Search, filter, reorder, rename, batch-rename, change document type/status, download, share, delete, and mark documents as sent.
 - **Run document checks** — Use **AI Check** for document risk scans and contract checks for missing signatures, initials, dates, and checkboxes.
 - **Extract data** — Use **Extract Data** to upload documents, run extraction, review changed fields, and update an existing transaction.
-- **Control portal visibility** — Show or hide documents on the Agent and Client Portals, and optionally restrict visibility to selected portal contacts.
+- **Control portal visibility** — Use the eye icon to show or hide documents on the Agent and Client Portals, optionally restrict visibility to selected portal contacts, and decide whether portal viewers can download the file.
 - **Connect to Google Drive** — Import from Drive, export selected/all documents, and link or change the transaction's Drive folder.
 - **Share disclosure packages** — Curate received documents and share them with recipients.
 - **Send for e-signature** — Use the **Forms & signatures** subtab for office-approved form packets and packet tracking, or send a single uploaded document for signature from its row actions.
@@ -1010,6 +1010,7 @@ The transaction tab has two subtabs: **Files** for uploaded documents and **Form
 - [Uploading Documents](./uploading-documents.mdx) — How to get files into DocJacket
 - [AI Data Extraction](./ai-data-extraction.mdx) — Let AI read your documents
 - [Documents Needed](./audit-mode.mdx) — Track required documents and link received files
+- [Portal Visibility](./portal-visibility.md) — Control which portal viewers can see and download documents
 - [Signature Requests](./signature-requests.mdx) — Send documents for e-signature and track completion
 - [E-Signatures](./esignatures.md) — Review all signature requests and signing progress
 - [Approved Form Templates](./approved-form-templates.md) — Upload blank PDFs, map fields, and publish office-approved forms
@@ -1247,6 +1248,72 @@ When a folder is linked, required-document uploads can land in the transaction's
 - Imported files are **copies** — changes in Drive won't automatically sync to DocJacket (and vice versa)
 - You can import multiple files at once
 - Folder structure in Drive doesn't carry over — imported files land in the transaction's document list
+
+---
+
+# Portal Visibility
+
+Portal visibility controls whether a transaction document appears inside a client or agent portal. It is separate from disclosure packages, email attachments, Google Drive export, and e-signature workflows.
+
+Use portal visibility when someone should have ongoing access to a document from their transaction portal. Use a disclosure package when someone needs a specific packet of documents with recipient links, acknowledgement, expiry, and package activity tracking.
+
+## Where to control visibility
+
+1. Open a transaction
+2. Go to **Documents**
+3. Stay on the **Files** subtab
+4. Find the document in **Documents Received**
+5. Use the eye icon in the row actions
+
+The eye icon toggles whether the document appears on Agent and Client Portals. When you turn visibility on, DocJacket opens the **Portal Visibility** dialog so you can choose who can see it and whether downloads are allowed.
+
+## Visibility choices
+
+The dialog has three practical choices:
+
+- **Hidden** — The document does not appear on portal links.
+- **Visible to all portal contacts** — Leave every contact unchecked. Any active portal contact for that transaction can see the document.
+- **Visible to selected portal contacts** — Check one or more portal contacts when only those people should see the document.
+
+Contact restrictions use the transaction's portal contacts. If no contacts have portal access on the transaction, there may be no contact list to choose from yet.
+
+## Download permission
+
+When a document is visible on the portal, you can also choose whether recipients may download it.
+
+- **Download allowed** — Portal viewers can open the document preview/download controls.
+- **Download disabled** — The document can still be listed for eligible portal viewers, but download and preview controls are withheld.
+
+Use download-disabled visibility when you want the portal to acknowledge that a document exists without giving the recipient a local copy from the portal.
+
+## What portal viewers see
+
+Portal-visible documents appear in the portal's **Documents** card, grouped by category. The portal respects both rules:
+
+- The document must be portal-visible.
+- If specific contacts were selected, the viewer's portal contact must be in that selected list.
+
+Hidden documents, internal files, and documents restricted to other contacts do not appear to that portal viewer.
+
+## Portal visibility vs. other sharing
+
+Portal visibility is not the same as these other document actions:
+
+- **Share** — Creates an individual document share flow from the document row.
+- **Share Disclosure Package** — Creates a grouped packet of documents with recipient links and package-level activity.
+- **Send for Signature** — Sends an uploaded document or form packet for e-signature.
+- **Email/SMS attachment** — Sends a copy or link through a message workflow.
+- **Google Drive export** — Copies documents into a linked Drive folder.
+
+Changing portal visibility does not automatically send a portal link. If the recipient does not already have portal access, create or send their portal link from the transaction **Portal** tab or the **Contacts** tab.
+
+## Good patterns
+
+- Share only final or reviewed files unless your team intentionally exposes drafts.
+- Restrict buyer-only, seller-only, or agent-only documents to the relevant portal contacts.
+- Turn off downloads for sensitive documents when you want visibility without portal download access.
+- Use disclosure packages for review packets that need acknowledgement or a clean recipient activity trail.
+- Re-check the transaction **Portal** tab preview after changing visibility on sensitive files.
 
 ---
 
@@ -1559,7 +1626,7 @@ The setup is different:
 
 Disclosure Packages help you share a grouped set of transaction documents with the right recipients. Use them when a buyer, seller, agent, or outside party needs a clean packet instead of individual file links.
 
-Disclosure Packages are separate from Client Portal links. A portal link gives someone an ongoing transaction view. A disclosure package link gives someone access to a specific document packet, with package-level controls and activity tracking.
+Disclosure Packages are separate from Client Portal links and document portal visibility. A portal link gives someone an ongoing transaction view. A portal-visible document appears inside that portal view. A disclosure package link gives someone access to a specific document packet, with package-level controls and activity tracking.
 
 ## Sharing a disclosure package
 
@@ -1621,7 +1688,7 @@ Use Disclosure Packages for listing disclosures, buyer review packets, broker re
 
 ## Tips
 
-- Review document visibility before sending.
+- Review document visibility before sending, but remember that portal visibility does not control disclosure-package access. The package's document list and recipient links control what package recipients can open.
 - Confirm recipients are correct before sharing sensitive documents.
 - Keep required document lists up to date so missing files are easier to spot before sending a package.
 
@@ -5575,14 +5642,14 @@ The public portal is primarily a branded overview page. Depending on the portal 
 
 - Transaction address, status, and portal type badge
 - Key dates and deadlines
-- Shared documents grouped by category
+- Portal-visible documents grouped by category
 - Portal-visible tasks with completion progress
 - Buyers, sellers, agents, title, lender, and service providers
 - Property reference fields such as escrow number, MLS number, or APN
 - Calendar subscription, print, and one-page PDF actions
 - A property switcher when the same contact has access to multiple active transactions
 
-You control visibility at the document and task level, so sensitive items stay private unless you specifically share them. Agent portals may also show agent-facing financial details and recent activity that client portals do not show.
+You control visibility at the document and task level, so sensitive items stay private unless you specifically share them. Document visibility can also be restricted to selected portal contacts and can allow or withhold portal download controls. Agent portals may also show agent-facing financial details and recent activity that client portals do not show.
 
 ## Link management
 
@@ -5602,7 +5669,7 @@ When a buyer or seller opens their portal link, they see a clean, branded overvi
 - **On-track banner** — A reassuring client-facing status message, including the estimated closing date when available
 - **Key dates** — Important deadlines with progress, completion status, notes, and dates marked TBD, N/A, waived, overdue, pending, or in progress
 - **Calendar subscription** — A live calendar URL they can copy into Google Calendar, Outlook, or Apple Calendar
-- **Documents** — Documents you've shared with them, grouped by category, with preview and download controls only when downloads are allowed
+- **Documents** — Documents marked visible for their portal contact, grouped by category, with preview and download controls only when downloads are allowed
 - **Summary** — Transaction type, side, contract date, estimated closing date, purchase price, and address details when available
 - **Tasks** — Tasks marked as portal-visible (things they might need to complete)
 - **Contacts** — Buyers, sellers, agents, title, lender, and other transaction contacts you choose to expose
@@ -5626,6 +5693,7 @@ Clients can use the portal actions to:
 
 - Internal notes
 - Your task list (unless you mark specific tasks as portal-visible)
+- Documents that are hidden from the portal or restricted to a different portal contact
 - Financial details you haven't shared
 - Other transactions
 - Other contacts' portal views
@@ -5710,7 +5778,7 @@ create portal link dialog
 The link opens a branded portal for that recipient. Depending on their access level and the data you've shared, the portal may include:
 
 - Key dates and transaction status
-- Shared documents with preview and download controls
+- Portal-visible documents with preview and download controls when downloads are allowed
 - Portal-visible tasks
 - Parties, agents, title, lender, and service providers
 - A live calendar subscription link
