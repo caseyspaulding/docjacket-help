@@ -25,7 +25,7 @@ Access Settings from the sidebar — it's at the bottom of the navigation.
 - [Connections](../integrations/webhooks.mdx) — Webhook connections for external tools
 - [Integrations](../integrations/index.md) — Gmail, Google Calendar, Google Drive, Microsoft, and other connected services
 - [Follow Up Boss](../integrations/follow-up-boss.md) — Follow Up Boss connection, mappings, imports, and sync behavior
-- [Transaction Configuration](./transaction-configuration.md) — Transaction roles, statuses, fields, contingencies, and key date statuses
+- [Transaction Configuration](./transaction-configuration.md) — Transaction roles, statuses, field options, custom fields, contingencies, and key date statuses
 - [Document Settings](./document-settings.md) — Active document types, document statuses, required flags, and file naming rules
 - [Email and Automation Settings](./email-and-automation.md) — Email categories, working hours, notifications, and automation rules
 - [SMS Settings](./sms-settings.md) — Dedicated SMS number, usage, credits, and number release
