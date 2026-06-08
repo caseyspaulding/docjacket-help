@@ -33,6 +33,7 @@ Clients can use the portal actions to:
 - Preview PDF and image documents
 - Download shared documents when downloads are enabled
 - Switch between properties when the same contact has access to more than one active transaction
+- Copy a live calendar feed for the visible key dates
 
 ## What clients don't see
 
@@ -41,5 +42,6 @@ Clients can use the portal actions to:
 - Financial details you haven't shared
 - Other transactions
 - Other contacts' portal views
+- Agent-facing financial/provider detail that is reserved for agent portals
 
 The portal is read-only for transaction data. Clients can view status, dates, contacts, tasks, and documents, but they can't edit the transaction itself.

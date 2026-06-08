@@ -28,8 +28,10 @@ From the Portal Links page you can:
 - Filter by status
 - Filter by portal type
 - Extend expiring links
+- Quick-extend a single active link by 7 days
 - Revoke links in bulk
 - Open the related transaction
+- Review recently accessed links and links expiring within 7 days
 
 ## When to use this page
 

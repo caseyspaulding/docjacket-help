@@ -1470,13 +1470,13 @@ Use Disclosure Packages for listing disclosures, buyer review packets, broker re
 
 DocJacket keeps a centralized contact database across all your transactions. Agents, clients, lenders, title companies, inspectors — everyone you work with lives here.
 
-The **Contacts** page in the sidebar shows your full directory. You can search, filter, inline-edit common fields, import from CSV or Google Contacts, export, merge duplicates, tag contacts, and organize contacts into groups.
+The **Contacts** page in the sidebar shows your full directory. The Contacts area has separate **People** and **Organizations** views, plus import and group tools. You can search, filter, inline-edit common fields, import from CSV or Google Contacts, export, merge duplicates, tag contacts, and organize contacts into groups.
 
 Contacts also connect to transaction workflows. When you add a contact to a transaction, DocJacket stores that relationship with a transaction role, primary flag, merge display name, portal link status, and communication details.
 
 ## What You Can Manage
 
-- People and their organizations
+- People and organization records
 - Email addresses and phone numbers, including primary labels
 - Contact types, such as agent, lender, attorney, client, or vendor
 - Tags for filtering and segmentation
@@ -1497,7 +1497,7 @@ Contacts also connect to transaction workflows. When you add a contact to a tran
 
 ## Adding a contact
 
-From the **Contacts** page, click **New Contact** and enter their details:
+From the **Contacts** page, use the **People** view for individual contacts or the **Organizations** view for company records. Click **New Contact** and enter their details:
 
 - First and last name
 - Contact type
@@ -1555,6 +1555,11 @@ Open a contact to manage their full profile. From the detail page you can:
 - Record SMS consent for phone numbers
 - Review related transactions and activity
 - Manage portal status for agent-style contacts
+- Review offers tied to that contact from the Buyer Offers pipeline
+- Open the portal tab to copy, open, resend, or revoke an agent portal link when one exists
+- Review portal activity and SMS/portal message threads for that contact
+
+Most common edits happen directly on the detail page. Use **Edit all fields** when you need the fuller form for fields that still live there.
 
 ---
 
@@ -1597,7 +1602,7 @@ Roles do more than label contacts:
 
 ## Custom roles
 
-If the built-in roles do not cover your workflow, create or edit roles in **Settings > Transaction Configuration**. Roles can be grouped by party so the Add Contact drawer stays organized.
+If the built-in roles do not cover your workflow, create or edit roles in **Settings > Transaction Roles**. Roles can be grouped by party so the Add Contact drawer stays organized.
 
 ## Primary contacts
 
@@ -5225,6 +5230,8 @@ See what your clients experience when they open their portal link
 
 The Client Portal gives your buyers, sellers, and agents a branded view of their transaction — without needing a DocJacket account. They can see key dates, shared documents, portal-visible tasks, transaction details, service providers, and status updates through a secure link you send them.
 
+Portal links are recipient-specific. A transaction can have separate buyer/seller, agent, and vendor links, and agents can also receive an agent hub link that shows all of their active transactions in one place.
+
 It's a professional touch that keeps everyone informed and cuts down on "where are we?" calls and emails.
 
 client portal view showing transaction status
@@ -5234,7 +5241,7 @@ client portal view showing transaction status
 - **Branded experience** — Customize the portal with your logo and colors
 - **Secure access** — Each portal link is unique and can be set to expire
 - **Track engagement** — See who's viewed the portal and when
-- **Selective sharing** — Control exactly which documents, key dates, and tasks are visible
+- **Selective sharing** — Control which documents and tasks are visible on the portal
 - **Calendar and summary tools** — Viewers can copy a live calendar feed, print the portal, or download a branded one-page summary
 
 ## In this section
@@ -5253,10 +5260,11 @@ Before sharing portal links with clients and agents, you'll want to customize th
 
 ## Branding
 
-Go to the portal settings (accessible from within a transaction's portal tab, or from **Settings > Portal**):
+Go to the **Portal** tab on a transaction. The branding panel lets you override the organization defaults for that transaction:
 
-- **Logo** — Upload your company logo. It appears at the top of the portal.
-- **Colors** — Choose colors that match your brand for a cohesive look.
+- **Logo** — Upload the logo that appears in the portal header.
+- **Primary and accent colors** — Choose colors for portal buttons, links, and headers.
+- **Banner text** — Add a short message at the top of the portal.
 
 portal branding settings
 
@@ -5270,7 +5278,7 @@ By default, the portal shows:
 - Shared documents
 - Contact information for the key parties
 
-You control visibility at the document and task level — so sensitive items stay private unless you specifically share them.
+You control visibility at the document and task level — so sensitive items stay private unless you specifically share them. Use the Portal tab preview to see the current link in mobile or desktop view before sending it.
 
 ---
 
@@ -5300,6 +5308,7 @@ Clients can use the portal actions to:
 - Preview PDF and image documents
 - Download shared documents when downloads are enabled
 - Switch between properties when the same contact has access to more than one active transaction
+- Copy a live calendar feed for the visible key dates
 
 ## What clients don't see
 
@@ -5308,6 +5317,7 @@ Clients can use the portal actions to:
 - Financial details you haven't shared
 - Other transactions
 - Other contacts' portal views
+- Agent-facing financial/provider detail that is reserved for agent portals
 
 The portal is read-only for transaction data. Clients can view status, dates, contacts, tasks, and documents, but they can't edit the transaction itself.
 
@@ -5315,13 +5325,13 @@ The portal is read-only for transaction data. Clients can view status, dates, co
 
 # Portal for Agents
 
-Agents get their own portal view — showing the transactions they're involved in with details relevant to their role.
+Agents can receive two related portal experiences: a transaction portal for a specific deal, and an agent hub that lists all active transactions where that agent has access.
 
 ## What agents see
 
 The agent portal shows:
 
-- **Their transactions** — Only the deals where they're assigned as an agent
+- **Their transactions** — Only the active deals where they're assigned as an agent
 - **Transaction status and key dates** — Where each deal stands
 - **Documents** — Documents shared with the agent role
 - **Tasks** — Portal-visible tasks assigned to them or relevant to their role
@@ -5333,13 +5343,15 @@ agent portal showing transaction list
 
 ## Agent vs. Client portal
 
-The main difference is scope. Clients see a single transaction. Agents may see multiple transactions they're involved in, with a higher-level overview.
+The main difference is scope and detail. Clients usually see one transaction. Agents may see an agent hub with multiple transaction cards, then open a transaction for the full branded portal view.
 
-Agents also typically see more deal detail than clients, including agent-facing activity and role-specific transaction cards. You control access through the portal link and the visibility settings on documents, tasks, and contacts.
+Agents also typically see more deal detail than clients, including agent-facing activity, financial fields, title/lender/provider information, and role-specific transaction cards. You control access through the portal link and the visibility settings on documents, tasks, and contacts.
 
 ## Opening a transaction
 
-From the agent portal, an agent can open a transaction card to see the same branded transaction portal view: key dates, shared documents, visible tasks, contacts, service providers, print/download actions, and the live calendar subscription.
+From the agent hub, an agent can open a transaction card to see the same branded transaction portal view: key dates, shared documents, visible tasks, contacts, service providers, print/download actions, and the live calendar subscription.
+
+From a contact's detail page, you can also manage an agent-level portal link: copy it, open it, resend it, revoke it, and review portal activity or message history for that contact.
 
 ---
 
@@ -5351,12 +5363,12 @@ Portal links are how clients and agents access their portal view. Each link is u
 
 1. Open a transaction and go to the **Portal** tab
 2. Click **Create Link**
-3. Choose who the link is for (select a contact from the transaction)
-4. Set an expiry date (optional — links can be permanent or time-limited)
-5. Customize which documents are visible through this link (optional)
+3. Choose the portal type: Buyer/Seller, Agent, or Vendor
+4. Select a transaction contact
+5. Set an expiration period: 7 days, 30 days, 90 days, or never
 6. Click **Create**
 
-DocJacket generates a unique URL that you can share via email.
+DocJacket generates a unique URL for that recipient. The Portal tab also shows a live preview so you can check the mobile or desktop view before sending.
 
 create portal link dialog
 
@@ -5378,7 +5390,9 @@ Portal links are different from Disclosure Package links. Use a portal link when
 You can send the portal link by:
 
 - **Email from DocJacket** — Click the send button next to the link to compose and send an invitation email right from DocJacket
+- **Send Portal Links** — Select transaction contacts, choose email or SMS delivery where contact details exist, or add a manual email address
 - **Copy and paste** — Copy the link URL and share it however you prefer (email, text, etc.)
+- **Transaction Contacts tab** — Use each contact card to create, copy, regenerate, or revoke that contact's portal link
 
 ## Managing links
 
@@ -5387,6 +5401,8 @@ From the portal tab, you can see all active links and:
 - **View stats** — See how many times each link has been viewed
 - **Extend** — Push back the expiry date
 - **Revoke** — Immediately disable a link if you need to cut off access
+- **Reactivate or delete** — Restore an expired/revoked link when appropriate, or delete a link you no longer want to keep
+- **Preview** — Select a link to view the portal in the embedded mobile or desktop preview
 
 portal link management showing active links with stats
 
@@ -5422,8 +5438,10 @@ From the Portal Links page you can:
 - Filter by status
 - Filter by portal type
 - Extend expiring links
+- Quick-extend a single active link by 7 days
 - Revoke links in bulk
 - Open the related transaction
+- Review recently accessed links and links expiring within 7 days
 
 ## When to use this page
 
