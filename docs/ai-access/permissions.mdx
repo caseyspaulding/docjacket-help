@@ -1,7 +1,7 @@
 ---
 sidebar_label: Permissions & scopes
 sidebar_position: 10
-description: How DocJacket's MCP scopes work — read, draft, actions tiers; per-tool consent inside Claude / ChatGPT; the chat conversation as the approval gate.
+description: How DocJacket's MCP scopes work — read-first access today, draft and action tiers, per-tool consent, and activity logging.
 ---
 
 <head>
@@ -15,7 +15,7 @@ description: How DocJacket's MCP scopes work — read, draft, actions tiers; per
       "name": "What scopes does DocJacket's MCP server expose?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Three: read, draft, and actions. Read covers every lookup tool (search transactions, get key dates, list tasks, etc.). Draft and actions both cover writes — draft for tools that prepare emails or task suggestions, actions for sending and modifying. Every write tool prompts the assistant to ask for your confirmation in chat before firing — the conversation is the approval gate."
+        "text": "DocJacket's current AI Access surface is read-first. Read covers lookup tools such as search transactions, get key dates, list tasks, and triage next actions. Draft and action scopes exist for permission-gated rollout tools; when enabled, writes require confirmation in the assistant chat and are logged in AI Access activity."
       }
     },
     {
@@ -41,21 +41,21 @@ description: How DocJacket's MCP scopes work — read, draft, actions tiers; per
 
 # Permissions & scopes
 
-DocJacket's MCP server exposes three **scope tiers** and supports **per-tool toggles** inside the AI client. Together they give you a layered control surface — coarse from DocJacket, fine-grained from the assistant — over what each AI can do on your behalf.
+DocJacket's MCP server exposes three **scope tiers** and supports **per-tool toggles** inside the AI client. The current customer-facing surface is read-first; draft and action tools are enabled only for accounts with those rollout scopes.
 
 ## The three scopes
 
 | Scope | What it covers | Approval flow |
 |---|---|---|
-| **`read`** | Search, lookup, list — `search_transactions`, `get_transaction`, `get_key_dates`, `get_open_tasks`, `get_contacts`, `list_open_contingencies`, `get_upcoming_key_dates`, `get_next_required_actions`, `mcp_catalog`, `mcp_health_check`, all `find_*` tools | Auto-approved per conversation (most clients ask once, then run inline) |
-| **`draft`** | Prepare emails, task suggestions, status summaries for your approval | The conversation is the approval gate — confirm in chat before each call |
-| **`actions`** | Send communications, create / update records — `send_*`, `create_*`, `update_*`, `apply_*`, `complete_task`, `log_activity` | Same — confirm in chat before each call |
+| **`read`** | Search, lookup, list — `search_transactions`, `get_transaction`, `get_key_dates`, `get_open_tasks`, `get_contacts`, `list_open_contingencies`, `get_upcoming_key_dates`, `get_next_required_actions`, `mcp_catalog`, `mcp_health_check` | Auto-approved per conversation in most clients |
+| **`draft`** | Permission-gated rollout tools for preparing messages, suggestions, or summaries | Confirm in chat before each enabled draft call |
+| **`actions`** | Permission-gated rollout tools for sending communications or creating/updating records | Confirm in chat before each enabled action call |
 
-When you connect an assistant, DocJacket's consent screen lists all three so you can pre-authorize. You can grant any subset.
+When you connect an assistant, the available scopes depend on the current rollout state for your account. Most users should start with `read`.
 
 ## The conversation is the approval gate
 
-Every supported MCP client (Claude / ChatGPT / Codex / Cowork / Gemini) has a built-in **confirm-then-execute** UX for write tools:
+When draft or action tools are enabled, supported MCP clients use a **confirm-then-execute** UX for write tools:
 
 1. You ask the assistant to do something.
 2. The assistant proposes the action in chat — what tool, what arguments, against what data.
@@ -80,7 +80,7 @@ DocJacket enforces the scope tier at the server. The per-tool toggle is enforced
 
 The safest pattern — and what we recommend for first-time users — is to consent to `read` only at the DocJacket consent screen. Your assistant can search, look up, and summarize without ever being able to send an email or create a task.
 
-When you're comfortable, re-consent and add `draft` + `actions`. You can revoke and re-grant any time.
+If your account has draft or action scopes enabled later, you can re-consent or mint a new token with those scopes. You can revoke access any time.
 
 ## Audit log
 
@@ -92,7 +92,7 @@ Each row shows:
 
 - The connected client (Claude / ChatGPT / Codex / Cowork / Gemini)
 - The user who triggered it (you, or any other user in your org)
-- The tool name (`search_transactions`, `send_agent_followup`, etc.)
+- The tool name (`search_transactions`, `get_transaction`, etc.)
 - The arguments passed
 - The outcome (success / error)
 - Latency in milliseconds

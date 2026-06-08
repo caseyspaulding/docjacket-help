@@ -39,7 +39,6 @@ description: Connect DocJacket to OpenAI Codex (CLI, Codex for Work) and ChatGPT
 </script>
 </head>
 
-import ScreenshotPlaceholder from '@site/src/components/ScreenshotPlaceholder';
 import VideoPlaceholder from '@site/src/components/VideoPlaceholder';
 
 # Connect Codex / ChatGPT
@@ -77,8 +76,6 @@ The same DocJacket MCP server backs all three. Connect once per surface.
 
 For the full plugin (with the skill set and `.codex-plugin` package), see [docjacket-inc/codex-plugin](https://github.com/docjacket-inc/codex-plugin) on GitHub.
 
-<ScreenshotPlaceholder>Codex CLI after connecting — DocJacket tools listed</ScreenshotPlaceholder>
-
 ## Quick start (ChatGPT)
 
 1. Open **ChatGPT** in a browser, sign in.
@@ -86,7 +83,7 @@ For the full plugin (with the skill set and `.codex-plugin` package), see [docja
 3. Paste `https://mcp.docjacket.com/mcp`.
 4. Click **Continue**. ChatGPT redirects you to DocJacket's consent screen.
 5. **Allow** the connection.
-6. Start a new chat — DocJacket's full tool surface is now available.
+6. Start a new chat — DocJacket's read tools are now available. Additional draft or action tools appear only when your account has those scopes enabled.
 
 ## Try it
 
@@ -106,21 +103,20 @@ Other good prompts:
 
 The "Use DocJacket to…" prefix is the convention OpenAI's surfaces follow when invoking a specific MCP connector. You can drop it once the assistant gets used to your patterns.
 
-## The tool surface
+## Current tool surface
 
-47 tools today, grouped by workflow:
+Current AI Access is read-first. Codex and ChatGPT can use these DocJacket tools today:
 
-- **Find** — search transactions / contacts, fuzzy-match by address, list active deals.
-- **Read deal state** — `get_transaction`, key dates, missing docs, contingencies, open tasks, contacts, checklist status.
-- **Triage** — `get_next_required_actions` (flagship — overdue-first ranking with rationales).
-- **Send** — `send_agent_followup`, `send_client_update`, `send_document_request`, `send_email_to_agent`. All route through your connected Gmail / Outlook.
-- **Create / update** — contacts, tasks, reminders, key-date changes, checklist apply, task completion, activity log.
-- **Contract intake** — upload a PDF, run extraction, create the transaction.
-- **Forms** — list intake-form links and submissions.
-- **Templates** — list / render saved email templates with merge fields resolved.
-- **Diagnostics** — `mcp_catalog` returns the live, categorized inventory; `mcp_health_check` confirms the server is up.
+- `search_transactions`
+- `get_transaction`
+- `get_key_dates`
+- `get_upcoming_key_dates`
+- `get_open_tasks`
+- `get_contacts`
+- `list_open_contingencies`
+- `get_next_required_actions`
 
-You don't need to remember the names — Codex / ChatGPT pick the right tool based on your question. To see the current full inventory at any time, ask:
+Drafting and write tools are rolling out behind per-tool consent. You don't need to remember tool names — Codex / ChatGPT pick the right tool based on your question. To see the current full inventory for your token, ask:
 
 > "Use DocJacket's `mcp_catalog` to list the tools by category."
 

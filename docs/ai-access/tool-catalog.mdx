@@ -39,8 +39,6 @@ description: Live tool inventory for DocJacket's MCP server — every tool, scop
 </script>
 </head>
 
-import ScreenshotPlaceholder from '@site/src/components/ScreenshotPlaceholder';
-
 # Tool Catalog (`mcp_catalog`)
 
 `mcp_catalog` is DocJacket's self-discovery tool. One call returns the live inventory of every tool the connected assistant can use right now — with descriptions, scope tiers, non-obvious gotchas, suggested pairings, and example argument shapes. Help docs that hard-code tool names will drift; `mcp_catalog` always reflects what's actually deployed.
@@ -57,13 +55,13 @@ Ask your AI assistant in plain English:
 
 > "Use DocJacket's `mcp_catalog` and group the tools by category."
 > "Show me every DocJacket tool I have access to with this token."
-> "Run `mcp_catalog` and summarize the write tools."
+> "Run `mcp_catalog` and summarize the tools available to my token."
 
 The assistant calls the tool, gets back the JSON below, and formats it for you. You don't write the call yourself.
 
 ## A worked example
 
-A single `mcp_catalog` response (truncated to 4 representative entries — actual response has 51 entries today):
+A single `mcp_catalog` response, truncated to representative read-tool entries:
 
 ```jsonc
 {
@@ -94,25 +92,18 @@ A single `mcp_catalog` response (truncated to 4 representative entries — actua
       "pairsWith": []
     },
     {
-      "name": "send_agent_followup",
-      "description": "Send a follow-up email to a contact on a transaction — listing agent, lender, title rep, inspector. Routes through the user's connected Gmail / Outlook. Use after the user confirms a drafted message in chat...",
-      "requiredScope": "draft",
-      "requiredGranularScope": "messaging:send",
+      "name": "get_key_dates",
+      "description": "Return all key dates for one transaction, including date, status, source, and linked timeline context.",
+      "requiredScope": "read",
       "hasOutputSchema": false,
       "gotchas": [],
-      "pairsWith": []
-    },
-    {
-      "name": "apply_extraction",
-      "description": "Apply a completed extraction to create the matching transaction — parties added, key dates set, default checklist applied. Requires extractionJobId from get_extraction_results with status 'complete'.",
-      "requiredScope": "actions",
-      "requiredGranularScope": "transactions:create",
-      "hasOutputSchema": true,
-      "gotchas": [],
-      "pairsWith": []
+      "pairsWith": [
+        "get_transaction",
+        "get_next_required_actions"
+      ]
     }
   ],
-  "totalCount": 47
+  "totalCount": 8
 }
 ```
 

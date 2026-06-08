@@ -18,7 +18,7 @@ description: Install the DocJacket plugin in Claude Cowork — org-wide MCP plug
 - **9 workflow skills** the assistant picks from automatically
 - **9 slash commands** for explicit invocation (`/docjacket:morning-briefing` etc.)
 - **`@docjacket-status-reporter` sub-agent** for structured weekly briefings
-- **47 MCP tools** — the same surface available on Claude.ai or ChatGPT
+- **Read-first DocJacket tools** — search transactions, read key dates, list tasks, inspect contacts, and triage what needs attention
 
 ## Install (org admin role required)
 
@@ -26,8 +26,6 @@ description: Install the DocJacket plugin in Claude Cowork — org-wide MCP plug
 2. **+ Add plugin → GitHub** as the source.
 3. Enter `docjacket-inc/claude-plugin` (owner/repo format) and approve.
 4. Cowork validates the manifest and auto-syncs from the repo. Trigger a manual sync any time via the **Update** button.
-
-Cowork → Organization settings → Plugins, showing DocJacket installed
 
 ## Wire up the token
 
@@ -38,7 +36,7 @@ Cowork uses a personal access token (not paste-URL OAuth) because the plugin is 
 3. **Copy the plaintext token immediately** — it's shown exactly once.
 4. In Cowork, open **Settings → Connectors → DocJacket** and paste it.
 
-That's it. Every Cowork member now has DocJacket tools, skills, and slash commands.
+That's it. Every Cowork member now has the DocJacket read tools, skills, and slash commands allowed by that token.
 
 ## Verify
 
@@ -60,12 +58,12 @@ The assistant picks the right skill based on your question — you rarely need t
 |---|---|
 | `daily-triage` | "What needs attention today?" |
 | `email-triage` | "Match these threads against active deals" |
-| `contract-intake` | "Spin up a transaction from this PDF" |
+| `contract-intake` | "Review extraction results from this PDF" |
 | `document-filing` | "Where does this doc belong?" |
 | `closing-prep` | "Audit the closing checklist for [property]" |
 | `follow-up-drafting` | "Draft a chase email to the listing agent on [property]" |
-| `execution-workflow` | The confirm-then-execute pattern wrapping every write tool |
-| `contact-management` | "Add Jane Doe as a buyer on [property]" |
+| `execution-workflow` | The confirm-then-execute pattern for accounts with draft or action scopes |
+| `contact-management` | "Find Jane Doe or summarize contact context for [property]" |
 | `tc-context` | Loads vocabulary + safety rules into every conversation |
 
 ## Slash commands (explicit)
