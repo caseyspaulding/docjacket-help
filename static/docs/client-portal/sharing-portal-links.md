@@ -1,7 +1,7 @@
 ---
 sidebar_label: Sharing Portal Links
 sidebar_position: 5
-description: Create and share secure, per-contact links to the DocJacket portal — clients and agents access without creating an account.
+description: Create, preview, send, regenerate, revoke, and track secure per-contact links to the DocJacket portal.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/client-portal/sharing-portal-links -->
@@ -9,7 +9,12 @@ description: Create and share secure, per-contact links to the DocJacket portal 
 
 # Sharing Portal Links
 
-Portal links are how clients and agents access their portal view. Each link is unique, secure, and can be managed individually.
+Portal links are how clients, agents, and other transaction parties access their portal view. Each link is unique, secure, and managed individually.
+
+There are two transaction-level places to work with portal links:
+
+- **Portal tab** — Create links, preview the portal, manage branding, review analytics, send portal-link emails, and manage link details.
+- **Contacts tab** — Manage each transaction contact's link from their contact card, including create, copy, regenerate, revoke, and send portal-link delivery options.
 
 ## Creating a portal link
 
@@ -21,6 +26,8 @@ Portal links are how clients and agents access their portal view. Each link is u
 6. Click **Create**
 
 DocJacket generates a unique URL for that recipient. The Portal tab also shows a live preview so you can check the mobile or desktop view before sending.
+
+You can also create a portal link directly from the transaction **Contacts** tab. On a contact card, click the portal-link action. DocJacket creates the link, copies it to your clipboard, and marks that contact as having an active portal link.
 
 create portal link dialog
 
@@ -42,19 +49,24 @@ Portal links are different from Disclosure Package links. Use a portal link when
 You can send the portal link by:
 
 - **Email from DocJacket** — Click the send button next to the link to compose and send an invitation email right from DocJacket
-- **Send Portal Links** — Select transaction contacts, choose email or SMS delivery where contact details exist, or add a manual email address
+- **Portal tab > Send Portal Links** — Select transaction contacts with email addresses, or add manual email addresses, and send portal-link invitations
+- **Contacts tab > Send Portal Links** — Select transaction contacts and choose email delivery where contact emails exist, or SMS delivery for contacts that already have an active portal link and phone number
 - **Copy and paste** — Copy the link URL and share it however you prefer (email, text, etc.)
 - **Transaction Contacts tab** — Use each contact card to create, copy, regenerate, or revoke that contact's portal link
 
+SMS delivery uses the organization's SMS setup and safeguards. If you want to text a portal link from the transaction **Contacts** tab, create or regenerate that contact's portal link first so the text includes the active URL. Portal chat remains separate from SMS credits.
+
 ## Managing links
 
-From the portal tab, you can see all active links and:
+From the transaction **Portal** tab, you can see active and inactive links for that transaction and:
 
 - **View stats** — See how many times each link has been viewed
 - **Extend** — Push back the expiry date
 - **Revoke** — Immediately disable a link if you need to cut off access
 - **Reactivate or delete** — Restore an expired/revoked link when appropriate, or delete a link you no longer want to keep
 - **Preview** — Select a link to view the portal in the embedded mobile or desktop preview
+- **Send by email** — Open a portal-link email composer from the link detail drawer
+- **Review access details** — See last access time, last IP when available, calendar feed status, and revocation information
 
 portal link management showing active links with stats
 
@@ -63,3 +75,5 @@ portal link management showing active links with stats
 - Create separate links for each party — buyers, sellers, and agents each get their own link with appropriate visibility
 - Set expiration dates for sensitive transactions
 - Check the stats to see if clients have actually viewed the portal — if they haven't, follow up
+- Regenerate a contact's portal link when you need a new URL but want to keep portal access available
+- Revoke a link when access should stop immediately

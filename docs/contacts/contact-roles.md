@@ -1,7 +1,7 @@
 ---
 sidebar_label: Contact Roles
 sidebar_position: 3
-description: DocJacket contact roles — buyer, seller, agents, title, lending, and service providers — and how they organize transaction contacts, reports, templates, and communication.
+description: DocJacket contact roles — buyer, seller, agents, title, lending, and service providers — and how they organize transaction contacts, expected slots, portal links, templates, and communication.
 ---
 
 # Contact Roles
@@ -35,11 +35,29 @@ Transaction contacts are grouped by role category on the transaction **Contacts*
 Roles do more than label contacts:
 
 - **Transaction organization** — The Contacts tab groups contacts by role category, such as primary parties, professional services, and service providers.
-- **Expected roles** — If a transaction expects certain roles, empty slots can appear until you assign a contact.
+- **Expected roles** — If a transaction expects certain roles, empty role slots appear until you assign a contact.
 - **Communication** — Email compose and templates can target recipients by role.
 - **Reports** — Transaction reports can show participants with their role labels.
 - **Merge display names** — Each transaction contact can have a merge name for emails, such as "Celia and Bill."
 - **Portal links** — Transaction contacts can receive portal links by email or SMS. Portal access is managed per transaction contact.
+
+## Transaction Contacts tab
+
+Open a transaction and go to **Contacts** to manage the contacts for that deal.
+
+From this tab you can:
+
+- Fill expected role slots
+- Add an existing contact or quick-create a new one
+- Filter the contact picker by organization
+- Choose a role from party-grouped role lists
+- Mark a transaction contact as primary
+- Edit the merge display name used in email templates
+- Send email or SMS from a contact card when the contact has the needed details
+- Create, copy, regenerate, or revoke a portal link for that transaction contact
+- Remove the contact from the transaction without deleting the contact from the directory
+
+The same person can appear on multiple transactions with different roles. The transaction role and merge display name live on the transaction relationship, not on the global contact record.
 
 ## Custom roles
 
