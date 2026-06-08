@@ -13,10 +13,11 @@ Before sharing portal links with clients and agents, you'll want to customize th
 
 ## Branding
 
-Go to the portal settings (accessible from within a transaction's portal tab, or from **Settings > Portal**):
+Go to the **Portal** tab on a transaction. The branding panel lets you override the organization defaults for that transaction:
 
-- **Logo** — Upload your company logo. It appears at the top of the portal.
-- **Colors** — Choose colors that match your brand for a cohesive look.
+- **Logo** — Upload the logo that appears in the portal header.
+- **Primary and accent colors** — Choose colors for portal buttons, links, and headers.
+- **Banner text** — Add a short message at the top of the portal.
 
 portal branding settings
 
@@ -30,4 +31,4 @@ By default, the portal shows:
 - Shared documents
 - Contact information for the key parties
 
-You control visibility at the document and task level — so sensitive items stay private unless you specifically share them.
+You control visibility at the document and task level — so sensitive items stay private unless you specifically share them. Use the Portal tab preview to see the current link in mobile or desktop view before sending it.

@@ -43,7 +43,7 @@ Roles do more than label contacts:
 
 ## Custom roles
 
-If the built-in roles do not cover your workflow, create or edit roles in **Settings > Transaction Configuration**. Roles can be grouped by party so the Add Contact drawer stays organized.
+If the built-in roles do not cover your workflow, create or edit roles in **Settings > Transaction Roles**. Roles can be grouped by party so the Add Contact drawer stays organized.
 
 ## Primary contacts
 
