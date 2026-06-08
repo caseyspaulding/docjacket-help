@@ -14,6 +14,8 @@ Every real estate transaction generates a mountain of paperwork — contracts, d
 
 Use the top-level **Documents** page when you need to search across all transaction documents. Use a transaction's **Documents** tab when you need to manage files for one deal.
 
+![Transaction Documents tab with Documents Needed and Documents Received](/img/documents/transaction-documents-tab.png)
+
 From a transaction's **Documents** tab, you can:
 
 - **Upload files** — Choose a category, then upload a PDF, Word file, or image.

@@ -11,6 +11,8 @@ description: Use the Key Dates page to review upcoming and overdue key dates acr
 
 The **Key Dates** page shows upcoming and overdue dates across every transaction in your organization. It is useful when you want one operational list instead of opening each deal.
 
+![Key Dates list with summary cards and overdue date rows](/img/calendar/key-dates-list.png)
+
 ## What you see
 
 The page summarizes:

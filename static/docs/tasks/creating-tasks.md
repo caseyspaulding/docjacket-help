@@ -15,6 +15,8 @@ There are several ways to add tasks to a transaction. Use quick add for one-off 
 
 The fastest way to create a single task is from a transaction's **Tasks** tab.
 
+![Transaction Tasks tab quick-add and checklist rows](/img/tasks/transaction-tasks-tab.png)
+
 1. Type a task name in the quick-add bar
 2. Press **Enter** or click **Add**
 3. The task is created with Medium priority by default
