@@ -34,13 +34,15 @@ The file size limit is **50MB**.
 
 ## Categories and statuses
 
-Pick the document category before uploading. You can change the document type or status later from the Documents table.
+Pick the document category before uploading. The category picker uses the active document types from **Settings > Documents**. You can change the document type or status later from the Documents table.
 
 Admins can manage document types, document statuses, and naming rules in **Settings > Documents**.
 
 ## Required-document uploads
 
 If the file satisfies a required document, upload it from the **Documents Needed** checklist instead. That path links the uploaded file directly to the placeholder, updates the received count, and keeps the requirement history together.
+
+Required-document uploads can also provide the placeholder name to document naming rules. This is what lets a naming pattern use `{PlaceholderName}` for files uploaded from a specific requirement.
 
 ## Other ways documents get into DocJacket
 
