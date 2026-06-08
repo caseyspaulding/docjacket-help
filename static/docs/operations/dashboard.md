@@ -41,7 +41,19 @@ From **Today's Briefing**, you can turn the daily digest email on or off. The di
 
 ## Pending uploads
 
-If **Pending Uploads** appears, open it before assuming the upload is finished. A completed extraction still needs review and a final save action before it becomes a new transaction, listing, or update to an existing transaction. Discarding a pending upload only hides the unfinished-work card; it does not erase extraction history.
+If **Pending Uploads** appears, open it before assuming the upload is finished. A completed extraction still needs review and a final save action before it becomes a new transaction, listing, or update to an existing transaction.
+
+Each pending upload card can show:
+
+- The extracted property address, when DocJacket found one
+- The first file name, when no address is available
+- The number of documents in the extraction group
+- How long ago the upload was created
+- Additional file names when the group has multiple documents
+
+Use **Review** to return to the extraction review flow and finish saving. Use **Discard** only when the upload should stop appearing as unfinished work. Discarding a pending upload soft-dismisses the card; it does not delete the underlying extraction jobs or history.
+
+Pending Uploads only appears when there is something unfinished. If there are no unfinished extraction groups, the section stays hidden.
 
 ## Tips
 
