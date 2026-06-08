@@ -2764,15 +2764,15 @@ You can remove a custom domain if traffic should stop resolving to your Front Do
 
 # Messages & Email
 
-DocJacket keeps communication attached to the transaction where the work is happening. Open a transaction's **Messages** tab to review email, scheduled email, SMS or portal conversations, and internal notes for that deal.
+DocJacket keeps communication attached to the transaction where the work is happening. Open a transaction's **Messages** tab to review email, scheduled email, SMS, portal conversations, and internal notes for that deal.
 
 The **Messages** item in the sidebar takes you back to the transaction list because message history is managed inside each transaction workspace.
 
 ## In this section
 
-- [Transaction Messages](./inbox.mdx) — Use the Email, Scheduled, SMS, and Notes tabs on a transaction
-- [Sending Emails](./sending-emails.mdx) — Compose, send, schedule, and attach files from a transaction
-- [Email Templates](./email-templates.md) — Create reusable email content
+- [Transaction Messages](./inbox.mdx) - Use the Email, Scheduled, SMS, and Notes tabs on a transaction
+- [Sending Emails](./sending-emails.mdx) - Compose, send, schedule, and attach files from a transaction
+- [Email Templates](./email-templates.md) - Create reusable email content
 
 ---
 
@@ -2806,7 +2806,7 @@ Rows show the subject, recipients, send time, and whether the item is pending, h
 
 ## SMS and Portal
 
-The **SMS** tab shows direct conversations for the transaction. Threads can include SMS, portal, or email-channel badges depending on how the contact is communicating.
+The **SMS** tab shows direct conversations for the transaction. It is the live thread view for text and portal-style communication, so threads can show **SMS**, **Portal**, or **Email** badges depending on how DocJacket resolved the contact's delivery channel.
 
 From this tab you can:
 
@@ -2817,7 +2817,44 @@ From this tab you can:
 - Use saved SMS templates
 - See unread counts, typing indicators, delivery status, and AI action cards when available
 
+### Starting a thread
+
+Click **New Message** to choose one transaction contact and write a message. The contact list only includes contacts with a phone number for direct SMS sends.
+
+If SMS templates exist, choose a template from the message dialog or from the selected thread composer. DocJacket renders transaction and contact variables before placing the text in the composer. If the rendered template is missing values, DocJacket warns you before you send.
+
+SMS messages can be up to 1600 characters. The new-message composer shows character and segment counts so you can see when a long text may use multiple SMS segments; the inline thread composer shows a character count while you reply.
+
+### Sending to multiple contacts
+
+Click **Send to Multiple** to send the same message to several transaction contacts. The multi-send flow uses DocJacket's channel resolution:
+
+- A contact's explicit communication preference wins when one is set
+- Portal access is preferred because portal chat is free
+- Contacts with phone numbers can receive SMS
+- Contacts with email but no phone can fall back to email where supported
+
+Each selected contact is processed separately. The confirmation toast shows how many succeeded and how many failed.
+
+### Existing threads
+
+Select a thread to see its messages. In a selected thread you can type a reply, press **Enter** to send, use **Shift+Enter** for a line break, attach a file up to 25 MB, or apply an SMS template.
+
+Outbound messages show delivery state when DocJacket receives it. SMS messages can show sent, delivered, undelivered, or failed status. Portal messages can show when the portal user has read the message.
+
+Inbound replies update the thread automatically and keep the conversation attached to the transaction.
+
+### Dedicated numbers and shared sending
+
 If your organization does not have a dedicated SMS number, DocJacket shows setup guidance and an option to send from the shared DocJacket number.
+
+Use **Settings > SMS** to search for a dedicated business number, review monthly usage, buy extra credits, or release an existing number.
+
+### SMS limits and safeguards
+
+SMS sends are subject to the organization's plan, monthly credits, hard limit, quiet hours, recipient opt-outs, duplicate-send protection, and unresolved merge-field checks.
+
+Portal chat does not count against SMS usage. A transaction thread may show portal messages beside SMS history, but only actual SMS sends consume SMS credits.
 
 ## Notes
 
@@ -6703,45 +6740,73 @@ Scheduled reminders and manually configured scheduled emails stay schedule-drive
 
 # SMS Settings
 
-Use **Settings > SMS** to manage your organization's texting setup, usage, and SMS credits.
+Use **Settings > SMS** to manage your organization's texting setup, usage, SMS credits, and dedicated sending number.
+
+SMS settings control the account-level setup. The transaction **Messages > SMS** tab is where users send messages, reply to conversations, use SMS templates, attach files, and send to multiple contacts.
 
 ## Business number
 
-Paid organizations can use a dedicated business phone number for outbound SMS. If your plan does not include a dedicated number, DocJacket shows an upgrade prompt.
+Paid organizations can use a dedicated business phone number for outbound SMS. Provisioning a number requires a paid plan; if your plan does not include SMS access, DocJacket blocks setup and shows the plan requirement.
 
 From SMS settings, you can:
 
 - Search available phone numbers by area code
+- Open the search dialog with suggested numbers, or leave the area code blank to see available options
 - Choose a number
 - Set up the selected number
 - See the city or region associated with the number when available
 - Confirm which number is currently active
 
-If you do not have a dedicated number, DocJacket can fall back to a shared DocJacket sending number.
+If you do not have a dedicated number, DocJacket can fall back to the shared DocJacket sending number. The SMS tab still lets you send from that shared number when your plan and usage limits allow it.
+
+## Plan and usage
+
+The **SMS Plan** card shows:
+
+- Whether SMS is available on the organization's plan
+- The number of texts used in the current billing period
+- The number of included and purchased texts available
+- Whether the organization is using purchased credits
+- Any block reason, such as free-plan access or the monthly hard limit
+
+Free plans cannot send SMS. DocJacket shows the plan requirement and reminds users that portal chat is always free.
+
+## Credits and overages
+
+When the organization uses its included monthly texts, DocJacket prompts users to buy more credits. Click **Buy 250 More - $5** to start checkout for an additional credit block.
+
+Purchased credits apply to the current monthly usage bucket. If the organization reaches the monthly hard limit, DocJacket blocks additional SMS sends and prompts the team to contact support.
 
 ## Sending and replies
 
-To send a direct SMS from a transaction, open the transaction, go to **Messages > SMS**, and click **New Message**.
+To send a direct message from a transaction, open the transaction, go to **Messages > SMS**, and click **New Message**.
 
-From the SMS tab you can send to one contact, send to multiple contacts, reply in an existing thread, attach a file, or use a saved SMS template.
+From the SMS tab you can:
+
+- Send to one transaction contact
+- Send to multiple contacts
+- Reply in an existing thread
+- Attach a file
+- Use a saved SMS template
+- Review unread counts, typing indicators, delivery status, and inline action cards when available
+
+Threads may show SMS, Portal, or Email badges depending on how the contact is communicating. Portal chat is separate from SMS and does not count against SMS usage. Contacts with portal access can reply through the portal instead of using text credits.
 
 Replies return to the same message thread automatically, so the conversation stays attached to the transaction.
 
-Portal chat is separate from SMS and does not count against SMS usage. Contacts with portal access can reply through the portal instead of using text credits.
+## Sending safeguards
 
-## Usage and credits
+Before sending, DocJacket checks the recipient phone number, unresolved merge fields, SMS opt-outs, quiet hours, duplicate sends, and monthly usage limits.
 
-SMS settings show monthly usage and the number of texts available for the current billing period.
-
-When you use the texts included in your plan, DocJacket shows an overage prompt. Click **Buy 250 More — $5** to purchase extra credits for the current month.
-
-If your organization reaches the monthly hard limit, DocJacket blocks additional SMS sends and prompts you to contact support.
+If a contact has already received several texts that day, DocJacket shows a warning before the user sends another text. Users can continue only after confirming the send.
 
 ## Releasing a number
 
 The **Danger Zone** appears when your organization has a dedicated number.
 
 Releasing a number permanently gives it up. Contacts who saved that number will no longer recognize your texts, and you cannot get the same number back. Your account falls back to the shared DocJacket number after release.
+
+When a number is released or a new number is provisioned, existing transaction conversations stay attached to their transactions, but future SMS sends use the currently active sending number.
 
 ---
 
