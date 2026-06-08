@@ -143,7 +143,7 @@ The preview is for template review. It is computed client-side and does not incl
 
 ## Applying a checklist to a transaction
 
-From the transaction overview's key-date timeline, click **Generate Timeline** and pick a checklist.
+From the transaction Overview's closing timeline, click **Generate Timeline** and pick a checklist.
 
 DocJacket can:
 

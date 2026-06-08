@@ -10,7 +10,7 @@ Use **Settings > Calendar** and **Settings > Holidays** to control how dates syn
 
 ## Calendar sync
 
-DocJacket always syncs closings and key dates to your connected Google Calendar.
+DocJacket can sync closings and key dates to your connected Google Calendar when calendar sync is enabled for the transaction.
 
 In **Settings > Calendar**, you can choose whether task due dates also sync to Google Calendar.
 
@@ -25,6 +25,8 @@ When task syncing is off:
 - Existing task events are removed from Google Calendar within a few minutes
 - Closing dates and key dates still sync
 - Task due dates remain visible inside DocJacket and in the morning brief
+
+Each transaction also has a Google Calendar toggle on its Overview. Turn that off to hide just that transaction from Google Calendar without disconnecting Google Calendar for the whole organization.
 
 ## Holidays
 

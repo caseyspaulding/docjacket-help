@@ -68,7 +68,7 @@ Use the **Tasks** tab to get the work moving:
 3. Use **Generate** to get suggested tasks for this transaction
 4. Review due dates, assignees, priorities, and task status
 
-Use the key-date timeline on the **Overview** to track closing, contract, inspection, financing, appraisal, possession, and other important dates.
+Use the closing timeline on the **Overview** to track closing, contract, inspection, financing, appraisal, possession, and other important dates.
 
 ## Check your tasks
 

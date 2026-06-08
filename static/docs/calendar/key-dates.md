@@ -23,6 +23,8 @@ The page summarizes:
 
 Each row links back to the related transaction so you can open the deal and take action.
 
+The list is for transaction key dates, not every task on every transaction. Use the Calendar view when you want to see key dates, closings, task due dates, and custom events together on a calendar grid.
+
 ## Filtering
 
 Use the filters at the top of the page to narrow the list by:
@@ -36,3 +38,5 @@ Use the filters at the top of the page to narrow the list by:
 ## How this relates to the calendar
 
 The Calendar view is best for seeing dates on a calendar grid. The Key Dates list is best for scanning urgency, overdue items, and transaction links in one table.
+
+Google Calendar sync is controlled separately. Organization settings decide whether task due dates are included, and each transaction has its own calendar-sync toggle on the Overview.

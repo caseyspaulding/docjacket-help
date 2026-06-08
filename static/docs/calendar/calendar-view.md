@@ -9,7 +9,7 @@ description: Month and week views of DocJacket dates — closings, key dates, ta
 
 # Calendar View
 
-The Calendar page in the sidebar shows upcoming dates across your transactions — closings, key dates, tasks, and custom events in one view.
+The Calendar page in the sidebar shows upcoming dates across your transactions — closings, key dates, task due dates, and custom events in one view.
 
 ## Navigating the calendar
 
@@ -26,7 +26,7 @@ Events are color-coded by type so you can tell them apart at a glance:
 
 - **Closing** — Transaction closing dates
 - **Key Date** — Important transaction deadlines
-- **Tasks** — Due dates for your to-dos
+- **Tasks** — Due dates for open tasks
 - **Event** — Custom calendar events you added manually
 
 The legend at the top of the calendar shows what each color means.
@@ -44,6 +44,10 @@ Click any day to see the full agenda panel. From here you can:
 If Google Calendar is connected, the Calendar page shows **Sync to Google**. Use it to push closings, key dates, and tasks to Google Calendar.
 
 If Google Calendar is not connected, the page shows **Connect Google**, which takes you to **Settings > Integrations**.
+
+DocJacket treats DocJacket as the source of truth for transaction dates. Update dates and tasks in DocJacket, then sync those changes out to Google Calendar. This is not a general two-way import of all external calendar events.
+
+Task due dates sync only when task calendar sync is enabled in **Settings > Calendar**. A transaction can also be hidden from Google Calendar from its Overview calendar-sync card.
 
 ## Tips
 
