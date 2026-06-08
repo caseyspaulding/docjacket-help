@@ -11,6 +11,8 @@ description: Use the DocJacket Pipeline page to manage transaction statuses, tas
 
 The **Pipeline** page is a visual board for work in motion. It has three tabs:
 
+![Pipeline page with transaction status columns and draggable transaction cards](/img/reports/pipeline-board.png)
+
 - **Transactions** — non-offer transactions grouped by active transaction status
 - **Tasks** — open tasks grouped by due-date bucket across transactions
 - **Buyer Offers** — offer-stage transactions that can be promoted into the regular transaction pipeline

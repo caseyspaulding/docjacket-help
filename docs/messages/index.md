@@ -8,6 +8,8 @@ description: Send emails, schedule follow-ups, text contacts, use portal convers
 
 DocJacket keeps communication attached to the transaction where the work is happening. Open a transaction's **Messages** tab to review email, scheduled email, SMS, portal conversations, and internal notes for that deal.
 
+![Transaction Messages tab with Email, Scheduled, SMS, and Notes workspace tabs](/img/messages/transaction-messages-tab.png)
+
 The **Messages** item in the sidebar takes you back to the transaction list because message history is managed inside each transaction workspace.
 
 ## In this section
