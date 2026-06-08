@@ -1186,20 +1186,23 @@ You can control how the address behaves:
 
 Signature Requests let you send transaction documents for e-signature directly from DocJacket. Sent requests stay tied to the transaction, so your team can track who has signed and which signed PDF came back.
 
-This page covers sending an existing uploaded document. To send reusable office-approved forms, see [Form Packets](./esignature-form-packets.md).
+This page covers sending an existing uploaded document. To send reusable office-approved forms, use the transaction **Forms & signatures** subtab and see [Form Packets](./esignature-form-packets.md).
 
 ## Sending a document for signature
 
 1. Open a transaction
 2. Go to the **Documents** tab
 3. Find the document that needs signatures
-4. Click **Send for Signature**
-5. Add signer name, email, and role
-6. Add more signers if needed
-7. Turn on ordered signing if signers must sign one at a time
-8. Click **Send for Signature**
+4. Open the document's row actions
+5. Click **Send for Signature**
+6. Add signer name, email, and role
+7. Add more signers if needed
+8. Turn on ordered signing if signers must sign one at a time
+9. Click **Send for Signature**
 
 When a document has transaction contacts available, DocJacket can suggest signers so you do not have to retype every recipient.
+
+For a document-level request, signer roles are simple labels. They do not need to match approved-form template roles.
 
 ## Tracking status
 
@@ -1220,7 +1223,7 @@ From the status view, you can resend a reminder or cancel a pending signer reque
 
 Approved form templates are blank PDF forms your office can reuse for e-signature packets.
 
-They live inside an office, not the main Templates page. Open **Offices**, choose an office, then use the **Approved forms** tab.
+They live inside an office, not the main Templates page. Open **Offices**, choose an office, then use the **Approved forms** tab. Visiting `/form-templates` directly redirects back to **Offices**; the editor itself remains deep-linkable after you open or upload a template.
 
 ## What form templates are for
 
@@ -1243,7 +1246,7 @@ Each template can include:
 5. Enter the template name and optional description
 6. Upload the blank PDF
 
-After upload, DocJacket opens the template editor.
+After upload, DocJacket opens the template editor for the new draft. The upload dialog accepts a blank PDF and keeps the template scoped to the selected office.
 
 ## Map fields
 
@@ -1253,13 +1256,28 @@ In the template editor, place fields on the PDF:
 - **Smart fields** - Transaction values filled by DocJacket, such as address, party names, dates, or price
 - **Flexible fields** - Text inputs or checkboxes completed before sending
 
-Click a field to edit its role, label, binding, or placement. Use zoom and page controls when working with long forms.
+Click a field to edit its role, label, binding, requirement status, or placement. Use zoom and page controls when working with long forms.
+
+When DocJacket can read the blank PDF, it may propose field mappings automatically. Large or multi-page forms can take a minute or two before proposed fields appear. You can still place or adjust fields manually.
+
+## Review draft fields
+
+Draft templates include tools for checking field readiness before publishing:
+
+- **Review mode** walks page by page through mapped fields.
+- **All fields** shows the full canvas without the page-review gate.
+- **Quick fix** can assign nearby signer roles or remove unused roles when available.
+- **Save Draft** stores field and role changes without making the template sendable.
+
+Autofill fields need a smart-field binding, and signer fields need a signer role. Published templates are the only versions available when sending form packets from a transaction.
 
 ## Save and publish
 
 Click **Save Draft** while mapping fields. Drafts do not send.
 
-Click **Publish** when the template is ready. Published versions are locked so Signature Requests already in flight continue to render against a stable form layout.
+Click **Publish** when the template is ready. The draft must be saved before publishing. In Review mode, every page with fields must be reviewed or skipped before publishing.
+
+Published versions are locked so Signature Requests already in flight continue to render against a stable form layout.
 
 To change a published template, create a new draft, edit it, and publish the next version.
 
@@ -1271,7 +1289,9 @@ From the Approved forms tab, you can:
 - Archive a template when it should no longer be used for new Signature Requests
 - Show archived templates when reviewing older forms
 
-Archiving a template does not break in-flight Signature Requests.
+Template cards show draft and published version badges, page count, publish date, and last-used date when available.
+
+Duplicating a template opens the new draft in the editor. Archiving a template removes it from new packet selection, but it does not break in-flight Signature Requests.
 
 ---
 
@@ -1293,6 +1313,8 @@ Only published templates for the transaction's office are available.
 
 If the transaction does not have an office assigned yet, the **Forms & signatures** subtab shows an office-assignment banner first. Choose the brokerage office so DocJacket knows which approved form library and broker footer to use.
 
+If no templates appear, check that the office has at least one published approved form template. Draft and archived templates are not available for new packets.
+
 ## Prepare
 
 The send flow opens as a dedicated full-page wizard so the PDF review step has room to scroll. In the prepare step, choose the templates for the packet and review the autofill preview.
@@ -1305,6 +1327,8 @@ DocJacket shows:
 - Whether the office has the required designated broker setup
 
 If required office data is missing, sending can be blocked until the office setup is corrected. For example, a missing designated broker blocks sending until that office setting is fixed.
+
+The designated broker name and license are managed from **Offices > Branding**. Packet defaults such as completion CCs, broker approval, expiration, and reminders are managed from **Offices > Defaults & compliance**.
 
 ## Fill out fields
 
@@ -1329,6 +1353,8 @@ The signer step lets you:
 
 Sequential signing sends to the next signer only after the previous signer completes.
 
+Template roles come from the approved form template. They are different from the free-text role labels used when sending a single uploaded document for signature.
+
 ## Review and send
 
 Before sending, review:
@@ -1343,7 +1369,7 @@ After sending, the Signature Request is immutable. Sent packets cannot be edited
 
 ## Track packets
 
-The transaction Documents tab includes a **Forms & signatures** panel that lists packets for the transaction.
+The transaction Documents tab includes a **Forms & signatures** subtab that lists packets for the transaction.
 
 Open a packet to see:
 
@@ -1375,6 +1401,8 @@ The list includes:
 - Completion progress
 - Created date
 
+Rows show whether a request has expired. Pending and partially completed requests can be cancelled from this page.
+
 ## Cancelling a request
 
 Pending or partially completed requests can be cancelled from the E-Signatures page. Completed requests remain as signed records.
@@ -1384,6 +1412,12 @@ Pending or partially completed requests can be cancelled from the E-Signatures p
 Use a document-level Signature Request when you already have the exact PDF in the transaction Documents tab and only need to send that document for signing.
 
 Use an approved form packet when you want DocJacket to assemble one or more reusable office forms, autofill transaction data, collect any remaining agent-entered fields, and send the packet for signing.
+
+The setup is different:
+
+- Uploaded document requests are started from a document row action.
+- Office-approved form packets are started from the transaction **Documents > Forms & signatures** subtab.
+- Form packets require the transaction to have an office, at least one published template for that office, and designated broker information on the office's **Branding** tab.
 
 ## Related docs
 
@@ -5955,16 +5989,18 @@ Offices let brokerages and teams manage location-specific configuration. Each of
 4. Add branding details if needed
 5. Save the office
 
-The slug is used for office-specific intake URLs.
+The slug is used for office-specific intake URLs, such as `/intake/{slug}`. The Offices page shows each office as a card with active/inactive status, branding status, state count, member count, and quick actions for opening, editing, managing states, activating/deactivating, or deleting the office.
 
 ## Office detail tabs
 
 Inside an office, you can manage:
 
-- **Approved forms** — Office-owned blank PDF templates used for reusable e-signature packets
-- **Members** — Users associated with that office
-- **Branding** — Office-specific logo and brand styling
-- **Defaults & compliance** — Signing, reminder, and compliance defaults
+- **Approved forms** — Office-owned blank PDF templates used for reusable e-signature packets.
+- **Members** — Users associated with that office.
+- **Branding** — Office-specific display name, logo, accent color, and broker of record.
+- **Defaults & compliance** — Signer defaults, reminder settings, broker-approval behavior, and compliance activity.
+
+The office detail header also summarizes approved form count, member count, and configured states. Leaving the **Branding** or **Defaults & compliance** tabs with unsaved edits prompts you before discarding changes.
 
 ## Approved forms
 
@@ -5980,6 +6016,39 @@ Use it to:
 
 See [Approved Form Templates](../documents/approved-form-templates.md) for the full template workflow.
 
+## Branding and broker of record
+
+Use **Branding** to control the office identity shown in signer emails and signing flows:
+
+- Display name
+- Logo URL
+- Accent color
+- Designated broker name
+- Designated broker license number
+
+The designated broker fields are required before office-approved e-sign packets can be sent. They also print on signed packet PDFs as the broker footer. If a transaction packet cannot advance because the office is missing its designated broker, fix it on this tab.
+
+## Defaults and compliance
+
+Use **Defaults & compliance** to set:
+
+- Completion CC recipients
+- Whether the designated broker must approve after all clients sign
+- Default Signature Request expiration
+- Default reminder cadence
+
+When broker approval is required, DocJacket adds the designated broker as the final signer on every Signature Request for that office. Broker name and license still live on the **Branding** tab.
+
+## Members
+
+Use **Members** to add existing team members to the office, assign their office role, activate or deactivate their access, or remove them from the office.
+
+Available office roles are:
+
+- **OfficeAdmin**
+- **Coordinator**
+- **Viewer**
+
 ## States
 
 Use **Manage States** to select the states where an office operates and choose a primary state when applicable.
@@ -5988,7 +6057,8 @@ Use **Manage States** to select the states where an office operates and choose a
 
 - Create separate offices when branding, approved forms, or compliance defaults differ.
 - Keep office members current so requests and forms route correctly.
-- Review approved forms before sending signature requests tied to that office.
+- Set the designated broker before testing form packets.
+- Publish templates before expecting them to appear in a transaction's **Forms & signatures** flow.
 
 ---
 
