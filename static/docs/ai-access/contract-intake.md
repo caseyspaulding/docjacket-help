@@ -1,7 +1,7 @@
 ---
 sidebar_label: Contract Intake
 sidebar_position: 6
-description: Drop a contract PDF in your AI chat — DocJacket reads the parties, addresses, key dates, and financials, then creates the matching transaction.
+description: External PDF intake for AI Access action-tool accounts; read-first users should use the in-app Upload & Extract wizard.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/ai-access/contract-intake -->

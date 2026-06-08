@@ -81,7 +81,7 @@ A single `mcp_catalog` response, truncated to representative read-tool entries:
 |---|---|
 | **`name`** | Tool name as you'd pass to `tools/call`. snake_case, verb-first. |
 | **`description`** | Human-readable purpose + when to use it. Same text MCP's standard `tools/list` returns. |
-| **`requiredScope`** | Tier scope the caller needs: `read` (lookups), `draft` (send / create / update), `actions` (higher-impact writes like `apply_extraction`). The token you got at consent grants one or more tiers. |
+| **`requiredScope`** | Tier scope the caller needs: `read` for lookups; `draft` or `actions` for rollout-gated create, update, send, or apply tools. The catalog only returns tools your token can actually call. |
 | **`requiredGranularScope`** | Optional fine-grained scope on top of the tier (e.g. `messaging:send`, `transactions:create`). Empty when the tier alone is enough. |
 | **`hasOutputSchema`** | Whether the tool declares a structured output schema. `true` means the response shape is documented and validated; `false` is text/JSON without a contract. |
 | **`gotchas[]`** | Non-obvious behaviors worth knowing before calling — caps, scope nuances, side-effects. Empty when nothing surprising. |
@@ -103,5 +103,5 @@ Every customer-facing doc page on this site references tool names; `mcp_catalog`
 
 - **[Connect Claude](/docs/ai-access/claude)** / **[Connect Codex / ChatGPT](/docs/ai-access/codex)** — install the connector if you haven't
 - **[Slash Commands](/docs/ai-access/slash-commands)** — pre-built workflows that wrap the most-used tool chains
-- **[Contract Intake](/docs/ai-access/contract-intake)** — the headline workflow, using 6 tools you'll see in the catalog
+- **[Contract Intake](/docs/ai-access/contract-intake)** — external PDF intake for accounts with action tools enabled
 - **[AI Access overview](/docs/ai-access)** — section index
