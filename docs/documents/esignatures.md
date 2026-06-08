@@ -21,6 +21,8 @@ The list includes:
 - Completion progress
 - Created date
 
+Rows show whether a request has expired. Pending and partially completed requests can be cancelled from this page.
+
 ## Cancelling a request
 
 Pending or partially completed requests can be cancelled from the E-Signatures page. Completed requests remain as signed records.
@@ -30,6 +32,12 @@ Pending or partially completed requests can be cancelled from the E-Signatures p
 Use a document-level Signature Request when you already have the exact PDF in the transaction Documents tab and only need to send that document for signing.
 
 Use an approved form packet when you want DocJacket to assemble one or more reusable office forms, autofill transaction data, collect any remaining agent-entered fields, and send the packet for signing.
+
+The setup is different:
+
+- Uploaded document requests are started from a document row action.
+- Office-approved form packets are started from the transaction **Documents > Forms & signatures** subtab.
+- Form packets require the transaction to have an office, at least one published template for that office, and designated broker information on the office's **Branding** tab.
 
 ## Related docs
 

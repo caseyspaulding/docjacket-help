@@ -25,6 +25,8 @@ Only published templates for the transaction's office are available.
 
 If the transaction does not have an office assigned yet, the **Forms & signatures** subtab shows an office-assignment banner first. Choose the brokerage office so DocJacket knows which approved form library and broker footer to use.
 
+If no templates appear, check that the office has at least one published approved form template. Draft and archived templates are not available for new packets.
+
 ## Prepare
 
 The send flow opens as a dedicated full-page wizard so the PDF review step has room to scroll. In the prepare step, choose the templates for the packet and review the autofill preview.
@@ -37,6 +39,8 @@ DocJacket shows:
 - Whether the office has the required designated broker setup
 
 If required office data is missing, sending can be blocked until the office setup is corrected. For example, a missing designated broker blocks sending until that office setting is fixed.
+
+The designated broker name and license are managed from **Offices > Branding**. Packet defaults such as completion CCs, broker approval, expiration, and reminders are managed from **Offices > Defaults & compliance**.
 
 ## Fill out fields
 
@@ -61,6 +65,8 @@ The signer step lets you:
 
 Sequential signing sends to the next signer only after the previous signer completes.
 
+Template roles come from the approved form template. They are different from the free-text role labels used when sending a single uploaded document for signature.
+
 ## Review and send
 
 Before sending, review:
@@ -75,7 +81,7 @@ After sending, the Signature Request is immutable. Sent packets cannot be edited
 
 ## Track packets
 
-The transaction Documents tab includes a **Forms & signatures** panel that lists packets for the transaction.
+The transaction Documents tab includes a **Forms & signatures** subtab that lists packets for the transaction.
 
 Open a packet to see:
 
