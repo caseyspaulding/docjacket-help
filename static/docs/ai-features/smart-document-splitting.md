@@ -1,7 +1,7 @@
 ---
 sidebar_label: Smart Document Splitting
 sidebar_position: 5
-description: DocJacket's AI detects document boundaries in multi-document PDFs and splits them into separate files automatically.
+description: DocJacket's AI detects document boundaries in multi-document PDFs, lets you review them when needed, and splits selected files before extraction.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/ai-features/smart-document-splitting -->
@@ -9,18 +9,18 @@ description: DocJacket's AI detects document boundaries in multi-document PDFs a
 
 # Smart Document Splitting
 
-Sometimes you get a single PDF that contains multiple documents — a contract, addenda, disclosures, and amendments all bundled together. DocJacket's AI can detect where one document ends and another begins, and split them into separate files automatically.
+Sometimes you get a single PDF that contains multiple documents — a contract, addenda, disclosures, and amendments all bundled together. DocJacket's AI can detect where one document ends and another begins, pick likely extractable documents, and split the selected files before extraction.
 
 ## How to use it
 
 1. Start **Upload & Extract** and upload one PDF
 2. If the PDF has multiple pages and Smart Split is enabled, DocJacket opens the **Smart Split** step
 3. AI identifies the documents, page ranges, document types, and likely primary contract
-4. Review the selected documents and the primary contract
+4. Review the selected documents, extractable-document selection, and primary contract
 5. Edit boundaries, split a document, remove a document, add a document, or change the selected contract if needed
 6. Click **Split & Extract** to create the split files and start extraction
 
-If DocJacket detects one document spanning the full PDF, it skips the split step and starts extraction. If the detected split is high-confidence, DocJacket may show a short countdown and continue automatically unless you cancel to review manually.
+If DocJacket detects one document spanning the full PDF, it skips the split step and starts extraction. If the detected split is high-confidence, DocJacket may show a short countdown and continue automatically unless you cancel to review manually. Low-confidence selected documents trigger a warning before extraction continues.
 
 ## When this is useful
 
@@ -35,4 +35,4 @@ If DocJacket detects one document spanning the full PDF, it skips the split step
 - You can rename any document after splitting
 - Each split document gets categorized automatically
 - If the AI misidentifies a split point, adjust the page ranges before confirming
-- Low-confidence selected documents trigger a warning before extraction continues
+- If you only want some files extracted, adjust the selected documents before continuing

@@ -20,11 +20,11 @@ Don't want to build your task checklist from scratch? Let AI analyze your transa
 5. Select the suggestions you want to keep, or use **Select All**
 6. Click **Add Selected**
 
-The selected tasks are added to the transaction with their suggested name, description, and priority.
+The selected tasks are added to the transaction with their suggested name, description, and priority. Review the generated list before adding it; the generator is meant to supplement your judgment, not replace a checklist you already trust.
 
 ## What makes the suggestions good
 
-The generator uses:
+The transaction task generator uses:
 
 - **Transaction type** — A residential purchase has different tasks than a commercial lease
 - **Transaction side** — Buyer-side and seller-side workflows differ
@@ -42,4 +42,4 @@ Both AI generation and [checklists](/docs/templates/task-templates) can populate
 | It's an unusual transaction type | You want consistent tasks across all deals |
 | You're not sure what tasks you need | You've already customized a template you love |
 
-You can also use both — apply a template first, then run AI generation to catch anything the template missed.
+You can also use both — apply a template first, then run AI generation to catch anything the template missed. For reusable workflow design, use the template builder's AI generation tools instead of generating one-off tasks inside a transaction.
