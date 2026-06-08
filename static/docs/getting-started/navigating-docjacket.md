@@ -62,4 +62,4 @@ The **Overview** tab is where most TCs spend their time — it's a single-page v
 - **Pending uploads are not finished transactions** — review and save completed extractions before expecting them in the transaction list
 - **Search** is everywhere — use the search bar on the Transactions page to find deals by address, buyer name, or seller name
 - **Help chat** — Click the chat button in the bottom-right corner anytime for instant AI-powered help
-- **Review queue** — Use the document-tasks icon in the topbar for ready drafts, scheduled sends, recent activity, and pending uploads
+- **Review queue** — Use the document-tasks icon in the topbar for pending uploads, ready drafts, scheduled sends, and recent activity

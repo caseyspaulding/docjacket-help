@@ -16,8 +16,8 @@ The extraction list focuses on the question that matters most: did this become a
 
 Common save states are:
 
-- **Saved** - The extraction has been applied to a transaction
-- **Awaiting save** - The extraction completed, but no transaction or update has been saved yet
+- **Saved** - The extraction has been applied to a transaction, listing, or existing-transaction update
+- **Awaiting save** - The extraction completed, but no transaction, listing, or update has been saved yet
 - **Pending** or **Processing** - The extraction is still running
 - **Failed** or **Cancelled** - The extraction did not complete
 
@@ -35,7 +35,7 @@ Review the extracted fields, correct anything that is wrong, then choose the fin
 
 Nothing is final until you complete the review and save step.
 
-Pending uploads can also appear in the Review queue drawer and on the dashboard. Those cards take you back to the same review-and-save workflow. Use **Discard** only when the upload should stop appearing as unfinished work.
+Pending uploads can also appear in the Review queue drawer and on the dashboard. Those cards take you back to the same review-and-save workflow. Use **Discard** only when the upload should stop appearing as unfinished work; it soft-dismisses the pending-upload card without deleting extraction history.
 
 ## Progress pages
 

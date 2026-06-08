@@ -27,7 +27,7 @@ After your workspace has activity, the dashboard shifts into daily operations mo
 The dashboard includes collapsible sections. Your layout may vary by screen size and plan, but the main sections are:
 
 - **Today's Briefing** - Closings today, overdue tasks, tasks due today, upcoming deadlines, new emails, completed extractions, new assignments, and workload level
-- **Pending Uploads** - Documents that finished extracting but have not been saved as a transaction or update yet
+- **Pending Uploads** - Documents that finished extracting but have not been saved as a transaction, listing, or update yet
 - **Closing Soon** - Transactions with closing dates in the next seven days
 - **Tasks** - Tasks due today or overdue and assigned to you
 - **Waiting On** - Deals currently blocked, grouped by phase
@@ -41,7 +41,7 @@ From **Today's Briefing**, you can turn the daily digest email on or off. The di
 
 ## Pending uploads
 
-If **Pending Uploads** appears, open it before assuming the upload is finished. A completed extraction still needs review and a final save action before it becomes a new transaction, listing, or update to an existing transaction.
+If **Pending Uploads** appears, open it before assuming the upload is finished. A completed extraction still needs review and a final save action before it becomes a new transaction, listing, or update to an existing transaction. Discarding a pending upload only hides the unfinished-work card; it does not erase extraction history.
 
 ## Tips
 
