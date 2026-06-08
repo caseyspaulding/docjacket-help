@@ -647,6 +647,8 @@ If a user says, "I uploaded a contract but no transaction appeared," first check
 
 Transactions are the heart of DocJacket. Every real estate deal you manage — from the moment a contract is signed to the day it closes — lives here.
 
+![Transactions page with filters, columns, saved views, and transaction rows](/img/transactions/transactions-list.png)
+
 Your **Transactions** page is home base. It shows every deal you're managing in a searchable, filterable table. You can:
 
 - **Search** by property address, buyer name, or seller name
@@ -1706,6 +1708,8 @@ Use Disclosure Packages for listing disclosures, buyer review packets, broker re
 
 DocJacket keeps a centralized contact database across all your transactions. Agents, clients, lenders, title companies, inspectors — everyone you work with lives here.
 
+![Contacts directory with People and Organizations views, filters, columns, import, groups, and export controls](/img/contacts/contacts-directory.png)
+
 The **Contacts** page in the sidebar shows your full directory. The Contacts area has separate **People** and **Organizations** views, plus import and group tools. You can search, filter, inline-edit common fields, import from CSV or Google Contacts, export, merge duplicates, tag contacts, and organize contacts into groups.
 
 Contacts also connect to transaction workflows. When you add a contact to a transaction, DocJacket stores that relationship with a transaction role, primary flag, merge display name, portal link status, and communication details.
@@ -1730,6 +1734,8 @@ Contacts also connect to transaction workflows. When you add a contact to a tran
 ---
 
 # Managing Contacts
+
+![Contacts directory with search, type filters, columns, export, and inline contact rows](/img/contacts/contacts-directory.png)
 
 ## Adding a contact
 
@@ -1818,6 +1824,8 @@ Portal chat does not require SMS consent and does not consume SMS credits. SMS s
 # Contact Roles
 
 When you add a contact to a transaction, you assign a role that describes their part in that deal. The same contact can have different roles on different transactions.
+
+![Transaction Contacts tab grouped by role category with primary role labels and contact actions](/img/contacts/transaction-contacts-tab.png)
 
 ## Role categories
 
@@ -2881,6 +2889,8 @@ You can remove a custom domain if traffic should stop resolving to your Front Do
 
 DocJacket keeps communication attached to the transaction where the work is happening. Open a transaction's **Messages** tab to review email, scheduled email, SMS, portal conversations, and internal notes for that deal.
 
+![Transaction Messages tab with Email, Scheduled, SMS, and Notes workspace tabs](/img/messages/transaction-messages-tab.png)
+
 The **Messages** item in the sidebar takes you back to the transaction list because message history is managed inside each transaction workspace.
 
 ## In this section
@@ -2894,6 +2904,8 @@ The **Messages** item in the sidebar takes you back to the transaction list beca
 # Transaction Messages
 
 Open a transaction and click **Messages** to manage communication for that deal. This workspace is organized into four tabs: **Email**, **Scheduled**, **SMS**, and **Notes**.
+
+![Transaction Messages tab showing the Email split-pane inbox and message composer entry point](/img/messages/transaction-messages-tab.png)
 
 The sidebar **Messages** page points you back to transactions. Message history is intentionally handled inside each transaction so emails, texts, portal replies, and notes stay attached to the correct deal.
 
@@ -6116,6 +6128,8 @@ The **Pipeline** page is a separate sidebar page. It is documented here because 
 
 Use a transaction's **Reports** tab to create client-ready summaries from live transaction data. Reports can include property details, contacts, tasks, documents, key dates, custom notes, and other sections defined by your SitRep templates.
 
+![Transaction Reports tab with report template, section toggles, PDF, schedule, and send controls](/img/reports/transaction-reports-tab.png)
+
 ## Open the Reports tab
 
 1. Open a transaction
@@ -6171,6 +6185,8 @@ You can pause, resume, edit, or delete the schedule from the Delivery Schedule c
 # Pipeline View
 
 The **Pipeline** page is a visual board for work in motion. It has three tabs:
+
+![Pipeline page with transaction status columns and draggable transaction cards](/img/reports/pipeline-board.png)
 
 - **Transactions** — non-offer transactions grouped by active transaction status
 - **Tasks** — open tasks grouped by due-date bucket across transactions

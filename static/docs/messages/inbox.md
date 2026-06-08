@@ -11,6 +11,8 @@ description: Use a transaction's Messages tab to manage email, scheduled email, 
 
 Open a transaction and click **Messages** to manage communication for that deal. This workspace is organized into four tabs: **Email**, **Scheduled**, **SMS**, and **Notes**.
 
+![Transaction Messages tab showing the Email split-pane inbox and message composer entry point](/img/messages/transaction-messages-tab.png)
+
 The sidebar **Messages** page points you back to transactions. Message history is intentionally handled inside each transaction so emails, texts, portal replies, and notes stay attached to the correct deal.
 
 ## Email

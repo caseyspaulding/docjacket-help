@@ -11,6 +11,8 @@ description: DocJacket contact roles — buyer, seller, agents, title, lending, 
 
 When you add a contact to a transaction, you assign a role that describes their part in that deal. The same contact can have different roles on different transactions.
 
+![Transaction Contacts tab grouped by role category with primary role labels and contact actions](/img/contacts/transaction-contacts-tab.png)
+
 ## Role categories
 
 Transaction contacts are grouped by role category on the transaction **Contacts** tab.
