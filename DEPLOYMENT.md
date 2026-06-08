@@ -29,7 +29,7 @@ This repo may have GitHub Actions for validation, but GitHub Actions are not the
 2. `build` runs the Docusaurus production build.
 3. `postbuild` writes `build/build-info.json` and submits IndexNow updates.
 
-`build/build-info.json` is intentionally generated at build time so production can be checked without scraping rendered HTML. It includes the repo name, site URL, hosting provider, source commit, branch, and build timestamp.
+`build/build-info.json` is intentionally generated at build time so production can be checked without scraping rendered HTML. It includes the repo name, site URL, hosting provider, source commit, branch, Cloudflare Workers build ID when available, and build timestamp.
 
 ## Required Validation
 
