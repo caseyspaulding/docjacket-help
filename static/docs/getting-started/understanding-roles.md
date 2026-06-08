@@ -1,7 +1,7 @@
 ---
 sidebar_label: Understanding Roles
 sidebar_position: 5
-description: How DocJacket roles work — account types (TC, agent, broker), organization roles, and per-transaction contact roles.
+description: How DocJacket roles work — team permissions, transaction contact roles, portal access, and signer roles.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/getting-started/understanding-roles -->
@@ -9,59 +9,92 @@ description: How DocJacket roles work — account types (TC, agent, broker), org
 
 # Understanding Roles in DocJacket
 
-DocJacket has a few different types of roles, and they work at different levels. Here's how they all fit together.
+DocJacket uses the word "role" in a few different places. The important thing is that each role type controls a different part of the system.
 
-## Your account role
+## Team roles
 
-When you first sign up, you pick one of three account types:
+Team roles control what people inside your organization can see and do in DocJacket.
 
-### Transaction Coordinator (TC)
-The most common role. TCs manage deals end-to-end — handling documents, deadlines, communication, and coordination between all parties. If you're an independent TC or work on a TC team, this is you.
+You manage these in **Settings > Roles** and assign them when inviting team members from **Settings > Team Members**.
 
-As a TC, you get the full feature set: transaction management, checklist templates, task automation, document tracking, client portals, and AI tools.
+DocJacket includes these system roles:
 
-### Agent
-For real estate agents who want to track their own deals. Agents see a streamlined view focused on their transactions, tasks, and client communication.
+- **Owner** — Full access to everything, including organization settings, billing, and user management
+- **Admin** — Manage team, transactions, and settings, without deleting the organization
+- **Transaction Coordinator** — Manage assigned transactions, documents, deadlines, and workflow
+- **Agent** — View assigned transactions, upload documents, and communicate with clients
+- **Assistant** — Help with administrative tasks using limited access
+- **Viewer** — Read-only access to assigned transactions and documents
 
-### Broker
-For managing a team or office. Brokers get visibility across all transactions in their organization, plus team management tools.
+You can also create **custom roles** with specific permission sets.
 
-## Team roles (permissions)
+## Custom permissions
 
-Within your organization, team members can have different permission levels. These control what each person can see and do:
+Custom roles can include permissions across these areas:
 
-- **Owner** — Full access to everything, including billing and organization settings
-- **Custom roles** — You can create custom roles in **Settings > Roles** with specific permissions for things like:
-  - Transaction management (create, edit, delete deals)
-  - Communication (send emails, access inbox)
-  - Reports and analytics
-  - User management (invite and manage team members)
-  - Billing access
+- Organization management
+- User management
+- Transaction management
+- Communication
+- Tasks and scheduling
+- Reports and analytics
+- General dashboard access
+- Billing
+- API and integrations
 
-This is useful when you have assistants, junior TCs, or team members who need limited access.
+Custom roles are useful when you have assistants, junior TCs, agents, or back-office users who need more than Viewer access but less than Admin access.
 
-settings roles page showing permission categories
+System roles cannot be edited or deleted. Custom roles can be edited, and they can be deleted when no team members are assigned to them.
 
-## Contact roles (within a transaction)
+## Transaction contact roles
 
-Every transaction has people playing specific roles. These are the contact roles you assign when adding someone to a deal:
+Transaction contact roles identify who someone is on a specific deal. They do not grant internal team permissions by themselves.
+
+You assign these roles when adding contacts to a transaction. Common examples include:
 
 **Clients**
+
 - Buyer, Seller
 
 **Agents**
-- Listing Agent, Buying Agent
+
+- Listing Agent, Buyer's Agent
 
 **Legal & Title**
+
 - Title Company, Closing Attorney, Escrow Officer
 
 **Lending**
+
 - Lender, Loan Officer
 
 **Service Providers**
+
 - Home Inspector, Appraiser, Surveyor, Contractor
 
 **Other**
+
 - Property Manager, HOA Contact, Insurance Agent
 
-Contact roles help DocJacket organize information and control what each person sees on the [Client Portal](/docs/client-portal) — for example, a buyer sees different information than the listing agent.
+These roles help DocJacket organize contacts, fill smart fields, resolve recipient roles in emails, and show the right people on reports.
+
+You can manage organization contact roles in **Settings > Transaction Roles**.
+
+## Portal roles
+
+Portal access is separate from team roles. A client, agent, lender, title contact, or other guest can receive portal access for a transaction without becoming a DocJacket team member.
+
+Use the transaction **Portal** tab to invite contacts, send portal links, and adjust guest access.
+
+## Signer roles
+
+E-sign form templates also use signer roles. These roles decide which signer completes each field on a form template, such as Buyer, Buyer 2, Seller, Seller 2, Buyer Agent, or Listing Agent.
+
+Signer roles are configured inside e-sign form templates. They are separate from team permissions and transaction contact roles, though they often use similar names.
+
+## Quick rule of thumb
+
+- Use **team roles** for internal DocJacket access
+- Use **transaction contact roles** for people on a deal
+- Use **portal roles** for external guest access
+- Use **signer roles** for e-sign field ownership

@@ -12,19 +12,19 @@ description: Discover DocJacket's AI features — contract extraction, task gene
 
 DocJacket uses AI to handle the tedious parts of transaction coordination — so you can focus on the work that actually needs a human touch.
 
-Here's the important thing: **DocJacket never acts without your approval.** AI prepares, suggests, and drafts — but you're always in control. Nothing gets sent, saved, or changed until you say so.
+Here's the important thing: **DocJacket separates AI suggestions from the final action.** Extraction results, review-queue drafts, and automation output are surfaced for review so you can approve, edit, reject, or save the work intentionally.
 
 ## What AI can do for you
 
-- **Contract Extraction** — Upload a PDF and AI reads it, pulling out names, dates, prices, and terms automatically
+- **Contract Extraction** — Upload a contract packet and AI pulls out names, dates, prices, terms, and source citations
 - **Task Generation** — AI analyzes your transaction and suggests a task checklist tailored to the deal
-- **Risk & Compliance Insights** — Get flagged on potential issues before they become problems
-- **Smart Document Splitting** — Upload a multi-document PDF and AI separates it into individual files
-- **Communication Drafting** — AI drafts emails and messages based on your transaction context
+- **Risk Insights** — Review transaction-level risk assessments and document-level checks
+- **Smart Document Splitting** — Upload a multi-document PDF and AI detects the documents, page ranges, and primary contract
+- **Communication Drafting** — AI drafts emails and messages that can be reviewed before they send
 
 ## In this section
 
 - [Contract Extraction](./contract-extraction.mdx) — How AI reads your contracts
 - [AI Task Generation](./ai-task-generation.mdx) — Let AI build your task checklist
-- [AI Insights](./ai-insights.mdx) — Risk assessments and compliance checks
+- [Risk Insights](./ai-insights.mdx) — Risk assessments and document checks
 - [Smart Document Splitting](./smart-document-splitting.mdx) — Automatically split bundled PDFs

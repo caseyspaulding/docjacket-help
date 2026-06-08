@@ -1,7 +1,7 @@
 ---
 sidebar_label: Email and Automation
-sidebar_position: 10
-description: Configure email identity, working hours, notification preferences, and automation rules.
+sidebar_position: 11
+description: Configure email template categories, working hours, notification preferences, and rule-based email or SMS automation.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/settings/email-and-automation -->
@@ -9,13 +9,13 @@ description: Configure email identity, working hours, notification preferences, 
 
 # Email and Automation Settings
 
-The **Emails & Alerts** group controls sender identity, send timing, personal notifications, and automated rule behavior.
+The **Emails & Alerts** group controls template organization, automated send timing, personal notifications, and rule-based message automation.
 
 ## Email settings
 
-Use **Settings > Email** to manage account-level email sending settings.
+Use **Settings > Email** to organize email templates into categories. Categories can have a name, description, color, and active or inactive status.
 
-If your email connection expires, reconnect it from **Settings > Integrations** so DocJacket can continue sending from the right mailbox.
+This page does not connect your mailbox. To send from Gmail or Outlook, connect or reconnect your mailbox from **Settings > Integrations**.
 
 ## Working hours
 
@@ -46,6 +46,8 @@ Notification preferences are personal. Changing your notifications does not chan
 
 ## Automation rules
 
-Use **Settings > Automation Rules** to create and manage rule-based notifications and emails.
+Use **Settings > Automation Rules** to create and manage rule-based notifications and messages.
 
-Automation rules can use templates, transaction data, and schedule logic. Keep rules narrowly named so it is clear what each rule sends and when it sends.
+Automation rules can send email, SMS, or both when a transaction enters a status or when a configured checklist task is completed. Rules use templates, recipient logic, and delivery-channel settings. They can either send automatically or require review before sending.
+
+If organization-wide review-first is enabled, automated drafts land in the topbar **Review queue** before they send. You can also choose review behavior on individual rules when review-first is off globally.

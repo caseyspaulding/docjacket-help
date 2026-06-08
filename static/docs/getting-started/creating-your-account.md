@@ -1,7 +1,7 @@
 ---
 sidebar_label: Creating Your Account
 sidebar_position: 2
-description: Sign up for DocJacket in two minutes — create your account, verify email, set up your organization, and invite your team.
+description: Sign up for DocJacket — authenticate with Google or Microsoft, create your workspace, and land on your dashboard.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/getting-started/creating-your-account -->
@@ -9,39 +9,39 @@ description: Sign up for DocJacket in two minutes — create your account, verif
 
 # Creating Your Account
 
-Getting started with DocJacket takes just a couple of minutes. Here's how to set up your account and get ready to manage transactions.
+Getting started with DocJacket takes just a couple of minutes. Here's how to create your login, set up your organization, and get ready to manage transactions.
 
 ## Sign up
 
-1. Head to [app.docjacket.com](https://app.docjacket.com) and click **Sign Up**
-2. Enter your name, email address, and create a password
-3. Verify your email — check your inbox for a confirmation link
+1. Head to [app.docjacket.com](https://app.docjacket.com)
+2. Click **Sign Up**
+3. Choose **Sign up with Google** or **Sign up with Microsoft**
+4. Complete the provider sign-in flow
 
-sign-up page
+DocJacket uses your Google or Microsoft account for authentication. There is no separate DocJacket password to create in the app.
 
-## Choose your role
+## Set up your organization
 
-Once you're in, DocJacket asks: **"What type of transactions do you manage?"**
+After your first sign-in, DocJacket asks for a few organization details:
 
-Pick the one that fits you best:
+- **Organization Name** — Your company, team, or personal TC business name
+- **Workspace URL** — The subdomain clients can use for portal access, such as `your-team.docjacket.com`
+- **First Name / Last Name** — Optional profile details
+- **Primary State** — Optional state context for your workspace
 
-- **Transaction Coordinator** — You manage deals end-to-end for agents and brokerages. This is the most common choice for TCs.
-- **Agent** — You represent buyers or sellers and want to track your own deals.
-- **Broker** — You manage a team or office and need visibility across all transactions.
+DocJacket checks whether your workspace URL is available while you type. Workspace URLs must be 3-30 characters and use lowercase letters, numbers, and hyphens.
 
-Don't overthink this — it just sets your default templates and layout. You can always change it later in Settings.
+Click **Create Organization** when the details look right.
 
-role selection step showing the three options
+## What DocJacket creates
 
-## Pick a starting template
+When setup finishes, DocJacket creates the core workspace pieces for you:
 
-Next, DocJacket shows you a list of checklist templates based on your role. These are pre-built workflows with key dates and tasks for different transaction types and states.
-
-Pick one that's close to what you typically work — for example, a **Residential Purchase** template for your state. DocJacket will create a sample transaction using that template so you can see how everything works.
-
-You can also skip this step and set up templates later.
-
-template selection step
+- Your organization
+- A default **Main Office**
+- A free starter subscription
+- System team roles like Owner, Admin, Transaction Coordinator, Agent, Assistant, and Viewer
+- Default document categories, document statuses, transaction statuses, field options, tags, SMS templates, and message board templates
 
 ## You're in!
 
@@ -49,6 +49,8 @@ After setup, you'll land on your **Dashboard**. From here you can:
 
 - Create your first real transaction
 - Explore the sidebar to see all the features
+- Invite team members from **Settings > Team Members**
+- Customize permissions from **Settings > Roles**
 - Click the **help chat** button anytime for quick answers
 
 Next up: [Set up your first transaction](./your-first-transaction.mdx)

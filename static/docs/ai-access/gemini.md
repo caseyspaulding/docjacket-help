@@ -40,8 +40,6 @@ DocJacket works with the **Gemini CLI** today via personal access token. Paste-U
 
 3. **Restart the Gemini CLI.** Run `gemini tools list` — you should see DocJacket's tools in the inventory.
 
-Gemini CLI after connecting — DocJacket tools listed
-
 ## Try it
 
 Ask Gemini:
@@ -57,19 +55,20 @@ Other good prompts:
 - "Use DocJacket to show open tasks on the [property] deal."
 - "Use DocJacket to look up the listing agent on [property]."
 
-## The tool surface
+## Current tool surface
 
-The same 47 tools available to Claude and ChatGPT:
+Current AI Access is read-first. Gemini can use these DocJacket tools today:
 
-- **Find** — search transactions / contacts, fuzzy-match by address, list active deals.
-- **Read deal state** — `get_transaction`, key dates, missing docs, contingencies, open tasks, contacts.
-- **Triage** — `get_next_required_actions` (flagship — overdue-first ranking).
-- **Send** — `send_agent_followup`, `send_client_update`, `send_document_request`, `send_email_to_agent`.
-- **Create / update** — contacts, tasks, reminders, key-date changes.
-- **Contract intake** — upload a PDF, run extraction, create the transaction.
-- **Diagnostics** — `mcp_catalog`, `mcp_health_check`.
+- `search_transactions`
+- `get_transaction`
+- `get_key_dates`
+- `get_upcoming_key_dates`
+- `get_open_tasks`
+- `get_contacts`
+- `list_open_contingencies`
+- `get_next_required_actions`
 
-To see the live inventory at any time:
+Drafting and write tools are rolling out behind per-tool consent. To see the live inventory for your token:
 
 > "Use DocJacket's `mcp_catalog` to list the tools by category."
 

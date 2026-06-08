@@ -16,12 +16,12 @@ Your **Transactions** page is home base. It shows every deal you're managing in 
 
 - **Search** by property address, buyer name, or seller name
 - **Filter** by status (active, pending, closed), side (buyer/seller), price range, or closing date range
+- **Switch between Transactions and Listings**
+- **Open saved views** for repeat reporting layouts
 - **Customize columns** to show exactly the info you care about
 - **Export to CSV** for reporting or backup
 
-transactions list page showing table with filters
-
-Click any transaction to open it and see the full picture — overview, timeline, tasks, documents, contacts, and messages all in one place.
+Click any transaction to open it and see the full picture: overview, tasks, documents, contacts, messages, portal, forms, activity, reports, and calculators.
 
 ## In this section
 

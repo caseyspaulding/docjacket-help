@@ -1,6 +1,6 @@
 ---
 sidebar_label: Calendar and Holidays
-sidebar_position: 7
+sidebar_position: 8
 description: Configure Google Calendar task syncing and organization holidays used by business-day scheduling rules.
 ---
 

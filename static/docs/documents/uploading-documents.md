@@ -1,7 +1,7 @@
 ---
 sidebar_label: Uploading Documents
 sidebar_position: 2
-description: Upload documents to a DocJacket transaction — drag-and-drop, email forwarding, Google Drive import, and bulk upload.
+description: Upload files to a DocJacket transaction, choose categories, link required documents, and understand other document intake paths.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/documents/uploading-documents -->
@@ -13,30 +13,34 @@ Getting documents into DocJacket is quick and easy. Here's how.
 
 ## Drag and drop
 
-The fastest way. Open a transaction's **Documents** tab and:
+The fastest way. Open a transaction's **Documents** tab, stay on **Files**, and:
 
-1. Click the **Upload** button (or just drag files onto the page)
-2. Drop one or more files
-3. DocJacket uploads them and automatically assigns a category based on the file name and content
+1. Click **Upload**
+2. Choose a category
+3. Drop a file into the upload drawer or click to browse
+4. Click **Upload**
 
-upload area with drag and drop zone
+The upload drawer shows progress and closes when the file is saved.
 
 ## Supported file types
 
-DocJacket accepts most common file types:
+The transaction upload drawer accepts:
 
 - **PDF** — The most common format for contracts and disclosures
-- **Images** — JPG, PNG, TIFF (great for photos of signed documents)
-- **Office files** — Word docs, Excel spreadsheets
-- **Other** — Most standard document formats
+- **Images** — JPG, JPEG, PNG
+- **Word files** — DOC, DOCX
 
-## Automatic categorization
+The file size limit is **50MB**.
 
-When you upload a document, DocJacket looks at the file name and content to guess the right category — things like "Purchase Agreement", "Inspection Report", or "Title Commitment". You can always change the category manually if the AI gets it wrong.
+## Categories and statuses
 
-## Uploading multiple files
+Pick the document category before uploading. You can change the document type or status later from the Documents table.
 
-You can upload multiple files at once. Just select them all or drag a batch into the upload area. Each file is processed individually and categorized on its own.
+Admins can manage document types, document statuses, and naming rules in **Settings > Documents**.
+
+## Required-document uploads
+
+If the file satisfies a required document, upload it from the **Documents Needed** checklist instead. That path links the uploaded file directly to the placeholder, updates the received count, and keeps the requirement history together.
 
 ## Other ways documents get into DocJacket
 
@@ -44,4 +48,5 @@ Documents don't only come from manual uploads:
 
 - **AI Extraction** — When you create a transaction via Upload & Extract, the contract is automatically saved to the Documents tab
 - **DocDrop** — Contacts can email documents directly into the transaction (see [DocDrop](./docdrop.mdx))
-- **Google Drive** — Import files from your Drive (see [Google Drive Integration](./google-drive-integration.mdx))
+- **Google Drive** — Import files from Drive or export transaction files back to Drive (see [Google Drive Integration](./google-drive-integration.mdx))
+- **E-sign packets** — Completed DocJacket e-sign packets save the signed PDF back to the transaction

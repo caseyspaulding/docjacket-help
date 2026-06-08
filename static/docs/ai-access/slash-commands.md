@@ -9,7 +9,7 @@ description: Nine pre-built slash commands for Cowork and Claude Code — mornin
 
 # Slash Commands
 
-The DocJacket plugin ships nine pre-built slash commands. Each one is a pre-written workflow that chains the right DocJacket MCP tools — so instead of typing *"check my email, match each thread to an active deal, classify attachments, group by transaction, surface deadlines, and ask me what to do with each..."* you type `/docjacket:email-triage` and the assistant runs the whole recipe.
+The DocJacket plugin ships nine pre-built slash commands. Each one is a pre-written workflow that chains the right DocJacket MCP tools. Current read-first commands work with a read token; commands that send messages, create transactions, or update records require draft or action scopes to be enabled for your account.
 
 The commands work in:
 
@@ -27,10 +27,10 @@ In **Claude.ai** and **Claude Desktop**, slash commands aren't a plugin surface 
 | **`/docjacket:email-triage`** | Match Gmail / Outlook inbox to active transactions, classify attachments, surface deadline-proximate threads |
 | **`/docjacket:doc-check`** | Document-completeness audit — for one transaction, or org-wide with urgency flags on closings within 14 days |
 | **`/docjacket:weekly-report`** | Closing-this-week, closed-this-week, new-files, stuck-deals, upcoming-closings, and stats — for the broker, the team, or your own records |
-| **`/docjacket:share-portal`** | Get the portal URL + calendar feed for a transaction, optionally draft a share email |
+| **`/docjacket:share-portal`** | Get the portal URL + calendar feed for a transaction; email delivery requires draft/action scopes |
 | **`/docjacket:check-submissions`** | Review new intake-form submissions, see what each contains, decide next move per submission |
-| **`/docjacket:send-template`** | Pick a saved email template, render with merge fields, preview, send via your connected mailbox |
-| **`/docjacket:intake-contract`** | Drop a contract PDF, run extraction, review fields, create the transaction with checklist + reminders |
+| **`/docjacket:send-template`** | Pick a saved email template and render with merge fields; sending requires draft/action scopes |
+| **`/docjacket:intake-contract`** | Review extraction from a contract PDF; creating the transaction requires action-tool access |
 
 ## Triage commands
 
@@ -70,7 +70,7 @@ Reads recent unread mail from the connected Gmail/Outlook, matches each sender t
 
 Two modes:
 
-- **With a transaction in context** — runs `get_missing_documents` for that one deal, names which recipient role typically provides each missing item, and offers to chase via `send_document_request`.
+- **With a transaction in context** — runs `get_missing_documents` for that one deal, names which recipient role typically provides each missing item, and can suggest a chase message. Sending that chase requires draft/action scopes.
 - **No transaction in context** — org-wide audit across active deals, flagging anything closing within 14 days that still has gaps.
 
 **Best 24-48 hours before a closing**, or when a broker asks "what's the state of doc completeness across the team?"
@@ -91,31 +91,35 @@ A weekly recap formatted for forwarding to a broker, team meeting, or your own r
 
 > *"Intake a contract PDF and build the full transaction in one conversation."*
 
-The end-to-end PDF-to-transaction workflow. The plugin's headline use case. See the full reference at **[Contract Intake](/docs/ai-access/contract-intake)**.
+The PDF-to-transaction workflow when action tools are enabled. In the standard read-first setup, use the in-app Upload & Extract wizard for transaction creation. See the full reference at **[Contract Intake](/docs/ai-access/contract-intake)**.
 
-**Chains:** `list_documents` → `extract_existing_document` (when the PDF is already in DocJacket — canonical) **OR** `request_upload_url` → `kick_off_extraction` (Claude.ai paid + code execution) **OR** `upload_document_for_extraction` (tiny chat-attached PDFs) → `get_extraction_results` (polling) → review → `apply_extraction` → `add_key_dates_batch` → `render_email_template` + `send_*` intros → `create_reminder` for major deadlines → `get_intake_status` final summary.
+**Read-first version:** summarize extraction status and review available results.
+
+**Action-scope version:** upload or locate a PDF, run extraction, review fields, and call `apply_extraction` only after you confirm in chat.
 
 ### `/docjacket:send-template`
 
 > *"Send the buyer intro email on the Smith deal."*
 
-Pick a saved email template (or let the assistant suggest one from your library), render with the transaction's merge fields resolved, show the rendered email inline for review, and send via your connected Gmail/Outlook on your confirmation. Flags any unresolved merge field instead of papering over it.
+Pick a saved email template, render it with the transaction's merge fields resolved, and show the rendered email inline for review. Sending through Gmail or Outlook requires draft/action scopes.
 
-**Chains:** `search_transactions` (resolve the deal) → `list_email_templates` → `get_email_template` → `render_email_template` → `get_contacts` / `find_contact_by_email` (resolve recipient) → `send_client_update` / `send_agent_followup` / `send_email_to_agent` / `send_document_request` (routed by recipient role).
+**Read-first version:** resolve the deal, find contacts, and prepare the rendered template for review.
+
+**Draft/action-scope version:** send the reviewed message through the connected mailbox.
 
 ### `/docjacket:share-portal`
 
 > *"Share the portal with Sarah on the 412 Oak deal."*
 
-Pulls the portal URL + calendar feed URL for a transaction, then optionally drafts a brief share email to a party on the deal (with the calendar-subscribe instructions). Won't paste the link in chat as the only delivery — portal links go via an email the user reviewed.
+Pulls the portal URL + calendar feed URL for a transaction. If draft/action scopes are enabled, the assistant can also help prepare a share email to a party on the deal.
 
-**Chains:** `search_transactions` (if needed) → `get_portal_link` → `get_contacts` → `send_client_update` (for clients) or `send_agent_followup` (for agents).
+**Chains:** `search_transactions` (if needed) → `get_portal_link` → `get_contacts`.
 
 ### `/docjacket:check-submissions`
 
 > *"What's new in my intake forms?"*
 
-Surveys recent intake-form submissions across your active forms, summarizes what each one contains (submitter + 2-3 identifying fields), and offers obvious next moves per submission — spin into a transaction (`/docjacket:intake-contract`), reply via `send_agent_followup`, or log dismissed.
+Surveys recent intake-form submissions across your active forms, summarizes what each one contains, and offers obvious next moves per submission. Creating a transaction, sending a reply, or logging a dismissal requires draft/action scopes.
 
 **Chains:** `list_form_links` → `list_form_submissions` per form → `get_form_submission` for interesting ones → `get_form_definition` if you want to see the form schema → next-action handoff.
 

@@ -28,25 +28,21 @@ DocJacket comes with these built-in statuses:
 
 On the **Transactions** page, use the status filter to see only the deals in a specific state. For example, filter to "Active" to see just your current workload, or "Closed" to review completed deals.
 
-status filter dropdown on transactions list
-
 ### Pipeline view
 
 The **Pipeline** page shows your transactions as a Kanban board, with each column representing a status. Drag and drop transaction cards between columns to update their status instantly.
-
-pipeline board with status columns
 
 ### Changing a transaction's status
 
 You can change a transaction's status in a few ways:
 
-1. **From the transaction** — Open the transaction and update the status field
+1. **From the transaction header** — Open the transaction and click the status chip
 2. **From the pipeline** — Drag the card to a different column
-3. **From the list** — Some status changes are available via right-click or inline actions
+3. **From the list** — Use inline status controls when available
 
 ## Custom statuses
 
-If the default statuses don't match your workflow, you can create custom statuses in **Settings**. For example, some TCs add statuses like:
+If the default statuses don't match your workflow, you can create custom statuses in **Settings > Transaction Statuses**. For example, some TCs add statuses like:
 
 - **Under Review** — Contract received but not yet fully executed
 - **Clear to Close** — All conditions met, just waiting for the closing date

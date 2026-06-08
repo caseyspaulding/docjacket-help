@@ -14,6 +14,7 @@ The billing page shows:
 
 - Your current plan and pricing
 - Number of seats (active users)
+- Usage for active transactions, AI extractions, and team members
 - Next billing date
 - Payment method on file
 
@@ -27,6 +28,12 @@ As your team grows or shrinks:
 ## Updating payment info
 
 Click **Update Payment Method** on the billing page to change your credit card or payment details.
+
+## Managing seats
+
+Paid plans can manage seat count from **Settings > Billing**.
+
+Open **Manage Seats**, choose the total seats you want, and confirm the change. The minimum seat count is based on your current active members and pending invitations.
 
 ## Canceling
 

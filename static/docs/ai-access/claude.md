@@ -38,8 +38,6 @@ You connect each surface once. The same DocJacket MCP server backs all four.
 6. **Allow** the connection. (You'll see the requested scopes — **read** for lookups, **draft** for send / create / update, **actions** for higher-impact writes. All three tiers are enforced server-side; you grant exactly what you want the assistant to be able to do.)
 7. You're back in Claude with **DocJacket** showing as a custom connector and the full tool list loaded. Claude.ai groups it into **Read-only tools** and **Write tools (needs approval)** accordions automatically — read tools run inline, writes pause for your confirmation in chat.
 
-DocJacket connector in Claude.ai's Settings → Connectors
-
 ## Try it
 
 Start a new conversation and ask:
@@ -56,21 +54,20 @@ Other good prompts:
 - "Which deals are missing inspection reports?"
 - "Look up the listing agent on [property]."
 
-## The tool surface
+## Current tool surface
 
-47 tools today, grouped by workflow:
+Current AI Access is read-first. Claude can use these DocJacket tools today:
 
-- **Find** — search transactions / contacts, fuzzy-match by address, list active deals.
-- **Read deal state** — `get_transaction`, key dates, missing docs, contingencies, open tasks, contacts, checklist status.
-- **Triage** — `get_next_required_actions` (flagship — overdue-first ranking with rationales).
-- **Send** — `send_agent_followup`, `send_client_update`, `send_document_request`, `send_email_to_agent`. All route through your connected Gmail / Outlook.
-- **Create / update** — contacts, tasks, reminders, key-date changes, checklist apply, task completion, activity log.
-- **Contract intake** — upload a PDF, run extraction, create the transaction.
-- **Forms** — list intake-form links and submissions.
-- **Templates** — list / render saved email templates with merge fields resolved.
-- **Diagnostics** — `mcp_catalog` returns the live, categorized inventory; `mcp_health_check` confirms the server is up.
+- `search_transactions`
+- `get_transaction`
+- `get_key_dates`
+- `get_upcoming_key_dates`
+- `get_open_tasks`
+- `get_contacts`
+- `list_open_contingencies`
+- `get_next_required_actions`
 
-Claude will ask permission the first time it calls each tool. Read tools approve once per conversation; write tools (send / create / update) ask for explicit confirmation per call by default. To see the current full inventory at any time, ask:
+Drafting and write tools are rolling out behind per-tool consent. If your account has access to additional tools, use the catalog to see the live inventory:
 
 > "Call `mcp_catalog` and group the tools by what they're for."
 

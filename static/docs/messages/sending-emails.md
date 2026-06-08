@@ -9,40 +9,41 @@ description: Compose and send emails directly from a DocJacket transaction witho
 
 # Sending Emails
 
-You can compose and send emails directly from within a transaction — no need to switch to Gmail or Outlook.
+You can compose, send, schedule, and save emails directly from a transaction without switching to Gmail or Outlook.
 
 ## Composing an email
 
-From a transaction's **Messages** tab:
+Open a transaction, go to **Messages > Email**, and click **Compose**.
 
-1. Click **Compose**
-2. Select recipients from the transaction's contacts (or type an email address)
-3. Write your message or select an [email template](./email-templates.md)
-4. Attach files if needed
-5. Click **Send**
+In the composer you can:
 
-The email is sent, tracked, and stored with the transaction automatically.
+- Choose the connected Gmail or Outlook account to send from
+- Type recipients manually or add transaction contacts by contact, role, group, CC, or BCC
+- Insert an [email template](./email-templates.md)
+- Generate an AI draft from a short prompt
+- Attach transaction documents or upload files from your computer
+- Pick an email signature
+- Save a draft, send now, or use **Schedule** to send later
 
-email compose view
+The email is stored with the transaction automatically after it sends.
 
-## Tracking
+## Scheduling an email
 
-After sending, you can see:
+Use the **Schedule** button in the compose toolbar when an email should go out later. Turn on **Send later**, choose the date and time, choose the timezone, and click **Schedule**.
 
-- **Delivery confirmation** — Whether the email was delivered
-- **Open tracking** — If and when the recipient opened it
-- **Link clicks** — Which links were clicked
+Scheduled one-off emails appear in **Messages > Scheduled** with a **One-off** badge. You can cancel them there. Editing one opens the Email composer with the message prefilled; saving cancels the original scheduled send and creates a new one.
 
-These stats appear on the email in the Messages tab.
+## Attachments
 
-## Filtering messages
+Use **Attach** to choose files already stored on the transaction or upload new files from your computer. Local uploads support files up to 25 MB.
 
-Switch between tabs to find what you need:
+If you attach transaction documents, DocJacket sends the selected files with the message and keeps the email linked to the transaction.
 
-- **Inbox** — Received messages
-- **Sent** — Messages you've sent
-- **Archived** — Messages you've archived
-- **Drafts** — Emails you started but haven't sent
+## Reviewing messages
+
+The Email tab includes filters for **Inbox**, **Unread**, **Sent**, **Drafts**, **Auto**, and **Archived**. Open a message to reply, reply all, forward, star, mark read or unread, archive, or delete it.
+
+Messages can show delivery status and provider message IDs when DocJacket has them. If a message includes suggested AI actions, approve or dismiss them from the message detail panel.
 
 ## Searching
 

@@ -4,8 +4,6 @@ sidebar_position: 2
 description: Two ways to start a new DocJacket transaction — AI-powered upload-and-extract from a contract PDF, or manual entry.
 ---
 
-import ScreenshotPlaceholder from '@site/src/components/ScreenshotPlaceholder';
-
 <head>
 <script type="application/ld+json">
 {JSON.stringify({
@@ -17,32 +15,32 @@ import ScreenshotPlaceholder from '@site/src/components/ScreenshotPlaceholder';
   "step": [
     {
       "@type": "HowToStep",
-      "name": "Open the New Transaction dialog",
-      "text": "From the Transactions page, click the New Transaction button in the top right.",
+      "name": "Start from Transactions",
+      "text": "From the Transactions page, click New Transaction to open Upload Documents, or use the manual transaction form when you need to enter details yourself.",
       "url": "https://help.docjacket.com/docs/transactions/creating-a-transaction"
     },
     {
       "@type": "HowToStep",
-      "name": "Choose Upload & Extract or Create Manually",
-      "text": "Pick Upload & Extract to let AI read a contract PDF, or Create Manually to enter the details yourself.",
+      "name": "Choose a destination",
+      "text": "In Upload Documents, choose Create New Transaction, Create New Listing, or Add to Existing Transaction.",
       "url": "https://help.docjacket.com/docs/transactions/creating-a-transaction"
     },
     {
       "@type": "HowToStep",
-      "name": "Upload the contract PDF",
-      "text": "If you chose Upload & Extract, drag and drop the contract PDF or click to browse. DocJacket's AI reads through the document and extracts buyer and seller names, property address, purchase price, earnest money, loan details, key dates, and contingency periods.",
+      "name": "Upload documents",
+      "text": "Drop PDFs, JPGs, or PNGs into the upload area. For a single multi-page PDF, Smart Split may appear before extraction starts.",
       "url": "https://help.docjacket.com/docs/transactions/creating-a-transaction#upload--extract-recommended"
     },
     {
       "@type": "HowToStep",
       "name": "Review and edit the extracted data",
-      "text": "Give the extracted fields a once-over. Edit anything that needs correcting — handwritten contracts and unusual formatting may need a few tweaks.",
+      "text": "Review extracted fields, contacts, key dates, citations, confidence, and warnings before saving.",
       "url": "https://help.docjacket.com/docs/transactions/creating-a-transaction#upload--extract-recommended"
     },
     {
       "@type": "HowToStep",
       "name": "Create the transaction",
-      "text": "Click Create Transaction. DocJacket lands you on the Transaction Overview where you can add contacts, apply a checklist, and upload more documents.",
+      "text": "Click Create Transaction when the extracted data is correct. DocJacket saves the transaction and opens it for review.",
       "url": "https://help.docjacket.com/docs/transactions/creating-a-transaction#what-happens-next"
     }
   ]
@@ -52,26 +50,30 @@ import ScreenshotPlaceholder from '@site/src/components/ScreenshotPlaceholder';
 
 # Creating a Transaction
 
-There are two ways to create a new transaction in DocJacket. Both start from the **Transactions** page — click the **New Transaction** button in the top right.
+There are two main ways to create a transaction in DocJacket: upload documents and extract the details, or use the manual transaction form.
 
 ## Upload & Extract (recommended)
 
-The fastest way to get a deal set up. Upload your contract PDF and let AI do the data entry.
+The fastest way to get a deal set up is the **Upload Documents** flow.
 
-1. Click **New Transaction** > **Upload & Extract**
-2. Drag and drop your contract PDF (or click to browse)
-3. DocJacket's AI reads through the document and extracts:
+1. From **Transactions**, click **New Transaction**
+2. Choose **Create New Transaction**
+3. Choose the transaction side
+4. Drop in PDFs, JPGs, or PNGs
+5. Click **Upload & Continue**
+6. If **Smart Split** appears, review the detected documents and continue
+7. Open the progress page while extraction runs
+8. Review the extracted data and save the transaction
+
+DocJacket can extract:
+
    - Buyer and seller names
    - Property address
    - Purchase price, earnest money, and loan details
    - Contract date, closing date, and key deadlines
    - Contingency periods
-4. Review the extracted data — you can edit anything that needs correcting
-5. Click **Create Transaction**
 
-The AI is good, but always give the extracted data a quick once-over. Handwritten contracts or unusual formatting might need a few manual tweaks.
-
-<ScreenshotPlaceholder>AI extraction review screen</ScreenshotPlaceholder>
+Always review the extracted data before saving. Nothing is final until you complete the review-and-save step.
 
 :::tip
 Got a contract with multiple documents bundled into one PDF? DocJacket's AI can detect and split them automatically. See [Smart Document Splitting](/docs/ai-features/smart-document-splitting) for details.
@@ -81,20 +83,19 @@ Got a contract with multiple documents bundled into one PDF? DocJacket's AI can 
 
 If you don't have a contract yet or prefer to enter details yourself:
 
-1. Click **New Transaction** > **Create Manually**
-2. Enter the property address
-3. Select the transaction type and side (buy, sell, or both)
-4. Add the purchase price and key dates
-5. Click **Create**
+1. Open the manual transaction form
+2. Enter the required property address
+3. Choose status, type, and side
+4. Add workflow details such as waiting-on status, assignee, or FUB account if needed
+5. Add key dates, financials, parties, agents, and other details you already know
+6. Click **Create Transaction**
 
 You can fill in the rest later — contacts, documents, key dates, and tasks can all be added from the transaction overview.
-
-<ScreenshotPlaceholder>manual creation form</ScreenshotPlaceholder>
 
 ## What happens next
 
 Once your transaction is created, you'll land on the [Transaction Overview](./transaction-overview.mdx). From there, you'll typically want to:
 
 1. [Add contacts](/docs/contacts) — buyers, sellers, agents, title company, lender
-2. [Apply a checklist](/docs/calendar/timeline-templates) — sets up your key dates, tasks, and deadline rules
+2. [Apply a checklist](/docs/templates/task-templates) — sets up reusable task work for the deal
 3. [Upload documents](/docs/documents/uploading-documents) — contracts, disclosures, and other files

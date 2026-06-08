@@ -14,17 +14,19 @@ Some tasks are better broken into smaller steps. Subtasks let you do that while 
 ## Adding subtasks
 
 1. Click a task to open its detail drawer
-2. Scroll to the **Subtasks** section
-3. Type a subtask name and press Enter
-4. Repeat for each step
+2. Open the **Subtasks** section
+3. Click **Add**
+4. Enter the subtask name
+5. Click **Add Subtask**
+
+If the parent task already has subtasks, the section opens with the progress count visible.
 
 ## Tracking progress
 
 - Check off subtasks directly in the drawer as you complete them
-- The parent task tracks progress automatically — you'll see "2 of 5 complete" style indicators
-- In the main task list, click the expand arrow next to a task to see its subtasks inline
-
-task with subtasks expanded in the list
+- The parent task tracks progress automatically with counts like "2/5"
+- A checked subtask is shown with completed styling
+- Subtasks can have their own due dates when they are created from templates or automation
 
 ## Tips
 

@@ -1,7 +1,7 @@
 ---
 sidebar_label: Transaction Reports
 sidebar_position: 2
-description: Generate professional PDF status reports for clients and agents — live data pulled from any DocJacket transaction.
+description: Generate, send, and schedule transaction reports in DocJacket — with SitRep templates, section toggles, PDFs, checklists, and commission statements.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/reports/transaction-reports -->
@@ -9,31 +9,54 @@ description: Generate professional PDF status reports for clients and agents —
 
 # Transaction Reports
 
-Generate professional status reports to share with clients, agents, or your team. Reports pull live data from the transaction and can be exported as PDFs.
+Use a transaction's **Reports** tab to create client-ready summaries from live transaction data. Reports can include property details, contacts, tasks, documents, key dates, custom notes, and other sections defined by your SitRep templates.
 
-## Generating a report
+## Open the Reports tab
 
 1. Open a transaction
-2. Go to the **Reports** section
-3. See a live preview of the report
+2. Click **Reports**
+3. Review the transaction summary and selected report sections
 
-report preview
+The page loads the current property details, participants, task counts, document counts, and key-date rows so you can confirm the report content before sending or downloading.
 
-## Customizing sections
+## Choose a report template
 
-Toggle which sections to include in the report:
+Use **Report Template** to choose a saved SitRep template, or use **Custom** to manage the section choices manually.
 
-- **Key dates** — Timeline progress and upcoming deadlines
-- **Tasks** — Task completion status
-- **Documents** — Document checklist status
-- **Contacts** — Key parties involved
-- **Financials** — Purchase price, earnest money, loan details
+When you choose a template, DocJacket applies that template's saved sections. You can still override the section toggles on the transaction report before generating or sending.
 
-The preview updates in real time as you toggle sections on and off, so you can see exactly what the final report will look like before generating the PDF.
+See [SitRep Templates](/docs/templates/sitrep-templates) for template setup.
 
-## Sharing reports
+## Select sections
 
-Once you're happy with the report, you can:
+The **Report Sections** controls decide what goes into the generated report. If the transaction already has a delivery schedule, section changes are saved to that schedule automatically after a short delay. If there is no schedule yet, section changes apply to the current Generate PDF or Send to Client action.
 
-- **Download as PDF** — Save it locally or attach it to an email
-- **Send directly** — Email the report to contacts from within DocJacket
+Use **Custom Notes** for one-off report notes, such as a cover message or client-facing update. Internal transaction notes are separate and come from the transaction overview.
+
+## Generate files
+
+The transaction Reports tab includes these file actions:
+
+- **Generate PDF** — creates the selected transaction summary PDF
+- **Print Checklist** — generates a checklist-style PDF from the transaction tasks
+- **Commission Statement** — generates a commission statement for the transaction
+
+PDF branding uses your organization's report colors and footer text from organization settings.
+
+## Send to clients
+
+Click **Send to Client** to send the selected report sections by email. You can choose transaction contacts with email addresses and add extra email addresses manually.
+
+If Gmail or Outlook is connected, the report email sends from your connected mailbox. Otherwise, DocJacket sends it and BCCs you.
+
+## Schedule delivery
+
+Use **Schedule Delivery** to send recurring SitReps. A schedule includes:
+
+- Daily or weekly frequency
+- Day of week for weekly reports
+- Send time and time zone
+- Report template
+- Recipients from transaction contacts or typed email addresses
+
+You can pause, resume, edit, or delete the schedule from the Delivery Schedule card.

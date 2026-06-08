@@ -14,28 +14,27 @@ Don't want to build your task checklist from scratch? Let AI analyze your transa
 ## How it works
 
 1. Open a transaction and go to the **Tasks** tab
-2. Click the **AI Generate** button
-3. AI looks at your transaction details — property type, state, parties involved, timeline — and suggests a task checklist
-4. Review the suggestions — each task shows a name, priority, and estimated due date
-5. Select the tasks you want to keep (or select all)
-6. Click **Add Tasks**
+2. Click **Generate**
+3. DocJacket looks at the transaction details and existing tasks
+4. Review the **Suggested Tasks** panel
+5. Select the suggestions you want to keep, or use **Select All**
+6. Click **Add Selected**
 
-That's it. The tasks appear in your list with priorities and due dates already set.
-
-AI task generation suggestions with checkboxes
+The selected tasks are added to the transaction with their suggested name, description, and priority.
 
 ## What makes the suggestions good
 
-AI doesn't just generate a generic checklist. It considers:
+The generator uses:
 
 - **Transaction type** — A residential purchase has different tasks than a commercial lease
-- **State-specific requirements** — Different states have different disclosure and compliance requirements
+- **Transaction side** — Buyer-side and seller-side workflows differ
+- **Financing type** — Financing can change the work that needs to happen
+- **Contract and closing dates** — When available, these provide timeline context
 - **Your existing tasks** — AI avoids suggesting tasks you've already added
-- **Timeline** — Due dates are calculated based on your contract and closing dates
 
 ## AI vs. Templates
 
-Both AI generation and [checklists](/docs/tasks/task-templates) can populate your task list. Here's when to use each:
+Both AI generation and [checklists](/docs/templates/task-templates) can populate your task list. Here's when to use each:
 
 | Use AI generation when... | Use templates when... |
 |--------------------------|----------------------|

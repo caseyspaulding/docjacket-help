@@ -11,13 +11,13 @@ description: Drop a contract PDF in your AI chat — DocJacket reads the parties
 
 Drop a contract PDF in chat — extract → review → transaction created in under a minute
 
-DocJacket can read a contract PDF, pull out the parties, addresses, key dates, and financials, and create the matching transaction — all from inside your AI assistant chat. No copying fields out of the PDF by hand, no creating the transaction in the web app, no flipping between windows.
+DocJacket can read a contract PDF, pull out the parties, addresses, key dates, and financials, and create the matching transaction.
 
-This is the same extraction engine that powers the in-app **[Contract Extraction](/docs/ai-features/contract-extraction)** wizard, exposed through MCP so it works from Claude / Codex / ChatGPT.
+The standard workflow is the in-app **[Contract Extraction](/docs/ai-features/contract-extraction)** wizard. External AI contract intake uses the same extraction engine, but it requires AI Access action tools to be enabled for your account. If your connection is read-only, use the in-app wizard to upload, review, and save the transaction.
 
 ## What you can say
 
-Plain English works. The assistant picks the right tools based on what you ask:
+When action tools are enabled, plain English works. The assistant picks the right tools based on what you ask:
 
 > "I just got this contract. Set up the deal." [paste or drop the PDF]
 > "Open this purchase agreement and start a transaction."
@@ -55,14 +55,12 @@ The assistant walks the workflow for you. Behind the scenes:
 
    You can correct any field inline ("change the closing to June 18"), ask follow-ups ("is Mike Park already in my contacts?"), or just confirm.
 
-5. **Apply.** On your "yes," the assistant calls `apply_extraction`, which atomically:
+5. **Apply.** On your "yes," and only when your AI Access connection has action-tool access, the assistant calls `apply_extraction`, which:
    - Creates the transaction with type detected (purchase / listing / lease) and side (buy / sell)
    - Adds every extracted party as a transaction contact with their role
    - Sets key dates on the transaction timeline (closing, inspection, financing, appraisal, EMD due)
-   - Applies the default checklist for the transaction type + state
-   - Schedules reminders for major deadlines
 
-6. **Done.** The assistant comes back with the transaction URL. You can keep going in chat (`get_missing_documents`, `get_next_required_actions`, `send_client_update`, etc.) or pick up in the DocJacket web app — either way the deal is fully set up.
+6. **Done.** The assistant comes back with the transaction URL. You can keep going in chat with read tools such as `get_next_required_actions`, or pick up in the DocJacket web app.
 
 ## What gets extracted
 
@@ -83,8 +81,7 @@ When you confirm `apply_extraction`:
 - ✅ **Transaction** in DocJacket with type + side detected
 - ✅ **All parties added** as transaction contacts (existing contacts are matched by email when possible to avoid duplicates)
 - ✅ **Key dates** populated on the timeline — inspection, financing, appraisal, closing, EMD due
-- ✅ **Default checklist applied** based on transaction type + state (e.g. CA Purchase checklist for a CAR contract in California)
-- ✅ **Reminders** scheduled for the major deadlines so you don't miss them
+- ✅ **Key dates available for timeline/checklist workflows** after the transaction is created
 
 Everything is editable in the DocJacket web app afterward.
 

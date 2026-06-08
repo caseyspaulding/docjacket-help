@@ -22,10 +22,24 @@ The slug is used for office-specific intake URLs.
 
 Inside an office, you can manage:
 
-- **Approved forms** — Form templates used for signature requests
+- **Approved forms** — Office-owned blank PDF templates used for reusable e-signature packets
 - **Members** — Users associated with that office
 - **Branding** — Office-specific logo and brand styling
 - **Defaults & compliance** — Signing, reminder, and compliance defaults
+
+## Approved forms
+
+The **Approved forms** tab is where an office manages its reusable signing library.
+
+Use it to:
+
+- Upload blank PDF form templates
+- Open the field editor
+- Save drafts and publish locked versions
+- Duplicate similar forms
+- Archive forms that should no longer be used for new Signature Requests
+
+See [Approved Form Templates](../documents/approved-form-templates.md) for the full template workflow.
 
 ## States
 

@@ -22,33 +22,30 @@ Contingencies are conditions that must be met for the deal to close. Common exam
 
 ### Tracking contingency status
 
-Each contingency in DocJacket has one of three statuses:
+Each configured contingency in DocJacket has a status:
 
 - **Active** — The contingency is still in effect
 - **Satisfied** — The condition has been met
 - **Waived** — The buyer has chosen to waive the contingency
+- **Not applicable** — The contingency does not apply to this deal
 
-As the deal progresses, update each contingency's status so everyone knows where things stand. This is especially helpful when you're coordinating between multiple parties.
+As the deal progresses, use the status buttons in the **Contingencies** section to update each contingency. This is especially helpful when you're coordinating between multiple parties.
 
-contingencies section showing different statuses
+### Configuring contingencies
 
-### Adding contingencies
-
-From the transaction overview, scroll to the **Contingencies** section and click **Add Contingency**. Enter the name, type, and deadline. If you used AI extraction, DocJacket may have already pulled contingencies from the contract.
+The transaction overview shows the contingency types configured for your organization. If the section says no contingencies are configured, add or restore them in **Settings > Contingencies**.
 
 ## Repairs
 
-After inspections, there are often repair requests. DocJacket lets you track each repair item and its resolution.
+After inspections, there are often repair requests. DocJacket lets you track common repair categories and their resolution from the transaction overview.
 
-### Adding repair items
+### Tracking repair items
 
-1. In the **Repairs** section on the overview, click **Add Repair**
-2. Enter a description of the repair needed
-3. Set a status — Requested, Approved, In Progress, or Completed
-4. Optionally add estimated cost and notes
+1. Open the **Repairs** section on the overview
+2. Use the status buttons for each repair category
+3. Choose **N/A**, **Pending**, or **Resolved**
+4. Click a repair item name to add notes
 
 ### Tracking resolution
 
-Update repair statuses as the seller addresses each item. This gives you a clear record of what was requested, what was approved, and what's been completed — helpful if there are any disputes later.
-
-repairs section showing items with different statuses
+Update repair statuses as the seller addresses each item. This gives you a clear record of what still needs attention and what has been resolved — helpful if there are any disputes later.

@@ -2,7 +2,7 @@
 title: Documents
 sidebar_label: Overview
 sidebar_position: 1
-description: Upload, organize, and manage transaction documents in DocJacket — with AI categorization, audit mode, and DocDrop.
+description: Upload, organize, review, share, and track transaction documents in DocJacket — with required-document checklists, Drive import/export, DocDrop, and e-sign workflows.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/documents -->
@@ -10,27 +10,33 @@ description: Upload, organize, and manage transaction documents in DocJacket —
 
 # Documents
 
-How to upload, organize, and manage documents in DocJacket
-
 Every real estate transaction generates a mountain of paperwork — contracts, disclosures, amendments, inspection reports, and more. DocJacket keeps it all organized in one place.
 
-From the **Documents** tab in any transaction, you can:
+Use the top-level **Documents** page when you need to search across all transaction documents. Use a transaction's **Documents** tab when you need to manage files for one deal.
 
-- **Upload files** — Drag and drop or browse to upload. Documents are categorized automatically.
-- **Track completeness** — Toggle audit mode to see which required documents are still missing.
-- **Extract data with AI** — Let AI read your documents and pull out key transaction details.
-- **Search and filter** — Find any document by name or category, even in large transactions.
-- **Connect to Google Drive** — Import and export documents directly.
+From a transaction's **Documents** tab, you can:
 
-documents tab showing list of uploaded files
+- **Upload files** — Choose a category, then upload a PDF, Word file, or image.
+- **Track completeness** — Use **Documents Needed** to add requirements, apply document templates, link uploads, and track received/overdue/blocking items.
+- **Review received documents** — Search, filter, reorder, rename, change status, download, share, delete, and mark documents as sent.
+- **Run document checks** — Use **AI Check** for risk scans and contract signature/initial checks.
+- **Extract data** — Use **Extract Data** to run extraction on new documents for an existing transaction.
+- **Control portal visibility** — Show or hide documents on the Agent and Client Portals, and optionally restrict visibility to selected portal contacts.
+- **Connect to Google Drive** — Import from Drive, export selected/all documents, and link or change the transaction's Drive folder.
+- **Share disclosure packages** — Curate received documents and share them with recipients.
+- **Send for e-signature** — Use the **Forms & signatures** subtab for office-approved form packets and packet tracking.
+
+The transaction tab has two subtabs: **Files** for uploaded documents and **Forms & signatures** for e-sign packet workflows.
 
 ## In this section
 
 - [Uploading Documents](./uploading-documents.mdx) — How to get files into DocJacket
 - [AI Data Extraction](./ai-data-extraction.mdx) — Let AI read your documents
-- [Audit Mode](./audit-mode.mdx) — Track document completeness
+- [Documents Needed](./audit-mode.mdx) — Track required documents and link received files
 - [Signature Requests](./signature-requests.mdx) — Send documents for e-signature and track completion
 - [E-Signatures](./esignatures.md) — Review all signature requests and signing progress
+- [Approved Form Templates](./approved-form-templates.md) — Upload blank PDFs, map fields, and publish office-approved forms
+- [Form Packets](./esignature-form-packets.md) — Send approved form packets and track signer progress
 - [Disclosure Packages](./disclosure-packages.mdx) — Share disclosure packages from a transaction
-- [Google Drive Integration](./google-drive-integration.mdx) — Sync with Drive
+- [Google Drive Integration](./google-drive-integration.mdx) — Import, export, and link Drive folders
 - [DocDrop](./docdrop.mdx) — Let contacts email documents directly into the transaction

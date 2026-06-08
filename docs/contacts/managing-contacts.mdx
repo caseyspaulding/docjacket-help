@@ -4,34 +4,65 @@ sidebar_position: 2
 description: Add, edit, and organize DocJacket contacts — agents, clients, lenders, title companies. Link them to transactions in one click.
 ---
 
-import ScreenshotPlaceholder from '@site/src/components/ScreenshotPlaceholder';
-
 # Managing Contacts
 
 ## Adding a contact
 
-From the **Contacts** page, click **Add Contact** and enter their details:
+From the **Contacts** page, click **New Contact** and enter their details:
 
-- Name, email, phone
-- Company
-- Contact type (agent, lender, client, etc.)
+- First and last name
+- Contact type
+- Organization
+- Primary email and phone, with type labels
+- Additional emails and phone numbers
+- License number, website, and social links
+- Address
+- Tags
 - Notes
 
-You can also create contacts on the fly when adding someone to a transaction — just fill in their info and they're saved to your directory automatically.
+You can also create contacts while adding someone to a transaction. The transaction contact drawer can search existing contacts, filter by organization, or open a quick create dialog.
 
 ## Searching and filtering
 
 - **Search** by name, email, phone, or company
-- **Filter by type** — Narrow down to agents, attorneys, lenders, clients, or any other contact type
-- **Advanced filters** — Filter by transaction count, license status, and more
-- **Customize columns** — Show or hide table columns to display exactly what you need
+- **Filter by type** — Narrow to agents, attorneys, lenders, clients, or any custom contact type
+- **Active only** — Hide inactive contacts from the main list
+- **Advanced filters** — Filter by transaction usage, license status, and person/organization kind
+- **Saved views** — Save reusable contact grid configurations
+- **Columns** — Show, hide, reorder, resize, and reset table columns
+
+The Contacts grid also supports inline editing for common fields such as name, email, phone, company, license, notes, type, tags, and active status.
+
+## Bulk actions
+
+Select contacts from the grid to:
+
+- Export selected contacts
+- Delete selected contacts
+- Merge two selected contacts
+
+Deleting a contact marks it inactive. You can view inactive contacts by turning off **Active only**.
 
 ## Importing contacts
 
-Have an existing contact list? Click **Add Contact > Import from CSV** to bulk-import contacts. Map your CSV columns to DocJacket fields and import.
+Click **Import** from the Contacts page to import from:
+
+- **CSV Upload** — Upload a CSV, map columns to contact fields, preview the import, choose duplicate handling, and run the import
+- **Google Contacts** — Connect Google Contacts, fetch contacts, select the rows you want, and import them
+
+The CSV importer includes a downloadable template, recent import history, duplicate preview, import tags, and cancellation while an import is running.
 
 ## Exporting contacts
 
-Click **Export** to download your contacts as a CSV file — useful for backup, reporting, or moving data between systems.
+Click **Export** to download the current contact list as a CSV file. If contacts are selected, use **Export Selected** to export only those rows.
 
-<ScreenshotPlaceholder>contacts page with search and filter options</ScreenshotPlaceholder>
+## Contact detail page
+
+Open a contact to manage their full profile. From the detail page you can:
+
+- Change the profile photo
+- Edit name, organization, type, tags, emails, phones, address, and notes inline
+- Mark primary email and phone rows
+- Record SMS consent for phone numbers
+- Review related transactions and activity
+- Manage portal status for agent-style contacts

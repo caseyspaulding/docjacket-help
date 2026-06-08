@@ -9,13 +9,13 @@ description: Track key dates, deadlines, tasks, reminders, and calendar events a
 
 # Calendar & Deadlines
 
-DocJacket gives you two ways to manage dates: **timelines** inside each transaction, and a **calendar** that shows everything across all your deals.
+DocJacket gives you two ways to manage dates: the **key-date timeline** inside each transaction, and the **Calendar** page that shows deadlines across your deals.
 
-Never miss a deadline again — key dates, tasks, reminders, and custom events all appear in one place.
+Use the Calendar to see closings, key dates, task due dates, and custom events in one place.
 
 ## In this section
 
 - [Checklists & Key Dates](./timeline-templates.mdx) — Pre-built workflows with key dates, tasks, and automations
 - [Key Dates List](./key-dates.md) — See upcoming and overdue key dates across every transaction
 - [Anchor Dates](./anchor-dates.md) — How one date drives all the others
-- [Calendar View](./calendar-view.mdx) — See all deadlines across all transactions
+- [Calendar View](./calendar-view.mdx) — See closings, key dates, tasks, and custom events across your transactions

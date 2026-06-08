@@ -1,43 +1,62 @@
 ---
 sidebar_label: Email Templates
 sidebar_position: 4
-description: Reusable email templates with smart fields that auto-fill with DocJacket transaction data — write your common emails once and reuse them.
+description: Use reusable email templates with smart fields that auto-fill with DocJacket transaction data.
 ---
 
 # Email Templates
 
-Email templates let you create reusable email content with smart fields that auto-fill with transaction data. Instead of typing the same emails for every deal, write it once and reuse it.
+Email templates let you reuse common email content while composing transaction messages. Templates can fill the subject, body, recipients, smart fields, and configured document attachments.
 
 ## Using a template
 
 When composing an email in a transaction:
 
-1. Click the **Template** button in the compose window
-2. Browse or search for the template you want
-3. Select it — the subject and body auto-fill with the template content
-4. Smart fields (like buyer name, property address, closing date) are replaced with actual transaction data
-5. Review and edit if needed, then send
+1. Open the transaction message composer
+2. Click the template picker
+3. Browse or search for the template you want
+4. Select it
+5. Review the filled subject, body, recipients, and attachments
+6. Fix any missing values or unresolved smart fields
+7. Send the email
+
+Smart fields are replaced with the transaction's current data when the template renders.
 
 ## Creating a template
 
-1. Go to **Templates** in the sidebar
-2. Navigate to **Email Templates**
+1. Go to **Templates > Email Templates**
+2. Open **My Templates**
 3. Click **New Template**
-4. Write your email content using smart fields for dynamic data
-5. Save the template
+4. Add template settings such as category, side, audience, stage, and tone
+5. Write the subject and body
+6. Insert smart fields or smart-field groups
+7. Configure recipient roles or recipient rules if needed
+8. Select document categories to auto-attach if needed
+9. Preview, send a test email, and save
+
+Shared templates are read-only. Copy a shared template into **My Templates** before customizing it.
 
 ## Smart fields
 
-Smart fields are placeholders that get replaced with real data when the template is used. Common examples:
+Smart fields use double-brace syntax:
 
-- `{BuyerName}` — Buyer's full name
-- `{SellerName}` — Seller's full name
-- `{PropertyAddress}` — The property address
-- `{ClosingDate}` — The closing date
-- `{AgentName}` — The agent's name
+- `{{buyer_name}}`
+- `{{seller_name}}`
+- `{{property_address}}`
+- `{{closing_date}}`
+- `{{agent_name}}`
+
+Smart fields work in both the subject and body. See [Smart Fields](../templates/smart-fields.md) for the full library, groups, and conditional content.
+
+## Missing values
+
+If a valid smart field does not have data on the transaction, DocJacket can show a missing-variable warning. Update the transaction data or edit the email before sending.
+
+If a placeholder is not recognized, fix the template syntax before using it with clients.
 
 ## Tips
 
 - Create templates for common emails: introduction to title company, inspection scheduling, closing reminders, status updates
 - Link email templates to [tasks](../tasks/email-automation.mdx) for automated sending
-- Templates can include attachments and formatting
+- Use Draft status while testing a new template
+- Send a test email before activating templates with conditions or auto-attached documents

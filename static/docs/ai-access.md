@@ -25,25 +25,24 @@ The assistant calls into DocJacket, gets a grounded answer from your real book o
 - **Per-user consent.** Each user on your DocJacket account authorizes their own assistant. There's no shared admin token that exposes everyone's data.
 - **Revocable from settings.** **DocJacket → Settings → AI Access** lists every assistant you've connected. Revoke any of them with one click — the next request from that client returns "unauthorized."
 - **Audited.** Every tool call goes through DocJacket's audit log: which user, which assistant, which tool, what arguments, what result. You can see exactly what an assistant has been doing on your behalf.
-- **Chat is the approval gate.** Read tools run immediately. Write tools (send, create, update, apply) execute only after you confirm in the assistant's chat — there is no separate DocJacket "draft queue" or "pending approvals" tray. The conversation already gates it; DocJacket trusts that and executes when called.
+- **Chat is the approval gate for future writes.** Current AI Access is read-first. Draft and action tools are rolling out behind per-tool consent; when enabled, each write executes only after you confirm in the assistant's chat.
 
 ## What's connected today
 
-DocJacket's MCP server exposes **47 tools** to every connected assistant across these workflow categories:
+The current customer-facing AI Access surface is read-first. Connected assistants can use these DocJacket tools today:
 
-- **Find** — `search_transactions`, `find_transaction_by_property`, `find_contact_by_email`, `search_contacts`, `list_active_transactions`
-- **Read deal state** — `get_transaction`, `get_key_dates`, `get_upcoming_key_dates`, `get_missing_documents`, `list_open_contingencies`, `get_open_tasks`, `get_contacts`, `get_checklist_status`
-- **Triage with judgment** — `get_next_required_actions` (the flagship — bundled overdue-first ranking with rationales)
-- **Send** — `send_agent_followup`, `send_client_update`, `send_document_request`, `send_email_to_agent` (all execute via your connected Gmail / Outlook)
-- **Create / update** — `create_contact`, `create_tasks`, `create_reminder`, `update_key_date`, `add_key_dates_batch`, `add_contact_to_transaction`, `apply_checklist`, `complete_task`, `log_activity`, `save_status_summary`
-- **Contract intake** — `list_documents`, `extract_existing_document` (canonical), `request_upload_url`, `kick_off_extraction` (Claude.ai paid + code exec), `upload_document_for_extraction` (small-file fallback), `get_extraction_results`, `apply_extraction`, `classify_document`, `get_intake_status`
-- **Forms** — `list_form_links`, `list_form_submissions`, `get_form_definition`, `get_form_submission`
-- **Templates** — `list_email_templates`, `get_email_template`, `render_email_template`, `get_merge_fields`, `list_checklist_templates`
-- **Diagnostics** — `mcp_catalog` (live tool inventory), `mcp_health_check`, `get_portal_link`
+- `search_transactions` — Find deals by address, buyer/seller, or MLS number
+- `get_transaction` — Read the full state of one deal, including key dates inline
+- `get_key_dates` — Read all deadlines on one transaction
+- `get_upcoming_key_dates` — Read organization-wide deadlines with a default 14-day horizon
+- `get_open_tasks` — Read open tasks across the organization or scoped to one transaction
+- `get_contacts` — Read contacts in your organization by type or query
+- `list_open_contingencies` — Read open contingencies on one transaction
+- `get_next_required_actions` — Answer "what should I do next?" with overdue and upcoming work pre-ranked
 
-Tool count grows over time. **Ask the assistant to call `mcp_catalog`** to see the live inventory at any time — it returns every tool with description, scope, and example call. See the **[Tool Catalog reference](/docs/ai-access/tool-catalog)** for the exact response shape and what each field means.
+Drafting and write tools, such as sending emails, creating tasks, updating key dates, and applying extraction results, are rolling out behind per-tool consent. If your account has access to additional tools, **ask the assistant to call `mcp_catalog`** to see the live inventory for your token.
 
-AI Access settings page showing connected clients + tool inventory
+Every connected client and tool call appears in **Settings > AI Access** and **Settings > AI Access > Activity log**.
 
 ## Get started
 

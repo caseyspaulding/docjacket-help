@@ -11,7 +11,7 @@ description: Review AI extraction jobs, finish saving completed uploads, monitor
 
 The **AI Extractions** page lists extraction jobs created from uploaded documents.
 
-Use it when a document was scanned but the transaction, listing, or update has not been saved yet.
+Use it when a document was scanned but the transaction, listing, or update has not been saved yet, or when you need to inspect extraction history.
 
 ## Save states
 
@@ -38,11 +38,15 @@ Review the extracted fields, correct anything that is wrong, then choose the fin
 
 Nothing is final until you complete the review and save step.
 
+Pending uploads can also appear in the Review queue drawer and on the dashboard. Those cards take you back to the same review-and-save workflow. Use **Discard** only when the upload should stop appearing as unfinished work.
+
 ## Progress pages
 
 For pending or processing jobs, open **Progress** to see where the extraction is in the workflow.
 
 For multi-document uploads, group progress shows each document and the overall extraction progress. When the group is complete, review the merged results before applying them.
+
+Smart Split uploads may create a group from one original packet. Review the merged results before creating or updating the transaction.
 
 ## Review history
 

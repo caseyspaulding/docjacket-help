@@ -1,44 +1,55 @@
 ---
-sidebar_label: Inbox
+sidebar_label: Transaction Messages
 sidebar_position: 2
-description: DocJacket's unified inbox — SMS, portal messages, emails, form submissions, and notes organized by contact and transaction.
+description: Use a transaction's Messages tab to manage email, scheduled email, SMS, portal conversations, and internal notes.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/messages/inbox -->
 <!-- Source: docs/messages/inbox.mdx -->
 
-# Inbox
+# Transaction Messages
 
-The Inbox is your unified communication center. All your conversations live here — SMS, portal messages, emails, form submissions, and notes — organized by contact.
+Open a transaction and click **Messages** to manage communication for that deal. This workspace is organized into four tabs: **Email**, **Scheduled**, **SMS**, and **Notes**.
 
-inbox showing conversation threads
+The sidebar **Messages** page points you back to transactions. Message history is intentionally handled inside each transaction so emails, texts, portal replies, and notes stay attached to the correct deal.
 
-## Your intake email
+## Email
 
-Every organization gets a unique intake email address, shown at the top of the Inbox. Forward any transaction-related email to this address and it appears in your inbox automatically.
+The **Email** tab is a split-pane inbox for the current transaction. Use it to:
 
-Share this address with agents, lenders, and vendors so everything lands in one place. Click the copy button to grab it.
+- Filter messages by **Inbox**, **Unread**, **Sent**, **Drafts**, **Auto**, or **Archived**
+- Search transaction emails by subject, recipient, or content
+- Open an email to reply, reply all, forward, star, mark read or unread, archive, or delete
+- Select multiple messages and bulk mark read, archive, or delete
+- Review delivery status and provider message IDs when available
+- Approve or dismiss suggested actions shown on a message
 
-## Filtering conversations
+If no Gmail or Outlook account is connected, DocJacket shows a connect prompt before you start sending email.
 
-Use the quick filters to focus on what matters:
+## Scheduled
 
-- **All** — Every conversation
-- **Unread** — Messages you haven't read yet
-- **Unassigned** — Items that need to be linked to a transaction (shown under "Needs Routing")
+The **Scheduled** tab shows emails queued for the transaction. It combines:
 
-## Conversation threads
+- Template or task-driven scheduled emails
+- One-off emails created from the Email tab's **Send later** option
 
-Threads are grouped by contact. Each thread shows a channel badge so you know whether it's SMS, Portal, Email, Form, or Note.
+Rows show the subject, recipients, send time, and whether the item is pending, held, or failed. Depending on the source, you can edit, cancel, or send now. Sent items move back into the **Email** tab.
 
-Click a thread to read the full conversation and reply. SMS and Portal threads have a compose box at the bottom. Email threads show the full message with attachments.
+## SMS and Portal
 
-## Context panel
+The **SMS** tab shows direct conversations for the transaction. Threads can include SMS, portal, or email-channel badges depending on how the contact is communicating.
 
-The right sidebar shows the linked transaction, contact details, and AI routing suggestions. If a conversation hasn't been assigned to a transaction yet, you can assign it from here.
+From this tab you can:
 
-context panel showing linked transaction
+- Start a new message to a transaction contact
+- Send a message to multiple contacts
+- Reply in an existing thread
+- Attach a file
+- Use saved SMS templates
+- See unread counts, typing indicators, delivery status, and AI action cards when available
 
-## Searching
+If your organization does not have a dedicated SMS number, DocJacket shows setup guidance and an option to send from the shared DocJacket number.
 
-Search across all conversations by contact name, phone number, email address, or message content to find any conversation quickly.
+## Notes
+
+The **Notes** tab is for internal transaction notes. Add rich-text notes, reply to notes, pin important notes, and edit or delete notes you created.
