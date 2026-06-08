@@ -9,7 +9,7 @@
     "mirror-md": "node scripts/mirror-docs-md.mjs",
     "prebuild": "node scripts/regen-llms-full.mjs && node scripts/mirror-docs-md.mjs",
     "build": "docusaurus build",
-    "postbuild": "node scripts/submit-indexnow.mjs",
+    "postbuild": "node scripts/write-build-info.mjs && node scripts/submit-indexnow.mjs",
     "indexnow": "node scripts/submit-indexnow.mjs --force",
     "swizzle": "docusaurus swizzle",
     "deploy": "npm run build && wrangler deploy",

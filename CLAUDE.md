@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-DocJacket Help Center — a Docusaurus 3.8 static documentation site (TypeScript, React 19, MDX) for DocJacket, an AI-powered real estate transaction coordination platform. Hosted on Azure Static Web Apps at help.docjacket.com.
+DocJacket Help Center — a Docusaurus 3.8 static documentation site (TypeScript, React 19, MDX) for DocJacket, an AI-powered real estate transaction coordination platform. Hosted on Cloudflare at help.docjacket.com.
 
 ## Commands
 
@@ -13,6 +13,7 @@ DocJacket Help Center — a Docusaurus 3.8 static documentation site (TypeScript
 - `npm run serve` — serve production build locally
 - `npm run typecheck` — TypeScript type checking (runs `tsc`)
 - `npm run clear` — clear Docusaurus cache (`.docusaurus/`)
+- `npm run deploy` — production build and `wrangler deploy`
 
 ## Architecture
 
@@ -34,9 +35,11 @@ Getting Started, Transactions, Documents, Contacts, Calendar & Deadlines, Tasks,
 - Sidebar is auto-generated from filesystem; use `_category_.json` to control ordering
 - Blog is disabled; this is a help center, not a content site
 - Colors match the DocJacket app design system, not the marketing site
-- Deploys automatically via GitHub Actions on push to `main`
+- Production hosting is Cloudflare Workers/static assets via `wrangler.jsonc`
+- GitHub Actions validate the site; they do not deploy unless a workflow explicitly runs `wrangler deploy`
+- See `DEPLOYMENT.md` before answering whether a docs change is deployed
 
 ## Related Repos
 
-- App: `/home/casey/projects/docjacket-v3`
-- Marketing site: `/home/casey/projects/docjacket-marketing`
+- App/API/dashboard/sign-in: `/Users/casey/RiderProjects/docjacket-v3`
+- Marketing site: `/Users/casey/RiderProjects/docjacket-marketing`
