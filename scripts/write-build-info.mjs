@@ -24,11 +24,13 @@ function fromGit(command) {
 }
 
 const commit =
+  process.env.WORKERS_CI_COMMIT_SHA ||
   process.env.CF_PAGES_COMMIT_SHA ||
   process.env.GITHUB_SHA ||
   fromGit('git rev-parse HEAD');
 
 const branch =
+  process.env.WORKERS_CI_BRANCH ||
   process.env.CF_PAGES_BRANCH ||
   process.env.GITHUB_REF_NAME ||
   fromGit('git branch --show-current');
@@ -42,6 +44,7 @@ const info = {
   commit,
   shortCommit: commit ? commit.slice(0, 12) : null,
   branch,
+  buildId: process.env.WORKERS_CI_BUILD_UUID || null,
   builtAt: new Date().toISOString(),
 };
 
