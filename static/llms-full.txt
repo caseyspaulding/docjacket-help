@@ -2556,7 +2556,7 @@ Front Door is your public-facing DocJacket page. Use it to show who you are, wha
 
 Go to **Front Door** from the app sidebar to manage the page.
 
-Front Door admin page with preview and sections
+![Front Door admin page with section controls and live preview](/img/front-door/front-door-admin.png)
 
 ## What you can manage
 
@@ -4138,7 +4138,7 @@ The Workflows page shows:
 - **Execution table** — Workflow type, status, progress, trigger source, and start time
 - **Execution details** — Step-by-step progress for a specific run
 
-workflow monitoring dashboard
+![Workflow executions dashboard](/img/workflows/workflow-executions.png)
 
 ## Approval steps
 
@@ -5618,6 +5618,8 @@ Open a transaction and go to **Portal**. The page is split into a management are
 - **Recent activity** — Review recent visitor activity when tracking data is available.
 - **Preview** — Select a link and view the portal in mobile or desktop mode before sending it.
 
+![Transaction Portal tab with link management, branding, and live preview](/img/client-portal/transaction-portal-tab.png)
+
 ## Branding
 
 The branding panel uses your organization defaults unless you set a transaction-specific override:
@@ -5627,8 +5629,6 @@ The branding panel uses your organization defaults unless you set a transaction-
 - **Accent color** — Used with the primary color in the hero area and banner styling.
 - **Banner text** — Adds a short colored message bar above the portal header.
 - **Reset** — Remove transaction overrides and return to organization defaults.
-
-portal branding settings
 
 ## Live preview
 
@@ -5733,6 +5733,8 @@ agent portal showing transaction list
 
 From the agent hub, an agent can open a transaction card to see the full branded portal view for that deal: key dates, shared documents, visible tasks, contacts, service providers, print/download actions, and the live calendar subscription.
 
+![Agent portal transaction overview](/img/client-portal/agent-portal-overview.png)
+
 Agent transaction portals can show more deal detail than client portals, including:
 
 - Agent-facing financial fields such as loan amount, earnest money, down payment, seller concession, and financing type when available
@@ -5740,6 +5742,10 @@ Agent transaction portals can show more deal detail than client portals, includi
 - Service-provider information that has been exposed to the portal
 - A recent activity card when activity is available
 - The same print, calendar, and branded one-page PDF tools clients can use
+
+Visible tasks appear in the portal with progress, priority, and due-date context so agents can quickly see what still needs attention.
+
+![Agent portal tasks card](/img/client-portal/agent-portal-tasks-card.png)
 
 ## Agent vs. client portal
 
@@ -5771,7 +5777,7 @@ DocJacket generates a unique URL for that recipient. The Portal tab also shows a
 
 You can also create a portal link directly from the transaction **Contacts** tab. On a contact card, click the portal-link action. DocJacket creates the link, copies it to your clipboard, and marks that contact as having an active portal link.
 
-create portal link dialog
+![Create Portal Link drawer](/img/client-portal/create-portal-link-dialog.png)
 
 ## What the link opens
 
@@ -5810,7 +5816,7 @@ From the transaction **Portal** tab, you can see active and inactive links for t
 - **Send by email** — Open a portal-link email composer from the link detail drawer
 - **Review access details** — See last access time, last IP when available, calendar feed status, and revocation information
 
-portal link management showing active links with stats
+![Portal link management with active-link stats](/img/client-portal/portal-link-management.png)
 
 ## Tips
 
@@ -6052,7 +6058,7 @@ Webhooks let you send real-time event notifications from DocJacket to external s
 
 DocJacket will send a POST request to your URL every time a subscribed event occurs.
 
-webhook configuration page
+![Connections page for webhook setup](/img/integrations/webhooks-connections.png)
 
 ## Monitoring
 

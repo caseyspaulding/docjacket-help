@@ -25,7 +25,7 @@ The Workflows page shows:
 - **Execution table** — Workflow type, status, progress, trigger source, and start time
 - **Execution details** — Step-by-step progress for a specific run
 
-workflow monitoring dashboard
+![Workflow executions dashboard](/img/workflows/workflow-executions.png)
 
 ## Approval steps
 
