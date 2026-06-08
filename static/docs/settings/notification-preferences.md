@@ -13,27 +13,39 @@ Control what notifications you receive and how you receive them.
 
 ## Configuring notifications
 
-Go to **Settings > Notifications** to manage your preferences. You can toggle notifications for different event types:
+Go to **Settings > Notifications** to manage your personal preferences. Changes autosave shortly after you toggle a setting or change a field.
 
-- **Task reminders** — Get notified when tasks are approaching or overdue
-- **Key date alerts** — Notifications for upcoming or passed deadlines
-- **Document updates** — When documents are uploaded, approved, or need review
-- **Email activity** — When new emails arrive for your transactions
-- **Workflow approvals** — When a workflow step needs your approval
+Notification preferences affect only your user account. They do not change what other team members receive and do not turn organization automation rules on or off.
 
-## Daily digest
+## Email notifications
 
-DocJacket can send you a daily morning briefing email that summarizes:
+Use **Email Notifications** to decide whether DocJacket sends notification emails to you. When email notifications are on, you can choose which categories should email you:
 
-- Closings happening today
-- Tasks due today
-- Overdue items
-- Pending documents
+- **Transaction updates** — Changes to contract details, parties, or status
+- **Deadline reminders** — Upcoming tasks and key-date contingencies
+- **Task and milestone completions** — Work completed for you
+- **Document activity** — New uploads, approvals, or rejections
+- **System alerts** — Account, billing, and AI action alerts
 
-Toggle this on from your Dashboard or in notification settings.
+Turn off **Email Notifications** if you do not want notification emails. In-app notifications can still appear if that separate setting is enabled.
+
+## Morning Briefing
+
+DocJacket can send you a daily morning briefing email with overdue tasks, upcoming deadlines, and suggested actions.
+
+When **Morning Briefing** is on, choose:
+
+- **Delivery Time** — The local time to send the briefing
+- **Timezone** — Eastern, Central, Mountain, Arizona, Pacific, Alaska, Hawaii, or UTC
+
+Use **Send Test Briefing** to send a real briefing email to your inbox immediately. If there is no briefing data available, DocJacket may show that there was nothing to send.
+
+## In-App Notifications
+
+Use **In-App Notifications** to control whether alerts appear in the bell icon panel.
 
 ## Tips
 
-- Start with all notifications on, then turn off the ones that aren't useful for your workflow
-- The morning briefing is a great way to start your day with a clear picture of what needs attention
-- Notification settings are per-user — each team member controls their own preferences
+- Start with email and in-app notifications on, then turn off the categories that are noisy for your role
+- Keep the morning briefing on if you like a daily overview of overdue work and upcoming deadlines
+- Use the test briefing after changing time or timezone settings so you know what the email looks like

@@ -30,7 +30,7 @@ Access Settings from the sidebar — it's at the bottom of the navigation.
 - [Follow Up Boss](../integrations/follow-up-boss.md) — Follow Up Boss connection, mappings, imports, and sync behavior
 - [Transaction Configuration](./transaction-configuration.md) — Transaction roles, statuses, field options, custom fields, contingencies, and key date statuses
 - [Document Settings](./document-settings.md) — Active document types, document statuses, required flags, and file naming rules
-- [Email and Automation Settings](./email-and-automation.md) — Email categories, working hours, notifications, and automation rules
+- [Email and Automation Settings](./email-and-automation.md) — Email categories, working hours, rule triggers, delivery channels, and review-first behavior
 - [SMS Settings](./sms-settings.md) — Dedicated SMS number, usage, credits, and number release
 - [Notification Preferences](./notification-preferences.md) — Control what alerts you receive
 - [Activity Log](./activity-log.md) — Review organization-wide user and system activity
