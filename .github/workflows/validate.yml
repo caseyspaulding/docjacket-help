@@ -1,0 +1,55 @@
+name: Validate help site
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Build and typecheck
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Regenerate LLM artifacts
+        run: npm run prebuild
+
+      - name: Verify generated docs are committed
+        run: git diff --exit-code -- static/llms-full.txt static/docs
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Check whitespace
+        run: git diff --check
+
+      - name: Build
+        run: npm exec docusaurus build
+
+      - name: Write build metadata
+        run: node scripts/write-build-info.mjs
+
+      - name: Show build metadata
+        run: cat build/build-info.json
+
+      - name: Optional Cloudflare auth check
+        if: env.CLOUDFLARE_API_TOKEN != ''
+        run: npm exec wrangler -- deployments list
