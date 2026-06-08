@@ -13,6 +13,8 @@ The **Documents Needed** checklist shows which files are required for a transact
 
 You will find it on the transaction's **Documents** tab, above **Documents Received**. The header can be collapsed or expanded, and it shows summary chips when required documents exist.
 
+![Documents Needed checklist above Documents Received](/img/documents/transaction-documents-tab.png)
+
 ## What the checklist shows
 
 The checklist can show:

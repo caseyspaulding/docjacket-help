@@ -17,6 +17,8 @@ You can access tasks in two places:
 - **Inside a transaction** — The Tasks tab shows tasks for that specific deal
 - **Organization-wide** — The Tasks page in the sidebar shows tasks across all your transactions
 
+![Organization-wide Tasks page with filters, saved views, and task rows](/img/tasks/tasks-page.png)
+
 Inside a transaction, tasks are grouped by checklist section. Each section shows progress, can be collapsed, and can be saved back as a checklist template. Rows show the task name, due date, completed date, notes, email/send indicators, and portal visibility.
 
 The organization-wide **Tasks** page is for daily work across all transactions. Use it to search, filter by status or priority, show only tasks assigned to you, review broker-only work, or switch to a checklist-grouped view.
