@@ -6,11 +6,11 @@ description: Track contract date, closing date, inspection deadlines, earnest mo
 
 # Key Dates & Financials
 
-Every transaction has dates and dollar amounts that need to be tracked carefully. DocJacket keeps the timeline and financial summary organized on the transaction overview.
+Every transaction has dates and dollar amounts that need to be tracked carefully. DocJacket keeps the closing timeline and financial summary organized on the transaction Overview.
 
 ## Key dates
 
-The key-date timeline on the overview shows your most important deadlines:
+The closing timeline on the Overview shows your most important transaction dates and deadlines:
 
 - **Contract date** — When the contract was executed
 - **Closing date** — The target closing date
@@ -21,11 +21,19 @@ The key-date timeline on the overview shows your most important deadlines:
 - **Final walkthrough** — When the final walkthrough is scheduled
 - **Other key dates** — Any additional dates relevant to the deal
 
-Some dates also appear as canonical key dates on the calendar so tasks, reminders, and reporting can use the same anchor date.
+Some dates are governed transaction dates, also called canonical key dates. A governed key date has a standard **Key Date Type**, such as Closing Date, Effective Date, Inspection Deadline, Financing Deadline, Final Walkthrough, or Possession Date. These standard types make tasks, reminders, calendar sync, reporting, smart fields, and checklist rules use the same anchor date.
+
+Custom key dates are one-off dates for a specific deal. They can still appear on the timeline, link to tasks, and use reminders, but they do not replace governed transaction date fields.
 
 ### Editing dates
 
-Use the transaction edit page or the key-date timeline controls to adjust dates. If a date came from extraction, review it before saving so downstream tasks and reminders use the correct anchor.
+Use the transaction edit page for governed transaction dates. On the timeline, a governed row may show **Edit on Transaction Details** instead of Delete. That means the date belongs to the transaction's canonical date fields; edit or clear it from the transaction details so DocJacket keeps the transaction record and timeline row aligned.
+
+Use the key-date drawer for custom or checklist-generated timeline dates. You can update the due date, status, notes, reminders, linked tasks, and portal note visibility. If a key date is missing its anchor, it appears as **Needs date** until the upstream transaction date is filled in.
+
+When you move a key date, DocJacket may show a cascade preview before saving. Review the affected tasks, downstream key dates, manually overridden dates, completed dates, and missing-rule items before applying the change.
+
+If a date came from extraction, review it before saving so downstream tasks, reminders, scheduled emails, and calendar events use the correct anchor.
 
 ## Financial summary
 

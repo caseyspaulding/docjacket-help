@@ -12,7 +12,7 @@ Click a task to open its detail drawer. The drawer starts with the core task fie
 
 Use the top of the drawer for the basics:
 
-- **Due Date** — the planned date for the task
+- **Due Date** — when the task is due
 - **Assignee** — the team member responsible for the work
 - **Depends On** — another task that should be completed first
 - **Instructions** — internal steps or guidance for the assignee

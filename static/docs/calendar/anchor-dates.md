@@ -23,13 +23,15 @@ The **anchor date** is usually the **contract date** — the day the purchase ag
 
 ## Setting the anchor date
 
-When you generate a timeline, DocJacket uses the transaction dates already entered on the deal. The Generate Timeline dialog shows the available anchor dates before you apply the template.
+When you generate a timeline, DocJacket uses the transaction dates already entered on the deal. The Generate Timeline dialog shows the available anchor dates before you apply the template, including dates that are not set yet.
 
-You can review and adjust key dates later from the key-date timeline on the transaction **Overview** tab.
+You can review and adjust key dates later from the closing timeline on the transaction **Overview** tab.
 
 ## Why this matters
 
-The anchor date system means you don't have to manually calculate dozens of deadlines. Set the important transaction dates once, and dependent key dates can flow from there. When a closing date gets pushed back or a contract date changes, review the key-date timeline and related tasks so the workflow stays aligned.
+The anchor date system means you don't have to manually calculate dozens of deadlines. Set the important transaction dates once, and dependent key dates can flow from there. When a closing date gets pushed back or a contract date changes, review the closing timeline and related tasks so the workflow stays aligned.
+
+If the date change affects dependent work, DocJacket may show a cascade preview before saving. The preview helps you confirm which linked task due dates and downstream key dates will move, and which items are locked because they were completed, manually overridden, or missing a reusable rule.
 
 ## Common anchor date scenarios
 

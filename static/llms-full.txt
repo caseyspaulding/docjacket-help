@@ -148,7 +148,7 @@ Use the **Tasks** tab to get the work moving:
 3. Use **Generate** to get suggested tasks for this transaction
 4. Review due dates, assignees, priorities, and task status
 
-Use the key-date timeline on the **Overview** to track closing, contract, inspection, financing, appraisal, possession, and other important dates.
+Use the closing timeline on the **Overview** to track closing, contract, inspection, financing, appraisal, possession, and other important dates.
 
 ## Check your tasks
 
@@ -638,8 +638,17 @@ The Overview tab is where most TCs spend their time. It shows everything importa
 
 The Overview is customizable, so your organization may hide, pin, or collapse some sections. Common sections include:
 
-### Key Date Timeline
-The key-date timeline appears near the top of the overview when visible. Use **Generate Timeline** to calculate key dates and linked tasks from a checklist template, or add key dates manually. The timeline can show a pipeline view or a vertical checklist view.
+### Closing Timeline
+The closing timeline appears near the top of the Overview when the section is visible. It shows transaction key dates, status, missing-date warnings, linked task progress, reminders, and the checklist template that created the timeline when one has been applied.
+
+Use **Generate Timeline** to calculate key dates and linked tasks from one checklist template. The confirmation step shows the transaction anchor dates, key-date count, task count, owner assignments, phases, and the replacement option before anything is created.
+
+The timeline has two views:
+
+- **Vertical checklist view** — A list of key dates with status, phase, governed Key Date Type, linked tasks, reminders, and drag handles for visual order.
+- **Pipeline view** — A horizontal visual timeline for scanning complete, upcoming, overdue, needs-date, and not-applicable items.
+
+Use **Add** to add a one-off key date. Use **Edit Template** when the transaction timeline came from a checklist and you want to change the reusable template. Use **Save as Template** to turn the transaction's current key dates and tasks into a reusable checklist.
 
 ### Risk Insights
 When a transaction has a stored risk assessment, a risk chip appears in the transaction header. Click it to review the summary, risk factors, mitigations, recommendations, and to re-run the assessment.
@@ -666,7 +675,9 @@ Upload photos of the property. Star an image to feature it on reports and the cl
 Contracts, disclosures, and other files for this transaction. Track approval status and upload new documents right from here.
 
 ### Calendar Sync
-If your account has Google Calendar connected, this card controls whether this transaction's key dates and overdue tasks appear on your synced calendar.
+If your account has Google Calendar connected, this card controls whether this transaction participates in Google Calendar sync. Turn it off when you want to hide this transaction's dates from Google without disconnecting Google Calendar for the whole account.
+
+Calendar settings still control whether task due dates sync. When task syncing is off, closing dates and key dates can still sync for transactions where calendar sync is enabled.
 
 ### Contingencies
 Track configured contingency status throughout the deal. Mark each as Active, Satisfied, Waived, or Not Applicable as the transaction progresses.
@@ -687,11 +698,11 @@ Store login details for MLS, tax portals, and other external systems used in thi
 
 # Key Dates & Financials
 
-Every transaction has dates and dollar amounts that need to be tracked carefully. DocJacket keeps the timeline and financial summary organized on the transaction overview.
+Every transaction has dates and dollar amounts that need to be tracked carefully. DocJacket keeps the closing timeline and financial summary organized on the transaction Overview.
 
 ## Key dates
 
-The key-date timeline on the overview shows your most important deadlines:
+The closing timeline on the Overview shows your most important transaction dates and deadlines:
 
 - **Contract date** — When the contract was executed
 - **Closing date** — The target closing date
@@ -702,11 +713,19 @@ The key-date timeline on the overview shows your most important deadlines:
 - **Final walkthrough** — When the final walkthrough is scheduled
 - **Other key dates** — Any additional dates relevant to the deal
 
-Some dates also appear as canonical key dates on the calendar so tasks, reminders, and reporting can use the same anchor date.
+Some dates are governed transaction dates, also called canonical key dates. A governed key date has a standard **Key Date Type**, such as Closing Date, Effective Date, Inspection Deadline, Financing Deadline, Final Walkthrough, or Possession Date. These standard types make tasks, reminders, calendar sync, reporting, smart fields, and checklist rules use the same anchor date.
+
+Custom key dates are one-off dates for a specific deal. They can still appear on the timeline, link to tasks, and use reminders, but they do not replace governed transaction date fields.
 
 ### Editing dates
 
-Use the transaction edit page or the key-date timeline controls to adjust dates. If a date came from extraction, review it before saving so downstream tasks and reminders use the correct anchor.
+Use the transaction edit page for governed transaction dates. On the timeline, a governed row may show **Edit on Transaction Details** instead of Delete. That means the date belongs to the transaction's canonical date fields; edit or clear it from the transaction details so DocJacket keeps the transaction record and timeline row aligned.
+
+Use the key-date drawer for custom or checklist-generated timeline dates. You can update the due date, status, notes, reminders, linked tasks, and portal note visibility. If a key date is missing its anchor, it appears as **Needs date** until the upstream transaction date is filled in.
+
+When you move a key date, DocJacket may show a cascade preview before saving. Review the affected tasks, downstream key dates, manually overridden dates, completed dates, and missing-rule items before applying the change.
+
+If a date came from extraction, review it before saving so downstream tasks, reminders, scheduled emails, and calendar events use the correct anchor.
 
 ## Financial summary
 
@@ -1622,21 +1641,34 @@ Use the Calendar to see closings, key dates, task due dates, and custom events i
 
 # Checklists & Key Dates
 
-Checklist templates are pre-built workflows for different transaction types. Use one on a transaction and DocJacket can create the key dates, tasks, and automations that belong to that deal.
+Checklist templates are pre-built workflows for different transaction types. Use one on a transaction and DocJacket can create the key dates, tasks, due-date rules, and automations that belong to that deal.
 
 The **Key Date Library** holds reusable date rules. **Checklists** consume those key dates and add the tasks, due-date offsets, phases, assignments, and automation that use them.
 
-## Generating a closing timeline
+## Generating a closing timeline from Overview
 
 1. Open a transaction
 2. Go to the **Overview** tab
-3. Find the key-date timeline at the top of the overview
+3. Find the closing timeline near the top of the Overview
 4. Click **Generate Timeline**
 5. Choose a checklist template that matches the transaction type, side, and state
 6. Review the anchor dates, key dates, task counts, owner assignments, phases, and replacement option
 7. Apply the template
 
-When the template is applied, DocJacket creates the calculated key dates and any linked tasks for that transaction.
+This flow applies one checklist template at a time. It is the best path when you want DocJacket to create or replace the transaction's key-date timeline and linked task workflow from the transaction's anchor dates.
+
+When the template is applied, DocJacket creates the calculated key dates and any linked tasks for that transaction. If the transaction already has checklist-generated items, the replacement option removes previously-applied template items while preserving manually added items and dates extracted from the contract.
+
+## Adding checklist tasks from the Tasks tab
+
+The transaction **Tasks** tab also has **Add checklist**. That picker is task-focused:
+
+- You can select one or more checklists.
+- The created tasks stay grouped under the checklist name.
+- Due dates calculate from the transaction's existing key dates when the checklist has due-date rules.
+- Mismatched or milestone-only templates may still appear, but DocJacket creates only what the template contains.
+
+Use **Generate Timeline** from Overview for key-date-and-task timeline setup. Use **Add checklist** from Tasks when you mainly want to add saved task workflows to an existing transaction.
 
 ## What's in a template
 
@@ -1647,12 +1679,12 @@ Each template includes:
 - **Tasks** — Work items tied to those key dates
 - **Automations** — Prepared emails or rules tied to tasks and dates
 
-## Viewing your key-date timeline
+## Viewing your closing timeline
 
 DocJacket offers two views:
 
 - **Pipeline view** — A horizontal visual overview of key dates. Complete, upcoming, overdue, and needs-date items are easy to spot.
-- **Vertical checklist view** — A vertical list with expandable key dates showing linked tasks.
+- **Vertical checklist view** — A vertical list of key dates with statuses, phases, governed Key Date Type chips, linked tasks, reminders, and visual ordering.
 
 Toggle between them with the view switch at the top.
 
@@ -1660,15 +1692,17 @@ Toggle between them with the view switch at the top.
 
 Templates are a starting point. You can always add custom key dates for dates the template doesn't cover:
 
-1. Click **Add Key Date**
-2. Enter the key date name and date
-3. Optionally link tasks to it
+1. Click **Add** on the closing timeline
+2. Enter the key date name, Key Date Type if applicable, category, date, position, and description
+3. Open the key-date drawer to link tasks, add reminders, or adjust notes
 
 For reusable date logic, manage the rule in **Templates > Key Date Library** so future checklists can use the same definition.
 
 ## When dates change
 
 When a transaction date changes, review the affected key dates and tasks in the Overview timeline. Template-generated items keep their anchor-date relationship so the transaction timeline can stay tied to the same source dates.
+
+If a moved key date affects linked tasks or downstream key dates, DocJacket shows a cascade preview before applying the change. Completed dates, manually overridden dates, and missing-rule items may be locked until you reopen, reset, or edit the underlying rule.
 
 ## Creating your own templates
 
@@ -1692,6 +1726,8 @@ The page summarizes:
 
 Each row links back to the related transaction so you can open the deal and take action.
 
+The list is for transaction key dates, not every task on every transaction. Use the Calendar view when you want to see key dates, closings, task due dates, and custom events together on a calendar grid.
+
 ## Filtering
 
 Use the filters at the top of the page to narrow the list by:
@@ -1705,6 +1741,8 @@ Use the filters at the top of the page to narrow the list by:
 ## How this relates to the calendar
 
 The Calendar view is best for seeing dates on a calendar grid. The Key Dates list is best for scanning urgency, overdue items, and transaction links in one table.
+
+Google Calendar sync is controlled separately. Organization settings decide whether task due dates are included, and each transaction has its own calendar-sync toggle on the Overview.
 
 ---
 
@@ -1724,13 +1762,15 @@ The **anchor date** is usually the **contract date** — the day the purchase ag
 
 ## Setting the anchor date
 
-When you generate a timeline, DocJacket uses the transaction dates already entered on the deal. The Generate Timeline dialog shows the available anchor dates before you apply the template.
+When you generate a timeline, DocJacket uses the transaction dates already entered on the deal. The Generate Timeline dialog shows the available anchor dates before you apply the template, including dates that are not set yet.
 
-You can review and adjust key dates later from the key-date timeline on the transaction **Overview** tab.
+You can review and adjust key dates later from the closing timeline on the transaction **Overview** tab.
 
 ## Why this matters
 
-The anchor date system means you don't have to manually calculate dozens of deadlines. Set the important transaction dates once, and dependent key dates can flow from there. When a closing date gets pushed back or a contract date changes, review the key-date timeline and related tasks so the workflow stays aligned.
+The anchor date system means you don't have to manually calculate dozens of deadlines. Set the important transaction dates once, and dependent key dates can flow from there. When a closing date gets pushed back or a contract date changes, review the closing timeline and related tasks so the workflow stays aligned.
+
+If the date change affects dependent work, DocJacket may show a cascade preview before saving. The preview helps you confirm which linked task due dates and downstream key dates will move, and which items are locked because they were completed, manually overridden, or missing a reusable rule.
 
 ## Common anchor date scenarios
 
@@ -1745,7 +1785,7 @@ The anchor date system means you don't have to manually calculate dozens of dead
 
 # Calendar View
 
-The Calendar page in the sidebar shows upcoming dates across your transactions — closings, key dates, tasks, and custom events in one view.
+The Calendar page in the sidebar shows upcoming dates across your transactions — closings, key dates, task due dates, and custom events in one view.
 
 ## Navigating the calendar
 
@@ -1762,7 +1802,7 @@ Events are color-coded by type so you can tell them apart at a glance:
 
 - **Closing** — Transaction closing dates
 - **Key Date** — Important transaction deadlines
-- **Tasks** — Due dates for your to-dos
+- **Tasks** — Due dates for open tasks
 - **Event** — Custom calendar events you added manually
 
 The legend at the top of the calendar shows what each color means.
@@ -1780,6 +1820,10 @@ Click any day to see the full agenda panel. From here you can:
 If Google Calendar is connected, the Calendar page shows **Sync to Google**. Use it to push closings, key dates, and tasks to Google Calendar.
 
 If Google Calendar is not connected, the page shows **Connect Google**, which takes you to **Settings > Integrations**.
+
+DocJacket treats DocJacket as the source of truth for transaction dates. Update dates and tasks in DocJacket, then sync those changes out to Google Calendar. This is not a general two-way import of all external calendar events.
+
+Task due dates sync only when task calendar sync is enabled in **Settings > Calendar**. A transaction can also be hidden from Google Calendar from its Overview calendar-sync card.
 
 ## Tips
 
@@ -1800,7 +1844,7 @@ You can access tasks in two places:
 - **Inside a transaction** — The Tasks tab shows tasks for that specific deal
 - **Organization-wide** — The Tasks page in the sidebar shows tasks across all your transactions
 
-Inside a transaction, tasks are grouped by checklist section. Each section shows progress, can be collapsed, and can be saved back as a checklist template. Rows show the task name, planned date, completed date, notes, email/send indicators, and portal visibility.
+Inside a transaction, tasks are grouped by checklist section. Each section shows progress, can be collapsed, and can be saved back as a checklist template. Rows show the task name, due date, completed date, notes, email/send indicators, and portal visibility.
 
 The organization-wide **Tasks** page is for daily work across all transactions. Use it to search, filter by status or priority, show only tasks assigned to you, review broker-only work, or switch to a checklist-grouped view.
 
@@ -1838,7 +1882,7 @@ The fastest way to create a single task is from a transaction's **Tasks** tab.
 2. Press **Enter** or click **Add**
 3. The task is created with Medium priority by default
 
-Click the task name or edit icon to open the detail drawer and add the due date, assignee, dependency, instructions, portal visibility, email automation, reminders, and comments.
+Click the task name or edit icon to open the detail drawer and add the due date, assignee, dependency, instructions, portal visibility, email automation, reminders, task options, and comments.
 
 ## Detail drawer
 
@@ -1852,6 +1896,8 @@ Click any task to open the detail drawer on the right side. The main fields are:
 
 The drawer also includes sections for subtasks, task email templates, scheduled emails, reminders, portal visibility, task options, comments, and read-only completion info.
 
+The **Key Date** task option highlights that task as an important date-style item in task and calendar views. It is not the same as assigning a governed Key Date Type to the transaction's closing timeline.
+
 ## From a checklist
 
 Use a checklist when you want a repeatable set of tasks and date rules.
@@ -1862,7 +1908,9 @@ From a transaction's **Tasks** tab:
 2. Select one or more checklists
 3. Apply the selected checklist
 
-DocJacket adds the checklist's tasks and keeps them grouped under the checklist name. If the checklist includes due-date rules, those dates are calculated from the transaction's key dates. You can also create or replace key-date-and-task workflows from the transaction overview with **Generate Timeline**.
+DocJacket adds the checklist's tasks and keeps them grouped under the checklist name. If the checklist includes due-date rules, those dates are calculated from the transaction's existing key dates.
+
+The Tasks tab picker can apply multiple checklists. Use it when you mainly want saved task workflows. To create or replace the transaction's key-date timeline and linked task workflow from one checklist template, use **Generate Timeline** on the transaction Overview.
 
 See [Checklists](./task-templates.mdx) for more.
 
@@ -1874,19 +1922,25 @@ See [AI Task Generation](/docs/ai-features/ai-task-generation) for details.
 
 ## Working in the task table
 
-The transaction **Tasks** tab shows tasks in checklist sections. Each section shows completed and total task counts, and each row includes the task name, planned date, completed date, notes, sent indicators, and portal visibility.
+The transaction **Tasks** tab shows tasks in checklist sections. Each section shows completed and total task counts, and each row includes the task name, due date, completed date, notes, sent indicators, and portal visibility.
 
 You can:
 
 - Search tasks by name
 - Filter by status or assignee
-- Sort by task, planned date, completed date, or notes
+- Sort by task, due date, completed date, or notes
 - Resize the table columns
 - Select multiple tasks for bulk complete or bulk delete
 - Drag rows within a checklist section to adjust visual order
 - Save a checklist section as a new checklist template
 
 Changing row order does not change due dates.
+
+## Task email and reminder timing
+
+Task email templates can be linked from the task drawer. Linked emails can be reviewed and sent from the task, or scheduled with an auto-send date. When an auto-send date is not set, DocJacket uses the task due date as the scheduling anchor.
+
+Scheduled emails are client-facing emails tied to a date. Reminders are internal notification prompts for the task. Calendar visibility depends on task due dates, organization calendar settings, and the transaction's calendar-sync toggle.
 
 ---
 
@@ -2095,7 +2149,7 @@ Click a task to open its detail drawer. The drawer starts with the core task fie
 
 Use the top of the drawer for the basics:
 
-- **Due Date** — the planned date for the task
+- **Due Date** — when the task is due
 - **Assignee** — the team member responsible for the work
 - **Depends On** — another task that should be completed first
 - **Instructions** — internal steps or guidance for the assignee
@@ -2865,7 +2919,7 @@ The preview is for template review. It is computed client-side and does not incl
 
 ## Applying a checklist to a transaction
 
-From the transaction overview's key-date timeline, click **Generate Timeline** and pick a checklist.
+From the transaction Overview's closing timeline, click **Generate Timeline** and pick a checklist.
 
 DocJacket can:
 
@@ -5424,9 +5478,9 @@ Connect Google Drive to work with transaction files from the Documents tab:
 
 ### Google Calendar
 
-Connect Google Calendar to push DocJacket dates to your calendar. Calendar sync can include closings, key dates, and task due dates when enabled in calendar settings.
+Connect Google Calendar to push DocJacket dates to your calendar. Calendar sync can include closings, key dates, and task due dates when enabled in calendar settings and on the transaction.
 
-DocJacket treats DocJacket as the source of truth for transaction dates. Update transaction dates in DocJacket, then let sync push those changes to Google Calendar.
+DocJacket treats DocJacket as the source of truth for transaction dates. Update transaction dates in DocJacket, then let sync push those changes to Google Calendar. DocJacket does not use Google Calendar as the place to edit transaction deadlines.
 
 ### Google Contacts
 
@@ -6012,7 +6066,7 @@ Use **Settings > Calendar** and **Settings > Holidays** to control how dates syn
 
 ## Calendar sync
 
-DocJacket always syncs closings and key dates to your connected Google Calendar.
+DocJacket can sync closings and key dates to your connected Google Calendar when calendar sync is enabled for the transaction.
 
 In **Settings > Calendar**, you can choose whether task due dates also sync to Google Calendar.
 
@@ -6027,6 +6081,8 @@ When task syncing is off:
 - Existing task events are removed from Google Calendar within a few minutes
 - Closing dates and key dates still sync
 - Task due dates remain visible inside DocJacket and in the morning brief
+
+Each transaction also has a Google Calendar toggle on its Overview. Turn that off to hide just that transaction from Google Calendar without disconnecting Google Calendar for the whole organization.
 
 ## Holidays
 
