@@ -1,12 +1,12 @@
 ---
 sidebar_label: Email and Automation
 sidebar_position: 11
-description: Configure email template categories, working hours, notification preferences, and automation rules.
+description: Configure email template categories, working hours, notification preferences, and rule-based email or SMS automation.
 ---
 
 # Email and Automation Settings
 
-The **Emails & Alerts** group controls template organization, automated send timing, personal notifications, and rule-based email automation.
+The **Emails & Alerts** group controls template organization, automated send timing, personal notifications, and rule-based message automation.
 
 ## Email settings
 
@@ -43,8 +43,8 @@ Notification preferences are personal. Changing your notifications does not chan
 
 ## Automation rules
 
-Use **Settings > Automation Rules** to create and manage rule-based notifications and emails.
+Use **Settings > Automation Rules** to create and manage rule-based notifications and messages.
 
-Automation rules can send emails when a transaction enters a status or when a configured task is completed. Rules use email templates and recipient logic, and can either send automatically or require review before sending.
+Automation rules can send email, SMS, or both when a transaction enters a status or when a configured checklist task is completed. Rules use templates, recipient logic, and delivery-channel settings. They can either send automatically or require review before sending.
 
-If organization-wide review-first is enabled, automated email drafts land in the **Review queue** before they send. You can also choose review behavior on individual rules.
+If organization-wide review-first is enabled, automated drafts land in the topbar **Review queue** before they send. You can also choose review behavior on individual rules when review-first is off globally.

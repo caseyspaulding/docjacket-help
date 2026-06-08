@@ -1,7 +1,7 @@
 ---
 sidebar_label: User Management
 sidebar_position: 5
-description: Invite team members to your DocJacket organization, assign roles, and control what each user can see and edit.
+description: Invite team members to your DocJacket organization, assign roles, manage seats, and control access.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/settings/user-management -->
@@ -14,32 +14,36 @@ Add team members to your DocJacket organization and control what they can access
 ## Inviting team members
 
 1. Go to **Settings > Team Members**
-2. Click **Invite User**
+2. Click **Invite Member**
 3. Enter their email address
-4. Assign a role (which controls their permissions)
-5. Send the invitation
+4. Assign a role
+5. Click **Send Invite**
 
 They'll receive an email with a link to join your organization.
+
+The Team Members page also shows seat usage. If your plan is at capacity, DocJacket may prompt you to upgrade or add another seat before sending the invite.
 
 ## Roles and permissions
 
 Each team member is assigned a role that controls what they can see and do. You can create custom roles in **Settings > Roles** with granular permissions for:
 
-- **Organization management** — Access to settings and organization config
-- **User management** — Ability to invite and manage other users
-- **Transaction management** — Create, edit, delete transactions
-- **Communication** — Send emails, access inbox
-- **Tasks & scheduling** — Manage tasks and calendar
-- **Reports & analytics** — View and generate reports
-- **Billing** — Access subscription and payment details
-- **API & integrations** — Manage integrations and webhooks
+- **Organization management** - Access to settings and organization config
+- **User management** - Ability to invite and manage other users
+- **Transaction management** - Create, edit, delete transactions
+- **Communication** - Send emails and access the inbox
+- **Tasks & scheduling** - Manage tasks and calendar
+- **Reports & analytics** - View and generate reports
+- **Billing** - Access subscription and payment details
+- **API & integrations** - Manage integrations and webhooks
 
-roles settings showing permission categories
+The Roles page separates system roles from custom roles. You can create a custom role, choose its permissions, show or hide each role's permissions, edit custom roles, and delete unused custom roles.
 
-## Managing users
+## Managing members and invitations
 
-From the Team Members page in Settings, you can:
+From **Settings > Team Members**, you can:
 
-- **Change a user's role** — Update their permissions
-- **Deactivate a user** — Remove their access without deleting their account
-- **Remove a user** — Permanently remove them from your organization
+- **Deactivate a member** - Remove their access without deleting their account
+- **Reactivate a member** - Restore access when your seat limit allows it
+- **Remove a member** - Permanently remove them from your organization
+- **Resend an invitation** - Send a fresh invite email for a pending invitation
+- **Cancel an invitation** - Stop a pending invitation that should no longer be used

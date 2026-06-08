@@ -1,40 +1,51 @@
 ---
 sidebar_label: Organization Settings
 sidebar_position: 2
-description: Customize DocJacket to match your brand and workflow — company info, branding, email signatures, timezone, and account-wide preferences.
+description: Manage organization identity, report branding, reminder defaults, scheduled-email timing, automation review behavior, and email subject defaults.
 ---
-
-import ScreenshotPlaceholder from '@site/src/components/ScreenshotPlaceholder';
 
 # Organization Settings
 
-Customize DocJacket to match your brand and workflow preferences.
+Use **Settings > Organization** for account-wide settings that affect your whole organization.
 
-## Company information
+## Organization identity
 
-Set your organization's basic info:
+The Organization page shows your organization's name, logo, ID, subdomain, creation date, and custom-domain verification status when a custom domain exists.
 
-- **Company name** — Appears in emails, reports, and the client portal
-- **Address and phone** — Contact details for your organization
-- **Logo** — Uploaded logo appears on the portal, reports, and outgoing communications
+From here, you can:
 
-<ScreenshotPlaceholder>organization settings page</ScreenshotPlaceholder>
+- Change the organization logo
+- Edit the organization name
+- Review the DocJacket subdomain
+- Confirm whether a custom domain is verified
 
-## Branding
+## Report branding
 
-Your brand identity carries through DocJacket:
+Organization settings include report-specific branding controls:
 
-- **Logo** — Used in the client portal, email headers, and reports
-- **Colors** — Customize accent colors for the portal
+- Theme color
+- Report primary color
+- Report secondary color
+- Report accent color
+- Report footer text
 
-## Default settings
+Use **Settings > Brand** for the broader brand preset, fonts, public-page attribution, and live brand editor.
 
-Configure defaults that apply to new transactions:
+## Reminder and scheduled-email defaults
 
-- **Default transaction type** — Pre-select the most common type
-- **Default checklist** — Auto-apply a checklist to new transactions
-- **Custom fields** — Add custom fields to capture data specific to your workflow
+Organization settings also control email defaults used by reminders and scheduled messages:
 
-## Transaction roles
+- **Always CC on Reminders** - Adds one or more addresses to the Cc line of every reminder sent from your organization
+- **Default send time for scheduled emails** - Sets the local send hour used when an individual scheduled email does not specify its own time
 
-In **Settings > Transaction Roles**, you can create and manage the contact roles available when adding contacts to a transaction. The built-in roles (Buyer, Seller, Agent, etc.) cover most needs, but you can add custom ones if your workflow requires it.
+## Automation review
+
+Use **Review auto-emails before sending** to decide whether organization-wide automation rules should send directly or pause for review.
+
+When this is on, emails created by automation rules land in the topbar **Review queue** before sending. Reminders and scheduled emails that your team manually configured still send on their configured schedule.
+
+## Email subject address prefix
+
+Use **Prefix property address to email subjects** when your team wants transaction emails to start with the property address automatically.
+
+You can choose the address format. The prefix applies as a default in transaction message composers, task-email send dialogs, standalone message compose, and e-signature packet sends. Users can still edit or remove the prefix before sending.
