@@ -91,7 +91,7 @@ A weekly recap formatted for forwarding to a broker, team meeting, or your own r
 
 > *"Intake a contract PDF and build the full transaction in one conversation."*
 
-The PDF-to-transaction workflow when action tools are enabled. In the standard read-first setup, use the in-app Upload & Extract wizard for transaction creation. See the full reference at **[Contract Intake](/docs/ai-access/contract-intake)**.
+The PDF-to-transaction workflow when action tools are enabled. In the standard read-first setup, use the in-app Upload Documents wizard for transaction creation. See the full reference at **[Contract Intake](/docs/ai-access/contract-intake)**.
 
 **Read-first version:** summarize extraction status and review available results.
 

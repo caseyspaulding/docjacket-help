@@ -39,6 +39,19 @@ Use it to:
 - Check a contract for missing signatures or initials
 - Open the contract-check viewer when issues are found
 
+## AI Check statuses
+
+The **AI Check** column can show two independent results:
+
+- **Risk** — A document risk scan. Results can show scanning, clean, or a risk count.
+- **Contract** — A contract check for missing signatures, initials, dates, and checkboxes. Results can show scanning, signed, or an issue count.
+
+If neither check has run yet, the row shows **Scan**. Clicking it starts both the risk scan and contract check for that document.
+
+When documents are selected in the **Documents Received** table, the bulk **AI Check** action runs on the selected documents. If nothing is selected, it runs on documents that have not been risk-scanned yet. Contract checks run in parallel for documents that have not already been contract-checked.
+
+Risk findings open in a drawer with severity, description, flagged clause text when available, suggested action, page reference, and a dismiss action. Contract issues open in the **Contract Check** viewer with the PDF and issue overlays.
+
 ## How to use insights
 
 Treat risk insights as review prompts. They help you decide where to look, but they do not replace your normal transaction review.

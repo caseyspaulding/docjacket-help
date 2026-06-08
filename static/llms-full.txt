@@ -95,10 +95,10 @@ Let's walk through creating a transaction from scratch. By the end, you'll have 
 
 From the **Transactions** page, click **New Transaction** to start with document upload and extraction. If you prefer to enter everything yourself, use the manual transaction form.
 
-- **Upload & Extract** — Upload a contract PDF and let AI do the heavy lifting
+- **Upload Documents** — Upload a contract PDF and let AI do the heavy lifting
 - **Create manually** — Fill in the deal details yourself
 
-### Option A: Upload & Extract (recommended)
+### Option A: Upload Documents (recommended)
 
 This is the fastest way. Upload contract documents and DocJacket will read through them and pull out:
 
@@ -580,7 +580,7 @@ Click any transaction to open it and see the full picture: overview, tasks, docu
 
 There are two main ways to create a transaction in DocJacket: upload documents and extract the details, or use the manual transaction form.
 
-## Upload & Extract (recommended)
+## Upload Documents (recommended)
 
 The fastest way to get a deal set up is the **Upload Documents** flow.
 
@@ -589,9 +589,10 @@ The fastest way to get a deal set up is the **Upload Documents** flow.
 3. Choose the transaction side
 4. Drop in PDFs, JPGs, or PNGs
 5. Click **Upload & Continue**
-6. If **Smart Split** appears, review the detected documents and continue
-7. Open the progress page while extraction runs
-8. Review the extracted data and save the transaction
+6. If **Smart Split** appears, review the detected documents or let the high-confidence countdown continue
+7. For a single unsplit file, confirm the detected document type and state
+8. Open the progress page while extraction runs
+9. Review the extracted data and save the transaction
 
 DocJacket can extract:
 
@@ -601,7 +602,7 @@ DocJacket can extract:
    - Contract date, closing date, and key deadlines
    - Contingency periods
 
-Always review the extracted data before saving. Nothing is final until you complete the review-and-save step.
+Always review the extracted data before saving. Nothing is final until you click **Create Transaction**, **Create Listing**, or **Update Transaction** on the review screen.
 
 :::tip
 Got a contract with multiple documents bundled into one PDF? DocJacket's AI can detect and split them automatically. See [Smart Document Splitting](/docs/ai-features/smart-document-splitting) for details.
@@ -725,7 +726,7 @@ Use the key-date drawer for custom or checklist-generated timeline dates. You ca
 
 When you move a key date, DocJacket may show a cascade preview before saving. Review the affected tasks, downstream key dates, manually overridden dates, completed dates, and missing-rule items before applying the change.
 
-If a date came from extraction, review it before saving so downstream tasks, reminders, scheduled emails, and calendar events use the correct anchor.
+If a date came from extraction, review it before saving so downstream tasks, reminders, scheduled emails, and calendar events use the correct anchor. In extraction review, extracted dates only become timeline key dates when you opt them into **Add to timeline?**.
 
 ## Financial summary
 
@@ -902,8 +903,8 @@ From a transaction's **Documents** tab, you can:
 - **Upload files** — Choose a category, then upload a PDF, Word file, or image.
 - **Track completeness** — Use **Documents Needed** to add requirements, apply document templates, link uploads, and track received/overdue/blocking items.
 - **Review received documents** — Search, filter, reorder, rename, batch-rename, change document type/status, download, share, delete, and mark documents as sent.
-- **Run document checks** — Use **AI Check** for risk scans and contract signature/initial checks.
-- **Extract data** — Use **Extract Data** to run extraction on new documents for an existing transaction.
+- **Run document checks** — Use **AI Check** for document risk scans and contract checks for missing signatures, initials, dates, and checkboxes.
+- **Extract data** — Use **Extract Data** to upload documents, run extraction, review changed fields, and update an existing transaction.
 - **Control portal visibility** — Show or hide documents on the Agent and Client Portals, and optionally restrict visibility to selected portal contacts.
 - **Connect to Google Drive** — Import from Drive, export selected/all documents, and link or change the transaction's Drive folder.
 - **Share disclosure packages** — Curate received documents and share them with recipients.
@@ -965,7 +966,7 @@ If the file satisfies a required document, upload it from the **Documents Needed
 
 Documents don't only come from manual uploads:
 
-- **AI Extraction** — When you create a transaction via Upload & Extract, the contract is automatically saved to the Documents tab
+- **AI Extraction** — When you create a transaction via Upload Documents, the contract is automatically saved to the Documents tab
 - **DocDrop** — Contacts can email documents directly into the transaction (see [DocDrop](./docdrop.mdx))
 - **Google Drive** — Import files from Drive or export transaction files back to Drive (see [Google Drive Integration](./google-drive-integration.mdx))
 - **E-sign packets** — Completed DocJacket e-sign packets save the signed PDF back to the transaction
@@ -976,19 +977,28 @@ Documents don't only come from manual uploads:
 
 Use **Extract Data** when you already have a transaction and want DocJacket to read new documents for that deal.
 
-This is different from the "Upload & Extract" flow you use when creating a new transaction. This feature works on **existing transactions** where you want AI to read through documents and fill in missing data.
+This is different from the **Upload Documents** flow you use when creating a new transaction, listing, or existing-transaction extraction run. This page covers the transaction **Documents > Files > Extract Data** shortcut for an existing transaction.
 
 ## How to use it
 
 1. Open a transaction and go to the **Documents** tab
 2. On the **Files** subtab, click **Extract Data**
 3. Upload the documents you want DocJacket to read
-4. If you upload a single multi-page PDF, review the **Smart Split** step when it appears
+4. Click **Extract Data**
 5. Open the progress page while extraction runs
-6. Review the extracted fields, citations, confidence, and warnings
-7. Save the update when the extracted data is correct
+6. Review the extracted fields, citations, confidence, warnings, and changed-field comparison
+7. Select which changes to apply
+8. Click **Update Transaction** when the extracted data is correct
 
 Nothing changes on the transaction until you finish the review-and-save step.
+
+## What happens to uploaded files
+
+Files uploaded through transaction **Extract Data** are linked to that transaction and appear in the **Documents Received** table. The upload accepts PDFs, JPGs, JPEGs, and PNGs up to 25MB each. Multiple files are supported.
+
+If you upload multiple files, DocJacket runs grouped extraction and then opens a merged review. If only one document succeeds, DocJacket can send you straight to the single-document review screen.
+
+Smart Split is part of the broader **Upload Documents** extraction wizard. From an existing transaction's **Extract Data** page, uploaded files go directly into extraction.
 
 ## What it extracts
 
@@ -1002,6 +1012,19 @@ AI looks through all your uploaded documents and pulls out:
 - Agent and lender information
 
 If a field is already filled in, review the suggested value before saving the update.
+
+## Review and apply changes
+
+For existing transactions, DocJacket compares extracted values with the current transaction data. The review screen shows:
+
+- Current value
+- New extracted value
+- A checkbox for each changed field
+- **Select All** and **None** controls
+
+Only selected differences are sent when you update the transaction. If no differences are found, there is nothing to apply.
+
+Extracted dates can update transaction fields, but timeline key dates are opt-in from the review screen. Toggle on only the extracted dates you want tracked as key dates on the transaction timeline.
 
 ## When to use this
 
@@ -1057,7 +1080,14 @@ Uploading from the checklist is best when a file satisfies a specific placeholde
 
 ## Document checks
 
-The **Documents Received** table also has an **AI Check** column. Use it to run risk scans and contract signature/initial checks on uploaded documents.
+The **Documents Received** table also has an **AI Check** column. Use it to run document risk scans and contract checks on uploaded documents.
+
+AI Check has two separate result types:
+
+- **Risk** — Flags risky clauses or document concerns for review.
+- **Contract** — Checks for missing signatures, initials, dates, and checkboxes.
+
+When a check finds something, open the risk drawer or **Contract Check** viewer from the result chip. You can dismiss reviewed risk findings or contract-check issues from those review surfaces.
 
 Those checks are separate from the Documents Needed checklist, but together they help answer two different questions:
 
@@ -3962,16 +3992,19 @@ DocJacket's AI looks for:
 
 ## How to use it
 
-1. From the **Transactions** page, click **Upload & Extract**
+1. From the **Transactions** page, click **Upload Documents**
 2. Choose whether the upload should create a transaction, create a listing, or update an existing transaction
-3. Drop in the contract files
+3. Drop in PDFs, JPGs, or PNGs
 4. If you upload a single multi-page PDF, review the **Smart Split** step when it appears
-5. Open the progress page while AI scans the documents
-6. Review the extracted fields, citations, confidence, and any warnings
-7. Correct anything needed
-8. Click the final create or update action to save the result
+5. For a single unsplit file, confirm the detected document type and state before extraction starts
+6. Open the progress page while AI scans the documents
+7. Review the extracted fields, citations, confidence, and any warnings
+8. Correct anything needed
+9. Click the final create or update action to save the result
 
 The upload wizard also shows pending uploads before you start. If a prior extraction finished but was never saved, continue that review instead of uploading the same file again.
+
+Uploads accept PDFs, JPGs, JPEGs, and PNGs up to 25MB each, with up to 20 files per run.
 
 ## Tips for best results
 
@@ -3981,9 +4014,15 @@ The upload wizard also shows pending uploads before you start. If a prior extrac
 - **Packets are fine** — Smart Split can separate a packet into individual documents before extraction.
 - **Always review** — AI is very good but not perfect. A quick scan of the extracted data catches misreads before the transaction is created, listing is created, or an existing transaction is updated.
 
+## Review and save
+
+The progress screen shows extraction steps, elapsed time, confidence when complete, warnings when available, and retry/cancel options when something fails.
+
+The review screen is the approval gate. Depending on the destination, the final action is **Create Transaction**, **Create Listing**, or **Update Transaction**. Existing-transaction updates show a changed-field comparison so you can choose which extracted values should overwrite current transaction data.
+
 ## Already have a transaction?
 
-You can also run extraction against an existing transaction. Use the upload wizard's existing-transaction destination, or open a transaction's **Documents** tab and use **AI Data Extraction** when available.
+You can also run extraction against an existing transaction. Use the upload wizard's existing-transaction destination, or open a transaction's **Documents** tab and use **Extract Data** from the **Files** subtab.
 
 ## If an upload is awaiting save
 
@@ -4064,6 +4103,19 @@ Use it to:
 - Check a contract for missing signatures or initials
 - Open the contract-check viewer when issues are found
 
+## AI Check statuses
+
+The **AI Check** column can show two independent results:
+
+- **Risk** — A document risk scan. Results can show scanning, clean, or a risk count.
+- **Contract** — A contract check for missing signatures, initials, dates, and checkboxes. Results can show scanning, signed, or an issue count.
+
+If neither check has run yet, the row shows **Scan**. Clicking it starts both the risk scan and contract check for that document.
+
+When documents are selected in the **Documents Received** table, the bulk **AI Check** action runs on the selected documents. If nothing is selected, it runs on documents that have not been risk-scanned yet. Contract checks run in parallel for documents that have not already been contract-checked.
+
+Risk findings open in a drawer with severity, description, flagged clause text when available, suggested action, page reference, and a dismiss action. Contract issues open in the **Contract Check** viewer with the PDF and issue overlays.
+
 ## How to use insights
 
 Treat risk insights as review prompts. They help you decide where to look, but they do not replace your normal transaction review.
@@ -4074,18 +4126,40 @@ If you resolve a concern, re-run the relevant assessment or document check so th
 
 # Smart Document Splitting
 
-Sometimes you get a single PDF that contains multiple documents — a contract, addenda, disclosures, and amendments all bundled together. DocJacket's AI can detect where one document ends and another begins, pick likely extractable documents, and split the selected files before extraction.
+Sometimes you get a single PDF that contains multiple documents — a contract, addenda, disclosures, and amendments all bundled together. DocJacket's AI can detect where one document ends and another begins, pick likely extractable documents, and send the selected documents into extraction.
 
 ## How to use it
 
-1. Start **Upload & Extract** and upload one PDF
-2. If the PDF has multiple pages and Smart Split is enabled, DocJacket opens the **Smart Split** step
+1. Start **Upload Documents** and upload one PDF
+2. If the PDF has multiple pages, DocJacket opens the **Smart Split** step
 3. AI identifies the documents, page ranges, document types, and likely primary contract
 4. Review the selected documents, extractable-document selection, and primary contract
 5. Edit boundaries, split a document, remove a document, add a document, or change the selected contract if needed
 6. Click **Split & Extract** to create the split files and start extraction
 
-If DocJacket detects one document spanning the full PDF, it skips the split step and starts extraction. If the detected split is high-confidence, DocJacket may show a short countdown and continue automatically unless you cancel to review manually. Low-confidence selected documents trigger a warning before extraction continues.
+If DocJacket detects one document spanning the full PDF, it skips the split step and continues to extraction. If the detected split is high-confidence, DocJacket shows a 5-second auto-extract countdown. Click **Cancel & review** during that countdown if you want to inspect or change the split before extraction starts.
+
+Smart Split appears in the broader **Upload Documents** extraction wizard. The transaction **Documents > Files > Extract Data** flow uploads directly into an existing transaction and then opens extraction progress/review.
+
+## What the review screen shows
+
+The Smart Split review screen includes:
+
+- A detected-document list with selected count
+- The likely primary contract
+- Document type and page range for each detected document
+- Confidence labels for each detected document
+- A PDF preview and page map
+- **All** and **None** selection controls
+- Edit tools for boundaries, split points, added documents, and removed documents
+
+DocJacket auto-selects extractable document types, such as purchase agreements, listing agreements, amendments, addenda, counterproposals, and similar contract documents. You can select or clear documents before extracting.
+
+## Confidence and warnings
+
+Documents below the review threshold are marked for review. If any selected document is below 70% confidence, DocJacket warns before continuing because a bad page boundary can produce inaccurate extraction results.
+
+Low confidence does not mean the AI failed. It means you should verify the page range and document type before sending the selected pages into extraction.
 
 ## When this is useful
 
@@ -4101,6 +4175,7 @@ If DocJacket detects one document spanning the full PDF, it skips the split step
 - Each split document gets categorized automatically
 - If the AI misidentifies a split point, adjust the page ranges before confirming
 - If you only want some files extracted, adjust the selected documents before continuing
+- Use **Skip Split** only when you want to extract from the original uploaded PDF without creating split files first
 
 ---
 
@@ -4155,7 +4230,7 @@ Each guide walks you through the connector setup and the OAuth consent flow.
 
 ## Featured workflow
 
-- **[Contract Intake](/docs/ai-access/contract-intake)** — when action tools are enabled, drop a contract PDF in chat, review extracted parties, addresses, key dates, and financials, then confirm before creating the transaction. In the standard read-first setup, use the in-app Upload & Extract wizard.
+- **[Contract Intake](/docs/ai-access/contract-intake)** — when action tools are enabled, drop a contract PDF in chat, review extracted parties, addresses, key dates, and financials, then confirm before creating the transaction. In the standard read-first setup, use the in-app Upload Documents wizard.
 
 ## Learn more
 
@@ -4305,7 +4380,7 @@ Inside DocJacket:
 
 ## Read more
 
-- [Contract Intake](/docs/ai-access/contract-intake) — external PDF intake when action tools are enabled; otherwise use the in-app Upload & Extract wizard
+- [Contract Intake](/docs/ai-access/contract-intake) — external PDF intake when action tools are enabled; otherwise use the in-app Upload Documents wizard
 - [Slash Commands](/docs/ai-access/slash-commands) — full reference for the 9 `/docjacket:` commands the plugin adds to Cowork + Claude Code
 - [Tool Catalog (`mcp_catalog`)](/docs/ai-access/tool-catalog) — the self-discovery tool that returns DocJacket's live inventory
 - [How the OAuth flow works](/docs/ai-access/oauth) — the underlying protocol
@@ -4439,7 +4514,7 @@ Inside DocJacket:
 
 ## Read more
 
-- [Contract Intake](/docs/ai-access/contract-intake) — external PDF intake when action tools are enabled; otherwise use the in-app Upload & Extract wizard
+- [Contract Intake](/docs/ai-access/contract-intake) — external PDF intake when action tools are enabled; otherwise use the in-app Upload Documents wizard
 - [Tool Catalog (`mcp_catalog`)](/docs/ai-access/tool-catalog) — the self-discovery tool that returns DocJacket's live inventory
 - [How the OAuth flow works](/docs/ai-access/oauth) — the underlying protocol
 - [AI Access overview](/docs/ai-access) — section index
@@ -4860,7 +4935,7 @@ A weekly recap formatted for forwarding to a broker, team meeting, or your own r
 
 > *"Intake a contract PDF and build the full transaction in one conversation."*
 
-The PDF-to-transaction workflow when action tools are enabled. In the standard read-first setup, use the in-app Upload & Extract wizard for transaction creation. See the full reference at **[Contract Intake](/docs/ai-access/contract-intake)**.
+The PDF-to-transaction workflow when action tools are enabled. In the standard read-first setup, use the in-app Upload Documents wizard for transaction creation. See the full reference at **[Contract Intake](/docs/ai-access/contract-intake)**.
 
 **Read-first version:** summarize extraction status and review available results.
 
