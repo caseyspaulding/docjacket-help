@@ -36,7 +36,7 @@ Example:
 - Due: Closing Date - 3 days
 - Scheduled email: Send closing reminder 1 day before the task due date at 8:00 AM
 
-Scheduled emails send from the TC's connected Gmail or Outlook account when available.
+Scheduled emails send from the TC's connected Gmail or Outlook account when available. Upcoming or held scheduled emails appear in the Review queue's **Scheduled** tab, where they can be edited, sent now, or cancelled when supported.
 
 ### On-completion actions
 
@@ -50,7 +50,7 @@ For each on-completion action, configure:
 - Attached documents
 - Optional offset and anchor date
 
-If **Require review before sending** is enabled, the email waits for review before sending. If it is disabled, the email can send automatically when the task is completed.
+If **Require review before sending** is enabled, the email waits in the topbar **Review queue** before sending. Open the document-tasks icon and use the **Ready for Review** tab to review, edit, send, or skip it. If review is disabled, the email can send automatically when the task is completed.
 
 ## Configuring automation in a checklist
 
@@ -77,7 +77,7 @@ The linked email template still controls the subject, body, smart fields, and an
 
 ## Runtime review
 
-When the checklist is applied to a transaction, DocJacket creates the tasks and their email automation rules. Before sending, DocJacket renders smart fields against that transaction.
+When the checklist is applied to a transaction, DocJacket creates the tasks and their email automation rules. Before sending or parking a draft for review, DocJacket renders smart fields against that transaction.
 
 If data is missing or a placeholder is unrecognized, review the email before sending. Missing transaction data should be fixed on the transaction. Unrecognized placeholders should be fixed in the email template.
 

@@ -50,4 +50,6 @@ Use **Settings > Automation Rules** to create and manage rule-based notification
 
 Automation rules can send email, SMS, or both when a transaction enters a status or when a configured checklist task is completed. Rules use templates, recipient logic, and delivery-channel settings. They can either send automatically or require review before sending.
 
-If organization-wide review-first is enabled, automated drafts land in the topbar **Review queue** before they send. You can also choose review behavior on individual rules when review-first is off globally.
+If organization-wide review-first is enabled, drafts from these rules land in the topbar **Review queue** before they send. Open the document-tasks icon and use the **Ready for Review** tab to send, edit, or skip them.
+
+If review-first is off globally, individual automation rules can still opt into **Review before sending**. Scheduled reminders and manually configured scheduled emails stay schedule-driven; they appear in the Review queue's **Scheduled** tab instead of the Ready for Review tab.

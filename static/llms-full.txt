@@ -1903,6 +1903,8 @@ Checklists are reusable transaction workflows. A checklist can add the key dates
 
 The checklist's key dates and tasks are added to the transaction with priorities, due-date offsets, assignments, phases, and any configured email automation.
 
+Email automation follows the checklist settings: scheduled emails are created against their configured due-date anchors, and on-completion emails either auto-send or wait in the Review queue's **Ready for Review** tab when review is required.
+
 If a transaction already has an applied checklist, DocJacket warns you before stacking another one. You can add the new checklist alongside existing work, or replace previously-applied template items when appropriate.
 
 Manually added items and contract-extracted dates are preserved when replacing template-generated items.
@@ -2023,7 +2025,7 @@ Example:
 - Due: Closing Date - 3 days
 - Scheduled email: Send closing reminder 1 day before the task due date at 8:00 AM
 
-Scheduled emails send from the TC's connected Gmail or Outlook account when available.
+Scheduled emails send from the TC's connected Gmail or Outlook account when available. Upcoming or held scheduled emails appear in the Review queue's **Scheduled** tab, where they can be edited, sent now, or cancelled when supported.
 
 ### On-completion actions
 
@@ -2037,7 +2039,7 @@ For each on-completion action, configure:
 - Attached documents
 - Optional offset and anchor date
 
-If **Require review before sending** is enabled, the email waits for review before sending. If it is disabled, the email can send automatically when the task is completed.
+If **Require review before sending** is enabled, the email waits in the topbar **Review queue** before sending. Open the document-tasks icon and use the **Ready for Review** tab to review, edit, send, or skip it. If review is disabled, the email can send automatically when the task is completed.
 
 ## Configuring automation in a checklist
 
@@ -2064,7 +2066,7 @@ The linked email template still controls the subject, body, smart fields, and an
 
 ## Runtime review
 
-When the checklist is applied to a transaction, DocJacket creates the tasks and their email automation rules. Before sending, DocJacket renders smart fields against that transaction.
+When the checklist is applied to a transaction, DocJacket creates the tasks and their email automation rules. Before sending or parking a draft for review, DocJacket renders smart fields against that transaction.
 
 If data is missing or a placeholder is unrecognized, review the email before sending. Missing transaction data should be fixed on the transaction. Unrecognized placeholders should be fixed in the email template.
 
@@ -2113,7 +2115,7 @@ Use **Reminders** to get notified before the task is due. Reminder choices inclu
 
 ## Task emails
 
-Use **Task emails** to link an email template to the task. Linked task emails can be reviewed and sent from the task, and completion can prompt you to send or skip any pending linked emails.
+Use **Task emails** to link an email template to the task. Linked task emails can be reviewed and sent from the task, and completion can prompt you to send or skip any pending linked emails. When a linked email is configured to require review, it appears in the topbar Review queue's **Ready for Review** tab before sending.
 
 Linked emails can use:
 
@@ -2128,7 +2130,7 @@ See [Email Automation](./email-automation.mdx) for the full workflow.
 
 Use **Scheduled emails** when the message should send from the task due date, instead of waiting for the task to be completed.
 
-From the drawer, you can schedule a new email, edit pending or held scheduled emails, send one now, or cancel it.
+From the drawer, you can schedule a new email, edit pending or held scheduled emails, send one now, or cancel it. Upcoming and held scheduled emails also appear in the Review queue's **Scheduled** tab.
 
 ## Options
 
@@ -5704,7 +5706,9 @@ Organization settings also control email defaults used by reminders and schedule
 
 Use **Review auto-emails before sending** to decide whether organization-wide automation rules should send directly or pause for review.
 
-When this is on, emails created by automation rules land in the topbar **Review queue** before sending. Reminders and scheduled emails that your team manually configured still send on their configured schedule.
+When this is on, drafts created by status-change or task-completion automation rules land in the topbar **Review queue** before sending. Open the document-tasks icon and use the **Ready for Review** tab to send, edit, or skip them.
+
+Reminders and scheduled emails that your team manually configured still send on their configured schedule. They appear in the Review queue's **Scheduled** tab when they are upcoming, held, or need attention.
 
 ## Email subject address prefix
 
@@ -6125,7 +6129,9 @@ Use **Settings > Automation Rules** to create and manage rule-based notification
 
 Automation rules can send email, SMS, or both when a transaction enters a status or when a configured checklist task is completed. Rules use templates, recipient logic, and delivery-channel settings. They can either send automatically or require review before sending.
 
-If organization-wide review-first is enabled, automated drafts land in the topbar **Review queue** before they send. You can also choose review behavior on individual rules when review-first is off globally.
+If organization-wide review-first is enabled, drafts from these rules land in the topbar **Review queue** before they send. Open the document-tasks icon and use the **Ready for Review** tab to send, edit, or skip them.
+
+If review-first is off globally, individual automation rules can still opt into **Review before sending**. Scheduled reminders and manually configured scheduled emails stay schedule-driven; they appear in the Review queue's **Scheduled** tab instead of the Ready for Review tab.
 
 ---
 

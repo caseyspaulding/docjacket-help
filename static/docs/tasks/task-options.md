@@ -42,7 +42,7 @@ Use **Reminders** to get notified before the task is due. Reminder choices inclu
 
 ## Task emails
 
-Use **Task emails** to link an email template to the task. Linked task emails can be reviewed and sent from the task, and completion can prompt you to send or skip any pending linked emails.
+Use **Task emails** to link an email template to the task. Linked task emails can be reviewed and sent from the task, and completion can prompt you to send or skip any pending linked emails. When a linked email is configured to require review, it appears in the topbar Review queue's **Ready for Review** tab before sending.
 
 Linked emails can use:
 
@@ -57,7 +57,7 @@ See [Email Automation](./email-automation.mdx) for the full workflow.
 
 Use **Scheduled emails** when the message should send from the task due date, instead of waiting for the task to be completed.
 
-From the drawer, you can schedule a new email, edit pending or held scheduled emails, send one now, or cancel it.
+From the drawer, you can schedule a new email, edit pending or held scheduled emails, send one now, or cancel it. Upcoming and held scheduled emails also appear in the Review queue's **Scheduled** tab.
 
 ## Options
 

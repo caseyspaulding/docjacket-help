@@ -24,6 +24,8 @@ Checklists are reusable transaction workflows. A checklist can add the key dates
 
 The checklist's key dates and tasks are added to the transaction with priorities, due-date offsets, assignments, phases, and any configured email automation.
 
+Email automation follows the checklist settings: scheduled emails are created against their configured due-date anchors, and on-completion emails either auto-send or wait in the Review queue's **Ready for Review** tab when review is required.
+
 If a transaction already has an applied checklist, DocJacket warns you before stacking another one. You can add the new checklist alongside existing work, or replace previously-applied template items when appropriate.
 
 Manually added items and contract-extracted dates are preserved when replacing template-generated items.
