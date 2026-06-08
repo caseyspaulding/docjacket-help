@@ -2693,7 +2693,6 @@ The **Templates** page in the sidebar is your template hub, organized into categ
 
 ## Document Templates
 - **Required Documents Lists** — Document requirements for different transaction types
-- **Approved Form Templates** — Office-owned blank PDFs for reusable e-signature packets
 - **Smart Fields** — Custom fields for auto-populating document data
 
 ## Report Templates
@@ -2707,7 +2706,6 @@ The **Templates** page in the sidebar is your template hub, organized into categ
 - [Email Signatures](./email-signatures.md) — Create branded signatures for outgoing email
 - [Online Forms](./online-forms.md) — Build public and transaction-specific forms for intake, updates, and Front Door CTAs
 - [Required Documents Lists](./required-documents-lists.md) — Define required document checklists by transaction type
-- [Approved Form Templates](../documents/approved-form-templates.md) — Build office-approved PDFs for e-signature packets
 - [Smart Fields](./smart-fields.md) — Manage reusable fields for document and communication data
 - [SitRep Templates](./sitrep-templates.md) — Control the sections used in transaction status reports
 
@@ -3225,6 +3223,15 @@ The builder has three steps:
 - **Setup** — Basic information, branding, messages, theme, section styling, and checklist binding
 - **Fields** — Field canvas, field palette, field properties, ordering, and conditional display
 - **Share** — Public or transaction-specific links, version history, and form preview
+
+## My Forms and shared samples
+
+The Online Forms page has two tabs:
+
+- **My Forms** — Forms your organization owns and can edit, activate, deactivate, duplicate, or delete
+- **Shared** — Sample templates from DocJacket and founding trainers
+
+Shared forms are read-only. Preview the fields, then use **Use This Template** or **Copy to My Forms** to create an editable copy in your organization.
 
 ## Form purposes
 
