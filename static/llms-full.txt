@@ -3964,7 +3964,7 @@ Each guide walks you through the connector setup and the OAuth consent flow.
 
 ## Featured workflow
 
-- **[Contract Intake](/docs/ai-access/contract-intake)** — drop a contract PDF in chat, the assistant extracts the parties, addresses, key dates, and financials, presents them for your review, and creates the transaction on your confirmation. End-to-end PDF → live deal in one conversation.
+- **[Contract Intake](/docs/ai-access/contract-intake)** — when action tools are enabled, drop a contract PDF in chat, review extracted parties, addresses, key dates, and financials, then confirm before creating the transaction. In the standard read-first setup, use the in-app Upload & Extract wizard.
 
 ## Learn more
 
@@ -4008,8 +4008,8 @@ You connect each surface once. The same DocJacket MCP server backs all four.
 3. **Connectors** in the left nav → **+ Add custom connector**.
 4. Paste `https://mcp.docjacket.com/mcp` as the URL.
 5. Click **Continue**. Claude will redirect you to DocJacket's consent screen.
-6. **Allow** the connection. (You'll see the requested scopes — **read** for lookups, **draft** for send / create / update, **actions** for higher-impact writes. All three tiers are enforced server-side; you grant exactly what you want the assistant to be able to do.)
-7. You're back in Claude with **DocJacket** showing as a custom connector and the full tool list loaded. Claude.ai groups it into **Read-only tools** and **Write tools (needs approval)** accordions automatically — read tools run inline, writes pause for your confirmation in chat.
+6. **Allow** the connection. Current customer-facing access is read-first for lookups. Draft and action scopes only appear when they are enabled for your account, and every tier is enforced server-side.
+7. You're back in Claude with **DocJacket** showing as a custom connector and the tools available to your scopes loaded. Read tools run inline; any enabled write tools pause for your confirmation in chat.
 
 ## Try it
 
@@ -4052,7 +4052,7 @@ Drafting and write tools are rolling out behind per-tool consent. If your accoun
 
 - `daily-triage` — what needs attention today, overdue-first
 - `email-triage` — match Gmail / Outlook threads against active deals
-- `contract-intake` — PDF → extraction → new transaction
+- `contract-intake` — PDF extraction review; transaction creation requires action tools
 - `document-filing` — classify uploaded docs, file them to the right deal
 - `closing-prep` — pre-closing checklist audit
 - `follow-up-drafting` — compose a chase email with the right context already loaded
@@ -4087,7 +4087,7 @@ Claude Desktop (Mac / Windows native app) uses the same custom-connector flow as
 2. Paste `https://mcp.docjacket.com/mcp`.
 3. Complete the OAuth consent.
 
-Once connected, Claude Desktop has access to the same full DocJacket tool surface.
+Once connected, Claude Desktop has access to the same DocJacket tools available to that connector's granted scopes.
 
 ## Permissions, audit, and revocation
 
@@ -4114,7 +4114,7 @@ Inside DocJacket:
 
 ## Read more
 
-- [Contract Intake](/docs/ai-access/contract-intake) — drop a PDF in chat, get a fully-set-up transaction back
+- [Contract Intake](/docs/ai-access/contract-intake) — external PDF intake when action tools are enabled; otherwise use the in-app Upload & Extract wizard
 - [Slash Commands](/docs/ai-access/slash-commands) — full reference for the 9 `/docjacket:` commands the plugin adds to Cowork + Claude Code
 - [Tool Catalog (`mcp_catalog`)](/docs/ai-access/tool-catalog) — the self-discovery tool that returns DocJacket's live inventory
 - [How the OAuth flow works](/docs/ai-access/oauth) — the underlying protocol
@@ -4154,7 +4154,7 @@ The same DocJacket MCP server backs all three. Connect once per surface.
 
 4. Restart Codex. On first call, Codex opens a browser window with DocJacket's OAuth consent screen.
 5. **Allow** the connection. Codex stores the access + refresh tokens in your local keychain.
-6. Run `codex tools list` — you should see the full DocJacket tool inventory (47 today).
+6. Run `codex tools list` — you should see the DocJacket read tools available to your token. Additional draft or action tools appear only when those rollout scopes are enabled for your account.
 
 For the full plugin (with the skill set and `.codex-plugin` package), see [docjacket-inc/codex-plugin](https://github.com/docjacket-inc/codex-plugin) on GitHub.
 
@@ -4219,8 +4219,8 @@ $docjacket-daily-triage
 In ChatGPT, just ask in plain English:
 
 > "Use DocJacket to do a daily triage of my pipeline."
-> "Use DocJacket to draft a follow-up to the listing agent on 1234 Main."
-> "Use DocJacket to extract this PDF I'm dropping in and spin up the transaction."
+> "Use DocJacket to find the listing agent on 1234 Main and summarize the deal context."
+> "Use DocJacket to review extraction results for this PDF." Action tools are required to create the transaction from chat.
 
 Either way you get a ranked, structured response — the skill carries the formatting and the recipe.
 
@@ -4248,7 +4248,7 @@ Inside DocJacket:
 
 ## Read more
 
-- [Contract Intake](/docs/ai-access/contract-intake) — drop a PDF in chat, get a fully-set-up transaction back
+- [Contract Intake](/docs/ai-access/contract-intake) — external PDF intake when action tools are enabled; otherwise use the in-app Upload & Extract wizard
 - [Tool Catalog (`mcp_catalog`)](/docs/ai-access/tool-catalog) — the self-discovery tool that returns DocJacket's live inventory
 - [How the OAuth flow works](/docs/ai-access/oauth) — the underlying protocol
 - [AI Access overview](/docs/ai-access) — section index
@@ -4795,7 +4795,7 @@ A single `mcp_catalog` response, truncated to representative read-tool entries:
 |---|---|
 | **`name`** | Tool name as you'd pass to `tools/call`. snake_case, verb-first. |
 | **`description`** | Human-readable purpose + when to use it. Same text MCP's standard `tools/list` returns. |
-| **`requiredScope`** | Tier scope the caller needs: `read` (lookups), `draft` (send / create / update), `actions` (higher-impact writes like `apply_extraction`). The token you got at consent grants one or more tiers. |
+| **`requiredScope`** | Tier scope the caller needs: `read` for lookups; `draft` or `actions` for rollout-gated create, update, send, or apply tools. The catalog only returns tools your token can actually call. |
 | **`requiredGranularScope`** | Optional fine-grained scope on top of the tier (e.g. `messaging:send`, `transactions:create`). Empty when the tier alone is enough. |
 | **`hasOutputSchema`** | Whether the tool declares a structured output schema. `true` means the response shape is documented and validated; `false` is text/JSON without a contract. |
 | **`gotchas[]`** | Non-obvious behaviors worth knowing before calling — caps, scope nuances, side-effects. Empty when nothing surprising. |
@@ -4817,7 +4817,7 @@ Every customer-facing doc page on this site references tool names; `mcp_catalog`
 
 - **[Connect Claude](/docs/ai-access/claude)** / **[Connect Codex / ChatGPT](/docs/ai-access/codex)** — install the connector if you haven't
 - **[Slash Commands](/docs/ai-access/slash-commands)** — pre-built workflows that wrap the most-used tool chains
-- **[Contract Intake](/docs/ai-access/contract-intake)** — the headline workflow, using 6 tools you'll see in the catalog
+- **[Contract Intake](/docs/ai-access/contract-intake)** — external PDF intake for accounts with action tools enabled
 - **[AI Access overview](/docs/ai-access)** — section index
 
 ---

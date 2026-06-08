@@ -38,7 +38,7 @@ The same DocJacket MCP server backs all three. Connect once per surface.
 
 4. Restart Codex. On first call, Codex opens a browser window with DocJacket's OAuth consent screen.
 5. **Allow** the connection. Codex stores the access + refresh tokens in your local keychain.
-6. Run `codex tools list` — you should see the full DocJacket tool inventory (47 today).
+6. Run `codex tools list` — you should see the DocJacket read tools available to your token. Additional draft or action tools appear only when those rollout scopes are enabled for your account.
 
 For the full plugin (with the skill set and `.codex-plugin` package), see [docjacket-inc/codex-plugin](https://github.com/docjacket-inc/codex-plugin) on GitHub.
 
@@ -103,8 +103,8 @@ $docjacket-daily-triage
 In ChatGPT, just ask in plain English:
 
 > "Use DocJacket to do a daily triage of my pipeline."
-> "Use DocJacket to draft a follow-up to the listing agent on 1234 Main."
-> "Use DocJacket to extract this PDF I'm dropping in and spin up the transaction."
+> "Use DocJacket to find the listing agent on 1234 Main and summarize the deal context."
+> "Use DocJacket to review extraction results for this PDF." Action tools are required to create the transaction from chat.
 
 Either way you get a ranked, structured response — the skill carries the formatting and the recipe.
 
@@ -132,7 +132,7 @@ Inside DocJacket:
 
 ## Read more
 
-- [Contract Intake](/docs/ai-access/contract-intake) — drop a PDF in chat, get a fully-set-up transaction back
+- [Contract Intake](/docs/ai-access/contract-intake) — external PDF intake when action tools are enabled; otherwise use the in-app Upload & Extract wizard
 - [Tool Catalog (`mcp_catalog`)](/docs/ai-access/tool-catalog) — the self-discovery tool that returns DocJacket's live inventory
 - [How the OAuth flow works](/docs/ai-access/oauth) — the underlying protocol
 - [AI Access overview](/docs/ai-access) — section index

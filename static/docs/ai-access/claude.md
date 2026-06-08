@@ -35,8 +35,8 @@ You connect each surface once. The same DocJacket MCP server backs all four.
 3. **Connectors** in the left nav → **+ Add custom connector**.
 4. Paste `https://mcp.docjacket.com/mcp` as the URL.
 5. Click **Continue**. Claude will redirect you to DocJacket's consent screen.
-6. **Allow** the connection. (You'll see the requested scopes — **read** for lookups, **draft** for send / create / update, **actions** for higher-impact writes. All three tiers are enforced server-side; you grant exactly what you want the assistant to be able to do.)
-7. You're back in Claude with **DocJacket** showing as a custom connector and the full tool list loaded. Claude.ai groups it into **Read-only tools** and **Write tools (needs approval)** accordions automatically — read tools run inline, writes pause for your confirmation in chat.
+6. **Allow** the connection. Current customer-facing access is read-first for lookups. Draft and action scopes only appear when they are enabled for your account, and every tier is enforced server-side.
+7. You're back in Claude with **DocJacket** showing as a custom connector and the tools available to your scopes loaded. Read tools run inline; any enabled write tools pause for your confirmation in chat.
 
 ## Try it
 
@@ -79,7 +79,7 @@ Drafting and write tools are rolling out behind per-tool consent. If your accoun
 
 - `daily-triage` — what needs attention today, overdue-first
 - `email-triage` — match Gmail / Outlook threads against active deals
-- `contract-intake` — PDF → extraction → new transaction
+- `contract-intake` — PDF extraction review; transaction creation requires action tools
 - `document-filing` — classify uploaded docs, file them to the right deal
 - `closing-prep` — pre-closing checklist audit
 - `follow-up-drafting` — compose a chase email with the right context already loaded
@@ -114,7 +114,7 @@ Claude Desktop (Mac / Windows native app) uses the same custom-connector flow as
 2. Paste `https://mcp.docjacket.com/mcp`.
 3. Complete the OAuth consent.
 
-Once connected, Claude Desktop has access to the same full DocJacket tool surface.
+Once connected, Claude Desktop has access to the same DocJacket tools available to that connector's granted scopes.
 
 ## Permissions, audit, and revocation
 
@@ -141,7 +141,7 @@ Inside DocJacket:
 
 ## Read more
 
-- [Contract Intake](/docs/ai-access/contract-intake) — drop a PDF in chat, get a fully-set-up transaction back
+- [Contract Intake](/docs/ai-access/contract-intake) — external PDF intake when action tools are enabled; otherwise use the in-app Upload & Extract wizard
 - [Slash Commands](/docs/ai-access/slash-commands) — full reference for the 9 `/docjacket:` commands the plugin adds to Cowork + Claude Code
 - [Tool Catalog (`mcp_catalog`)](/docs/ai-access/tool-catalog) — the self-discovery tool that returns DocJacket's live inventory
 - [How the OAuth flow works](/docs/ai-access/oauth) — the underlying protocol
