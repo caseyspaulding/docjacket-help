@@ -62,7 +62,7 @@ When draft or action tools are enabled, supported MCP clients use a **confirm-th
 3. You confirm or redirect.
 4. The assistant fires the tool only after you say yes.
 
-DocJacket's server does not run a separate approval queue. We retired the "Pending Review" tray in May 2026 — the chat already gates every write, so a second approval inside DocJacket was just duplicate work.
+For external AI Access writes, DocJacket's server does not run a second approval queue after chat confirmation. We retired the old sidebar "Pending Review" page in May 2026 — the AI client chat already gates those writes, so a second approval inside DocJacket was duplicate work. This is separate from the in-app **Review queue**, which still handles DocJacket automation drafts, scheduled sends, recent activity, and pending uploads.
 
 Read the [retirement spec](https://github.com/caseyspaulding/docjacket-v3/blob/main/docs/specs/REMOVE-PREPARED-WORK.md) for the full rationale.
 

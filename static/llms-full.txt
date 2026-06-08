@@ -228,7 +228,7 @@ The **Overview** tab is where most TCs spend their time — it's a single-page v
 - **Pending uploads are not finished transactions** — review and save completed extractions before expecting them in the transaction list
 - **Search** is everywhere — use the search bar on the Transactions page to find deals by address, buyer name, or seller name
 - **Help chat** — Click the chat button in the bottom-right corner anytime for instant AI-powered help
-- **Review queue** — Use the document-tasks icon in the topbar for ready drafts, scheduled sends, recent activity, and pending uploads
+- **Review queue** — Use the document-tasks icon in the topbar for pending uploads, ready drafts, scheduled sends, and recent activity
 
 ---
 
@@ -336,7 +336,7 @@ Operations pages are the surfaces your team checks during the day to decide what
 
 - [Dashboard](./dashboard.md) - Your daily overview, quick actions, pending uploads, closings, tasks, and briefing
 - [Intake Queue](./intake-queue.md) - Route inbound emails, SMS, intake forms, and notes to the right transaction
-- [Pending Review](./pending-review.md) - Approve, edit, or reject AI-proposed drafts before they run
+- [Review Queue](./pending-review.md) - Use the topbar drawer for pending uploads, ready drafts, scheduled sends, and recent activity
 - [Extraction Review](./extraction-review.md) - Finish saving extracted contract data and review extraction history
 
 ## How the queues fit together
@@ -345,7 +345,7 @@ Use the **Dashboard** as your morning check-in. It points you toward closings, o
 
 Use the **Intake Queue** when inbound items need routing to a transaction.
 
-Use **Pending Review** when AI or connected tools prepared something that needs approval before DocJacket sends or applies it.
+Use the **Review Queue** when drafts, automation output, scheduled sends, or pending uploads need a human decision. The old sidebar **Pending Review** page was retired; current review work lives in the document-tasks icon in the topbar.
 
 Use **AI Extractions** when uploaded documents were scanned but still need to be reviewed and saved.
 
@@ -371,7 +371,7 @@ After your workspace has activity, the dashboard shifts into daily operations mo
 The dashboard includes collapsible sections. Your layout may vary by screen size and plan, but the main sections are:
 
 - **Today's Briefing** - Closings today, overdue tasks, tasks due today, upcoming deadlines, new emails, completed extractions, new assignments, and workload level
-- **Pending Uploads** - Documents that finished extracting but have not been saved as a transaction or update yet
+- **Pending Uploads** - Documents that finished extracting but have not been saved as a transaction, listing, or update yet
 - **Closing Soon** - Transactions with closing dates in the next seven days
 - **Tasks** - Tasks due today or overdue and assigned to you
 - **Waiting On** - Deals currently blocked, grouped by phase
@@ -385,7 +385,7 @@ From **Today's Briefing**, you can turn the daily digest email on or off. The di
 
 ## Pending uploads
 
-If **Pending Uploads** appears, open it before assuming the upload is finished. A completed extraction still needs review and a final save action before it becomes a new transaction, listing, or update to an existing transaction.
+If **Pending Uploads** appears, open it before assuming the upload is finished. A completed extraction still needs review and a final save action before it becomes a new transaction, listing, or update to an existing transaction. Discarding a pending upload only hides the unfinished-work card; it does not erase extraction history.
 
 ## Tips
 
@@ -447,7 +447,7 @@ Use dismissal for spam, duplicates, or messages that do not belong in a transact
 
 # Review Queue
 
-The **Review queue** is the topbar drawer for work that needs a quick decision.
+The **Review queue** is the topbar drawer for work that needs a quick decision. It replaced the old sidebar **Pending Review** page; use the document-tasks icon in the topbar for current review work.
 
 Open it from the document-tasks icon in the topbar.
 
@@ -455,33 +455,33 @@ Open it from the document-tasks icon in the topbar.
 
 The drawer can include:
 
-- **Pending Uploads** - extraction groups that finished scanning but have not been reviewed and saved
-- **Ready for Review** - automation-rule drafts, email drafts, SMS drafts, and other actions waiting for approval or skipping
-- **Scheduled** - upcoming reminders, scheduled emails, and scheduled messages
-- **Done** - recent sent, approved, skipped, rejected, or completed activity
+- **Pending Uploads** - extraction groups that completed scanning, were not applied to a transaction, and have not been dismissed
+- **Ready for Review** - automation-rule drafts, email drafts, SMS drafts, and other actions waiting for approval or dismissal
+- **Scheduled** - upcoming reminders, scheduled emails, and one-off scheduled messages
+- **Done** - recent sent, approved, skipped, dismissed, rejected, or completed activity from the last several days
 
 ## Pending uploads
 
-If the drawer shows **Pending Uploads**, those uploads were scanned but never saved into a transaction or listing.
+If the drawer shows **Pending Uploads**, those uploads were scanned but never saved into a transaction, listing, or existing-transaction update.
 
-Use **Review** to return to the extraction review flow. Use **Discard** only when the upload should stop appearing as unfinished work.
+Use **Review** to return to the extraction review flow. Use **Discard** only when the upload should stop appearing as unfinished work. Discard soft-dismisses the pending-upload card; it does not erase the underlying extraction history.
 
 ## Ready for Review
 
-Use the **Ready for Review** tab for drafts and actions that need a human decision.
+Use the **Ready for Review** tab for drafts and actions that need a human decision before they proceed.
 
 Depending on the draft, you may be able to:
 
 - Open the detail view
 - Edit supported email or SMS content
 - Approve or send the draft
-- Skip the draft
+- Dismiss or skip the draft
 - Use **Skip past-deadline** for drafts whose deadline has already passed
 - Use **Approve All** when every ready item should proceed
 
 ## Scheduled
 
-Use the **Scheduled** tab to review upcoming sends.
+Use the **Scheduled** tab to review upcoming reminders, scheduled emails, and one-off scheduled messages.
 
 Scheduled emails can be edited, sent now, or cancelled. Scheduled messages can be cancelled.
 
@@ -489,11 +489,11 @@ Scheduled emails can be edited, sent now, or cancelled. Scheduled messages can b
 
 Use the **Done** tab to check recent activity from the last several days.
 
-Done items can show what was sent, approved, skipped, rejected, or completed, along with the related transaction when available.
+Done items can show what was sent, approved, skipped, dismissed, rejected, or completed, along with the related transaction when available.
 
 ## If you have an old Pending Review link
 
-Older **Pending Review** links now redirect to the Inbox. Use the topbar Review queue for current review work.
+Older **Pending Review** links now redirect to the Inbox with a retirement notice. Use the topbar Review queue for current in-app review work.
 
 ---
 
@@ -509,8 +509,8 @@ The extraction list focuses on the question that matters most: did this become a
 
 Common save states are:
 
-- **Saved** - The extraction has been applied to a transaction
-- **Awaiting save** - The extraction completed, but no transaction or update has been saved yet
+- **Saved** - The extraction has been applied to a transaction, listing, or existing-transaction update
+- **Awaiting save** - The extraction completed, but no transaction, listing, or update has been saved yet
 - **Pending** or **Processing** - The extraction is still running
 - **Failed** or **Cancelled** - The extraction did not complete
 
@@ -528,7 +528,7 @@ Review the extracted fields, correct anything that is wrong, then choose the fin
 
 Nothing is final until you complete the review and save step.
 
-Pending uploads can also appear in the Review queue drawer and on the dashboard. Those cards take you back to the same review-and-save workflow. Use **Discard** only when the upload should stop appearing as unfinished work.
+Pending uploads can also appear in the Review queue drawer and on the dashboard. Those cards take you back to the same review-and-save workflow. Use **Discard** only when the upload should stop appearing as unfinished work; it soft-dismisses the pending-upload card without deleting extraction history.
 
 ## Progress pages
 
@@ -5004,7 +5004,7 @@ When draft or action tools are enabled, supported MCP clients use a **confirm-th
 3. You confirm or redirect.
 4. The assistant fires the tool only after you say yes.
 
-DocJacket's server does not run a separate approval queue. We retired the "Pending Review" tray in May 2026 — the chat already gates every write, so a second approval inside DocJacket was just duplicate work.
+For external AI Access writes, DocJacket's server does not run a second approval queue after chat confirmation. We retired the old sidebar "Pending Review" page in May 2026 — the AI client chat already gates those writes, so a second approval inside DocJacket was duplicate work. This is separate from the in-app **Review queue**, which still handles DocJacket automation drafts, scheduled sends, recent activity, and pending uploads.
 
 Read the [retirement spec](https://github.com/caseyspaulding/docjacket-v3/blob/main/docs/specs/REMOVE-PREPARED-WORK.md) for the full rationale.
 
