@@ -8,17 +8,20 @@ description: Use reusable email templates with smart fields that auto-fill with 
 
 Email templates let you reuse common email content while composing transaction messages. Templates can fill the subject, body, recipients, smart fields, and configured document attachments.
 
+![Transaction email composer with the saved template selector open](/img/email-templates/email-template-compose-options.png)
+
 ## Using a template
 
 When composing an email in a transaction:
 
 1. Open the transaction message composer
-2. Click the template picker
-3. Browse or search for the template you want
-4. Select it
-5. Review the filled subject, body, recipients, and attachments
-6. Fix any missing values or unresolved smart fields
-7. Send the email
+2. Click **Insert**
+3. Choose **From Template**
+4. Open **Choose a template**
+5. Select the template you want
+6. Review the filled subject, body, recipients, and attachments
+7. Fix any missing values or unresolved smart fields
+8. Send the email
 
 Smart fields are replaced with the transaction's current data when the template renders.
 

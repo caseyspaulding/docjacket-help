@@ -63,6 +63,8 @@ In the email template editor, you can insert smart fields from the side panel or
 - **Fields** - Insert one smart field
 - **Groups** - Insert a pre-built block of related fields
 
+The Email Template builder also shows a quick smart-field panel beside the rich editor. Click a field to insert it at the cursor, or use the launch icon to browse the full smart-field picker.
+
 Smart fields work in email subjects too. For example:
 
 ```text

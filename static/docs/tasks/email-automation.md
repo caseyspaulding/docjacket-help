@@ -75,6 +75,8 @@ Task email automation can use:
 
 The linked email template still controls the subject, body, smart fields, and any template-level auto-attachments.
 
+Build and test the template in **Templates > Email Templates** first. The checklist automation controls decide when the email is prepared or sent, while the email template controls the content, default recipient logic, and template-level document attachments.
+
 ## Runtime review
 
 When the checklist is applied to a transaction, DocJacket creates the tasks and their email automation rules. Before sending or parking a draft for review, DocJacket renders smart fields against that transaction.

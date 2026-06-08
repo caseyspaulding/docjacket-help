@@ -10,6 +10,8 @@ Create reusable email templates with smart fields that auto-populate with transa
 
 Email templates can include subject lines, rich email bodies, smart fields, recipient rules, and document categories to auto-attach when the email sends.
 
+![Email Templates page with My Templates, Shared templates, filters, grouped cards, and available variables](/img/email-templates/email-template-list.png)
+
 ## My Templates and Shared templates
 
 The Email Templates page has two tabs:
@@ -17,9 +19,13 @@ The Email Templates page has two tabs:
 - **My Templates** - Templates your organization owns and can edit
 - **Shared** - DocJacket-provided templates you can copy into your organization
 
-Shared templates are read-only. Use **Copy to My Templates** before changing the subject, body, attachments, or smart fields.
+Shared templates are read-only. Use **Copy to My Templates** before changing the subject, body, attachments, recipients, or smart fields.
+
+The list groups templates by stage and shows each template's active/draft status, category, version, and smart-field count. Use the filters for side, category, status, audience, stage, tone, and search when your library grows.
 
 ## Creating an email template
+
+![New Email Template builder with template settings, recipients, AI generator, rich editor, smart fields, and auto-attach documents](/img/email-templates/email-template-editor.png)
 
 1. Go to **Templates > Email Templates** in the sidebar
 2. Click **New Template**
@@ -34,6 +40,12 @@ Shared templates are read-only. Use **Copy to My Templates** before changing the
 11. Save the template
 
 Templates can be **Active** or **Draft**. Keep a template in draft while you are testing it, then activate it when it is ready for your team.
+
+The builder is split into three working areas:
+
+- **Template Settings and recipients** - Name, category, side, audience, stage, tone, internal-only status, recipients by role, and conditional recipient rules.
+- **Content editor** - AI Email Generator, subject, rich body editor, HTML mode, conditional snippets, and the Edit/Preview tabs.
+- **Smart fields and attachments** - Quick smart-field buttons, the full smart-field picker, and auto-attach document categories.
 
 ## Organizing templates
 
@@ -97,6 +109,8 @@ DocJacket attaches matching documents from the transaction when the email is sen
 
 ## Preview and testing
 
+![Email Template Preview tab showing rendered subject, body, missing-variable warning, and Send Test controls](/img/email-templates/email-template-preview.png)
+
 Use the **Preview** tab to render the template before sending. You can preview with sample data or select a transaction for a more realistic preview.
 
 If the template uses conditional content, the preview tools let you test sample values such as buyer/seller side, earnest-money location, or whether an assistant is on the transaction.
@@ -125,6 +139,8 @@ Here are some templates most TCs find useful:
 Email templates become even more powerful when linked to [tasks](../tasks/email-automation.mdx). Set up a task like "Send closing reminder" with a linked template, and the email is ready to go when the task comes due.
 
 Task-linked templates can render smart fields, show unresolved-field warnings, include the default email signature, and send with attached documents when configured.
+
+When a template is used from a transaction email composer, open **Insert > From Template**, choose the saved template, and review the filled subject, body, recipients, attachments, and missing-field warnings before sending.
 
 ## Tips
 
