@@ -45,7 +45,9 @@ Organization settings also control email defaults used by reminders and schedule
 
 Use **Review auto-emails before sending** to decide whether organization-wide automation rules should send directly or pause for review.
 
-When this is on, emails created by automation rules land in the topbar **Review queue** before sending. Reminders and scheduled emails that your team manually configured still send on their configured schedule.
+When this is on, drafts created by status-change or task-completion automation rules land in the topbar **Review queue** before sending. Open the document-tasks icon and use the **Ready for Review** tab to send, edit, or skip them.
+
+Reminders and scheduled emails that your team manually configured still send on their configured schedule. They appear in the Review queue's **Scheduled** tab when they are upcoming, held, or need attention.
 
 ## Email subject address prefix
 
