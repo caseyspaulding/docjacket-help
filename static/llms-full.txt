@@ -1624,6 +1624,8 @@ Use the Calendar to see closings, key dates, task due dates, and custom events i
 
 Checklist templates are pre-built workflows for different transaction types. Use one on a transaction and DocJacket can create the key dates, tasks, and automations that belong to that deal.
 
+The **Key Date Library** holds reusable date rules. **Checklists** consume those key dates and add the tasks, due-date offsets, phases, assignments, and automation that use them.
+
 ## Generating a closing timeline
 
 1. Open a transaction
@@ -1661,6 +1663,8 @@ Templates are a starting point. You can always add custom key dates for dates th
 1. Click **Add Key Date**
 2. Enter the key date name and date
 3. Optionally link tasks to it
+
+For reusable date logic, manage the rule in **Templates > Key Date Library** so future checklists can use the same definition.
 
 ## When dates change
 
@@ -1890,6 +1894,8 @@ Changing row order does not change due dates.
 
 Checklists are reusable transaction workflows. A checklist can add the key dates, task list, due-date offsets, assignee roles, and email automation you use for a transaction type.
 
+A checklist is different from the **Key Date Library**. The Key Date Library defines reusable date rules. The checklist consumes those dates and creates the tasks, due-date offsets, phases, assignments, and automation that depend on them.
+
 ## Applying a checklist
 
 1. Open a transaction
@@ -1913,13 +1919,14 @@ Manually added items and contract-extracted dates are preserved when replacing t
 
 1. Go to **Templates > Checklists**
 2. Click **New Checklist**
-3. Choose the property category, state, and side if applicable
-4. Add key dates from the **Key Date Library**
-5. Add tasks with names, phases, priorities, assignments, and due-date rules
-6. Link tasks to the key dates they depend on
-7. Add scheduled emails or on-completion actions if needed
-8. Test the checklist against a sample effective date
-9. Save the checklist
+3. Add a name, transaction type, property category, state, side, and description
+4. Save the template to open the checklist builder
+5. Add key dates from the **Key Date Library**, or create new key dates in the builder
+6. Add tasks with names, phases, priorities, assignments, and due-date rules
+7. Link tasks to the key dates they depend on
+8. Add scheduled emails or on-completion actions if needed
+9. Test the checklist against a sample effective date
+10. Save the checklist
 
 See [Checklists](../templates/timeline-templates.md) for the full builder guide.
 
@@ -2682,22 +2689,28 @@ If a placeholder is not recognized, fix the template syntax before using it with
 
 Templates save you time by letting you reuse emails, checklists, key date rules, online forms, required document lists, reports, and more. Set them up once and apply them to any transaction.
 
-The **Templates** page in the sidebar is your template hub, organized into categories:
+The **Templates** page in the sidebar is your template hub. It is organized into sections that match the cards in the app.
 
-## Communication Templates
+## Communication
+
 - **Email Templates** — Reusable email content with smart fields
 - **Email Signatures** — Branded signatures for outgoing emails
 - **Online Forms** — Public and transaction-specific forms for collecting information, creating transactions, and routing Front Door submissions
 
 ## Checklists & Key Dates
-- **Checklists** — Reusable transaction workflows with key dates, tasks, and automations
+
+- **Checklists** — Master workflows for each deal type, with key dates, tasks, and automations that can be applied to transactions
 - **Key Date Library** — Individual reusable date rules, such as "Final Walkthrough = 1 business day before Closing"
 
-## Document Templates
-- **Required Documents Lists** — Document requirements for different transaction types
-- **Smart Fields** — Custom fields for auto-populating document data
+Checklists and the Key Date Library are separate. The Key Date Library defines reusable date logic. Checklists consume those key dates and attach the task workflow, due-date offsets, and email automation.
 
-## Report Templates
+## Documents
+
+- **Required Documents Lists** — Document requirements for different transaction types
+- **Smart Fields** — Template variables for auto-populating transaction, document, and communication data
+
+## Reports
+
 - **SitRep Templates** — Structured templates for transaction status reports
 
 ## In this section
@@ -2715,7 +2728,7 @@ The **Templates** page in the sidebar is your template hub, organized into categ
 
 # Checklists
 
-Checklist templates define the reusable workflow for a transaction type. A checklist can include **Key Dates**, **Tasks**, and **Automations** so a new transaction starts with the right deadlines, task list, and prepared emails.
+Checklists define the reusable workflow for a transaction type. A checklist can include **Key Dates**, **Tasks**, and **Automations** so a new transaction starts with the right deadlines, task list, and prepared emails.
 
 The key idea:
 
@@ -2723,62 +2736,80 @@ The key idea:
 - **Checklists** bundle those key dates with tasks and automations
 - **Transactions** apply a checklist to create real key dates and real tasks
 
+This is the same product category as a reusable date-template workflow: set the date logic once, then apply it to future transactions. In DocJacket, that logic lives in the **Key Date Library**, and the checklist adds the work that depends on those dates.
+
+## Checklist list page
+
+Go to **Templates > Checklists** to manage checklist templates.
+
+The page has two tabs:
+
+- **My Templates** — checklists your organization owns and can edit
+- **Shared** — system-provided checklists available to all organizations
+
+Shared checklists are read-only. Use **Copy to My Templates** or **Duplicate** before customizing key dates, tasks, or automations.
+
+Use the filters to narrow the list by:
+
+- **Transaction Type** — Sale, Listing, or both
+- **Property Category** — Residential, Commercial, Land, Lease, New Build, and other categories
+- **Status** — Active or Inactive
+- **Complexity** — Lite or Standard
+- **Search** — checklist name or description
+
+On **My Templates**, you can mark an active checklist as the default. Default checklists can auto-apply when creating transactions for the matching state and type.
+
 ## Creating a checklist template
 
 1. Go to **Templates > Checklists**
 2. Click **New Checklist**
-3. Give it a name (e.g., "Texas Residential Purchase - 30 Day Close")
-4. Choose the property category, state, and side if applicable
+3. Add a name, transaction type, property category, state, side, and description
+4. Save the template to open the checklist builder
 5. Add key dates from the **Key Date Library**, or create new key dates while building
 6. Add tasks and tie them to the key dates they belong to
 7. Add task timing rules, priorities, phases, and sections
 8. Add automations, such as scheduled emails or completion rules
-9. Preview the checklist against a sample effective date
+9. Use **Test template** to preview the checklist against a sample effective date
 10. Save the template
 
-The mental model is:
+The builder title may say **New Checklist Template** or **Edit Checklist Template**. The Templates hub and list page label this area **Checklists**.
 
-| Layer | What it means |
-| --- | --- |
-| **Key Dates** | Important transaction dates and deadlines |
-| **Tasks** | Work tied to those dates |
-| **Automations** | Emails or actions triggered by tasks or dates |
+## Template settings
 
-## My Templates and shared checklists
+The builder shows a **Template Summary** card with the checklist name, category, state, side, key-date count, task count, and automation count.
 
-Checklist templates can be organization-owned or shared system templates.
+Use **Edit template settings** to change:
 
-- **My Templates** are editable by your organization.
-- **Shared system checklists** are read-only starters maintained by DocJacket.
+- Name
+- Transaction Type
+- Property Category
+- State
+- Side
+- Description
 
-Copy a shared checklist into your organization before customizing key dates, tasks, or automations.
-
-## Organizing templates
-
-Templates can be filtered by:
-
-- **State** — Texas, Oklahoma, Florida, etc. (since deadlines vary by state)
-- **Category** — Residential, Commercial, Land, Lease
-- **Side** — Buyer side, seller side, or both
-
-This makes it easy to find the right template when you're setting up a new transaction.
+System templates are read-only. Copy a shared system checklist into **My Templates** before editing settings, key dates, tasks, or automations.
 
 ## Adding key dates
 
 Key dates organize the checklist. For each key date you can define:
 
 - Name
+- Description
+- Key Date Type
 - Side
 - Category
 - Priority
-- Date rule
-- Anchor date
+- Date rule type
+- Anchor date field
 - Offset direction
 - Offset days
 - Calendar-day or business-day calculation
 - Whether the date is required
 
-Use **Add Key Date** to create one directly, or pick from the **Key Date Library** to reuse an existing date rule.
+Use **Add Key Date** in the builder. The drawer has two modes:
+
+- **Create New** — define a new key date rule directly inside the checklist
+- **From Library** — pick an existing reusable key date from the Key Date Library
 
 If a shared key date needs customization, duplicate it first and use the copy in your checklist.
 
@@ -2787,15 +2818,17 @@ If a shared key date needs customization, duplicate it first and use the copy in
 Checklist tasks are the work your team completes during the transaction. Tasks can include:
 
 - Name and description
-- Phase
+- Phase and section
 - Priority
 - Assigned owner
-- Due-date rule
+- Due-date anchor
+- Offset days and direction
+- Calendar-day or business-day calculation
 - Linked key dates
 - Document category
 - Subtasks
-- Email templates
-- Completion rules
+- Scheduled emails
+- On-completion email actions
 
 Tasks should reference the key date they depend on. For example, a task can be due 3 days before **Final Walkthrough** instead of hardcoding the same rule from **Closing Date**.
 
@@ -2810,25 +2843,25 @@ Common automation uses include:
 - Include selected document categories
 - Trigger follow-up work when a task is completed
 
-Use **Review automations** to see all automation rules in the checklist, grouped by key date and task.
+Use **Review automations** to see every automation rule in the checklist, grouped by key date and task. From there, use **Edit** to jump back to the rule in the builder. Bulk editing across automation rules is not currently part of this drawer.
 
 ## AI and bulk tools
 
 The checklist builder includes tools for faster setup:
 
-- **AI Key Date Generator** - Describe the transaction workflow and review proposed key dates before applying them.
-- **AI Task Generator** - Generate proposed tasks linked to the key dates in the checklist.
-- **CSV import** - Bulk-import tasks from a spreadsheet.
-- **CSV export** - Download the checklist structure for review or offline editing.
-- **Suggested tasks** - Add common tasks for known key date types.
+- **AI Key Date Generator** — Describe the transaction workflow and review proposed key dates before applying them.
+- **AI Task Generator** — Generate proposed tasks linked to the key dates in the checklist.
+- **Import Tasks from CSV** — Bulk-import tasks from a spreadsheet.
+- **CSV export** — Download the checklist structure for review or offline editing.
+- **Suggested tasks** — Add common tasks for known key date types.
 
 Always review generated or imported items before relying on the checklist with clients.
 
 ## Testing a checklist
 
-Use **Test template** to preview the checklist against a sample effective date. This shows how key dates and linked tasks would lay out before you apply the checklist to a real transaction.
+Use **Test template** to preview the checklist against a sample effective date. The preview shows key dates, linked tasks, computed sample dates when available, and tasks not linked to any key date.
 
-The preview is for template review. Real transactions also use the transaction's actual contract dates, holidays, and any dates already extracted or entered.
+The preview is for template review. It is computed client-side and does not include configured holidays. Real transactions also use the transaction's actual contract dates, holidays, and any dates already extracted or entered.
 
 ## Applying a checklist to a transaction
 
@@ -2885,6 +2918,28 @@ Examples:
 - Possession Date = Closing Date + 1 business day
 - Inspection Deadline = Effective Date + 10 calendar days
 
+A key date template is the date-logic layer. A checklist is the workflow layer that consumes those dates and attaches tasks, due-date offsets, and email automation.
+
+## Key Date Library page
+
+Go to **Templates > Key Date Library** to manage reusable key date definitions.
+
+The page has two tabs:
+
+- **My Templates** — key dates your organization owns and can edit
+- **Shared** — system-provided key dates available to all organizations
+
+Shared key dates are read-only. Use **Copy to My Templates**, **Duplicate**, or **Duplicate as Custom** to create an editable organization-owned version.
+
+Use the filters to narrow the list by:
+
+- **State**
+- **Side**
+- **Status** — Active or Inactive
+- **Search** — key date name or description
+
+On **My Templates**, use **Import CSV** when you need to add multiple key dates at once.
+
 ## Creating a key date rule
 
 1. Go to **Templates > Key Date Library**
@@ -2896,29 +2951,37 @@ Examples:
 7. Set the date calculation rule
 8. Save the key date
 
-## My Templates and Shared
+The editor title may say **New Key Date Template** or **Edit Key Date Template**. The Templates hub and list page label this area **Key Date Library**.
 
-The Key Date Library has two tabs:
+## Template settings
 
-- **My Templates** - Key dates your organization owns and can edit
-- **Shared** - DocJacket-provided key dates available to all organizations
+A key date template includes:
 
-Shared key dates are read-only. Duplicate a shared key date to create an editable organization-owned version.
+- Name
+- Description
+- Key Date Type
+- State
+- Side
+- Display Order
+- Priority
+- Active or Inactive status
+
+System templates are read-only. Duplicate a system template before editing it.
 
 ## Date calculation rules
 
 A key date can use one of three calculation types:
 
-- **Relative to anchor date** - Calculates from another date, such as Closing Date or Effective Date.
-- **Fixed day number** - Uses a fixed day number.
-- **Manual entry** - Creates a key date that users fill in manually on the transaction.
+- **Relative to anchor date** — Calculates from another date, such as Closing Date or Effective Date.
+- **Fixed day number** — Uses a fixed day number.
+- **Manual entry** — Creates a key date that users fill in manually on the transaction.
 
 For relative rules, configure:
 
-- **Anchor Date** - The date this key date depends on, such as Closing Date.
-- **Offset Direction** - Before or after the anchor.
-- **Days Offset** - How many days from the anchor.
-- **Day Calculation** - Calendar days or business days.
+- **Anchor Date** — The date this key date depends on, such as Closing Date.
+- **Offset Direction** — Before or after the anchor.
+- **Days Offset** — How many days from the anchor.
+- **Day Calculation** — Calendar days or business days.
 
 The editor shows a live date-rule preview, such as:
 
@@ -2969,7 +3032,13 @@ After importing, review each key date for:
 
 ## Deleting key dates
 
-DocJacket prevents deleting a key date while it is still referenced by checklists or other template logic. If delete is blocked, update or remove those references first, then delete the key date.
+DocJacket prevents deleting a key date while it is still referenced. If delete is blocked, the dialog lists what still points to it, such as:
+
+- Transaction key dates created from this template
+- Other key date templates that depend on this one
+- Reminder rules that still point to this template
+
+Update or remove those references first, then delete the key date.
 
 ## How checklists use key dates
 

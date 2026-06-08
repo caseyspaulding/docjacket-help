@@ -14,6 +14,28 @@ Examples:
 - Possession Date = Closing Date + 1 business day
 - Inspection Deadline = Effective Date + 10 calendar days
 
+A key date template is the date-logic layer. A checklist is the workflow layer that consumes those dates and attaches tasks, due-date offsets, and email automation.
+
+## Key Date Library page
+
+Go to **Templates > Key Date Library** to manage reusable key date definitions.
+
+The page has two tabs:
+
+- **My Templates** — key dates your organization owns and can edit
+- **Shared** — system-provided key dates available to all organizations
+
+Shared key dates are read-only. Use **Copy to My Templates**, **Duplicate**, or **Duplicate as Custom** to create an editable organization-owned version.
+
+Use the filters to narrow the list by:
+
+- **State**
+- **Side**
+- **Status** — Active or Inactive
+- **Search** — key date name or description
+
+On **My Templates**, use **Import CSV** when you need to add multiple key dates at once.
+
 ## Creating a key date rule
 
 1. Go to **Templates > Key Date Library**
@@ -25,29 +47,37 @@ Examples:
 7. Set the date calculation rule
 8. Save the key date
 
-## My Templates and Shared
+The editor title may say **New Key Date Template** or **Edit Key Date Template**. The Templates hub and list page label this area **Key Date Library**.
 
-The Key Date Library has two tabs:
+## Template settings
 
-- **My Templates** - Key dates your organization owns and can edit
-- **Shared** - DocJacket-provided key dates available to all organizations
+A key date template includes:
 
-Shared key dates are read-only. Duplicate a shared key date to create an editable organization-owned version.
+- Name
+- Description
+- Key Date Type
+- State
+- Side
+- Display Order
+- Priority
+- Active or Inactive status
+
+System templates are read-only. Duplicate a system template before editing it.
 
 ## Date calculation rules
 
 A key date can use one of three calculation types:
 
-- **Relative to anchor date** - Calculates from another date, such as Closing Date or Effective Date.
-- **Fixed day number** - Uses a fixed day number.
-- **Manual entry** - Creates a key date that users fill in manually on the transaction.
+- **Relative to anchor date** — Calculates from another date, such as Closing Date or Effective Date.
+- **Fixed day number** — Uses a fixed day number.
+- **Manual entry** — Creates a key date that users fill in manually on the transaction.
 
 For relative rules, configure:
 
-- **Anchor Date** - The date this key date depends on, such as Closing Date.
-- **Offset Direction** - Before or after the anchor.
-- **Days Offset** - How many days from the anchor.
-- **Day Calculation** - Calendar days or business days.
+- **Anchor Date** — The date this key date depends on, such as Closing Date.
+- **Offset Direction** — Before or after the anchor.
+- **Days Offset** — How many days from the anchor.
+- **Day Calculation** — Calendar days or business days.
 
 The editor shows a live date-rule preview, such as:
 
@@ -98,7 +128,13 @@ After importing, review each key date for:
 
 ## Deleting key dates
 
-DocJacket prevents deleting a key date while it is still referenced by checklists or other template logic. If delete is blocked, update or remove those references first, then delete the key date.
+DocJacket prevents deleting a key date while it is still referenced. If delete is blocked, the dialog lists what still points to it, such as:
+
+- Transaction key dates created from this template
+- Other key date templates that depend on this one
+- Reminder rules that still point to this template
+
+Update or remove those references first, then delete the key date.
 
 ## How checklists use key dates
 
