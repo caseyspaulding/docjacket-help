@@ -18,13 +18,13 @@ From a transaction's **Documents** tab, you can:
 
 - **Upload files** — Choose a category, then upload a PDF, Word file, or image.
 - **Track completeness** — Use **Documents Needed** to add requirements, apply document templates, link uploads, and track received/overdue/blocking items.
-- **Review received documents** — Search, filter, reorder, rename, change status, download, share, delete, and mark documents as sent.
+- **Review received documents** — Search, filter, reorder, rename, batch-rename, change document type/status, download, share, delete, and mark documents as sent.
 - **Run document checks** — Use **AI Check** for risk scans and contract signature/initial checks.
 - **Extract data** — Use **Extract Data** to run extraction on new documents for an existing transaction.
 - **Control portal visibility** — Show or hide documents on the Agent and Client Portals, and optionally restrict visibility to selected portal contacts.
 - **Connect to Google Drive** — Import from Drive, export selected/all documents, and link or change the transaction's Drive folder.
 - **Share disclosure packages** — Curate received documents and share them with recipients.
-- **Send for e-signature** — Use the **Forms & signatures** subtab for office-approved form packets and packet tracking.
+- **Send for e-signature** — Use the **Forms & signatures** subtab for office-approved form packets and packet tracking, or send a single uploaded document for signature from its row actions.
 
 The transaction tab has two subtabs: **Files** for uploaded documents and **Forms & signatures** for e-sign packet workflows.
 

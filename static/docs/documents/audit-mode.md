@@ -11,7 +11,7 @@ description: Track required transaction documents, link received uploads, apply 
 
 The **Documents Needed** checklist shows which files are required for a transaction and whether each one has been received.
 
-You will find it on the transaction's **Documents** tab, above **Documents Received**.
+You will find it on the transaction's **Documents** tab, above **Documents Received**. The header can be collapsed or expanded, and it shows summary chips when required documents exist.
 
 ## What the checklist shows
 
@@ -26,7 +26,7 @@ The checklist can show:
 - Blocking-missing count
 - Linked uploaded file, when one exists
 
-Use the **A-Z** and drag-handle controls to switch between alphabetical sorting and custom order.
+Use the **A-Z** and drag-handle controls to switch between alphabetical sorting and custom order. Custom order is saved, while alphabetical mode is best when you just need to scan by name.
 
 ## Add or apply requirements
 
@@ -44,10 +44,10 @@ For each required document, you can:
 - Check it off as received
 - Link it to an existing upload
 - Upload a file directly into that required-document row
-- Review linked upload history when more than one file has been attached
+- Review linked upload history when more than one file has been attached, with the newest file marked as the latest version
 - Remove the requirement if it no longer applies
 
-Uploading from the checklist is best when a file satisfies a specific placeholder, because DocJacket links the new file to that requirement immediately.
+Uploading from the checklist is best when a file satisfies a specific placeholder, because DocJacket links the new file to that requirement immediately. If the transaction has a linked Google Drive folder, linked uploads can also show an **Open in Drive** shortcut.
 
 ## Document checks
 

@@ -25,13 +25,13 @@ Disclosure Packages are separate from Client Portal links. A portal link gives s
 8. Set whether acknowledgement is required
 9. Click **Share now**
 
-DocJacket creates the package, attaches the selected documents, activates the package, and opens the package detail page on the **Recipients** tab so you can invite viewers.
+DocJacket creates the package, attaches the selected documents, activates the package, and opens the package detail page on the **Recipients** tab so you can invite viewers. The package is not useful until at least one recipient has a share URL.
 
 ## Inviting recipients
 
 Use the **Recipients** tab to invite each viewer. Enter a display label and, if you want, an email address. DocJacket creates a secure share URL for that recipient.
 
-Copy the share URL when it appears. The raw share URL is shown once after the invite is created.
+Copy the share URL when it appears. The raw share URL is shown once after the invite is created, so copy it before dismissing the success card.
 
 From the recipient list you can see whether each recipient is invited, acknowledged, expired, or revoked. You can revoke a recipient's access at any time.
 
@@ -61,7 +61,7 @@ The **Activity** tab shows package engagement:
 
 If a recipient viewed the package before the package changed, DocJacket flags them as stale so you can notify viewers of the update.
 
-You can also generate a read-only seller activity report. The seller report shows who opened, downloaded, and acknowledged the package, but it does not expose recipient email addresses or document download access.
+You can also generate a read-only seller activity report from **Share with seller**. The seller report shows who opened, downloaded, and acknowledged the package, but it does not expose recipient email addresses or document download access. The seller report URL is also shown once after it is created.
 
 ## Editing and archiving packages
 

@@ -901,13 +901,13 @@ From a transaction's **Documents** tab, you can:
 
 - **Upload files** — Choose a category, then upload a PDF, Word file, or image.
 - **Track completeness** — Use **Documents Needed** to add requirements, apply document templates, link uploads, and track received/overdue/blocking items.
-- **Review received documents** — Search, filter, reorder, rename, change status, download, share, delete, and mark documents as sent.
+- **Review received documents** — Search, filter, reorder, rename, batch-rename, change document type/status, download, share, delete, and mark documents as sent.
 - **Run document checks** — Use **AI Check** for risk scans and contract signature/initial checks.
 - **Extract data** — Use **Extract Data** to run extraction on new documents for an existing transaction.
 - **Control portal visibility** — Show or hide documents on the Agent and Client Portals, and optionally restrict visibility to selected portal contacts.
 - **Connect to Google Drive** — Import from Drive, export selected/all documents, and link or change the transaction's Drive folder.
 - **Share disclosure packages** — Curate received documents and share them with recipients.
-- **Send for e-signature** — Use the **Forms & signatures** subtab for office-approved form packets and packet tracking.
+- **Send for e-signature** — Use the **Forms & signatures** subtab for office-approved form packets and packet tracking, or send a single uploaded document for signature from its row actions.
 
 The transaction tab has two subtabs: **Files** for uploaded documents and **Forms & signatures** for e-sign packet workflows.
 
@@ -1017,7 +1017,7 @@ Use [Extraction Review](../operations/extraction-review.md) if an extraction fin
 
 The **Documents Needed** checklist shows which files are required for a transaction and whether each one has been received.
 
-You will find it on the transaction's **Documents** tab, above **Documents Received**.
+You will find it on the transaction's **Documents** tab, above **Documents Received**. The header can be collapsed or expanded, and it shows summary chips when required documents exist.
 
 ## What the checklist shows
 
@@ -1032,7 +1032,7 @@ The checklist can show:
 - Blocking-missing count
 - Linked uploaded file, when one exists
 
-Use the **A-Z** and drag-handle controls to switch between alphabetical sorting and custom order.
+Use the **A-Z** and drag-handle controls to switch between alphabetical sorting and custom order. Custom order is saved, while alphabetical mode is best when you just need to scan by name.
 
 ## Add or apply requirements
 
@@ -1050,10 +1050,10 @@ For each required document, you can:
 - Check it off as received
 - Link it to an existing upload
 - Upload a file directly into that required-document row
-- Review linked upload history when more than one file has been attached
+- Review linked upload history when more than one file has been attached, with the newest file marked as the latest version
 - Remove the requirement if it no longer applies
 
-Uploading from the checklist is best when a file satisfies a specific placeholder, because DocJacket links the new file to that requirement immediately.
+Uploading from the checklist is best when a file satisfies a specific placeholder, because DocJacket links the new file to that requirement immediately. If the transaction has a linked Google Drive folder, linked uploads can also show an **Open in Drive** shortcut.
 
 ## Document checks
 
@@ -1285,15 +1285,17 @@ Use packets when you want DocJacket to prepare reusable approved forms, fill kno
 
 1. Open a transaction
 2. Go to the **Documents** tab
-3. Find the **Forms & signatures** panel
+3. Open the **Forms & signatures** subtab
 4. Click **Send for e-signature**
 5. Choose the approved form templates to include
 
 Only published templates for the transaction's office are available.
 
+If the transaction does not have an office assigned yet, the **Forms & signatures** subtab shows an office-assignment banner first. Choose the brokerage office so DocJacket knows which approved form library and broker footer to use.
+
 ## Prepare
 
-In the prepare step, choose the templates for the packet and review the autofill preview.
+The send flow opens as a dedicated full-page wizard so the PDF review step has room to scroll. In the prepare step, choose the templates for the packet and review the autofill preview.
 
 DocJacket shows:
 
@@ -1302,7 +1304,7 @@ DocJacket shows:
 - Links to fix missing transaction or office data when available
 - Whether the office has the required designated broker setup
 
-If required office data is missing, sending can be blocked until the office setup is corrected.
+If required office data is missing, sending can be blocked until the office setup is corrected. For example, a missing designated broker blocks sending until that office setting is fixed.
 
 ## Fill out fields
 
@@ -1337,7 +1339,7 @@ Before sending, review:
 - CC recipients, if used
 - Signing order
 
-After sending, the Signature Request is immutable. Sent packets cannot be edited or added to because the audit trail and signed PDF must remain stable.
+After sending, the Signature Request is immutable. Sent packets cannot be edited or added to because the audit trail and signed PDF must remain stable. If required fields are still missing at send time, DocJacket warns you before allowing a send-anyway decision.
 
 ## Track packets
 
@@ -1352,7 +1354,7 @@ Open a packet to see:
 - Last activity
 - Completion progress
 
-In-flight packets refresh automatically. You can also refresh manually or cancel a packet while cancellation is still allowed.
+In-flight packets refresh automatically about every 15 seconds while a packet is awaiting signatures. You can also refresh manually or cancel a packet while cancellation is still allowed. After sending, DocJacket returns you to the transaction and opens packet tracking so you can confirm signer progress.
 
 ---
 
@@ -1410,13 +1412,13 @@ Disclosure Packages are separate from Client Portal links. A portal link gives s
 8. Set whether acknowledgement is required
 9. Click **Share now**
 
-DocJacket creates the package, attaches the selected documents, activates the package, and opens the package detail page on the **Recipients** tab so you can invite viewers.
+DocJacket creates the package, attaches the selected documents, activates the package, and opens the package detail page on the **Recipients** tab so you can invite viewers. The package is not useful until at least one recipient has a share URL.
 
 ## Inviting recipients
 
 Use the **Recipients** tab to invite each viewer. Enter a display label and, if you want, an email address. DocJacket creates a secure share URL for that recipient.
 
-Copy the share URL when it appears. The raw share URL is shown once after the invite is created.
+Copy the share URL when it appears. The raw share URL is shown once after the invite is created, so copy it before dismissing the success card.
 
 From the recipient list you can see whether each recipient is invited, acknowledged, expired, or revoked. You can revoke a recipient's access at any time.
 
@@ -1446,7 +1448,7 @@ The **Activity** tab shows package engagement:
 
 If a recipient viewed the package before the package changed, DocJacket flags them as stale so you can notify viewers of the update.
 
-You can also generate a read-only seller activity report. The seller report shows who opened, downloaded, and acknowledged the package, but it does not expose recipient email addresses or document download access.
+You can also generate a read-only seller activity report from **Share with seller**. The seller report shows who opened, downloaded, and acknowledged the package, but it does not expose recipient email addresses or document download access. The seller report URL is also shown once after it is created.
 
 ## Editing and archiving packages
 
