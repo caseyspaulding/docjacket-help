@@ -697,6 +697,8 @@ Then clone-and-tweak. Every time you notice you're hand-adjusting the same check
 3. Name it clearly along your axes — e.g. `Buyer Side — Traditional` or `Seller Side — Spanish`.
 4. Build out the phases and tasks (covered in the [next article](./phase-backbone.md)).
 
+![Checklists list showing several named templates — buyer side, seller side, listing, and a client team template](/img/power-tc/template-matrix-list.png)
+
 ## Next
 
 → [The 6-phase deal backbone & smart due dates](./phase-backbone.md)
@@ -745,6 +747,8 @@ To set an anchored due date on a template task:
 1. Open the task in the template.
 2. Under **Due date**, choose **Relative to a key date**.
 3. Pick the key date (Inspection Deadline, Financing Deadline, Closing, and so on), the number of days, and before/after.
+
+![Task editor with the due date set relative to a key date — for example, 3 days after the Inspection Deadline](/img/power-tc/phase-backbone-due-date.png)
 
 :::note State-specific: this is where your days go
 The *number of days* for inspection, financing, and appraisal periods come from **your state's contract and your local practice** — they're not the same everywhere. The 6-phase structure is universal; the day-counts are yours to set. Set them once per template and every file inherits them.
@@ -829,6 +833,8 @@ You don't need 200 to start. Build your most-sent messages first:
 
 Create them at **Templates > Email Templates > New Template**.
 
+![Email template editor with a property-address subject line, a short body, and smart fields](/img/power-tc/email-library-editor.png)
+
 :::note Works in any state
 Most of these messages are universal. A few — lien search, HOA estoppel, your title practices — vary by state and market. Keep the universal ones generic; adapt the rest to how things work where you close.
 :::
@@ -881,6 +887,8 @@ This keeps the right people looped in without anyone being surprised to be on (o
 2. In the **To** and **CC** fields, add **roles** (not addresses).
 3. Add **Transaction Coordinator** to CC on essentially everything.
 4. Save. The template now resolves recipients automatically on every deal.
+
+![Email template recipient rules with role-based To and Cc](/img/power-tc/role-recipients-fields.png)
 
 ## Next
 
@@ -938,6 +946,8 @@ If completing the task wouldn't normally make you send someone an email, don't a
 4. Choose the email template, confirm the role-based recipients, and attach any documents.
 5. Leave **Require approval** **on**.
 6. Save.
+
+![Task on-completion rule with an email template, role-based recipients, and Require approval turned on](/img/power-tc/automations-rule.png)
 
 ## Next
 

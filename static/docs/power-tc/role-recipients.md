@@ -50,6 +50,8 @@ This keeps the right people looped in without anyone being surprised to be on (o
 3. Add **Transaction Coordinator** to CC on essentially everything.
 4. Save. The template now resolves recipients automatically on every deal.
 
+![Email template recipient rules with role-based To and Cc](/img/power-tc/role-recipients-fields.png)
+
 ## Next
 
 → [Task automations: draft-and-review](./automations.md)
