@@ -30,8 +30,6 @@ Our most productive coordinators organize their templates along four axes:
 
 So instead of one list, a new file gets, say, *"Buyer Side — Wholesale — [Investor Client]"* — exactly the steps that file needs.
 
-{/* CECILIA: quote on the breaking point — when she realized one checklist wasn't enough */}
-
 ## How to decide what deserves its own template
 
 You don't need a template for everything. Create a new one when a deal type or client **genuinely works differently**:
@@ -62,8 +60,6 @@ Then clone-and-tweak. Every time you notice you're hand-adjusting the same check
 2. Click **New Template** — or **Duplicate** an existing one to clone-and-tweak.
 3. Name it clearly along your axes — e.g. `Buyer Side — Traditional` or `Seller Side — Spanish`.
 4. Build out the phases and tasks (covered in the [next article](./phase-backbone.md)).
-
-{/* SCREENSHOT: Templates > Timeline Templates list showing several named templates */}
 
 ## Next
 

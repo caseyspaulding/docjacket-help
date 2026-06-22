@@ -32,8 +32,6 @@ Intake → Under Contract → Financing → Due Diligence → Pre-Closing → Po
 In a real workload, Pre-Closing is consistently the heaviest phase — it's where the most balls get dropped. Front-load detail there.
 :::
 
-{/* CECILIA: quote on the phase structure + what newer TCs forget in Pre-Closing */}
-
 A full buyer or seller file typically lands around **10 milestones and 45–50 tasks**. A listing file is lighter — about **7 milestones and 25 tasks**. Don't force the full buy-side structure onto a listing.
 
 ## Smart due dates: anchor to key dates, don't hand-type them
@@ -51,8 +49,6 @@ To set an anchored due date on a template task:
 1. Open the task in the template.
 2. Under **Due date**, choose **Relative to a key date**.
 3. Pick the key date (Inspection Deadline, Financing Deadline, Closing, and so on), the number of days, and before/after.
-
-{/* SCREENSHOT: task editor showing the "relative to a key date" due-date option */}
 
 :::note State-specific: this is where your days go
 The *number of days* for inspection, financing, and appraisal periods come from **your state's contract and your local practice** — they're not the same everywhere. The 6-phase structure is universal; the day-counts are yours to set. Set them once per template and every file inherits them.

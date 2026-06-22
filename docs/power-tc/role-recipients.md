@@ -30,8 +30,6 @@ Notice the TC is CC'd on **every** template above. Do this on all of yours.
 Every message you send becomes part of a complete, searchable paper trail — in your own inbox and on the deal — with zero extra effort. When a question comes up weeks later ("did we ever send the DA?"), the answer is one search away. Professional CYA, automated.
 :::
 
-{/* CECILIA: quote on why she CCs herself on everything / what goes wrong if you don't */}
-
 ## Build sophisticated To/CC combinations
 
 You can mix roles for the right etiquette on each message. Real examples:
@@ -48,8 +46,6 @@ This keeps the right people looped in without anyone being surprised to be on (o
 2. In the **To** and **CC** fields, add **roles** (not addresses).
 3. Add **Transaction Coordinator** to CC on essentially everything.
 4. Save. The template now resolves recipients automatically on every deal.
-
-{/* SCREENSHOT: email template recipient-rules editor showing role chips in To and CC */}
 
 ## Next
 

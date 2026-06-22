@@ -29,8 +29,6 @@ Complete a task → DocJacket drafts the role-targeted email
                → you approve & send
 ```
 
-{/* SUPADEMO: embed the complete-task → draft → review → send walkthrough here */}
-
 ## Keep it draft-and-review — don't auto-send
 
 DocJacket lets you require approval before anything goes out. **Leave that on.**
@@ -40,8 +38,6 @@ Automation should *compute and propose*, not send behind your back. The draft sa
 :::
 
 Our most active coordinator has **hundreds** of these automations across their templates — and every single one is set to require approval. None auto-send.
-
-{/* CECILIA: quote on why she never lets them auto-send */}
 
 ## The one mistake to avoid: don't automate internal tasks
 
@@ -61,8 +57,6 @@ If completing the task wouldn't normally make you send someone an email, don't a
 4. Choose the email template, confirm the role-based recipients, and attach any documents.
 5. Leave **Require approval** **on**.
 6. Save.
-
-{/* SCREENSHOT: task notification-rule editor with on-completion trigger and require-approval toggle */}
 
 ## Next
 
