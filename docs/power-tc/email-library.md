@@ -77,6 +77,8 @@ You don't need 200 to start. Build your most-sent messages first:
 
 Create them at **Templates > Email Templates > New Template**.
 
+![Email template editor with a property-address subject line, a short body, and smart fields](/img/power-tc/email-library-editor.png)
+
 :::note Works in any state
 Most of these messages are universal. A few — lien search, HOA estoppel, your title practices — vary by state and market. Keep the universal ones generic; adapt the rest to how things work where you close.
 :::

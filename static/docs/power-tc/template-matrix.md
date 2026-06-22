@@ -61,6 +61,8 @@ Then clone-and-tweak. Every time you notice you're hand-adjusting the same check
 3. Name it clearly along your axes — e.g. `Buyer Side — Traditional` or `Seller Side — Spanish`.
 4. Build out the phases and tasks (covered in the [next article](./phase-backbone.md)).
 
+![Checklists list showing several named templates — buyer side, seller side, listing, and a client team template](/img/power-tc/template-matrix-list.png)
+
 ## Next
 
 → [The 6-phase deal backbone & smart due dates](./phase-backbone.md)

@@ -50,6 +50,8 @@ To set an anchored due date on a template task:
 2. Under **Due date**, choose **Relative to a key date**.
 3. Pick the key date (Inspection Deadline, Financing Deadline, Closing, and so on), the number of days, and before/after.
 
+![Task editor with the due date set relative to a key date — for example, 3 days after the Inspection Deadline](/img/power-tc/phase-backbone-due-date.png)
+
 :::note State-specific: this is where your days go
 The *number of days* for inspection, financing, and appraisal periods come from **your state's contract and your local practice** — they're not the same everywhere. The 6-phase structure is universal; the day-counts are yours to set. Set them once per template and every file inherits them.
 :::

@@ -58,6 +58,8 @@ If completing the task wouldn't normally make you send someone an email, don't a
 5. Leave **Require approval** **on**.
 6. Save.
 
+![Task on-completion rule with an email template, role-based recipients, and Require approval turned on](/img/power-tc/automations-rule.png)
+
 ## Next
 
 → [Your first week as a power TC](./quickstart.md)
