@@ -666,8 +666,6 @@ Our most productive coordinators organize their templates along four axes:
 
 So instead of one list, a new file gets, say, *"Buyer Side — Wholesale — [Investor Client]"* — exactly the steps that file needs.
 
-{/* CECILIA: quote on the breaking point — when she realized one checklist wasn't enough */}
-
 ## How to decide what deserves its own template
 
 You don't need a template for everything. Create a new one when a deal type or client **genuinely works differently**:
@@ -698,8 +696,6 @@ Then clone-and-tweak. Every time you notice you're hand-adjusting the same check
 2. Click **New Template** — or **Duplicate** an existing one to clone-and-tweak.
 3. Name it clearly along your axes — e.g. `Buyer Side — Traditional` or `Seller Side — Spanish`.
 4. Build out the phases and tasks (covered in the [next article](./phase-backbone.md)).
-
-{/* SCREENSHOT: Templates > Timeline Templates list showing several named templates */}
 
 ## Next
 
@@ -732,8 +728,6 @@ Intake → Under Contract → Financing → Due Diligence → Pre-Closing → Po
 In a real workload, Pre-Closing is consistently the heaviest phase — it's where the most balls get dropped. Front-load detail there.
 :::
 
-{/* CECILIA: quote on the phase structure + what newer TCs forget in Pre-Closing */}
-
 A full buyer or seller file typically lands around **10 milestones and 45–50 tasks**. A listing file is lighter — about **7 milestones and 25 tasks**. Don't force the full buy-side structure onto a listing.
 
 ## Smart due dates: anchor to key dates, don't hand-type them
@@ -751,8 +745,6 @@ To set an anchored due date on a template task:
 1. Open the task in the template.
 2. Under **Due date**, choose **Relative to a key date**.
 3. Pick the key date (Inspection Deadline, Financing Deadline, Closing, and so on), the number of days, and before/after.
-
-{/* SCREENSHOT: task editor showing the "relative to a key date" due-date option */}
 
 :::note State-specific: this is where your days go
 The *number of days* for inspection, financing, and appraisal periods come from **your state's contract and your local practice** — they're not the same everywhere. The 6-phase structure is universal; the day-counts are yours to set. Set them once per template and every file inherits them.
@@ -785,8 +777,6 @@ When you're running 25 deals, so are the agents, lenders, and title officers you
 :::
 
 Use the smart field `{{property_address}}` so it fills in automatically.
-
-{/* CECILIA: quote on why she started leading subjects with the address */}
 
 ## 2. Build from smart fields, never hand-typed details
 
@@ -837,11 +827,7 @@ You don't need 200 to start. Build your most-sent messages first:
 9. Please Sign (walk-through / reinspection)
 10. Request for Review (post-close)
 
-{/* CECILIA: confirm/adjust the "top 10" from her real send volume (interview Q12) */}
-
 Create them at **Templates > Email Templates > New Template**.
-
-{/* SCREENSHOT: email template editor with subject, body, and smart-field picker */}
 
 :::note Works in any state
 Most of these messages are universal. A few — lien search, HOA estoppel, your title practices — vary by state and market. Keep the universal ones generic; adapt the rest to how things work where you close.
@@ -879,8 +865,6 @@ Notice the TC is CC'd on **every** template above. Do this on all of yours.
 Every message you send becomes part of a complete, searchable paper trail — in your own inbox and on the deal — with zero extra effort. When a question comes up weeks later ("did we ever send the DA?"), the answer is one search away. Professional CYA, automated.
 :::
 
-{/* CECILIA: quote on why she CCs herself on everything / what goes wrong if you don't */}
-
 ## Build sophisticated To/CC combinations
 
 You can mix roles for the right etiquette on each message. Real examples:
@@ -897,8 +881,6 @@ This keeps the right people looped in without anyone being surprised to be on (o
 2. In the **To** and **CC** fields, add **roles** (not addresses).
 3. Add **Transaction Coordinator** to CC on essentially everything.
 4. Save. The template now resolves recipients automatically on every deal.
-
-{/* SCREENSHOT: email template recipient-rules editor showing role chips in To and CC */}
 
 ## Next
 
@@ -928,8 +910,6 @@ Complete a task → DocJacket drafts the role-targeted email
                → you approve & send
 ```
 
-{/* SUPADEMO: embed the complete-task → draft → review → send walkthrough here */}
-
 ## Keep it draft-and-review — don't auto-send
 
 DocJacket lets you require approval before anything goes out. **Leave that on.**
@@ -939,8 +919,6 @@ Automation should *compute and propose*, not send behind your back. The draft sa
 :::
 
 Our most active coordinator has **hundreds** of these automations across their templates — and every single one is set to require approval. None auto-send.
-
-{/* CECILIA: quote on why she never lets them auto-send */}
 
 ## The one mistake to avoid: don't automate internal tasks
 
@@ -960,8 +938,6 @@ If completing the task wouldn't normally make you send someone an email, don't a
 4. Choose the email template, confirm the role-based recipients, and attach any documents.
 5. Leave **Require approval** **on**.
 6. Save.
-
-{/* SCREENSHOT: task notification-rule editor with on-completion trigger and require-approval toggle */}
 
 ## Next
 
@@ -1017,8 +993,6 @@ The rule that builds your library over time:
 :::
 
 That's how a handful of templates becomes a complete operating system — without ever sitting down to "build everything."
-
-{/* CECILIA: quote — the one thing she'd set up for a TC friend on day one so they don't quit (interview Q24) */}
 
 ## You're set up
 

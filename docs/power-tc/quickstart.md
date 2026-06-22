@@ -53,8 +53,6 @@ The rule that builds your library over time:
 
 That's how a handful of templates becomes a complete operating system — without ever sitting down to "build everything."
 
-{/* CECILIA: quote — the one thing she'd set up for a TC friend on day one so they don't quit (interview Q24) */}
-
 ## You're set up
 
 Once this is in place, a new file looks like: pick the right checklist → DocJacket extracts the contract and schedules every task → complete tasks as the deal moves → review and send the drafts it prepares. That's the difference between running deals from your head and having DocJacket run them with you.

@@ -26,8 +26,6 @@ When you're running 25 deals, so are the agents, lenders, and title officers you
 
 Use the smart field `{{property_address}}` so it fills in automatically.
 
-{/* CECILIA: quote on why she started leading subjects with the address */}
-
 ## 2. Build from smart fields, never hand-typed details
 
 Bodies should pull from the deal record, not your memory:
@@ -77,11 +75,7 @@ You don't need 200 to start. Build your most-sent messages first:
 9. Please Sign (walk-through / reinspection)
 10. Request for Review (post-close)
 
-{/* CECILIA: confirm/adjust the "top 10" from her real send volume (interview Q12) */}
-
 Create them at **Templates > Email Templates > New Template**.
-
-{/* SCREENSHOT: email template editor with subject, body, and smart-field picker */}
 
 :::note Works in any state
 Most of these messages are universal. A few — lien search, HOA estoppel, your title practices — vary by state and market. Keep the universal ones generic; adapt the rest to how things work where you close.
