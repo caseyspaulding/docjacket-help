@@ -15,6 +15,11 @@ const categories: Category[] = [
     link: '/docs/getting-started',
   },
   {
+    title: 'Power TC Playbook',
+    description: 'Set up DocJacket like our most productive coordinators — works in any state.',
+    link: '/docs/category/power-tc-playbook',
+  },
+  {
     title: 'Transactions',
     description: 'Manage deals from contract to closing.',
     link: '/docs/transactions',

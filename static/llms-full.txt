@@ -641,6 +641,402 @@ If a user says, "I uploaded a contract but no transaction appeared," first check
 
 ---
 
+## Power TC Playbook
+
+# Build a checklist template matrix
+
+The difference between a TC who feels buried and one who runs 25+ deals calmly isn't effort — it's **encoding**. The expert moves their repeatable process into DocJacket *once*, so every new file starts fully structured. The foundation of that is your checklist templates.
+
+:::tip The big idea
+Don't have *a* checklist. Have a **matrix** of them — one for each kind of deal you actually handle.
+:::
+
+## Why one checklist isn't enough
+
+A single generic checklist forces a choice on every file: either it's missing steps for some deal types, or it's cluttered with steps that don't apply. A matrix solves that — the right file gets the right list, with nothing irrelevant and nothing missing.
+
+Our most productive coordinators organize their templates along four axes:
+
+| Axis | Examples |
+|---|---|
+| **Side** | Buyer, Seller, Listing |
+| **Deal type** | Traditional purchase, Wholesale, Novation, Joint Venture |
+| **Client / team** | A high-volume agent team or investor client who works a specific way |
+| **Language** | English, Spanish (for client-facing communication) |
+
+So instead of one list, a new file gets, say, *"Buyer Side — Wholesale — [Investor Client]"* — exactly the steps that file needs.
+
+{/* CECILIA: quote on the breaking point — when she realized one checklist wasn't enough */}
+
+## How to decide what deserves its own template
+
+You don't need a template for everything. Create a new one when a deal type or client **genuinely works differently**:
+
+- **Side** almost always deserves its own template — buyer-side and seller-side tasks differ a lot.
+- **Deal type** deserves one when the *parties or steps* differ — a wholesale or novation file has different paperwork than a traditional purchase.
+- **Client/team** deserves one when a specific high-volume relationship has consistent preferences (who to CC, their pace, their documents).
+- **Language** deserves a parallel set if you serve clients in more than one language.
+
+:::note Works in any state
+The *structure* here is universal. The state-specific parts — how many days an inspection period runs, which documents are required — you'll plug into the tasks themselves (see [The 6-phase deal backbone](./phase-backbone.md)). The matrix idea works the same in Florida, California, or Texas.
+:::
+
+## Start with four, not forty
+
+You don't build the whole matrix on day one. Start with the four that cover most of your business:
+
+1. **Buyer Side**
+2. **Seller Side**
+3. **Listing**
+4. **Your busiest client or team**
+
+Then clone-and-tweak. Every time you notice you're hand-adjusting the same checklist the same way for a certain kind of deal, that's your signal to save it as its own template.
+
+## How to create a template
+
+1. Go to **Templates > Timeline Templates**.
+2. Click **New Template** — or **Duplicate** an existing one to clone-and-tweak.
+3. Name it clearly along your axes — e.g. `Buyer Side — Traditional` or `Seller Side — Spanish`.
+4. Build out the phases and tasks (covered in the [next article](./phase-backbone.md)).
+
+{/* SCREENSHOT: Templates > Timeline Templates list showing several named templates */}
+
+## Next
+
+→ [The 6-phase deal backbone & smart due dates](./phase-backbone.md)
+
+---
+
+# The 6-phase deal backbone & smart due dates
+
+A great checklist isn't just a pile of tasks — it has a **structure** that mirrors how a deal actually moves. Give every template the same backbone and any file becomes readable at a glance.
+
+## The 6 phases
+
+Group every task into one of six phases, in order:
+
+```
+Intake → Under Contract → Financing → Due Diligence → Pre-Closing → Post-Close
+```
+
+| Phase | What lives here |
+|---|---|
+| **Intake** | Open the file, confirm parties, collect the executed contract, set up the deal |
+| **Under Contract** | Introductions, send executed docs, open escrow/title |
+| **Financing** | Loan application status, appraisal ordering & scheduling |
+| **Due Diligence** | Inspection scheduling, repair negotiation, contingency tracking |
+| **Pre-Closing** | The heavy phase — title, HOA/estoppel, walk-through, closing disclosure, scheduling the closing |
+| **Post-Close** | Deliver documents, request a review, close out the file |
+
+:::tip Pre-Closing is where deals go wrong
+In a real workload, Pre-Closing is consistently the heaviest phase — it's where the most balls get dropped. Front-load detail there.
+:::
+
+{/* CECILIA: quote on the phase structure + what newer TCs forget in Pre-Closing */}
+
+A full buyer or seller file typically lands around **10 milestones and 45–50 tasks**. A listing file is lighter — about **7 milestones and 25 tasks**. Don't force the full buy-side structure onto a listing.
+
+## Smart due dates: anchor to key dates, don't hand-type them
+
+This is the feature that saves the most time. Instead of typing a calendar date on each task, set a **due-date offset anchored to a key date**:
+
+> "3 days **after** the Inspection Deadline"
+>
+> "1 day **before** Closing"
+
+When DocJacket extracts the contract's key dates, **every anchored task schedules itself automatically**. Change a date (an extension, a delay) and the whole schedule shifts with it. You never rebuild a calendar by hand.
+
+To set an anchored due date on a template task:
+
+1. Open the task in the template.
+2. Under **Due date**, choose **Relative to a key date**.
+3. Pick the key date (Inspection Deadline, Financing Deadline, Closing, and so on), the number of days, and before/after.
+
+{/* SCREENSHOT: task editor showing the "relative to a key date" due-date option */}
+
+:::note State-specific: this is where your days go
+The *number of days* for inspection, financing, and appraisal periods come from **your state's contract and your local practice** — they're not the same everywhere. The 6-phase structure is universal; the day-counts are yours to set. Set them once per template and every file inherits them.
+:::
+
+## Next
+
+→ [Your email template library](./email-library.md)
+
+---
+
+# Your email template library
+
+A transaction is mostly the same handful of messages, deal after deal: an intro to the listing agent, "inspection is scheduled," "here's the DA for title," "please sign the walk-through." The expert TC never retypes these — they keep a **library of reusable email templates**, essentially one per step.
+
+You'll grow this over time (our most active coordinator has around 200), but the conventions matter more than the count. Get these four right and the library pays for itself.
+
+## 1. The subject line: lead with the property address
+
+Start every email's subject with the property address, then the action:
+
+```
+123 Main St - Under Contract!
+123 Main St - Inspection Scheduled
+123 Main St - DA to Title
+```
+
+:::tip This is the single highest-leverage habit in the whole system
+When you're running 25 deals, so are the agents, lenders, and title officers you work with. A property-anchored subject lets **everyone** thread, search, and file by address instantly. It makes you the easiest TC they work with.
+:::
+
+Use the smart field `{{property_address}}` so it fills in automatically.
+
+{/* CECILIA: quote on why she started leading subjects with the address */}
+
+## 2. Build from smart fields, never hand-typed details
+
+Bodies should pull from the deal record, not your memory:
+
+`{{buyer_first_name}}`, `{{listing_agent_name}}`, `{{title_company}}`, `{{title_officer}}`, `{{home_inspection_date}}`, `{{property_address}}`
+
+A template written with smart fields personalizes itself on every deal. You write it once; it's correct forever. (See [Smart Fields](../templates/smart-fields.md) for the full list.)
+
+## 3. Keep bodies short and warm
+
+The best transaction emails are 2–4 lines. Example — an intro to the listing agent:
+
+```text
+Subject: {{property_address}} - Under Contract!
+
+Hello {{listing_agent_name}},
+
+My name is [Your Name], and I'm the Transaction Coordinator for this
+file. I'll be your main point of contact on behalf of the Buyer's Agent.
+
+Attached are the executed documents for your records.
+
+Title Company: {{title_company}}
+
+Best,
+[Your Name]
+```
+
+Clear, professional, scannable. No walls of text.
+
+## 4. Name templates so you can find them fast
+
+Use a consistent `Side - Step` convention: `Buyer - Inspection Scheduled`, `Seller - Status of Loan Application`, `Buyer - DA to Title Company`. If you serve a bilingual client base, add the language: `Buyer - Inspection Scheduled - Spanish`.
+
+## The 10 to build first
+
+You don't need 200 to start. Build your most-sent messages first:
+
+1. Intro to Listing Agent
+2. Intro to Lender
+3. Inspection Scheduled
+4. Appraisal Scheduled
+5. DA to Title Company
+6. HOA / Estoppel request
+7. Lien Search request
+8. Final Walk-Through Scheduled
+9. Please Sign (walk-through / reinspection)
+10. Request for Review (post-close)
+
+{/* CECILIA: confirm/adjust the "top 10" from her real send volume (interview Q12) */}
+
+Create them at **Templates > Email Templates > New Template**.
+
+{/* SCREENSHOT: email template editor with subject, body, and smart-field picker */}
+
+:::note Works in any state
+Most of these messages are universal. A few — lien search, HOA estoppel, your title practices — vary by state and market. Keep the universal ones generic; adapt the rest to how things work where you close.
+:::
+
+## Next
+
+→ [Role-based recipients & CC yourself](./role-recipients.md)
+
+---
+
+# Role-based recipients & CC yourself
+
+A template is only reusable if it knows *who* to send to without you retyping addresses every time. The trick: address by **role**, not by person.
+
+## Address by role, not by email
+
+When you build an email template, set the recipients as **roles** — Buyer, Seller, Listing Agent, Buying Agent, Escrow Officer, Title Company, Loan Officer, Wholesaler. On each deal, DocJacket resolves those roles to the actual contacts on that file.
+
+So "Intro to Listing Agent" always goes to *this deal's* listing agent — no lookups, no copy-paste, no wrong-recipient mistakes.
+
+Example wiring from real templates:
+
+| Email | To (roles) | CC (roles) |
+|---|---|---|
+| DA to Title Company | Escrow Officer, Title Company, Title Processor | Buying Agent, **Transaction Coordinator** |
+| Inspection Scheduled | Buyer | Buying Agent, **Transaction Coordinator** |
+| Intro to Listing Agent | Listing Agent | Buying Agent, **Transaction Coordinator** |
+
+## Always CC yourself
+
+Notice the TC is CC'd on **every** template above. Do this on all of yours.
+
+:::tip Why CC yourself on everything
+Every message you send becomes part of a complete, searchable paper trail — in your own inbox and on the deal — with zero extra effort. When a question comes up weeks later ("did we ever send the DA?"), the answer is one search away. Professional CYA, automated.
+:::
+
+{/* CECILIA: quote on why she CCs herself on everything / what goes wrong if you don't */}
+
+## Build sophisticated To/CC combinations
+
+You can mix roles for the right etiquette on each message. Real examples:
+
+- **To:** Seller · **CC:** Transaction Coordinator, Listing Agent
+- **To:** Buyer · **CC:** Transaction Coordinator, Buying Agent
+- **To:** Wholesaler · **CC:** Transaction Coordinator
+
+This keeps the right people looped in without anyone being surprised to be on (or off) a thread.
+
+## Set recipients on a template
+
+1. Open the email template at **Templates > Email Templates**.
+2. In the **To** and **CC** fields, add **roles** (not addresses).
+3. Add **Transaction Coordinator** to CC on essentially everything.
+4. Save. The template now resolves recipients automatically on every deal.
+
+{/* SCREENSHOT: email template recipient-rules editor showing role chips in To and CC */}
+
+## Next
+
+→ [Task automations: draft-and-review](./automations.md)
+
+---
+
+# Task automations: draft-and-review
+
+Here's where the checklist and the email library connect — and where most people either under-use automation or set it up to fire blindly. The expert approach is **draft-and-review**: the system does the tedious 90%, you keep the final 10%.
+
+## How it works
+
+Wire an email template to a checklist task with an **"on completion"** trigger. Then, when you mark that task done — say *"Schedule Inspection"* — DocJacket automatically:
+
+1. Picks the right email template
+2. Resolves the recipients by role for this deal
+3. Fills in the smart fields from the deal record
+4. Attaches the relevant documents
+5. **Drops the finished draft into your review queue**
+
+You glance at it, tweak if needed, and send.
+
+```
+Complete a task → DocJacket drafts the role-targeted email
+               → it lands in your review queue
+               → you approve & send
+```
+
+{/* SUPADEMO: embed the complete-task → draft → review → send walkthrough here */}
+
+## Keep it draft-and-review — don't auto-send
+
+DocJacket lets you require approval before anything goes out. **Leave that on.**
+
+:::tip The principle that makes this work
+Automation should *compute and propose*, not send behind your back. The draft saves you the tedious part — choosing the template, the recipients, the smart-field data, the attachments. The review keeps you in control of the part that matters: a final human look before a client or agent hears from you. That's how you get high email volume **and** near-zero mistakes.
+:::
+
+Our most active coordinator has **hundreds** of these automations across their templates — and every single one is set to require approval. None auto-send.
+
+{/* CECILIA: quote on why she never lets them auto-send */}
+
+## The one mistake to avoid: don't automate internal tasks
+
+Only wire an email rule to a task that genuinely **sends to an external party** (an agent, client, lender, or title officer).
+
+Do **not** put email automations on internal or status-only tasks — things like *"Splits sent to closer,"* *"Escrow confirmed,"* or a step you use just to mark progress. Those don't have anyone to email, so they'll generate empty drafts that pile up in your review queue and waste your time clearing them.
+
+:::warning Rule of thumb
+If completing the task wouldn't normally make you send someone an email, don't attach an email automation to it.
+:::
+
+## Wire an automation
+
+1. Open a checklist template and select a task.
+2. Add a **notification / email rule**.
+3. Set the trigger to **On completion**.
+4. Choose the email template, confirm the role-based recipients, and attach any documents.
+5. Leave **Require approval** **on**.
+6. Save.
+
+{/* SCREENSHOT: task notification-rule editor with on-completion trigger and require-approval toggle */}
+
+## Next
+
+→ [Your first week as a power TC](./quickstart.md)
+
+---
+
+# Your first week as a power TC
+
+The full playbook can look like a lot — matrices, phases, hundreds of email templates. Don't let that stop you. The coordinators who get the most out of DocJacket all started small and grew. Here's the 80/20 for your first week.
+
+:::tip You do not need to build everything
+Three or four checklists and ten emails will carry the vast majority of your files. Build those, start working, and expand as patterns emerge.
+:::
+
+## Day 1–2: Your core checklists
+
+Create **3–4 checklist templates** (see [Build a checklist template matrix](./template-matrix.md)):
+
+- Buyer Side
+- Seller Side
+- Listing
+- Your busiest client or team
+
+Build each on the [6-phase backbone](./phase-backbone.md): Intake → Under Contract → Financing → Due Diligence → Pre-Closing → Post-Close.
+
+## Day 2–3: Smart due dates
+
+In each template, set task due dates as offsets [anchored to key dates](./phase-backbone.md) — for example, "3 days after Inspection Deadline." Plug in **your state's** day-counts once, and every future file schedules itself.
+
+## Day 3–4: Your top 10 emails
+
+Build your [most-sent emails](./email-library.md):
+
+> Intro to Listing Agent · Intro to Lender · Inspection Scheduled · Appraisal Scheduled · DA to Title · HOA/Estoppel · Lien Search · Final Walk-Through · Please Sign · Request for Review
+
+For each one:
+
+- Subject starts with the property address ([why](./email-library.md))
+- Body uses [smart fields](./email-library.md)
+- Recipients set by [role, with yourself on CC](./role-recipients.md)
+
+## Day 4–5: Wire the automations
+
+Connect each email to its checklist task with an [on-completion, draft-and-review automation](./automations.md) — and **only** on tasks that email an external party. Leave **Require approval** on.
+
+## Then: grow it
+
+The rule that builds your library over time:
+
+:::tip
+**Every time you type the same email twice, make it a template. Every time you adjust a checklist the same way twice, make it a new template.**
+:::
+
+That's how a handful of templates becomes a complete operating system — without ever sitting down to "build everything."
+
+{/* CECILIA: quote — the one thing she'd set up for a TC friend on day one so they don't quit (interview Q24) */}
+
+## You're set up
+
+Once this is in place, a new file looks like: pick the right checklist → DocJacket extracts the contract and schedules every task → complete tasks as the deal moves → review and send the drafts it prepares. That's the difference between running deals from your head and having DocJacket run them with you.
+
+---
+
+**The full series:**
+
+1. [Build a checklist template matrix](./template-matrix.md)
+2. [The 6-phase deal backbone & smart due dates](./phase-backbone.md)
+3. [Your email template library](./email-library.md)
+4. [Role-based recipients & CC yourself](./role-recipients.md)
+5. [Task automations: draft-and-review](./automations.md)
+6. **Your first week as a power TC** ← you are here
+
+---
+
 ## Transactions
 
 # Transactions
