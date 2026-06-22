@@ -918,6 +918,17 @@ Complete a task → DocJacket drafts the role-targeted email
                → you approve & send
 ```
 
+<div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', margin: '1.5rem 0' }}>
+  <iframe
+    src="https://app.supademo.com/embed/cmqpq1x4z03nomd1xjz83rt5j"
+    title="Power TC draft-and-review task automation walkthrough"
+    allow="fullscreen"
+    allowFullScreen
+    loading="lazy"
+    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0, borderRadius: 8 }}
+  />
+</div>
+
 ## Keep it draft-and-review — don't auto-send
 
 DocJacket lets you require approval before anything goes out. **Leave that on.**
