@@ -20,6 +20,8 @@ A key date template is the date-logic layer. A checklist is the workflow layer t
 
 Go to **Templates > Key Date Library** to manage reusable key date definitions.
 
+![Key Date Library page with My Templates, Shared templates, filters, Import CSV, New Key Date, and key date cards](/img/templates/key-date-library-list.png)
+
 The page has two tabs:
 
 - **My Templates** — key dates your organization owns and can edit
@@ -84,6 +86,8 @@ The editor shows a live date-rule preview, such as:
 ```text
 1 day before Closing Date (business)
 ```
+
+![Key date rule editor with template settings, Key Date Type, state, side, priority, and a live date calculation preview](/img/templates/key-date-rule-editor.png)
 
 ## Governed Key Date Types
 
