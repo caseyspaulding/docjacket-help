@@ -23,6 +23,8 @@ This is the same product category as a reusable date-template workflow: set the 
 
 Go to **Templates > Checklists** to manage checklist templates.
 
+![Checklists list page with My Templates, Shared templates, filters, default checklist guidance, and checklist cards](/img/templates/checklists-list.png)
+
 The page has two tabs:
 
 - **My Templates** — checklists your organization owns and can edit
@@ -58,6 +60,8 @@ The builder title may say **New Checklist Template** or **Edit Checklist Templat
 ## Template settings
 
 The builder shows a **Template Summary** card with the checklist name, category, state, side, key-date count, task count, and automation count.
+
+![Checklist builder with Template Summary, task tabs, AI Task Generator, Import CSV, and task rows grouped by key date](/img/templates/checklist-builder.png)
 
 Use **Edit template settings** to change:
 
@@ -112,6 +116,8 @@ Checklist tasks are the work your team completes during the transaction. Tasks c
 - On-completion email actions
 
 Tasks should reference the key date they depend on. For example, a task can be due 3 days before **Final Walkthrough** instead of hardcoding the same rule from **Closing Date**.
+
+![Checklist task editor showing task details, priority, phase, due-date context, and an automation count on the selected task](/img/templates/checklist-task-automation.png)
 
 ## Automations
 
