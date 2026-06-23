@@ -18,6 +18,8 @@ From the **Transactions** page, click **New Transaction** to start with document
 - **Upload Documents** — Upload a contract PDF and let AI do the heavy lifting
 - **Create manually** — Fill in the deal details yourself
 
+![Transactions page with the New Transaction button in the upper-right corner](/img/transactions/transactions-list.png)
+
 ### Option A: Upload Documents (recommended)
 
 This is the fastest way. Upload contract documents and DocJacket will read through them and pull out:
@@ -36,6 +38,8 @@ This is the fastest way. Upload contract documents and DocJacket will read throu
 6. Review **Smart Split** if it appears
 7. Review the extracted data and save the transaction
 
+![Upload Documents screen with Create New Transaction selected and a document drop zone](/img/getting-started/new-transaction-upload.png)
+
 ### Option B: Create manually
 
 If you don't have a contract handy or prefer to enter details yourself:
@@ -46,6 +50,8 @@ If you don't have a contract handy or prefer to enter details yourself:
 4. Click **Create Transaction**
 
 You can always add more details later from the transaction overview.
+
+![Manual New Transaction form with basic information, workflow, property address, and key date fields](/img/getting-started/manual-transaction-form.png)
 
 ## Add your contacts
 
@@ -59,6 +65,8 @@ Every deal has people involved. Use the transaction **Contacts** tab or contacts
 
 You can pick from your existing contacts or create new ones on the fly.
 
+![Transaction Contacts tab with buyers, sellers, agents, and professional services organized by role](/img/contacts/transaction-contacts-tab.png)
+
 ## Add your workflow
 
 Use the **Tasks** tab to get the work moving:
@@ -69,6 +77,8 @@ Use the **Tasks** tab to get the work moving:
 4. Review due dates, assignees, priorities, and task status
 
 Use the closing timeline on the **Overview** to track closing, contract, inspection, financing, appraisal, possession, and other important dates.
+
+![Transaction Overview timeline showing key dates and checklist controls](/img/transactions/transaction-overview.png)
 
 ## Check your tasks
 
@@ -82,6 +92,8 @@ Priorities are:
 - **Low**
 
 You can add tasks manually, add a checklist, or let AI suggest tasks based on the transaction details.
+
+![Transaction Tasks tab with checklist tasks, due dates, completion status, and task controls](/img/tasks/transaction-tasks-tab.png)
 
 ## You're all set!
 
