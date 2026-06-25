@@ -26,6 +26,10 @@ This is different from the **Upload Documents** flow you use when creating a new
 
 Nothing changes on the transaction until you finish the review-and-save step.
 
+![Transaction Documents tab with the Files subtab selected, document requirements, Documents Received, and the Extract Data action](/img/ai-extraction/transaction-documents-extract-data.png)
+
+Use the transaction-level **Extract Data** shortcut when the deal already exists and you want new documents to update that deal instead of creating a new transaction.
+
 If extraction finishes but you leave before clicking **Update Transaction**, return from **AI Extractions**, **Pending Uploads**, or the topbar **Review queue** to finish saving.
 
 ## What happens to uploaded files
@@ -35,6 +39,8 @@ Files uploaded through transaction **Extract Data** are linked to that transacti
 If you upload multiple files, DocJacket runs grouped extraction and then opens a merged review. If only one document succeeds, DocJacket can send you straight to the single-document review screen.
 
 Smart Split is part of the broader **Upload Documents** extraction wizard. From an existing transaction's **Extract Data** page, uploaded files go directly into extraction.
+
+![Existing transaction Extract Data page with a drag-and-drop upload area for amendments, addendums, or other contract documents](/img/ai-extraction/transaction-extract-upload.png)
 
 ## What it extracts
 
@@ -61,6 +67,8 @@ For existing transactions, DocJacket compares extracted values with the current 
 Only selected differences are sent when you update the transaction. If no differences are found, there is nothing to apply.
 
 Extracted dates can update transaction fields, but timeline key dates are opt-in from the review screen. Toggle on only the extracted dates you want tracked as key dates on the transaction timeline.
+
+![Extraction review screen showing extraction notes, confidence, review-required status, destination, apply options, and final save action](/img/ai-extraction/extraction-review-controls.png)
 
 ## When to use this
 

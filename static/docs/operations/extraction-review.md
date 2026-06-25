@@ -23,6 +23,8 @@ An extraction can finish scanning before anyone saves the result. Unfinished ext
 
 Use any of those entry points to get back to the review-and-save workflow.
 
+![AI Extractions page with an awaiting-save banner, save-state column, confidence values, and Finish saving actions](/img/ai-extraction/ai-extractions-list.png)
+
 ## Save states
 
 The extraction list focuses on the question that matters most: did this become a transaction?
@@ -54,6 +56,8 @@ Review the extracted fields, source citations, confidence, warnings, and any cha
 - **Update Transaction**
 
 Nothing is final until you complete the review and save step.
+
+![Extraction review screen showing notes, confidence, review-required status, apply options, and the final create or update action](/img/ai-extraction/extraction-review-controls.png)
 
 Pending uploads can also appear in the Review queue drawer and on the dashboard. Those cards take you back to the same review-and-save workflow. Use **Discard** only when the upload should stop appearing as unfinished work; it soft-dismisses the pending-upload card without deleting extraction history.
 
