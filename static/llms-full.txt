@@ -556,6 +556,8 @@ An extraction can finish scanning before anyone saves the result. Unfinished ext
 
 Use any of those entry points to get back to the review-and-save workflow.
 
+![AI Extractions page with an awaiting-save banner, save-state column, confidence values, and Finish saving actions](/img/ai-extraction/ai-extractions-list.png)
+
 ## Save states
 
 The extraction list focuses on the question that matters most: did this become a transaction?
@@ -587,6 +589,8 @@ Review the extracted fields, source citations, confidence, warnings, and any cha
 - **Update Transaction**
 
 Nothing is final until you complete the review and save step.
+
+![Extraction review screen showing notes, confidence, review-required status, apply options, and the final create or update action](/img/ai-extraction/extraction-review-controls.png)
 
 Pending uploads can also appear in the Review queue drawer and on the dashboard. Those cards take you back to the same review-and-save workflow. Use **Discard** only when the upload should stop appearing as unfinished work; it soft-dismisses the pending-upload card without deleting extraction history.
 
@@ -1502,6 +1506,10 @@ This is different from the **Upload Documents** flow you use when creating a new
 
 Nothing changes on the transaction until you finish the review-and-save step.
 
+![Transaction Documents tab with the Files subtab selected, document requirements, Documents Received, and the Extract Data action](/img/ai-extraction/transaction-documents-extract-data.png)
+
+Use the transaction-level **Extract Data** shortcut when the deal already exists and you want new documents to update that deal instead of creating a new transaction.
+
 If extraction finishes but you leave before clicking **Update Transaction**, return from **AI Extractions**, **Pending Uploads**, or the topbar **Review queue** to finish saving.
 
 ## What happens to uploaded files
@@ -1511,6 +1519,8 @@ Files uploaded through transaction **Extract Data** are linked to that transacti
 If you upload multiple files, DocJacket runs grouped extraction and then opens a merged review. If only one document succeeds, DocJacket can send you straight to the single-document review screen.
 
 Smart Split is part of the broader **Upload Documents** extraction wizard. From an existing transaction's **Extract Data** page, uploaded files go directly into extraction.
+
+![Existing transaction Extract Data page with a drag-and-drop upload area for amendments, addendums, or other contract documents](/img/ai-extraction/transaction-extract-upload.png)
 
 ## What it extracts
 
@@ -1537,6 +1547,8 @@ For existing transactions, DocJacket compares extracted values with the current 
 Only selected differences are sent when you update the transaction. If no differences are found, there is nothing to apply.
 
 Extracted dates can update transaction fields, but timeline key dates are opt-in from the review screen. Toggle on only the extracted dates you want tracked as key dates on the transaction timeline.
+
+![Extraction review screen showing extraction notes, confidence, review-required status, destination, apply options, and final save action](/img/ai-extraction/extraction-review-controls.png)
 
 ## When to use this
 
@@ -4708,6 +4720,10 @@ The upload wizard also shows pending uploads before you start. If a prior extrac
 
 Uploads accept PDFs, JPGs, JPEGs, and PNGs up to 25MB each, with up to 20 files per run.
 
+![Upload Documents wizard with destination choices for creating a transaction, creating a listing, or adding extraction results to an existing transaction](/img/ai-extraction/upload-documents-wizard.png)
+
+The upload wizard is the starting point for contract extraction when you are creating a new transaction or listing from documents. Choose the destination first, then upload the files for AI review.
+
 ## Tips for best results
 
 - **Typed contracts work best** — AI handles typed text with high accuracy. Handwritten contracts may need more manual corrections.
@@ -4721,6 +4737,8 @@ Uploads accept PDFs, JPGs, JPEGs, and PNGs up to 25MB each, with up to 20 files 
 The progress screen shows extraction steps, elapsed time, confidence when complete, warnings when available, and retry/cancel options when something fails.
 
 The review screen is the approval gate. Depending on the destination, the final action is **Create Transaction**, **Create Listing**, or **Update Transaction**. Existing-transaction updates show a changed-field comparison so you can choose which extracted values should overwrite current transaction data.
+
+![Extraction review screen showing extraction notes, confidence, review-required status, destination, apply options, and final Create Transaction action](/img/ai-extraction/extraction-review-controls.png)
 
 If you leave after extraction finishes but before clicking the final save action, the upload can appear in **Pending Uploads**, the topbar **Review queue**, and **AI Extractions** as awaiting save.
 
