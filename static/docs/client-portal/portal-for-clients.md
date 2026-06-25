@@ -24,7 +24,9 @@ When a buyer or seller opens their portal link, they see a clean, branded overvi
 - **Service providers** — Inspectors, appraisers, and other vendors
 - **Property details** — Reference fields such as escrow number, MLS number, or APN when present
 
-client portal view showing timeline and documents
+![Client portal overview with on-track status, key dates, transaction summary, and visible parties](/img/client-portal/client-portal-overview.png)
+
+Clients start with the transaction status and key dates first, then move through the summary, parties, contacts, shared documents, tasks, service providers, and property details that are visible for their link.
 
 ## Portal actions
 

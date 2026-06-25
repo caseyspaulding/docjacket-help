@@ -18,7 +18,9 @@ Portal links are recipient-specific. A transaction can have separate buyer/selle
 
 It's a professional touch that keeps everyone informed and cuts down on "where are we?" calls and emails.
 
-client portal view showing transaction status
+![Client portal overview with branded header, transaction status, key dates, summary details, and parties](/img/client-portal/client-portal-overview.png)
+
+The portal opens as a read-only transaction status page. The top of the page orients the viewer with your branding, the property address, status badge, print/download actions, and the most important transaction sections.
 
 ## Key features
 
