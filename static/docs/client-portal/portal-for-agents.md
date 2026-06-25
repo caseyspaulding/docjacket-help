@@ -26,7 +26,9 @@ Each transaction card can show:
 - **Calendar shortcut** — A quick calendar-subscribe action for that transaction
 - **View Details** — Opens the transaction-specific branded portal
 
-agent portal showing transaction list
+![Agent portal hub with active transaction cards, calendar shortcuts, document counts, pending task counts, and View Details actions](/img/client-portal/agent-portal-hub.png)
+
+The hub is meant for quick triage. Agents can see which deals are active, how many visible documents and pending tasks are available, then use **Calendar** for the transaction feed or **View Details** to open the full portal for one deal.
 
 ## Transaction detail portal
 
