@@ -36,6 +36,7 @@ Smart fields are grouped by category:
 - Organization
 - Dates
 - Financial
+- Current User — your own name, email, and phone (for example `{{my_name}}`), handy in signatures and sign-offs
 - Custom
 
 Each field card shows the label, syntax, description, and example when available.
@@ -67,6 +68,10 @@ Smart fields work in email subjects too. For example:
 ```text
 EMD Receipt - {{property_address}}
 ```
+
+:::tip Reuse before you create
+Search the existing library before adding a custom field — most of what you need is already there. And keep governed transaction dates in the [Key Date Library](./task-templates.md) rather than creating duplicate custom date fields, so automation and reporting stay consistent.
+:::
 
 ## Conditional content
 

@@ -44,6 +44,10 @@ The signature editor uses the same rich editor used elsewhere in DocJacket. You 
 
 Keep signature images small enough for email. Large logos or wide banners can make mobile email replies harder to read.
 
+:::tip Send yourself a test
+After changing a logo or adding long disclaimer language, send yourself a test email. Signatures can render differently across email clients, and a quick test catches oversized images or broken links before clients see them.
+:::
+
 ## Default signature
 
 The default signature is selected automatically when DocJacket loads signatures for outgoing messages. You can set the default from either:

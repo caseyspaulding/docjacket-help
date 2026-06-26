@@ -71,7 +71,7 @@ Smart fields are placeholders that get replaced with real transaction data. They
 - `{{closing_date}}`
 - `{{purchase_price}}`
 - `{{agent_name}}`
-- `{{company_name}}`
+- `{{brokerage_name}}`
 
 Smart fields work in the subject and body. For example:
 
@@ -117,6 +117,10 @@ If the template uses conditional content, the preview tools let you test sample 
 
 Use **Send Test** to send a test email before activating a new or heavily edited template.
 
+:::tip Test before you automate
+Keep a template in **Draft** while you build it, and send yourself a test send once conditions or auto-attached documents are involved. A template linked to a task sends on its own when the task comes due — so it's worth confirming it renders correctly before it goes out unattended.
+:::
+
 If a smart field is valid but the transaction does not have the data yet, the preview can show a missing-variable warning. If a field name is not recognized, fix the placeholder in the template.
 
 ## AI email generator
@@ -140,7 +144,7 @@ Email templates become even more powerful when linked to [tasks](../tasks/email-
 
 Task-linked templates can render smart fields, show unresolved-field warnings, include the default email signature, and send with attached documents when configured.
 
-When a template is used from a transaction email composer, open **Insert > From Template**, choose the saved template, and review the filled subject, body, recipients, attachments, and missing-field warnings before sending.
+To use a template while composing in a transaction, click the **Template** button in the compose toolbar, choose the saved template, and review the filled subject, body, recipients, attachments, and missing-field warnings before sending.
 
 ## Tips
 
