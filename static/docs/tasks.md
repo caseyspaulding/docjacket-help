@@ -39,6 +39,6 @@ The organization-wide **Tasks** page is for daily work across all transactions. 
 - [Creating Tasks](./creating-tasks.mdx) — Quick add, checklists, generation, and task table controls
 - [Checklists](./task-templates.mdx) — Reusable key date and task workflows
 - [Subtasks](./subtasks.mdx) — Breaking tasks into steps
-- [Email Automation](./email-automation.mdx) — Link emails to task completion
+- [Email Automation](./email-automation.mdx) — Prepare, review, schedule, or send task-linked emails
 - [Task Options](./task-options.md) — Portal visibility, completion behavior, conditional tasks, reminders, and tracking fields
 - [Waiting Items](./waiting-items.md) — Track items you are waiting on from other people

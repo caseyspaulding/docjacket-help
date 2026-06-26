@@ -8,10 +8,13 @@ description: Configure advanced task options in DocJacket — portal visibility,
 
 Click a task to open its detail drawer. The drawer starts with the core task fields, then includes collapsible sections for the settings that affect visibility, automation, reminders, comments, and reporting.
 
+![Transaction Tasks tab where clicking a task opens Task Details](/img/tasks/transaction-tasks-tab.png)
+
 ## Core fields
 
 Use the top of the drawer for the basics:
 
+- **Status actions** — complete, skip, or reopen the task
 - **Due Date** — when the task is due
 - **Assignee** — the team member responsible for the work
 - **Depends On** — another task that should be completed first
@@ -43,10 +46,12 @@ Use **Task emails** to link an email template to the task. Linked task emails ca
 
 Linked emails can use:
 
-- The task's due date
 - The task's auto-send date
+- The task's due date
 - A transaction key date such as Closing Date or Inspection Deadline
 - A before/on/after offset from that anchor
+
+Use this section for deal-specific changes. For repeatable automations that should exist every time a checklist is applied, configure the task email in the checklist template first.
 
 See [Email Automation](./email-automation.mdx) for the full workflow.
 
@@ -54,7 +59,7 @@ See [Email Automation](./email-automation.mdx) for the full workflow.
 
 Use **Scheduled emails** when the message should send from the task due date, instead of waiting for the task to be completed.
 
-From the drawer, you can schedule a new email, edit pending or held scheduled emails, send one now, or cancel it. Upcoming and held scheduled emails also appear in the Review queue's **Scheduled** tab.
+From the drawer, you can schedule a new email, edit pending or held scheduled emails, send one now, or cancel it. Scheduled emails send from the TC's connected Gmail or Outlook account when available. Upcoming and held scheduled emails also appear in the Review queue's **Scheduled** tab.
 
 ## Options
 
