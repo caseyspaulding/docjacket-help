@@ -139,7 +139,9 @@ The checklist builder includes tools for faster setup:
 - **CSV export** — Download the checklist structure for review or offline editing.
 - **Suggested tasks** — Add common tasks for known key date types.
 
-Always review generated or imported items before relying on the checklist with clients.
+:::warning Review AI and imported items
+Generated and CSV-imported key dates and tasks are a starting point, not a finished checklist — review them before relying on the checklist with clients.
+:::
 
 ## Testing a checklist
 

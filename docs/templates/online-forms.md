@@ -48,6 +48,10 @@ Use **Create Transaction** for Front Door **Submit a File** routing and public i
 
 Use **Update Transaction** or **Additive** when the form belongs to a specific deal, such as requesting seller updates, vendor details, or missing information.
 
+:::note Purpose decides how it can be shared
+The purpose isn't just a label — it controls sharing. Only **Create Transaction** forms can have a standalone public link (and power a Front Door **Submit a File** CTA). **Update Transaction** and **Additive** forms must be sent from a specific transaction's **Forms** tab. Pick the purpose before you build the share link.
+:::
+
 ## Field types
 
 Online Forms support:
@@ -55,9 +59,9 @@ Online Forms support:
 - Text, text area, number, email, phone, date, and currency fields
 - Dropdown, radio, yes/no, checkbox, and multi-select fields
 - Address and participant fields
-- Contact picker and organization picker fields
-- Services dropdown fields that can filter services by earlier answers
+- Contact picker fields
 - File uploads
+- Signature fields
 - Rich text
 
 For each field you can set the label, required status, section, placeholder, help text, width, options, and conditional display rules.
@@ -117,7 +121,7 @@ Transaction-specific form submissions appear on the transaction's **Forms** tab.
 - See active links and submission counts
 - Expand submissions to review submitted fields
 - Map submitted fields to transaction fields
-- Mark fields as clear, needing documents, needing internal review, needing attorney/title review, or resolved
+- Mark fields as clear, needing documents, needing internal review, needing attorney review, or resolved
 - Apply mapped values to the transaction
 
 Create-transaction submissions may enter the intake flow for review and routing before becoming a transaction record.
