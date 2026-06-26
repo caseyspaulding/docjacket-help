@@ -110,7 +110,7 @@ Fix unrecognized placeholders in the template. Fix missing values by updating th
 
 ## Full field reference
 
-This is the complete built-in smart-field library. Your organization can also add **Custom** fields, and some fields only populate for specific workflows (for example, leasing or state-specific dates). Insert fields from the smart-field picker so the syntax is always correct.
+This is the complete built-in smart-field library. Your organization can also add its own [custom smart fields](#custom-smart-fields), and some fields only populate for specific workflows (for example, leasing or state-specific dates). Insert fields from the smart-field picker so the syntax is always correct.
 
 ### Transaction
 
@@ -313,6 +313,44 @@ Contact blocks render a formatted contact card — name, email, phone, and compa
 | Title Company Contact Block | `{{contact_block:title_company}}` |
 | Title Processor Block | `{{contact_block:title_processor}}` |
 | Your Agent Contact Block | `{{contact_block:agent}}` |
+
+## Custom smart fields
+
+Beyond the built-in library, your organization can define its own smart fields for data that is unique to how your team works — anything from an annual cap amount to a photo-appointment date.
+
+### Creating a custom field
+
+1. Go to **Settings > Custom Fields**
+2. Open the **Smart Fields** tab
+3. Click **Add Custom Field**
+4. Enter a **field name** (what your team sees) and a **merge code** (the token used in templates)
+5. Save
+
+The merge code becomes the token. A field with the merge code `annual_cap_amount` is inserted into templates as `{{annual_cap_amount}}`.
+
+A few rules to know:
+
+- Merge codes use **lowercase letters, numbers, and underscores only**, and must start with a letter.
+- Each merge code must be unique in your organization, and it can't reuse a built-in field name.
+- The field name can be changed later, but the **merge code cannot** — templates reference it, so it's locked once created.
+- Custom fields are **organization-wide**: everyone on your team can use them.
+
+Custom fields show up under the **Custom** category in the smart-field picker, right alongside the built-in fields.
+
+:::note Pick the merge code carefully
+You can rename the field label anytime, but the **merge code is permanent** — every template that references `{{your_code}}` depends on it. Choose a clear, lasting name when you create the field.
+:::
+
+### Filling in the value
+
+A custom field starts out empty. There are two ways to give it a value on a transaction:
+
+- **Enter it manually** in the transaction's custom-fields area.
+- **Let extraction fill it in** — when you create the field, use **Add Extractable Field** so DocJacket's document extraction can pull the value from uploaded documents automatically.
+
+### Milestone date fields
+
+Custom key dates surface as smart fields automatically. Any active key date that has a slug appears under the **Milestones** category in the picker, with a token that matches its slug — for example a "Photo Appointment" key date can render as `{{photo_appointment_date}}` and resolve to that transaction's date. Manage these in the [Key Date Library](./task-templates.md).
 
 ## Tips
 
