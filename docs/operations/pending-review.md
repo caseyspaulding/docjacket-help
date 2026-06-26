@@ -6,18 +6,18 @@ description: Use the topbar Review queue to review pending uploads, ready drafts
 
 # Review Queue
 
-The **Review queue** is the topbar drawer for work that needs a quick decision. It replaced the old sidebar **Pending Review** page; use the document-tasks icon in the topbar for current review work.
+The **Review queue** is the topbar drawer for work that needs a quick decision. It replaced the old sidebar **Pending Review** page.
 
 Open it from the document-tasks icon in the topbar, near the message, notification, theme, help, and account icons.
 
-The badge on the icon counts review actions plus pending uploads, so a number on the icon means at least one item needs attention.
+The badge on the icon counts review actions plus pending uploads. A number on the icon means at least one item needs attention.
 
 ## What appears here
 
 The drawer can include:
 
 - **Pending Uploads** - extraction groups that completed scanning, were not applied to a transaction, and have not been dismissed
-- **Ready for Review** - automation-rule drafts, email drafts, SMS drafts, and other actions waiting for approval or dismissal
+- **Ready for Review** - automation-rule drafts, email drafts, SMS drafts, and other actions waiting for approval, send, skip, or dismissal
 - **Scheduled** - upcoming reminders, scheduled emails, and one-off scheduled messages
 - **Done** - recent sent, approved, skipped, dismissed, rejected, or completed activity from the last several days
 
@@ -42,13 +42,13 @@ Depending on the draft, you may be able to:
 - Use **Skip past-deadline** for drafts whose deadline has already passed
 - Use **Approve All** when every ready item should proceed
 
-This tab is the review-first safety step for automation output. Nothing sends from here until you approve, send, skip, or dismiss the item.
+This tab is the review-first safety step for automation output. Click a card to open the detail view. Nothing sends from here until you approve, send, skip, or dismiss the item.
 
 ## Scheduled
 
 Use the **Scheduled** tab to review upcoming reminders, scheduled emails, and one-off scheduled messages.
 
-Scheduled email cards can show the related transaction, anchor label, schedule state, recipients, and attention labels for held or failed sends. Scheduled emails can be edited, sent now, or cancelled. Scheduled one-off messages can be cancelled.
+Scheduled cards can show the related transaction, anchor label, schedule state, recipients, and attention labels for held or failed sends. Click the card to open the transaction. Scheduled emails can be edited, sent now, or cancelled. Scheduled one-off messages can be cancelled.
 
 ## Done
 
