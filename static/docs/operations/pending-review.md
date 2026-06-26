@@ -11,7 +11,7 @@ description: Use the topbar Review queue to review pending uploads, ready drafts
 
 The **Review queue** is the topbar drawer for work that needs a quick decision. It replaced the old sidebar **Pending Review** page; use the document-tasks icon in the topbar for current review work.
 
-Open it from the document-tasks icon in the topbar.
+Open it from the document-tasks icon in the topbar, near the message, notification, theme, help, and account icons.
 
 The badge on the icon counts review actions plus pending uploads, so a number on the icon means at least one item needs attention.
 
@@ -44,6 +44,8 @@ Depending on the draft, you may be able to:
 - Dismiss or skip the draft
 - Use **Skip past-deadline** for drafts whose deadline has already passed
 - Use **Approve All** when every ready item should proceed
+
+This tab is the review-first safety step for automation output. Nothing sends from here until you approve, send, skip, or dismiss the item.
 
 ## Scheduled
 
