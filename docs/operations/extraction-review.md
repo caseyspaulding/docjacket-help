@@ -10,6 +10,26 @@ The **AI Extractions** page lists extraction jobs created from uploaded document
 
 Use it when a document was scanned but the transaction, listing, or update has not been saved yet, or when you need to inspect extraction history.
 
+## Starting an extraction
+
+You can start extraction from the main upload flow or from an existing transaction.
+
+From a transaction, open the **Documents** tab and choose **Extract Data** when you want DocJacket to scan documents for that deal.
+
+![Transaction Documents tab with the Extract Data action available for AI extraction](/img/ai-extraction/transaction-documents-extract-data.png)
+
+When you start extraction from an existing transaction, DocJacket keeps the upload tied to that deal.
+
+![Transaction extraction upload screen for adding documents to an existing transaction](/img/ai-extraction/transaction-extract-upload.png)
+
+The upload wizard lets you choose the destination before extraction runs:
+
+- **Create New Transaction**
+- **Create New Listing**
+- **Add to Existing Transaction**
+
+![Upload Documents wizard showing destination choices before AI extraction starts](/img/ai-extraction/upload-documents-wizard.png)
+
 ## Where unfinished uploads appear
 
 An extraction can finish scanning before anyone saves the result. Unfinished extraction work can appear in three places:

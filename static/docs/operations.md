@@ -9,20 +9,20 @@ description: Use DocJacket's day-to-day work queues to see what needs attention,
 
 # Operations
 
-Operations pages are the surfaces your team checks during the day to decide what needs attention next.
+Operations pages are the surfaces your team checks during the day to decide what needs attention next. They are not one single queue; each surface answers a different operational question.
 
 ## In this section
 
-- [Dashboard](./dashboard.md) - Your daily overview, quick actions, pending uploads, closings, tasks, and briefing
-- [Intake Queue](./intake-queue.md) - Route inbound emails, SMS, intake forms, and notes to the right transaction
+- [Dashboard](./dashboard.md) - Your daily overview, quick actions, pending uploads, closings, tasks, blocked deals, payments, and briefing
+- [Intake Queue](./intake-queue.md) - Route unassigned emails, SMS, intake forms, and notes from Inbox to the right transaction
 - [Review Queue](./pending-review.md) - Use the topbar drawer for pending uploads, ready drafts, scheduled sends, and recent activity
 - [Extraction Review](./extraction-review.md) - Finish saving extracted contract data and review extraction history
 
 ## How the queues fit together
 
-Use the **Dashboard** as your morning check-in. It points you toward closings, overdue tasks, waiting items, outstanding payments, and uploads that still need review.
+Use the **Dashboard** as your morning check-in. It points you toward closings, overdue tasks, blocked deals, outstanding payments, and uploads that still need review.
 
-Use the **Intake Queue** when inbound emails, SMS, form submissions, or notes need routing to a transaction. This is assignment work: decide where an inbound item belongs, then assign or dismiss it.
+Use the **Intake Queue** workflow from **Inbox** when inbound emails, SMS, form submissions, or notes need routing to a transaction. This is assignment work: decide where an inbound item belongs, then accept the AI match, assign it manually, or dismiss it.
 
 Use the **Review Queue** when drafts, automation output, scheduled sends, or pending uploads need a human decision. The old sidebar **Pending Review** page was retired; current review work lives in the document-tasks icon in the topbar.
 

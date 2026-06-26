@@ -1,7 +1,7 @@
 ---
 sidebar_label: Intake Queue
 sidebar_position: 3
-description: Route inbound emails, SMS, intake forms, and notes to transactions from DocJacket's Intake Queue.
+description: Route unassigned emails, SMS, intake forms, and notes to transactions from the DocJacket Inbox intake workflow.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/operations/intake-queue -->
@@ -9,9 +9,9 @@ description: Route inbound emails, SMS, intake forms, and notes to transactions 
 
 # Intake Queue
 
-The Intake Queue is where inbound work waits until it is assigned, accepted, or dismissed.
+The Intake Queue workflow lives in **Inbox**. It is where unassigned inbound work waits until it is accepted, assigned, or dismissed.
 
-Use the Intake Queue when the question is "Which transaction does this belong to?"
+Use it when the question is "Which transaction does this belong to?"
 
 Use it for:
 
@@ -20,44 +20,48 @@ Use it for:
 - Online intake form submissions
 - Internal intake notes
 
+## Where to find it
+
+Open **Inbox** from the left sidebar. The page includes conversation filters for **All**, **Unread**, and **Unassigned**, plus type chips for **Forms**, **Email**, **SMS**, and **Notes**.
+
+Use **Unassigned** when you want to focus on routing work that is not linked to a transaction yet. Use the type chips when you only want to process one inbound channel.
+
 ## Intake email
 
-If your organization has an intake subdomain, the queue shows an intake email address in the header. Copy that address and forward transaction-related messages to it so DocJacket can route them.
+If your organization has an intake subdomain, Inbox shows a **Forward to** intake email address in the header, such as an organization-specific address at `intake.docjacket.com`. Copy that address and forward transaction-related messages to it so DocJacket can route them.
 
-## Tabs and counts
+## Filters and counts
 
-The queue groups work by item type. The header shows counts for emails, SMS, and intake form submissions.
+Inbox groups work by item type and shows counts where they help, such as the email count on the Email chip.
 
-Use the tabs to narrow the table when you only want to process one kind of inbound item.
+Use the search box when you need to find a message by sender, subject, address, or content.
 
-If the queue is empty, DocJacket shows an all-caught-up state instead of the table.
+If there is no matching work, DocJacket shows an empty state instead of the thread list.
 
 ## AI routing suggestions
 
-DocJacket may suggest a transaction for an item. Suggested matches show:
+DocJacket may suggest a transaction for an unassigned item. Suggested matches show in the selected item's context panel and can include:
 
 - Transaction address
 - Confidence percentage
 - Optional match reason
 
-Click **Accept** when the suggestion is correct. The item is assigned to that transaction.
+Click **Accept & Assign** when the suggestion is correct. The item is linked to that transaction.
 
 ## Manual assignment
 
-If there is no good suggestion, click **Assign to Transaction**.
+If there is no good suggestion, use **Assign to Transaction** in the right panel.
 
-Search by address, buyer, or seller, choose the transaction, and assign the item. The detail drawer is useful when you need to read the message content before deciding.
+Search by address, buyer, or seller, choose the transaction, and assign the item. Keep the selected message open while you search so you can read the content before deciding.
 
 Assignment links the item to the transaction record so the team can handle it in the right deal context.
 
 ## Bulk actions
 
-Select multiple items to assign or dismiss them together. Bulk assignment is useful when several forwarded emails belong to the same transaction.
+Select multiple intake items to assign or dismiss them together. Bulk assignment is useful when several forwarded emails belong to the same transaction.
 
 ## Dismissing items
 
-Dismiss items that do not need to be routed. Form submissions are rejected when dismissed; other item types are archived.
-
-Use dismissal for spam, duplicates, or messages that do not belong in a transaction record.
+Dismiss items that do not need to be routed. Dismissed items are removed from the routing workflow; use this for spam, duplicates, or messages that do not belong in a transaction record.
 
 If an item is not about routing and instead needs approval, editing, sending, or final save after extraction, use the **Review Queue** or **AI Extractions** instead.

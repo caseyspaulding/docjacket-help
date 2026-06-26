@@ -348,20 +348,20 @@ Signer roles are configured inside e-sign form templates. They are separate from
 
 # Operations
 
-Operations pages are the surfaces your team checks during the day to decide what needs attention next.
+Operations pages are the surfaces your team checks during the day to decide what needs attention next. They are not one single queue; each surface answers a different operational question.
 
 ## In this section
 
-- [Dashboard](./dashboard.md) - Your daily overview, quick actions, pending uploads, closings, tasks, and briefing
-- [Intake Queue](./intake-queue.md) - Route inbound emails, SMS, intake forms, and notes to the right transaction
+- [Dashboard](./dashboard.md) - Your daily overview, quick actions, pending uploads, closings, tasks, blocked deals, payments, and briefing
+- [Intake Queue](./intake-queue.md) - Route unassigned emails, SMS, intake forms, and notes from Inbox to the right transaction
 - [Review Queue](./pending-review.md) - Use the topbar drawer for pending uploads, ready drafts, scheduled sends, and recent activity
 - [Extraction Review](./extraction-review.md) - Finish saving extracted contract data and review extraction history
 
 ## How the queues fit together
 
-Use the **Dashboard** as your morning check-in. It points you toward closings, overdue tasks, waiting items, outstanding payments, and uploads that still need review.
+Use the **Dashboard** as your morning check-in. It points you toward closings, overdue tasks, blocked deals, outstanding payments, and uploads that still need review.
 
-Use the **Intake Queue** when inbound emails, SMS, form submissions, or notes need routing to a transaction. This is assignment work: decide where an inbound item belongs, then assign or dismiss it.
+Use the **Intake Queue** workflow from **Inbox** when inbound emails, SMS, form submissions, or notes need routing to a transaction. This is assignment work: decide where an inbound item belongs, then accept the AI match, assign it manually, or dismiss it.
 
 Use the **Review Queue** when drafts, automation output, scheduled sends, or pending uploads need a human decision. The old sidebar **Pending Review** page was retired; current review work lives in the document-tasks icon in the topbar.
 
@@ -384,35 +384,37 @@ The key distinction is simple: **Intake Queue** routes inbound work to a transac
 
 # Dashboard
 
-The dashboard is your daily command center. It shows what changed, what is due, and what needs attention across your transactions.
+The dashboard is your daily command center. It shows what changed, what is due, and what needs attention across your transactions. Most sections are collapsible, so you can keep the morning view tight and expand only the work you are handling.
 
 ## First-time view
 
-New users see a guided first step:
+New users see a guided first step before the operational widgets fill in:
 
-- Upload a first contract
-- Try a sample contract
-- Watch the walkthrough
+- **Upload Your First Contract**
+- **Try a Sample Contract**
+- A collapsed walkthrough video
 - Review quick facts about the account
 
 After your workspace has activity, the dashboard shifts into daily operations mode.
 
 ## Daily sections
 
-The dashboard includes collapsible sections. Your layout may vary by screen size and plan, but the main sections are:
+Your layout may vary by screen size and plan. On smaller screens, the highest-priority sections move up so urgent items are still visible first.
+
+The main sections are:
 
 - **Today's Briefing** - Closings today, overdue tasks, tasks due today, upcoming deadlines, new emails, completed extractions, new assignments, and workload level
 - **Pending Uploads** - Documents that finished extracting but have not been saved as a transaction, listing, or update yet
 - **Closing Soon** - Transactions with closing dates in the next seven days
 - **Tasks** - Tasks due today or overdue and assigned to you
-- **Waiting On** - Deals currently blocked, grouped by phase
+- **Waiting On** - Deals currently blocked, grouped by phase; click a phase to open the transactions list filtered to that phase
 - **Outstanding Payments** - Logged TC fees that are not paid yet, when the payments widget applies
 - **This Month** - New transactions, closed transactions, active volume, and pending tasks
 - **Quick Actions** - Shortcuts for common work such as uploading a contract or creating a transaction
 
 ## Daily digest
 
-From **Today's Briefing**, you can turn the daily digest email on or off. The digest summarizes the same operational signals in email form.
+From **Today's Briefing**, you can turn the daily digest email on or off. The digest summarizes the same operational signals in email form, including urgent dates and workload signals.
 
 ## Pending uploads
 
@@ -430,6 +432,12 @@ Use **Review** to return to the extraction review flow and finish saving. Use **
 
 Pending Uploads only appears when there is something unfinished. If there are no unfinished extraction groups, the section stays hidden.
 
+## Waiting On
+
+Use **Waiting On** when you need to find blocked deals quickly. The widget groups open transactions by phase, such as inspection, repairs, attorney, appraisal, loan/title, closing, and other.
+
+Click a phase row to open the transactions list with that waiting-on phase selected. This is useful for batch follow-up, such as clearing inspection blockers or checking every deal waiting on title.
+
 ## Tips
 
 - Start with **Today's Briefing** for urgent dates and workload.
@@ -441,9 +449,9 @@ Pending Uploads only appears when there is something unfinished. If there are no
 
 # Intake Queue
 
-The Intake Queue is where inbound work waits until it is assigned, accepted, or dismissed.
+The Intake Queue workflow lives in **Inbox**. It is where unassigned inbound work waits until it is accepted, assigned, or dismissed.
 
-Use the Intake Queue when the question is "Which transaction does this belong to?"
+Use it when the question is "Which transaction does this belong to?"
 
 Use it for:
 
@@ -452,45 +460,49 @@ Use it for:
 - Online intake form submissions
 - Internal intake notes
 
+## Where to find it
+
+Open **Inbox** from the left sidebar. The page includes conversation filters for **All**, **Unread**, and **Unassigned**, plus type chips for **Forms**, **Email**, **SMS**, and **Notes**.
+
+Use **Unassigned** when you want to focus on routing work that is not linked to a transaction yet. Use the type chips when you only want to process one inbound channel.
+
 ## Intake email
 
-If your organization has an intake subdomain, the queue shows an intake email address in the header. Copy that address and forward transaction-related messages to it so DocJacket can route them.
+If your organization has an intake subdomain, Inbox shows a **Forward to** intake email address in the header, such as an organization-specific address at `intake.docjacket.com`. Copy that address and forward transaction-related messages to it so DocJacket can route them.
 
-## Tabs and counts
+## Filters and counts
 
-The queue groups work by item type. The header shows counts for emails, SMS, and intake form submissions.
+Inbox groups work by item type and shows counts where they help, such as the email count on the Email chip.
 
-Use the tabs to narrow the table when you only want to process one kind of inbound item.
+Use the search box when you need to find a message by sender, subject, address, or content.
 
-If the queue is empty, DocJacket shows an all-caught-up state instead of the table.
+If there is no matching work, DocJacket shows an empty state instead of the thread list.
 
 ## AI routing suggestions
 
-DocJacket may suggest a transaction for an item. Suggested matches show:
+DocJacket may suggest a transaction for an unassigned item. Suggested matches show in the selected item's context panel and can include:
 
 - Transaction address
 - Confidence percentage
 - Optional match reason
 
-Click **Accept** when the suggestion is correct. The item is assigned to that transaction.
+Click **Accept & Assign** when the suggestion is correct. The item is linked to that transaction.
 
 ## Manual assignment
 
-If there is no good suggestion, click **Assign to Transaction**.
+If there is no good suggestion, use **Assign to Transaction** in the right panel.
 
-Search by address, buyer, or seller, choose the transaction, and assign the item. The detail drawer is useful when you need to read the message content before deciding.
+Search by address, buyer, or seller, choose the transaction, and assign the item. Keep the selected message open while you search so you can read the content before deciding.
 
 Assignment links the item to the transaction record so the team can handle it in the right deal context.
 
 ## Bulk actions
 
-Select multiple items to assign or dismiss them together. Bulk assignment is useful when several forwarded emails belong to the same transaction.
+Select multiple intake items to assign or dismiss them together. Bulk assignment is useful when several forwarded emails belong to the same transaction.
 
 ## Dismissing items
 
-Dismiss items that do not need to be routed. Form submissions are rejected when dismissed; other item types are archived.
-
-Use dismissal for spam, duplicates, or messages that do not belong in a transaction record.
+Dismiss items that do not need to be routed. Dismissed items are removed from the routing workflow; use this for spam, duplicates, or messages that do not belong in a transaction record.
 
 If an item is not about routing and instead needs approval, editing, sending, or final save after extraction, use the **Review Queue** or **AI Extractions** instead.
 
@@ -498,18 +510,18 @@ If an item is not about routing and instead needs approval, editing, sending, or
 
 # Review Queue
 
-The **Review queue** is the topbar drawer for work that needs a quick decision. It replaced the old sidebar **Pending Review** page; use the document-tasks icon in the topbar for current review work.
+The **Review queue** is the topbar drawer for work that needs a quick decision. It replaced the old sidebar **Pending Review** page.
 
 Open it from the document-tasks icon in the topbar, near the message, notification, theme, help, and account icons.
 
-The badge on the icon counts review actions plus pending uploads, so a number on the icon means at least one item needs attention.
+The badge on the icon counts review actions plus pending uploads. A number on the icon means at least one item needs attention.
 
 ## What appears here
 
 The drawer can include:
 
 - **Pending Uploads** - extraction groups that completed scanning, were not applied to a transaction, and have not been dismissed
-- **Ready for Review** - automation-rule drafts, email drafts, SMS drafts, and other actions waiting for approval or dismissal
+- **Ready for Review** - automation-rule drafts, email drafts, SMS drafts, and other actions waiting for approval, send, skip, or dismissal
 - **Scheduled** - upcoming reminders, scheduled emails, and one-off scheduled messages
 - **Done** - recent sent, approved, skipped, dismissed, rejected, or completed activity from the last several days
 
@@ -534,13 +546,13 @@ Depending on the draft, you may be able to:
 - Use **Skip past-deadline** for drafts whose deadline has already passed
 - Use **Approve All** when every ready item should proceed
 
-This tab is the review-first safety step for automation output. Nothing sends from here until you approve, send, skip, or dismiss the item.
+This tab is the review-first safety step for automation output. Click a card to open the detail view. Nothing sends from here until you approve, send, skip, or dismiss the item.
 
 ## Scheduled
 
 Use the **Scheduled** tab to review upcoming reminders, scheduled emails, and one-off scheduled messages.
 
-Scheduled email cards can show the related transaction, anchor label, schedule state, recipients, and attention labels for held or failed sends. Scheduled emails can be edited, sent now, or cancelled. Scheduled one-off messages can be cancelled.
+Scheduled cards can show the related transaction, anchor label, schedule state, recipients, and attention labels for held or failed sends. Click the card to open the transaction. Scheduled emails can be edited, sent now, or cancelled. Scheduled one-off messages can be cancelled.
 
 ## Done
 
@@ -563,6 +575,26 @@ Older **Pending Review** links now redirect to the Inbox with a retirement notic
 The **AI Extractions** page lists extraction jobs created from uploaded documents.
 
 Use it when a document was scanned but the transaction, listing, or update has not been saved yet, or when you need to inspect extraction history.
+
+## Starting an extraction
+
+You can start extraction from the main upload flow or from an existing transaction.
+
+From a transaction, open the **Documents** tab and choose **Extract Data** when you want DocJacket to scan documents for that deal.
+
+![Transaction Documents tab with the Extract Data action available for AI extraction](/img/ai-extraction/transaction-documents-extract-data.png)
+
+When you start extraction from an existing transaction, DocJacket keeps the upload tied to that deal.
+
+![Transaction extraction upload screen for adding documents to an existing transaction](/img/ai-extraction/transaction-extract-upload.png)
+
+The upload wizard lets you choose the destination before extraction runs:
+
+- **Create New Transaction**
+- **Create New Listing**
+- **Add to Existing Transaction**
+
+![Upload Documents wizard showing destination choices before AI extraction starts](/img/ai-extraction/upload-documents-wizard.png)
 
 ## Where unfinished uploads appear
 
