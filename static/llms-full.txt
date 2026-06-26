@@ -3357,31 +3357,40 @@ You can remove a custom domain if traffic should stop resolving to your Front Do
 
 # Messages & Email
 
-DocJacket keeps communication attached to the transaction where the work is happening. Open a transaction's **Messages** tab to review email, scheduled email, SMS, portal conversations, and internal notes for that deal.
+DocJacket keeps communication attached to the transaction where the work is happening. Open a transaction's **Email** tab to review the transaction inbox, communication timeline, scheduled email, and internal notes for that deal.
 
-![Transaction Messages tab with Email, Scheduled, SMS, and Notes workspace tabs](/img/messages/transaction-messages-tab.png)
+![Transaction Email tab with Inbox, Timeline, Scheduled, and Notes views](/img/messages/email-inbox-list.png)
 
-The **Messages** item in the sidebar takes you back to the transaction list because message history is managed inside each transaction workspace.
+The transaction Email workspace includes:
+
+- **Inbox** - Send, reply, forward, search, archive, draft, and review transaction email
+- **Timeline** - See a chronological communication history and copy or create the deal email address
+- **Scheduled** - Manage queued emails from task automation, key-date automation, and compose-time send later
+- **Notes** - Keep rich internal notes, replies, and pinned updates on the deal
+
+SMS and portal chat live in the transaction communication tools as a conversation view when enabled, but the day-to-day email workflow starts from the transaction's **Email** tab.
+
+The **Inbox** item in the sidebar takes you to inbound work, not a global transaction email inbox. Transaction email history is managed inside each transaction workspace.
 
 ## In this section
 
-- [Transaction Messages](./inbox.mdx) - Use the Email, Scheduled, SMS, and Notes tabs on a transaction
-- [Sending Emails](./sending-emails.mdx) - Compose, send, schedule, and attach files from a transaction
+- [Transaction Email](./inbox.mdx) - Use the Inbox, Timeline, Scheduled, and Notes views on a transaction
+- [Sending Emails](./sending-emails.mdx) - Compose, send, schedule, draft, and attach files from a transaction
 - [Email Templates](./email-templates.md) - Create reusable email content
 
 ---
 
-# Transaction Messages
+# Transaction Email
 
-Open a transaction and click **Messages** to manage communication for that deal. This workspace is organized into four tabs: **Email**, **Scheduled**, **SMS**, and **Notes**.
+Open a transaction and click **Email** to manage communication for that deal. This workspace is organized into four tabs: **Inbox**, **Timeline**, **Scheduled**, and **Notes**.
 
-![Transaction Messages tab showing the Email split-pane inbox and message composer entry point](/img/messages/transaction-messages-tab.png)
+![Transaction Email Inbox showing filters, search, message rows, and Compose](/img/messages/email-inbox-list.png)
 
-The sidebar **Messages** page points you back to transactions. Message history is intentionally handled inside each transaction so emails, texts, portal replies, and notes stay attached to the correct deal.
+Transaction communication is intentionally handled inside the deal workspace so emails, forwarded deal messages, scheduled sends, and notes stay attached to the correct transaction.
 
-## Email
+## Inbox
 
-The **Email** tab is a split-pane inbox for the current transaction. Use it to:
+The **Inbox** tab is the transaction email center. Use it to:
 
 - Filter messages by **Inbox**, **Unread**, **Sent**, **Drafts**, **Auto**, or **Archived**
 - Search transaction emails by subject, recipient, or content
@@ -3392,20 +3401,42 @@ The **Email** tab is a split-pane inbox for the current transaction. Use it to:
 
 If no Gmail or Outlook account is connected, DocJacket shows a connect prompt before you start sending email.
 
+## Timeline
+
+The **Timeline** tab is the chronological communication record for the deal. It combines email, notes, and pending scheduled items into one view so you can answer, "What happened on this transaction?"
+
+Timeline rows can show:
+
+- Inbound and outbound emails
+- Auto-generated messages
+- Scheduled emails
+- Internal notes
+- Attachments when a communication includes files
+
+The timeline also shows the deal email address when one exists. Copy that address when you want to forward outside email into the transaction. If the transaction does not have a deal email address yet, generate one from the timeline.
+
 ## Scheduled
 
 The **Scheduled** tab shows emails queued for the transaction. It combines:
 
 - Template or task-driven scheduled emails
-- One-off emails created from the Email tab's **Send later** option
+- One-off emails created from the Inbox tab's **Schedule** option
 
-Rows show the subject, recipients, send time, and whether the item is pending, held, or failed. Depending on the source, you can edit, cancel, or send now. Sent items move back into the **Email** tab.
+Rows show the subject, recipients, send time, and whether the item is pending, held, or failed. Depending on the source, you can edit, cancel, or send now. Sent items move back into the **Inbox** tab.
 
-## SMS and Portal
+If there is no connected Gmail or Outlook account, the Scheduled tab shows a connect prompt because scheduled emails need a mailbox to send from.
 
-The **SMS** tab shows direct conversations for the transaction. It is the live thread view for text and portal-style communication, so threads can show **SMS**, **Portal**, or **Email** badges depending on how DocJacket resolved the contact's delivery channel.
+## Notes
 
-From this tab you can:
+The **Notes** tab is for internal transaction notes. Add rich-text notes, reply to notes, pin important notes, and edit or delete notes you created.
+
+Notes are internal team communication. Use email or portal/SMS conversations when the message should go to a client, agent, or vendor.
+
+## SMS and portal conversations
+
+SMS and portal-style conversations are separate from the Email workspace, but they are still attached to the transaction. The conversation view can show **SMS**, **Portal**, or **Email** badges depending on how DocJacket resolved the contact's delivery channel.
+
+From the conversation view you can:
 
 - Start a new message to a transaction contact
 - Send a message to multiple contacts
@@ -3453,10 +3484,6 @@ SMS sends are subject to the organization's plan, monthly credits, hard limit, q
 
 Portal chat does not count against SMS usage. A transaction thread may show portal messages beside SMS history, but only actual SMS sends consume SMS credits.
 
-## Notes
-
-The **Notes** tab is for internal transaction notes. Add rich-text notes, reply to notes, pin important notes, and edit or delete notes you created.
-
 ---
 
 # Sending Emails
@@ -3465,25 +3492,47 @@ You can compose, send, schedule, and save emails directly from a transaction wit
 
 ## Composing an email
 
-Open a transaction, go to **Messages > Email**, and click **Compose**.
+Open a transaction, go to **Email > Inbox**, and click **Compose**. The composer opens as a full-width **New message** view inside the transaction.
+
+![New message composer with recipient chips, schedule controls, signature, AI draft, and template actions](/img/messages/email-compose-new-message.png)
 
 In the composer you can:
 
 - Choose the connected Gmail or Outlook account to send from
-- Type recipients manually or add transaction contacts by contact, role, group, CC, or BCC
-- Insert an [email template](./email-templates.md)
-- Generate an AI draft from a short prompt
+- Type an email address or search roles, contacts, all contacts, groups, or companies
+- Set **To**, **Cc**, or **Bcc** on each recipient chip
+- Insert an [email template](./email-templates.md) from the toolbar
+- Generate an **AI Draft** from a short prompt
 - Attach transaction documents or upload files from your computer
 - Pick an email signature
 - Save a draft, send now, or use **Schedule** to send later
 
 The email is stored with the transaction automatically after it sends.
 
+## Recipients
+
+The recipient row is designed so you do not have to open separate To, Cc, and Bcc dialogs.
+
+Use the search box to add recipients from:
+
+- **Roles** on the transaction
+- **Contacts** on the transaction
+- **All contacts**
+- **Groups**
+- **Companies**
+
+After adding a recipient, use the chip controls to switch that person between **To**, **Cc**, and **Bcc**, or remove the chip.
+
 ## Scheduling an email
 
-Use the **Schedule** button in the compose toolbar when an email should go out later. Turn on **Send later**, choose the date and time, choose the timezone, and click **Schedule**.
+Use **Schedule** in the compose toolbar when an email should go out later. The composer keeps the recipients, subject, body, signature, template, and attachments in one place while you set when the email should send.
 
-Scheduled one-off emails appear in **Messages > Scheduled** with a **One-off** badge. You can cancel them there. Editing one opens the Email composer with the message prefilled; saving cancels the original scheduled send and creates a new one.
+You can schedule by:
+
+- **Relative to a milestone** - choose the milestone, offset, send time, and weekend handling
+- **Absolute date** - choose a specific date, time, and timezone
+
+Scheduled one-off emails appear in **Email > Scheduled** with a **One-off** badge. You can cancel them there. Editing one opens the composer with the message prefilled; saving cancels the original scheduled send and creates a new one.
 
 ## Attachments
 
@@ -3493,7 +3542,7 @@ If you attach transaction documents, DocJacket sends the selected files with the
 
 ## Reviewing messages
 
-The Email tab includes filters for **Inbox**, **Unread**, **Sent**, **Drafts**, **Auto**, and **Archived**. Open a message to reply, reply all, forward, star, mark read or unread, archive, or delete it.
+The Inbox tab includes filters for **Inbox**, **Unread**, **Sent**, **Drafts**, **Auto**, and **Archived**. Open a message to reply, reply all, forward, star, mark read or unread, archive, or delete it.
 
 Messages can show delivery status and provider message IDs when DocJacket has them. If a message includes suggested AI actions, approve or dismiss them from the message detail panel.
 
@@ -3507,20 +3556,20 @@ Use the search bar to find emails by subject, recipient, or content across all m
 
 Email templates let you reuse common email content while composing transaction messages. Templates can fill the subject, body, recipients, smart fields, and configured document attachments.
 
-![Transaction email composer with the saved template selector open](/img/email-templates/email-template-compose-options.png)
+![Transaction Email composer with the Template action in the toolbar](/img/messages/email-compose-new-message.png)
 
 ## Using a template
 
 When composing an email in a transaction:
 
-1. Open the transaction message composer
-2. Click **Insert**
-3. Choose **From Template**
-4. Open **Choose a template**
-5. Select the template you want
+1. Open the transaction
+2. Go to **Email > Inbox**
+3. Click **Compose**
+4. Click **Template**
+5. Search for and select the template you want
 6. Review the filled subject, body, recipients, and attachments
 7. Fix any missing values or unresolved smart fields
-8. Send the email
+8. Send, schedule, or save the email as a draft
 
 Smart fields are replaced with the transaction's current data when the template renders.
 
