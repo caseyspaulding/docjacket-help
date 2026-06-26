@@ -39,6 +39,15 @@ Smart fields are replaced with the transaction's current data when the template 
 
 Shared templates are read-only. Copy a shared template into **My Templates** before customizing it.
 
+## Generate or import a template with AI
+
+The template editor includes an **AI Generator** with two modes, so you don't have to write a template from scratch:
+
+- **Generate** — describe the email you want (for example, "Welcome email for new buyers"), pick a tone, and DocJacket writes a draft subject and body for you, inserting smart fields where they fit.
+- **Import** — paste an existing email from another tool, or upload a draft as a PDF, `.txt`, or `.md` file. DocJacket converts it into a template, mapping the merge tags in your original (like `[Buyer Name]`) to DocJacket smart fields.
+
+Review and edit anything the AI produced before you save — confirm the smart fields resolved to the right data and send a test email before using the template with clients.
+
 ## Smart fields
 
 Smart fields use double-brace syntax:
@@ -50,6 +59,21 @@ Smart fields use double-brace syntax:
 - `{{agent_name}}`
 
 Smart fields work in both the subject and body. See [Smart Fields](../templates/smart-fields.md) for the full library, groups, and conditional content.
+
+### Contact blocks
+
+A **contact block** is a special smart field that drops in a formatted contact card — name, email, phone, and company — for one party on the deal. It only shows the fields that are filled in, so you never get blank lines. Insert one from the smart-field picker rather than typing it by hand.
+
+Contact blocks are available for the common parties on a transaction, including:
+
+- **Buyer** and **Seller**
+- **Listing Agent**, **Buyer Agent**, **Deal Agent**, and **Co-Agent**
+- **Lender**, **Loan Officer**, and **Loan Processor**
+- **Title Company**, **Title Processor**, **Escrow Officer**, and **Escrow Assistant**
+- **Buyer's Attorney** and **Seller's Attorney**
+- **Home Inspector**, **HOA Contact**, **Co-op TC**, and others
+
+If a party isn't on the deal yet, its contact block simply renders nothing — so it's safe to include in a reusable template.
 
 ## Missing values
 
