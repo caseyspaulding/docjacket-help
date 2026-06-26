@@ -8,7 +8,9 @@ description: Link email templates to tasks in DocJacket so emails are ready to s
 
 Link email templates to tasks so the right email is ready at the right point in the workflow. Task email automation can prepare an email for review, send an email automatically, schedule an email relative to a task due date, and include configured recipients or documents.
 
-Most task email automation is configured in checklist templates, then created on the transaction when the checklist is applied.
+Most task email automation starts in a checklist template, then becomes editable transaction-specific automation after the checklist is applied. Use templates for repeatable workflows; use the transaction task drawer when a real deal needs an adjustment.
+
+![Checklist task automation settings in the reusable checklist builder](/img/templates/checklist-task-automation.png)
 
 ## Two automation types
 
@@ -51,15 +53,34 @@ If **Require review before sending** is enabled, the email waits in the topbar *
 
 ## Configuring automation in a checklist
 
+Use checklist templates when the same task should prepare or schedule the same email every time the workflow is applied.
+
 1. Go to **Templates > Checklists**
-2. Open a checklist in **My Templates**
-3. Expand a task
-4. Add a scheduled email or on-completion action
-5. Choose the email template
-6. Set recipients and document attachments
-7. Save the checklist
+1. Open a checklist in **My Templates**
+1. Open the **Tasks** or **Automations** view
+1. Select the task that should trigger the email
+1. Add a scheduled email or on-completion action
+1. Choose the email template
+1. Set recipients and document attachments
+1. Save the checklist
 
 Shared system checklists are read-only. Copy a shared checklist before adding or changing email automations.
+
+When the checklist is applied, DocJacket copies those automation rules onto the transaction's tasks. The copied rules can then use that transaction's contacts, dates, documents, and smart-field data.
+
+## Adjusting automation on a transaction
+
+Use the transaction task drawer when the automation exists only for one deal, or when a template-created rule needs a one-off change.
+
+1. Open the transaction
+1. Go to the **Tasks** tab
+1. Click the task row to open **Task Details**
+1. Open **Task emails** or **Scheduled emails**
+1. Link an email template, schedule an email, or edit the copied automation
+1. Confirm recipients, attachments, and date anchors
+1. Save the task
+
+Completing a task with review-required email automation prepares the email for the **Review queue**. Scheduling an email places it in scheduled-email handling instead of waiting for the task to be completed.
 
 ## Recipients and documents
 
@@ -79,6 +100,8 @@ Build and test the template in **Templates > Email Templates** first. The checkl
 When the checklist is applied to a transaction, DocJacket creates the tasks and their email automation rules. Before sending or parking a draft for review, DocJacket renders smart fields against that transaction.
 
 If data is missing or a placeholder is unrecognized, review the email before sending. Missing transaction data should be fixed on the transaction. Unrecognized placeholders should be fixed in the email template.
+
+Review-required emails appear in the topbar **Review queue** under **Ready for Review**. Scheduled emails appear under **Scheduled** when they are waiting, held, or ready for schedule management. Nothing sends from the review-required path until a user approves, sends, skips, or dismisses the prepared email.
 
 ## Tips
 
