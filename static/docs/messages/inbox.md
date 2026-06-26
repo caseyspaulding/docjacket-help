@@ -1,23 +1,23 @@
 ---
-sidebar_label: Transaction Messages
+sidebar_label: Transaction Email
 sidebar_position: 2
-description: Use a transaction's Messages tab to manage email, scheduled email, direct SMS, portal conversations, and internal notes.
+description: Use a transaction's Email tab to manage the inbox, communication timeline, scheduled email, and internal notes.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/messages/inbox -->
 <!-- Source: docs/messages/inbox.mdx -->
 
-# Transaction Messages
+# Transaction Email
 
-Open a transaction and click **Messages** to manage communication for that deal. This workspace is organized into four tabs: **Email**, **Scheduled**, **SMS**, and **Notes**.
+Open a transaction and click **Email** to manage communication for that deal. This workspace is organized into four tabs: **Inbox**, **Timeline**, **Scheduled**, and **Notes**.
 
-![Transaction Messages tab showing the Email split-pane inbox and message composer entry point](/img/messages/transaction-messages-tab.png)
+![Transaction Email Inbox showing filters, search, message rows, and Compose](/img/messages/email-inbox-list.png)
 
-The sidebar **Messages** page points you back to transactions. Message history is intentionally handled inside each transaction so emails, texts, portal replies, and notes stay attached to the correct deal.
+Transaction communication is intentionally handled inside the deal workspace so emails, forwarded deal messages, scheduled sends, and notes stay attached to the correct transaction.
 
-## Email
+## Inbox
 
-The **Email** tab is a split-pane inbox for the current transaction. Use it to:
+The **Inbox** tab is the transaction email center. Use it to:
 
 - Filter messages by **Inbox**, **Unread**, **Sent**, **Drafts**, **Auto**, or **Archived**
 - Search transaction emails by subject, recipient, or content
@@ -28,20 +28,42 @@ The **Email** tab is a split-pane inbox for the current transaction. Use it to:
 
 If no Gmail or Outlook account is connected, DocJacket shows a connect prompt before you start sending email.
 
+## Timeline
+
+The **Timeline** tab is the chronological communication record for the deal. It combines email, notes, and pending scheduled items into one view so you can answer, "What happened on this transaction?"
+
+Timeline rows can show:
+
+- Inbound and outbound emails
+- Auto-generated messages
+- Scheduled emails
+- Internal notes
+- Attachments when a communication includes files
+
+The timeline also shows the deal email address when one exists. Copy that address when you want to forward outside email into the transaction. If the transaction does not have a deal email address yet, generate one from the timeline.
+
 ## Scheduled
 
 The **Scheduled** tab shows emails queued for the transaction. It combines:
 
 - Template or task-driven scheduled emails
-- One-off emails created from the Email tab's **Send later** option
+- One-off emails created from the Inbox tab's **Schedule** option
 
-Rows show the subject, recipients, send time, and whether the item is pending, held, or failed. Depending on the source, you can edit, cancel, or send now. Sent items move back into the **Email** tab.
+Rows show the subject, recipients, send time, and whether the item is pending, held, or failed. Depending on the source, you can edit, cancel, or send now. Sent items move back into the **Inbox** tab.
 
-## SMS and Portal
+If there is no connected Gmail or Outlook account, the Scheduled tab shows a connect prompt because scheduled emails need a mailbox to send from.
 
-The **SMS** tab shows direct conversations for the transaction. It is the live thread view for text and portal-style communication, so threads can show **SMS**, **Portal**, or **Email** badges depending on how DocJacket resolved the contact's delivery channel.
+## Notes
 
-From this tab you can:
+The **Notes** tab is for internal transaction notes. Add rich-text notes, reply to notes, pin important notes, and edit or delete notes you created.
+
+Notes are internal team communication. Use email or portal/SMS conversations when the message should go to a client, agent, or vendor.
+
+## SMS and portal conversations
+
+SMS and portal-style conversations are separate from the Email workspace, but they are still attached to the transaction. The conversation view can show **SMS**, **Portal**, or **Email** badges depending on how DocJacket resolved the contact's delivery channel.
+
+From the conversation view you can:
 
 - Start a new message to a transaction contact
 - Send a message to multiple contacts
@@ -88,7 +110,3 @@ Use **Settings > SMS** to search for a dedicated business number, review monthly
 SMS sends are subject to the organization's plan, monthly credits, hard limit, quiet hours, recipient opt-outs, duplicate-send protection, and unresolved merge-field checks.
 
 Portal chat does not count against SMS usage. A transaction thread may show portal messages beside SMS history, but only actual SMS sends consume SMS credits.
-
-## Notes
-
-The **Notes** tab is for internal transaction notes. Add rich-text notes, reply to notes, pin important notes, and edit or delete notes you created.
