@@ -189,6 +189,8 @@ Your first transaction is up and running. Here's what to explore next:
 
 Here's a quick tour of the DocJacket layout so you know where everything lives.
 
+![DocJacket app shell with the sidebar, global search, topbar icons, and transaction list](/img/transactions/transactions-list.png)
+
 ## The Dashboard
 
 The dashboard is your home base. When you log in, you'll see:
@@ -196,7 +198,7 @@ The dashboard is your home base. When you log in, you'll see:
 - **Today's Briefing** — A snapshot of your day: closings today, tasks due, overdue items, and your overall workload level
 - **Quick Actions** — Shortcuts to common work like creating a transaction or uploading a contract
 - **Closing Soon** — Transactions approaching their closing date, with urgency indicators
-- **Quick Tasks** — Your most pressing to-dos across all transactions
+- **Tasks** — Your most pressing to-dos across all transactions
 - **Month Stats** — New transactions, closed deals, active volume, and pending tasks for the month
 
 ## The Sidebar
@@ -218,9 +220,13 @@ The sidebar on the left is your main navigation. Here's what each section does:
 | **Billing** | Your subscription and payment details |
 | **Settings** | Organization settings, user management, integrations |
 
+The topbar stays available across the app. Use the global search to find transactions and contacts, the message and notification icons for recent activity, the Review queue icon for pending review work, and the help icon when you need support.
+
 ## Inside a transaction
 
 When you open a transaction, you'll see a tabbed layout:
+
+![Transaction overview showing the transaction tabs, key date timeline, checklist controls, and topbar](/img/transactions/transaction-overview.png)
 
 - **Overview** — Everything at a glance: key dates, financials, contacts, tasks, documents, contingencies, and repairs
 - **Tasks** — To-do list specific to this transaction
@@ -238,7 +244,7 @@ The **Overview** tab is where most TCs spend their time — it's a single-page v
 ## Quick tips
 
 - **Pending uploads are not finished transactions** — review and save completed extractions before expecting them in the transaction list
-- **Search** is everywhere — use the search bar on the Transactions page to find deals by address, buyer name, or seller name
+- **Search** is everywhere — use the global topbar search or the search bar on the Transactions page to find deals by address, buyer name, or seller name
 - **Help chat** — Click the chat button in the bottom-right corner anytime for instant AI-powered help
 - **Review queue** — Use the document-tasks icon in the topbar for pending uploads, ready drafts, scheduled sends, and recent activity. Pending uploads are completed extraction scans that still need a final save action.
 
@@ -355,11 +361,11 @@ Operations pages are the surfaces your team checks during the day to decide what
 
 Use the **Dashboard** as your morning check-in. It points you toward closings, overdue tasks, waiting items, outstanding payments, and uploads that still need review.
 
-Use the **Intake Queue** when inbound items need routing to a transaction.
+Use the **Intake Queue** when inbound emails, SMS, form submissions, or notes need routing to a transaction. This is assignment work: decide where an inbound item belongs, then assign or dismiss it.
 
 Use the **Review Queue** when drafts, automation output, scheduled sends, or pending uploads need a human decision. The old sidebar **Pending Review** page was retired; current review work lives in the document-tasks icon in the topbar.
 
-Use **AI Extractions** when uploaded documents were scanned but still need to be reviewed and saved.
+Use **AI Extractions** when uploaded documents were scanned but still need to be reviewed and saved, or when you need the full extraction history behind a pending upload.
 
 ## Extraction lifecycle
 
@@ -371,6 +377,8 @@ Uploading a contract starts a workflow, but it does not create or update transac
 4. **Save** - Click **Create Transaction**, **Create Listing**, or **Update Transaction**.
 
 If the scan finishes but the save step does not happen, the work is unfinished. Look for it in **Pending Uploads**, the topbar **Review queue**, or the **AI Extractions** page.
+
+The key distinction is simple: **Intake Queue** routes inbound work to a transaction, **Review Queue** approves prepared work, and **AI Extractions** finishes document scans.
 
 ---
 
@@ -435,6 +443,8 @@ Pending Uploads only appears when there is something unfinished. If there are no
 
 The Intake Queue is where inbound work waits until it is assigned, accepted, or dismissed.
 
+Use the Intake Queue when the question is "Which transaction does this belong to?"
+
 Use it for:
 
 - Incoming emails
@@ -452,6 +462,8 @@ The queue groups work by item type. The header shows counts for emails, SMS, and
 
 Use the tabs to narrow the table when you only want to process one kind of inbound item.
 
+If the queue is empty, DocJacket shows an all-caught-up state instead of the table.
+
 ## AI routing suggestions
 
 DocJacket may suggest a transaction for an item. Suggested matches show:
@@ -468,6 +480,8 @@ If there is no good suggestion, click **Assign to Transaction**.
 
 Search by address, buyer, or seller, choose the transaction, and assign the item. The detail drawer is useful when you need to read the message content before deciding.
 
+Assignment links the item to the transaction record so the team can handle it in the right deal context.
+
 ## Bulk actions
 
 Select multiple items to assign or dismiss them together. Bulk assignment is useful when several forwarded emails belong to the same transaction.
@@ -478,13 +492,15 @@ Dismiss items that do not need to be routed. Form submissions are rejected when 
 
 Use dismissal for spam, duplicates, or messages that do not belong in a transaction record.
 
+If an item is not about routing and instead needs approval, editing, sending, or final save after extraction, use the **Review Queue** or **AI Extractions** instead.
+
 ---
 
 # Review Queue
 
 The **Review queue** is the topbar drawer for work that needs a quick decision. It replaced the old sidebar **Pending Review** page; use the document-tasks icon in the topbar for current review work.
 
-Open it from the document-tasks icon in the topbar.
+Open it from the document-tasks icon in the topbar, near the message, notification, theme, help, and account icons.
 
 The badge on the icon counts review actions plus pending uploads, so a number on the icon means at least one item needs attention.
 
@@ -517,6 +533,8 @@ Depending on the draft, you may be able to:
 - Dismiss or skip the draft
 - Use **Skip past-deadline** for drafts whose deadline has already passed
 - Use **Approve All** when every ready item should proceed
+
+This tab is the review-first safety step for automation output. Nothing sends from here until you approve, send, skip, or dismiss the item.
 
 ## Scheduled
 
