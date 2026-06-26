@@ -19,7 +19,9 @@ The transaction Email workspace includes:
 
 The day-to-day email workflow starts from the transaction's **Email** tab.
 
-The **Inbox** item in the sidebar takes you to inbound work, not a global transaction email inbox. Transaction email history is managed inside each transaction workspace.
+:::note Inbox vs. the Email tab
+The **Inbox** item in the left sidebar takes you to inbound work waiting to be routed — not a global transaction email inbox. A deal's own email history lives inside that transaction's **Email** tab.
+:::
 
 ## In this section
 
