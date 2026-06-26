@@ -386,6 +386,10 @@ The key distinction is simple: **Intake Queue** routes inbound work to a transac
 
 The dashboard is your daily command center. It shows what changed, what is due, and what needs attention across your transactions. Most sections are collapsible, so you can keep the morning view tight and expand only the work you are handling.
 
+:::tip Make the dashboard yours
+The dashboard remembers which sections you leave expanded or collapsed in your browser. Collapse sections you do not check every day, and keep your highest-value sections open.
+:::
+
 ## First-time view
 
 New users see a guided first step before the operational widgets fill in:
@@ -412,13 +416,38 @@ The main sections are:
 - **This Month** - New transactions, closed transactions, active volume, and pending tasks
 - **Quick Actions** - Shortcuts for common work such as uploading a contract or creating a transaction
 
+## Customize your view
+
+Use the section headers to expand or collapse dashboard cards. DocJacket saves those choices in your browser, so the dashboard opens the same way the next time you come back.
+
+Common ways to tailor the dashboard:
+
+- Keep **Today's Briefing**, **Closing Soon**, and **Tasks** expanded for daily triage
+- Collapse **This Month** when you only need end-of-week or end-of-month reporting
+- Keep **Waiting On** expanded if you manage follow-up-heavy transactions
+- Collapse **Quick Actions** after your common upload and create workflows become muscle memory
+
+:::note
+Collapsed and expanded sections are a personal browser preference. They do not change what teammates see in their own accounts.
+:::
+
+Some dashboard sections appear only when they apply. **Pending Uploads** appears only when there are extraction groups awaiting review. **Outstanding Payments** appears when the payments widget applies to your compensation setup.
+
 ## Daily digest
 
 From **Today's Briefing**, you can turn the daily digest email on or off. The digest summarizes the same operational signals in email form, including urgent dates and workload signals.
 
+:::tip
+If you prefer to start the day from email, turn the daily digest on. If you live in the app all day, turn it off and use **Today's Briefing** directly.
+:::
+
 ## Pending uploads
 
 If **Pending Uploads** appears, open it before assuming the upload is finished. A completed extraction still needs review and a final save action before it becomes a new transaction, listing, or update to an existing transaction.
+
+:::warning
+An uploaded contract is not saved into a transaction until someone completes the extraction review and clicks the final create or update action.
+:::
 
 Each pending upload card can show:
 
