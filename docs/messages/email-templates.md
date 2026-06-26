@@ -46,7 +46,9 @@ The template editor includes an **AI Generator** with two modes, so you don't ha
 - **Generate** — describe the email you want (for example, "Welcome email for new buyers"), pick a tone, and DocJacket writes a draft subject and body for you, inserting smart fields where they fit.
 - **Import** — paste an existing email from another tool, or upload a draft as a PDF, `.txt`, or `.md` file. DocJacket converts it into a template, mapping the merge tags in your original (like `[Buyer Name]`) to DocJacket smart fields.
 
-Review and edit anything the AI produced before you save — confirm the smart fields resolved to the right data and send a test email before using the template with clients.
+:::warning Always review AI output
+Check anything the AI produced before you save — confirm the smart fields mapped to the right data, and send a test email before using the template with clients.
+:::
 
 ## Smart fields
 
@@ -73,7 +75,9 @@ Contact blocks are available for the common parties on a transaction, including:
 - **Buyer's Attorney** and **Seller's Attorney**
 - **Home Inspector**, **HOA Contact**, **Co-op TC**, and others
 
-If a party isn't on the deal yet, its contact block simply renders nothing — so it's safe to include in a reusable template.
+:::note Safe to reuse
+If a party isn't on the deal yet, its contact block simply renders nothing — so it's safe to include in a reusable template without leaving blank labels behind.
+:::
 
 ## Missing values
 
