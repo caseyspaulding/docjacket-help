@@ -4,7 +4,7 @@ sidebar_position: 1
 description: Send emails, schedule follow-ups, text contacts, use portal conversations, and keep transaction communication organized in DocJacket.
 ---
 
-# Messages & Email
+# Email
 
 DocJacket keeps communication attached to the transaction where the work is happening. Open a transaction's **Email** tab to review the transaction inbox, communication timeline, scheduled email, and internal notes for that deal.
 
@@ -25,4 +25,5 @@ The **Inbox** item in the sidebar takes you to inbound work, not a global transa
 
 - [Transaction Email](./inbox.mdx) - Use the Inbox, Timeline, Scheduled, and Notes views on a transaction
 - [Sending Emails](./sending-emails.mdx) - Compose, send, schedule, draft, and attach files from a transaction
+- [Getting Email Into DocJacket](./getting-email-into-docjacket.mdx) - The three ways email arrives, and how to make it file itself on the right deal
 - [Email Templates](./email-templates.md) - Create reusable email content
