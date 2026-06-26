@@ -2,6 +2,20 @@
 sidebar_label: Checklists
 sidebar_position: 2
 description: Create checklist templates with key dates, tasks, and automations — organized by transaction type, state, category, and side of the deal.
+# --- docs-from-code contract (see .claude/skills/update-help-docs) ---
+# source: globs (relative to the sibling ../docjacket-v3 checkout) whose changes
+# should flag THIS page for review. Drift detection (Half B) is not wired yet.
+source:
+  - ../docjacket-v3/Features/Checklists/**
+  - ../docjacket-v3/Features/TimelineTemplates/**
+  - ../docjacket-v3/ClientApp/src/app/features/templates/**
+# screenshots: deterministic captures via shot.ts (Half A). Refresh with:
+#   npx tsx .claude/skills/update-help-docs/shot.ts --only docs/templates/timeline-templates.md
+screenshots:
+  - route: /templates/timelines
+    out: static/img/templates/checklists-list.png
+    waitFor: "text=Checklists"
+    auth: true
 ---
 
 # Checklists
