@@ -1,7 +1,7 @@
 ---
 sidebar_label: Overview
 sidebar_position: 1
-description: Send emails, schedule follow-ups, text contacts, use portal conversations, and keep transaction communication organized in DocJacket.
+description: Send emails, schedule follow-ups, use templates, and keep transaction email organized on the right deal in DocJacket.
 ---
 
 # Email
@@ -17,7 +17,7 @@ The transaction Email workspace includes:
 - **Scheduled** - Manage queued emails from task automation, key-date automation, and compose-time send later
 - **Notes** - Keep rich internal notes, replies, and pinned updates on the deal
 
-SMS and portal chat live in the transaction communication tools as a conversation view when enabled, but the day-to-day email workflow starts from the transaction's **Email** tab.
+The day-to-day email workflow starts from the transaction's **Email** tab.
 
 The **Inbox** item in the sidebar takes you to inbound work, not a global transaction email inbox. Transaction email history is managed inside each transaction workspace.
 
