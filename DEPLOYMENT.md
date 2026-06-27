@@ -19,7 +19,15 @@ Production URL:
 https://help.docjacket.com
 ```
 
-This repo may have GitHub Actions for validation, but GitHub Actions are not the production deploy source unless a workflow explicitly runs `wrangler deploy`.
+**The site auto-deploys on every merge to `main`** via Cloudflare's Git-connected Workers build (Cloudflare watches the repo directly — this is the production deploy source, **not** GitHub Actions). A normal docs change goes live a few minutes after merge with **no manual step**; you do not need to run `wrangler deploy`.
+
+`npm run deploy` (local build + `wrangler deploy`) is only for out-of-band pushes when you can't merge to `main`, and requires Cloudflare auth (`wrangler login` or `CLOUDFLARE_API_TOKEN`). GitHub Actions here only validate; they do not deploy.
+
+After a merge, confirm the deploy landed:
+
+```bash
+curl -fsSL https://help.docjacket.com/build-info.json   # "commit" should match the merge commit
+```
 
 ## Build Artifacts
 
