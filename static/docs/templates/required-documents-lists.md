@@ -97,6 +97,10 @@ From the panel, users can:
 
 Applying a list to a transaction adds missing requirements and skips documents that already exist.
 
+:::tip Apply early, and reuse by duplicating
+Apply a list near the start of a transaction so missing documents are visible long before closing week. When you need a state, side, or financing variation, **duplicate** an existing list rather than rebuilding every document name from scratch.
+:::
+
 ## Relationship to uploaded documents
 
 A required document is the placeholder for what the team expects.

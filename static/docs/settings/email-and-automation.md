@@ -28,6 +28,15 @@ Categories with existing templates cannot be deleted. Recategorize those templat
 
 This page does not connect your mailbox. To send from Gmail or Outlook, connect or reconnect your mailbox from **Settings > Integrations**.
 
+## Require a Connected Mailbox
+
+Use **Settings > Organization** to turn on **Only send transaction email from a connected mailbox**. When on, deal email (compose, replies, task emails, reminders, reports, and portal links) only ever sends from a connected Gmail or Outlook account — never from a DocJacket system address.
+
+- The email sends from the sender's connected mailbox, or the account owner's if the sender hasn't connected one.
+- If no mailbox is connected, a manual send is blocked with a prompt to connect one, and an automated send is held until a mailbox is connected. The account owner is notified so it can be reconnected.
+
+Leave this off (the default) to let DocJacket's email service send as a fallback when a connected mailbox isn't available. See [How Email Sending Works](../messages/how-email-sending-works.mdx).
+
 ## Working Hours
 
 Use **Settings > Working Hours** to hold automated emails until your organization's preferred send window.

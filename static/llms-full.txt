@@ -478,26 +478,28 @@ Click a phase row to open the transactions list with that waiting-on phase selec
 
 # Intake Queue
 
-The Intake Queue workflow lives in **Inbox**. It is where unassigned inbound work waits until it is accepted, assigned, or dismissed.
+The Intake Queue workflow lives in **Inbox**, where you view and manage all transaction communications. It is where unassigned inbound work waits until it is accepted, assigned, or dismissed.
 
 Use it when the question is "Which transaction does this belong to?"
 
 Use it for:
 
 - Incoming emails
-- Incoming SMS items
 - Online intake form submissions
-- Internal intake notes
 
 ## Where to find it
 
-Open **Inbox** from the left sidebar. The page includes conversation filters for **All**, **Unread**, and **Unassigned**, plus type chips for **Forms**, **Email**, **SMS**, and **Notes**.
+Open **Inbox** from the left sidebar. The page includes conversation filters for **All**, **Unread**, and **Unassigned**, plus type chips for **Forms** and **Email**.
 
 Use **Unassigned** when you want to focus on routing work that is not linked to a transaction yet. Use the type chips when you only want to process one inbound channel.
 
 ## Intake email
 
 If your organization has an intake subdomain, Inbox shows a **Forward to** intake email address in the header, such as an organization-specific address at `intake.docjacket.com`. Copy that address and forward transaction-related messages to it so DocJacket can route them.
+
+:::tip Make it automatic
+Set up a forwarding rule in your email so anything that should reach DocJacket lands in the Intake Queue without you copying the address each time.
+:::
 
 ## Filters and counts
 
@@ -515,7 +517,13 @@ DocJacket may suggest a transaction for an unassigned item. Suggested matches sh
 - Confidence percentage
 - Optional match reason
 
+DocJacket builds these suggestions two ways. First, it checks whether the sender has already been linked to a transaction before — when there is a match, that is a strong, high-confidence suggestion. If there is no prior history, DocJacket reads the message and proposes the best active transaction it can find.
+
 Click **Accept & Assign** when the suggestion is correct. The item is linked to that transaction.
+
+:::note Automatic linking
+When DocJacket is highly confident, it may link the item to a transaction automatically so you do not have to. You can always change that — see [Unlink or move a filed email](#unlink-or-move-a-filed-email).
+:::
 
 ## Manual assignment
 
@@ -525,6 +533,28 @@ Search by address, buyer, or seller, choose the transaction, and assign the item
 
 Assignment links the item to the transaction record so the team can handle it in the right deal context.
 
+## What happens when you assign an email
+
+Assigning an email does more than file it:
+
+- **Attachments come along.** Any files attached to a forwarded email are added to the transaction's documents, so contracts and addenda land on the deal automatically. You still choose when to run extraction on them from the deal's documents.
+- **The email shows on the deal.** The message appears on the transaction's **Email** tab, so the whole team can read the conversation in the right deal context — not just in Inbox.
+
+## Unlink or move a filed email
+
+If an email ends up on the wrong deal, you do not have to live with it. From the transaction's **Email** tab you can:
+
+- **Remove it from the deal**, sending it back to be reassigned, or
+- **Move it to another deal** without losing the message or its attachments.
+
+:::tip Wrong deal? Easy to fix
+This is the fix when an automatic suggestion linked something to the wrong transaction — nothing is lost, including attachments.
+:::
+
+## Replies from clients
+
+When you send email from a deal, replies file themselves automatically. When a client, agent, or title company replies to that message, DocJacket forwards a copy to the assignee's inbox — or the account owner's, if the deal is not assigned yet — so the reply is not missed. The forwarded copy keeps the sender's name and the original subject so you can see at a glance who replied and about what.
+
 ## Bulk actions
 
 Select multiple intake items to assign or dismiss them together. Bulk assignment is useful when several forwarded emails belong to the same transaction.
@@ -533,7 +563,11 @@ Select multiple intake items to assign or dismiss them together. Bulk assignment
 
 Dismiss items that do not need to be routed. Dismissed items are removed from the routing workflow; use this for spam, duplicates, or messages that do not belong in a transaction record.
 
+DocJacket flags likely marketing and spam for you and keeps it out of the routing suggestions, but it does not delete anything on its own — dismissing is always your call.
+
+:::warning Routing vs. review
 If an item is not about routing and instead needs approval, editing, sending, or final save after extraction, use the **Review Queue** or **AI Extractions** instead.
+:::
 
 ---
 
@@ -3429,9 +3463,11 @@ The transaction Email workspace includes:
 - **Scheduled** - Manage queued emails from task automation, key-date automation, and compose-time send later
 - **Notes** - Keep rich internal notes, replies, and pinned updates on the deal
 
-SMS and portal chat live in the transaction communication tools as a conversation view when enabled, but the day-to-day email workflow starts from the transaction's **Email** tab.
+The day-to-day email workflow starts from the transaction's **Email** tab.
 
-The **Inbox** item in the sidebar takes you to inbound work, not a global transaction email inbox. Transaction email history is managed inside each transaction workspace.
+:::note Inbox vs. the Email tab
+The **Inbox** item in the left sidebar takes you to inbound work waiting to be routed — not a global transaction email inbox. A deal's own email history lives inside that transaction's **Email** tab.
+:::
 
 ## In this section
 
@@ -3439,6 +3475,71 @@ The **Inbox** item in the sidebar takes you to inbound work, not a global transa
 - [Sending Emails](./sending-emails.mdx) - Compose, send, schedule, draft, and attach files from a transaction
 - [Getting Email Into DocJacket](./getting-email-into-docjacket.mdx) - The three ways email arrives, and how to make it file itself on the right deal
 - [Email Templates](./email-templates.md) - Create reusable email content
+
+---
+
+# How Email Sending Works
+
+When DocJacket sends email from a transaction, it sends **through your connected
+Gmail or Outlook account** — not from a generic DocJacket address. The message
+goes out from your email address, a copy lands in your **Sent** folder, and any
+reply comes back to **your inbox**, exactly as if you'd sent it yourself.
+
+DocJacket only ever **sends** on your behalf. It does **not** read your inbox.
+
+## Connect your mailbox first
+
+Sending from your own address requires a connected mailbox. Connect Gmail or
+Outlook from **Settings > Integrations**. See
+[Google Workspace](../integrations/google-workspace.mdx) or
+[Microsoft Outlook](../integrations/microsoft-outlook.mdx).
+
+Until a mailbox is connected, manual sends from a deal prompt you to connect one,
+and automated email falls back to DocJacket's own email service (a
+`@docjacket.com` address) unless your organization requires a connected mailbox
+(see below).
+
+## Which account an email sends from
+
+Every transaction email sends from a specific person's connected mailbox,
+depending on how it was sent:
+
+| Email | Sends from |
+|---|---|
+| You compose, reply, or forward from a deal | **You** (the signed-in user) |
+| Task emails, reminders, and automation-rule emails | The deal's **assigned coordinator** — or the **account owner** if the deal is unassigned |
+| Situation reports and other scheduled reports | The person who **created the schedule** |
+
+If that person hasn't connected a mailbox, see the fallback behavior below.
+
+## Where replies go
+
+Because the email is sent from your real mailbox, replies go straight back to
+**your inbox** in Gmail or Outlook — the normal way. You reply from your own inbox
+like any other email. (Sent and received messages from a deal are also listed on
+the transaction's **Email** tab for reference.)
+
+## Requiring a connected mailbox
+
+Organizations that want every deal email to come from a real mailbox — never a
+`@docjacket.com` address — can turn on **Only send transaction email from a
+connected mailbox** in **Settings > Organization**.
+
+When this is on:
+
+- Email sends from the sender's connected mailbox, or the account owner's if the
+  sender hasn't connected one.
+- If no mailbox is connected, a send you trigger yourself is **blocked** with a
+  prompt to connect one, and an automated send is **held** until a mailbox is
+  connected (the account owner is notified).
+
+When it's off (the default), email still prefers a connected mailbox but falls
+back to DocJacket's email service when none is available.
+
+:::tip
+Connect a mailbox for every team member who sends deal email, so their messages
+always come from their own address and replies reach them directly.
+:::
 
 ---
 
@@ -3462,6 +3563,19 @@ The **Inbox** tab is the transaction email center. Use it to:
 - Approve or dismiss suggested actions shown on a message
 
 If no Gmail or Outlook account is connected, DocJacket shows a connect prompt before you start sending email.
+
+### Move or remove a filed email
+
+When an inbound email was filed onto this deal — either by you assigning it from the intake queue, or automatically — the message detail panel adds two extra actions:
+
+- **Move to another deal** — reassign the email (and its attachments) to a different transaction.
+- **Remove from this deal** — detach the email so it can be routed somewhere else.
+
+These actions appear only on filed inbound emails, and they are the fix when a message lands on the wrong transaction. See [Getting Email Into DocJacket](./getting-email-into-docjacket.mdx) for how messages get filed in the first place.
+
+:::tip Wrong deal? Nothing is lost
+Moving or removing a filed email carries the message and its attachments along — so an automatic suggestion that picked the wrong transaction is a quick, safe fix.
+:::
 
 ## Timeline
 
@@ -3492,65 +3606,17 @@ If there is no connected Gmail or Outlook account, the Scheduled tab shows a con
 
 The **Notes** tab is for internal transaction notes. Add rich-text notes, reply to notes, pin important notes, and edit or delete notes you created.
 
-Notes are internal team communication. Use email or portal/SMS conversations when the message should go to a client, agent, or vendor.
-
-## SMS and portal conversations
-
-SMS and portal-style conversations are separate from the Email workspace, but they are still attached to the transaction. The conversation view can show **SMS**, **Portal**, or **Email** badges depending on how DocJacket resolved the contact's delivery channel.
-
-From the conversation view you can:
-
-- Start a new message to a transaction contact
-- Send a message to multiple contacts
-- Reply in an existing thread
-- Attach a file
-- Use saved SMS templates
-- See unread counts, typing indicators, delivery status, and AI action cards when available
-
-### Starting a thread
-
-Click **New Message** to choose one transaction contact and write a message. The contact list only includes contacts with a phone number for direct SMS sends.
-
-If SMS templates exist, choose a template from the message dialog or from the selected thread composer. DocJacket renders transaction and contact variables before placing the text in the composer. If the rendered template is missing values, DocJacket warns you before you send.
-
-SMS messages can be up to 1600 characters. The new-message composer shows character and segment counts so you can see when a long text may use multiple SMS segments; the inline thread composer shows a character count while you reply.
-
-### Sending to multiple contacts
-
-Click **Send to Multiple** to send the same message to several transaction contacts. The multi-send flow uses DocJacket's channel resolution:
-
-- A contact's explicit communication preference wins when one is set
-- Portal access is preferred because portal chat is free
-- Contacts with phone numbers can receive SMS
-- Contacts with email but no phone can fall back to email where supported
-
-Each selected contact is processed separately. The confirmation toast shows how many succeeded and how many failed.
-
-### Existing threads
-
-Select a thread to see its messages. In a selected thread you can type a reply, press **Enter** to send, use **Shift+Enter** for a line break, attach a file up to 25 MB, or apply an SMS template.
-
-Outbound messages show delivery state when DocJacket receives it. SMS messages can show sent, delivered, undelivered, or failed status. Portal messages can show when the portal user has read the message.
-
-Inbound replies update the thread automatically and keep the conversation attached to the transaction.
-
-### Dedicated numbers and shared sending
-
-If your organization does not have a dedicated SMS number, DocJacket shows setup guidance and an option to send from the shared DocJacket number.
-
-Use **Settings > SMS** to search for a dedicated business number, review monthly usage, buy extra credits, or release an existing number.
-
-### SMS limits and safeguards
-
-SMS sends are subject to the organization's plan, monthly credits, hard limit, quiet hours, recipient opt-outs, duplicate-send protection, and unresolved merge-field checks.
-
-Portal chat does not count against SMS usage. A transaction thread may show portal messages beside SMS history, but only actual SMS sends consume SMS credits.
+Notes are internal team communication. Use email when the message should go to a client, agent, or vendor.
 
 ---
 
 # Sending Emails
 
 You can compose, send, schedule, and save emails directly from a transaction without switching to Gmail or Outlook.
+
+:::note
+New to this? See [How Email Sending Works](./how-email-sending-works.mdx) for who each email sends as and where replies go.
+:::
 
 ## Composing an email
 
@@ -3570,6 +3636,10 @@ In the composer you can:
 - Save a draft, send now, or use **Schedule** to send later
 
 The email is stored with the transaction automatically after it sends.
+
+:::tip AI Draft or a template?
+Use **AI Draft** for a one-off message you need to write quickly. Reach for an [email template](./email-templates.md) when it's an email you send on every deal — templates keep the wording consistent and fill in smart fields for you.
+:::
 
 ## Recipients
 
@@ -3649,6 +3719,17 @@ Smart fields are replaced with the transaction's current data when the template 
 
 Shared templates are read-only. Copy a shared template into **My Templates** before customizing it.
 
+## Generate or import a template with AI
+
+The template editor includes an **AI Generator** with two modes, so you don't have to write a template from scratch:
+
+- **Generate** — describe the email you want (for example, "Welcome email for new buyers"), pick a tone, and DocJacket writes a draft subject and body for you, inserting smart fields where they fit.
+- **Import** — paste an existing email from another tool, or upload a draft as a PDF, `.txt`, or `.md` file. DocJacket converts it into a template, mapping the merge tags in your original (like `[Buyer Name]`) to DocJacket smart fields.
+
+:::warning Always review AI output
+Check anything the AI produced before you save — confirm the smart fields mapped to the right data, and send a test email before using the template with clients.
+:::
+
 ## Smart fields
 
 Smart fields use double-brace syntax:
@@ -3660,6 +3741,23 @@ Smart fields use double-brace syntax:
 - `{{agent_name}}`
 
 Smart fields work in both the subject and body. See [Smart Fields](../templates/smart-fields.md) for the full library, groups, and conditional content.
+
+### Contact blocks
+
+A **contact block** is a special smart field that drops in a formatted contact card — name, email, phone, and company — for one party on the deal. It only shows the fields that are filled in, so you never get blank lines. Insert one from the smart-field picker rather than typing it by hand.
+
+Contact blocks are available for the common parties on a transaction, including:
+
+- **Buyer** and **Seller**
+- **Listing Agent**, **Buyer Agent**, **Deal Agent**, and **Co-Agent**
+- **Lender**, **Loan Officer**, and **Loan Processor**
+- **Title Company**, **Title Processor**, **Escrow Officer**, and **Escrow Assistant**
+- **Buyer's Attorney** and **Seller's Attorney**
+- **Home Inspector**, **HOA Contact**, **Co-op TC**, and others
+
+:::note Safe to reuse
+If a party isn't on the deal yet, its contact block simply renders nothing — so it's safe to include in a reusable template without leaving blank labels behind.
+:::
 
 ## Missing values
 
@@ -3762,6 +3860,10 @@ The **Templates** page in the sidebar is your template hub. It is organized into
 - **Key Date Library** — Individual reusable date rules, such as "Final Walkthrough = 1 business day before Closing"
 
 Checklists and the Key Date Library are separate. The Key Date Library defines reusable date logic. Checklists consume those key dates and attach the task workflow, due-date offsets, and email automation.
+
+:::note Two layers, one workflow
+The **Key Date Library** is the *date logic* (for example, "Final Walkthrough = 1 business day before Closing"). A **Checklist** is the *workflow* that consumes those dates and adds the tasks, due-date offsets, and email automation. Define a date rule once in the library, then reuse it across every checklist.
+:::
 
 ## Documents
 
@@ -3920,7 +4022,9 @@ The checklist builder includes tools for faster setup:
 - **CSV export** — Download the checklist structure for review or offline editing.
 - **Suggested tasks** — Add common tasks for known key date types.
 
-Always review generated or imported items before relying on the checklist with clients.
+:::warning Review AI and imported items
+Generated and CSV-imported key dates and tasks are a starting point, not a finished checklist — review them before relying on the checklist with clients.
+:::
 
 ## Testing a checklist
 
@@ -4075,6 +4179,10 @@ The name can still match your team's language. If the name looks like a known ke
 
 Leave **Key Date Type** blank for organization-specific dates that do not map to a standard concept.
 
+:::tip Set a governed type whenever you can
+A governed **Key Date Type** is what connects the same date across checklists, the calendar, reports, smart fields, and integrations. The name can still match your team's language — the type is what makes automation reliable. Only leave it blank for truly organization-specific dates.
+:::
+
 ## State, side, priority, and status
 
 Use state and side when a rule only applies to a particular workflow. For example:
@@ -4204,7 +4312,7 @@ Smart fields are placeholders that get replaced with real transaction data. They
 - `{{closing_date}}`
 - `{{purchase_price}}`
 - `{{agent_name}}`
-- `{{company_name}}`
+- `{{brokerage_name}}`
 
 Smart fields work in the subject and body. For example:
 
@@ -4250,6 +4358,10 @@ If the template uses conditional content, the preview tools let you test sample 
 
 Use **Send Test** to send a test email before activating a new or heavily edited template.
 
+:::tip Test before you automate
+Keep a template in **Draft** while you build it, and send yourself a test send once conditions or auto-attached documents are involved. A template linked to a task sends on its own when the task comes due — so it's worth confirming it renders correctly before it goes out unattended.
+:::
+
 If a smart field is valid but the transaction does not have the data yet, the preview can show a missing-variable warning. If a field name is not recognized, fix the placeholder in the template.
 
 ## AI email generator
@@ -4273,7 +4385,7 @@ Email templates become even more powerful when linked to [tasks](../tasks/email-
 
 Task-linked templates can render smart fields, show unresolved-field warnings, include the default email signature, and send with attached documents when configured.
 
-When a template is used from a transaction email composer, open **Insert > From Template**, choose the saved template, and review the filled subject, body, recipients, attachments, and missing-field warnings before sending.
+To use a template while composing in a transaction, click the **Template** button in the compose toolbar, choose the saved template, and review the filled subject, body, recipients, attachments, and missing-field warnings before sending.
 
 ## Tips
 
@@ -4324,6 +4436,10 @@ The signature editor uses the same rich editor used elsewhere in DocJacket. You 
 - Preview the rendered signature before saving
 
 Keep signature images small enough for email. Large logos or wide banners can make mobile email replies harder to read.
+
+:::tip Send yourself a test
+After changing a logo or adding long disclaimer language, send yourself a test email. Signatures can render differently across email clients, and a quick test catches oversized images or broken links before clients see them.
+:::
 
 ## Default signature
 
@@ -4401,6 +4517,10 @@ Use **Create Transaction** for Front Door **Submit a File** routing and public i
 
 Use **Update Transaction** or **Additive** when the form belongs to a specific deal, such as requesting seller updates, vendor details, or missing information.
 
+:::note Purpose decides how it can be shared
+The purpose isn't just a label — it controls sharing. Only **Create Transaction** forms can have a standalone public link (and power a Front Door **Submit a File** CTA). **Update Transaction** and **Additive** forms must be sent from a specific transaction's **Forms** tab. Pick the purpose before you build the share link.
+:::
+
 ## Field types
 
 Online Forms support:
@@ -4408,9 +4528,9 @@ Online Forms support:
 - Text, text area, number, email, phone, date, and currency fields
 - Dropdown, radio, yes/no, checkbox, and multi-select fields
 - Address and participant fields
-- Contact picker and organization picker fields
-- Services dropdown fields that can filter services by earlier answers
+- Contact picker fields
 - File uploads
+- Signature fields
 - Rich text
 
 For each field you can set the label, required status, section, placeholder, help text, width, options, and conditional display rules.
@@ -4470,7 +4590,7 @@ Transaction-specific form submissions appear on the transaction's **Forms** tab.
 - See active links and submission counts
 - Expand submissions to review submitted fields
 - Map submitted fields to transaction fields
-- Mark fields as clear, needing documents, needing internal review, needing attorney/title review, or resolved
+- Mark fields as clear, needing documents, needing internal review, needing attorney review, or resolved
 - Apply mapped values to the transaction
 
 Create-transaction submissions may enter the intake flow for review and routing before becoming a transaction record.
@@ -4583,6 +4703,10 @@ From the panel, users can:
 
 Applying a list to a transaction adds missing requirements and skips documents that already exist.
 
+:::tip Apply early, and reuse by duplicating
+Apply a list near the start of a transaction so missing documents are visible long before closing week. When you need a state, side, or financing variation, **duplicate** an existing list rather than rebuilding every document name from scratch.
+:::
+
 ## Relationship to uploaded documents
 
 A required document is the placeholder for what the team expects.
@@ -4642,9 +4766,10 @@ Smart fields are grouped by category:
 - Organization
 - Dates
 - Financial
+- Current User — your own name, email, and phone (for example `{{my_name}}`), handy in signatures and sign-offs
 - Custom
 
-Each field card shows the label, syntax, description, and example when available.
+Each field card shows the label, syntax, description, and example when available. For the complete list, see the [Full field reference](#full-field-reference) below.
 
 ## Smart Field Groups
 
@@ -4673,6 +4798,10 @@ Smart fields work in email subjects too. For example:
 ```text
 EMD Receipt - {{property_address}}
 ```
+
+:::tip Reuse before you create
+Search the existing library before adding a custom field — most of what you need is already there. And keep governed transaction dates in the [Key Date Library](./task-templates.md) rather than creating duplicate custom date fields, so automation and reporting stay consistent.
+:::
 
 ## Conditional content
 
@@ -4708,6 +4837,250 @@ There are two different issues:
 - **Unrecognized placeholder** - The placeholder does not match a known smart field, usually because of a typo or removed field.
 
 Fix unrecognized placeholders in the template. Fix missing values by updating the transaction data.
+
+## Full field reference
+
+This is the complete built-in smart-field library. Your organization can also add its own [custom smart fields](#custom-smart-fields), and some fields only populate for specific workflows (for example, leasing or state-specific dates). Insert fields from the smart-field picker so the syntax is always correct.
+
+### Transaction
+
+| Field | Token |
+| --- | --- |
+| Property Address (street) | `{{property_address}}` |
+| Property Full Address | `{{property_full_address}}` |
+| Property City | `{{property_city}}` |
+| Property State | `{{property_state}}` |
+| Property ZIP | `{{property_zip}}` |
+| MLS Number | `{{mls_number}}` |
+| Transaction Type | `{{transaction_type}}` |
+| Transaction Status | `{{transaction_status}}` |
+| Closing Location | `{{closing_location}}` |
+| Closing Location Map Link | `{{closing_location_map_link}}` |
+| Alt. Earnest Money Location | `{{alt_em_location}}` |
+| Alt. Earnest Money Map Link | `{{alt_em_location_map_link}}` |
+| Closing Time | `{{closing_time}}` |
+| Role | `{{role}}` |
+| Earnest Money Location | `{{em_location}}` |
+| Alt EM Holder | `{{em_alt_title_company}}` |
+
+### Contacts
+
+| Field | Token |
+| --- | --- |
+| Buyer Name | `{{buyer_name}}` |
+| Buyer Email | `{{buyer_email}}` |
+| Buyer Phone | `{{buyer_phone}}` |
+| Seller Name | `{{seller_name}}` |
+| Seller Email | `{{seller_email}}` |
+| Seller Phone | `{{seller_phone}}` |
+| Buyer First Name | `{{buyer_first_name}}` |
+| Seller First Name | `{{seller_first_name}}` |
+| All First Names (current side) | `{{first_names}}` |
+| All Full Names (current side) | `{{full_names}}` |
+| Title Company | `{{title_company}}` |
+| Title Officer | `{{title_officer}}` |
+| Title Company Address | `{{title_company_address}}` |
+| Title Company Map Link | `{{title_company_map_link}}` |
+| Title Company Phone | `{{title_company_phone}}` |
+| Title Company Email | `{{title_company_email}}` |
+| Lender Name | `{{lender_name}}` |
+| Loan Officer | `{{loan_officer}}` |
+| Lender Phone | `{{lender_phone}}` |
+| Lender Email | `{{lender_email}}` |
+| Buyer's Attorney Name | `{{buyers_attorney_name}}` |
+| Buyer's Attorney Email | `{{buyers_attorney_email}}` |
+| Buyer's Attorney Phone | `{{buyers_attorney_phone}}` |
+| Buyer's Attorney Firm | `{{buyers_attorney_company}}` |
+| Seller's Attorney Name | `{{sellers_attorney_name}}` |
+| Seller's Attorney Email | `{{sellers_attorney_email}}` |
+| Seller's Attorney Phone | `{{sellers_attorney_phone}}` |
+| Seller's Attorney Firm | `{{sellers_attorney_company}}` |
+| Home Inspector Name | `{{home_inspector_name}}` |
+| Home Inspector Email | `{{home_inspector_email}}` |
+| Home Inspector Phone | `{{home_inspector_phone}}` |
+| Home Inspector Company | `{{home_inspector_company}}` |
+| Opposing TC Name | `{{coop_tc_name}}` |
+| Opposing TC Email | `{{coop_tc_email}}` |
+| Opposing TC Phone | `{{coop_tc_phone}}` |
+| Opposing TC Firm | `{{coop_tc_company}}` |
+| Buyer's Paralegal Name | `{{buyer_paralegal_name}}` |
+| Buyer's Paralegal Email | `{{buyer_paralegal_email}}` |
+| Buyer's Paralegal Phone | `{{buyer_paralegal_phone}}` |
+| Buyer's Paralegal Firm | `{{buyer_paralegal_company}}` |
+| Seller's Paralegal Name | `{{seller_paralegal_name}}` |
+| Seller's Paralegal Email | `{{seller_paralegal_email}}` |
+| Seller's Paralegal Phone | `{{seller_paralegal_phone}}` |
+| Seller's Paralegal Firm | `{{seller_paralegal_company}}` |
+| HOA Contact Name | `{{hoa_contact_name}}` |
+| HOA Contact Email | `{{hoa_contact_email}}` |
+| HOA Contact Phone | `{{hoa_contact_phone}}` |
+| HOA Management Company | `{{hoa_contact_company}}` |
+| Landlord Name | `{{landlord_name}}` |
+| Landlord Email | `{{landlord_email}}` |
+| Landlord Phone | `{{landlord_phone}}` |
+| Landlord Company | `{{landlord_company}}` |
+| Tenant Name | `{{tenant_name}}` |
+| Tenant Email | `{{tenant_email}}` |
+| Tenant Phone | `{{tenant_phone}}` |
+| Tenant Company | `{{tenant_company}}` |
+| Maintenance Contact Name | `{{maintenance_contact_name}}` |
+| Maintenance Contact Email | `{{maintenance_contact_email}}` |
+| Maintenance Contact Phone | `{{maintenance_contact_phone}}` |
+| Maintenance Company | `{{maintenance_contact_company}}` |
+
+### Agents
+
+| Field | Token |
+| --- | --- |
+| Agent Name (You) | `{{agent_name}}` |
+| Agent Email (You) | `{{agent_email}}` |
+| Agent Phone (You) | `{{agent_phone}}` |
+| Agent License # | `{{agent_license}}` |
+| Deal Agent Name | `{{deal_agent_name}}` |
+| Deal Agent Email | `{{deal_agent_email}}` |
+| Deal Agent Phone | `{{deal_agent_phone}}` |
+| Deal Agent Brokerage | `{{deal_agent_brokerage}}` |
+| Deal Agent First Name | `{{deal_agent_first_name}}` |
+| Listing Agent Name | `{{listing_agent_name}}` |
+| Listing Agent Email | `{{listing_agent_email}}` |
+| Listing Agent Phone | `{{listing_agent_phone}}` |
+| Listing Agent Brokerage | `{{listing_agent_brokerage}}` |
+| Listing Agent Office Address | `{{listing_agent_office_address}}` |
+| Buyer Agent Name | `{{buyer_agent_name}}` |
+| Buyer Agent Email | `{{buyer_agent_email}}` |
+| Buyer Agent Phone | `{{buyer_agent_phone}}` |
+| Buyer Agent Brokerage | `{{buyer_agent_brokerage}}` |
+| Opposing Agent Name (alias) | `{{co_agent_name}}` |
+| Opposing Agent Email (alias) | `{{co_agent_email}}` |
+| Opposing Agent Brokerage (alias) | `{{co_agent_brokerage}}` |
+| Agent Has Assistant? | `{{agent_has_assistant}}` |
+| Agent Assistant Email | `{{agent_assistant_email}}` |
+| Opposing Agent Name | `{{opposing_agent_name}}` |
+| Opposing Agent Email | `{{opposing_agent_email}}` |
+| Opposing Agent Phone | `{{opposing_agent_phone}}` |
+| Opposing Agent Brokerage | `{{opposing_agent_brokerage}}` |
+
+### Organization / Brokerage
+
+| Field | Token |
+| --- | --- |
+| Brokerage Name | `{{brokerage_name}}` |
+| Brokerage Address | `{{brokerage_address}}` |
+| Brokerage Phone | `{{brokerage_phone}}` |
+
+### Dates
+
+| Field | Token |
+| --- | --- |
+| Closing Date | `{{closing_date}}` |
+| Contract Date | `{{contract_date}}` |
+| Inspection Deadline | `{{inspection_deadline}}` |
+| Financing Deadline | `{{financing_deadline}}` |
+| Appraisal Deadline | `{{appraisal_deadline}}` |
+| Deposit Due Date | `{{deposit_due_date}}` |
+| Option Period End | `{{option_period_end}}` |
+| P&S Deadline | `{{purchase_sale_deadline}}` |
+| Final Walkthrough | `{{final_walkthrough}}` |
+| Lease Signed | `{{lease_signed}}` |
+| Application Approved | `{{application_approved}}` |
+| Possession Date | `{{possession_date}}` |
+| Listing Date | `{{listing_date}}` |
+| Earnest Money Due | `{{earnest_money_due}}` |
+| EM Due Date | `{{em_due_date}}` |
+
+### Financial
+
+| Field | Token |
+| --- | --- |
+| Financing Type | `{{financing_type}}` |
+| Purchase Price | `{{purchase_price}}` |
+| Earnest Money | `{{earnest_money}}` |
+| Option Fee | `{{option_fee}}` |
+| Down Payment | `{{down_payment}}` |
+| Loan Amount | `{{loan_amount}}` |
+| Commission Rate | `{{commission_rate}}` |
+| Buyer Agent Commission Rate | `{{buyer_agent_commission_rate}}` |
+| Seller Agent Commission Rate | `{{seller_agent_commission_rate}}` |
+
+### Current User
+
+| Field | Token |
+| --- | --- |
+| My Name | `{{my_name}}` |
+| My Email | `{{my_email}}` |
+| My Phone | `{{my_phone}}` |
+| My First Name | `{{my_first_name}}` |
+
+### Contact blocks
+
+Contact blocks render a formatted contact card — name, email, phone, and company — and only show the fields that are filled in, so they're safe to include in reusable templates. Insert them from the smart-field picker.
+
+| Field | Token |
+| --- | --- |
+| Assistant Contact Block | `{{contact_block:assistant}}` |
+| Brokerage Contact Block | `{{contact_block:brokerage}}` |
+| Buyer Agent Contact Block | `{{contact_block:buyer_agent}}` |
+| Buyer Contact Block | `{{contact_block:buyer}}` |
+| Buyer's Attorney Block | `{{contact_block:buyers_attorney}}` |
+| Buyer's Paralegal Block | `{{contact_block:buyer_paralegal}}` |
+| Deal Agent Contact Block | `{{contact_block:deal_agent}}` |
+| Escrow Assistant Block | `{{contact_block:escrow_assistant}}` |
+| Escrow Officer Block | `{{contact_block:escrow_officer}}` |
+| HOA Contact Block | `{{contact_block:hoa_contact}}` |
+| Home Inspector Block | `{{contact_block:home_inspector}}` |
+| Landlord Block | `{{contact_block:landlord}}` |
+| Lender Contact Block | `{{contact_block:lender}}` |
+| Listing Agent Contact Block | `{{contact_block:listing_agent}}` |
+| Loan Officer Block | `{{contact_block:loan_officer}}` |
+| Loan Processor Block | `{{contact_block:loan_processor}}` |
+| Maintenance Contact Block | `{{contact_block:maintenance_contact}}` |
+| Opposing Agent Contact Block | `{{contact_block:co_agent}}` |
+| Opposing TC Block | `{{contact_block:coop_tc}}` |
+| Seller Contact Block | `{{contact_block:seller}}` |
+| Seller's Attorney Block | `{{contact_block:sellers_attorney}}` |
+| Seller's Paralegal Block | `{{contact_block:seller_paralegal}}` |
+| Tenant Block | `{{contact_block:tenant}}` |
+| Title Company Contact Block | `{{contact_block:title_company}}` |
+| Title Processor Block | `{{contact_block:title_processor}}` |
+| Your Agent Contact Block | `{{contact_block:agent}}` |
+
+## Custom smart fields
+
+Beyond the built-in library, your organization can define its own smart fields for data that is unique to how your team works — anything from an annual cap amount to a photo-appointment date.
+
+### Creating a custom field
+
+1. Go to **Settings > Custom Fields**
+2. Open the **Smart Fields** tab
+3. Click **Add Custom Field**
+4. Enter a **field name** (what your team sees) and a **merge code** (the token used in templates)
+5. Save
+
+The merge code becomes the token. A field with the merge code `annual_cap_amount` is inserted into templates as `{{annual_cap_amount}}`.
+
+A few rules to know:
+
+- Merge codes use **lowercase letters, numbers, and underscores only**, and must start with a letter.
+- Each merge code must be unique in your organization, and it can't reuse a built-in field name.
+- The field name can be changed later, but the **merge code cannot** — templates reference it, so it's locked once created.
+- Custom fields are **organization-wide**: everyone on your team can use them.
+
+Custom fields show up under the **Custom** category in the smart-field picker, right alongside the built-in fields.
+
+:::note Pick the merge code carefully
+You can rename the field label anytime, but the **merge code is permanent** — every template that references `{{your_code}}` depends on it. Choose a clear, lasting name when you create the field.
+:::
+
+### Filling in the value
+
+A custom field starts out empty. There are two ways to give it a value on a transaction:
+
+- **Enter it manually** in the transaction's custom-fields area.
+- **Let extraction fill it in** — when you create the field, use **Add Extractable Field** so DocJacket's document extraction can pull the value from uploaded documents automatically.
+
+### Milestone date fields
+
+Custom key dates surface as smart fields automatically. Any active key date that has a slug appears under the **Milestones** category in the picker, with a token that matches its slug — for example a "Photo Appointment" key date can render as `{{photo_appointment_date}}` and resolve to that transaction's date. Manage these in the [Key Date Library](./task-templates.md).
 
 ## Tips
 
@@ -4778,6 +5151,10 @@ Be careful with note sections:
 
 - **Internal Notes** pulls from the transaction's internal Notes field. Leave it off client-facing templates unless those notes are meant to be shared.
 - **Custom Notes** is text typed when generating or sending the report. Use it for a one-time cover message or explanation.
+
+:::warning Keep Internal Notes off client reports
+The **Internal Notes** section pulls your team-only notes straight into the report. Leave it off any template you send to clients — keep a separate client-safe template and an internal one. Use **Custom Notes** when you want a one-off message on a client report.
+:::
 
 ## Using a SitRep template
 
@@ -6641,6 +7018,8 @@ Connect Gmail to send transaction email from your Gmail account. Gmail powers:
 
 Gmail also supports multiple connected accounts. After Gmail is connected, click **Manage accounts** to add another Gmail account, choose the primary account, or remove an account.
 
+For how sent mail is attributed and where replies go, see [How Email Sending Works](../messages/how-email-sending-works.mdx).
+
 ### Google Drive
 
 Connect Google Drive to work with transaction files from the Documents tab:
@@ -7565,6 +7944,15 @@ From this page, you can:
 Categories with existing templates cannot be deleted. Recategorize those templates first, then delete the unused category.
 
 This page does not connect your mailbox. To send from Gmail or Outlook, connect or reconnect your mailbox from **Settings > Integrations**.
+
+## Require a Connected Mailbox
+
+Use **Settings > Organization** to turn on **Only send transaction email from a connected mailbox**. When on, deal email (compose, replies, task emails, reminders, reports, and portal links) only ever sends from a connected Gmail or Outlook account — never from a DocJacket system address.
+
+- The email sends from the sender's connected mailbox, or the account owner's if the sender hasn't connected one.
+- If no mailbox is connected, a manual send is blocked with a prompt to connect one, and an automated send is held until a mailbox is connected. The account owner is notified so it can be reconnected.
+
+Leave this off (the default) to let DocJacket's email service send as a fallback when a connected mailbox isn't available. See [How Email Sending Works](../messages/how-email-sending-works.mdx).
 
 ## Working Hours
 

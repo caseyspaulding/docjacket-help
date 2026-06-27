@@ -11,6 +11,10 @@ description: Compose and send emails directly from a DocJacket transaction witho
 
 You can compose, send, schedule, and save emails directly from a transaction without switching to Gmail or Outlook.
 
+:::note
+New to this? See [How Email Sending Works](./how-email-sending-works.mdx) for who each email sends as and where replies go.
+:::
+
 ## Composing an email
 
 Open a transaction, go to **Email > Inbox**, and click **Compose**. The composer opens as a full-width **New message** view inside the transaction.
@@ -29,6 +33,10 @@ In the composer you can:
 - Save a draft, send now, or use **Schedule** to send later
 
 The email is stored with the transaction automatically after it sends.
+
+:::tip AI Draft or a template?
+Use **AI Draft** for a one-off message you need to write quickly. Reach for an [email template](./email-templates.md) when it's an email you send on every deal — templates keep the wording consistent and fill in smart fields for you.
+:::
 
 ## Recipients
 
