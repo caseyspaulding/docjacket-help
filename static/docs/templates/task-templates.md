@@ -109,6 +109,10 @@ The name can still match your team's language. If the name looks like a known ke
 
 Leave **Key Date Type** blank for organization-specific dates that do not map to a standard concept.
 
+:::tip Set a governed type whenever you can
+A governed **Key Date Type** is what connects the same date across checklists, the calendar, reports, smart fields, and integrations. The name can still match your team's language — the type is what makes automation reliable. Only leave it blank for truly organization-specific dates.
+:::
+
 ## State, side, priority, and status
 
 Use state and side when a rule only applies to a particular workflow. For example:

@@ -67,6 +67,10 @@ Be careful with note sections:
 - **Internal Notes** pulls from the transaction's internal Notes field. Leave it off client-facing templates unless those notes are meant to be shared.
 - **Custom Notes** is text typed when generating or sending the report. Use it for a one-time cover message or explanation.
 
+:::warning Keep Internal Notes off client reports
+The **Internal Notes** section pulls your team-only notes straight into the report. Leave it off any template you send to clients — keep a separate client-safe template and an internal one. Use **Custom Notes** when you want a one-off message on a client report.
+:::
+
 ## Using a SitRep template
 
 Open a transaction and go to the **Reports** section. From there, you can:
