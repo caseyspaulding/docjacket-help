@@ -35,7 +35,7 @@ Checklist template task → On-completion email rule
 <div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', margin: '1.5rem 0' }}>
   <iframe
     src="https://app.supademo.com/embed/cmqpq1x4z03nomd1xjz83rt5j"
-    title="Power TC draft-and-review task automation walkthrough"
+    title="Power Playbook draft-and-review task automation walkthrough"
     allow="fullscreen"
     allowFullScreen
     loading="lazy"

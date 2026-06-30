@@ -1,8 +1,9 @@
 {
-  "label": "Power TC Playbook",
+  "label": "Power Playbook",
   "position": 2,
   "link": {
     "type": "generated-index",
+    "slug": "/category/power-tc-playbook",
     "description": "Set up DocJacket the way our most productive transaction coordinators do. A step-by-step playbook for building checklist templates, an email library, and draft-and-review automations — works in any state."
   }
 }
