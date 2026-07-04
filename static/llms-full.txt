@@ -6657,6 +6657,440 @@ Tenant isolation is enforced at the SQL layer. Every MCP tool call adds `WHERE O
 
 ---
 
+## Developer API
+
+# Developer API
+
+The DocJacket API lets your own systems — CRMs, dashboards, back-office tools, scripts, and custom automations — read and act on your transactions, contacts, tasks, key dates, documents, and disclosures.
+
+Everything lives under one base URL and one credential:
+
+- **Base URL:** `https://api.docjacket.com`
+- **Auth:** an API key sent as a bearer token — `Authorization: Bearer mcp_at_…`
+
+**Live reference:** [api.docjacket.com/reference](https://api.docjacket.com/reference) — generated from the deployed API, so it never drifts. The machine-readable spec is at [api.docjacket.com/openapi.json](https://api.docjacket.com/openapi.json) (point Postman, an SDK generator, or an AI agent at it).
+
+## One credential, two doorways
+
+The same `mcp_at_` key powers both the REST API (this section) and [AI Access](/docs/ai-access) — connecting AI assistants like Claude and ChatGPT over MCP. Use the **API** when *your code* calls DocJacket; use **AI Access** when *an AI assistant* does. Same permissions model, same audit trail.
+
+## Your first call
+
+Create a key (see [Authentication & API keys](./authentication.mdx)), then verify it and discover what it can do:
+
+```bash
+# Does my key work? Echoes your org + granted scopes.
+curl https://api.docjacket.com/api/v1/health \
+  -H "Authorization: Bearer mcp_at_YOUR_KEY"
+
+# What can this key call? Every operation with a `callable` flag per your scopes.
+curl https://api.docjacket.com/api/v1/catalog \
+  -H "Authorization: Bearer mcp_at_YOUR_KEY"
+```
+
+`/catalog` is the quickest way to see the current surface — it lists every operation, its method and path, the scope it needs, and whether *your* key can call it.
+
+## What you can do
+
+- **Read** transactions, contacts, tasks, key dates, documents, checklists, contingencies, forms, disclosures, and email templates.
+- **Act** — complete tasks, apply checklists, update key dates, create contacts, upload & extract documents, send client updates and document requests, manage disclosure packages.
+- **Get notified** — subscribe to [webhooks](./webhooks.mdx) so DocJacket pushes events to you instead of you polling.
+- **See your usage** — `GET /api/v1/usage` returns your key's call volume, daily breakdown, top operations, and error rate.
+- **Provision at scale** — white-label partners use a [reseller key](./reseller.mdx) to manage organizations across their book of business.
+
+## In this section
+
+- **[Authentication & API keys](./authentication.mdx)** — create, scope, rotate, and revoke keys.
+- **[Making requests](./making-requests.mdx)** — conventions, errors, rate limits, and recipes.
+- **[Webhooks](./webhooks.mdx)** — subscribe to events and verify signatures.
+- **[Partner API](./reseller.mdx)** — provisioning and read access for resellers.
+- **[Versioning & changes](./versioning.mdx)** — how the API evolves without breaking you.
+
+---
+
+# Authentication & API keys
+
+Every request authenticates with an API key sent as a bearer token:
+
+```
+Authorization: Bearer mcp_at_YOUR_KEY
+```
+
+A key looks like `mcp_at_…`, is tied to a single organization, and works for both the REST API and [AI Access](/docs/ai-access).
+
+## Create a key
+
+1. In DocJacket, go to **Settings → API Keys** (Owner or Admin role required).
+2. Click **New API key**, give it a name (e.g. "Back-office sync"), and choose its scopes.
+3. Copy the key — **it's shown exactly once.** DocJacket stores only a one-way hash, so it can't be shown again. If you lose it, create a new one.
+
+## Scopes
+
+Scopes are tiers — each includes progressively more power. Grant the minimum a key needs.
+
+| Scope | Grants |
+|---|---|
+| `read` | All GET endpoints — transactions, contacts, tasks, key dates, documents, and more |
+| `draft` | Low-risk writes — complete a task, log activity, apply a checklist, add key dates |
+| `actions` | Side-effect writes — create contacts, upload & extract documents, send emails, manage disclosure packages |
+
+You can change a key's scopes at any time from **Settings → API Keys → Edit scopes** — the key keeps working with the new grant, and the change is recorded in the [activity log](/docs/ai-access/permissions). Every change is auditable.
+
+## Advanced restrictions (optional)
+
+Under **Advanced restrictions** when creating or editing a key, you can narrow it further. Both are *opt-in* — leave them empty to keep the full grant from the scopes above.
+
+- **Granular scopes** — restrict a key to specific capabilities (e.g. `key_dates:propose`, `reminders:create`) instead of the whole tier.
+- **Tool allow-list** — restrict a key to an explicit list of operations. The key can call *only* those, and nothing else the scopes would otherwise permit.
+
+The available granular scopes and the full tool list come from the tool catalog:
+
+```bash
+curl https://api.docjacket.com/api/v1/catalog \
+  -H "Authorization: Bearer mcp_at_YOUR_KEY"
+```
+
+This is how you build a least-privilege key — e.g. a read key limited to just `get_transaction` and `get_upcoming_key_dates`.
+
+## Rotate & revoke
+
+- **Rotate:** create a new key, update your integration, then revoke the old one.
+- **Revoke:** **Settings → API Keys → Revoke.** Access stops immediately and can't be undone.
+
+## See a key's usage
+
+Check what a key has been doing — call volume, a daily breakdown, top operations, and error rate over the last N days (default 30):
+
+```bash
+curl "https://api.docjacket.com/api/v1/usage?days=30" \
+  -H "Authorization: Bearer mcp_at_YOUR_KEY"
+```
+
+For a full audit trail of every call (across all keys), see **Settings → AI Access → Activity log**.
+
+## Partners
+
+White-label partners authenticate with a separate reseller key (`rsk_…`) that spans every organization in their book of business — see the [Partner API](./reseller.mdx).
+
+---
+
+# Making requests
+
+## Basics
+
+- **Base URL:** `https://api.docjacket.com`, everything under `/api/v1`.
+- **Auth:** `Authorization: Bearer mcp_at_YOUR_KEY` on every request.
+- **Content type:** send `Content-Type: application/json` on requests with a body.
+- **Timestamps:** ISO 8601, UTC.
+
+## Discover the surface
+
+`GET /api/v1/catalog` lists every operation with its method, path, required scope, and a `callable` flag for your key. It's the machine-readable index of what's available — and the [live reference](https://api.docjacket.com/reference) documents each one in detail.
+
+## Common recipes
+
+```bash
+# List active transactions
+curl "https://api.docjacket.com/api/v1/transactions?status=Active" \
+  -H "Authorization: Bearer mcp_at_YOUR_KEY"
+
+# Pull one transaction with parties, prices, and key dates
+curl "https://api.docjacket.com/api/v1/transactions/TRANSACTION_ID" \
+  -H "Authorization: Bearer mcp_at_YOUR_KEY"
+
+# Key dates coming up in the next 14 days, across all deals
+curl "https://api.docjacket.com/api/v1/key-dates/upcoming?days=14" \
+  -H "Authorization: Bearer mcp_at_YOUR_KEY"
+
+# Find a deal by property address
+curl "https://api.docjacket.com/api/v1/transactions/resolve?property=123%20Main%20St" \
+  -H "Authorization: Bearer mcp_at_YOUR_KEY"
+
+# Complete a task (requires the `draft` scope)
+curl -X POST "https://api.docjacket.com/api/v1/tasks/TASK_ID/complete" \
+  -H "Authorization: Bearer mcp_at_YOUR_KEY"
+```
+
+## Errors
+
+Every error uses one envelope:
+
+```json
+{ "error": { "code": "not_found", "message": "Transaction not found." } }
+```
+
+Validation errors add a `fields` object. Common codes:
+
+| Status | `code` | Meaning |
+|---|---|---|
+| 401 | `unauthorized` | Missing, malformed, or revoked key |
+| 403 | `insufficient_scope` | Your key lacks the scope this operation needs |
+| 404 | `not_found` | Missing **or** belongs to another organization (see below) |
+| 409 | `conflict` | State conflict — e.g. completing an already-resolved task |
+| 422 | `validation_error` | Bad input; see `message` and `fields` |
+| 429 | `rate_limited` | Too many requests — see [Rate limits](#rate-limits) |
+
+**Not yours = not found.** A resource ID from another organization returns `404`, never `403`, so the API never discloses whether an ID exists outside your org.
+
+## Rate limits
+
+Limits are per key, per minute, in a fixed window:
+
+- **300 reads** (GET)
+- **60 writes** (POST / PUT / PATCH / DELETE)
+
+Exceeding a bucket returns `429` with a `Retry-After: 60` header and the standard error envelope (`code: "rate_limited"`). Wait for the window to reset, then retry. Reads and writes are limited separately, so heavy reads won't throttle your writes.
+
+## Idempotency
+
+Side-effecting writes (email sends, disclosure invites, document uploads) accept an `Idempotency-Key` header. Send the same key on a retry and DocJacket returns the original result instead of performing the action twice — safe against network retries.
+
+## Pagination
+
+List endpoints accept `page` and `pageSize` and return `page`, `pageSize`, `totalCount`, and `totalPages` alongside `data`. Default `pageSize` is 25; the max is 100.
+
+## Push instead of poll
+
+For change notifications, don't poll — subscribe to [webhooks](./webhooks.mdx) and let DocJacket push events to you.
+
+---
+
+# Webhooks
+
+Webhooks push real-time events to your endpoint — a new transaction, a completed extraction, a viewed disclosure — so you can react instead of polling. Send them to Zapier, Slack, your own service, or any HTTPS URL.
+
+You can manage webhook subscriptions two ways:
+
+- **In DocJacket** — **Settings → Connections** (create, edit, view delivery stats).
+- **Via the API** — with your `mcp_at_` key, for fully programmatic setup.
+
+## Manage subscriptions with the API
+
+```bash
+# List the event types you can subscribe to
+curl https://api.docjacket.com/api/v1/webhook-events \
+  -H "Authorization: Bearer mcp_at_YOUR_KEY"
+
+# Create a subscription (requires the `actions` scope)
+curl -X POST https://api.docjacket.com/api/v1/webhooks \
+  -H "Authorization: Bearer mcp_at_YOUR_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Ops Slack relay",
+    "url": "https://example.com/hooks/docjacket",
+    "events": ["extraction.completed", "task.completed"]
+  }'
+```
+
+The create response includes the **signing secret in full, exactly once** — store it; you'll need it to verify signatures. Later reads only show a masked prefix. Other operations:
+
+| Method | Path | Scope | Purpose |
+|---|---|---|---|
+| GET | `/api/v1/webhooks` | `read` | List your subscriptions |
+| GET | `/api/v1/webhooks/{id}` | `read` | Get one subscription |
+| POST | `/api/v1/webhooks` | `actions` | Create a subscription |
+| PUT | `/api/v1/webhooks/{id}` | `actions` | Update url / events / active |
+| DELETE | `/api/v1/webhooks/{id}` | `actions` | Delete a subscription |
+| POST | `/api/v1/webhooks/{id}/test` | `actions` | Fire a test delivery now |
+| POST | `/api/v1/webhooks/{id}/regenerate-secret` | `actions` | Rotate the signing secret |
+| GET | `/api/v1/webhooks/{id}/deliveries` | `read` | Recent delivery attempts |
+| GET | `/api/v1/webhook-events` | `read` | The event catalog |
+
+Subscribe to `"*"` to receive every event type.
+
+## Event catalog
+
+| Event | Fires when |
+|---|---|
+| `transaction.created` | A new transaction is created |
+| `transaction.status_changed` | A transaction's status changes |
+| `transaction.closed` | A transaction is closed |
+| `document.uploaded` | A document is uploaded to a transaction |
+| `document.deleted` | A document is deleted |
+| `task.created` | A new task is created |
+| `task.completed` | A task is marked complete |
+| `extraction.completed` | A document extraction job finishes (includes `jobId`, `status`, `confidence`) |
+| `key_date.updated` | A key date is added or changed |
+| `key_date.completed` | A key date is marked complete |
+| `contact.created` | A new contact is created |
+| `disclosure.recipient_viewed` | A disclosure-package recipient opens the disclosure |
+| `form.submission_received` | A public form submission arrives |
+
+`extraction.completed` turns a document upload into a round-trip: subscribe, upload via the API, and receive the signed callback with the `jobId` and confidence when extraction finishes — no polling.
+
+## Payload
+
+Every delivery is a `POST` with a JSON body in this envelope:
+
+```json
+{
+  "eventType": "extraction.completed",
+  "eventId": "b1c2…",
+  "timestamp": "2026-07-04T13:00:00Z",
+  "organizationId": "org-…",
+  "userId": null,
+  "data": {
+    "jobId": "…",
+    "transactionId": "…",
+    "documentId": "…",
+    "status": "completed",
+    "confidence": 0.98,
+    "requiresReview": false
+  }
+}
+```
+
+Payloads are **thin** — they carry IDs and a few key fields. Fetch the full resource from the REST API using the IDs when you need more. Fields may be added over time; ignore ones you don't recognize.
+
+Each request also carries these headers:
+
+| Header | Value |
+|---|---|
+| `X-Webhook-Signature` | `sha256=<hmac-hex>` — see below |
+| `X-Webhook-Event-Type` | e.g. `extraction.completed` |
+| `X-Webhook-Event-Id` | Unique per delivery attempt |
+| `X-Webhook-Timestamp` | ISO 8601 send time |
+
+## Verify the signature
+
+DocJacket signs every payload with HMAC-SHA256 using your subscription's secret. **Always verify** before trusting a delivery — compute the HMAC of the raw request body and compare it to the `X-Webhook-Signature` header.
+
+```js
+// Node.js (Express) — use the RAW body, not the parsed JSON
+
+function verify(rawBody, signatureHeader, secret) {
+  const expected =
+    'sha256=' + crypto.createHmac('sha256', secret).update(rawBody).digest('hex');
+  const a = Buffer.from(signatureHeader);
+  const b = Buffer.from(expected);
+  return a.length === b.length && crypto.timingSafeEqual(a, b);
+}
+
+app.post('/hooks/docjacket',
+  express.raw({ type: 'application/json' }),
+  (req, res) => {
+    if (!verify(req.body, req.get('X-Webhook-Signature'), process.env.DJ_WEBHOOK_SECRET)) {
+      return res.status(401).end();
+    }
+    const event = JSON.parse(req.body);
+    // …handle event.eventType / event.data…
+    res.status(200).end();
+  });
+```
+
+```python
+# Python (Flask)
+
+def verify(raw_body: bytes, signature_header: str, secret: str) -> bool:
+    expected = "sha256=" + hmac.new(secret.encode(), raw_body, hashlib.sha256).hexdigest()
+    return hmac.compare_digest(expected, signature_header or "")
+```
+
+Return a `2xx` quickly (do heavy work asynchronously). Any non-`2xx` — or a timeout — counts as a failed delivery.
+
+## Retries, circuit breaker & delivery history
+
+- **Retries** — failed deliveries retry with backoff.
+- **Circuit breaker** — if an endpoint fails repeatedly, DocJacket automatically pauses it to avoid flooding a down service. Re-enable it (and reset the breaker) once you've fixed the endpoint.
+- **Delivery history** — `GET /api/v1/webhooks/{id}/deliveries` (or the Connections page) shows recent attempts with status codes, latency, errors, and the next retry time, so you can self-debug.
+
+## Test it
+
+Fire a test delivery to confirm your endpoint and signature check work before going live:
+
+```bash
+curl -X POST https://api.docjacket.com/api/v1/webhooks/SUBSCRIPTION_ID/test \
+  -H "Authorization: Bearer mcp_at_YOUR_KEY"
+```
+
+---
+
+# Partner API
+
+White-label partners get a separate **reseller key** (`rsk_…`) that spans every organization in their book of business — for provisioning new tenants and reading their state. It's distinct from the per-organization `mcp_at_` key.
+
+Ask us to set you up as a partner to get a reseller key.
+
+## Authentication
+
+```
+Authorization: Bearer rsk_YOUR_RESELLER_KEY
+```
+
+Reseller keys carry their own scopes: `read` (list/read your organizations), `provision` (create organizations), and `manage` (seats). Every `/orgs/{orgId}` route is checked for ownership — an organization that isn't yours returns `404`.
+
+## Provisioning
+
+```bash
+# List your customer organizations
+curl https://api.docjacket.com/api/v1/orgs \
+  -H "Authorization: Bearer rsk_YOUR_RESELLER_KEY"
+
+# Provision a new organization (requires the `provision` scope)
+curl -X POST https://api.docjacket.com/api/v1/orgs \
+  -H "Authorization: Bearer rsk_YOUR_RESELLER_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{ "name": "Summit Property Advisors",
+        "owner": { "email": "owner@example.com", "first_name": "Dana", "last_name": "Reyes" } }'
+```
+
+| Method | Path | Scope | Purpose |
+|---|---|---|---|
+| GET | `/api/v1/orgs` | `read` | List your organizations |
+| GET | `/api/v1/orgs/{orgId}` | `read` | Get one organization |
+| POST | `/api/v1/orgs` | `provision` | Provision a new organization |
+| POST | `/api/v1/orgs/{orgId}/users` | `manage` | Invite a seat (returns a join link) |
+| DELETE | `/api/v1/orgs/{orgId}/users/{userId}` | `manage` | Remove a seat |
+
+## Read entitlements & activity
+
+Build a book-of-business dashboard from read-only projections — no billing writes.
+
+```bash
+# Plan, seats, and AI fair-use pool for one organization
+curl https://api.docjacket.com/api/v1/orgs/ORG_ID/entitlements \
+  -H "Authorization: Bearer rsk_YOUR_RESELLER_KEY"
+
+# Activity summary — active deals, tasks due, last activity
+curl https://api.docjacket.com/api/v1/orgs/ORG_ID/summary \
+  -H "Authorization: Bearer rsk_YOUR_RESELLER_KEY"
+```
+
+- **`/entitlements`** — the organization's plan, tier, and limits, plus partner-level seat counts (including `includedSeats`) and AI fair-use pool usage.
+- **`/summary`** — active transaction count, tasks overdue / due today / due this week, and the last-activity timestamp.
+
+:::note Read-only
+The Partner API never changes billing. Plan changes, rebilling toggles, and refunds are not exposed — those stay in your partner agreement and are applied manually.
+:::
+
+See the [reference](https://api.docjacket.com/reference) for full request/response schemas.
+
+---
+
+# Versioning & changes
+
+The API is built to evolve without breaking your integration.
+
+## Additive by default
+
+New fields and operations can appear at any time. **Clients must ignore response fields they don't recognize** and must not depend on property order. Adding a field is never a breaking change, so treat responses leniently.
+
+## Breaking changes get a new version
+
+A change that would break an existing client — removing or renaming a field, tightening a type, or changing an error contract — ships only as a **new major version** at a new path (for example `/api/v2`). The current `/api/v1` is never broken in place.
+
+## Deprecation
+
+When a version is deprecated, it remains available for at least **6 months** after its successor ships, and the retirement is announced in the release notes. That gives you a comfortable window to migrate.
+
+## Stay in sync
+
+- The **[live reference](https://api.docjacket.com/reference)** and **[openapi.json](https://api.docjacket.com/openapi.json)** are generated from the deployed API — they're always current.
+- `GET /api/v1/catalog` reflects the exact operations available to your key right now.
+- Retries are safe: side-effecting writes honor the `Idempotency-Key` header.
+
+---
+
 ## Client Portal
 
 # Client Portal
@@ -6988,15 +7422,15 @@ DocJacket connects with the tools you already use. Set up integrations in **Sett
 - Track monthly usage and buy additional credits
 - Send and receive direct text messages from transaction threads
 
-### Webhooks
-You can also set up custom webhooks in **Settings > Connections** to send event notifications to external services.
+### Developer API & webhooks
+Building your own integration? The [Developer API](/docs/api) covers the REST API, webhooks, and the partner API in depth.
 
 ## In this section
 
 - [Google Workspace](./google-workspace.mdx) — Connect Gmail, Drive, Calendar, and Contacts
 - [Microsoft Outlook](./microsoft-outlook.mdx) — Connect Outlook Mail, Calendar, and OneDrive
 - [Follow Up Boss](./follow-up-boss.md) — Connect Follow Up Boss, manage sync settings, and review activity
-- [Webhooks](./webhooks.mdx) — Send events to external services
+- [Developer API](/docs/api) — REST API, webhooks, and the partner API
 
 ---
 
@@ -7132,122 +7566,6 @@ Review mappings before turning on broad sync. Clean mappings reduce duplicate co
 ## Activity
 
 Use the **Activity** tab to confirm recent sync behavior and diagnose integration issues. If records do not appear as expected, check activity first, then confirm connection status and field mappings.
-
----
-
-# Webhooks
-
-Webhooks let you send real-time event notifications from DocJacket to external services — like Zapier, Slack, Microsoft Teams, or your own custom applications.
-
-## Setting up a webhook
-
-1. Go to **Settings > Connections**
-2. Click **Create Webhook**
-3. Enter the **URL** where you want events sent
-4. Choose which **event types** to subscribe to:
-   - Document changes (uploaded, approved, rejected)
-   - Transaction changes (created, updated, status changed)
-   - Task changes (created, completed)
-   - Key date changes (completed, approaching)
-5. Save the webhook
-
-DocJacket will send a POST request to your URL every time a subscribed event occurs.
-
-![Connections page for webhook setup](/img/integrations/webhooks-connections.png)
-
-## Monitoring
-
-The Connections page shows delivery stats for each webhook:
-
-- **Success rate** — How many deliveries succeeded
-- **Recent deliveries** — Status of the last several attempts
-- **Failures** — If deliveries are failing, you'll see error details
-
-DocJacket includes circuit breaker protection — if a webhook fails repeatedly, it's automatically paused to prevent flooding a down endpoint. You can re-enable it once the issue is resolved.
-
-## Common uses
-
-- **Slack notifications** — Get a message in Slack when a document is uploaded or a task is completed
-- **Zapier automations** — Connect DocJacket events to thousands of other apps through Zapier
-- **Custom dashboards** — Feed transaction events into your own reporting tools
-
----
-
-# DocJacket REST API
-
-The DocJacket API lets you read and act on your transactions, contacts, tasks, and key dates from your own systems — CRMs, dashboards, back-office tools, or custom automations.
-
-**Live API reference:** [api.docjacket.com/reference](https://api.docjacket.com/reference) — generated from the deployed API, so it never drifts. The machine-readable spec is at [api.docjacket.com/openapi.json](https://api.docjacket.com/openapi.json).
-
-## Get an API key
-
-1. In DocJacket, go to **Settings → AI & API Access** (Owner or Admin role required)
-2. Click **Mint Token**, name it (e.g. "Back-office sync"), and pick scopes
-3. Copy the key — **it's shown exactly once**. DocJacket stores only a hash.
-
-Your key looks like `mcp_at_…` and is tied to your organization. The same key works for both the REST API and [AI assistants via MCP](/docs/ai-access) — one credential, two doorways.
-
-### Scopes
-
-| Scope | Grants |
-|---|---|
-| `read` | All GET endpoints — transactions, contacts, tasks, key dates |
-| `draft` | Low-risk writes — complete a task, log activity, apply a checklist, add key dates |
-| `actions` | Side-effect writes — create contacts, create email templates, delete tasks |
-
-Start with `read` only and re-mint with more scopes when you need them. You can revoke a key at any time from the same settings page.
-
-## Your first call
-
-Verify the key and see what it can do:
-
-```bash
-# Does my key work?
-curl https://api.docjacket.com/api/v1/health \
-  -H "Authorization: Bearer mcp_at_YOUR_KEY"
-
-# What operations can this key call?
-curl https://api.docjacket.com/api/v1/catalog \
-  -H "Authorization: Bearer mcp_at_YOUR_KEY"
-```
-
-`/catalog` returns every operation on the API with a `callable` flag per your key's scopes — it's the quickest way to see the current surface.
-
-## Common recipes
-
-```bash
-# List active transactions
-curl "https://api.docjacket.com/api/v1/transactions?status=Active" \
-  -H "Authorization: Bearer mcp_at_YOUR_KEY"
-
-# Key dates coming up in the next 14 days, across all deals
-curl "https://api.docjacket.com/api/v1/key-dates/upcoming?days=14" \
-  -H "Authorization: Bearer mcp_at_YOUR_KEY"
-
-# Pull one transaction with parties, prices, and key dates
-curl "https://api.docjacket.com/api/v1/transactions/TRANSACTION_ID" \
-  -H "Authorization: Bearer mcp_at_YOUR_KEY"
-
-# Complete a task (requires draft scope)
-curl -X POST "https://api.docjacket.com/api/v1/tasks/TASK_ID/complete" \
-  -H "Authorization: Bearer mcp_at_YOUR_KEY"
-```
-
-## Conventions
-
-- **Errors** use one envelope: `{ "error": { "code", "message", "fields"? } }`
-- **Not yours = not found**: a resource ID from another organization returns `404`, never `403`
-- **Rate limit**: 300 requests/min per key — a `429` includes how long to wait
-- **Additive by default**: responses may gain fields over time; ignore unknown fields
-- **Timestamps** are ISO 8601 UTC
-
-## Push instead of poll
-
-Pair the API with [webhooks](/docs/integrations/webhooks) to get notified when transactions, documents, or tasks change, instead of polling.
-
-## Resellers
-
-White-label partners get a separate reseller key (`rsk_…`) that provisions organizations and users across their book of business. See the **DocJacket API** section of the [reference](https://api.docjacket.com/reference) for the provisioning endpoints, or contact us to get set up as a partner.
 
 ---
 
@@ -7431,7 +7749,7 @@ Access Settings from the sidebar — it's at the bottom of the navigation.
 - [Calendar and Holidays](./calendar-and-holidays.md) — Google Calendar task syncing and organization holidays
 - [Billing](../billing/index.md) — Subscription, plan, payment, and seat billing
 - [AI Access](../ai-access/index.mdx) — Manage connected AI clients and activity
-- [Connections](../integrations/webhooks.mdx) — Webhook connections for external tools
+- [Connections](/docs/api/webhooks) — Webhook connections for external tools
 - [Integrations](../integrations/index.md) — Gmail, Google Calendar, Google Drive, Microsoft, and other connected services
 - [Follow Up Boss](../integrations/follow-up-boss.md) — Follow Up Boss connection, mappings, imports, and sync behavior
 - [Transaction Configuration](./transaction-configuration.md) — Transaction roles, statuses, field options, custom fields, contingencies, and key date statuses

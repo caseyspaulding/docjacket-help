@@ -28,6 +28,21 @@ const config: Config = {
     locales: ['en'],
   },
 
+  plugins: [
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        // The REST API + webhook docs moved out of Integrations into their own
+        // "Developer API" section. The app and the live API reference deep-link
+        // to the old paths, so 301 them to the new homes.
+        redirects: [
+          { from: '/docs/integrations/rest-api', to: '/docs/api' },
+          { from: '/docs/integrations/webhooks', to: '/docs/api/webhooks' },
+        ],
+      },
+    ],
+  ],
+
   presets: [
     [
       'classic',

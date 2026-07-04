@@ -1,0 +1,72 @@
+---
+sidebar_label: Authentication & API keys
+sidebar_position: 2
+description: Create, scope, rotate, and revoke DocJacket API keys. Choose read/draft/actions scopes, and optionally restrict a key to specific tools with granular scopes and an allow-list.
+---
+
+<!-- Canonical: https://help.docjacket.com/docs/api/authentication -->
+<!-- Source: docs/api/authentication.mdx -->
+
+# Authentication & API keys
+
+Every request authenticates with an API key sent as a bearer token:
+
+```
+Authorization: Bearer mcp_at_YOUR_KEY
+```
+
+A key looks like `mcp_at_…`, is tied to a single organization, and works for both the REST API and [AI Access](/docs/ai-access).
+
+## Create a key
+
+1. In DocJacket, go to **Settings → API Keys** (Owner or Admin role required).
+2. Click **New API key**, give it a name (e.g. "Back-office sync"), and choose its scopes.
+3. Copy the key — **it's shown exactly once.** DocJacket stores only a one-way hash, so it can't be shown again. If you lose it, create a new one.
+
+## Scopes
+
+Scopes are tiers — each includes progressively more power. Grant the minimum a key needs.
+
+| Scope | Grants |
+|---|---|
+| `read` | All GET endpoints — transactions, contacts, tasks, key dates, documents, and more |
+| `draft` | Low-risk writes — complete a task, log activity, apply a checklist, add key dates |
+| `actions` | Side-effect writes — create contacts, upload & extract documents, send emails, manage disclosure packages |
+
+You can change a key's scopes at any time from **Settings → API Keys → Edit scopes** — the key keeps working with the new grant, and the change is recorded in the [activity log](/docs/ai-access/permissions). Every change is auditable.
+
+## Advanced restrictions (optional)
+
+Under **Advanced restrictions** when creating or editing a key, you can narrow it further. Both are *opt-in* — leave them empty to keep the full grant from the scopes above.
+
+- **Granular scopes** — restrict a key to specific capabilities (e.g. `key_dates:propose`, `reminders:create`) instead of the whole tier.
+- **Tool allow-list** — restrict a key to an explicit list of operations. The key can call *only* those, and nothing else the scopes would otherwise permit.
+
+The available granular scopes and the full tool list come from the tool catalog:
+
+```bash
+curl https://api.docjacket.com/api/v1/catalog \
+  -H "Authorization: Bearer mcp_at_YOUR_KEY"
+```
+
+This is how you build a least-privilege key — e.g. a read key limited to just `get_transaction` and `get_upcoming_key_dates`.
+
+## Rotate & revoke
+
+- **Rotate:** create a new key, update your integration, then revoke the old one.
+- **Revoke:** **Settings → API Keys → Revoke.** Access stops immediately and can't be undone.
+
+## See a key's usage
+
+Check what a key has been doing — call volume, a daily breakdown, top operations, and error rate over the last N days (default 30):
+
+```bash
+curl "https://api.docjacket.com/api/v1/usage?days=30" \
+  -H "Authorization: Bearer mcp_at_YOUR_KEY"
+```
+
+For a full audit trail of every call (across all keys), see **Settings → AI Access → Activity log**.
+
+## Partners
+
+White-label partners authenticate with a separate reseller key (`rsk_…`) that spans every organization in their book of business — see the [Partner API](./reseller.mdx).

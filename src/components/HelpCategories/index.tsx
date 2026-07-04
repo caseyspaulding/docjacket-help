@@ -50,6 +50,11 @@ const categories: Category[] = [
     link: '/docs/ai-access',
   },
   {
+    title: 'Developer API',
+    description: 'Build on DocJacket with the REST API, webhooks, and partner API.',
+    link: '/docs/api',
+  },
+  {
     title: 'Messages & Email',
     description: 'Communicate with your team and clients.',
     link: '/docs/messages',
