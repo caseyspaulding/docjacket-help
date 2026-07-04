@@ -1,0 +1,8 @@
+{
+  "label": "Developer API",
+  "position": 12,
+  "link": {
+    "type": "generated-index",
+    "description": "Build on DocJacket with the public REST API and webhooks. Read and act on transactions, contacts, tasks, key dates, documents, and disclosures from your own systems — authenticated by an API key, with per-scope rate limits, one error envelope, and a live reference generated from the deployed API. Includes webhook subscriptions, per-key usage, and the white-label partner API."
+  }
+}

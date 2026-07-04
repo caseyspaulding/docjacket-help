@@ -25,7 +25,7 @@ Access Settings from the sidebar — it's at the bottom of the navigation.
 - [Calendar and Holidays](./calendar-and-holidays.md) — Google Calendar task syncing and organization holidays
 - [Billing](../billing/index.md) — Subscription, plan, payment, and seat billing
 - [AI Access](../ai-access/index.mdx) — Manage connected AI clients and activity
-- [Connections](../integrations/webhooks.mdx) — Webhook connections for external tools
+- [Connections](/docs/api/webhooks) — Webhook connections for external tools
 - [Integrations](../integrations/index.md) — Gmail, Google Calendar, Google Drive, Microsoft, and other connected services
 - [Follow Up Boss](../integrations/follow-up-boss.md) — Follow Up Boss connection, mappings, imports, and sync behavior
 - [Transaction Configuration](./transaction-configuration.md) — Transaction roles, statuses, field options, custom fields, contingencies, and key date statuses

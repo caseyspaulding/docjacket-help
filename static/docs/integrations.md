@@ -34,12 +34,12 @@ DocJacket connects with the tools you already use. Set up integrations in **Sett
 - Track monthly usage and buy additional credits
 - Send and receive direct text messages from transaction threads
 
-### Webhooks
-You can also set up custom webhooks in **Settings > Connections** to send event notifications to external services.
+### Developer API & webhooks
+Building your own integration? The [Developer API](/docs/api) covers the REST API, webhooks, and the partner API in depth.
 
 ## In this section
 
 - [Google Workspace](./google-workspace.mdx) — Connect Gmail, Drive, Calendar, and Contacts
 - [Microsoft Outlook](./microsoft-outlook.mdx) — Connect Outlook Mail, Calendar, and OneDrive
 - [Follow Up Boss](./follow-up-boss.md) — Connect Follow Up Boss, manage sync settings, and review activity
-- [Webhooks](./webhooks.mdx) — Send events to external services
+- [Developer API](/docs/api) — REST API, webhooks, and the partner API
