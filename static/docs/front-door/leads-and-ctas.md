@@ -1,7 +1,7 @@
 ---
 sidebar_label: Leads and CTAs
 sidebar_position: 4
-description: Configure Front Door CTA buttons, route intake forms, and manage incoming lead submissions.
+description: Configure DocJacket Front Door CTA buttons, route intake forms to the right workflow, and manage incoming lead submissions in one place.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/front-door/leads-and-ctas -->

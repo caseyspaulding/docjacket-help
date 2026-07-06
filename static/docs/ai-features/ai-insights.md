@@ -1,7 +1,7 @@
 ---
 sidebar_label: Risk Insights
 sidebar_position: 4
-description: Review transaction-level risk assessments and document-level checks in DocJacket.
+description: Review DocJacket's transaction-level risk assessments and document-level checks to catch missing items and compliance issues early.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/ai-features/ai-insights -->

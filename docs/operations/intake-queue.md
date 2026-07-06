@@ -1,7 +1,7 @@
 ---
 sidebar_label: Intake Queue
 sidebar_position: 3
-description: Route unassigned emails and intake form submissions to transactions from the DocJacket Inbox.
+description: Route unassigned emails and intake-form submissions to the right transaction from the DocJacket Inbox to keep your pipeline organized.
 ---
 
 # Intake Queue

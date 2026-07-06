@@ -1,7 +1,7 @@
 ---
 sidebar_label: Branding and Domains
 sidebar_position: 5
-description: Customize the Front Door theme and connect a custom domain.
+description: Customize your DocJacket Front Door theme — colors, logo, and layout — and connect a custom domain so leads see your own branded site.
 ---
 
 # Branding and Domains

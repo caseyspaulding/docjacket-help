@@ -1,7 +1,7 @@
 ---
 sidebar_label: Transaction Configuration
 sidebar_position: 9
-description: Configure transaction roles, statuses, fields, custom fields, contingencies, and key date statuses.
+description: Configure DocJacket transaction roles, statuses, fields, custom fields, contingencies, and key-date statuses to match how your team works.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/settings/transaction-configuration -->

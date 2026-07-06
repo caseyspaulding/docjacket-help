@@ -1,7 +1,7 @@
 ---
 sidebar_label: Overview
 sidebar_position: 1
-description: Manage your DocJacket subscription, view plan details, and update payment information.
+description: Manage your DocJacket subscription — view plan details, add or remove seats, update payment information, and see invoices from Settings > Billing.
 ---
 
 # Billing & Plans
