@@ -2,7 +2,7 @@
 
 > Help documentation for DocJacket — the AI-powered transaction coordination platform for real estate professionals.
 > URL: https://help.docjacket.com
-> Product URL: https://docjacket.com
+> Product URL: https://www.docjacket.com
 > App URL: https://app.docjacket.com
 
 ## About DocJacket
