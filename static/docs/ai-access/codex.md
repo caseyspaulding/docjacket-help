@@ -128,7 +128,7 @@ Inside DocJacket:
 
 **"Token is invalid, expired, or revoked"** — Either you revoked the client in DocJacket → Settings → AI Access, or the refresh token expired after 30 days of inactivity. Re-consent to reconnect.
 
-**Pro plan required** — Connecting is free, but actually loading tools requires a DocJacket Pro plan on the connecting user's account. If you're on Free, upgrade at [docjacket.com/pricing](https://docjacket.com/pricing).
+**Pro plan required** — Connecting is free, but actually loading tools requires a DocJacket Pro plan on the connecting user's account. If you're on Free, upgrade at [docjacket.com/pricing](https://www.docjacket.com/pricing).
 
 ## Read more
 

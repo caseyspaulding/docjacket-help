@@ -18,7 +18,7 @@ const HEADER = `# DocJacket Help Center — Full Documentation
 
 > Complete help documentation for DocJacket, the AI-powered transaction coordination platform.
 > URL: https://help.docjacket.com
-> Product URL: https://docjacket.com
+> Product URL: https://www.docjacket.com
 
 `;
 

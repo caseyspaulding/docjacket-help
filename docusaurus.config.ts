@@ -83,7 +83,7 @@ const config: Config = {
         '@type': 'Organization',
         name: 'DocJacket',
         legalName: 'DocJacket Inc.',
-        url: 'https://docjacket.com',
+        url: 'https://www.docjacket.com',
         logo: 'https://help.docjacket.com/img/logo-full.svg',
         sameAs: [
           'https://app.docjacket.com',
@@ -118,7 +118,7 @@ const config: Config = {
         applicationCategory: 'BusinessApplication',
         applicationSubCategory: 'Real Estate Transaction Coordination',
         operatingSystem: 'Web',
-        url: 'https://docjacket.com',
+        url: 'https://www.docjacket.com',
         description:
           'AI-powered transaction coordination platform for real estate professionals. DocJacket helps independent transaction coordinators, agents, and brokers manage deals from contract to closing with AI contract extraction, smart timelines, task management, client portals, and document management.',
         audience: {
@@ -128,14 +128,14 @@ const config: Config = {
         },
         offers: {
           '@type': 'Offer',
-          url: 'https://docjacket.com/pricing',
+          url: 'https://www.docjacket.com/pricing',
           priceCurrency: 'USD',
           category: 'subscription',
         },
         publisher: {
           '@type': 'Organization',
           name: 'DocJacket',
-          url: 'https://docjacket.com',
+          url: 'https://www.docjacket.com',
         },
       }),
     },
@@ -169,7 +169,7 @@ const config: Config = {
           position: 'right',
         },
         {
-          href: 'https://docjacket.com',
+          href: 'https://www.docjacket.com',
           label: 'Website',
           position: 'right',
         },
@@ -204,11 +204,11 @@ const config: Config = {
             },
             {
               label: 'Website',
-              href: 'https://docjacket.com',
+              href: 'https://www.docjacket.com',
             },
             {
               label: 'Pricing',
-              href: 'https://docjacket.com/pricing',
+              href: 'https://www.docjacket.com/pricing',
             },
           ],
         },

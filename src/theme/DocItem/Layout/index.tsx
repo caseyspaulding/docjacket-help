@@ -50,12 +50,12 @@ export default function DocItemLayoutWrapper(props: Props): ReactNode {
     author: {
       '@type': 'Organization',
       name: 'DocJacket',
-      url: 'https://docjacket.com',
+      url: 'https://www.docjacket.com',
     },
     publisher: {
       '@type': 'Organization',
       name: 'DocJacket',
-      url: 'https://docjacket.com',
+      url: 'https://www.docjacket.com',
       logo: {
         '@type': 'ImageObject',
         url: 'https://help.docjacket.com/img/logo-full.svg',

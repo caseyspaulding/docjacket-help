@@ -4,7 +4,7 @@
   "description": "DocJacket MCP server — paste-URL-and-go AI access to real estate transactions, key dates, contingencies, tasks, contacts, missing documents, and contract intake for independent Transaction Coordinators.",
   "vendor": {
     "name": "DocJacket Inc.",
-    "url": "https://docjacket.com",
+    "url": "https://www.docjacket.com",
     "contact": "support@docjacket.com"
   },
   "endpoints": {
@@ -66,9 +66,9 @@
     "description": "Included with DocJacket Pro at no additional cost. The user provides their own AI client subscription (Claude Pro, ChatGPT Plus, Cowork seat, Codex for Work, Gemini, Cursor, etc.)."
   },
   "policies": {
-    "privacy": "https://docjacket.com/privacy",
-    "terms": "https://docjacket.com/terms",
-    "security": "https://docjacket.com/security",
+    "privacy": "https://www.docjacket.com/privacy",
+    "terms": "https://www.docjacket.com/terms",
+    "security": "https://www.docjacket.com/security",
     "license": "https://help.docjacket.com/LICENSE",
     "data_handling": "DocJacket reads only the data of the OAuth-authenticating user's organization. AI client prompts are not logged — only the resulting tool calls."
   },

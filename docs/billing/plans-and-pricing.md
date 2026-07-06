@@ -28,7 +28,7 @@ DocJacket offers a free plan with limited active transactions — great for tryi
 
 ## Current pricing
 
-Visit [docjacket.com/pricing](https://docjacket.com/pricing) for the latest pricing details and plan options.
+Visit [docjacket.com/pricing](https://www.docjacket.com/pricing) for the latest pricing details and plan options.
 
 ## Early-bird pricing
 
