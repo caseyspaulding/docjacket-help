@@ -1,7 +1,7 @@
 ---
 sidebar_label: Referrals
 sidebar_position: 6
-description: Share your DocJacket referral link, track referred signups, and see referral credits earned.
+description: Share your DocJacket referral link, track referred signups, and see the referral credits you've earned toward your subscription.
 ---
 
 # Referrals

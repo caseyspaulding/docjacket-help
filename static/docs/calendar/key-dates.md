@@ -1,7 +1,7 @@
 ---
 sidebar_label: Key Dates List
 sidebar_position: 3
-description: Use the Key Dates page to review upcoming and overdue key dates across all DocJacket transactions.
+description: Use the DocJacket Key Dates page to review upcoming and overdue key dates across every transaction and stay ahead of each deadline.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/calendar/key-dates -->

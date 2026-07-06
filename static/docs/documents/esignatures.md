@@ -1,7 +1,7 @@
 ---
 sidebar_label: E-Signatures
 sidebar_position: 10
-description: Review DocJacket e-signature requests and track signer completion status across documents.
+description: Review DocJacket e-signature requests and track signer completion status across every document on a transaction, in one view.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/documents/esignatures -->

@@ -3,6 +3,6 @@
   "position": 9,
   "link": {
     "type": "generated-index",
-    "description": "Monitor automated workflow executions, approvals, retries, and failures."
+    "description": "Monitor DocJacket's automated workflow executions — track approvals, retries, and failures, and see exactly what ran on each transaction."
   }
 }

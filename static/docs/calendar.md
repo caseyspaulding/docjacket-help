@@ -1,7 +1,7 @@
 ---
 sidebar_label: Overview
 sidebar_position: 1
-description: Track key dates, deadlines, tasks, reminders, and calendar events across all your transactions.
+description: Track key dates, deadlines, tasks, reminders, and calendar events across all your DocJacket transactions, with Google Calendar sync.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/calendar -->

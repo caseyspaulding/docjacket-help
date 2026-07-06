@@ -1,7 +1,7 @@
 ---
 sidebar_label: Signature Requests
 sidebar_position: 7
-description: Send DocJacket documents for e-signature and track request status from the transaction.
+description: Send DocJacket documents for e-signature and track each request's status — sent, viewed, and signed — right from the transaction.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/documents/signature-requests -->

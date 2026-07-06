@@ -2,7 +2,7 @@
 title: Transactions
 sidebar_label: Overview
 sidebar_position: 1
-description: Learn how to create and manage real estate transactions in DocJacket — from contract to closing.
+description: Learn how to create and manage real estate transactions in DocJacket — from contract to closing — with contacts, documents, dates, and tasks.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/transactions -->

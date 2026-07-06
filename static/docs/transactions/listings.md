@@ -1,7 +1,7 @@
 ---
 sidebar_label: Listings
 sidebar_position: 6
-description: Manage listing workflows in DocJacket through the Transactions workspace.
+description: Manage listing workflows in DocJacket through the Transactions workspace — track listing-type records from prep to active to closing.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/transactions/listings -->

@@ -1,7 +1,7 @@
 ---
 sidebar_label: Overview
 sidebar_position: 1
-description: Connect DocJacket with Google Workspace, Microsoft 365, Follow Up Boss, SMS, and external services.
+description: Connect DocJacket with Google Workspace, Microsoft 365, Follow Up Boss, SMS, webhooks, and external services to sync your whole workflow.
 ---
 
 # Integrations

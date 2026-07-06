@@ -1,7 +1,7 @@
 ---
 sidebar_label: Email Templates
 sidebar_position: 4
-description: Use reusable email templates with smart fields that auto-fill with DocJacket transaction data.
+description: Create reusable DocJacket email templates with smart fields that auto-fill from transaction data, so common messages send in seconds.
 ---
 
 # Email Templates

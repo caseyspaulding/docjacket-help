@@ -1,7 +1,7 @@
 ---
 sidebar_label: Disclosure Packages
 sidebar_position: 11
-description: Share disclosure packages from a transaction's document workspace.
+description: Share disclosure packages from a DocJacket transaction's document workspace — invite recipients, track views and acknowledgements, and manage access.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/documents/disclosure-packages -->
