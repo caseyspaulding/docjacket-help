@@ -1,7 +1,7 @@
 ---
 sidebar_label: Email Automation
 sidebar_position: 5
-description: Link email templates to tasks in DocJacket so emails are ready to send at the right moment — or fire automatically when the task fires.
+description: Link email templates to tasks so the right email is drafted and ready for your review at the right moment — nothing sends to a client until you approve it.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/tasks/email-automation -->
@@ -10,6 +10,10 @@ description: Link email templates to tasks in DocJacket so emails are ready to s
 # Email Automation
 
 Link email templates to tasks so the right email is ready at the right point in the workflow. Task email automation can prepare an email for review, send an email automatically, schedule an email relative to a task due date, and include configured recipients or documents.
+
+:::tip You're always in control — nothing sends on its own
+Worried the system might email a client something you didn't want? It won't. By default, automations **draft** the email and hold it in your **Review queue** for one-click approve, edit, or skip — a client or agent never hears from DocJacket until you say so. Sending automatically is strictly opt-in, per email. You can also turn on an organization-wide safety switch so *every* automated email waits for review (see [Review before sending](#review-before-sending) below). This "draft-and-review" habit is how our most active coordinators send hundreds of emails with near-zero mistakes.
+:::
 
 Most task email automation starts in a checklist template, then becomes editable transaction-specific automation after the checklist is applied. Use templates for repeatable workflows; use the transaction task drawer when a real deal needs an adjustment.
 
@@ -97,6 +101,15 @@ Task email automation can use:
 The linked email template still controls the subject, body, smart fields, and any template-level auto-attachments.
 
 Build and test the template in **Templates > Email Templates** first. The checklist automation controls decide when the email is prepared or sent, while the email template controls the content, default recipient logic, and template-level document attachments.
+
+## Review before sending
+
+You control whether an automated email waits for your approval or sends on its own, at two levels:
+
+- **Per email (the default).** Every on-completion email has a **Require review before sending** switch, and it's **on by default**. While it's on, completing the task drafts the email into your **Review queue** instead of sending it. Uncheck it only when you want that specific email to send automatically.
+- **Organization-wide (the safety net).** In **Settings > Organization**, turn on **Review auto-emails before sending** to force *every* automated email across your account to wait in the Review queue for one-click approve, edit, or skip — regardless of the per-email setting. This is the recommended setting if you're new to automation or simply never want an email leaving without a final human look. Drafts auto-expire after your retention window if you don't act on them.
+
+Either way, the promise is the same: **nothing reaches a client or agent until you approve it.** Automation does the tedious part — picking the template, resolving recipients by role, filling smart fields, attaching documents — and leaves the send button to you.
 
 ## Runtime review
 
