@@ -91,8 +91,12 @@ You can enable or disable a rule without deleting it. Deleting a rule stops futu
 
 ## Review Behavior
 
-If organization-wide review-first is enabled, drafts from these rules land in the topbar **Review queue** before they send. Open the document-tasks icon and use the **Ready for Review** tab to send, edit, or skip them.
+You decide whether automated emails send on their own or wait for your approval — and by default, **nothing reaches a client or agent until you say so.**
 
-If review-first is off globally, individual automation rules can still opt into **Review before sending**. When neither review-first setting applies, rule-created messages send automatically on schedule.
+**Organization-wide safety switch.** In **Settings > Organization**, turn on **Review auto-emails before sending** to hold *every* automated email — task emails, reminders, status-rule messages — in the topbar **Review queue** before it sends. Open the document-tasks icon and use the **Ready for Review** tab to send, edit, or skip each one. Drafts auto-expire after your retention window if you don't act on them. This is the recommended setting for anyone who never wants an email leaving the account without a final human look.
+
+**Per-rule review.** Even with the organization-wide switch off, an individual automation rule (or a task's on-completion email) can opt into **Review before sending** on its own — and for on-completion task emails that per-email switch is **on by default**.
+
+When neither review setting applies to a message, it sends automatically on schedule. Scheduled reminders and manually configured scheduled emails stay schedule-driven — they appear in the Review queue's **Scheduled** tab when they are upcoming, held, or need attention, instead of the Ready for Review tab.
 
 Scheduled reminders and manually configured scheduled emails stay schedule-driven. They appear in the Review queue's **Scheduled** tab when they are upcoming, held, or need attention instead of the Ready for Review tab.
