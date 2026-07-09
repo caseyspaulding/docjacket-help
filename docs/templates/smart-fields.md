@@ -1,6 +1,6 @@
 ---
 sidebar_label: Smart Fields
-sidebar_position: 8
+sidebar_position: 10
 description: Manage reusable DocJacket smart fields for document data, templates, and transaction-specific values.
 ---
 

@@ -1512,6 +1512,58 @@ Active non-offer statuses appear as columns in the main Pipeline view and as opt
 
 ---
 
+# Cancelling or Closing a Transaction
+
+When a deal falls through — or closes successfully — you move the transaction into a **terminal status** so it stops appearing as active work and its automation winds down cleanly.
+
+## How to cancel a transaction
+
+Cancelling is a status change. Move the transaction into any status whose type is **Cancelled** (the seeded **Cancelled** status, or a custom one you created with the Cancelled type). You can change the status:
+
+1. **From the transaction header** — click the status chip and pick a Cancelled status
+2. **From the Pipeline** — drag the card into a Cancelled column
+3. **From the Transactions list** — use the inline status control
+
+Closing a completed deal works the same way, using a **Closed**-type status. See [Transaction Statuses](./transaction-statuses.mdx) for how status types work and how to add your own.
+
+## What happens when you cancel or close
+
+Moving a transaction from an open status into a **Closed** or **Cancelled** status is a *terminal* transition. DocJacket automatically winds down the deal's pending work — **only for that transaction**:
+
+- Incomplete **key dates** are marked **Not Applicable** (completed and waived dates are left as-is)
+- Open **tasks** are marked **Skipped** with a "Transaction closed" note
+- Pending **scheduled messages** are cancelled
+- Unsent **reminders** are cleared
+- Pending **scheduled emails** are cancelled (already-sent emails are preserved)
+- **Calendar events** for the transaction are removed
+
+**Closed vs. Cancelled:** both wind down pending work the same way. The difference is that a **Closed** status also fires your "closed" automation and pushes the closed stage to connected CRMs (like Follow Up Boss). A **Cancelled** status does not trigger closed-stage automation.
+
+:::note Terminal cleanup only touches this transaction
+Every one of these changes is scoped to the single transaction you're cancelling. Nothing cascades to any other deal.
+:::
+
+## Cancelling a purchase but keeping the listing
+
+A **listing** and a **purchase** are independent transaction records — different deals, each with its own status, tasks, and dates. There is no automatic link between them, so **cancelling a purchase has no effect on a listing**.
+
+If you have a separate listing and a separate purchase:
+
+1. Open the **purchase** transaction and move it to a **Cancelled** status
+2. Your **listing** stays exactly as it was — still open and in your queue
+
+To find the listing afterward, open **Transactions** and filter the type to **Listing** (see [Listings](./listings.md)).
+
+:::caution If you used "Convert to Sale"
+Converting a listing to a sale doesn't create a second record — it flips the *same* record's type from Listing to Purchase. In that case there is no separate listing to keep, and cancelling the transaction cancels that single record. If you want it to go back to being an active listing, change its **status and type** back manually rather than cancelling — cancel will not restore or re-create a listing.
+:::
+
+## Reopening a transaction
+
+If you cancelled a deal by mistake, move it back into an **open** status to reactivate it. Because the terminal transition marked pending items as Skipped or Not Applicable, review the transaction's **tasks** and **[key dates](./key-dates-and-financials.mdx)** afterward and restore anything that should be active again.
+
+---
+
 ## Documents
 
 # Documents
@@ -4624,6 +4676,10 @@ Online Forms support:
 
 For each field you can set the label, required status, section, placeholder, help text, width, options, and conditional display rules.
 
+:::tip Capturing a person's email on an intake form
+The Contact Picker is for selecting a contact you *already* have — it doesn't collect a new person's email. To gather contact details from an outside respondent, add dedicated Email and Phone fields. See [Collecting Contacts on Forms](./collecting-contacts-on-forms.md).
+:::
+
 ## Sections and branding
 
 Forms inherit your organization branding by default. You can also set a per-form theme, welcome message, completion message, and section styling.
@@ -4684,6 +4740,8 @@ Transaction-specific form submissions appear on the transaction's **Forms** tab.
 
 Create-transaction submissions may enter the intake flow for review and routing before becoming a transaction record.
 
+For the full mapping workflow — including how to capture contingency dates — see [Applying Form Submissions](./applying-form-submissions.md).
+
 ## When to use forms
 
 Use an online form when you need consistent answers from someone outside your team:
@@ -4699,6 +4757,105 @@ Use an online form when you need consistent answers from someone outside your te
 ## How forms fit with transactions
 
 Form responses give you structured data that can be reviewed and used by the team. For repeatable transaction workflows, combine forms with [checklists](./timeline-templates.md), [email templates](./email-templates.md), [smart fields](./smart-fields.md), and [Front Door](../front-door/leads-and-ctas.md).
+
+---
+
+# Collecting Contacts on Forms
+
+Online Forms give you a few ways to capture people, and picking the right one decides whether you get a full contact record or just a name. This is the most common point of confusion when building an intake form.
+
+## The Contact Picker is for *existing* contacts
+
+The **Contact Picker** field lets a respondent **choose a contact you already have** — it is not a way to collect a new person's details.
+
+- In the form builder, a Contact Picker uses an **Allowed Contacts** list. Only the contacts you select there appear as options on the public form.
+- On the public form it shows a **single search box**, and the respondent picks from your list. DocJacket then attaches that existing contact to the transaction, using whatever **email and phone are already saved on that contact's record**.
+- It does **not** collect a new email or phone from the person filling out the form — there are no email/phone boxes on a Contact Picker.
+
+:::caution Why a contact field can show "just a name"
+If a Contact Picker has **no Allowed Contacts** set, it falls back to a plain **name text box** on the public form. So an outside person filling out an intake form ends up typing only a name — because the Contact Picker was never meant to gather a *new* contact's email in the first place.
+:::
+
+## Capturing a new person's email and phone
+
+When you need details from someone who **isn't already in your contacts** — a buyer or seller filling out an intake form — don't rely on a contact field. Add dedicated fields instead:
+
+1. In the form builder, add an **Email** field
+2. Add a **Phone** field
+3. Add a **Text** field for their name (or use the built-in submitter name)
+
+These give you real, mapped values you can push onto the transaction.
+
+:::tip Every public form already captures the submitter's email
+Public forms include a built-in **Your Name** and **Your Email** at the top of the form, separate from any field you add. For a simple intake, that submitter email may already be all you need.
+:::
+
+If you added a **Participant** field expecting separate name and email boxes, add explicit **Email** and **Phone** fields instead — dedicated fields are the reliable way to capture contact details on a public form.
+
+## Getting the details onto the transaction
+
+Once a form is submitted, you map its answers onto the deal from the transaction's **Forms** tab:
+
+- **Email**, **Phone**, and **Name** fields can be mapped to the Buyer, Seller, or Agent slots on the transaction.
+- A **Contact Picker** selection attaches that existing contact to the deal by its role.
+
+See [Applying Form Submissions](./applying-form-submissions.md) for the full mapping workflow, and [Online Forms](./online-forms.md) for building and sharing forms.
+
+## Rule of thumb
+
+- The person is **already in your contacts** → use a **Contact Picker** (and set Allowed Contacts).
+- The person is **new** (outside intake) → use dedicated **Email**, **Phone**, and name fields.
+
+---
+
+# Applying Form Submissions to a Transaction
+
+Online Forms collect structured answers. Once someone submits a form, you **review** the submission and **map** its values onto a transaction, so you don't re-key anything by hand.
+
+## Where submissions show up
+
+- **Forms sent from a deal** (Update Transaction / Additive forms) — submissions appear on that transaction's **Forms** tab.
+- **Intake forms** (Create Transaction purpose) — submissions enter the intake flow, where you review them and **create a new transaction** from the answers.
+
+See [Online Forms](./online-forms.md) for the difference between form purposes and how to share each kind.
+
+## Reviewing a submission
+
+On the transaction's **Forms** tab, expand a submission to see every submitted field. As you review, you can mark each field as **clear**, **needs documents**, **needs internal review**, **needs attorney review**, or **resolved** — so the rest of the team knows what's been checked.
+
+## Mapping fields onto the transaction
+
+For each submitted field, choose the transaction field it should fill, then apply. You can map to:
+
+- **Property** — address, city, state, ZIP
+- **Contacts** — Buyer, Second Buyer, Seller, Second Seller (plus email and phone for each)
+- **Agents** — Listing Agent and Buyer's Agent (name, email, phone, brokerage)
+- **Financials** — purchase price, loan amount, earnest money, down payment, financing type
+- **Status** — set the transaction to a specific status
+- **Custom fields** — any custom field your organization has defined
+
+For capturing contact details specifically, see [Collecting Contacts on Forms](./collecting-contacts-on-forms.md).
+
+## Capturing dates and deadlines
+
+A couple of things are worth knowing so your contingency dates land correctly.
+
+**Forms don't do date math.** A form can't turn a *number of days* into a deadline — there's no "Effective Date + 10 days" calculation on the form side. If you put a number field like "Inspection period: 10 days" on a form, it stays the number 10; it never becomes a date. To get an actual deadline, **capture the calendar date on the form** with a **Date** field (one per deadline: Inspection, Financing, Appraisal, Closing).
+
+**Where the date lands depends on how the form is used:**
+
+- **When the form creates the transaction** (an intake / Create Transaction form): mapped **date fields populate the matching key dates automatically** as the deal is created — Contract, Closing, Inspection Deadline, Appraisal Deadline, Financing Deadline, and so on.
+- **On an existing transaction:** set contingency **deadlines directly on the deal's [Key Dates](../transactions/key-dates-and-financials.mdx)**, or apply a [checklist](./timeline-templates.md) that calculates them from an anchor date. This is the reliable way to get deadlines onto a deal that already exists.
+
+:::tip Two ways to handle contingency deadlines
+If the contract gives **actual dates**, capture them as **Date fields** on an intake form (or type them into Key Dates). If the contract gives **day counts** that vary per deal, build a [checklist](./timeline-templates.md) with anchor-date rules (e.g. *Inspection Deadline = Effective Date + 10 calendar days*) and apply it — DocJacket does the date math from the anchor date on the transaction. See [Contingencies & Repairs](../transactions/contingencies-and-repairs.mdx).
+:::
+
+## Tips
+
+- Map **contacts and financials** on the Forms tab of an existing deal; they apply immediately.
+- For **deadlines**, prefer capturing exact dates on an intake form, or use a checklist for day-count rules.
+- A form field's *type* isn't enforced against its target — point a **Date** field at a date target so the value is read as a real date.
 
 ---
 
