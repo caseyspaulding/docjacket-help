@@ -11,12 +11,11 @@ Real estate transactions carry sensitive client and financial information, so pr
 ## How your data is protected
 
 - **Encryption everywhere.** All data is encrypted **in transit with TLS 1.3** and **at rest with AES-256**.
-- **Enterprise-grade hosting.** Servers are located in the **United States**, on infrastructure whose provider holds **SOC 2 Type II, ISO 27001, and 90+ compliance certifications**.
+- **Enterprise-grade hosting.** Servers are located in the **United States** on enterprise-grade cloud infrastructure.
 - **Isolated per organization.** Each organization's data is separated at the database level — your data is never mixed with another org's.
 - **Role-based access.** Team members only see what their role allows, and agents only see the transactions they're assigned to. See [Understanding Roles](./understanding-roles.mdx).
-- **Multi-factor authentication** is available for all accounts.
 - **Automatic backups** run daily with **35-day retention** and geo-redundant storage, so data can be restored to a point in time within the past month.
-- **Immutable document storage.** Transaction documents are kept on immutable, non-erasable storage, including **WORM-compliant storage** (per California Code of Regulations § 2729) for compliance-sensitive records. See [Audit Mode](../documents/audit-mode.mdx).
+- **Immutable archive storage.** **Archived deals** are stored on immutable, non-erasable **WORM-compliant storage** (per California Code of Regulations § 2729), so records can't be altered or deleted after archiving. See [Audit Mode](../documents/audit-mode.mdx).
 - **Secure billing.** Payments are handled by a **PCI DSS Level 1** certified payment provider — DocJacket never stores full card numbers.
 - **Ongoing testing.** DocJacket performs annual penetration testing and commits to breach notification within 24 hours to affected users.
 
