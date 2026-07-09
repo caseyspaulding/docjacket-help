@@ -6,7 +6,7 @@ description: Manage DocJacket office locations, states, members, approved forms,
 
 # Offices
 
-Offices let brokerages and teams manage location-specific configuration. Each office can have its own states, members, branding, approved forms, and signing defaults.
+Offices let brokerages and teams manage location-specific configuration. Set up an office for each brokerage location, then give each office its own states, members, branding, approved forms, and signing defaults. This is where you add an office, manage office members, and set per-office defaults.
 
 ## Creating an office
 
