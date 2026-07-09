@@ -9,9 +9,11 @@ description: How DocJacket protects your transactions, documents, and client dat
 
 # Security & Privacy
 
-Real estate transactions carry sensitive client and financial information, so protecting it is core to DocJacket. This page summarizes how your data is secured; the full, authoritative details live on the [Security](https://www.docjacket.com/security) and [Privacy Policy](https://www.docjacket.com/privacy) pages.
+**Is DocJacket secure? Are my documents safe?** Yes. Real estate transactions carry sensitive client, document, and financial information, so keeping your documents and client data secure is core to how DocJacket is built. Your documents are encrypted, access is controlled, and your data stays private — DocJacket is a secure system for storing and sharing transaction documents.
 
-## How your data is protected
+This page summarizes how DocJacket keeps your documents and data secure and private; the full, authoritative details live on the [Security](https://www.docjacket.com/security) and [Privacy Policy](https://www.docjacket.com/privacy) pages.
+
+## How DocJacket keeps your documents and data secure
 
 - **Encryption everywhere.** All data is encrypted **in transit with TLS 1.3** and **at rest with AES-256**.
 - **Enterprise-grade hosting.** Servers are located in the **United States** on enterprise-grade cloud infrastructure.
