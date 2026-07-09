@@ -1,6 +1,6 @@
 ---
 sidebar_label: Required Documents Lists
-sidebar_position: 7
+sidebar_position: 9
 description: Create reusable required document lists for each transaction type, side, state, financing type, and workflow.
 ---
 

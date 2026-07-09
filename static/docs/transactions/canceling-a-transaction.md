@@ -1,0 +1,58 @@
+---
+sidebar_label: Cancelling a Transaction
+sidebar_position: 8
+description: How to cancel or close a transaction in DocJacket, what happens to its tasks and deadlines, and why cancelling a purchase never affects a separate listing.
+---
+
+<!-- Canonical: https://help.docjacket.com/docs/transactions/canceling-a-transaction -->
+<!-- Source: docs/transactions/canceling-a-transaction.mdx -->
+
+# Cancelling or Closing a Transaction
+
+When a deal falls through — or closes successfully — you move the transaction into a **terminal status** so it stops appearing as active work and its automation winds down cleanly.
+
+## How to cancel a transaction
+
+Cancelling is a status change. Move the transaction into any status whose type is **Cancelled** (the seeded **Cancelled** status, or a custom one you created with the Cancelled type). You can change the status:
+
+1. **From the transaction header** — click the status chip and pick a Cancelled status
+2. **From the Pipeline** — drag the card into a Cancelled column
+3. **From the Transactions list** — use the inline status control
+
+Closing a completed deal works the same way, using a **Closed**-type status. See [Transaction Statuses](./transaction-statuses.mdx) for how status types work and how to add your own.
+
+## What happens when you cancel or close
+
+Moving a transaction from an open status into a **Closed** or **Cancelled** status is a *terminal* transition. DocJacket automatically winds down the deal's pending work — **only for that transaction**:
+
+- Incomplete **key dates** are marked **Not Applicable** (completed and waived dates are left as-is)
+- Open **tasks** are marked **Skipped** with a "Transaction closed" note
+- Pending **scheduled messages** are cancelled
+- Unsent **reminders** are cleared
+- Pending **scheduled emails** are cancelled (already-sent emails are preserved)
+- **Calendar events** for the transaction are removed
+
+**Closed vs. Cancelled:** both wind down pending work the same way. The difference is that a **Closed** status also fires your "closed" automation and pushes the closed stage to connected CRMs (like Follow Up Boss). A **Cancelled** status does not trigger closed-stage automation.
+
+:::note Terminal cleanup only touches this transaction
+Every one of these changes is scoped to the single transaction you're cancelling. Nothing cascades to any other deal.
+:::
+
+## Cancelling a purchase but keeping the listing
+
+A **listing** and a **purchase** are independent transaction records — different deals, each with its own status, tasks, and dates. There is no automatic link between them, so **cancelling a purchase has no effect on a listing**.
+
+If you have a separate listing and a separate purchase:
+
+1. Open the **purchase** transaction and move it to a **Cancelled** status
+2. Your **listing** stays exactly as it was — still open and in your queue
+
+To find the listing afterward, open **Transactions** and filter the type to **Listing** (see [Listings](./listings.md)).
+
+:::caution If you used "Convert to Sale"
+Converting a listing to a sale doesn't create a second record — it flips the *same* record's type from Listing to Purchase. In that case there is no separate listing to keep, and cancelling the transaction cancels that single record. If you want it to go back to being an active listing, change its **status and type** back manually rather than cancelling — cancel will not restore or re-create a listing.
+:::
+
+## Reopening a transaction
+
+If you cancelled a deal by mistake, move it back into an **open** status to reactivate it. Because the terminal transition marked pending items as Skipped or Not Applicable, review the transaction's **tasks** and **[key dates](./key-dates-and-financials.mdx)** afterward and restore anything that should be active again.
