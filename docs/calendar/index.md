@@ -16,3 +16,4 @@ Use the Calendar to see closings, key dates, task due dates, and custom events i
 - [Key Dates List](./key-dates.md) — See upcoming and overdue key dates across every transaction
 - [Anchor Dates](./anchor-dates.md) — How one date drives all the others
 - [Calendar View](./calendar-view.mdx) — See closings, key dates, tasks, and custom events across your transactions
+- [Calendar Invites](./calendar-invites.md) — Send calendar invitations for key dates to the agents and title on a deal
