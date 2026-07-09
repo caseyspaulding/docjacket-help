@@ -6,7 +6,7 @@ description: Send one or more approved form templates for e-signature, review au
 
 # E-Signature Form Packets
 
-Form packets let you send one or more office-approved form templates for e-signature from a transaction.
+Form packets let you send one or more office-approved form templates for e-signature (esignature / esign / electronic signature) from a transaction.
 
 Use packets when you want DocJacket to prepare reusable approved forms, fill known transaction data, collect any remaining agent-entered fields, and then route the forms to signers.
 

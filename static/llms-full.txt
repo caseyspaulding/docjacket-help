@@ -2136,7 +2136,7 @@ Use the transaction documents list to confirm that the file arrived. If an expec
 
 # Signature Requests
 
-Signature Requests let you send transaction documents for e-signature directly from DocJacket. Sent requests stay tied to the transaction, so your team can track who has signed and which signed PDF came back.
+Signature Requests let you send transaction documents for e-signature directly from DocJacket. This is how you send a document for electronic signature (esignature / esign) — request a signature, and the sent request stays tied to the transaction, so your team can track who has signed and which signed PDF came back.
 
 This page covers sending an existing uploaded document. To send reusable office-approved forms, use the transaction **Forms & signatures** subtab and see [Form Packets](./esignature-form-packets.md).
 
@@ -2249,7 +2249,7 @@ Duplicating a template opens the new draft in the editor. Archiving a template r
 
 # E-Signature Form Packets
 
-Form packets let you send one or more office-approved form templates for e-signature from a transaction.
+Form packets let you send one or more office-approved form templates for e-signature (esignature / esign / electronic signature) from a transaction.
 
 Use packets when you want DocJacket to prepare reusable approved forms, fill known transaction data, collect any remaining agent-entered fields, and then route the forms to signers.
 
@@ -2338,7 +2338,7 @@ In-flight packets refresh automatically about every 15 seconds while a packet is
 
 # E-Signatures
 
-The **E-Signatures** page gives you one place to review signature requests and signing progress.
+The **E-Signatures** page gives you one place to review signature requests and signing progress. However you spell it — e-signature, esignature, e-sign, or electronic signature — this is where DocJacket tracks documents you've sent to be signed.
 
 Signature requests can come from a transaction document or from a form packet built from office-approved templates. The E-Signatures page tracks requests across statuses such as pending, partially completed, completed, cancelled, declined, or expired.
 
@@ -3321,7 +3321,7 @@ Review-required emails appear in the topbar **Review queue** under **Ready for R
 
 # Task Options
 
-Click a task to open its detail drawer. The drawer starts with the core task fields, then includes collapsible sections for the settings that affect visibility, automation, reminders, comments, and reporting.
+Click a task to open its detail drawer. This is where you change a task's due date (reschedule or move a task), reassign it, and edit its details. The drawer starts with the core task fields, then includes collapsible sections for the settings that affect visibility, automation, reminders, comments, and reporting.
 
 ![Transaction Tasks tab where clicking a task opens Task Details](/img/tasks/transaction-tasks-tab.png)
 
@@ -8280,7 +8280,7 @@ The profile page also shows your organization's intake email when email forwardi
 
 # Offices
 
-Offices let brokerages and teams manage location-specific configuration. Each office can have its own states, members, branding, approved forms, and signing defaults.
+Offices let brokerages and teams manage location-specific configuration. Set up an office for each brokerage location, then give each office its own states, members, branding, approved forms, and signing defaults. This is where you add an office, manage office members, and set per-office defaults.
 
 ## Creating an office
 
@@ -8408,7 +8408,7 @@ From **Settings > Team Members**, you can:
 
 # Referrals
 
-Use **Settings > Referrals** to share DocJacket with other transaction coordinators or agents and track referral credit.
+Use **Settings > Referrals** to share DocJacket with other transaction coordinators or agents and track referral credit. The referral program lets you refer a colleague with your referral link and earn referral credit toward your subscription when they sign up — this page is how referrals work and where you find your referral link.
 
 ## Your referral link
 
