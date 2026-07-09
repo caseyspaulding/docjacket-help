@@ -344,6 +344,28 @@ Signer roles are configured inside e-sign form templates. They are separate from
 
 ---
 
+# Mobile & Devices
+
+## Is there a mobile app?
+
+DocJacket is a **web app** — there's no separate iOS or Android app to download. You use it in any modern web browser (Chrome, Safari, Edge, Firefox) on a desktop, laptop, tablet, or phone. Just go to your DocJacket address and sign in; everything stays in sync because it's the same cloud account on every device.
+
+## On a phone or tablet
+
+The DocJacket interface works in a mobile browser. For heavier work — reviewing a contract, building checklists, mapping form fields — a larger screen is more comfortable, but you can check transactions, tasks, and messages on the go.
+
+**Tip:** add DocJacket to your phone's home screen from your browser's share menu for one-tap access that feels like an app.
+
+## What clients and agents see on mobile
+
+Your clients and agents never need an app. The [Client Portal](../client-portal/index.mdx) is a **link** you send them, and it opens right in their phone's browser. When you set up a portal, you can preview both the **mobile** and **desktop** views before sending — so you see exactly what the recipient will see.
+
+## Working alongside Claude
+
+DocJacket also connects to Claude, including **Claude Desktop** (Mac/Windows) and other Claude surfaces, so you can drive DocJacket with AI. See [AI Access](../ai-access/index.mdx).
+
+---
+
 ## Operations
 
 # Operations
@@ -1346,7 +1368,7 @@ Use the transaction edit page for governed transaction dates. On the timeline, a
 
 Use the key-date drawer for custom or checklist-generated timeline dates. You can update the due date, status, notes, reminders, linked tasks, and portal note visibility. If a key date is missing its anchor, it appears as **Needs date** until the upstream transaction date is filled in.
 
-When you move a key date, DocJacket may show a cascade preview before saving. Review the affected tasks, downstream key dates, manually overridden dates, completed dates, and missing-rule items before applying the change.
+When you move a key date, DocJacket may show a cascade preview before saving. Review the affected tasks, downstream key dates, manually overridden dates, completed dates, and missing-rule items before applying the change. For why some dates recalculate automatically and others don't, see [Recalculating Deadlines](./recalculating-deadlines.mdx).
 
 If a date came from extraction, review it before saving so downstream tasks, reminders, scheduled emails, and calendar events use the correct anchor. In extraction review, extracted dates only become timeline key dates when you opt them into **Add to timeline?**.
 
@@ -1564,6 +1586,79 @@ If you cancelled a deal by mistake, move it back into an **open** status to reac
 
 ---
 
+# Recalculating Deadlines
+
+A common surprise: you update the **Contract Date** or **Closing Date**, but the other deadlines don't move. Whether a date recalculates depends entirely on **how it was created**.
+
+## Two kinds of dates
+
+- **Computed dates** come from a [checklist / timeline template](../templates/timeline-templates.md). Each is defined as a rule — an *anchor* (like Effective Date or Closing Date) plus an offset, e.g. *Inspection Deadline = Effective Date + 10 days*. Because a computed date knows its anchor, it can recalculate.
+- **Manual dates** were typed in by hand or filled in from contract extraction. They're just a fixed date with no anchor, so nothing ties them to your contract or closing date.
+
+**Only computed dates recalculate.** Manual dates stay put until you change them yourself.
+
+## What happens when you change an anchor date
+
+When you edit a key date — say you push Closing back a week — DocJacket automatically recalculates everything built to depend on it:
+
+- **Computed key dates** anchored to it shift by their rule
+- **Task due dates** that were anchored to it (from a checklist) move too
+- DocJacket may show a **cascade preview** first, so you can review the affected dates and tasks before saving
+
+Dates and tasks with a plain fixed date — and any date you've manually overridden — are left alone.
+
+## Getting every deadline right
+
+If you changed the contract or closing date and the other deadlines didn't follow, those deadlines were **manual** (typed or extracted) with no anchor. To fix them:
+
+1. **Apply a checklist / timeline template** to the transaction. The template stamps the anchor + offset rules, so those deadlines become computed dates that recalculate from your contract/closing date from then on. See [Checklists](../templates/timeline-templates.md).
+2. Or **edit each deadline by hand** — manual dates won't move on their own.
+
+If a key date *is* computed but shows a stale value because it was manually overridden, open its drawer and use **Overridden — reset** to recompute it from its anchor.
+
+## A note on task due dates
+
+A task's **Due Date** in the task drawer is a single date you set directly (and can clear). Tasks that got their due date from a checklist template are anchored to a key date and recompute automatically when that key date moves. If a task keeps snapping back to a key date and you want a permanently fixed date, that anchor lives on the [task template](../templates/task-templates.md) — adjust it there.
+
+See also [Key Dates & Financials](./key-dates-and-financials.mdx).
+
+---
+
+# Coordinating Both Sides of a Deal
+
+When you're the TC for an agent who has **both sides** of a deal — representing buyer and seller, or a dual-agency listing — use **one transaction** with the **Side** set to **Dual** (some intake forms label it "Both Sides"). It's one physical closing, so one transaction keeps everything in one place.
+
+## Why one transaction
+
+A single transaction already holds both sides:
+
+- **Both parties** — buyer(s) and seller(s)
+- **Both agents** — listing agent and buyer's agent
+- **Both commission sides** — listing-side and buyer-side amounts and rates
+- **Both representatives**, one set of **key dates**, one **portal**, and one **document jacket**
+
+Splitting one closing into two transactions means maintaining documents, contacts, dates, and portal links **twice**. DocJacket doesn't link two transactions or sync anything between them, so everything would be duplicated by hand.
+
+## Setting it up
+
+1. Create or open the transaction
+2. Set **Side** to **Dual** / **Both Sides**
+   - If "Dual" isn't in your Side options, add it under **Settings** (transaction field options), or pick "Both Sides (Dual)" on an intake form
+3. Add the buyer-side and seller-side contacts and both agents
+4. Enter the listing-side and buyer-side commission amounts
+
+## One thing to do manually
+
+Applying a checklist doesn't automatically stack two checklists for a Dual deal — it picks a single default. So **apply your buyer-side checklist and your seller-side checklist yourself** so both sets of tasks and deadlines land on the transaction. See [Checklists](../templates/timeline-templates.md).
+
+## When two transactions make sense
+
+Two separate transactions can be cleaner if your **reporting or exports assume one side per record** (for example, commission reports or side-based filters) and you're willing to maintain both files independently. Since there's no link between them, treat them as two separate deals.
+
+See also [Transaction Statuses](./transaction-statuses.mdx) and [Listings](./listings.md).
+
+---
+
 ## Documents
 
 # Documents
@@ -1649,6 +1744,24 @@ Documents don't only come from manual uploads:
 - **DocDrop** — Contacts can email documents directly into the transaction (see [DocDrop](./docdrop.mdx))
 - **Google Drive** — Import files from Drive or export transaction files back to Drive (see [Google Drive Integration](./google-drive-integration.mdx))
 - **E-sign packets** — Completed DocJacket e-sign packets save the signed PDF back to the transaction
+
+## Deleting a document
+
+To remove a file from a transaction:
+
+1. Open the transaction and go to the **Documents** tab
+2. Find the document's row and click the **trash-can icon** (hover over the row if you don't see it)
+3. Confirm in the **Delete document?** dialog
+
+Deleting is **permanent** — there's no trash or undo to restore from, so double-check before you confirm. Every deletion is recorded in the transaction's activity log, so you can always see who deleted what and when.
+
+To remove several files at once, tick the checkboxes on the left of each row and click **Delete All**.
+
+:::caution Before you delete
+- **Signed documents can be deleted too.** DocJacket won't stop you from deleting a completed e-signed PDF — take extra care with signed files.
+- **Audit Mode protects documents.** On a transaction in [Audit Mode](./audit-mode.mdx), documents are locked and can't be deleted.
+- If the file satisfied a **required-document** item, that item may still show as collected — re-check your required-documents list and re-upload if it still needs the file.
+:::
 
 ---
 
