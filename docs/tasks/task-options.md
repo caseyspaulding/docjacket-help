@@ -6,7 +6,7 @@ description: Configure advanced task options in DocJacket — portal visibility,
 
 # Task Options
 
-Click a task to open its detail drawer. The drawer starts with the core task fields, then includes collapsible sections for the settings that affect visibility, automation, reminders, comments, and reporting.
+Click a task to open its detail drawer. This is where you change a task's due date (reschedule or move a task), reassign it, and edit its details. The drawer starts with the core task fields, then includes collapsible sections for the settings that affect visibility, automation, reminders, comments, and reporting.
 
 ![Transaction Tasks tab where clicking a task opens Task Details](/img/tasks/transaction-tasks-tab.png)
 

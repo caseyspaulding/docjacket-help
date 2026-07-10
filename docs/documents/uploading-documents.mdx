@@ -87,3 +87,21 @@ Documents don't only come from manual uploads:
 - **DocDrop** — Contacts can email documents directly into the transaction (see [DocDrop](./docdrop.mdx))
 - **Google Drive** — Import files from Drive or export transaction files back to Drive (see [Google Drive Integration](./google-drive-integration.mdx))
 - **E-sign packets** — Completed DocJacket e-sign packets save the signed PDF back to the transaction
+
+## Deleting a document
+
+To remove a file from a transaction:
+
+1. Open the transaction and go to the **Documents** tab
+2. Find the document's row and click the **trash-can icon** (hover over the row if you don't see it)
+3. Confirm in the **Delete document?** dialog
+
+Deleting is **permanent** — there's no trash or undo to restore from, so double-check before you confirm. Every deletion is recorded in the transaction's activity log, so you can always see who deleted what and when.
+
+To remove several files at once, tick the checkboxes on the left of each row and click **Delete All**.
+
+:::caution Before you delete
+- **Signed documents can be deleted too.** DocJacket won't stop you from deleting a completed e-signed PDF — take extra care with signed files.
+- **Audit Mode protects documents.** On a transaction in [Audit Mode](./audit-mode.mdx), documents are locked and can't be deleted.
+- If the file satisfied a **required-document** item, that item may still show as collected — re-check your required-documents list and re-upload if it still needs the file.
+:::

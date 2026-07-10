@@ -344,6 +344,72 @@ Signer roles are configured inside e-sign form templates. They are separate from
 
 ---
 
+# Mobile & Devices
+
+## Is there a mobile app?
+
+DocJacket is a **web app** — there's no separate iOS or Android app to download. You use it in any modern web browser (Chrome, Safari, Edge, Firefox) on a desktop, laptop, tablet, or phone. Just go to your DocJacket address and sign in; everything stays in sync because it's the same cloud account on every device.
+
+## On a phone or tablet
+
+The DocJacket interface works in a mobile browser. For heavier work — reviewing a contract, building checklists, mapping form fields — a larger screen is more comfortable, but you can check transactions, tasks, and messages on the go.
+
+**Tip:** add DocJacket to your phone's home screen from your browser's share menu for one-tap access that feels like an app.
+
+## What clients and agents see on mobile
+
+Your clients and agents never need an app. The [Client Portal](../client-portal/index.mdx) is a **link** you send them, and it opens right in their phone's browser. When you set up a portal, you can preview both the **mobile** and **desktop** views before sending — so you see exactly what the recipient will see.
+
+## Working alongside Claude
+
+DocJacket also connects to Claude, including **Claude Desktop** (Mac/Windows) and other Claude surfaces, so you can drive DocJacket with AI. See [AI Access](../ai-access/index.mdx).
+
+---
+
+# Security & Privacy
+
+**Is DocJacket secure? Are my documents safe?** Yes. Real estate transactions carry sensitive client, document, and financial information, so keeping your documents and client data secure is core to how DocJacket is built. Your documents are encrypted, access is controlled, and your data stays private — DocJacket is a secure system for storing and sharing transaction documents.
+
+This page summarizes how DocJacket keeps your documents and data secure and private; the full, authoritative details live on the [Security](https://www.docjacket.com/security) and [Privacy Policy](https://www.docjacket.com/privacy) pages.
+
+## How DocJacket keeps your documents and data secure
+
+- **Encryption everywhere.** All data is encrypted **in transit with TLS 1.3** and **at rest with AES-256**.
+- **Enterprise-grade hosting.** Servers are located in the **United States** on enterprise-grade cloud infrastructure.
+- **Isolated per organization.** Each organization's data is separated at the database level — your data is never mixed with another org's.
+- **Role-based access.** Team members only see what their role allows, and agents only see the transactions they're assigned to. See [Understanding Roles](./understanding-roles.mdx).
+- **Automatic backups** run daily with **35-day retention** and geo-redundant storage, so data can be restored to a point in time within the past month.
+- **Immutable archive storage.** **Archived deals** are stored on immutable, non-erasable **WORM-compliant storage** (per California Code of Regulations § 2729), so records can't be altered or deleted after archiving. See [Audit Mode](../documents/audit-mode.mdx).
+- **Secure billing.** Payments are handled by a **PCI DSS Level 1** certified payment provider — DocJacket never stores full card numbers.
+- **Ongoing testing.** DocJacket performs annual penetration testing and commits to breach notification within 24 hours to affected users.
+
+## What DocJacket does *not* do
+
+DocJacket does **not** sell your data, share it with third parties for their own marketing, use it to train AI models, or access your account without authorization.
+
+## Your data and your clients' data
+
+- **Document sharing is controlled by you.** Client and agent access happens through [portal links](../client-portal/index.mdx) you send — recipients see only what you share, without needing a DocJacket account.
+- **Sharing with transaction participants** (brokers, escrow/title) happens only with your explicit permission.
+
+## Data retention
+
+- **Active transactions** are retained while the deal is in process.
+- **Closed transactions** are retained for **7 years**, per real estate record-keeping regulations.
+- **If you cancel**, your data is kept for **30 days** so you can reactivate, then permanently deleted.
+
+## Your privacy rights
+
+You can request to **access, correct, delete, or export** your data at any time, and opt out of marketing. DocJacket responds to requests within **30 days**, and supports **GDPR** (access, rectification, erasure, restriction, objection, portability) and **CCPA** (disclosure, deletion, do-not-sell) rights.
+
+For privacy requests or questions, contact **privacy@docjacket.com** or **(407) 201-9147**, and review the full [Privacy Policy](https://www.docjacket.com/privacy).
+
+:::note Sharing this with a client
+If a client or agent asks whether DocJacket is secure, you can point them to the public [Security](https://www.docjacket.com/security) and [Privacy](https://www.docjacket.com/privacy) pages — they don't need an account to read them.
+:::
+
+---
+
 ## Operations
 
 # Operations
@@ -1185,6 +1251,26 @@ Your **Transactions** page is home base. It shows every deal you're managing in 
 
 Click any transaction to open it and see the full picture: overview, tasks, documents, contacts, messages, portal, forms, activity, reports, and calculators.
 
+## Customizing columns
+
+Show only the information you care about on the Transactions table — add columns, remove columns, or reorder them:
+
+1. On the **Transactions** page, click the **columns** button above the table
+2. **Check or uncheck** a column to show or hide it
+3. **Drag** the shown columns to reorder them
+
+Your column choices are saved and remembered. Listings and Purchases keep their **own separate column layouts**, so you can add or remove columns for each view independently.
+
+## Exporting transactions to CSV
+
+Export your transactions to a CSV file — handy for reporting, a backup, or opening in a spreadsheet like Excel or Google Sheets:
+
+1. On the **Transactions** page, click the **download** icon above the table to download the **current list** as a CSV
+2. The export respects your current **search, filters, and view**, so it includes exactly the deals shown in the table
+3. To export only specific deals, select their checkboxes and click **Export**
+
+The CSV includes core transaction details such as address, project, status, side, and agent.
+
 ## In this section
 
 - [Creating a Transaction](./creating-a-transaction.mdx) — Start a new deal manually or with AI extraction
@@ -1346,7 +1432,7 @@ Use the transaction edit page for governed transaction dates. On the timeline, a
 
 Use the key-date drawer for custom or checklist-generated timeline dates. You can update the due date, status, notes, reminders, linked tasks, and portal note visibility. If a key date is missing its anchor, it appears as **Needs date** until the upstream transaction date is filled in.
 
-When you move a key date, DocJacket may show a cascade preview before saving. Review the affected tasks, downstream key dates, manually overridden dates, completed dates, and missing-rule items before applying the change.
+When you move a key date, DocJacket may show a cascade preview before saving. Review the affected tasks, downstream key dates, manually overridden dates, completed dates, and missing-rule items before applying the change. For why some dates recalculate automatically and others don't, see [Recalculating Deadlines](./recalculating-deadlines.mdx).
 
 If a date came from extraction, review it before saving so downstream tasks, reminders, scheduled emails, and calendar events use the correct anchor. In extraction review, extracted dates only become timeline key dates when you opt them into **Add to timeline?**.
 
@@ -1512,6 +1598,131 @@ Active non-offer statuses appear as columns in the main Pipeline view and as opt
 
 ---
 
+# Cancelling or Closing a Transaction
+
+When a deal falls through — or closes successfully — you move the transaction into a **terminal status** so it stops appearing as active work and its automation winds down cleanly.
+
+## How to cancel a transaction
+
+Cancelling is a status change. Move the transaction into any status whose type is **Cancelled** (the seeded **Cancelled** status, or a custom one you created with the Cancelled type). You can change the status:
+
+1. **From the transaction header** — click the status chip and pick a Cancelled status
+2. **From the Pipeline** — drag the card into a Cancelled column
+3. **From the Transactions list** — use the inline status control
+
+Closing a completed deal works the same way, using a **Closed**-type status. See [Transaction Statuses](./transaction-statuses.mdx) for how status types work and how to add your own.
+
+## What happens when you cancel or close
+
+Moving a transaction from an open status into a **Closed** or **Cancelled** status is a *terminal* transition. DocJacket automatically winds down the deal's pending work — **only for that transaction**:
+
+- Incomplete **key dates** are marked **Not Applicable** (completed and waived dates are left as-is)
+- Open **tasks** are marked **Skipped** with a "Transaction closed" note
+- Pending **scheduled messages** are cancelled
+- Unsent **reminders** are cleared
+- Pending **scheduled emails** are cancelled (already-sent emails are preserved)
+- **Calendar events** for the transaction are removed
+
+**Closed vs. Cancelled:** both wind down pending work the same way. The difference is that a **Closed** status also fires your "closed" automation and pushes the closed stage to connected CRMs (like Follow Up Boss). A **Cancelled** status does not trigger closed-stage automation.
+
+:::note Terminal cleanup only touches this transaction
+Every one of these changes is scoped to the single transaction you're cancelling. Nothing cascades to any other deal.
+:::
+
+## Cancelling a purchase but keeping the listing
+
+A **listing** and a **purchase** are independent transaction records — different deals, each with its own status, tasks, and dates. There is no automatic link between them, so **cancelling a purchase has no effect on a listing**.
+
+If you have a separate listing and a separate purchase:
+
+1. Open the **purchase** transaction and move it to a **Cancelled** status
+2. Your **listing** stays exactly as it was — still open and in your queue
+
+To find the listing afterward, open **Transactions** and filter the type to **Listing** (see [Listings](./listings.md)).
+
+:::caution If you used "Convert to Sale"
+Converting a listing to a sale doesn't create a second record — it flips the *same* record's type from Listing to Purchase. In that case there is no separate listing to keep, and cancelling the transaction cancels that single record. If you want it to go back to being an active listing, change its **status and type** back manually rather than cancelling — cancel will not restore or re-create a listing.
+:::
+
+## Reopening a transaction
+
+If you cancelled a deal by mistake, move it back into an **open** status to reactivate it. Because the terminal transition marked pending items as Skipped or Not Applicable, review the transaction's **tasks** and **[key dates](./key-dates-and-financials.mdx)** afterward and restore anything that should be active again.
+
+---
+
+# Recalculating Deadlines
+
+A common surprise: you update the **Contract Date** or **Closing Date**, but the other deadlines don't move. Whether a date recalculates depends entirely on **how it was created**.
+
+## Two kinds of dates
+
+- **Computed dates** come from a [checklist / timeline template](../templates/timeline-templates.md). Each is defined as a rule — an *anchor* (like Effective Date or Closing Date) plus an offset, e.g. *Inspection Deadline = Effective Date + 10 days*. Because a computed date knows its anchor, it can recalculate.
+- **Manual dates** were typed in by hand or filled in from contract extraction. They're just a fixed date with no anchor, so nothing ties them to your contract or closing date.
+
+**Only computed dates recalculate.** Manual dates stay put until you change them yourself.
+
+## What happens when you change an anchor date
+
+When you edit a key date — say you push Closing back a week — DocJacket automatically recalculates everything built to depend on it:
+
+- **Computed key dates** anchored to it shift by their rule
+- **Task due dates** that were anchored to it (from a checklist) move too
+- DocJacket may show a **cascade preview** first, so you can review the affected dates and tasks before saving
+
+Dates and tasks with a plain fixed date — and any date you've manually overridden — are left alone.
+
+## Getting every deadline right
+
+If you changed the contract or closing date and the other deadlines didn't follow, those deadlines were **manual** (typed or extracted) with no anchor. To fix them:
+
+1. **Apply a checklist / timeline template** to the transaction. The template stamps the anchor + offset rules, so those deadlines become computed dates that recalculate from your contract/closing date from then on. See [Checklists](../templates/timeline-templates.md).
+2. Or **edit each deadline by hand** — manual dates won't move on their own.
+
+If a key date *is* computed but shows a stale value because it was manually overridden, open its drawer and use **Overridden — reset** to recompute it from its anchor.
+
+## A note on task due dates
+
+A task's **Due Date** in the task drawer is a single date you set directly (and can clear). Tasks that got their due date from a checklist template are anchored to a key date and recompute automatically when that key date moves. If a task keeps snapping back to a key date and you want a permanently fixed date, that anchor lives on the [task template](../templates/task-templates.md) — adjust it there.
+
+See also [Key Dates & Financials](./key-dates-and-financials.mdx).
+
+---
+
+# Coordinating Both Sides of a Deal
+
+When you're the TC for an agent who has **both sides** of a deal — representing buyer and seller, or a dual-agency listing — use **one transaction** with the **Side** set to **Dual** (some intake forms label it "Both Sides"). It's one physical closing, so one transaction keeps everything in one place.
+
+## Why one transaction
+
+A single transaction already holds both sides:
+
+- **Both parties** — buyer(s) and seller(s)
+- **Both agents** — listing agent and buyer's agent
+- **Both commission sides** — listing-side and buyer-side amounts and rates
+- **Both representatives**, one set of **key dates**, one **portal**, and one **document jacket**
+
+Splitting one closing into two transactions means maintaining documents, contacts, dates, and portal links **twice**. DocJacket doesn't link two transactions or sync anything between them, so everything would be duplicated by hand.
+
+## Setting it up
+
+1. Create or open the transaction
+2. Set **Side** to **Dual** / **Both Sides**
+   - If "Dual" isn't in your Side options, add it under **Settings** (transaction field options), or pick "Both Sides (Dual)" on an intake form
+3. Add the buyer-side and seller-side contacts and both agents
+4. Enter the listing-side and buyer-side commission amounts
+
+## One thing to do manually
+
+Applying a checklist doesn't automatically stack two checklists for a Dual deal — it picks a single default. So **apply your buyer-side checklist and your seller-side checklist yourself** so both sets of tasks and deadlines land on the transaction. See [Checklists](../templates/timeline-templates.md).
+
+## When two transactions make sense
+
+Two separate transactions can be cleaner if your **reporting or exports assume one side per record** (for example, commission reports or side-based filters) and you're willing to maintain both files independently. Since there's no link between them, treat them as two separate deals.
+
+See also [Transaction Statuses](./transaction-statuses.mdx) and [Listings](./listings.md).
+
+---
+
 ## Documents
 
 # Documents
@@ -1597,6 +1808,24 @@ Documents don't only come from manual uploads:
 - **DocDrop** — Contacts can email documents directly into the transaction (see [DocDrop](./docdrop.mdx))
 - **Google Drive** — Import files from Drive or export transaction files back to Drive (see [Google Drive Integration](./google-drive-integration.mdx))
 - **E-sign packets** — Completed DocJacket e-sign packets save the signed PDF back to the transaction
+
+## Deleting a document
+
+To remove a file from a transaction:
+
+1. Open the transaction and go to the **Documents** tab
+2. Find the document's row and click the **trash-can icon** (hover over the row if you don't see it)
+3. Confirm in the **Delete document?** dialog
+
+Deleting is **permanent** — there's no trash or undo to restore from, so double-check before you confirm. Every deletion is recorded in the transaction's activity log, so you can always see who deleted what and when.
+
+To remove several files at once, tick the checkboxes on the left of each row and click **Delete All**.
+
+:::caution Before you delete
+- **Signed documents can be deleted too.** DocJacket won't stop you from deleting a completed e-signed PDF — take extra care with signed files.
+- **Audit Mode protects documents.** On a transaction in [Audit Mode](./audit-mode.mdx), documents are locked and can't be deleted.
+- If the file satisfied a **required-document** item, that item may still show as collected — re-check your required-documents list and re-upload if it still needs the file.
+:::
 
 ---
 
@@ -1907,7 +2136,7 @@ Use the transaction documents list to confirm that the file arrived. If an expec
 
 # Signature Requests
 
-Signature Requests let you send transaction documents for e-signature directly from DocJacket. Sent requests stay tied to the transaction, so your team can track who has signed and which signed PDF came back.
+Signature Requests let you send transaction documents for e-signature directly from DocJacket. This is how you send a document for electronic signature (esignature / esign) — request a signature, and the sent request stays tied to the transaction, so your team can track who has signed and which signed PDF came back.
 
 This page covers sending an existing uploaded document. To send reusable office-approved forms, use the transaction **Forms & signatures** subtab and see [Form Packets](./esignature-form-packets.md).
 
@@ -2020,7 +2249,7 @@ Duplicating a template opens the new draft in the editor. Archiving a template r
 
 # E-Signature Form Packets
 
-Form packets let you send one or more office-approved form templates for e-signature from a transaction.
+Form packets let you send one or more office-approved form templates for e-signature (esignature / esign / electronic signature) from a transaction.
 
 Use packets when you want DocJacket to prepare reusable approved forms, fill known transaction data, collect any remaining agent-entered fields, and then route the forms to signers.
 
@@ -2109,7 +2338,7 @@ In-flight packets refresh automatically about every 15 seconds while a packet is
 
 # E-Signatures
 
-The **E-Signatures** page gives you one place to review signature requests and signing progress.
+The **E-Signatures** page gives you one place to review signature requests and signing progress. However you spell it — e-signature, esignature, e-sign, or electronic signature — this is where DocJacket tracks documents you've sent to be signed.
 
 Signature requests can come from a transaction document or from a form packet built from office-approved templates. The E-Signatures page tracks requests across statuses such as pending, partially completed, completed, cancelled, declined, or expired.
 
@@ -3092,7 +3321,7 @@ Review-required emails appear in the topbar **Review queue** under **Ready for R
 
 # Task Options
 
-Click a task to open its detail drawer. The drawer starts with the core task fields, then includes collapsible sections for the settings that affect visibility, automation, reminders, comments, and reporting.
+Click a task to open its detail drawer. This is where you change a task's due date (reschedule or move a task), reassign it, and edit its details. The drawer starts with the core task fields, then includes collapsible sections for the settings that affect visibility, automation, reminders, comments, and reporting.
 
 ![Transaction Tasks tab where clicking a task opens Task Details](/img/tasks/transaction-tasks-tab.png)
 
@@ -4624,6 +4853,10 @@ Online Forms support:
 
 For each field you can set the label, required status, section, placeholder, help text, width, options, and conditional display rules.
 
+:::tip Capturing a person's email on an intake form
+The Contact Picker is for selecting a contact you *already* have — it doesn't collect a new person's email. To gather contact details from an outside respondent, add dedicated Email and Phone fields. See [Collecting Contacts on Forms](./collecting-contacts-on-forms.md).
+:::
+
 ## Sections and branding
 
 Forms inherit your organization branding by default. You can also set a per-form theme, welcome message, completion message, and section styling.
@@ -4684,6 +4917,8 @@ Transaction-specific form submissions appear on the transaction's **Forms** tab.
 
 Create-transaction submissions may enter the intake flow for review and routing before becoming a transaction record.
 
+For the full mapping workflow — including how to capture contingency dates — see [Applying Form Submissions](./applying-form-submissions.md).
+
 ## When to use forms
 
 Use an online form when you need consistent answers from someone outside your team:
@@ -4699,6 +4934,107 @@ Use an online form when you need consistent answers from someone outside your te
 ## How forms fit with transactions
 
 Form responses give you structured data that can be reviewed and used by the team. For repeatable transaction workflows, combine forms with [checklists](./timeline-templates.md), [email templates](./email-templates.md), [smart fields](./smart-fields.md), and [Front Door](../front-door/leads-and-ctas.md).
+
+---
+
+# Collecting Contacts on Forms
+
+Online Forms give you a few ways to capture people, and picking the right one decides whether you get a full contact record or just a name. This is the most common point of confusion when building an intake form.
+
+## The Contact Picker is for *existing* contacts
+
+The **Contact Picker** field lets a respondent **choose a contact you already have** — it is not a way to collect a new person's details.
+
+- In the form builder, a Contact Picker uses an **Allowed Contacts** list. Only the contacts you select there appear as options on the public form.
+- On the public form it shows a **single search box**, and the respondent picks from your list. DocJacket then attaches that existing contact to the transaction, using whatever **email and phone are already saved on that contact's record**.
+- It does **not** collect a new email or phone from the person filling out the form — there are no email/phone boxes on a Contact Picker.
+
+:::caution Why a contact field can show "just a name"
+If a Contact Picker has **no Allowed Contacts** set, it falls back to a plain **name text box** on the public form. So an outside person filling out an intake form ends up typing only a name — because the Contact Picker was never meant to gather a *new* contact's email in the first place.
+:::
+
+## Capturing a new person's email and phone
+
+When you need details from someone who **isn't already in your contacts** — a buyer or seller filling out an intake form — don't rely on a contact field. Add dedicated fields instead:
+
+1. In the form builder, add an **Email** field
+2. Add a **Phone** field
+3. Add a **Text** field for their name (or use the built-in submitter name)
+
+These give you real, mapped values you can push onto the transaction.
+
+:::tip Every public form already captures the submitter's email
+Public forms include a built-in **Your Name** and **Your Email** at the top of the form, separate from any field you add. For a simple intake, that submitter email may already be all you need.
+:::
+
+If you added a **Participant** field expecting separate name and email boxes, add explicit **Email** and **Phone** fields instead — dedicated fields are the reliable way to capture contact details on a public form.
+
+## Getting the details onto the transaction
+
+Once a form is submitted, you map its answers onto the deal from the transaction's **Forms** tab:
+
+- **Email**, **Phone**, and **Name** fields can be mapped to the Buyer, Seller, or Agent slots on the transaction.
+- A **Contact Picker** selection attaches that existing contact to the deal by its role.
+
+See [Applying Form Submissions](./applying-form-submissions.md) for the full mapping workflow, and [Online Forms](./online-forms.md) for building and sharing forms.
+
+## Rule of thumb
+
+- The person is **already in your contacts** → use a **Contact Picker** (and set Allowed Contacts).
+- The person is **new** (outside intake) → use dedicated **Email**, **Phone**, and name fields.
+
+---
+
+# Applying Form Submissions to a Transaction
+
+Online Forms collect structured answers. Once someone submits a form, you **review** the submission and **map** its values onto a transaction, so you don't re-key anything by hand.
+
+## Where submissions show up
+
+- **Forms sent from a deal** (Update Transaction / Additive forms) — submissions appear on that transaction's **Forms** tab.
+- **Intake forms** (Create Transaction purpose) — submissions enter the intake flow, where you review them and **create a new transaction** from the answers.
+
+See [Online Forms](./online-forms.md) for the difference between form purposes and how to share each kind.
+
+## Reviewing a submission
+
+On the transaction's **Forms** tab, expand a submission to see every submitted field. As you review, you can mark each field as **clear**, **needs documents**, **needs internal review**, **needs attorney review**, or **resolved** — so the rest of the team knows what's been checked.
+
+## Mapping fields onto the transaction
+
+For each submitted field, choose the transaction field it should fill, then apply. You can map to:
+
+- **Property** — address, city, state, ZIP
+- **Contacts** — Buyer, Second Buyer, Seller, Second Seller (plus email and phone for each)
+- **Agents** — Listing Agent and Buyer's Agent (name, email, phone, brokerage)
+- **Financials** — purchase price, loan amount, earnest money, down payment, financing type
+- **Status** — set the transaction to a specific status
+- **Custom fields** — any custom field your organization has defined
+
+For capturing contact details specifically, see [Collecting Contacts on Forms](./collecting-contacts-on-forms.md).
+
+## Capturing dates and deadlines
+
+A couple of things are worth knowing so your contingency dates land correctly.
+
+**Forms don't do date math.** A form can't turn a *number of days* into a deadline — there's no "Effective Date + 10 days" calculation on the form side. If you put a number field like "Inspection period: 10 days" on a form, it stays the number 10; it never becomes a date. To get an actual deadline, **capture the calendar date on the form** with a **Date** field (one per deadline: Inspection, Financing, Appraisal, Closing).
+
+**Mapped date fields become the transaction's key dates.** Add a **Date** field to the form for each deadline (Inspection, Financing, Appraisal, Closing, Contract, and so on), then map it to that deadline:
+
+- **On an existing transaction** — map the Date field on the **Forms** tab and apply the submission; DocJacket writes the value to the deal's [Key Dates](../transactions/key-dates-and-financials.mdx).
+- **When the form creates the transaction** (an intake / Create Transaction form) — mapped date fields populate the matching key dates automatically as the deal is created.
+
+Either way the value has to be an actual calendar date, so use a **Date** field — a free-text "10 days" won't apply as a deadline.
+
+:::tip Two ways to handle contingency deadlines
+If the contract gives **actual dates**, capture them as **Date fields** on an intake form (or type them into Key Dates). If the contract gives **day counts** that vary per deal, build a [checklist](./timeline-templates.md) with anchor-date rules (e.g. *Inspection Deadline = Effective Date + 10 calendar days*) and apply it — DocJacket does the date math from the anchor date on the transaction. See [Contingencies & Repairs](../transactions/contingencies-and-repairs.mdx).
+:::
+
+## Tips
+
+- Map **contacts, financials, and deadlines** on the Forms tab of an existing deal — they apply immediately.
+- If the contract gives **day counts** instead of dates, use a [checklist](./timeline-templates.md) with anchor-date rules rather than trying to capture the count on the form.
+- A form field's *type* isn't enforced against its target — point a **Date** field at a date target so the value is read as a real date.
 
 ---
 
@@ -7994,7 +8330,7 @@ The profile page also shows your organization's intake email when email forwardi
 
 # Offices
 
-Offices let brokerages and teams manage location-specific configuration. Each office can have its own states, members, branding, approved forms, and signing defaults.
+Offices let brokerages and teams manage location-specific configuration. Set up an office for each brokerage location, then give each office its own states, members, branding, approved forms, and signing defaults. This is where you add an office, manage office members, and set per-office defaults.
 
 ## Creating an office
 
@@ -8122,7 +8458,7 @@ From **Settings > Team Members**, you can:
 
 # Referrals
 
-Use **Settings > Referrals** to share DocJacket with other transaction coordinators or agents and track referral credit.
+Use **Settings > Referrals** to share DocJacket with other transaction coordinators or agents and track referral credit. The referral program lets you refer a colleague with your referral link and earn referral credit toward your subscription when they sign up — this page is how referrals work and where you find your referral link.
 
 ## Your referral link
 
@@ -8735,11 +9071,33 @@ All paid plans include the full DocJacket feature set:
 
 ## Free plan
 
-DocJacket offers a free plan with limited active transactions — great for trying out the platform before committing.
+The free plan is a great way to try DocJacket before committing. It includes:
+
+- **2 active transactions**, with AI contract extraction on them
+- **Up to 5 team members**
+- Unlimited intake forms and unlimited client & agent portals
+- Email automation, templates, and checklist templates
+
+Upgrade to a paid plan for unlimited active transactions and AI extractions, SMS messaging, a custom domain, MCP access, and priority support.
+
+## Seats and team members
+
+DocJacket uses **per-seat** pricing — but not everyone you work with needs a paid seat. This is the most common point of confusion, so here's how it works:
+
+- **A seat is a team member who logs in** to run transactions — you, your coordinators, an assistant. On the **free plan you get up to 5 team members at no cost**; on a paid plan, each active team member is a seat.
+- **You only pay for active seats.** Add or remove seats anytime from **Settings → Team Members**, and billing adjusts automatically.
+- **Portal guests are always free.** The clients *and agents* you share a [portal link](../client-portal/index.mdx) with do **not** count as seats — no matter how many.
+
+So *"is adding an agent free?"* depends on how you add them:
+
+- **As a portal recipient** (you just want to give the agent visibility into their deals) → **always free**. Invite them to the [Client Portal](../client-portal/index.mdx).
+- **As a logged-in team member** (they'll work inside DocJacket) → they use one of your free team-member slots on the free plan, or a paid seat on a paid plan.
+
+See [Understanding Roles](../getting-started/understanding-roles.mdx) for what each team member can do.
 
 ## Current pricing
 
-Visit [docjacket.com/pricing](https://www.docjacket.com/pricing) for the latest pricing details and plan options.
+Visit [docjacket.com/pricing](https://www.docjacket.com/pricing) for current per-seat rates and plan options — including early-bird pricing while it's available.
 
 ## Early-bird pricing
 

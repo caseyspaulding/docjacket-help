@@ -9,7 +9,7 @@ description: Review DocJacket e-signature requests and track signer completion s
 
 # E-Signatures
 
-The **E-Signatures** page gives you one place to review signature requests and signing progress.
+The **E-Signatures** page gives you one place to review signature requests and signing progress. However you spell it — e-signature, esignature, e-sign, or electronic signature — this is where DocJacket tracks documents you've sent to be signed.
 
 Signature requests can come from a transaction document or from a form packet built from office-approved templates. The E-Signatures page tracks requests across statuses such as pending, partially completed, completed, cancelled, declined, or expired.
 

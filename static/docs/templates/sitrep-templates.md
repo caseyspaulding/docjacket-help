@@ -1,6 +1,6 @@
 ---
 sidebar_label: SitRep Templates
-sidebar_position: 9
+sidebar_position: 11
 description: Configure reusable SitRep report templates in DocJacket so transaction status updates go out consistently formatted every time.
 ---
 

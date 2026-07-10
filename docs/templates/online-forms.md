@@ -66,6 +66,10 @@ Online Forms support:
 
 For each field you can set the label, required status, section, placeholder, help text, width, options, and conditional display rules.
 
+:::tip Capturing a person's email on an intake form
+The Contact Picker is for selecting a contact you *already* have — it doesn't collect a new person's email. To gather contact details from an outside respondent, add dedicated Email and Phone fields. See [Collecting Contacts on Forms](./collecting-contacts-on-forms.md).
+:::
+
 ## Sections and branding
 
 Forms inherit your organization branding by default. You can also set a per-form theme, welcome message, completion message, and section styling.
@@ -125,6 +129,8 @@ Transaction-specific form submissions appear on the transaction's **Forms** tab.
 - Apply mapped values to the transaction
 
 Create-transaction submissions may enter the intake flow for review and routing before becoming a transaction record.
+
+For the full mapping workflow — including how to capture contingency dates — see [Applying Form Submissions](./applying-form-submissions.md).
 
 ## When to use forms
 
