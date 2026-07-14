@@ -14,5 +14,6 @@ Manage your DocJacket subscription, view your plan details, and handle payment i
 ## In this section
 
 - [Plans & Pricing](./plans-and-pricing.md) — What's included in each plan
+- [Upgrading to Professional](./upgrading-to-professional.md) — Move from the free plan to the paid plan
 - [Managing Your Subscription](./managing-your-subscription.md) — Upgrade, downgrade, or update payment info
 - [Referrals](../settings/referrals.md) — Share your referral link and track earned credits
