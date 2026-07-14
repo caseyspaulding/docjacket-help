@@ -26,8 +26,8 @@ All paid plans include the full DocJacket feature set:
 
 The free plan is a great way to try DocJacket before committing. It includes:
 
-- **2 active transactions**, with AI contract extraction on them
-- **Up to 5 team members**
+- **3 active transactions**, with AI contract extraction on them
+- **Up to 2 team members**
 - Unlimited intake forms and unlimited client & agent portals
 - Email automation, templates, and checklist templates
 
@@ -37,7 +37,7 @@ Upgrade to a paid plan for unlimited active transactions and AI extractions, SMS
 
 DocJacket uses **per-seat** pricing — but not everyone you work with needs a paid seat. This is the most common point of confusion, so here's how it works:
 
-- **A seat is a team member who logs in** to run transactions — you, your coordinators, an assistant. On the **free plan you get up to 5 team members at no cost**; on a paid plan, each active team member is a seat.
+- **A seat is a team member who logs in** to run transactions — you, your coordinators, an assistant. On the **free plan you get up to 2 team members at no cost**; on a paid plan, each active team member is a seat.
 - **You only pay for active seats.** Add or remove seats anytime from **Settings → Team Members**, and billing adjusts automatically.
 - **Portal guests are always free.** The clients *and agents* you share a [portal link](../client-portal/index.mdx) with do **not** count as seats — no matter how many.
 
