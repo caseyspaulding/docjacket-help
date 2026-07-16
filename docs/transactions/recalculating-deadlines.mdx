@@ -34,6 +34,12 @@ If you changed the contract or closing date and the other deadlines didn't follo
 
 If a key date *is* computed but shows a stale value because it was manually overridden, open its drawer and use **Overridden — reset** to recompute it from its anchor.
 
+## Why aren't my key dates in chronological order?
+
+The **timeline on a transaction is manually orderable** — you can drag rows into whatever sequence you want — so it sorts by that manual order first, *not* strictly by date. That's intentional (some teams like grouping by phase rather than pure date), but it means a row can look "out of order": when a key date's value changes, or a template seeds dates in a non-date order, the row keeps its existing position instead of re-sorting itself.
+
+To put them back in date order, **drag the handle on each row** to reorder the timeline the way you want it. (Date-driven views — like the upcoming-deadlines and calendar views — always list strictly by date, so if you just want to see what's next by date, use those.)
+
 ## A note on task due dates
 
 A task's **Due Date** in the task drawer is a single date you set directly (and can clear). Tasks that got their due date from a checklist template are anchored to a key date and recompute automatically when that key date moves. If a task keeps snapping back to a key date and you want a permanently fixed date, that anchor lives on the [task template](../templates/task-templates.md) — adjust it there.
