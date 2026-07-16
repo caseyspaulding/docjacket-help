@@ -1645,6 +1645,24 @@ To find the listing afterward, open **Transactions** and filter the type to **Li
 Converting a listing to a sale doesn't create a second record — it flips the *same* record's type from Listing to Purchase. In that case there is no separate listing to keep, and cancelling the transaction cancels that single record. If you want it to go back to being an active listing, change its **status and type** back manually rather than cancelling — cancel will not restore or re-create a listing.
 :::
 
+## A deal fell through — putting a listing back on the market
+
+Often the "purchase" and the "listing" are the **same record**: you took a listing, it went under contract, and now the buyer has backed out. You want it to go back to being an active listing — still in your pipeline, with its tasks and key dates intact.
+
+In that case, **don't cancel the transaction.** Cancelling is a terminal status, so it winds the deal down — open tasks become **Skipped**, key dates become **Not Applicable**, and reminders and scheduled emails are **deleted**. Moving the transaction back to an open status afterward does **not** automatically restore any of that, so you'd end up rebuilding your listing checklist by hand.
+
+Instead, just move the deal **back to an active status**:
+
+1. Open the transaction and click the **status chip** (or drag its card in the Pipeline)
+2. Change the status from **Under Contract** back to an open listing status — **Active**, **MLS Active**, or whichever your office uses
+3. If you'd also switched the transaction **type** to *Purchase* or *Sale* when it went under contract, change it back to **Listing**
+
+Because the deal never moved into a Cancelled or Closed status, nothing was wound down — your tasks, key dates, and automation are all still there, and the listing stays right where it was in your queue.
+
+:::tip Cancel vs. change status
+Cancel when the deal is truly dead and you want its pending work to stop. If the property is simply going back on the market, **change the status** instead — that keeps the listing active and preserves everything.
+:::
+
 ## Reopening a transaction
 
 If you cancelled a deal by mistake, move it back into an **open** status to reactivate it. Because the terminal transition marked pending items as Skipped or Not Applicable, review the transaction's **tasks** and **[key dates](./key-dates-and-financials.mdx)** afterward and restore anything that should be active again.
