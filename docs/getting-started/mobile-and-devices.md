@@ -6,9 +6,9 @@ description: Is there a DocJacket mobile app? How DocJacket works on phones, tab
 
 # Mobile & Devices
 
-## Is there a mobile app?
+## Is there a mobile app? Do you have an app?
 
-DocJacket is a **web app** — there's no separate iOS or Android app to download. You use it in any modern web browser (Chrome, Safari, Edge, Firefox) on a desktop, laptop, tablet, or phone. Just go to your DocJacket address and sign in; everything stays in sync because it's the same cloud account on every device.
+**No — there's no native app to download, and none is needed.** DocJacket is a **web app**: there's no iOS app in the App Store and no Android app in Google Play. You use it in any modern web browser (Chrome, Safari, Edge, Firefox) on a desktop, laptop, tablet, or phone. Just go to your DocJacket address and sign in; everything stays in sync because it's the same cloud account on every device.
 
 ## On a phone or tablet
 
@@ -18,7 +18,7 @@ The DocJacket interface works in a mobile browser. For heavier work — reviewin
 
 ## What clients and agents see on mobile
 
-Your clients and agents never need an app. The [Client Portal](../client-portal/index.mdx) is a **link** you send them, and it opens right in their phone's browser. When you set up a portal, you can preview both the **mobile** and **desktop** views before sending — so you see exactly what the recipient will see.
+Your clients and agents never need an app. The [Client Portal](../client-portal/index.mdx) is **web-only** — a **link** you send them that opens right in their phone or computer browser. There's no portal app to install; they can only access it on the web, via the link. When you set up a portal, you can preview both the **mobile** and **desktop** views before sending — so you see exactly what the recipient will see.
 
 ## Working alongside Claude
 

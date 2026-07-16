@@ -11,6 +11,8 @@ description: Upgrade from the DocJacket free plan to Professional — where to c
 
 When you're ready for unlimited transactions and the full AI toolset, upgrade from the free plan to **Professional** — DocJacket's paid plan at **$29/month per seat** (or save with annual billing).
 
+> **Want to sign up to pay, subscribe, or start paying for DocJacket?** That's this page — upgrading to Professional *is* how you pay for DocJacket. Go to **Settings → Billing** and click **Upgrade to Professional** (steps [below](#how-to-upgrade)).
+
 ## When to upgrade
 
 Upgrade when you're ready to:
