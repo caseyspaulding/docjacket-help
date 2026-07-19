@@ -6062,6 +6062,212 @@ Text **`weekly report`** (or *recap* / *summary*) any time for an instant rundow
 
 ---
 
+## Group Text Assistant
+
+# Group Text Assistant
+
+Most of a deal happens in a group text — the buyer's agent, the lender, the title company, and your client, all talking in one thread on their phones. The important parts (an inspection time, a request for a signed addendum, a moved closing) get buried in ordinary back-and-forth, and later you re-type them into the transaction by hand.
+
+The **Group Text Assistant** puts DocJacket in that group text as a quiet participant. It **captures every message onto the deal**, shows the whole thread as **one merged conversation** on the transaction's **Texts** tab, and when it spots real work — a task someone asked for, a date someone confirmed — it **proposes it for you to approve**. Nothing changes on the deal until you say so.
+
+Think of it as an **AI notetaker for your transaction group texts**: you keep texting the way you already do, and DocJacket keeps the record.
+
+:::info This is Stage 2 of texting DocJacket
+The [Text the Assistant (SMS)](../ai-features/text-the-assistant.mdx) feature lets you *ask* DocJacket questions about a deal from your phone. The Group Text Assistant is the next step: instead of messaging DocJacket separately, you **include it in the group text where the deal is already happening**, and it observes.
+:::
+
+## What it does
+
+1. **Captures** — every participant's message lands on the deal, with who sent it and when.
+2. **Shows** — the whole group reads as one color-coded, two-sided conversation on the **Texts** tab, each person named.
+3. **Proposes** — when a message contains a real action or date, DocJacket adds an approval-gated proposal in your **Review queue** (and inline in the thread), with the exact quote as evidence.
+4. **Stays quiet** — ordinary chatter ("thanks," "sounds good") produces nothing, and DocJacket **never replies in the group**.
+
+## What it looks for today
+
+| In the text | DocJacket proposes |
+| --- | --- |
+| An action someone asked for — *"Can you send the inspection report to the buyer?"* | A **task** — "Send inspection report to buyer" |
+| A date someone confirmed — *"Inspection is set for Thursday"* | A **key date** — Inspection = that Thursday |
+| Ordinary chatter — *"thanks," "lol," "sounds good"* | Nothing |
+
+Every proposal waits for your approval — see [What it proposes & how to approve](./what-it-proposes.mdx).
+
+## What it does **not** do (yet)
+
+- **It doesn't reply in the group.** DocJacket observes and alerts you privately; it never sends a message into the client-facing thread.
+- **It doesn't change the deal on its own.** Every task and date is a proposal you approve or dismiss.
+- **It reads action items and dates only.** Answering questions in the thread and detecting status changes ("we're under contract") are on the roadmap, not live today.
+- **It joins when you *start* the group** — it isn't added to an iMessage thread that's already going.
+
+## Where to go next
+
+- **[How to use it](./how-to-use.mdx)** — include DocJacket in the group text and turn on monitoring for a deal.
+- **[What it proposes & how to approve](./what-it-proposes.mdx)** — the Review queue, tasks, and key dates.
+- **[Privacy & how it stays quiet](./privacy-and-quiet.mdx)** — who sees what, and how DocJacket avoids being noisy.
+
+---
+
+# How to use the Group Text Assistant
+
+Using it is two things: **turn on monitoring for the deal**, and **include DocJacket in the group text when you start it**. After that you text exactly the way you already do — DocJacket rides along and captures the conversation.
+
+:::info Rolling out
+The Group Text Assistant is being switched on gradually. If you don't see the **Monitor this group text** control described below, it isn't enabled for your account yet — reach out and we'll turn it on for your deals.
+:::
+
+## Step 1 — Turn on monitoring for the deal
+
+Open the transaction and go to the **Texts** tab. Turn on **Monitor this group text** for that deal.
+
+This tells DocJacket to watch the group text tied to this transaction. It's **per deal** — you decide which transactions have an assistant in the group and which don't. Monitoring is **off** until you turn it on, so no conversation is captured by surprise.
+
+## Step 2 — Start the group text with DocJacket included
+
+Save your organization's DocJacket number in your phone as **"DocJacket Assistant"** so it's easy to find, then start the transaction group text the normal way and **add the DocJacket number as one of the participants.**
+
+1. Open **Messages** on your phone and start a **new group text**.
+2. Add the people you'd normally include — your client, the other agent, the lender, title, and so on.
+3. Add the **DocJacket Assistant** number as another participant.
+4. Send your first message and continue texting normally.
+
+That's it. Every message anyone sends in that group is captured onto the deal and appears on the **Texts** tab.
+
+:::caution Include DocJacket when you *start* the group
+Add DocJacket as a participant **when you create the group text**, not to a thread that's already going. On many phones, adding a new number to an existing text starts a *different* thread — so begin the group with DocJacket in it from the first message.
+:::
+
+## Step 3 — Watch it land on the deal
+
+Back in DocJacket, open the transaction's **Texts** tab. The group text shows up as **one merged conversation**:
+
+- Everyone's messages are woven into a single thread — not one conversation per person.
+- Each participant has their **own name and color**, and people alternate sides, so it reads like a group chat you can scan at a glance.
+- You **don't have to read the whole thread** — that's what the proposals are for (next page).
+
+## Good to know
+
+- **DocJacket doesn't reply in the group.** It watches and captures; it never sends a message into the client-facing thread. Anything it wants your attention on shows up *inside DocJacket*, not in the text.
+- **Ordinary chatter is ignored.** "Thanks," "sounds good," and small talk produce nothing — see [Privacy & how it stays quiet](./privacy-and-quiet.mdx).
+- **It captures; it doesn't change the deal.** When it spots a task or a date, it *proposes* it for you to approve — see [What it proposes & how to approve](./what-it-proposes.mdx).
+- **A quick in-app tour** is available on the **Texts** tab: click the **help (?)** button there to walk through the conversation view and where proposals land.
+
+## Where to go next
+
+- **[What it proposes & how to approve](./what-it-proposes.mdx)** — the tasks and key dates DocJacket surfaces, and the Review queue.
+- **[Privacy & how it stays quiet](./privacy-and-quiet.mdx)** — who sees what.
+
+---
+
+# What it proposes & how to approve
+
+DocJacket reads the group text as it comes in. Most messages are ordinary conversation and produce nothing. But when a message contains **something actionable** — a request, or a confirmed date — DocJacket turns it into a **proposal** you can approve or dismiss.
+
+**Every proposal is approval-gated.** Nothing is added to the deal, and no date is changed, until you approve it. And each proposal carries the **exact message it came from** as evidence, so you can see why DocJacket suggested it.
+
+## The two things it proposes today
+
+### Task proposals
+
+When someone asks for something to be done, DocJacket proposes a **task**.
+
+> *Buyer's agent:* "Can you send the inspection report over to the buyer today?"
+
+→ **Proposed task:** *Send inspection report to buyer*
+
+### Key-date proposals
+
+When someone states or confirms a date, DocJacket proposes a **key date** on the deal.
+
+> *Buyer's agent:* "Inspection is confirmed for Thursday."
+
+→ **Proposed key date:** *Inspection = (that Thursday's date)*
+
+:::note Action items and dates only, for now
+Today DocJacket detects **action items** and **dates**. Detecting status changes ("we're under contract," "the deal fell through") and answering questions directly in the thread are on the roadmap — they aren't live yet.
+:::
+
+## Where proposals show up
+
+### The Review queue
+
+Every proposal collects in your **Review queue** — the **document-with-a-check** icon in the top bar (its drawer is labeled *Review queue*), or the full-screen page at **/review**.
+
+:::tip This is the Review queue, not the notification bell
+Proposals land under the **document-with-a-check** icon, **not** the 🔔 bell. The bell is for general notifications (task completed, documents, portal). The Review queue is where AI proposals — from texts, email, and documents — wait for your approval.
+:::
+
+For each proposal you'll see **what** it is, the **evidence** (the exact text message it came from), and buttons to **approve** or **dismiss**.
+
+### Inline in the conversation
+
+You'll also see a small proposal card **right under the message that triggered it** on the **Texts** tab, so you can approve it in context while reading the thread.
+
+## Approving or dismissing
+
+- **Approve** — the task is created, or the key date is set on the deal. Approved changes then show on the transaction's **timeline / activity** record.
+- **Dismiss** — the proposal goes away and nothing changes.
+
+Because it's your call every time, DocJacket can flag things it *thinks* matter without any risk of it quietly editing a deadline or adding busywork.
+
+## Good to know
+
+- **Evidence is always attached.** A proposal you can't explain isn't a proposal you have to accept — open it and read the source message.
+- **Duplicates are avoided.** If a date or task was already captured, DocJacket won't pile on a second proposal for the same thing.
+- **Nothing is auto-sent.** A task proposal never emails anyone on its own; it just creates the task for your team.
+
+## Where to go next
+
+- **[Privacy & how it stays quiet](./privacy-and-quiet.mdx)** — why the assistant isn't noisy, and who can see what.
+- **[How to use it](./how-to-use.mdx)** — set a deal up for monitoring.
+
+---
+
+# Privacy & how it stays quiet
+
+The whole point of the Group Text Assistant is to be **helpful without being noisy or intrusive**. It watches the conversation and keeps the record — it doesn't take part in it. This page explains exactly how it behaves.
+
+## It's quiet by default
+
+DocJacket only acts when there's something worth acting on:
+
+- **Ordinary chatter produces nothing.** "Thanks," "sounds good," "lol," "on my way" — captured for the record, but no proposal, no alert, no reply.
+- **It never replies in the group text.** DocJacket does not send messages into the client-facing thread. If it has something for you, it surfaces it **inside DocJacket** — in your Review queue — never in front of your client or the other side.
+- **It only proposes; it never acts alone.** Tasks and dates are suggestions you approve. Nothing is added or changed on the deal automatically.
+
+A good outcome here isn't "the AI sent a lot of messages." It's **you reading fewer messages while missing fewer important things.**
+
+## What it captures
+
+For a monitored deal, DocJacket stores the group text's messages on the transaction — the text, who sent it, and when — so the conversation lives with the deal instead of only on your phone. You control which deals are monitored (it's off until you turn it on per deal), and you can see everything it captured on the **Texts** tab.
+
+## What it deliberately won't do
+
+- **It won't answer questions in the thread.** Even if someone types "DocJacket, when's the inspection?", it doesn't answer in the group today — answering participants directly is a future capability, and it will be permission-aware when it ships.
+- **It won't give legal, financial, or negotiation advice.**
+- **It won't change legally meaningful terms on its own.** Dates and tasks are proposals for a human to approve.
+- **It won't act on unverified claims.** A message like "this is about 123 Main St" is treated as something to check against the deal, not a fact to act on.
+
+## Standard text-message controls
+
+The DocJacket number behaves like any other business text line for the people in the group:
+
+- Anyone can reply **STOP** to opt out of texts from that number, or **HELP** for information.
+- Opt-outs are respected.
+
+## Good to know
+
+- **Monitoring is per deal and off by default** — you decide which transactions have DocJacket in the group.
+- **You stay in control of every change** — see [What it proposes & how to approve](./what-it-proposes.mdx).
+- **Mixed groups deserve care.** Because a group can contain both sides of a deal, DocJacket is deliberately conservative: it observes and proposes to you privately rather than disclosing anything into the thread.
+
+## Where to go next
+
+- **[Overview](./index.mdx)** — what the Group Text Assistant is.
+- **[How to use it](./how-to-use.mdx)** — set a deal up for monitoring.
+
+---
+
 ## AI Access
 
 # AI Access

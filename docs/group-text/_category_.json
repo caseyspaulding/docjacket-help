@@ -1,0 +1,8 @@
+{
+  "label": "Group Text Assistant",
+  "position": 10,
+  "link": {
+    "type": "generated-index",
+    "description": "Include DocJacket in a transaction group text and it captures every participant's message onto the deal, shows it as one merged conversation, and proposes tasks and key dates you approve — quietly, without replying in the group."
+  }
+}
