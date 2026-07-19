@@ -1,0 +1,51 @@
+---
+sidebar_label: Privacy & How It Stays Quiet
+sidebar_position: 4
+description: The Group Text Assistant is quiet by default — it never replies in the group, ignores ordinary chatter, and only proposes work you approve. Here's what it does with the conversation and what it deliberately won't do.
+---
+
+<!-- Canonical: https://help.docjacket.com/docs/group-text/privacy-and-quiet -->
+<!-- Source: docs/group-text/privacy-and-quiet.mdx -->
+
+# Privacy & how it stays quiet
+
+The whole point of the Group Text Assistant is to be **helpful without being noisy or intrusive**. It watches the conversation and keeps the record — it doesn't take part in it. This page explains exactly how it behaves.
+
+## It's quiet by default
+
+DocJacket only acts when there's something worth acting on:
+
+- **Ordinary chatter produces nothing.** "Thanks," "sounds good," "lol," "on my way" — captured for the record, but no proposal, no alert, no reply.
+- **It never replies in the group text.** DocJacket does not send messages into the client-facing thread. If it has something for you, it surfaces it **inside DocJacket** — in your Review queue — never in front of your client or the other side.
+- **It only proposes; it never acts alone.** Tasks and dates are suggestions you approve. Nothing is added or changed on the deal automatically.
+
+A good outcome here isn't "the AI sent a lot of messages." It's **you reading fewer messages while missing fewer important things.**
+
+## What it captures
+
+For a monitored deal, DocJacket stores the group text's messages on the transaction — the text, who sent it, and when — so the conversation lives with the deal instead of only on your phone. You control which deals are monitored (it's off until you turn it on per deal), and you can see everything it captured on the **Texts** tab.
+
+## What it deliberately won't do
+
+- **It won't answer questions in the thread.** Even if someone types "DocJacket, when's the inspection?", it doesn't answer in the group today — answering participants directly is a future capability, and it will be permission-aware when it ships.
+- **It won't give legal, financial, or negotiation advice.**
+- **It won't change legally meaningful terms on its own.** Dates and tasks are proposals for a human to approve.
+- **It won't act on unverified claims.** A message like "this is about 123 Main St" is treated as something to check against the deal, not a fact to act on.
+
+## Standard text-message controls
+
+The DocJacket number behaves like any other business text line for the people in the group:
+
+- Anyone can reply **STOP** to opt out of texts from that number, or **HELP** for information.
+- Opt-outs are respected.
+
+## Good to know
+
+- **Monitoring is per deal and off by default** — you decide which transactions have DocJacket in the group.
+- **You stay in control of every change** — see [What it proposes & how to approve](./what-it-proposes.mdx).
+- **Mixed groups deserve care.** Because a group can contain both sides of a deal, DocJacket is deliberately conservative: it observes and proposes to you privately rather than disclosing anything into the thread.
+
+## Where to go next
+
+- **[Overview](./index.mdx)** — what the Group Text Assistant is.
+- **[How to use it](./how-to-use.mdx)** — set a deal up for monitoring.
