@@ -37,7 +37,9 @@ curl https://api.docjacket.com/api/v1/catalog \
   -H "Authorization: Bearer mcp_at_YOUR_KEY"
 ```
 
-`/catalog` is the quickest way to see the current surface — it lists every operation, its method and path, the scope it needs, and whether *your* key can call it.
+`/catalog` is the quickest way to see the current surface — it lists every operation, its method and path, the scope it needs, and whether *your* key can call it. Once your key is working, `GET /api/v1/usage` reports your call volume, top operations, and error rate.
+
+Prefer to read the whole surface at once? **[All operations](./reference.mdx)** lists every endpoint grouped by resource, with method, path, and required scope.
 
 ## What you can do
 
@@ -51,6 +53,7 @@ curl https://api.docjacket.com/api/v1/catalog \
 
 - **[Authentication & API keys](./authentication.mdx)** — create, scope, rotate, and revoke keys.
 - **[Making requests](./making-requests.mdx)** — conventions, errors, rate limits, and recipes.
+- **[All operations](./reference.mdx)** — every endpoint, grouped by resource, with method, path, and required scope.
 - **[Webhooks](./webhooks.mdx)** — subscribe to events and verify signatures.
 - **[Partner API](./reseller.mdx)** — provisioning and read access for resellers.
 - **[Versioning & changes](./versioning.mdx)** — how the API evolves without breaking you.

@@ -1,0 +1,6084 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "DocJacket API",
+    "description": "The DocJacket integration API. One `/api/v1` surface, capability-scoped by credential:\n\n- **Org API key** (`mcp_at_…`) — acts within a single organization. Mint one in DocJacket under **Settings → AI & API Access**. Key scopes: `read` (GETs), `draft` (low-risk writes like completing a task), `actions` (side-effect writes like sending email).\n- **Reseller API key** (`rsk_…`) — cross-tenant provisioning for white-label partners.\n\nSend the key as a bearer token: `Authorization: Bearer <key>`.\n\nErrors use one envelope: `{ \"error\": { \"code\", \"message\", \"fields\"? } }`. Cross-tenant lookups return `404` (never disclosing existence).\n\n**Rate limits.** Per key, per minute, in a fixed window: **300 reads** (GET) and **60 writes** (POST/PUT/PATCH/DELETE). Exceeding a bucket returns `429` with a `Retry-After: 60` header and the standard error envelope (`code: \"rate_limited\"`); retry after the window resets.\n\n**Versioning & deprecation.** The API is **additive by default** — new fields and operations may appear at any time, so clients **must ignore unknown response fields** and not depend on property order. Changes that would break an existing client (removing/renaming a field, tightening a type, changing an error contract) ship only as a **new major version** at a new path (`/api/v2`); `/api/v1` is not broken in place. When a version is deprecated it remains available for at least **6 months** after the successor ships, and the retirement is announced in the release notes. Idempotency-Key is honored on side-effecting writes so retries are safe.\n\nStart with `GET /api/v1/health` (verifies your key), then `GET /api/v1/catalog` (lists every operation and whether your key can call it) and `GET /api/v1/usage` (your key's call volume, top operations, and error rate). The same key also works with AI agents via the DocJacket MCP server at `https://mcp.docjacket.com/mcp`.\n\n**Prefer reading over clicking?** A statically rendered copy of this reference — no JavaScript required, crawlable and quotable — lives at [help.docjacket.com/docs/api](https://help.docjacket.com/docs/api), alongside guides for authentication, webhooks, and the partner tier. The machine-readable spec is at [api.docjacket.com/openapi.json](https://api.docjacket.com/openapi.json).",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000/"
+    }
+  ],
+  "paths": {
+    "/api/v1/orgs": {
+      "get": {
+        "tags": [
+          "Organizations (Partner)"
+        ],
+        "summary": "List your customer organizations",
+        "operationId": "ListOrgs",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32",
+              "default": 25
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "PartnerApiKey": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Organizations (Partner)"
+        ],
+        "summary": "Provision a customer organization",
+        "operationId": "CreateOrg",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrgRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "PartnerApiKey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/orgs/{orgId}": {
+      "get": {
+        "tags": [
+          "Organizations (Partner)"
+        ],
+        "summary": "Get a customer organization",
+        "operationId": "GetOrg",
+        "parameters": [
+          {
+            "name": "orgId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "PartnerApiKey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/orgs/{orgId}/users": {
+      "post": {
+        "tags": [
+          "Organizations (Partner)"
+        ],
+        "summary": "Invite a seat into an organization",
+        "operationId": "AddSeat",
+        "parameters": [
+          {
+            "name": "orgId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddSeatRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "PartnerApiKey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/orgs/{orgId}/users/{userId}": {
+      "delete": {
+        "tags": [
+          "Organizations (Partner)"
+        ],
+        "summary": "Remove a seat from an organization",
+        "operationId": "RemoveSeat",
+        "parameters": [
+          {
+            "name": "orgId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "PartnerApiKey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/orgs/{orgId}/entitlements": {
+      "get": {
+        "tags": [
+          "Organizations (Partner)"
+        ],
+        "summary": "Get an organization's plan, seats, and AI fair-use pool state",
+        "operationId": "GetOrgEntitlements",
+        "parameters": [
+          {
+            "name": "orgId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "PartnerApiKey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/orgs/{orgId}/summary": {
+      "get": {
+        "tags": [
+          "Organizations (Partner)"
+        ],
+        "summary": "Get an organization's activity summary (active deals, tasks due, last activity)",
+        "operationId": "GetOrgSummary",
+        "parameters": [
+          {
+            "name": "orgId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "PartnerApiKey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/health": {
+      "get": {
+        "tags": [
+          "Meta"
+        ],
+        "summary": "Check API key authentication and service health",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "OrgHealth",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/catalog": {
+      "get": {
+        "tags": [
+          "Meta"
+        ],
+        "summary": "List operations available to your API key",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "OrgCatalog",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Get a transaction by ID",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "GetTransaction",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "List or search transactions",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ListTransactions",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32",
+              "default": 25
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Apply a completed extraction — create a new transaction, or attach to an existing one via transactionId",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "ApplyExtraction",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ApplyExtractionRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/contacts": {
+      "get": {
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "List or search contacts",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ListContacts",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32",
+              "default": 25
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "Create a contact",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "CreateContact",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CreateContactRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/key-dates/upcoming": {
+      "get": {
+        "tags": [
+          "Key Dates"
+        ],
+        "summary": "List upcoming key dates across active transactions",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "UpcomingKeyDates",
+        "parameters": [
+          {
+            "name": "horizonDays",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32",
+              "default": 14
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32",
+              "default": 25
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/key-dates": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "List key dates for a transaction",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "GetKeyDates",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Add key dates to a transaction (batch)",
+        "description": "**Requires the `draft` scope.**",
+        "operationId": "AddKeyDates",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/AddKeyDatesRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/contacts/{contactId}": {
+      "get": {
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "Get a contact by ID",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "GetContact",
+        "parameters": [
+          {
+            "name": "contactId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "activityLimit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/tasks": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "List open tasks",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ListTasks",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "assignedTo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32",
+              "default": 50
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/tasks/{taskId}/complete": {
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Mark a task complete",
+        "description": "**Requires the `draft` scope.**",
+        "operationId": "CompleteTask",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CompleteTaskRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/activity": {
+      "post": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Log an activity on a transaction",
+        "description": "**Requires the `draft` scope.**",
+        "operationId": "LogActivity",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LogActivityRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/checklist": {
+      "post": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Apply a checklist template to a transaction",
+        "description": "**Requires the `draft` scope.**",
+        "operationId": "ApplyChecklist",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ApplyChecklistRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Get aggregate checklist status for a transaction",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "GetChecklistStatus",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/contact-roles": {
+      "post": {
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "Create a custom contact role",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "CreateContactRole",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CreateContactRoleRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/email-templates": {
+      "post": {
+        "tags": [
+          "Templates & Forms"
+        ],
+        "summary": "Create an email template",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "CreateEmailTemplate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CreateEmailTemplateRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Templates & Forms"
+        ],
+        "summary": "List email templates (org + system, active only)",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ListEmailTemplates",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "audience",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "stage",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "side",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32",
+              "default": 50
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/tasks/delete": {
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Delete tasks (bulk, permanent)",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "DeleteTasks",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/DeleteTasksRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/resolve": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Resolve a property reference to ranked transaction matches",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ResolveTransactionByProperty",
+        "parameters": [
+          {
+            "name": "property",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32",
+              "default": 3
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/contingencies": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "List open contingencies for a transaction",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ListOpenContingencies",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/missing-documents": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "List documents missing against the purchase baseline",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "GetMissingDocuments",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/intake-status": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Get the intake-progress snapshot for a transaction",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "GetIntakeStatus",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/next-actions": {
+      "get": {
+        "tags": [
+          "Meta"
+        ],
+        "summary": "Get the ranked next-actions feed (tasks + key dates)",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "GetNextActions",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32",
+              "default": 25
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/documents": {
+      "get": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "List recently-uploaded documents with extraction state",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ListDocuments",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "since",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "hasExtraction",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32",
+              "default": 50
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "Upload a document (base64) and start extraction",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "UploadDocumentForExtraction",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/UploadDocumentRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/documents/{documentId}/view-url": {
+      "get": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "Get a short-lived presigned URL to view a document",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "GetDocumentViewUrl",
+        "parameters": [
+          {
+            "name": "documentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/extractions/{jobId}": {
+      "get": {
+        "tags": [
+          "Extractions"
+        ],
+        "summary": "Get the state and results of an extraction job",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "GetExtractionResults",
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/extractions/{jobId}/source-url": {
+      "get": {
+        "tags": [
+          "Extractions"
+        ],
+        "summary": "Get a short-lived presigned URL to view an extraction's source PDF",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "GetExtractionSourceUrl",
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/documents/classify": {
+      "post": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "Classify a document by filename and/or content preview",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ClassifyDocument",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ClassifyDocumentRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/notifications": {
+      "get": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "List the signed-in user's notification inbox",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ListNotifications",
+        "parameters": [
+          {
+            "name": "unreadOnly",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32",
+              "default": 50
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/notifications/unread-count": {
+      "get": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Unread notification count for the signed-in user",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "NotificationUnreadCount",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/conversations": {
+      "get": {
+        "tags": [
+          "Messaging"
+        ],
+        "summary": "List the organization's message threads",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ListConversations",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32",
+              "default": 50
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/conversations/{threadId}/messages": {
+      "get": {
+        "tags": [
+          "Messaging"
+        ],
+        "summary": "List messages in a conversation thread",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ListConversationMessages",
+        "parameters": [
+          {
+            "name": "threadId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32",
+              "default": 50
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Messaging"
+        ],
+        "summary": "Reply with an SMS in an existing conversation thread",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "SendConversationMessage",
+        "parameters": [
+          {
+            "name": "threadId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ReplyMessageRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/email-templates/{idOrSlug}": {
+      "get": {
+        "tags": [
+          "Templates & Forms"
+        ],
+        "summary": "Get an email template by ID or slug",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "GetEmailTemplate",
+        "parameters": [
+          {
+            "name": "idOrSlug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/merge-fields": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Get all merge field values for a transaction",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "GetMergeFields",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/render-template": {
+      "post": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Render an email template against a transaction (preview-only)",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "RenderEmailTemplate",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/RenderTemplateRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/checklist-templates": {
+      "get": {
+        "tags": [
+          "Templates & Forms"
+        ],
+        "summary": "List timeline/checklist templates (org + system)",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ListChecklistTemplates",
+        "parameters": [
+          {
+            "name": "state",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "side",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "transactionType",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "complexity",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "activeOnly",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/form-links": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "List form links sent on a transaction",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ListFormLinks",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/forms/{formId}": {
+      "get": {
+        "tags": [
+          "Templates & Forms"
+        ],
+        "summary": "Get a form template with its field list",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "GetFormDefinition",
+        "parameters": [
+          {
+            "name": "formId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/form-submissions": {
+      "get": {
+        "tags": [
+          "Templates & Forms"
+        ],
+        "summary": "List form submissions (org-wide or per transaction)",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ListFormSubmissions",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "formDefinitionId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "formPurpose",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "pending_review"
+            }
+          },
+          {
+            "name": "since",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32",
+              "default": 25
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/form-submissions/{submissionId}": {
+      "get": {
+        "tags": [
+          "Templates & Forms"
+        ],
+        "summary": "Get field-level detail for a form submission",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "GetFormSubmission",
+        "parameters": [
+          {
+            "name": "submissionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/portal-link": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Get the active client-portal link for a transaction",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "GetPortalLink",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/disclosure-packages/{packageId}": {
+      "get": {
+        "tags": [
+          "Disclosure Packages"
+        ],
+        "summary": "Get a disclosure package with items and recipients",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "GetDisclosurePackage",
+        "parameters": [
+          {
+            "name": "packageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/disclosure-packages/{packageId}/activity": {
+      "get": {
+        "tags": [
+          "Disclosure Packages"
+        ],
+        "summary": "Get the recipient-activity report for a disclosure package",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "GetDisclosureActivity",
+        "parameters": [
+          {
+            "name": "packageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/contacts/search": {
+      "get": {
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "Fuzzy-search contacts by name, email, phone, or company",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "SearchContacts",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "contactType",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32",
+              "default": 25
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/contacts/by-email": {
+      "get": {
+        "tags": [
+          "Contacts"
+        ],
+        "summary": "Find contacts by exact email, with their transactions",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "FindContactByEmail",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/tasks": {
+      "post": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Create a task on a transaction",
+        "description": "**Requires the `draft` scope.**",
+        "operationId": "CreateTask",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CreateTaskRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/key-dates/{keyDateType}": {
+      "patch": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Update a key date on a transaction",
+        "description": "**Requires the `draft` scope.**",
+        "operationId": "UpdateKeyDate",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "keyDateType",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/UpdateKeyDateRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/status-summary": {
+      "post": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Save a status summary on a transaction",
+        "description": "**Requires the `draft` scope.**",
+        "operationId": "SaveStatusSummary",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/StatusSummaryRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/reminders": {
+      "post": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Schedule a reminder on a transaction",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "CreateReminder",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CreateReminderRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/tasks/{taskId}/reschedule": {
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Reschedule (postpone) a task's due date",
+        "description": "**Requires the `draft` scope.**",
+        "operationId": "RescheduleTask",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/RescheduleTaskRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/tasks/{taskId}/assign": {
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Reassign a task to a team member",
+        "description": "**Requires the `draft` scope.**",
+        "operationId": "AssignTask",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/AssignTaskRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/org/users": {
+      "get": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "List the organization's assignable team members",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ListOrgUsers",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/tasks/{taskId}/comments": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "List a task's comment thread",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ListTaskComments",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Add a comment to a task",
+        "description": "**Requires the `draft` scope.**",
+        "operationId": "CreateTaskComment",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CreateTaskCommentRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/tasks/{taskId}/comments/{commentId}": {
+      "delete": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Delete a task comment (author only)",
+        "description": "**Requires the `draft` scope.**",
+        "operationId": "DeleteTaskComment",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "commentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/contacts": {
+      "post": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Link an existing contact to a transaction with a role",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "AddContactToTransaction",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LinkContactRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/documents/upload-url": {
+      "post": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "Get a presigned PUT URL for a document upload",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "RequestUploadUrl",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/UploadUrlRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/extractions": {
+      "post": {
+        "tags": [
+          "Extractions"
+        ],
+        "summary": "Start extraction from a presigned upload",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "KickOffExtraction",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/KickOffExtractionRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/documents/{documentId}/extract": {
+      "post": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "Start extraction for a document already in DocJacket",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "ExtractExistingDocument",
+        "parameters": [
+          {
+            "name": "documentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ExtractExistingRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/documents/{documentId}": {
+      "patch": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "Rename or re-classify a document",
+        "description": "**Requires the `draft` scope.**",
+        "operationId": "UpdateDocument",
+        "parameters": [
+          {
+            "name": "documentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/UpdateDocumentRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "Soft-delete a document",
+        "description": "**Requires the `draft` scope.**",
+        "operationId": "DeleteDocument",
+        "parameters": [
+          {
+            "name": "documentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/documents/types": {
+      "get": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "List the canonical document-type vocabulary",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ListDocumentTypes",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/documents/reorder": {
+      "post": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Set the order of a transaction's documents",
+        "description": "**Requires the `draft` scope.**",
+        "operationId": "ReorderDocuments",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ReorderDocumentsRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/documents/{documentId}/versions": {
+      "post": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "Replace a document with a new uploaded version",
+        "description": "**Requires the `draft` scope.**",
+        "operationId": "ReplaceDocumentVersion",
+        "parameters": [
+          {
+            "name": "documentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ReplaceDocumentVersionRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/documents/{documentId}/split": {
+      "post": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "Split a multi-page PDF into separate documents",
+        "description": "**Requires the `draft` scope.**",
+        "operationId": "SplitDocument",
+        "parameters": [
+          {
+            "name": "documentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/SplitDocumentRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/draft-message": {
+      "post": {
+        "tags": [
+          "Messaging"
+        ],
+        "summary": "Generate an AI message draft (never sends)",
+        "description": "**Requires the `draft` scope.**",
+        "operationId": "DraftMessage",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/MessageDraftRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/communications": {
+      "get": {
+        "tags": [
+          "Messaging"
+        ],
+        "summary": "List every message for a transaction across channels (SMS + email + in-app)",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ListCommunications",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/emails/client-update": {
+      "post": {
+        "tags": [
+          "Messaging"
+        ],
+        "summary": "Send a status-update email to a deal party",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "SendClientUpdateEmail",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ClientUpdateEmailRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/emails/document-request": {
+      "post": {
+        "tags": [
+          "Messaging"
+        ],
+        "summary": "Send a document-request email to a deal party",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "SendDocumentRequestEmail",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/DocumentRequestEmailRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/emails/agent-followup": {
+      "post": {
+        "tags": [
+          "Messaging"
+        ],
+        "summary": "Send a follow-up email to an agent or vendor",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "SendAgentFollowupEmail",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/AgentFollowupEmailRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/emails/agent": {
+      "post": {
+        "tags": [
+          "Messaging"
+        ],
+        "summary": "Send an email to an agent on the deal",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "SendEmailToAgent",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/AgentEmailRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/conversations": {
+      "post": {
+        "tags": [
+          "Messaging"
+        ],
+        "summary": "Start a conversation by sending the first SMS on a deal",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "StartConversation",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/StartConversationRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/scheduled-messages": {
+      "post": {
+        "tags": [
+          "Messaging"
+        ],
+        "summary": "Schedule an email to send later on a deal",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "ScheduleMessage",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ScheduleMessageRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Messaging"
+        ],
+        "summary": "List active scheduled messages on a deal",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ListScheduledMessages",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/scheduled-messages/{messageId}": {
+      "delete": {
+        "tags": [
+          "Messaging"
+        ],
+        "summary": "Cancel a pending scheduled message",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "CancelScheduledMessage",
+        "parameters": [
+          {
+            "name": "messageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/messages": {
+      "post": {
+        "tags": [
+          "Messaging"
+        ],
+        "summary": "Send an email on a deal (appears in the merged thread as channel=email)",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "SendMessage",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/SendEmailMessageRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/recipients": {
+      "get": {
+        "tags": [
+          "Messaging"
+        ],
+        "summary": "List a deal's participants with role and per-channel availability",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ListRecipients",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "channel",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/conversations/{threadId}/documents": {
+      "post": {
+        "tags": [
+          "Messaging"
+        ],
+        "summary": "Share a document into an existing conversation via secure SMS link",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "ShareDocumentToConversation",
+        "parameters": [
+          {
+            "name": "threadId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ShareToThreadRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/documents/{documentId}/share": {
+      "post": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Share a document to a party on a deal via secure SMS link",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "ShareDocumentToParty",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "documentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ShareToPartyRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/disclosure-packages": {
+      "post": {
+        "tags": [
+          "Disclosure Packages"
+        ],
+        "summary": "Create a disclosure package (optionally attach documents and activate)",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "CreateDisclosurePackage",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CreatePackageRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/disclosure-packages/{packageId}/documents": {
+      "put": {
+        "tags": [
+          "Disclosure Packages"
+        ],
+        "summary": "Replace a disclosure package's document list",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "UpdateDisclosurePackageDocuments",
+        "parameters": [
+          {
+            "name": "packageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ReplaceDocumentsRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/disclosure-packages/{packageId}/activate": {
+      "post": {
+        "tags": [
+          "Disclosure Packages"
+        ],
+        "summary": "Activate a disclosure package (idempotent)",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "ActivateDisclosurePackage",
+        "parameters": [
+          {
+            "name": "packageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/disclosure-packages/{packageId}/recipients": {
+      "post": {
+        "tags": [
+          "Disclosure Packages"
+        ],
+        "summary": "Invite a recipient to a disclosure package (sends the share email)",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "InviteDisclosureRecipient",
+        "parameters": [
+          {
+            "name": "packageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/InviteRecipientRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/disclosure-packages/{packageId}/recipients/{recipientId}": {
+      "delete": {
+        "tags": [
+          "Disclosure Packages"
+        ],
+        "summary": "Revoke a disclosure recipient's access (idempotent)",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "RevokeDisclosureRecipient",
+        "parameters": [
+          {
+            "name": "packageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "recipientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/webhook-events": {
+      "get": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "List the webhook event types you can subscribe to",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ListWebhookEvents",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/webhooks": {
+      "get": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "List your webhook subscriptions",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ListWebhooks",
+        "parameters": [
+          {
+            "name": "includeInactive",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "Create a webhook subscription",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "CreateWebhook",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CreateWebhookApiRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/webhooks/{id}": {
+      "get": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "Get a webhook subscription by ID",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "GetWebhook",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "Update a webhook subscription",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "UpdateWebhook",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/UpdateWebhookApiRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "Delete a webhook subscription",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "DeleteWebhook",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/webhooks/{id}/test": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "Send a test delivery to a webhook subscription",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "TestWebhook",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/webhooks/{id}/regenerate-secret": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "Rotate a webhook subscription's signing secret",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "RegenerateWebhookSecret",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/webhooks/{id}/deliveries": {
+      "get": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "List recent delivery attempts for a webhook subscription",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ListWebhookDeliveries",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32",
+              "default": 50
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/usage": {
+      "get": {
+        "tags": [
+          "Meta"
+        ],
+        "summary": "Get call-volume, daily breakdown, top operations, and error rate for your API key",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "GetUsage",
+        "parameters": [
+          {
+            "name": "days",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32",
+              "default": 30
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/devices/register": {
+      "post": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Register or refresh a mobile device for the authenticated user",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "RegisterDevice",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/RegisterDeviceRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transaction-statuses": {
+      "get": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "List the organization's selectable transaction statuses",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ListTransactionStatuses",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/status": {
+      "patch": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Change a transaction's status (runs the same cascade as the web app)",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "ChangeTransactionStatus",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ChangeStatusRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/reports/communication-log": {
+      "get": {
+        "tags": [
+          "Messaging"
+        ],
+        "summary": "Export a transaction's communication log (email + SMS) as a PDF, ZIP (with documents), or JSON",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ExportCommunicationLog",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/transactions/{transactionId}/notes": {
+      "patch": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Set or clear a transaction's general notes",
+        "description": "**Requires the `draft` scope.**",
+        "operationId": "UpdateTransactionNotes",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/UpdateNotesRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/proposals": {
+      "get": {
+        "tags": [
+          "Proposals"
+        ],
+        "summary": "List pending AI proposals for the organization",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "ListProposals",
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "transactionId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/proposals/{id}": {
+      "get": {
+        "tags": [
+          "Proposals"
+        ],
+        "summary": "Get one AI proposal with its evidence",
+        "description": "**Requires the `read` scope.**",
+        "operationId": "GetProposal",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/proposals/{id}/approve": {
+      "post": {
+        "tags": [
+          "Proposals"
+        ],
+        "summary": "Approve an AI proposal",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "ApproveProposal",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/proposals/{id}/reject": {
+      "post": {
+        "tags": [
+          "Proposals"
+        ],
+        "summary": "Reject an AI proposal",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "RejectProposal",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/RejectProposalRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/proposals/{id}/payload": {
+      "put": {
+        "tags": [
+          "Proposals"
+        ],
+        "summary": "Edit a proposal's proposed value before approving",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "EditProposalPayload",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/EditProposalPayloadRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AddKeyDatesRequest": {
+        "required": [
+          "keyDates"
+        ],
+        "type": "object",
+        "properties": {
+          "keyDates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/KeyDateInput"
+            }
+          }
+        }
+      },
+      "AddSeatRequest": {
+        "required": [
+          "email",
+          "firstName",
+          "lastName",
+          "role"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "lastName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "role": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "AgentEmailRequest": {
+        "required": [
+          "recipientContactId",
+          "recipientRole",
+          "intent",
+          "subject",
+          "bodyHtml",
+          "bodyPlainText"
+        ],
+        "type": "object",
+        "properties": {
+          "recipientContactId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "recipientRole": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "intent": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "subject": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "bodyHtml": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "bodyPlainText": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "AgentFollowupEmailRequest": {
+        "required": [
+          "recipientContactId",
+          "recipientRole",
+          "topic",
+          "subject",
+          "bodyHtml",
+          "bodyPlainText",
+          "tone",
+          "sourceContextSummary"
+        ],
+        "type": "object",
+        "properties": {
+          "recipientContactId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "recipientRole": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "topic": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "subject": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "bodyHtml": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "bodyPlainText": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "tone": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "sourceContextSummary": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "ApplyChecklistRequest": {
+        "required": [
+          "templateId",
+          "replaceExisting",
+          "scope"
+        ],
+        "type": "object",
+        "properties": {
+          "templateId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "replaceExisting": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          },
+          "scope": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "ApplyExtractionRequest": {
+        "required": [
+          "extractionJobId",
+          "transactionType",
+          "side",
+          "overrides"
+        ],
+        "type": "object",
+        "properties": {
+          "extractionJobId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "transactionType": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "side": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "overrides": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/JsonElement"
+              }
+            ]
+          },
+          "transactionId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          }
+        }
+      },
+      "AssignTaskRequest": {
+        "required": [
+          "assigneeUserId"
+        ],
+        "type": "object",
+        "properties": {
+          "assigneeUserId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          }
+        }
+      },
+      "ChangeStatusRequest": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "ClassifyDocumentRequest": {
+        "required": [
+          "filename",
+          "contentPreview"
+        ],
+        "type": "object",
+        "properties": {
+          "filename": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "contentPreview": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "ClientUpdateEmailRequest": {
+        "required": [
+          "recipientContactId",
+          "audience",
+          "focus",
+          "subject",
+          "bodyHtml",
+          "bodyPlainText",
+          "tone",
+          "attachmentDocumentIds"
+        ],
+        "type": "object",
+        "properties": {
+          "recipientContactId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "audience": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "focus": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "subject": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "bodyHtml": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "bodyPlainText": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "tone": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "attachmentDocumentIds": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "CompleteTaskRequest": {
+        "required": [
+          "completionNotes"
+        ],
+        "type": "object",
+        "properties": {
+          "completionNotes": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "CreateContactRequest": {
+        "required": [
+          "firstName",
+          "lastName",
+          "email",
+          "phone",
+          "company",
+          "licenseNumber",
+          "contactType",
+          "kind",
+          "streetAddress",
+          "city",
+          "state",
+          "zipCode",
+          "notes"
+        ],
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "lastName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "email": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "phone": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "company": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "licenseNumber": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "contactType": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "kind": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "streetAddress": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "city": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "state": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "zipCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "notes": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "CreateContactRoleRequest": {
+        "required": [
+          "name",
+          "category",
+          "description",
+          "allowMultiple",
+          "maxInstances",
+          "partyKey",
+          "ignoreSimilar"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "category": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "allowMultiple": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          },
+          "maxInstances": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "partyKey": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "ignoreSimilar": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          }
+        }
+      },
+      "CreateEmailTemplateRequest": {
+        "required": [
+          "name",
+          "category",
+          "subject",
+          "body",
+          "description",
+          "audience",
+          "stage",
+          "side",
+          "tone",
+          "isActive"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "category": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "subject": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "body": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "audience": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "stage": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "side": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "tone": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "isActive": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          }
+        }
+      },
+      "CreateOrgRequest": {
+        "required": [
+          "name",
+          "owner"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "owner": {
+            "$ref": "#/components/schemas/OwnerBody"
+          }
+        }
+      },
+      "CreatePackageRequest": {
+        "required": [
+          "transactionId",
+          "name",
+          "coverMessage",
+          "documentIds",
+          "allowDownloads",
+          "requireAck",
+          "expiresAt"
+        ],
+        "type": "object",
+        "properties": {
+          "transactionId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "name": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "coverMessage": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "documentIds": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "allowDownloads": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          },
+          "requireAck": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          },
+          "expiresAt": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          }
+        }
+      },
+      "CreateReminderRequest": {
+        "required": [
+          "milestoneId",
+          "deadlineType",
+          "deadlineDate",
+          "daysBeforeReminder",
+          "recipientEmails",
+          "recipientRoles",
+          "emailTemplateId",
+          "note",
+          "reminderTimeOfDay"
+        ],
+        "type": "object",
+        "properties": {
+          "milestoneId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "deadlineType": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "deadlineDate": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "daysBeforeReminder": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "recipientEmails": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "recipientRoles": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "emailTemplateId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "note": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "reminderTimeOfDay": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "CreateTaskCommentRequest": {
+        "required": [
+          "content"
+        ],
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateTaskRequest": {
+        "required": [
+          "title",
+          "description",
+          "dueDate",
+          "priority",
+          "linkedMilestoneName",
+          "assigneeUserId"
+        ],
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "dueDate": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "priority": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "linkedMilestoneName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "assigneeUserId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          }
+        }
+      },
+      "CreateWebhookApiRequest": {
+        "required": [
+          "name",
+          "url",
+          "events",
+          "description",
+          "headers"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "url": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "events": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "headers": {
+            "type": [
+              "null",
+              "object"
+            ],
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "DeleteTasksRequest": {
+        "required": [
+          "taskIds"
+        ],
+        "type": "object",
+        "properties": {
+          "taskIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        }
+      },
+      "DocumentRequestEmailRequest": {
+        "required": [
+          "recipientContactId",
+          "recipientRole",
+          "documentTypes",
+          "subject",
+          "bodyHtml",
+          "bodyPlainText",
+          "tone"
+        ],
+        "type": "object",
+        "properties": {
+          "recipientContactId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "recipientRole": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "documentTypes": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "subject": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "bodyHtml": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "bodyPlainText": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "tone": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "EditProposalPayloadRequest": {
+        "required": [
+          "parameters"
+        ],
+        "type": "object",
+        "properties": {
+          "parameters": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/JsonElement"
+              }
+            ]
+          }
+        }
+      },
+      "ExtractExistingRequest": {
+        "required": [
+          "state",
+          "documentTypeHint",
+          "transactionIdOverride",
+          "side"
+        ],
+        "type": "object",
+        "properties": {
+          "state": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "documentTypeHint": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "transactionIdOverride": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "side": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "InviteRecipientRequest": {
+        "required": [
+          "displayLabel",
+          "email",
+          "contactId",
+          "audienceTier",
+          "expiresAt"
+        ],
+        "type": "object",
+        "properties": {
+          "displayLabel": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "email": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "contactId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "audienceTier": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "expiresAt": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          }
+        }
+      },
+      "JsonElement": {},
+      "KeyDateInput": {
+        "required": [
+          "keyDateType",
+          "dateValue",
+          "isCustom",
+          "label"
+        ],
+        "type": "object",
+        "properties": {
+          "keyDateType": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "dateValue": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "isCustom": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          },
+          "label": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "KickOffExtractionRequest": {
+        "required": [
+          "uploadId",
+          "filename",
+          "state",
+          "documentTypeHint",
+          "transactionId",
+          "side"
+        ],
+        "type": "object",
+        "properties": {
+          "uploadId": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "filename": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "state": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "documentTypeHint": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "transactionId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "side": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "LinkContactRequest": {
+        "required": [
+          "contactId",
+          "role",
+          "isPrimary"
+        ],
+        "type": "object",
+        "properties": {
+          "contactId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "role": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "isPrimary": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          }
+        }
+      },
+      "LogActivityRequest": {
+        "required": [
+          "type",
+          "summary",
+          "details"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "details": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "MessageDraftRequest": {
+        "required": [
+          "intent"
+        ],
+        "type": "object",
+        "properties": {
+          "intent": {
+            "type": "string"
+          },
+          "recipientRole": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "recipientName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "additionalContext": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "OwnerBody": {
+        "required": [
+          "email",
+          "firstName",
+          "lastName"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "lastName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "RegisterDeviceRequest": {
+        "required": [
+          "installationId",
+          "platform",
+          "appVersion",
+          "pushToken",
+          "capabilities",
+          "permissions"
+        ],
+        "type": "object",
+        "properties": {
+          "installationId": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "platform": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "appVersion": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "pushToken": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "capabilities": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "permissions": {
+            "type": [
+              "null",
+              "object"
+            ],
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "RejectProposalRequest": {
+        "required": [
+          "reason"
+        ],
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "RenderTemplateRequest": {
+        "required": [
+          "templateId",
+          "slug"
+        ],
+        "type": "object",
+        "properties": {
+          "templateId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "slug": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "ReorderDocumentsRequest": {
+        "required": [
+          "orderedDocumentIds"
+        ],
+        "type": "object",
+        "properties": {
+          "orderedDocumentIds": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        }
+      },
+      "ReplaceDocumentsRequest": {
+        "required": [
+          "documentIds"
+        ],
+        "type": "object",
+        "properties": {
+          "documentIds": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        }
+      },
+      "ReplaceDocumentVersionRequest": {
+        "required": [
+          "uploadId",
+          "filename",
+          "sizeBytes",
+          "contentType"
+        ],
+        "type": "object",
+        "properties": {
+          "uploadId": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "filename": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "sizeBytes": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "contentType": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "ReplyMessageRequest": {
+        "required": [
+          "messageContent"
+        ],
+        "type": "object",
+        "properties": {
+          "messageContent": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "forceOverride": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      },
+      "RescheduleTaskRequest": {
+        "required": [
+          "dueDate"
+        ],
+        "type": "object",
+        "properties": {
+          "dueDate": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          }
+        }
+      },
+      "ScheduleMessageRequest": {
+        "required": [
+          "toEmail",
+          "subject",
+          "body"
+        ],
+        "type": "object",
+        "properties": {
+          "toEmail": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "subject": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "body": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "htmlBody": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "ccAddresses": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "bccAddresses": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "fromAccountId": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "scheduledAt": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "scheduledTimezone": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "SendEmailMessageRequest": {
+        "required": [
+          "toEmail",
+          "subject",
+          "body"
+        ],
+        "type": "object",
+        "properties": {
+          "toEmail": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "subject": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "body": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "htmlBody": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "ccAddresses": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "bccAddresses": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "fromAccountId": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "templateId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "replyToMessageId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          }
+        }
+      },
+      "ShareToPartyRequest": {
+        "required": [
+          "toPhoneNumber",
+          "contactId",
+          "message",
+          "expirationHours"
+        ],
+        "type": "object",
+        "properties": {
+          "toPhoneNumber": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "contactId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "message": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "expirationHours": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          }
+        }
+      },
+      "ShareToThreadRequest": {
+        "required": [
+          "documentId",
+          "message",
+          "expirationHours"
+        ],
+        "type": "object",
+        "properties": {
+          "documentId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "message": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "expirationHours": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          }
+        }
+      },
+      "SplitDocumentRequest": {
+        "required": [
+          "segments"
+        ],
+        "type": "object",
+        "properties": {
+          "segments": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/SplitSegment"
+            }
+          }
+        }
+      },
+      "SplitSegment": {
+        "required": [
+          "startPage",
+          "endPage",
+          "documentType"
+        ],
+        "type": "object",
+        "properties": {
+          "startPage": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "endPage": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "documentType": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "StartConversationRequest": {
+        "required": [
+          "toPhoneNumber",
+          "messageContent"
+        ],
+        "type": "object",
+        "properties": {
+          "toPhoneNumber": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "messageContent": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "contactId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "forceOverride": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      },
+      "StatusSummaryRequest": {
+        "required": [
+          "audience",
+          "subject",
+          "bodyMarkdown",
+          "keyPointBullets"
+        ],
+        "type": "object",
+        "properties": {
+          "audience": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "subject": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "bodyMarkdown": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "keyPointBullets": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "UpdateDocumentRequest": {
+        "required": [
+          "name",
+          "category",
+          "documentType"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "category": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "documentType": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "UpdateKeyDateRequest": {
+        "required": [
+          "newValue",
+          "source",
+          "calculationNotes"
+        ],
+        "type": "object",
+        "properties": {
+          "newValue": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "source": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "calculationNotes": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "UpdateNotesRequest": {
+        "required": [
+          "notes"
+        ],
+        "type": "object",
+        "properties": {
+          "notes": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "UpdateWebhookApiRequest": {
+        "required": [
+          "name",
+          "url",
+          "events",
+          "description",
+          "headers",
+          "isActive",
+          "circuitBreakerEnabled",
+          "timeoutSeconds"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "url": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "events": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "headers": {
+            "type": [
+              "null",
+              "object"
+            ],
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "isActive": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          },
+          "circuitBreakerEnabled": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          },
+          "timeoutSeconds": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          }
+        }
+      },
+      "UploadDocumentRequest": {
+        "required": [
+          "fileBase64",
+          "filename",
+          "state",
+          "documentTypeHint",
+          "transactionId",
+          "side"
+        ],
+        "type": "object",
+        "properties": {
+          "fileBase64": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "filename": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "state": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "documentTypeHint": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "transactionId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "uuid"
+          },
+          "side": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "UploadUrlRequest": {
+        "required": [
+          "filename",
+          "contentType"
+        ],
+        "type": "object",
+        "properties": {
+          "filename": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "contentType": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OrgApiKey": {
+        "type": "http",
+        "description": "Organization API key — `Authorization: Bearer mcp_at_…`\n\nMint one in DocJacket under **Settings → AI & API Access**. The key acts within a single organization and carries one or more scopes:\n\n- `read` — GETs.\n- `draft` — low-risk writes (completing a task, saving a status summary).\n- `actions` — side-effecting writes (sending email, deleting, provisioning).\n\nEach operation below notes the scope it requires. `GET /api/v1/catalog` returns the same list with a `callable` flag computed against *your* key. The identical key also connects AI assistants over MCP at `https://mcp.docjacket.com/mcp`.",
+        "scheme": "bearer"
+      },
+      "PartnerApiKey": {
+        "type": "http",
+        "description": "White-label partner key — `Authorization: Bearer rsk_…`\n\nCross-tenant credential for resellers, accepted only on the `/api/v1/orgs/*` operations (the **Organizations (Partner)** section). Organization API keys (`mcp_at_…`) are rejected there, and a partner key is rejected everywhere else. Requests for an organization the key does not own return `404` rather than `403`, so ownership is never disclosed.",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [
+    {
+      "OrgApiKey": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Meta",
+      "description": "Start here. Verify your key, discover the operations it can call, and see your own call volume."
+    },
+    {
+      "name": "Transactions",
+      "description": "The transaction record itself — create, list, read, and update deals, and manage the checklists, contingencies, notes, and reminders attached to them."
+    },
+    {
+      "name": "Messaging",
+      "description": "Email and messaging on a deal — send client updates and document requests, draft and schedule messages, and read the communication log."
+    },
+    {
+      "name": "Key Dates",
+      "description": "Deadlines across your book of business. Key dates for a single transaction live under Transactions."
+    },
+    {
+      "name": "Tasks",
+      "description": "Task lists on a deal — create, list, comment on, complete, and delete tasks."
+    },
+    {
+      "name": "Documents",
+      "description": "Files on a deal — request an upload URL, list and classify documents, share them, and manage versions."
+    },
+    {
+      "name": "Extractions",
+      "description": "AI contract extraction — kick off a run, poll results, and apply extracted fields to a transaction."
+    },
+    {
+      "name": "Contacts",
+      "description": "People and companies — search, create, and update contacts, and read the role vocabulary they are assigned to."
+    },
+    {
+      "name": "Disclosure Packages",
+      "description": "Seller disclosure packages — assemble documents, activate, invite and revoke recipients, and read access activity."
+    },
+    {
+      "name": "Proposals",
+      "description": "AI-generated proposals awaiting human review — list, inspect, approve, and reject."
+    },
+    {
+      "name": "Templates & Forms",
+      "description": "Reusable content — email templates, checklist templates, intake forms, and the submissions they produce."
+    },
+    {
+      "name": "Webhooks",
+      "description": "Push instead of poll — subscribe to events, manage subscriptions, and read the event catalog."
+    },
+    {
+      "name": "Organization",
+      "description": "Your own organization — settings, the transaction-status vocabulary, notifications, and registered devices."
+    },
+    {
+      "name": "Organizations (Partner)",
+      "description": "White-label partner tier. Provision and read the organizations in your book of business. Requires a partner key (rsk_…), not an organization key."
+    }
+  ]
+}
