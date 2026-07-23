@@ -19,6 +19,8 @@ When help docs describe product behavior, audit against the current `docjacket-v
 - `npm start` - dev server with hot reload
 - `npm run prebuild` - regenerate `static/llms-full.txt` and mirrored markdown docs
 - `npm run build` - production Docusaurus build; npm lifecycle also runs `prebuild` and `postbuild`
+- `npm run fetch-spec` - refresh `spec/dj-api.json` from `api.docjacket.com/openapi.json`
+- `npm run gen-api-reference` - regenerate `docs/api/reference.mdx` from that spec
 - `npm run typecheck` - TypeScript type checking
 - `npm run clear` - clear Docusaurus cache
 - `npm run serve` - serve the production build locally
@@ -61,6 +63,8 @@ See `DEPLOYMENT.md` for the full deployment contract, production verification st
 - `docs/` - authored help articles grouped by category
 - `static/docs/` - generated markdown mirrors for LLMs and answer engines
 - `static/llms-full.txt` - generated full-docs text bundle
+- `spec/dj-api.json` - committed copy of the DocJacket OpenAPI document (refresh with `npm run fetch-spec`)
+- `docs/api/reference.mdx` - GENERATED from that spec; never hand-edit. After any public API change: `npm run fetch-spec && npm run gen-api-reference`, then commit both. Excluded from `static/help-corpus.json` on purpose (the app's Help Chat loads that corpus in full, and 115 endpoint rows would crowd out customer-facing help)
 - `scripts/write-build-info.mjs` - writes `build/build-info.json` after production build
 - `src/pages/index.tsx` - help center homepage
 - `src/components/HelpCategories/` - homepage category cards

@@ -6,6 +6,8 @@
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
     "regen-llms": "node scripts/regen-llms-full.mjs",
+    "fetch-spec": "node scripts/fetch-openapi-spec.mjs",
+    "gen-api-reference": "node scripts/gen-api-reference.mjs",
     "mirror-md": "node scripts/mirror-docs-md.mjs",
     "build-corpus": "node scripts/build-help-corpus.mjs",
     "prebuild": "node scripts/regen-llms-full.mjs && node scripts/mirror-docs-md.mjs && node scripts/build-help-corpus.mjs",

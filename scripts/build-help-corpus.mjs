@@ -69,6 +69,17 @@ async function* walk(dir) {
   }
 }
 
+// Pages excluded from the Help Chat corpus, by slug.
+//
+// api/reference is the generated 115-row endpoint index. The app's Help Chat loads
+// this corpus IN FULL rather than retrieving a subset, so a wall of endpoint rows
+// would crowd out the help content customers actually ask about — and no TC has
+// ever asked "what is the path for POST create_webhook". The hand-written
+// docs/api/* guides stay in (a customer asking "does it have an API?" needs those).
+// Integrators and agents get the reference three other ways: the rendered page, its
+// plain-markdown mirror at /docs/api/reference.md, and llms-full.txt.
+const EXCLUDED_SLUGS = new Set(['api/reference']);
+
 // docs/foo/bar/index.(md|mdx) -> slug "foo/bar"; docs/foo/baz.(md|mdx) -> "foo/baz"
 function slugFor(srcPath) {
   const rel = relative(DOCS_DIR, srcPath).replace(/\\/g, '/');
@@ -85,6 +96,8 @@ async function main() {
     if (!markdown) continue;
 
     const slug = slugFor(src);
+    if (EXCLUDED_SLUGS.has(slug)) continue;
+
     const title = firstH1(body) || data.sidebar_label || data.title || slug.split('/').pop();
 
     entries.push({
