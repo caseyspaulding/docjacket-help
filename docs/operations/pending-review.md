@@ -44,6 +44,21 @@ Depending on the draft, you may be able to:
 
 This tab is the review-first safety step for automation output. Click a card to open the detail view. Nothing sends from here until you approve, send, skip, or dismiss the item.
 
+### Cards that need a recipient
+
+Some cards arrive flagged as needing a recipient. This happens when an automated email's recipient role has no contact assigned on that deal — a **Seller** email on a deal with no seller yet, for example.
+
+DocJacket won't guess at a recipient or send to the wrong person, so it parks the email here and notifies you instead of dropping it. Open the card, add the recipient, and it becomes sendable.
+
+## What won't appear here
+
+Two things people expect in this queue that intentionally don't show up:
+
+- **In-app heads-ups.** An email set to **Just notify me in-app** posts a notification on its date and prepares no email, so nothing arrives here. Those land in the **notification bell**, a separate topbar icon. See [Delivery mode](../tasks/email-automation.mdx#delivery-mode).
+- **Emails that already sent.** Once an email has gone out it moves to **Done** rather than staying in Ready for Review.
+
+If you completed a task and expected an email that never appeared, see [Why didn't my task email appear?](../tasks/email-didnt-appear.mdx).
+
 ## Scheduled
 
 Use the **Scheduled** tab to review upcoming reminders, scheduled emails, and one-off scheduled messages.

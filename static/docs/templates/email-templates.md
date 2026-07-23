@@ -98,6 +98,16 @@ Use **Recipient rules** when recipients need conditions. A rule can target To, C
 
 Leave recipient rules blank if the role checkboxes are enough.
 
+:::warning "Audience" does not set recipients
+The **Audience** field is for **search and filtering** — it helps you find templates on this page. It has no effect on who receives the email. Set actual recipients with **Recipients by Role** or **Recipient rules** above.
+:::
+
+### How this works with task emails
+
+When a template is attached to a task, the recipients you set here act as the **fallback**: the task's own recipients win if it has any, and otherwise the email uses this template's **Recipients by Role**.
+
+That means setting recipients once here covers every task using the template — you only need to set recipients on an individual task when that one task should reach someone different. See [Email Automation](../tasks/email-automation.mdx#where-recipients-come-from).
+
 ## Auto-attach documents
 
 Use **Auto-Attach Documents** when a template should always include files from specific document categories.
