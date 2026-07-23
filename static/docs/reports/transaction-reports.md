@@ -39,11 +39,16 @@ Use **Custom Notes** for one-off report notes, such as a cover message or client
 
 The transaction Reports tab includes these file actions:
 
+- **Export file record** — exports the transaction's communication log and documents as one archive for your compliance file. See [File Record & Communication Log](/docs/reports/file-record).
 - **Generate PDF** — creates the selected transaction summary PDF
 - **Print Checklist** — generates a checklist-style PDF from the transaction tasks
 - **Commission Statement** — generates a commission statement for the transaction
 
 PDF branding uses your organization's report colors and footer text from organization settings.
+
+:::note
+The Reports tab holds two different things. The **status report** is what you send to a client — property details, key dates, task progress. The **file record** is the compliance archive you keep: the full email and text history plus every document. If you already use CTM, SkySlope, or Dotloop for broker review, the file record is what you export at closing to file alongside it.
+:::
 
 ## Send to clients
 
