@@ -55,20 +55,19 @@ Other good prompts:
 - "Use DocJacket to show open tasks on the [property] deal."
 - "Use DocJacket to look up the listing agent on [property]."
 
-## Current tool surface
+## What Gemini can do
 
-Current AI Access is read-first. Gemini can use these DocJacket tools today:
+DocJacket exposes **67 tools** over MCP, in three permission tiers:
 
-- `search_transactions`
-- `get_transaction`
-- `get_key_dates`
-- `get_upcoming_key_dates`
-- `get_open_tasks`
-- `get_contacts`
-- `list_open_contingencies`
-- `get_next_required_actions`
+| Tier | Tools | For example |
+|---|---|---|
+| `read` | 40 | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
+| `draft` | 7 | `create_tasks`, `update_key_date`, `apply_checklist` |
+| `actions` | 20 | `send_client_update`, `apply_extraction`, `create_reminder` |
 
-Drafting and write tools are rolling out behind per-tool consent. To see the live inventory for your token:
+**[Browse all 67 tools →](/docs/ai-access/tool-catalog)** — the complete catalog with descriptions, gotchas, and example calls.
+
+To see the inventory *your* token can reach:
 
 > "Use DocJacket's `mcp_catalog` to list the tools by category."
 

@@ -1,7 +1,7 @@
 ---
 sidebar_label: Contract Intake
 sidebar_position: 6
-description: External PDF intake for AI Access action-tool accounts; read-first users should use the in-app Upload Documents wizard.
+description: External PDF intake for connections granted the actions tier; read-only and draft connections should use the in-app Upload Documents wizard.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/ai-access/contract-intake -->
@@ -14,6 +14,8 @@ Drop a contract PDF in chat — extract → review → transaction created in un
 DocJacket can read a contract PDF, pull out the parties, addresses, key dates, and financials, and create the matching transaction.
 
 The standard workflow is the in-app **[Contract Extraction](/docs/ai-features/contract-extraction)** wizard. External AI contract intake uses the same extraction engine, but it requires AI Access action tools to be enabled for your account. If your connection is read-only, use the in-app wizard to upload, review, and save the transaction.
+
+The tools used here are in the actions tier — see the [full tool catalog](/docs/ai-access/tool-catalog).
 
 ## What you can say
 

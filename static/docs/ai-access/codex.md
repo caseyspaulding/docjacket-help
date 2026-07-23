@@ -1,4 +1,5 @@
 ---
+title: Connect Codex / ChatGPT
 sidebar_label: Connect Codex / ChatGPT
 sidebar_position: 3
 description: Connect DocJacket to OpenAI Codex (CLI, Codex for Work) and ChatGPT using the official Codex plugin. Paste-URL-and-go via OAuth 2.1.
@@ -9,8 +10,6 @@ description: Connect DocJacket to OpenAI Codex (CLI, Codex for Work) and ChatGPT
 
 # Connect Codex / ChatGPT
 
-30-second walkthrough — paste the URL, click Allow, ask "what needs attention today"
-
 DocJacket works with every OpenAI surface that speaks MCP:
 
 - **Codex CLI** — the open-source command-line tool for developers
@@ -18,6 +17,11 @@ DocJacket works with every OpenAI surface that speaks MCP:
 - **ChatGPT** — with MCP connectors enabled in your account settings
 
 The same DocJacket MCP server backs all three. Connect once per surface.
+
+## Before you start
+
+- **A DocJacket Pro plan.** Connecting is free, but loading tools requires Pro on the connecting user's account. On Free, upgrade at [docjacket.com/pricing](https://www.docjacket.com/pricing).
+- **For ChatGPT specifically:** custom MCP connectors require Plus, Team, or Enterprise. Free-tier ChatGPT cannot add custom servers.
 
 ## Quick start (Codex CLI)
 
@@ -69,20 +73,19 @@ Other good prompts:
 
 The "Use DocJacket to…" prefix is the convention OpenAI's surfaces follow when invoking a specific MCP connector. You can drop it once the assistant gets used to your patterns.
 
-## Current tool surface
+## What Codex and ChatGPT can do
 
-Current AI Access is read-first. Codex and ChatGPT can use these DocJacket tools today:
+DocJacket exposes **67 tools** over MCP, in three permission tiers. You pick a tier when you consent, and it is enforced at the token — a read-only connection cannot call a write tool even if the assistant tries.
 
-- `search_transactions`
-- `get_transaction`
-- `get_key_dates`
-- `get_upcoming_key_dates`
-- `get_open_tasks`
-- `get_contacts`
-- `list_open_contingencies`
-- `get_next_required_actions`
+| Tier | Tools | For example |
+|---|---|---|
+| `read` | 40 | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
+| `draft` | 7 | `create_tasks`, `update_key_date`, `apply_checklist` |
+| `actions` | 20 | `send_client_update`, `apply_extraction`, `create_reminder` |
 
-Drafting and write tools are rolling out behind per-tool consent. You don't need to remember tool names — Codex / ChatGPT pick the right tool based on your question. To see the current full inventory for your token, ask:
+**[Browse all 67 tools →](/docs/ai-access/tool-catalog)** — the complete catalog with descriptions, gotchas, and example calls.
+
+You don't need to remember tool names; Codex and ChatGPT pick the right tool from your question. To see the inventory *your* token can reach, ask:
 
 > "Use DocJacket's `mcp_catalog` to list the tools by category."
 
@@ -124,16 +127,12 @@ Inside DocJacket:
 
 **Codex CLI auth keeps re-prompting** — Your refresh token may have been invalidated (single-use rotation — concurrent processes can race). Delete the entry from `~/.codex/credentials` and re-consent.
 
-**ChatGPT doesn't show MCP Connectors** — Custom MCP connectors require Plus, Team, or Enterprise. Free-tier ChatGPT can't add custom servers yet.
-
 **"Token is invalid, expired, or revoked"** — Either you revoked the client in DocJacket → Settings → AI Access, or the refresh token expired after 30 days of inactivity. Re-consent to reconnect.
-
-**Pro plan required** — Connecting is free, but actually loading tools requires a DocJacket Pro plan on the connecting user's account. If you're on Free, upgrade at [docjacket.com/pricing](https://www.docjacket.com/pricing).
 
 ## Read more
 
 - [Contract Intake](/docs/ai-access/contract-intake) — external PDF intake when action tools are enabled; otherwise use the in-app Upload Documents wizard
-- [Tool Catalog (`mcp_catalog`)](/docs/ai-access/tool-catalog) — the self-discovery tool that returns DocJacket's live inventory
+- [Tool catalog](/docs/ai-access/tool-catalog) — all 67 tools, grouped by scope, with gotchas and example calls
 - [How the OAuth flow works](/docs/ai-access/oauth) — the underlying protocol
 - [AI Access overview](/docs/ai-access) — section index
 - [Connect Claude](/docs/ai-access/claude) — sister guide for Anthropic surfaces
