@@ -5435,6 +5435,23 @@ EMD Receipt - {{property_address}}
 Search the existing library before adding a custom field — most of what you need is already there. And keep governed transaction dates in the [Key Date Library](./task-templates.md) rather than creating duplicate custom date fields, so automation and reporting stay consistent.
 :::
 
+## Customizing the Smart Fields panel
+
+The quick smart-field panel in the email template editor can be tailored to how you work — hide the fields you never use and reorder the rest so your go-to fields sit at the top. Your layout is saved to your account, so it follows you to any computer you sign in from.
+
+1. In the email template editor, find the **Smart Fields** panel on the right.
+2. Click the **gear icon** at the top of the panel to turn on **Customize** mode.
+3. Each field now shows two controls:
+   - **The eye** — click it to hide a field. Hidden fields drop out of the panel so the list stays short.
+   - **The drag handle** (the dots on the left) — drag a field up or down to reorder it. Reordering happens within each category (Current User, Transaction, Contact, and so on).
+4. Click the gear again (now a checkmark) when you're done.
+
+A few things to know:
+
+- **Nothing is ever lost.** Anything you hide is still available under **Browse all fields** (the launch icon next to the gear).
+- **It's per person.** Your customized layout applies only to you, not your whole team — so everyone can arrange the panel their own way.
+- **Reset anytime.** Click **Reset** in Customize mode to restore the original fields and order.
+
 ## Conditional content
 
 Email templates can also use conditional blocks. Conditional content only renders when the condition is true.
