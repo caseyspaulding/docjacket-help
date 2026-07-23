@@ -1,6 +1,6 @@
 ---
 sidebar_label: Waiting Items
-sidebar_position: 7
+sidebar_position: 8
 description: Track the items your team is waiting on from clients, agents, vendors, and other parties so nothing stalls a DocJacket transaction.
 ---
 

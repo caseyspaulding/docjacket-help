@@ -1,6 +1,6 @@
 ---
 sidebar_label: Task Options
-sidebar_position: 6
+sidebar_position: 7
 description: Configure advanced task options in DocJacket — portal visibility, reminders, completion emails, conditional labels, and time tracking.
 ---
 

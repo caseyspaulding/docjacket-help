@@ -68,13 +68,16 @@ The apply flow can also assign tasks by owner or label. If you use the same assi
 
 Checklist tasks can include email automation:
 
-- Scheduled emails based on the task due date
-- On-completion actions
+- Emails dated from the task due date or a Key Date
+- Emails prepared when the task is completed
+- **When this fires** — draft the email for review, or just notify you in-app
 - Review-before-send email actions
 - Auto-send actions
 - Recipients and attached documents
 
-See [Email Automation](./email-automation.mdx) for the task-email behavior.
+Setting these on the checklist is the efficient way to work: **every deal created from the checklist inherits them**, so you don't have to configure the same email deal by deal. Changing a setting on a live deal only affects that deal — the next one starts from the checklist again.
+
+See [Email Automation](./email-automation.mdx) for the task-email behavior, and [Delivery mode](./email-automation.mdx#delivery-mode) for what **When this fires** does.
 
 ## Saving a transaction as a checklist
 

@@ -16,20 +16,25 @@ Most task email automation starts in a checklist template, then becomes editable
 
 ![Checklist task automation settings in the reusable checklist builder](/img/templates/checklist-task-automation.png)
 
-## Two automation types
+## When a task email fires
 
-DocJacket supports two main task-email patterns.
+An email linked to a task has **two** moments where it can fire. Understanding these two moments explains almost everything about task email behavior.
 
-### Scheduled emails
+| Moment | When it happens | What it does |
+| --- | --- | --- |
+| **Its date arrives** | The email's own date — the task's due date (or auto-send date) plus any offset — is reached | Depends on the email's [delivery mode](#delivery-mode): prepare the email, or just notify you |
+| **You complete the task** | You check the task off | Prepares the email for your **Review queue** |
 
-Scheduled emails fire against the task's due date, not task completion.
+The same linked email carries both. You don't choose one or the other — you configure the email once, and set its date and its delivery mode.
 
-For each scheduled email, configure:
+For each linked email you can configure:
 
 - Email template
-- Offset, such as 3 days before or 1 day after the task due date
+- Offset and anchor — such as 3 days before the task due date, or on a Key Date like Closing
 - Send time
 - Weekend or holiday fallback rule
+- Delivery mode — draft the email, or just notify you
+- Whether it waits for review before sending
 - Recipients
 - Attached documents
 
@@ -37,23 +42,40 @@ Example:
 
 - Task: Confirm closing appointment
 - Due: Closing Date - 3 days
-- Scheduled email: Send closing reminder 1 day before the task due date at 8:00 AM
+- Linked email: Send closing reminder 1 day before the task due date at 8:00 AM
 
-Scheduled emails send from the TC's connected Gmail or Outlook account when available. Upcoming or held scheduled emails appear in the Review queue's **Scheduled** tab, where they can be edited, sent now, or cancelled when supported.
+Emails prepared this way send from your connected Gmail or Outlook account when one is available. Upcoming or held date-based emails appear in the Review queue's **Scheduled** tab, where they can be edited, sent now, or cancelled when supported.
 
-### On-completion actions
+## Delivery mode
 
-On-completion actions fire when the TC marks the task complete.
+Every linked email has a **When this fires** setting that controls what happens **when its date arrives**:
 
-For each on-completion action, configure:
+- **Draft email for review** (the default) — DocJacket prepares the email and puts it in your **Review queue** to approve, edit, or skip. This is what most emails should be.
+- **Just notify me in-app** — DocJacket posts an in-app notification telling you the milestone hit, and **prepares no email at all**. Nothing lands in your Review queue.
 
-- Email template
-- Whether the email waits for review or auto-sends
-- Recipients
-- Attached documents
-- Optional offset and anchor date
+Choose **Just notify me in-app** when the date is only a heads-up for *you* — "the inspection deadline is coming up" — and you don't want a draft email to clear off your queue every time. Coordinators who review their whole pipeline each morning often prefer this for deadline milestones.
 
-If **Require review before sending** is enabled, the email waits in the topbar **Review queue** before sending. Open the document-tasks icon and use the **Ready for Review** tab to review, edit, send, or skip it. If review is disabled, the email can send automatically when the task is completed.
+:::info Notify mode only affects the date — completing the task still prepares your email
+This is the part worth remembering. **"Just notify me in-app" changes what happens on the email's date. It does not change what happens when you complete the task.** Check the task off and the email is still prepared for your Review queue, ready to send — even if the notification already went out that morning.
+
+So a task like "Title commitment received" can quietly notify you when the date passes, and still give you the email to send the moment you actually complete it.
+:::
+
+### Where to set it
+
+You can set the delivery mode in two places:
+
+- **On a checklist template** — open the checklist, expand the task's reminder, and use **When this fires** under the timing controls. Every deal created from that checklist inherits your choice. Set it here when it should apply to all future deals.
+- **On a single deal** — open the transaction, click the task, and use **When this fires** in the **Task emails** section of Task Details. This changes only that one deal.
+
+### Reading the status on a task
+
+In the **Task emails** section, each linked email shows what has already happened to it:
+
+- **Sent {'{date}'}** — the email was prepared and sent.
+- **Notified in-app {'{date}'} — not sent** — this was a notify-mode email. You got the in-app heads-up on its date; **no email was sent**. You can still send it yourself with **Review & send**, and completing the task will prepare it too.
+
+If an email has already been sent, its **Review & send** button goes away — there is nothing left to send. Notify-mode emails keep the button, because a notification isn't an email.
 
 ## Configuring automation in a checklist
 
@@ -63,8 +85,10 @@ Use checklist templates when the same task should prepare or schedule the same e
 1. Open a checklist in **My Templates**
 1. Open the **Tasks** or **Automations** view
 1. Select the task that should trigger the email
-1. Add a scheduled email or on-completion action
+1. Add the email reminder
 1. Choose the email template
+1. Set the timing — offset, anchor date, and send time
+1. Set **When this fires** — *Draft email for review* or *Just notify me in-app*
 1. Set recipients and document attachments
 1. Save the checklist
 
@@ -80,11 +104,14 @@ Use the transaction task drawer when the automation exists only for one deal, or
 1. Go to the **Tasks** tab
 1. Click the task row to open **Task Details**
 1. Open **Task emails** or **Scheduled emails**
-1. Link an email template, schedule an email, or edit the copied automation
+1. Link an email template, or edit the copied automation
 1. Confirm recipients, attachments, and date anchors
+1. Confirm **When this fires** — the [delivery mode](#delivery-mode) for this deal
 1. Save the task
 
-Completing a task with review-required email automation prepares the email for the **Review queue**. Scheduling an email places it in scheduled-email handling instead of waiting for the task to be completed.
+Completing a task with review-required email automation prepares the email for the **Review queue**. Setting a date on the email means it can also fire on that date — see [When a task email fires](#when-a-task-email-fires).
+
+Changes made here apply to **this deal only**. To change how future deals behave, edit the checklist template instead.
 
 ## Recipients and documents
 
@@ -98,6 +125,21 @@ Task email automation can use:
 The linked email template still controls the subject, body, smart fields, and any template-level auto-attachments.
 
 Build and test the template in **Templates > Email Templates** first. The checklist automation controls decide when the email is prepared or sent, while the email template controls the content, default recipient logic, and template-level document attachments.
+
+### Where recipients come from
+
+Recipients can be set in two places, and they work together:
+
+1. **On the task's linked email** — the recipients you set here always win for that email.
+2. **On the email template**, under **Recipients by Role** — used as the fallback whenever the linked email has no **To** recipient of its own.
+
+So if you set **Recipients by Role** on a template, every task using that template picks those recipients up automatically. You only need to set recipients on an individual task when that one task should go to someone different.
+
+:::warning "Audience" is not a recipient setting
+An email template also has an **Audience** field. That one is for **search and filtering** — it helps you find templates on the Templates page. It does **not** decide who the email goes to. Use **Recipients by Role** (or the task's own recipients) to set actual recipients.
+:::
+
+If no **To** recipient can be resolved — for example the role has no contact assigned on that deal — DocJacket does not send the email to the wrong person or drop it silently. It parks a card in your **Review queue** asking you to choose a recipient, and notifies you. Add the recipient on the card and it becomes sendable.
 
 ## Review before sending
 
@@ -119,7 +161,13 @@ Review-required emails appear in the topbar **Review queue** under **Ready for R
 ## Tips
 
 - Use **Require review before sending** for client-facing or high-risk emails.
-- Use scheduled emails for deadline reminders.
-- Use on-completion actions for handoff emails, confirmations, and "next step" messages.
+- Use **Just notify me in-app** for date-based deadline heads-ups you don't want to clear off your queue — you'll still get the email when you complete the task.
+- Use **Draft email for review** for anything that should actually reach a client or agent on its date.
+- Set the delivery mode on the **checklist template** so new deals inherit it, rather than fixing each deal one at a time.
+- Set **Recipients by Role** on the email template once, instead of setting recipients on every task that uses it.
 - Test the linked [email template](../templates/email-templates.md) before attaching it to automation.
 - Combine email automation with [checklists](./task-templates.mdx) to set up entire email workflows for a transaction type.
+
+## If an email didn't appear
+
+If you completed a task and no email showed up in your Review queue, see [Why didn't my task email appear?](./email-didnt-appear.mdx) for the short list of causes.
