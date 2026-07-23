@@ -129,6 +129,12 @@ Fix unrecognized placeholders in the template. Fix missing values by updating th
 
 This is the complete built-in smart-field library. Your organization can also add its own [custom smart fields](#custom-smart-fields), and some fields only populate for specific workflows (for example, leasing or state-specific dates). Insert fields from the smart-field picker so the syntax is always correct.
 
+:::tip Map link fields
+Fields ending in **Map Link** — such as `{{title_company_map_link}}`, `{{closing_location_map_link}}`, and `{{alt_em_location_map_link}}` — render as a **clickable Google Maps link** in the sent email. They're handy for directions to closing, an earnest-money drop-off, or an alternate closing location.
+
+A map link builds from the **address on file** (street, city, state, ZIP) for that party or location — so make sure the address is filled into the address fields, not just pasted into notes, and the link generates itself.
+:::
+
 ### Transaction
 
 | Field | Token |

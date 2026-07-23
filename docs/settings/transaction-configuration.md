@@ -76,6 +76,21 @@ Merge codes are created when the field is created and cannot be changed later. U
 
 AI Extraction fields use the same custom field system, but they also require an extraction hint. You can scope an extractable field to specific states and document types so the AI only looks for it when it applies. Each organization can have up to **15** AI-extractable custom fields enabled at once.
 
+### Organizing custom fields into sections
+
+By default, custom fields show together in one block. You can group them into labeled sections instead — so all your date fields sit together, all your client-info fields together, and so on — and that grouping shows up both when you edit a transaction and on the transaction Overview.
+
+The available sections are **Client Information**, **Dates**, **Financial Summary**, **Title Company**, **Lender**, **Agents**, and **Additional Details**. Any field you haven't sorted stays in a **Custom Fields** group at the bottom.
+
+To assign a field's section, you have two options:
+
+- **One at a time** — Edit the field and pick a section from the **Overview section** dropdown.
+- **In bulk** — On the **Smart Fields** tab, check the boxes next to the fields you want to group, choose a section from the bar that appears, and click **Assign section**. A badge on each field shows which section it's in.
+
+:::tip Sort once, stay organized
+New custom fields start out unsorted. Assign their sections once — the bulk tool makes quick work of it — and every transaction form stays organized from then on.
+:::
+
 ## Contingencies
 
 Use **Settings > Contingencies** to manage the contingency options available on transactions.

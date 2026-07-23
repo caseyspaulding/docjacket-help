@@ -14,6 +14,7 @@ The **Contact Picker** field lets a respondent **choose a contact you already ha
 
 - In the form builder, a Contact Picker uses an **Allowed Contacts** list. Only the contacts you select there appear as options on the public form.
 - On the public form it shows a **single search box**, and the respondent picks from your list. DocJacket then attaches that existing contact to the transaction, using whatever **email and phone are already saved on that contact's record**.
+- As they search and after they pick, each result shows the contact's **company, office address, and tags** — enough for the person filling out the form to confirm they've chosen the right contact (for example, the correct Escrow Officer at the correct office). Phone and email are **never** shown on the public form.
 - It does **not** collect a new email or phone from the person filling out the form — there are no email/phone boxes on a Contact Picker.
 
 :::caution Why a contact field can show "just a name"
