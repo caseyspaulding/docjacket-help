@@ -2664,7 +2664,8 @@ When quick-creating this way, DocJacket checks for likely duplicates by name, em
 - **Active only** — Hide inactive contacts from the main list
 - **Advanced filters** — Filter by transaction usage, license status, and person/organization kind
 - **Saved views** — Save reusable contact grid configurations
-- **Columns** — Show, hide, reorder, resize, and reset table columns
+- **Columns** — Show, hide, reorder, resize, and reset table columns, including a **Title** column for each contact's role (like Escrow Officer or Title Officer)
+- **Sort by Address** — Click the **Address** column header to sort contacts by area (city, then street), so contacts in the same area group together — handy for tagging a batch of nearby contacts at once
 
 The Contacts grid also supports inline editing for common fields such as name, email, phone, company, license, notes, type, tags, and active status.
 
@@ -2703,6 +2704,7 @@ Open a contact to manage their full profile. From the detail page you can:
 
 - Change the profile photo
 - Edit name, organization, type, tags, emails, phones, address, website, social links, license number, and notes inline
+- Use **Get directions** to open the contact's address in Google Maps, or **Copy map link** to grab a clickable map link you can paste into an email — useful for directions to closing, an earnest-money drop-off, or an alternate closing location
 - Mark primary email and phone rows
 - Record SMS consent for each phone number
 - Review related transactions, offers, and activity
@@ -5152,6 +5154,7 @@ The **Contact Picker** field lets a respondent **choose a contact you already ha
 
 - In the form builder, a Contact Picker uses an **Allowed Contacts** list. Only the contacts you select there appear as options on the public form.
 - On the public form it shows a **single search box**, and the respondent picks from your list. DocJacket then attaches that existing contact to the transaction, using whatever **email and phone are already saved on that contact's record**.
+- As they search and after they pick, each result shows the contact's **company, office address, and tags** — enough for the person filling out the form to confirm they've chosen the right contact (for example, the correct Escrow Officer at the correct office). Phone and email are **never** shown on the public form.
 - It does **not** collect a new email or phone from the person filling out the form — there are no email/phone boxes on a Contact Picker.
 
 :::caution Why a contact field can show "just a name"
@@ -5490,6 +5493,12 @@ Fix unrecognized placeholders in the template. Fix missing values by updating th
 ## Full field reference
 
 This is the complete built-in smart-field library. Your organization can also add its own [custom smart fields](#custom-smart-fields), and some fields only populate for specific workflows (for example, leasing or state-specific dates). Insert fields from the smart-field picker so the syntax is always correct.
+
+:::tip Map link fields
+Fields ending in **Map Link** — such as `{{title_company_map_link}}`, `{{closing_location_map_link}}`, and `{{alt_em_location_map_link}}` — render as a **clickable Google Maps link** in the sent email. They're handy for directions to closing, an earnest-money drop-off, or an alternate closing location.
+
+A map link builds from the **address on file** (street, city, state, ZIP) for that party or location — so make sure the address is filled into the address fields, not just pasted into notes, and the link generates itself.
+:::
 
 ### Transaction
 
@@ -9094,6 +9103,21 @@ Smart Fields support text, text area, number, currency, date, date and time, dro
 Merge codes are created when the field is created and cannot be changed later. Use lowercase letters, numbers, and underscores, starting with a letter. DocJacket blocks merge codes that collide with built-in smart fields or another custom field in your organization.
 
 AI Extraction fields use the same custom field system, but they also require an extraction hint. You can scope an extractable field to specific states and document types so the AI only looks for it when it applies. Each organization can have up to **15** AI-extractable custom fields enabled at once.
+
+### Organizing custom fields into sections
+
+By default, custom fields show together in one block. You can group them into labeled sections instead — so all your date fields sit together, all your client-info fields together, and so on — and that grouping shows up both when you edit a transaction and on the transaction Overview.
+
+The available sections are **Client Information**, **Dates**, **Financial Summary**, **Title Company**, **Lender**, **Agents**, and **Additional Details**. Any field you haven't sorted stays in a **Custom Fields** group at the bottom.
+
+To assign a field's section, you have two options:
+
+- **One at a time** — Edit the field and pick a section from the **Overview section** dropdown.
+- **In bulk** — On the **Smart Fields** tab, check the boxes next to the fields you want to group, choose a section from the bar that appears, and click **Assign section**. A badge on each field shows which section it's in.
+
+:::tip Sort once, stay organized
+New custom fields start out unsorted. Assign their sections once — the bulk tool makes quick work of it — and every transaction form stays organized from then on.
+:::
 
 ## Contingencies
 
