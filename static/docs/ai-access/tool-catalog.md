@@ -39,6 +39,8 @@ Every write, in either write tier, is confirmed by you in chat before it runs �
 
 Calling `mcp_catalog` from a connected assistant returns this same inventory, filtered to the scopes *your* token holds.
 
+**Prefer structured data?** The full inventory is also served as JSON at [help.docjacket.com/mcp-catalog.json](https://help.docjacket.com/mcp-catalog.json) — same 67 tools with per-tool scope, gotchas, pairings, and example calls, generated from the same source as this page.
+
 ## Read — 40 tools
 
 Look things up. Nothing in this tier changes a record or contacts anyone. A read-only connection is limited to exactly these tools.

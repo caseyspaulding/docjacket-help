@@ -9,7 +9,12 @@
 // of these tools has drifted (the marketing /mcp page was 21 tools stale and had
 // the send_* family in the wrong scope tier). So: generate, never hand-maintain.
 //
-// The page is GENERATED — never hand-edit it. Regenerate with:
+// Emits two files from one snapshot, so they can never disagree:
+//   docs/ai-access/tool-catalog.mdx  — the human page (static HTML at build)
+//   static/mcp-catalog.json          — structured JSON for agents/LLMs, served
+//                                       at help.docjacket.com/mcp-catalog.json
+//
+// Both are GENERATED — never hand-edit them. Regenerate with:
 //
 //   npm run fetch-mcp-catalog && npm run gen-tool-catalog
 //
@@ -26,6 +31,11 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(__dirname, '..');
 const SPEC_FILE = join(REPO_ROOT, 'spec', 'mcp-catalog.json');
 const OUT_FILE = join(REPO_ROOT, 'docs', 'ai-access', 'tool-catalog.mdx');
+// Machine-readable sibling of the page, served static at
+// help.docjacket.com/mcp-catalog.json. Same source, same build step as the
+// page, so the two can never drift. For agents/LLMs that want the tool surface
+// as structured JSON rather than parsing the HTML or markdown mirror.
+const JSON_OUT_FILE = join(REPO_ROOT, 'static', 'mcp-catalog.json');
 
 const TIERS = [
   {
@@ -141,6 +151,8 @@ Every write, in either write tier, is confirmed by you in chat before it runs �
 
 Calling ${code('mcp_catalog')} from a connected assistant returns this same inventory, filtered to the scopes *your* token holds.
 
+**Prefer structured data?** The full inventory is also served as JSON at [help.docjacket.com/mcp-catalog.json](https://help.docjacket.com/mcp-catalog.json) — same ${total} tools with per-tool scope, gotchas, pairings, and example calls, generated from the same source as this page.
+
 `;
 
 for (const tier of TIERS) {
@@ -186,6 +198,34 @@ out += `## Where to go next
 
 await writeFile(OUT_FILE, out, 'utf8');
 
+// Emit the structured JSON sibling. Full per-tool fields (not the truncated
+// ItemList JSON-LD embedded in the page), grouped-order-stable via the same
+// alphabetical sort the page uses. A small $schema-ish preamble tells a
+// consumer what this is without having to infer it.
+const jsonDoc = {
+  name: 'DocJacket MCP tool catalog',
+  description:
+    'Every tool the DocJacket MCP server exposes, across three permission ' +
+    'scopes. The live, scope-filtered version is callable via the mcp_catalog ' +
+    'tool once connected; this static document is the full unscoped inventory.',
+  mcpEndpoint: 'https://mcp.docjacket.com/mcp',
+  humanDocs: 'https://help.docjacket.com/docs/ai-access/tool-catalog',
+  totalCount: total,
+  scopeCounts: Object.fromEntries(TIERS.map((t) => [t.scope, counts[t.scope]])),
+  tools: [...tools]
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map((t) => ({
+      name: t.name,
+      description: t.description ?? '',
+      requiredScope: t.requiredScope ?? null,
+      requiredGranularScope: t.requiredGranularScope || null,
+      gotchas: t.gotchas ?? [],
+      pairsWith: t.pairsWith ?? [],
+      exampleCall: t.exampleCall ?? null,
+    })),
+};
+await writeFile(JSON_OUT_FILE, `${JSON.stringify(jsonDoc, null, 2)}\n`, 'utf8');
+
 const withMeta = {
   gotchas: tools.filter((t) => t.gotchas?.length).length,
   pairsWith: tools.filter((t) => t.pairsWith?.length).length,
@@ -197,6 +237,7 @@ console.log(
     `(${TIERS.map((t) => `${t.scope}=${counts[t.scope]}`).join(', ')}) ` +
     `to ${relative(REPO_ROOT, OUT_FILE)}`,
 );
+console.log(`  structured JSON → ${relative(REPO_ROOT, JSON_OUT_FILE)}`);
 console.log(
   `  metadata coverage: gotchas ${withMeta.gotchas}/${total}, ` +
     `pairsWith ${withMeta.pairsWith}/${total}, exampleCall ${withMeta.exampleCall}/${total}`,
