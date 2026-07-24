@@ -1,7 +1,7 @@
 ---
 sidebar_label: Permissions & scopes
 sidebar_position: 10
-description: How DocJacket's MCP scopes work — read-first access today, draft and action tiers, per-tool consent, and activity logging.
+description: How DocJacket's MCP scopes work — the read, draft, and action tiers, what each allows, per-tool consent, and activity logging.
 ---
 
 <head>
@@ -15,7 +15,7 @@ description: How DocJacket's MCP scopes work — read-first access today, draft 
       "name": "What scopes does DocJacket's MCP server expose?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "DocJacket's current AI Access surface is read-first. Read covers lookup tools such as search transactions, get key dates, list tasks, and triage next actions. Draft and action scopes exist for permission-gated rollout tools; when enabled, writes require confirmation in the assistant chat and are logged in AI Access activity."
+        "text": "Three tiers, all live: read (40 tools — lookups such as search transactions, get key dates, list tasks, triage next actions), draft (7 tools — low-risk writes to your own records; nothing in this tier sends anything to anyone), and actions (20 tools — sending email, creating and deleting records, disclosure packages). Writes require confirmation in the assistant chat and are logged in AI Access activity."
       }
     },
     {
@@ -41,21 +41,21 @@ description: How DocJacket's MCP scopes work — read-first access today, draft 
 
 # Permissions & scopes
 
-DocJacket's MCP server exposes three **scope tiers** and supports **per-tool toggles** inside the AI client. The current customer-facing surface is read-first; draft and action tools are enabled only for accounts with those rollout scopes.
+DocJacket's MCP server exposes **67 tools** across three **scope tiers**, and supports **per-tool toggles** inside the AI client. All three tiers are live. You choose one when you consent, and it is enforced at the token — a read-only connection cannot call a write tool even if the assistant tries.
 
 ## The three scopes
 
 | Scope | What it covers | Approval flow |
 |---|---|---|
-| **`read`** | Search, lookup, list — `search_transactions`, `get_transaction`, `get_key_dates`, `get_open_tasks`, `get_contacts`, `list_open_contingencies`, `get_upcoming_key_dates`, `get_next_required_actions`, `mcp_catalog`, `mcp_health_check` | Auto-approved per conversation in most clients |
-| **`draft`** | Permission-gated rollout tools for preparing messages, suggestions, or summaries | Confirm in chat before each enabled draft call |
-| **`actions`** | Permission-gated rollout tools for sending communications or creating/updating records | Confirm in chat before each enabled action call |
+| **`read`** (40 tools) | Search, lookup, list — e.g. `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions`, `mcp_health_check`. Nothing here changes a record or contacts anyone. | Auto-approved per conversation in most clients |
+| **`draft`** (7 tools) | Low-risk writes to your own records — `create_tasks`, `complete_task`, `update_key_date`, `add_key_dates_batch`, `apply_checklist`, `log_activity`, `save_status_summary`. **Nothing in this tier sends anything to anyone.** | Confirm in chat before each call |
+| **`actions`** (20 tools) | Side-effecting work — sending email (`send_client_update`, `send_document_request`, `send_agent_followup`, `send_email_to_agent`), creating and deleting records, and disclosure packages that expose documents outside the org. | Confirm in chat before each call |
 
-When you connect an assistant, the available scopes depend on the current rollout state for your account. Most users should start with `read`.
+The draft tier is the useful middle setting: an assistant can keep your tasks and deadlines current without ever being able to email a client. **[Browse all 67 tools →](/docs/ai-access/tool-catalog)** to see exactly what sits in each tier.
 
 ## The conversation is the approval gate
 
-When draft or action tools are enabled, supported MCP clients use a **confirm-then-execute** UX for write tools:
+For both write tiers, supported MCP clients use a **confirm-then-execute** UX:
 
 1. You ask the assistant to do something.
 2. The assistant proposes the action in chat — what tool, what arguments, against what data.

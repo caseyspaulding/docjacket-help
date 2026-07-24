@@ -78,7 +78,11 @@ async function* walk(dir) {
 // docs/api/* guides stay in (a customer asking "does it have an API?" needs those).
 // Integrators and agents get the reference three other ways: the rendered page, its
 // plain-markdown mirror at /docs/api/reference.md, and llms-full.txt.
-const EXCLUDED_SLUGS = new Set(['api/reference']);
+// ai-access/tool-catalog is the generated 67-tool MCP inventory — same reasoning
+// as api/reference: it is a reference index, not the help content customers ask
+// Help Chat about, and it would crowd out the pages that are. The hand-written
+// ai-access/* connect guides stay in.
+const EXCLUDED_SLUGS = new Set(['api/reference', 'ai-access/tool-catalog']);
 
 // docs/foo/bar/index.(md|mdx) -> slug "foo/bar"; docs/foo/baz.(md|mdx) -> "foo/baz"
 function slugFor(srcPath) {

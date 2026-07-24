@@ -35,7 +35,7 @@ You connect each surface once. The same DocJacket MCP server backs all four.
 3. **Connectors** in the left nav → **+ Add custom connector**.
 4. Paste `https://mcp.docjacket.com/mcp` as the URL.
 5. Click **Continue**. Claude will redirect you to DocJacket's consent screen.
-6. **Allow** the connection. Current customer-facing access is read-first for lookups. Draft and action scopes only appear when they are enabled for your account, and every tier is enforced server-side.
+6. **Allow** the connection, choosing a permission tier: read-only, read + draft, or full read + draft + actions. The tier is enforced server-side at the token — a read-only connection cannot write, whatever the assistant tries.
 7. You're back in Claude with **DocJacket** showing as a custom connector and the tools available to your scopes loaded. Read tools run inline; any enabled write tools pause for your confirmation in chat.
 
 ## Try it
@@ -54,22 +54,19 @@ Other good prompts:
 - "Which deals are missing inspection reports?"
 - "Look up the listing agent on [property]."
 
-## Current tool surface
+## What Claude can do
 
-Current AI Access is read-first. Claude can use these DocJacket tools today:
+DocJacket exposes **67 tools** over MCP, in three permission tiers:
 
-- `search_transactions`
-- `get_transaction`
-- `get_key_dates`
-- `get_upcoming_key_dates`
-- `get_open_tasks`
-- `get_contacts`
-- `list_open_contingencies`
-- `get_next_required_actions`
+| Tier | Tools | For example |
+|---|---|---|
+| `read` | 40 | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
+| `draft` | 7 | `create_tasks`, `update_key_date`, `apply_checklist` |
+| `actions` | 20 | `send_client_update`, `apply_extraction`, `create_reminder` |
 
-Drafting and write tools are rolling out behind per-tool consent. If your account has access to additional tools, use the catalog to see the live inventory:
+**[Browse all 67 tools →](/docs/ai-access/tool-catalog)** — the complete catalog with descriptions, gotchas, and example calls.
 
-> "Call `mcp_catalog` and group the tools by what they're for."
+You don't need to remember tool names; Claude picks the right tool from your question. To see the inventory *your* token can reach, ask Claude to use `mcp_catalog`.
 
 ## Cowork — skills, slash commands, sub-agent
 

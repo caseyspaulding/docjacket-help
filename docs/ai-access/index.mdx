@@ -32,7 +32,7 @@ description: Connect your DocJacket transactions, deadlines, contingencies, and 
       "name": "Can AI assistants make changes to my transactions?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Current AI Access is read-first: connected assistants can search transactions, read key dates, list tasks, inspect contacts, and triage what needs attention. Draft and action tools are being rolled out behind per-tool consent. When enabled, each write runs only after you confirm in the assistant's chat, and every call lands in your AI Access activity log."
+        "text": "Yes, if you grant a write tier. AI Access has three tiers: read (40 tools), draft (7 — tasks, key dates, checklists, notes), and actions (20 — sending email, creating records, disclosure packages). You choose the tier when you consent, and it is enforced at the token. Every write runs only after you confirm in the assistant's chat, and every call lands in your AI Access activity log."
       }
     },
     {
@@ -73,24 +73,19 @@ The assistant calls into DocJacket, gets a grounded answer from your real book o
 - **Per-user consent.** Each user on your DocJacket account authorizes their own assistant. There's no shared admin token that exposes everyone's data.
 - **Revocable from settings.** **DocJacket → Settings → AI Access** lists every assistant you've connected. Revoke any of them with one click — the next request from that client returns "unauthorized."
 - **Audited.** Every tool call goes through DocJacket's audit log: which user, which assistant, which tool, what arguments, what result. You can see exactly what an assistant has been doing on your behalf.
-- **Chat is the approval gate for future writes.** Current AI Access is read-first. Draft and action tools are rolling out behind per-tool consent; when enabled, each write executes only after you confirm in the assistant's chat.
+- **Chat is the approval gate for writes.** Both write tiers are live. Each write executes only after you confirm it in the assistant's chat — the conversation itself is the approval step.
 
 ## What's connected today
 
-The current customer-facing AI Access surface is read-first. Connected assistants can use these DocJacket tools today:
+DocJacket exposes **67 tools** over MCP, in three permission tiers. You choose a tier when you consent, and it is enforced at the token — a read-only connection cannot write, whatever the assistant tries.
 
-- `search_transactions` — Find deals by address, buyer/seller, or MLS number
-- `get_transaction` — Read the full state of one deal, including key dates inline
-- `get_key_dates` — Read all deadlines on one transaction
-- `get_upcoming_key_dates` — Read organization-wide deadlines with a default 14-day horizon
-- `get_open_tasks` — Read open tasks across the organization or scoped to one transaction
-- `get_contacts` — Read contacts in your organization by type or query
-- `list_open_contingencies` — Read open contingencies on one transaction
-- `get_next_required_actions` — Answer "what should I do next?" with overdue and upcoming work pre-ranked
+| Tier | Tools | For example |
+|---|---|---|
+| `read` | 40 | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
+| `draft` | 7 | `create_tasks`, `update_key_date`, `apply_checklist` |
+| `actions` | 20 | `send_client_update`, `apply_extraction`, `create_reminder` |
 
-Drafting and write tools, such as sending emails, creating tasks, updating key dates, and applying extraction results, are rolling out behind per-tool consent. If your account has access to additional tools, **ask the assistant to call `mcp_catalog`** to see the live inventory for your token.
-
-Every connected client and tool call appears in **Settings > AI Access** and **Settings > AI Access > Activity log**.
+**[Browse all 67 tools →](/docs/ai-access/tool-catalog)** — the complete catalog with descriptions, gotchas, and example calls, readable without connecting anything.
 
 ## Get started
 
@@ -105,7 +100,7 @@ Each guide walks you through the connector setup and the OAuth consent flow.
 
 ## Featured workflow
 
-- **[Contract Intake](/docs/ai-access/contract-intake)** — when action tools are enabled, drop a contract PDF in chat, review extracted parties, addresses, key dates, and financials, then confirm before creating the transaction. In the standard read-first setup, use the in-app Upload Documents wizard.
+- **[Contract Intake](/docs/ai-access/contract-intake)** — with the actions tier, drop a contract PDF in chat, review extracted parties, addresses, key dates, and financials, then confirm before creating the transaction. In the standard read-first setup, use the in-app Upload Documents wizard.
 
 ## Learn more
 

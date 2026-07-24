@@ -1,0 +1,787 @@
+{
+  "fetchedFrom": "/private/tmp/claude-501/-Users-casey-RiderProjects-docjacket-marketing/38e9b1a6-f624-4097-885d-164f3e6af91e/scratchpad/mcp-catalog.json",
+  "totalCount": 67,
+  "tools": [
+    {
+      "name": "activate_disclosure_package",
+      "description": "Flip a Draft disclosure package to Active so recipient links start resolving. Idempotent on already-Active. Rejects Archived (PACKAGE_ARCHIVED) — create a new package rather than reviving an archived one. Returns PACKAGE_NOT_FOUND if the id isn't in this org.",
+      "requiredScope": "actions",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "add_contact_to_transaction",
+      "description": "Link an existing contact to a transaction with a specific role. Idempotent — if the contact is already linked with the same role, returns the existing link. Use after search_contacts/find_contact_by_email/create_contact has produced a contactId, and search_transactions/find_transaction_by_property has produced a transactionId. Common roles: Buyer, Seller, BuyerAgent, SellerAgent, TitleCompany, Lender, Inspector, Appraiser, Attorney. Returns CONTACT_NOT_FOUND, TRANSACTION_NOT_FOUND, or ROLE_NOT_FOUND on lookup failure.",
+      "requiredScope": "actions",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "add_key_dates_batch",
+      "description": "Add multiple Key Dates to a transaction in one call. Useful at intake when the LLM has extracted (or proposed) a full contract timeline. Pass an array of { keyDateType, dateValue, isCustom?, label? } entries (up to 50). Canonical types are resolved via the alias map — 'inspection', 'inspection_deadline', and 'InspectionDeadline' all work. Per-row failures are reported in the response without aborting the batch. **The user must have confirmed the timeline in chat** — the tool runs immediately on call.",
+      "requiredScope": "draft",
+      "requiredGranularScope": "key_dates:propose",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "apply_checklist",
+      "description": "Apply a timeline / checklist template to a transaction. Creates milestones + tasks based on the template's structure. Use after the user picks a template via list_checklist_templates — typical workflow is contract intake (new deal needs a checklist). Set replaceExisting=true if the user wants to swap an already-applied template for a different one. **The user must have confirmed the choice in chat** — this tool runs immediately on call per the chat-as-approval-gate architecture.",
+      "requiredScope": "draft",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "apply_extraction",
+      "description": "Create a transaction from a completed extraction job. Use after get_extraction_results returns status='complete' and the user has reviewed the extracted fields in chat. Pass any user-edited fields as `overrides` — a flat map of camelCase keys like { \"closingDate\": \"2026-06-20\", \"buyerEmail\": \"sarah@example.com\" }. The tool creates the transaction + parties + key dates + auto-applies the default state/type/side checklist template. Returns the new `transactionId` to pin follow-up tool calls to. **Confirm with the user in chat BEFORE calling** — the transaction is created immediately.",
+      "requiredScope": "actions",
+      "requiredGranularScope": "transactions:create",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "classify_document",
+      "description": "Classify a document by filename and/or content preview. Returns a suggested document type (e.g. 'inspection_report', 'title_commitment'), a confidence score, and reasoning. **Read-only — does NOT file the document.** Use this before proposing a file action so the TC can confirm the type. For compliance-sensitive types (closing_statement, title_commitment, wire instructions), ALWAYS ask the TC to confirm even when confidence is high.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "compare_offers",
+      "description": "Compare every offer on a listing side by side. Returns one column per offer with the current version's effective terms: amount, financing, down payment, earnest money, closing date, flexible-closing, offer expiration, and structured escalation (increment, cap, clause text, requires-competing-offer-proof), plus seller concessions and notes. Escalation is advisory — the increment and cap are reported, never a computed winning price. Read-only; accepting an offer is a human decision made in the app.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [
+        "Escalation is advisory — the increment and cap are reported, never a computed escalated/winning price.",
+        "Compares current versions only; for an offer's revision chain use get_offer.",
+        "Accept is not available over MCP by design — a human accepts in the app."
+      ],
+      "pairsWith": [
+        "list_offers",
+        "get_offer"
+      ],
+      "exampleCall": "{\"listing_transaction_id\": \"00000000-0000-0000-0000-000000000000\"}"
+    },
+    {
+      "name": "complete_task",
+      "description": "Mark a task complete on a transaction. Cascades to dependent tasks (unblocks them), auto-completes any milestone whose tasks are now all done, fires workflow rules, and publishes the task.completed webhook. Returns any email templates linked to this task via task_email_templates — when present, the agent should render + send those next (canonical example: 'Send weekly buyer update' task completes → templates surface here → render_email_template → send_client_update). **The user must have confirmed completion in chat** before you call this — the chat is the approval gate.",
+      "requiredScope": "draft",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "create_contact",
+      "description": "Create a new contact in the current organization. Idempotent on email — if a contact with the same email already exists, returns that contact's ID with created=false instead of duplicating. Either email OR both firstName+lastName is required. The kind field distinguishes Person (default) from Organization (a company/title/lender entity with no individual name). Use after search_contacts confirms no match. The new contact is not yet linked to any transaction — follow with add_contact_to_transaction if you need that.",
+      "requiredScope": "actions",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "create_contact_role",
+      "description": "Create a custom contact role in the current organization, for use with add_contact_to_transaction. Idempotent on name — if a role with this name (or slug) already exists, returns it with created=false. If a SIMILAR role exists (e.g. you ask for 'Attorney' and 'Buyer's Attorney' exists), fails with the near-matches so you can use one of them instead; re-emit with ignoreSimilar=true to create anyway. Only create a role after add_contact_to_transaction's ROLE_NOT_FOUND confirms nothing existing fits and the user has agreed to add a new role.",
+      "requiredScope": "actions",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [
+        "Prefer an existing system role when one fits — custom roles don't participate in overview cards, contact blocks, or named smart fields.",
+        "A similar-name match (e.g. 'Attorney' vs the system 'Buyer's Attorney') fails with SIMILAR_ROLES_EXIST; re-emit with ignoreSimilar=true only when the new role is genuinely distinct."
+      ],
+      "pairsWith": [
+        "add_contact_to_transaction",
+        "get_contacts"
+      ]
+    },
+    {
+      "name": "create_disclosure_package",
+      "description": "Create a disclosure package on a transaction — bundle selected transaction documents into a recipient-scoped room. If documentIds are supplied, items are attached and the package is activated in the same call so invite_disclosure_recipient can fire next. Returns TRANSACTION_NOT_FOUND if the transaction id isn't in this org, DOCUMENT_NOT_ON_TRANSACTION if any documentId belongs to a different transaction.",
+      "requiredScope": "actions",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "create_email_template",
+      "description": "Create a reusable email template in the organization. Templates hold a subject and body with merge fields like {{property_address}} or {{buyer_name}} that fill in per transaction at send time (call get_merge_fields to see what's available). Provide a name and category; subject and body are recommended. Created as a DRAFT by default for human review — pass isActive=true to publish immediately. Returns the template id and any unrecognized merge fields. Test it with render_email_template.",
+      "requiredScope": "actions",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": [
+        "render_email_template",
+        "get_email_template",
+        "list_email_templates",
+        "get_merge_fields"
+      ]
+    },
+    {
+      "name": "create_reminder",
+      "description": "Schedule a reminder on a transaction. Use when the user says things like 'remind the buyer's agent 2 days before EMD' or 'set up a closing-week reminder for me.' Pass either `milestoneId` (anchored to a milestone — re-derives if it moves) or `deadlineType` + `deadlineDate` (inline). The reminder fires via Hangfire on schedule regardless of whether Claude is open. **Confirm timing + recipients with the user in chat BEFORE calling** — the tool runs immediately and emails go out at the scheduled time.",
+      "requiredScope": "actions",
+      "requiredGranularScope": "reminders:create",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "create_tasks",
+      "description": "Create a task on a transaction. Useful when the user describes work that needs to happen ('add a task to follow up with the lender on Friday'). The task is created immediately and appears on the transaction's task list. Confirm with the user in chat BEFORE calling.",
+      "requiredScope": "draft",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "delete_tasks",
+      "description": "Permanently delete one or more tasks from a transaction (the same as the UI's bulk-delete). Cascades to subtasks, unblocks any tasks that depended on the deleted ones, and removes linked follow-up emails and unsent reminders. This is a HARD delete with no undo. **The user must have confirmed deletion in chat** before you call this — the chat is the approval gate. Get task IDs from get_open_tasks or get_checklist_status.",
+      "requiredScope": "actions",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "extract_existing_document",
+      "description": "Start the extraction pipeline on a document that's already in DocJacket (uploaded via DocDrop, email intake, the web wizard, or a prior MCP call). The canonical intake path: works in every MCP client because bytes never leave DocJacket. Pass the `documentId` returned by `list_documents`. Returns the same `extractionJobId` + `cacheHit` shape as the other intake tools — poll `get_extraction_results` every 2-3 seconds until complete, then call `apply_extraction`. Duplicate calls on the same document reuse the prior result via content-hash dedup (cacheHit=true).",
+      "requiredScope": "actions",
+      "requiredGranularScope": "upload_document",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": [
+        "list_documents",
+        "get_extraction_results",
+        "apply_extraction"
+      ]
+    },
+    {
+      "name": "find_contact_by_email",
+      "description": "Find a DocJacket contact by exact email match (case-insensitive). Returns the contact's identity plus every active transaction they're a party on, with their role on each. Use this FIRST when matching an incoming email to a transaction — it's the definitive match. Falls back to search_transactions only if no contact matches. An empty result means \"no match\" — not an error; ask the user which deal the email belongs to.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "find_transaction_by_property",
+      "description": "Find the transaction matching a property reference — a street address, partial address, or noisy mention (e.g. from a forwarded email). Returns up to 10 ranked candidates with a confidence score and a match type (exact / prefix / substring / tokens / partial). Use this when the user names a property but you don't have the transaction ID — it handles address-formatting variations (Street vs St, with or without city/state/zip). Prefer search_transactions when the user wants a paginated list (e.g. 'show me all my Main Street deals'). If `ambiguous` is true in the response, confirm the match with the user before acting.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "get_checklist_status",
+      "description": "Get the aggregate checklist status for one transaction — total/complete/pending/overdue counts plus the list of pending items with due dates. Use this for 'how's the Johnson deal tracking?' or 'what's outstanding on this transaction?' Prefer get_open_tasks when you need the full task list with assignees and status options; this tool is the aggregate dashboard view.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "get_contact",
+      "description": "Get the full record for a single contact by ID — identity, address, license, every active transaction they're a party on (with role), and the recent activity timeline. Use after search_contacts / find_contact_by_email to inspect a contact before drafting email, linking them to a transaction, or answering 'who is X'. Returns CONTACT_NOT_FOUND if the ID doesn't exist in this org.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "get_contacts",
+      "description": "Get contacts from the current organization. Returns name, email, phone, contact type (buyer / seller / agent / lender / title / etc.), and company. Use this when the user asks 'who's the listing agent on X?', 'what's the lender's email?', or to look up someone's contact info before drafting an email. Returns active contacts by default.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "get_disclosure_activity",
+      "description": "Get the per-recipient activity report for a disclosure package — engagement (Invited/Opened/Reviewing/Acknowledged), per-document status (NotOpened/Opened/Downloaded), AccessState (Active/Revoked/Expired), ChangedSinceLastView flag, last activity timestamp, plus a chronological event timeline. Use to answer 'who has actually reviewed the disclosures on transaction X?'. Returns PACKAGE_NOT_FOUND if the id isn't in this org.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "get_disclosure_package",
+      "description": "Get a disclosure package by id — settings, items (joined to transaction_documents), and recipients without raw tokens. Use after create_disclosure_package or whenever you need the current shape of a package before adding items or inviting recipients. Returns PACKAGE_NOT_FOUND if the id isn't in this org.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "get_email_template",
+      "description": "Get the full body + subject + metadata of an email template by ID or slug. Returns subject, body (HTML), category, audience, stage, side, and the list of variables the template references. Use after list_email_templates to pick a template's full detail, or directly by known slug for system templates. Prefer render_email_template if you need the template resolved against a transaction's data — this tool returns the raw template only.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "get_extraction_results",
+      "description": "Read the current state of an extraction job. Use after upload_document_for_extraction kicks off a job — poll this every 2-3 seconds until status='complete' (or 'failed'). When complete, the response includes `fullResult` with all extracted parties, dates, financials, property details, agents, title, and listing fields. Present those to the user for review, then call apply_extraction to create the transaction. Typical extraction takes 50-350 seconds; max-wait 10 minutes.",
+      "requiredScope": "read",
+      "requiredGranularScope": "documents:read",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "get_form_definition",
+      "description": "Return one form template with its full field list — each field's key, label, type, required flag, and merge mapping (which transaction field, participant role, or document category it populates). Use before previewing a submission to understand what fields the form collected, or before generating a share link to confirm the right template. Returns SYSTEM and org-owned forms; flags IsSystem so the agent can warn the TC that SYSTEM forms can't be edited.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [
+        "Returns SYSTEM templates as well as org-owned forms — IsSystem=true means the template is read-only from a tenant's perspective.",
+        "Field MapsToTransactionField is the canonical key (e.g. 'Buyer'); the actual DB column is resolved via FormFieldAllowlist at apply time.",
+        "Returns FORM_NOT_FOUND when the id is unknown or belongs to a different org (no SYSTEM fallback either)."
+      ],
+      "pairsWith": [
+        "list_form_links",
+        "list_form_submissions"
+      ],
+      "exampleCall": "{\"formDefinitionId\": \"...\"}"
+    },
+    {
+      "name": "get_form_submission",
+      "description": "Return field-level data for one form submission — each submitted value alongside the current transaction value, with a HasConflict flag where they differ. Includes per-field approval state and whether the field has been applied. Use to review a submission before deciding to apply (apply tool ships in a follow-up). Surface conflicts to the TC by name — those are explicit decisions, not auto-applies.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [
+        "HasConflict is computed (CurrentTransactionValue != null && != SubmittedValue) — empty submitted values don't count as conflicts.",
+        "WasApplied=true means the field is already on the transaction — don't double-apply.",
+        "ApprovalStatus is per-field ('pending' / 'approved' / 'rejected') — submissions with RequiresApproval can have a mix and still be 'partially_approved' at the parent level."
+      ],
+      "pairsWith": [
+        "list_form_submissions",
+        "get_form_definition"
+      ],
+      "exampleCall": "{\"submissionId\": \"...\"}"
+    },
+    {
+      "name": "get_intake_status",
+      "description": "Return a composite snapshot of intake progress for a transaction: parties present, key dates count, checklist applied, reminders scheduled, plus a pre-computed list of missing recommended steps (no_checklist_applied, no_closing_date, etc.). Use this when the user resumes an intake conversation on a new chat surface, after a follow-up tool call partially failed, or any time the LLM needs to re-orient on 'what's done vs. what isn't' for a transaction.",
+      "requiredScope": "read",
+      "requiredGranularScope": "transactions:read",
+      "hasOutputSchema": false,
+      "gotchas": [
+        "Pure read — no side effects. The LLM can call this freely to check state without worrying about mutations.",
+        "missingRecommendedSteps is a heuristic, not a hard schema. New step codes may be added as the intake workflow matures."
+      ],
+      "pairsWith": [
+        "get_transaction",
+        "get_key_dates",
+        "get_open_tasks",
+        "apply_extraction"
+      ],
+      "exampleCall": "{\"transactionId\": \"0e1c2b3a-4d5e-6f70-8192-a3b4c5d6e7f8\"}"
+    },
+    {
+      "name": "get_key_dates",
+      "description": "Get the structured Key Date list for one transaction. Returns each Key Date's name, type, date value, status, and side. Use this when the user asks 'what's the deadline for X?' or 'is the inspection contingency past due?'. Prefer get_transaction if you also need party / price / address context — Key Dates are already joined into that response.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [
+        "Empty array is a valid response — distinguish from TRANSACTION_NOT_FOUND, which means the id is missing or cross-tenant.",
+        "daysUntil is computed against server-side UtcNow.Date; for displaying to the user, prefer their local date."
+      ],
+      "pairsWith": [
+        "get_transaction",
+        "get_upcoming_key_dates",
+        "update_key_date",
+        "draft_email_to_agent"
+      ],
+      "exampleCall": "{\"transactionId\": \"0e1c2b3a-4d5e-6f70-8192-a3b4c5d6e7f8\"}"
+    },
+    {
+      "name": "get_merge_fields",
+      "description": "Get all available merge field values for a transaction — property_address, buyer_name, closing_date, lender_name, listing_agent_email, and 100+ others when fully populated. Use this to compose emails without a template, or to fill in gaps when render_email_template reports unresolved fields. Returns the full key/value dictionary plus a list of recognized fields the transaction can't fill (missing data).",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "get_missing_documents",
+      "description": "List the required documents that haven't been uploaded yet on a transaction. When the org has configured document requirements for this deal (from a document set, Playbook, or required document categories), those are the source of truth — for any deal type (Purchase / Listing / Lease) — and each missing doc carries its due date and required side. When the deal has no configured requirements, falls back to a generic purchase baseline (Purchase Agreement, Seller Property Disclosure, Earnest Money Receipt when EM > 0, Lead-Based Paint Disclosure, Wire Fraud Advisory). Each missing doc comes with a severity (critical / recommended) and a one-line rationale. Use this when the user asks 'what docs are we still waiting on?', 'what's missing on this deal?', or before sending a closing-week summary. The response `source` field says which path ran ('configured' vs 'baseline'); the generic baseline is purchase-only, so a non-purchase deal with no configured set returns nothing — apply a document set or Playbook for coverage.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": [
+        "get_transaction_context",
+        "send_document_request",
+        "get_next_required_actions"
+      ]
+    },
+    {
+      "name": "get_next_required_actions",
+      "description": "Get a ranked list of what needs attention next — open tasks and Key Dates merged into one feed, with overdue items first, then due-within-72h, due-within-2-weeks, due-within-4-weeks. Each row comes with an urgency tier and a one-line rationale. Use this when the user asks 'what should I work on next?', 'give me a TC briefing', or 'what's at risk?'. This is the most efficient way to answer those questions — one call returns everything, already prioritized.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "get_offer",
+      "description": "Get a single buyer offer with its full revision history. Returns the thread summary (buyer, agent, status, review state, listing) and every version oldest→newest with that revision's effective terms, submitted/verified timestamps, and an isCurrent flag — so you can see how the offer changed across revisions. Read-only; accepting is a human decision made in the app.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [
+        "Escalation terms are advisory — increment and cap only, never a computed winning price.",
+        "Buyer contact details are private (R4); only the buyer label/name is returned, not email/phone.",
+        "Accept is not available over MCP by design — a human accepts in the app."
+      ],
+      "pairsWith": [
+        "list_offers",
+        "compare_offers"
+      ],
+      "exampleCall": "{\"offer_thread_id\": \"00000000-0000-0000-0000-000000000000\"}"
+    },
+    {
+      "name": "get_open_tasks",
+      "description": "Get open tasks (not completed, not skipped) — across the whole org or filtered to one transaction. Returns name, due date, priority, assigned user, and the transaction the task belongs to. Use this when the user asks 'what tasks do I have?', 'what's open on the Johnson deal?', or 'what's overdue?'. Prefer get_key_dates for contract-level deadlines.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "get_playbook",
+      "description": "Get the Playbook (Deal Folder) a transaction was set up from — its name, scope (transaction type / side / category / state), and component structure (timeline + document-set pieces, including optional/conditional ones). Use to answer 'what playbook is this deal on?' or 'what's in the playbook for this deal?'. Returns appliedToTransaction=false when the deal was not set up from a Playbook (a valid state, not an error).",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [
+        "appliedToTransaction=false is a valid response (the deal wasn't set up from a Playbook), NOT a TRANSACTION_NOT_FOUND error.",
+        "based_on_playbook_id is a soft reference (no FK): a Playbook can be deleted after a deal is linked — then playbookExists=false with the id/name still echoed.",
+        "Components reference timeline-templates / document-template-sets by id + type; template names are not resolved here (use the document-set output via get_missing_documents)."
+      ],
+      "pairsWith": [
+        "get_transaction",
+        "get_transaction_graph",
+        "get_missing_documents"
+      ],
+      "exampleCall": "{\"transactionId\": \"0e1c2b3a-4d5e-6f70-8192-a3b4c5d6e7f8\"}"
+    },
+    {
+      "name": "get_portal_link",
+      "description": "Get the most-recent active portal link for a transaction — the URL the TC sends to a buyer, seller, or agent so they can view the deal timeline + upload portal documents. Also returns the iCal feed URL (for subscribing to deadlines in Apple Calendar / Google Calendar / Outlook). Use this when the user asks 'send the portal link to the buyer' or 'share the timeline with Sarah'. Returns PORTAL_NOT_FOUND if no active link exists — in that case tell the user to create one in the DocJacket UI (creating new links via the AI is a future feature).",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "get_transaction",
+      "description": "Get the full state of a single transaction by ID. Returns address, parties (buyer/seller), agents, lender, title company, key dates, and financials. Use this after search_transactions has resolved the transaction ID, or when the user references a specific deal. Prefer get_key_dates if the user is only asking about deadlines.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [
+        "Returns TRANSACTION_NOT_FOUND for both genuinely-missing IDs and IDs that exist in another tenant. The two cases are indistinguishable by design (no existence leak).",
+        "Key Dates are joined into the response — call get_key_dates only when you need just the deadlines and want a lighter payload."
+      ],
+      "pairsWith": [
+        "get_key_dates",
+        "get_missing_documents",
+        "get_contacts",
+        "draft_status_summary"
+      ],
+      "exampleCall": "{\"transactionId\": \"0e1c2b3a-4d5e-6f70-8192-a3b4c5d6e7f8\"}"
+    },
+    {
+      "name": "get_transaction_context",
+      "description": "Get curated, purpose-shaped context for a single transaction in ONE call — the deal graph (address, parties, status, key dates, tasks, missing documents) plus semantically-relevant document excerpts. Prefer this over orchestrating get_transaction + get_contacts + get_key_dates + get_open_tasks yourself. Pass a 'purpose' (e.g. next_best_action, client_update, compliance_review) to shape the result.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [
+        "Returns TRANSACTION_NOT_FOUND for both missing IDs and IDs in another tenant (no existence leak).",
+        "Narrative excerpts only appear when the org has AI retrieval enabled; otherwise the packet is facts-only (ragUsed=false). The 'graph' block is always returned.",
+        "Pass 'purpose' to shape what's emphasized; pass 'query' to steer the narrative retrieval (defaults are derived from purpose)."
+      ],
+      "pairsWith": [
+        "get_transaction",
+        "get_missing_documents",
+        "get_next_required_actions",
+        "search_transaction_context"
+      ],
+      "exampleCall": "{\"transactionId\": \"0e1c2b3a-4d5e-6f70-8192-a3b4c5d6e7f8\", \"purpose\": \"next_best_action\"}"
+    },
+    {
+      "name": "get_transaction_graph",
+      "description": "Get the relationship graph for a transaction — parties by role, key dates, open tasks, documents (required vs uploaded), and milestone counts — as structured JSON, with no document retrieval. Lighter than get_transaction_context; use it for the shape of the deal. For semantically-relevant excerpts (emails/docs/notes), use get_transaction_context or search_transaction_context.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [
+        "Returns TRANSACTION_NOT_FOUND for both missing IDs and IDs in another tenant (no existence leak).",
+        "No retrieval / no document excerpts — this is structural facts only. Use get_transaction_context for semantic narrative."
+      ],
+      "pairsWith": [
+        "get_transaction_context",
+        "search_transaction_context",
+        "get_missing_documents"
+      ],
+      "exampleCall": "{\"transactionId\": \"0e1c2b3a-4d5e-6f70-8192-a3b4c5d6e7f8\"}"
+    },
+    {
+      "name": "get_upcoming_key_dates",
+      "description": "Get upcoming Key Dates across all active transactions in the current organization. Returns dates due within the next N days (default 14, max 60), joined with the transaction address. Sorted soonest-first. Use this when the user asks 'what's due this week?', 'what's on the calendar?', or 'what's coming up?' — much faster than calling get_key_dates per transaction. Already excludes completed / waived / closed deals.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "invite_disclosure_recipient",
+      "description": "Invite a recipient to an Active disclosure package. Returns the raw share token + URL ONCE — only the SHA256 hash is persisted, so you must surface the URL to the user in your reply. Optionally link to a known contactId, otherwise the recipient is ad-hoc (label + optional email). Email field is informational — actual delivery is handled by the coordinator UI / future mail service. Returns PACKAGE_NOT_FOUND or PACKAGE_NOT_ACTIVE.",
+      "requiredScope": "actions",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "kick_off_extraction",
+      "description": "Start the extraction pipeline on a PDF the client already uploaded via `request_upload_url`. Step 2 of the preferred intake flow. Pass the `uploadId` returned by request_upload_url. Returns the same `extractionJobId` + `cacheHit` shape as `upload_document_for_extraction` — poll `get_extraction_results` every 2-3 seconds until complete, then call `apply_extraction`. Duplicate uploads of the same PDF reuse the prior result (cacheHit=true).",
+      "requiredScope": "actions",
+      "requiredGranularScope": "upload_document",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "list_active_transactions",
+      "description": "List every active transaction in the current organization (statuses tagged 'open' — Active, Pending, Under Contract). Returns address, status, closing date, completion %. Pass include_parties=true to also get every party on each deal with their email and role (use this when matching incoming emails to deals — one call gives you everything). Pass include_key_dates=true to also get inspection / financing / closing dates with days-until counters. This is the foundational inbox-triage tool; call it once at the start of a triage session and cache the result for the conversation.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [
+        "Capped at 200 transactions; orgs with more should chain search_transactions for the long tail.",
+        "statusType='open' covers Active/Pending/Under Contract but excludes Closed — historical context needs search_transactions.",
+        "include_parties + include_key_dates each add a per-transaction round-trip; default both off when you only need the address/status list."
+      ],
+      "pairsWith": [
+        "get_next_required_actions",
+        "get_transaction",
+        "get_missing_documents"
+      ],
+      "exampleCall": "{\"include_parties\": true, \"limit\": 30}"
+    },
+    {
+      "name": "list_checklist_templates",
+      "description": "List timeline / checklist templates available to the current organization (org-owned + SYSTEM templates). Returns compact rows — id, name, category, state, side, transactionType, complexity, milestone + task counts. Filter by state ('Texas', 'Florida'), side ('Buyer' / 'Seller'), transactionType ('Sale' / 'Listing'), category ('Residential' / 'Commercial' / 'Land'), or complexity ('Lite' / 'Standard'). Use as the first step when starting a new transaction — pick the matching template, then call apply_checklist to seed milestones + tasks on the deal.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "list_documents",
+      "description": "List recently-uploaded documents in the caller's organization, with enough metadata to identify them by name + upload time + transaction. Use as the first step of contract-intake when the user says 'extract the contract I uploaded' or 'process the file from this morning' — find the document, then call `extract_existing_document(documentId)`. Filters: transactionId (only docs on this transaction), since (ISO date floor), hasExtraction (true = only docs with completed extraction, false = only those without), limit (default 50, max 200). Returns documentId, filename, uploadDate, sizeBytes, documentType, category, transactionId (nullable), transactionAddress (nullable), hasExtraction, extractionStatus.",
+      "requiredScope": "read",
+      "requiredGranularScope": "documents:read",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": [
+        "extract_existing_document",
+        "get_extraction_results",
+        "get_missing_documents"
+      ]
+    },
+    {
+      "name": "list_email_templates",
+      "description": "List email templates available in the current organization. Returns a compact list — id, name, category, audience, stage, side, variable count. Filter by category (e.g. 'introduction', 'closing'), audience ('buyer', 'seller', 'agent', 'lender'), stage ('Under Contract', 'Closing'), side ('Buy' / 'Sell' / 'Listing'), or free-text search. Use this as the first step when the user asks to send a templated email — pick the best match, then call get_email_template for full detail and render_email_template to resolve merge fields against the transaction.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [
+        "List omits the template body (often multi-KB HTML); call get_email_template after picking one to load the body + subject + merge fields.",
+        "Filters by isActive=true automatically — deactivated drafts are hidden. No flag to include them.",
+        "System templates and org templates are merged in the same list; the isSystem flag distinguishes them."
+      ],
+      "pairsWith": [
+        "get_email_template",
+        "render_email_template",
+        "get_merge_fields"
+      ],
+      "exampleCall": "{\"audience\": \"buyer\", \"stage\": \"Under Contract\", \"limit\": 20}"
+    },
+    {
+      "name": "list_form_links",
+      "description": "List form links sent on a transaction — intake forms, disclosures, BYOF templates. Returns each link's share URL (the URL the agent / client opens to fill the form), submission count, expiry, max submission cap, and computed status ('Active' / 'Expired' / 'Maxed' / 'Inactive'). Use to answer 'what forms are outstanding on this deal?' or to find the public URL for follow-up.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [
+        "Returns links scoped to the supplied transactionId — not an org-wide list. Use list_form_submissions (no transactionId) for org-wide submission visibility.",
+        "shareUrl is rendered against App:BaseUrl; for prod that's https://app.docjacket.com/forms/{token}.",
+        "An 'Active' status doesn't mean unsubmitted — submissionCount can be >0 while the link still accepts more."
+      ],
+      "pairsWith": [
+        "list_form_submissions",
+        "get_form_definition"
+      ],
+      "exampleCall": "{\"transactionId\": \"...\"}"
+    },
+    {
+      "name": "list_form_submissions",
+      "description": "List form submissions — without transactionId returns the organization-wide inbox ('did I get any form submissions today?'), with transactionId scopes to one deal. Default status filter is 'pending_review' (TC hasn't applied them yet); pass 'all' to include applied / rejected. Filter by formPurpose (string or array — 'create_transaction', 'update_transaction', 'additive'), formDefinitionId, or since (ISO UTC datetime — 'submissions after this time'). Returns transactionId + propertyAddress so org-wide answers can name the deal each one came in on.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [
+        "Without transactionId returns org-wide submissions — propertyAddress lets the agent name the deal each one came in on. Pass transactionId to scope to one deal.",
+        "Default status='pending_review' — submissions already applied or rejected are hidden. Pass status='all' to see everything.",
+        "formPurpose accepts a string OR array; array maps to SQL IN. Valid keys are 'create_transaction' (new-deal intake), 'update_transaction', and 'additive' — these are the only values stored, so other strings match nothing.",
+        "since is an ISO datetime in UTC. For 'today' queries the agent should compute start-of-day in the user's local TZ then convert to UTC."
+      ],
+      "pairsWith": [
+        "get_form_submission",
+        "list_form_links",
+        "get_form_definition"
+      ],
+      "exampleCall": "{\"formPurpose\": [\"create_transaction\", \"update_transaction\"], \"since\": \"2026-05-19T00:00:00Z\", \"status\": \"all\"}"
+    },
+    {
+      "name": "list_offers",
+      "description": "List buyer-offer threads on the organization's listings. Omit listing_transaction_id to see every offer across all listings (the Buyer Offers pipeline); pass it to scope to one listing. Returns one row per offer with buyer, agent, amount, status, review state, expiration, and whether it has an escalation clause. Use compare_offers for a full side-by-side of terms, or get_offer for one offer's revision history. Read-only; accepting an offer is done by a human in the app, not through this API.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [
+        "Reads the offer_threads projection (current version only) — for prior revisions call get_offer.",
+        "escalation here is just a flag + cap; the full increment/clause text is on compare_offers / get_offer.",
+        "Accept is not available over MCP by design — surface the offer to the human to accept in the app."
+      ],
+      "pairsWith": [
+        "compare_offers",
+        "get_offer"
+      ],
+      "exampleCall": "{\"listing_transaction_id\": \"00000000-0000-0000-0000-000000000000\"}"
+    },
+    {
+      "name": "list_open_contingencies",
+      "description": "List the open (Active) contingencies on one transaction. Returns the contingency type label, deadline date, and any TC notes. Use this when the user asks 'what contingencies are still open?', 'is the inspection contingency satisfied?', or to check before sending a contingency-removal letter. Only returns rows the TC has explicitly tracked — untouched contingencies are implicitly Active and not persisted.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "log_activity",
+      "description": "Log a non-send activity against a transaction — phone call, meeting, in-person handoff, manual SMS, plain note. Use when you helped the user with something that doesn't fit the send_* / create_tasks / update_key_date tools (e.g. \"log that you just called the lender and got verbal CTC confirmation\"). The audit row shows up on the transaction's Activity feed with Source: AI. The user must have asked you to log it — don't fabricate activity.",
+      "requiredScope": "draft",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "mcp_catalog",
+      "description": "List every MCP tool you currently have scope to call, enriched with metadata that tools/list doesn't carry: gotchas (non-obvious behaviors), pairsWith (tools that go together), exampleCall (a realistic argument shape), and deprecation notices. Use this when planning a workflow that touches more than a couple of tools, or when integrating and you want a single round-trip view of the surface. Identical output regardless of call args; safe to cache for a session.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "mcp_health_check",
+      "description": "Verify the MCP server can authenticate your token, reach its database, and tell you which scopes and organization the token grants. Call this first when integrating, or when a tool call surprises you with an auth/scope error — the response makes the gap explicit. Intended to be unmetered (does not count against future rate limits). Also surfaces deprecation notices for tools heading toward retirement, so an integrating agent can update its plan before a tool starts returning errors.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "render_email_template",
+      "description": "Render an email template against a transaction — resolve every merge field ({{property_address}}, {{buyer_name}}, {{closing_date}}, etc.) against the deal's actual data. Returns the resolved subject + body ready to pass into a send_* tool, plus a list of any fields the template references that this transaction can't fill. Use after picking a template via list_email_templates / get_email_template, and BEFORE calling send_client_update / send_document_request / etc. — those tools want a finished subject + body, not template placeholders.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "request_upload_url",
+      "description": "Get a short-lived URL to PUT a contract PDF to directly. Only use when the user has attached a PDF in chat that ISN'T already in DocJacket. If the document is already in DocJacket (uploaded via DocDrop, email intake, the web wizard, or a prior call), prefer `list_documents` + `extract_existing_document` — works in every MCP client with no sandbox or code-execution prerequisites. This presigned-URL path is Claude.ai-specific: the LLM uses its code-execution sandbox to `curl -X PUT -T <file> <uploadUrl>`, then calls `kick_off_extraction` with the returned `uploadId`. Requires a paid Claude.ai plan with code execution enabled AND `mcp.docjacket.com` added under Settings → Capabilities → Code execution → Additional allowed domains.",
+      "requiredScope": "actions",
+      "requiredGranularScope": "upload_document",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "revoke_disclosure_recipient",
+      "description": "Revoke one recipient's link to a disclosure package. Their next request returns access-ended. Idempotent — second revoke is a no-op. Historical events stay in the activity report. Returns RECIPIENT_NOT_FOUND if the recipient id isn't in this org or doesn't belong to the given package.",
+      "requiredScope": "actions",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "save_status_summary",
+      "description": "Save a markdown status summary as a note on the transaction. Audience-tagged ('agent' default for internal notes; 'client' or 'broker' for audience-shaped recaps). The note appears immediately on the transaction's activity feed; no email is sent.",
+      "requiredScope": "draft",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "search_contacts",
+      "description": "Search contacts in the current organization by free-text query against name, email, phone, or company. Returns a compact picker list (id, full name, email, phone, company, type, license). Use when the TC asks 'do we have a contact for X', 'lookup the lender at Y', or needs to find a contact before linking them to a transaction. Optional contactType filter restricts to one category (e.g. 'Agent', 'Lender', 'TitleCompany'). For exact-email matches from inbound mail, prefer find_contact_by_email — it's the definitive single-result lookup.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [
+        "LIKE-match across multiple fields — broad query strings produce broad result sets. Cap with limit when querying common terms.",
+        "For exact-email lookup (e.g. matching an inbound email), prefer find_contact_by_email. This tool is for fuzzy human-typed queries.",
+        "Empty results suggest create_contact; the breadcrumbs surface that follow-up automatically."
+      ],
+      "pairsWith": [
+        "get_contact",
+        "find_contact_by_email",
+        "create_contact",
+        "add_contact_to_transaction"
+      ],
+      "exampleCall": "{\"query\": \"smith\", \"contactType\": \"Agent\", \"limit\": 10}"
+    },
+    {
+      "name": "search_transaction_context",
+      "description": "Semantic search over a single transaction's indexed text (documents, and — as the corpus widens — emails/notes). Returns the most relevant reranked excerpts for a free-text query. Use it to answer a specific question about a deal without fetching the full context packet. Requires the org to have AI retrieval enabled.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [
+        "Returns empty results (not an error) when the org has not enabled AI retrieval — check retrievalEnabled in the response.",
+        "Org-isolated: a transactionId from another tenant yields no results rather than an error (no existence leak).",
+        "Searches indexed deal text only (currently document OCR; emails/notes are added as the corpus widens)."
+      ],
+      "pairsWith": [
+        "get_transaction_context",
+        "get_transaction_graph"
+      ],
+      "exampleCall": "{\"transactionId\": \"0e1c2b3a-4d5e-6f70-8192-a3b4c5d6e7f8\", \"query\": \"is the title commitment in?\"}"
+    },
+    {
+      "name": "search_transactions",
+      "description": "Search transactions in the current organization by address, buyer name, seller name, or MLS number. Returns a paginated list with status, addresses, and key dates. Use this when the user is asking about which deals match a query, or as the first step to find the transaction ID before calling other tools.",
+      "requiredScope": "read",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "send_agent_followup",
+      "description": "Send an email to listing/buyer/lender/title/referral agent on a specific topic. Use send_client_update for buyer/seller clients; use send_document_request to chase a missing document. Confirm the message with the user in chat BEFORE calling. If the organization reviews automated emails, the result is \"parked_for_review\" (queued for human approval, not sent) — relay that to the user.",
+      "requiredScope": "actions",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "send_client_update",
+      "description": "Send an email update to the buyer, seller, or co-agent summarizing where the deal stands. Call get_transaction, get_contacts, and get_key_dates first to gather context, then compose subject + body inline and call this tool — the email leaves immediately from the user's connected Gmail/Outlook (or DocJacket Postmark fallback). Returns a summary of what was sent. Confirm the message with the user in chat BEFORE calling this tool. If the organization reviews automated emails before sending, the email is NOT sent: it is parked in DocJacket's review queue (status \"parked_for_review\") and goes out once a team member approves it — relay that to the user instead of saying it was sent.",
+      "requiredScope": "actions",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "send_document_request",
+      "description": "Send an email requesting a missing document (inspection report, seller disclosure, etc.) from a specific contact. The email leaves immediately — confirm the message with the user in chat BEFORE calling this tool. If the organization reviews automated emails, the result is \"parked_for_review\" (queued for human approval, not sent) — relay that to the user.",
+      "requiredScope": "actions",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "send_email_to_agent",
+      "description": "Less-opinionated variant of send_agent_followup. Use when the user describes the email intent + a few talking points rather than a specific topic. The composing LLM expands those into bodyHtml. Sends immediately — confirm with the user in chat first. If the organization reviews automated emails, the result is \"parked_for_review\" (queued for human approval, not sent) — relay that to the user.",
+      "requiredScope": "actions",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "update_disclosure_package_documents",
+      "description": "Replace the documents in a disclosure package with the given list (in order). REPLACE-SEMANTICS — the supplied array is the FULL desired set; documents not in the array are removed. Atomic. Bumps the package's content-changed timestamp so any prior recipients' views show as 'changed since last viewed'. Returns PACKAGE_NOT_FOUND or DOCUMENT_NOT_ON_TRANSACTION.",
+      "requiredScope": "actions",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "update_key_date",
+      "description": "Update a Key Date on a transaction (e.g. extending the inspection deadline). Resolves the keyDateType via the alias map so 'inspection' and 'InspectionDeadline' both work. The change is applied immediately and audited on the transaction timeline. Confirm with the user first.",
+      "requiredScope": "draft",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": []
+    },
+    {
+      "name": "upload_document_for_extraction",
+      "description": "Upload a contract PDF and start the extraction pipeline in one call. FALLBACK PATH ONLY. Order of preference: (1) if the document is already in DocJacket, use `list_documents` + `extract_existing_document` — works in every MCP client without context cost; (2) on Claude.ai paid with code execution, use `request_upload_url` + `kick_off_extraction` to PUT bytes directly to storage from the sandbox; (3) this base64 path is for the residual case of a tiny PDF (~under 1 MB) attached to chat with no other option — bytes here ride in chat context for the rest of the conversation and compound with later turns. Returns an `extractionJobId` — poll `get_extraction_results` every 2-3 seconds until status='complete', then call `apply_extraction`. Duplicate uploads reuse the prior result (cacheHit=true). Max 22 MB base64 (~16 MB binary).",
+      "requiredScope": "actions",
+      "requiredGranularScope": "upload_document",
+      "hasOutputSchema": false,
+      "gotchas": [
+        "Base64 bytes ride in chat context for the rest of the conversation. Prefer request_upload_url + kick_off_extraction for anything over ~1 MB."
+      ],
+      "pairsWith": [
+        "request_upload_url",
+        "kick_off_extraction",
+        "get_extraction_results",
+        "apply_extraction"
+      ]
+    }
+  ]
+}
