@@ -23,14 +23,14 @@ A key date template is the date-logic layer. A checklist is the workflow layer t
 
 Go to **Templates > Key Date Library** to manage reusable key date definitions.
 
-![Key Date Library page with My Templates, Shared templates, filters, Import CSV, New Key Date, and key date cards](/img/templates/key-date-library-list.png)
+![Key Date Library page with My Key Dates, DocJacket Key Dates, filters, Import CSV, New Key Date, and key date cards](/img/templates/key-date-library-list.png)
 
 The page has two tabs:
 
-- **My Templates** — key dates your organization owns and can edit
-- **Shared** — system-provided key dates available to all organizations
+- **My Key Dates** — key dates your organization owns and can edit
+- **DocJacket Key Dates** — ready-made key dates DocJacket provides, available to every organization
 
-Shared key dates are read-only. Use **Copy to My Templates**, **Duplicate**, or **Duplicate as Custom** to create an editable organization-owned version.
+DocJacket key dates are read-only. Use **Copy to My Key Dates**, **Duplicate**, or **Duplicate as Custom** to create an editable organization-owned version. Your copy shows a **Copied from** line naming the key date it started from.
 
 Use the filters to narrow the list by:
 
@@ -39,7 +39,7 @@ Use the filters to narrow the list by:
 - **Status** — Active or Inactive
 - **Search** — key date name or description
 
-On **My Templates**, use **Import CSV** when you need to add multiple key dates at once.
+On **My Key Dates**, use **Import CSV** when you need to add multiple key dates at once.
 
 ## Creating a key date rule
 
@@ -67,7 +67,7 @@ A key date template includes:
 - Priority
 - Active or Inactive status
 
-System templates are read-only. Duplicate a system template before editing it.
+DocJacket key dates are read-only. Duplicate one before editing it.
 
 ## Date calculation rules
 
@@ -127,7 +127,7 @@ Inactive key dates stay in the library but are hidden from normal template selec
 
 ## CSV import
 
-Use **Import CSV** from **My Templates** when you need to add multiple key dates at once.
+Use **Import CSV** from **My Key Dates** when you need to add multiple key dates at once.
 
 After importing, review each key date for:
 

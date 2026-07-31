@@ -3463,7 +3463,7 @@ If an email has already been sent, its **Review & send** button goes away — th
 Use checklist templates when the same task should prepare or schedule the same email every time the workflow is applied.
 
 1. Go to **Templates > Checklists**
-1. Open a checklist in **My Templates**
+1. Open a checklist in **My Checklists**
 1. Open the **Tasks** or **Automations** view
 1. Select the task that should trigger the email
 1. Add the email reminder
@@ -4327,7 +4327,7 @@ Smart fields are replaced with the transaction's current data when the template 
 ## Creating a template
 
 1. Go to **Templates > Email Templates**
-2. Open **My Templates**
+2. Open **My Email Templates**
 3. Click **New Template**
 4. Add template settings such as category, side, audience, stage, and tone
 5. Write the subject and body
@@ -4336,7 +4336,7 @@ Smart fields are replaced with the transaction's current data when the template 
 8. Select document categories to auto-attach if needed
 9. Preview, send a test email, and save
 
-Shared templates are read-only. Copy a shared template into **My Templates** before customizing it.
+DocJacket templates are read-only. Copy one into **My Email Templates** before customizing it.
 
 ## Generate or import a template with AI
 
@@ -4522,14 +4522,14 @@ This is the same product category as a reusable date-template workflow: set the 
 
 Go to **Templates > Checklists** to manage checklist templates.
 
-![Checklists list page with My Templates, Shared templates, filters, default checklist guidance, and checklist cards](/img/templates/checklists-list.png)
+![Checklists list page with My Checklists, DocJacket Checklists, filters, default checklist guidance, and checklist cards](/img/templates/checklists-list.png)
 
 The page has two tabs:
 
-- **My Templates** — checklists your organization owns and can edit
-- **Shared** — system-provided checklists available to all organizations
+- **My Checklists** — checklists your organization owns and can edit
+- **DocJacket Checklists** — ready-made checklists DocJacket provides, available to every organization
 
-Shared checklists are read-only. Use **Copy to My Templates** or **Duplicate** before customizing key dates, tasks, or automations.
+DocJacket checklists are read-only. Use **Copy to My Checklists** or **Duplicate** before customizing key dates, tasks, or automations. Your copy shows a **Copied from** line so you can always tell where it started.
 
 Use the filters to narrow the list by:
 
@@ -4539,7 +4539,7 @@ Use the filters to narrow the list by:
 - **Complexity** — Lite or Standard
 - **Search** — checklist name or description
 
-On **My Templates**, you can mark an active checklist as the default. Default checklists can auto-apply when creating transactions for the matching state and type.
+On **My Checklists**, you can mark an active checklist as the default. Default checklists can auto-apply when creating transactions for the matching state and type.
 
 ## Creating a checklist template
 
@@ -4571,7 +4571,7 @@ Use **Edit template settings** to change:
 - Side
 - Description
 
-System templates are read-only. Copy a shared system checklist into **My Templates** before editing settings, key dates, tasks, or automations.
+DocJacket checklists are read-only. Copy one into **My Checklists** before editing settings, key dates, tasks, or automations.
 
 ## Adding key dates
 
@@ -4749,14 +4749,14 @@ A key date template is the date-logic layer. A checklist is the workflow layer t
 
 Go to **Templates > Key Date Library** to manage reusable key date definitions.
 
-![Key Date Library page with My Templates, Shared templates, filters, Import CSV, New Key Date, and key date cards](/img/templates/key-date-library-list.png)
+![Key Date Library page with My Key Dates, DocJacket Key Dates, filters, Import CSV, New Key Date, and key date cards](/img/templates/key-date-library-list.png)
 
 The page has two tabs:
 
-- **My Templates** — key dates your organization owns and can edit
-- **Shared** — system-provided key dates available to all organizations
+- **My Key Dates** — key dates your organization owns and can edit
+- **DocJacket Key Dates** — ready-made key dates DocJacket provides, available to every organization
 
-Shared key dates are read-only. Use **Copy to My Templates**, **Duplicate**, or **Duplicate as Custom** to create an editable organization-owned version.
+DocJacket key dates are read-only. Use **Copy to My Key Dates**, **Duplicate**, or **Duplicate as Custom** to create an editable organization-owned version. Your copy shows a **Copied from** line naming the key date it started from.
 
 Use the filters to narrow the list by:
 
@@ -4765,7 +4765,7 @@ Use the filters to narrow the list by:
 - **Status** — Active or Inactive
 - **Search** — key date name or description
 
-On **My Templates**, use **Import CSV** when you need to add multiple key dates at once.
+On **My Key Dates**, use **Import CSV** when you need to add multiple key dates at once.
 
 ## Creating a key date rule
 
@@ -4793,7 +4793,7 @@ A key date template includes:
 - Priority
 - Active or Inactive status
 
-System templates are read-only. Duplicate a system template before editing it.
+DocJacket key dates are read-only. Duplicate one before editing it.
 
 ## Date calculation rules
 
@@ -4853,7 +4853,7 @@ Inactive key dates stay in the library but are hidden from normal template selec
 
 ## CSV import
 
-Use **Import CSV** from **My Templates** when you need to add multiple key dates at once.
+Use **Import CSV** from **My Key Dates** when you need to add multiple key dates at once.
 
 After importing, review each key date for:
 
@@ -4907,16 +4907,16 @@ Create reusable email templates with smart fields that auto-populate with transa
 
 Email templates can include subject lines, rich email bodies, smart fields, recipient rules, and document categories to auto-attach when the email sends.
 
-![Email Templates page with My Templates, Shared templates, filters, grouped cards, and available variables](/img/email-templates/email-template-list.png)
+![Email Templates page with My Email Templates, DocJacket Email Templates, filters, grouped cards, and available variables](/img/email-templates/email-template-list.png)
 
-## My Templates and Shared templates
+## My Email Templates and DocJacket Email Templates
 
 The Email Templates page has two tabs:
 
-- **My Templates** - Templates your organization owns and can edit
-- **Shared** - DocJacket-provided templates you can copy into your organization
+- **My Email Templates** - Templates your organization owns and can edit
+- **DocJacket Email Templates** - Ready-made templates DocJacket provides, which you can copy into your organization
 
-Shared templates are read-only. Use **Copy to My Templates** before changing the subject, body, attachments, recipients, or smart fields.
+DocJacket templates are read-only. Use **Copy to My Email Templates** before changing the subject, body, attachments, recipients, or smart fields. Your copy shows a **Copied from** line naming the template it started from.
 
 The list groups templates by stage and shows each template's active/draft status, category, version, and smart-field count. Use the filters for side, category, status, audience, stage, tone, and search when your library grows.
 
@@ -5162,14 +5162,14 @@ The builder has three steps:
 - **Fields** — Field canvas, field palette, field properties, ordering, and conditional display
 - **Share** — Public or transaction-specific links, version history, and form preview
 
-## My Forms and shared samples
+## My Forms and DocJacket Forms
 
 The Online Forms page has two tabs:
 
 - **My Forms** — Forms your organization owns and can edit, activate, deactivate, duplicate, or delete
-- **Shared** — Sample templates from DocJacket and founding trainers
+- **DocJacket Forms** — Ready-made forms from DocJacket and founding trainers
 
-Shared forms are read-only. Preview the fields, then use **Use This Template** or **Copy to My Forms** to create an editable copy in your organization.
+DocJacket forms are read-only. Preview the fields, then use **Use This Template** or **Copy to My Forms** to create an editable copy in your organization. Your copy shows a **Copied from** line naming the form it started from.
 
 ## Form purposes
 

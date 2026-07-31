@@ -28,7 +28,7 @@ Smart fields are replaced with the transaction's current data when the template 
 ## Creating a template
 
 1. Go to **Templates > Email Templates**
-2. Open **My Templates**
+2. Open **My Email Templates**
 3. Click **New Template**
 4. Add template settings such as category, side, audience, stage, and tone
 5. Write the subject and body
@@ -37,7 +37,7 @@ Smart fields are replaced with the transaction's current data when the template 
 8. Select document categories to auto-attach if needed
 9. Preview, send a test email, and save
 
-Shared templates are read-only. Copy a shared template into **My Templates** before customizing it.
+DocJacket templates are read-only. Copy one into **My Email Templates** before customizing it.
 
 ## Generate or import a template with AI
 
