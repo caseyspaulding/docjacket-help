@@ -20,14 +20,14 @@ This is the same product category as a reusable date-template workflow: set the 
 
 Go to **Templates > Checklists** to manage checklist templates.
 
-![Checklists list page with My Templates, Shared templates, filters, default checklist guidance, and checklist cards](/img/templates/checklists-list.png)
+![Checklists list page with My Checklists, DocJacket Checklists, filters, default checklist guidance, and checklist cards](/img/templates/checklists-list.png)
 
 The page has two tabs:
 
-- **My Templates** — checklists your organization owns and can edit
-- **Shared** — system-provided checklists available to all organizations
+- **My Checklists** — checklists your organization owns and can edit
+- **DocJacket Checklists** — ready-made checklists DocJacket provides, available to every organization
 
-Shared checklists are read-only. Use **Copy to My Templates** or **Duplicate** before customizing key dates, tasks, or automations.
+DocJacket checklists are read-only. Use **Copy to My Checklists** or **Duplicate** before customizing key dates, tasks, or automations. Your copy shows a **Copied from** line so you can always tell where it started.
 
 Use the filters to narrow the list by:
 
@@ -37,7 +37,7 @@ Use the filters to narrow the list by:
 - **Complexity** — Lite or Standard
 - **Search** — checklist name or description
 
-On **My Templates**, you can mark an active checklist as the default. Default checklists can auto-apply when creating transactions for the matching state and type.
+On **My Checklists**, you can mark an active checklist as the default. Default checklists can auto-apply when creating transactions for the matching state and type.
 
 ## Creating a checklist template
 
@@ -69,7 +69,7 @@ Use **Edit template settings** to change:
 - Side
 - Description
 
-System templates are read-only. Copy a shared system checklist into **My Templates** before editing settings, key dates, tasks, or automations.
+DocJacket checklists are read-only. Copy one into **My Checklists** before editing settings, key dates, tasks, or automations.
 
 ## Adding key dates
 

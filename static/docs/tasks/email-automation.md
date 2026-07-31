@@ -85,7 +85,7 @@ If an email has already been sent, its **Review & send** button goes away — th
 Use checklist templates when the same task should prepare or schedule the same email every time the workflow is applied.
 
 1. Go to **Templates > Checklists**
-1. Open a checklist in **My Templates**
+1. Open a checklist in **My Checklists**
 1. Open the **Tasks** or **Automations** view
 1. Select the task that should trigger the email
 1. Add the email reminder

@@ -30,14 +30,14 @@ The builder has three steps:
 - **Fields** — Field canvas, field palette, field properties, ordering, and conditional display
 - **Share** — Public or transaction-specific links, version history, and form preview
 
-## My Forms and shared samples
+## My Forms and DocJacket Forms
 
 The Online Forms page has two tabs:
 
 - **My Forms** — Forms your organization owns and can edit, activate, deactivate, duplicate, or delete
-- **Shared** — Sample templates from DocJacket and founding trainers
+- **DocJacket Forms** — Ready-made forms from DocJacket and founding trainers
 
-Shared forms are read-only. Preview the fields, then use **Use This Template** or **Copy to My Forms** to create an editable copy in your organization.
+DocJacket forms are read-only. Preview the fields, then use **Use This Template** or **Copy to My Forms** to create an editable copy in your organization. Your copy shows a **Copied from** line naming the form it started from.
 
 ## Form purposes
 

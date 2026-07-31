@@ -13,16 +13,16 @@ Create reusable email templates with smart fields that auto-populate with transa
 
 Email templates can include subject lines, rich email bodies, smart fields, recipient rules, and document categories to auto-attach when the email sends.
 
-![Email Templates page with My Templates, Shared templates, filters, grouped cards, and available variables](/img/email-templates/email-template-list.png)
+![Email Templates page with My Email Templates, DocJacket Email Templates, filters, grouped cards, and available variables](/img/email-templates/email-template-list.png)
 
-## My Templates and Shared templates
+## My Email Templates and DocJacket Email Templates
 
 The Email Templates page has two tabs:
 
-- **My Templates** - Templates your organization owns and can edit
-- **Shared** - DocJacket-provided templates you can copy into your organization
+- **My Email Templates** - Templates your organization owns and can edit
+- **DocJacket Email Templates** - Ready-made templates DocJacket provides, which you can copy into your organization
 
-Shared templates are read-only. Use **Copy to My Templates** before changing the subject, body, attachments, recipients, or smart fields.
+DocJacket templates are read-only. Use **Copy to My Email Templates** before changing the subject, body, attachments, recipients, or smart fields. Your copy shows a **Copied from** line naming the template it started from.
 
 The list groups templates by stage and shows each template's active/draft status, category, version, and smart-field count. Use the filters for side, category, status, audience, stage, tone, and search when your library grows.
 
