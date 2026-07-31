@@ -52,21 +52,31 @@ Subscribe to `"*"` to receive every event type.
 
 ## Event catalog
 
+{/* BEGIN GENERATED: webhook-events */}
+{/* Generated from spec/dj-api.json — do not edit this table by hand.
+    Regenerate: npm run fetch-spec && npm run gen-webhook-events
+    Generator: scripts/gen-webhook-events.mjs */}
+
 | Event | Fires when |
 |---|---|
-| `transaction.created` | A new transaction is created |
-| `transaction.status_changed` | A transaction's status changes |
-| `transaction.closed` | A transaction is closed |
-| `document.uploaded` | A document is uploaded to a transaction |
-| `document.deleted` | A document is deleted |
-| `task.created` | A new task is created |
-| `task.completed` | A task is marked complete |
-| `extraction.completed` | A document extraction job finishes (includes `jobId`, `status`, `confidence`) |
-| `key_date.updated` | A key date is added or changed |
-| `key_date.completed` | A key date is marked complete |
-| `contact.created` | A new contact is created |
-| `disclosure.recipient_viewed` | A disclosure-package recipient opens the disclosure |
-| `form.submission_received` | A public form submission arrives |
+| `contact.created` | When a new contact is created |
+| `disclosure.recipient_viewed` | When a disclosure package recipient opens the disclosure |
+| `document.deleted` | When a document is deleted |
+| `document.uploaded` | When a document is uploaded to a transaction |
+| `extraction.completed` | When a document extraction job finishes (includes jobId + status) |
+| `form.submission_received` | When a public form submission is received |
+| `key_date.completed` | When a key date is marked complete |
+| `key_date.updated` | When a key date is added or changed on a transaction |
+| `task.completed` | When a task is marked complete |
+| `task.created` | When a new task is created |
+| `transaction.closed` | When a transaction is closed |
+| `transaction.created` | When a new transaction is created |
+| `transaction.status_changed` | When a transaction status changes |
+| `webhook.test` | Test webhook (triggered manually) |
+
+{/* END GENERATED: webhook-events */}
+
+The same list is available at runtime from `GET /api/v1/webhook-events`, and in the [OpenAPI specification](https://api.docjacket.com/openapi.json) under `webhooks` — where each event also carries its payload schema and an example.
 
 `extraction.completed` turns a document upload into a round-trip: subscribe, upload via the API, and receive the signed callback with the `jobId` and confidence when extraction finishes — no polling.
 

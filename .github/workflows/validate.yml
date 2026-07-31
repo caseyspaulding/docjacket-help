@@ -35,6 +35,17 @@ jobs:
       - name: Verify generated docs are committed
         run: git diff --exit-code -- static/llms-full.txt static/docs
 
+      # docs/api/reference.mdx and the event catalog in docs/api/webhooks.mdx are both
+      # generated from spec/dj-api.json. Nothing regenerates them at build time (see
+      # scripts/fetch-openapi-spec.mjs for why the spec is a committed copy), so without
+      # this a contributor could refresh the spec and forget to regenerate — which is
+      # exactly how the webhook event table fell a row behind production.
+      #
+      # This checks the docs match the COMMITTED spec. Whether that spec still matches
+      # PRODUCTION is a separate question, answered by api-spec-drift.yml.
+      - name: Verify generated API docs match the committed spec
+        run: npm run check-api-docs
+
       - name: Typecheck
         run: npm run typecheck
 

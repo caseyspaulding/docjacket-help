@@ -1,0 +1,106 @@
+name: API spec drift
+
+# Opens a PR when the production OpenAPI document moves ahead of the copy committed
+# at spec/dj-api.json.
+#
+# WHY THIS EXISTS: the spec is a committed copy on purpose — see
+# scripts/fetch-openapi-spec.mjs. That buys build reproducibility, keeps docs builds
+# independent of api.docjacket.com being reachable, and makes every public-contract
+# change show up as a reviewable diff. The cost is that refreshing it is a manual step
+# somebody has to remember, and nobody did: the committed spec sat 8 days behind a
+# surface that had gained error responses, webhook documentation, corrected `required`
+# sets, and restored property types.
+#
+# This does not change the design — it automates the remembering. The refresh still
+# lands as a reviewable PR, which is the property the committed-copy approach was
+# chosen for in the first place. Nothing here can touch main on its own.
+
+on:
+  schedule:
+    # Daily, well outside working hours (07:00 UTC ≈ 03:00 ET).
+    - cron: '0 7 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: api-spec-drift
+  cancel-in-progress: false
+
+jobs:
+  drift:
+    name: Check production spec and open a PR if it moved
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Refresh spec and regenerate the docs derived from it
+        run: npm run refresh-api-docs
+
+      - name: Detect changes
+        id: diff
+        run: |
+          if git diff --quiet -- spec/dj-api.json docs/api/reference.mdx docs/api/webhooks.mdx; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Committed spec matches production."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Production has moved ahead of the committed spec:"
+            git diff --stat -- spec/dj-api.json docs/api/reference.mdx docs/api/webhooks.mdx
+          fi
+
+      - name: Summarise the change
+        if: steps.diff.outputs.changed == 'true'
+        id: summary
+        run: |
+          {
+            echo 'body<<PR_BODY'
+            echo 'The production OpenAPI document has moved ahead of `spec/dj-api.json`.'
+            echo
+            echo 'Refreshed from <https://api.docjacket.com/openapi.json> and regenerated'
+            echo 'everything derived from it:'
+            echo
+            echo '- `docs/api/reference.mdx` — the all-operations index'
+            echo '- `docs/api/webhooks.mdx` — the event catalog table'
+            echo
+            echo '**Review the diff as a public-contract change.** A removed or renamed'
+            echo 'operation is a breaking change for integrators and should not have'
+            echo 'happened without a version bump; a new one may need a guide.'
+            echo
+            echo '```'
+            git diff --stat -- spec/dj-api.json docs/api/reference.mdx docs/api/webhooks.mdx
+            echo '```'
+            echo
+            echo 'Opened automatically by `.github/workflows/api-spec-drift.yml`.'
+            echo PR_BODY
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Open or update the refresh PR
+        if: steps.diff.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: chore/refresh-api-spec
+          # Reuse one branch so a spec that changes several days running updates the
+          # same PR instead of opening a new one each night.
+          title: 'chore(api-docs): refresh spec/dj-api.json from production'
+          body: ${{ steps.summary.outputs.body }}
+          commit-message: |
+            chore(api-docs): refresh spec/dj-api.json from production
+
+            Regenerates docs/api/reference.mdx and the event catalog in
+            docs/api/webhooks.mdx from the refreshed specification.
+          labels: api-docs
+          delete-branch: true

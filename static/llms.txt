@@ -27,6 +27,29 @@ DocJacket is an AI coordination platform built for independent Transaction Coord
 - [Reports](https://help.docjacket.com/docs/reports): Transaction reports and pipeline view
 - [Settings](https://help.docjacket.com/docs/settings): Organization config, user management, notifications
 - [Billing](https://help.docjacket.com/docs/billing): Plans, pricing, and subscription management
+- [Developer API](https://help.docjacket.com/docs/api): REST API guides — authentication and API keys, making requests, all operations, webhooks, the partner tier, and versioning
+
+## Developer API
+
+DocJacket provides a stateful real-estate transaction operations and intelligence API at
+`https://api.docjacket.com`. The guides above explain it; the specification defines it.
+
+The OpenAPI specification is the canonical machine-readable source of truth. Read it rather
+than scraping the JavaScript-rendered interactive reference, which serves no API content in
+its HTML.
+
+- [OpenAPI JSON](https://api.docjacket.com/openapi.json): The canonical contract
+- [OpenAPI YAML](https://api.docjacket.com/openapi.yaml): The same contract, YAML
+- [Markdown API reference](https://api.docjacket.com/api-reference.md): Every operation as plain text
+- [Integration guide](https://api.docjacket.com/integration-guide.md): Recommended call sequences
+- [Developer overview](https://api.docjacket.com/developers): What the API does and how to start
+- [API llms.txt](https://api.docjacket.com/llms.txt) and [llms-full.txt](https://api.docjacket.com/llms-full.txt): The API's own AI-facing index and expanded model reference
+- [Interactive reference](https://api.docjacket.com/reference): Try-it console (requires JavaScript)
+
+Authentication is a bearer token. Organization keys (prefix `mcp_at_`) act within one
+organization; reseller/partner keys (prefix `rsk_`) are cross-tenant and accepted only on
+`/api/v1/orgs/*`. A resource in another organization returns 404, never 403 — do not infer or
+attempt access across organizations.
 
 ## Optional
 
