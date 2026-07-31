@@ -94,10 +94,13 @@ The DocJacket REST API lets your own systems read and act on transactions, conta
 
 - **Base URL:** ${code('https://api.docjacket.com')}
 - **Interactive reference** (try-it console, client snippets): [api.docjacket.com/reference](https://api.docjacket.com/reference)
-- **Raw OpenAPI ${spec.openapi} specification:** [api.docjacket.com/openapi.json](https://api.docjacket.com/openapi.json)
+- **Raw OpenAPI ${spec.openapi} specification:** [JSON](https://api.docjacket.com/openapi.json) · [YAML](https://api.docjacket.com/openapi.yaml)
+- **Full reference as plain Markdown** (every parameter, error, and operation ID): [api.docjacket.com/api-reference.md](https://api.docjacket.com/api-reference.md)
+- **Integration guide** (recommended call sequences): [api.docjacket.com/integration-guide.md](https://api.docjacket.com/integration-guide.md)
+- **For AI tools:** [llms.txt](https://api.docjacket.com/llms.txt) · [llms-full.txt](https://api.docjacket.com/llms-full.txt)
 - **MCP server** (same capabilities, for AI assistants): ${code('https://mcp.docjacket.com/mcp')}
 
-For request and response schemas, read the [raw specification](https://api.docjacket.com/openapi.json) or the [interactive reference](https://api.docjacket.com/reference) — this page is the index, not the full contract.
+For request and response schemas, error codes, and examples, read the [raw specification](https://api.docjacket.com/openapi.json) or the [full Markdown reference](https://api.docjacket.com/api-reference.md) — this page is the index, not the full contract.
 
 ## Authentication
 

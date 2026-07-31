@@ -8577,21 +8577,31 @@ Subscribe to `"*"` to receive every event type.
 
 ## Event catalog
 
+{/* BEGIN GENERATED: webhook-events */}
+{/* Generated from spec/dj-api.json — do not edit this table by hand.
+    Regenerate: npm run fetch-spec && npm run gen-webhook-events
+    Generator: scripts/gen-webhook-events.mjs */}
+
 | Event | Fires when |
 |---|---|
-| `transaction.created` | A new transaction is created |
-| `transaction.status_changed` | A transaction's status changes |
-| `transaction.closed` | A transaction is closed |
-| `document.uploaded` | A document is uploaded to a transaction |
-| `document.deleted` | A document is deleted |
-| `task.created` | A new task is created |
-| `task.completed` | A task is marked complete |
-| `extraction.completed` | A document extraction job finishes (includes `jobId`, `status`, `confidence`) |
-| `key_date.updated` | A key date is added or changed |
-| `key_date.completed` | A key date is marked complete |
-| `contact.created` | A new contact is created |
-| `disclosure.recipient_viewed` | A disclosure-package recipient opens the disclosure |
-| `form.submission_received` | A public form submission arrives |
+| `contact.created` | When a new contact is created |
+| `disclosure.recipient_viewed` | When a disclosure package recipient opens the disclosure |
+| `document.deleted` | When a document is deleted |
+| `document.uploaded` | When a document is uploaded to a transaction |
+| `extraction.completed` | When a document extraction job finishes (includes jobId + status) |
+| `form.submission_received` | When a public form submission is received |
+| `key_date.completed` | When a key date is marked complete |
+| `key_date.updated` | When a key date is added or changed on a transaction |
+| `task.completed` | When a task is marked complete |
+| `task.created` | When a new task is created |
+| `transaction.closed` | When a transaction is closed |
+| `transaction.created` | When a new transaction is created |
+| `transaction.status_changed` | When a transaction status changes |
+| `webhook.test` | Test webhook (triggered manually) |
+
+{/* END GENERATED: webhook-events */}
+
+The same list is available at runtime from `GET /api/v1/webhook-events`, and in the [OpenAPI specification](https://api.docjacket.com/openapi.json) under `webhooks` — where each event also carries its payload schema and an example.
 
 `extraction.completed` turns a document upload into a round-trip: subscribe, upload via the API, and receive the signed callback with the `jobId` and confidence when extraction finishes — no polling.
 
@@ -8755,10 +8765,13 @@ The DocJacket REST API lets your own systems read and act on transactions, conta
 
 - **Base URL:** `https://api.docjacket.com`
 - **Interactive reference** (try-it console, client snippets): [api.docjacket.com/reference](https://api.docjacket.com/reference)
-- **Raw OpenAPI 3.1.1 specification:** [api.docjacket.com/openapi.json](https://api.docjacket.com/openapi.json)
+- **Raw OpenAPI 3.1.1 specification:** [JSON](https://api.docjacket.com/openapi.json) · [YAML](https://api.docjacket.com/openapi.yaml)
+- **Full reference as plain Markdown** (every parameter, error, and operation ID): [api.docjacket.com/api-reference.md](https://api.docjacket.com/api-reference.md)
+- **Integration guide** (recommended call sequences): [api.docjacket.com/integration-guide.md](https://api.docjacket.com/integration-guide.md)
+- **For AI tools:** [llms.txt](https://api.docjacket.com/llms.txt) · [llms-full.txt](https://api.docjacket.com/llms-full.txt)
 - **MCP server** (same capabilities, for AI assistants): `https://mcp.docjacket.com/mcp`
 
-For request and response schemas, read the [raw specification](https://api.docjacket.com/openapi.json) or the [interactive reference](https://api.docjacket.com/reference) — this page is the index, not the full contract.
+For request and response schemas, error codes, and examples, read the [raw specification](https://api.docjacket.com/openapi.json) or the [full Markdown reference](https://api.docjacket.com/api-reference.md) — this page is the index, not the full contract.
 
 ## Authentication
 

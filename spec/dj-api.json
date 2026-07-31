@@ -3,11 +3,17 @@
   "info": {
     "title": "DocJacket API",
     "description": "The DocJacket integration API. One `/api/v1` surface, capability-scoped by credential:\n\n- **Org API key** (`mcp_at_…`) — acts within a single organization. Mint one in DocJacket under **Settings → AI & API Access**. Key scopes: `read` (GETs), `draft` (low-risk writes like completing a task), `actions` (side-effect writes like sending email).\n- **Reseller API key** (`rsk_…`) — cross-tenant provisioning for white-label partners.\n\nSend the key as a bearer token: `Authorization: Bearer <key>`.\n\nErrors use one envelope: `{ \"error\": { \"code\", \"message\", \"fields\"? } }`. Cross-tenant lookups return `404` (never disclosing existence).\n\n**Rate limits.** Per key, per minute, in a fixed window: **300 reads** (GET) and **60 writes** (POST/PUT/PATCH/DELETE). Exceeding a bucket returns `429` with a `Retry-After: 60` header and the standard error envelope (`code: \"rate_limited\"`); retry after the window resets.\n\n**Versioning & deprecation.** The API is **additive by default** — new fields and operations may appear at any time, so clients **must ignore unknown response fields** and not depend on property order. Changes that would break an existing client (removing/renaming a field, tightening a type, changing an error contract) ship only as a **new major version** at a new path (`/api/v2`); `/api/v1` is not broken in place. When a version is deprecated it remains available for at least **6 months** after the successor ships, and the retirement is announced in the release notes. Idempotency-Key is honored on side-effecting writes so retries are safe.\n\nStart with `GET /api/v1/health` (verifies your key), then `GET /api/v1/catalog` (lists every operation and whether your key can call it) and `GET /api/v1/usage` (your key's call volume, top operations, and error rate). The same key also works with AI agents via the DocJacket MCP server at `https://mcp.docjacket.com/mcp`.\n\n**Prefer reading over clicking?** Every operation is also listed on one statically rendered page — no JavaScript required, crawlable and quotable — at [help.docjacket.com/docs/api/reference](https://help.docjacket.com/docs/api/reference), alongside guides for [authentication, requests, webhooks, and the partner tier](https://help.docjacket.com/docs/api). The machine-readable spec is at [api.docjacket.com/openapi.json](https://api.docjacket.com/openapi.json).",
+    "contact": {
+      "name": "DocJacket API support",
+      "url": "https://help.docjacket.com/docs/api",
+      "email": "support@docjacket.com"
+    },
     "version": "v1"
   },
   "servers": [
     {
-      "url": "https://api.docjacket.com/"
+      "url": "https://api.docjacket.com",
+      "description": "Production"
     }
   ],
   "paths": {
@@ -17,6 +23,7 @@
           "Organizations (Partner)"
         ],
         "summary": "List your customer organizations",
+        "description": "**Requires a partner key** (`Authorization: Bearer rsk_…`), not an organization key. Scoped to the organizations your partner account owns — one you do not own returns `404`, never `403`, so ownership is never disclosed. Never infer access to a tenant from an id obtained elsewhere.",
         "operationId": "ListOrgs",
         "parameters": [
           {
@@ -49,6 +56,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         },
         "security": [
@@ -62,12 +81,21 @@
           "Organizations (Partner)"
         ],
         "summary": "Provision a customer organization",
+        "description": "**Requires a partner key** (`Authorization: Bearer rsk_…`), not an organization key. Scoped to the organizations your partner account owns — one you do not own returns `404`, never `403`, so ownership is never disclosed. Never infer access to a tenant from an id obtained elsewhere.",
         "operationId": "CreateOrg",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/CreateOrgRequest"
+              },
+              "example": {
+                "name": "Peachtree Transaction Services",
+                "owner": {
+                  "email": "owner@example.com",
+                  "firstName": "Jordan",
+                  "lastName": "Rivera"
+                }
               }
             }
           },
@@ -76,6 +104,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         },
         "security": [
@@ -91,6 +134,7 @@
           "Organizations (Partner)"
         ],
         "summary": "Get a customer organization",
+        "description": "**Requires a partner key** (`Authorization: Bearer rsk_…`), not an organization key. Scoped to the organizations your partner account owns — one you do not own returns `404`, never `403`, so ownership is never disclosed. Never infer access to a tenant from an id obtained elsewhere.",
         "operationId": "GetOrg",
         "parameters": [
           {
@@ -105,6 +149,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         },
         "security": [
@@ -120,6 +176,7 @@
           "Organizations (Partner)"
         ],
         "summary": "Invite a seat into an organization",
+        "description": "**Requires a partner key** (`Authorization: Bearer rsk_…`), not an organization key. Scoped to the organizations your partner account owns — one you do not own returns `404`, never `403`, so ownership is never disclosed. Never infer access to a tenant from an id obtained elsewhere.",
         "operationId": "AddSeat",
         "parameters": [
           {
@@ -144,6 +201,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         },
         "security": [
@@ -159,6 +231,7 @@
           "Organizations (Partner)"
         ],
         "summary": "Remove a seat from an organization",
+        "description": "**Requires a partner key** (`Authorization: Bearer rsk_…`), not an organization key. Scoped to the organizations your partner account owns — one you do not own returns `404`, never `403`, so ownership is never disclosed. Never infer access to a tenant from an id obtained elsewhere.",
         "operationId": "RemoveSeat",
         "parameters": [
           {
@@ -182,6 +255,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         },
         "security": [
@@ -197,6 +285,7 @@
           "Organizations (Partner)"
         ],
         "summary": "Get an organization's plan, seats, and AI fair-use pool state",
+        "description": "**Requires a partner key** (`Authorization: Bearer rsk_…`), not an organization key. Scoped to the organizations your partner account owns — one you do not own returns `404`, never `403`, so ownership is never disclosed. Never infer access to a tenant from an id obtained elsewhere.",
         "operationId": "GetOrgEntitlements",
         "parameters": [
           {
@@ -211,6 +300,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         },
         "security": [
@@ -226,6 +327,7 @@
           "Organizations (Partner)"
         ],
         "summary": "Get an organization's activity summary (active deals, tasks due, last activity)",
+        "description": "**Requires a partner key** (`Authorization: Bearer rsk_…`), not an organization key. Scoped to the organizations your partner account owns — one you do not own returns `404`, never `403`, so ownership is never disclosed. Never infer access to a tenant from an id obtained elsewhere.",
         "operationId": "GetOrgSummary",
         "parameters": [
           {
@@ -240,6 +342,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         },
         "security": [
@@ -259,7 +373,35 @@
         "operationId": "OrgHealth",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "ok": true,
+                  "organizationId": "org-9fc8a1d2e3b4",
+                  "scopes": [
+                    "read",
+                    "draft",
+                    "actions"
+                  ],
+                  "databaseReachable": true,
+                  "databaseError": null,
+                  "apiVersion": "v1"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -274,7 +416,45 @@
         "operationId": "OrgCatalog",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data": [
+                    {
+                      "operation": "list_transactions",
+                      "method": "GET",
+                      "path": "/api/v1/transactions",
+                      "scope": "read",
+                      "callable": true
+                    },
+                    {
+                      "operation": "send_client_update",
+                      "method": "POST",
+                      "path": "/api/v1/transactions/{id}/emails/client-update",
+                      "scope": "actions",
+                      "callable": false
+                    }
+                  ],
+                  "scopes": [
+                    "read",
+                    "draft"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -301,6 +481,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -358,6 +550,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       },
@@ -380,6 +584,14 @@
                     "$ref": "#/components/schemas/ApplyExtractionRequest"
                   }
                 ]
+              },
+              "example": {
+                "extractionJobId": "6b1f9c4d-8e2a-4b7c-9f10-3d5a7e2c8b41",
+                "transactionType": "Sale",
+                "side": "Buyer",
+                "overrides": {
+                  "purchasePrice": 485000
+                }
               }
             }
           }
@@ -387,6 +599,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -444,6 +671,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       },
@@ -473,6 +712,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -516,6 +770,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -542,6 +808,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       },
@@ -575,6 +853,22 @@
                     "$ref": "#/components/schemas/AddKeyDatesRequest"
                   }
                 ]
+              },
+              "example": {
+                "keyDates": [
+                  {
+                    "keyDateType": "ClosingDate",
+                    "dateValue": "2026-09-15T00:00:00Z",
+                    "isCustom": false,
+                    "label": null
+                  },
+                  {
+                    "keyDateType": "InspectionDeadline",
+                    "dateValue": "2026-08-22T00:00:00Z",
+                    "isCustom": false,
+                    "label": null
+                  }
+                ]
               }
             }
           }
@@ -582,6 +876,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -621,6 +930,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -638,7 +959,6 @@
             "name": "transactionId",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "uuid"
             }
           },
@@ -666,6 +986,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -708,6 +1040,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -750,6 +1097,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -792,6 +1154,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       },
@@ -816,6 +1193,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -847,6 +1236,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -878,6 +1282,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       },
@@ -941,6 +1360,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -972,6 +1403,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1016,6 +1462,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1042,6 +1500,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1068,6 +1538,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1094,6 +1576,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1111,7 +1605,6 @@
             "name": "transactionId",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "uuid"
             }
           },
@@ -1132,6 +1625,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1149,7 +1654,6 @@
             "name": "transactionId",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "uuid"
             }
           },
@@ -1157,16 +1661,13 @@
             "name": "since",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time"
             }
           },
           {
             "name": "hasExtraction",
             "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
+            "schema": {}
           },
           {
             "name": "limit",
@@ -1185,6 +1686,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       },
@@ -1214,6 +1727,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1240,6 +1768,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1266,6 +1806,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1292,6 +1844,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1323,6 +1887,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1339,9 +1918,7 @@
           {
             "name": "unreadOnly",
             "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
+            "schema": {}
           },
           {
             "name": "limit",
@@ -1360,6 +1937,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1375,6 +1964,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1405,6 +2006,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1444,6 +2057,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       },
@@ -1462,6 +2087,15 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "description": "Optional. Send a unique value (max 200 characters — a UUID is ideal) to make this call safe to retry. The first request executes and its response is stored; an identical retry replays that stored response verbatim with an `Idempotency-Replayed: true` header instead of performing the side effect again. Reusing a key for a *different* operation is rejected with `422`.",
+            "schema": {
+              "maxLength": 200,
+              "type": "string"
             }
           }
         ],
@@ -1484,6 +2118,24 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1509,6 +2161,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1535,6 +2199,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1577,6 +2253,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1637,6 +2328,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1663,6 +2366,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1689,6 +2404,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1706,7 +2433,6 @@
             "name": "transactionId",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "uuid"
             }
           },
@@ -1714,7 +2440,6 @@
             "name": "formDefinitionId",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "uuid"
             }
           },
@@ -1737,7 +2462,6 @@
             "name": "since",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time"
             }
           },
@@ -1758,6 +2482,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1784,6 +2520,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1810,6 +2558,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1836,6 +2596,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1862,6 +2634,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1906,6 +2690,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1930,6 +2726,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -1965,6 +2773,14 @@
                     "$ref": "#/components/schemas/CreateTaskRequest"
                   }
                 ]
+              },
+              "example": {
+                "title": "Order home inspection",
+                "description": "Book the inspector and confirm access with the listing agent.",
+                "dueDate": "2026-08-18T00:00:00Z",
+                "priority": 4,
+                "linkedMilestoneName": "InspectionDeadline",
+                "assigneeUserId": null
               }
             }
           }
@@ -1972,6 +2788,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2022,6 +2853,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2064,6 +2910,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2106,6 +2967,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2148,6 +3024,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2190,6 +3081,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2205,6 +3111,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2231,6 +3149,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       },
@@ -2271,6 +3201,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2306,6 +3251,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2348,6 +3308,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2379,6 +3354,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2403,6 +3393,14 @@
                     "$ref": "#/components/schemas/KickOffExtractionRequest"
                   }
                 ]
+              },
+              "example": {
+                "uploadId": "d0f6b1a2-4c3e-4f1b-9a7d-2e5c8b0a1f34",
+                "filename": "purchase-agreement.pdf",
+                "state": "GA",
+                "documentTypeHint": "PurchaseAgreement",
+                "transactionId": null,
+                "side": "Buyer"
               }
             }
           }
@@ -2410,6 +3408,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2452,6 +3465,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2494,6 +3522,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       },
@@ -2518,6 +3561,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2533,6 +3591,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2575,6 +3645,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2617,6 +3702,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2659,6 +3759,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2701,6 +3816,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2727,6 +3857,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2747,6 +3889,15 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "description": "Optional. Send a unique value (max 200 characters — a UUID is ideal) to make this call safe to retry. The first request executes and its response is stored; an identical retry replays that stored response verbatim with an `Idempotency-Replayed: true` header instead of performing the side effect again. Reusing a key for a *different* operation is rejected with `422`.",
+            "schema": {
+              "maxLength": 200,
+              "type": "string"
             }
           }
         ],
@@ -2769,6 +3920,24 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2789,6 +3958,15 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "description": "Optional. Send a unique value (max 200 characters — a UUID is ideal) to make this call safe to retry. The first request executes and its response is stored; an identical retry replays that stored response verbatim with an `Idempotency-Replayed: true` header instead of performing the side effect again. Reusing a key for a *different* operation is rejected with `422`.",
+            "schema": {
+              "maxLength": 200,
+              "type": "string"
             }
           }
         ],
@@ -2811,6 +3989,24 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2831,6 +4027,15 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "description": "Optional. Send a unique value (max 200 characters — a UUID is ideal) to make this call safe to retry. The first request executes and its response is stored; an identical retry replays that stored response verbatim with an `Idempotency-Replayed: true` header instead of performing the side effect again. Reusing a key for a *different* operation is rejected with `422`.",
+            "schema": {
+              "maxLength": 200,
+              "type": "string"
             }
           }
         ],
@@ -2853,6 +4058,24 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2873,6 +4096,15 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "description": "Optional. Send a unique value (max 200 characters — a UUID is ideal) to make this call safe to retry. The first request executes and its response is stored; an identical retry replays that stored response verbatim with an `Idempotency-Replayed: true` header instead of performing the side effect again. Reusing a key for a *different* operation is rejected with `422`.",
+            "schema": {
+              "maxLength": 200,
+              "type": "string"
             }
           }
         ],
@@ -2895,6 +4127,24 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2915,6 +4165,15 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "description": "Optional. Send a unique value (max 200 characters — a UUID is ideal) to make this call safe to retry. The first request executes and its response is stored; an identical retry replays that stored response verbatim with an `Idempotency-Replayed: true` header instead of performing the side effect again. Reusing a key for a *different* operation is rejected with `422`.",
+            "schema": {
+              "maxLength": 200,
+              "type": "string"
             }
           }
         ],
@@ -2937,6 +4196,24 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -2957,6 +4234,15 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "description": "Optional. Send a unique value (max 200 characters — a UUID is ideal) to make this call safe to retry. The first request executes and its response is stored; an identical retry replays that stored response verbatim with an `Idempotency-Replayed: true` header instead of performing the side effect again. Reusing a key for a *different* operation is rejected with `422`.",
+            "schema": {
+              "maxLength": 200,
+              "type": "string"
             }
           }
         ],
@@ -2979,6 +4265,24 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       },
@@ -3003,6 +4307,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3024,11 +4340,38 @@
               "type": "string",
               "format": "uuid"
             }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "description": "Optional. Send a unique value (max 200 characters — a UUID is ideal) to make this call safe to retry. The first request executes and its response is stored; an identical retry replays that stored response verbatim with an `Idempotency-Replayed: true` header instead of performing the side effect again. Reusing a key for a *different* operation is rejected with `422`.",
+            "schema": {
+              "maxLength": 200,
+              "type": "string"
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3049,6 +4392,15 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "description": "Optional. Send a unique value (max 200 characters — a UUID is ideal) to make this call safe to retry. The first request executes and its response is stored; an identical retry replays that stored response verbatim with an `Idempotency-Replayed: true` header instead of performing the side effect again. Reusing a key for a *different* operation is rejected with `422`.",
+            "schema": {
+              "maxLength": 200,
+              "type": "string"
             }
           }
         ],
@@ -3071,6 +4423,24 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3104,6 +4474,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3124,6 +4506,15 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "description": "Optional. Send a unique value (max 200 characters — a UUID is ideal) to make this call safe to retry. The first request executes and its response is stored; an identical retry replays that stored response verbatim with an `Idempotency-Replayed: true` header instead of performing the side effect again. Reusing a key for a *different* operation is rejected with `422`.",
+            "schema": {
+              "maxLength": 200,
+              "type": "string"
             }
           }
         ],
@@ -3146,6 +4537,24 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3176,6 +4585,15 @@
               "type": "string",
               "format": "uuid"
             }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "description": "Optional. Send a unique value (max 200 characters — a UUID is ideal) to make this call safe to retry. The first request executes and its response is stored; an identical retry replays that stored response verbatim with an `Idempotency-Replayed: true` header instead of performing the side effect again. Reusing a key for a *different* operation is rejected with `422`.",
+            "schema": {
+              "maxLength": 200,
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -3197,6 +4615,24 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3228,6 +4664,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3270,6 +4721,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3296,6 +4762,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3316,6 +4797,15 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "description": "Optional. Send a unique value (max 200 characters — a UUID is ideal) to make this call safe to retry. The first request executes and its response is stored; an identical retry replays that stored response verbatim with an `Idempotency-Replayed: true` header instead of performing the side effect again. Reusing a key for a *different* operation is rejected with `422`.",
+            "schema": {
+              "maxLength": 200,
+              "type": "string"
             }
           }
         ],
@@ -3338,6 +4828,24 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3373,6 +4881,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3388,6 +4911,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3413,6 +4948,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       },
@@ -3435,6 +4982,17 @@
                     "$ref": "#/components/schemas/CreateWebhookApiRequest"
                   }
                 ]
+              },
+              "example": {
+                "name": "Ops pipeline",
+                "url": "https://example.com/hooks/docjacket",
+                "events": [
+                  "extraction.completed",
+                  "key_date.updated",
+                  "transaction.status_changed"
+                ],
+                "description": "Feeds our internal deal dashboard.",
+                "headers": null
               }
             }
           }
@@ -3442,6 +5000,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3468,6 +5041,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       },
@@ -3508,6 +5093,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       },
@@ -3532,6 +5132,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3558,6 +5173,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3584,6 +5214,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3636,6 +5281,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3666,6 +5323,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3697,6 +5366,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3712,6 +5396,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3754,6 +5450,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3787,7 +5498,6 @@
             "name": "from",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time"
             }
           },
@@ -3795,7 +5505,6 @@
             "name": "to",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time"
             }
           }
@@ -3803,6 +5512,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3845,6 +5566,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3869,7 +5605,6 @@
             "name": "transactionId",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "uuid"
             }
           },
@@ -3877,11 +5612,6 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
               "format": "int32"
             }
           },
@@ -3889,11 +5619,6 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": [
-                "integer",
-                "string"
-              ],
               "format": "int32"
             }
           }
@@ -3901,6 +5626,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3927,6 +5664,18 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3953,6 +5702,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -3995,6 +5759,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -4037,6 +5816,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -4060,10 +5854,7 @@
       },
       "AddSeatRequest": {
         "required": [
-          "email",
-          "firstName",
-          "lastName",
-          "role"
+          "email"
         ],
         "type": "object",
         "properties": {
@@ -4096,8 +5887,7 @@
           "recipientRole",
           "intent",
           "subject",
-          "bodyHtml",
-          "bodyPlainText"
+          "bodyHtml"
         ],
         "type": "object",
         "properties": {
@@ -4146,10 +5936,7 @@
           "recipientRole",
           "topic",
           "subject",
-          "bodyHtml",
-          "bodyPlainText",
-          "tone",
-          "sourceContextSummary"
+          "bodyHtml"
         ],
         "type": "object",
         "properties": {
@@ -4206,9 +5993,7 @@
       },
       "ApplyChecklistRequest": {
         "required": [
-          "templateId",
-          "replaceExisting",
-          "scope"
+          "templateId"
         ],
         "type": "object",
         "properties": {
@@ -4232,10 +6017,7 @@
       },
       "ApplyExtractionRequest": {
         "required": [
-          "extractionJobId",
-          "transactionType",
-          "side",
-          "overrides"
+          "extractionJobId"
         ],
         "type": "object",
         "properties": {
@@ -4272,15 +6054,11 @@
             "type": [
               "null",
               "string"
-            ],
-            "format": "uuid"
+            ]
           }
         }
       },
       "AssignTaskRequest": {
-        "required": [
-          "assigneeUserId"
-        ],
         "type": "object",
         "properties": {
           "assigneeUserId": {
@@ -4293,9 +6071,6 @@
         }
       },
       "ChangeStatusRequest": {
-        "required": [
-          "status"
-        ],
         "type": "object",
         "properties": {
           "status": {
@@ -4307,10 +6082,6 @@
         }
       },
       "ClassifyDocumentRequest": {
-        "required": [
-          "filename",
-          "contentPreview"
-        ],
         "type": "object",
         "properties": {
           "filename": {
@@ -4333,10 +6104,7 @@
           "audience",
           "focus",
           "subject",
-          "bodyHtml",
-          "bodyPlainText",
-          "tone",
-          "attachmentDocumentIds"
+          "bodyHtml"
         ],
         "type": "object",
         "properties": {
@@ -4395,9 +6163,6 @@
         }
       },
       "CompleteTaskRequest": {
-        "required": [
-          "completionNotes"
-        ],
         "type": "object",
         "properties": {
           "completionNotes": {
@@ -4409,21 +6174,6 @@
         }
       },
       "CreateContactRequest": {
-        "required": [
-          "firstName",
-          "lastName",
-          "email",
-          "phone",
-          "company",
-          "licenseNumber",
-          "contactType",
-          "kind",
-          "streetAddress",
-          "city",
-          "state",
-          "zipCode",
-          "notes"
-        ],
         "type": "object",
         "properties": {
           "firstName": {
@@ -4507,15 +6257,6 @@
         }
       },
       "CreateContactRoleRequest": {
-        "required": [
-          "name",
-          "category",
-          "description",
-          "allowMultiple",
-          "maxInstances",
-          "partyKey",
-          "ignoreSimilar"
-        ],
         "type": "object",
         "properties": {
           "name": {
@@ -4543,11 +6284,9 @@
             ]
           },
           "maxInstances": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
               "null",
-              "integer",
-              "string"
+              "integer"
             ],
             "format": "int32"
           },
@@ -4566,18 +6305,6 @@
         }
       },
       "CreateEmailTemplateRequest": {
-        "required": [
-          "name",
-          "category",
-          "subject",
-          "body",
-          "description",
-          "audience",
-          "stage",
-          "side",
-          "tone",
-          "isActive"
-        ],
         "type": "object",
         "properties": {
           "name": {
@@ -4658,15 +6385,6 @@
         }
       },
       "CreatePackageRequest": {
-        "required": [
-          "transactionId",
-          "name",
-          "coverMessage",
-          "documentIds",
-          "allowDownloads",
-          "requireAck",
-          "expiresAt"
-        ],
         "type": "object",
         "properties": {
           "transactionId": {
@@ -4720,17 +6438,6 @@
         }
       },
       "CreateReminderRequest": {
-        "required": [
-          "milestoneId",
-          "deadlineType",
-          "deadlineDate",
-          "daysBeforeReminder",
-          "recipientEmails",
-          "recipientRoles",
-          "emailTemplateId",
-          "note",
-          "reminderTimeOfDay"
-        ],
         "type": "object",
         "properties": {
           "milestoneId": {
@@ -4754,11 +6461,9 @@
             "format": "date-time"
           },
           "daysBeforeReminder": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
               "null",
-              "integer",
-              "string"
+              "integer"
             ],
             "format": "int32"
           },
@@ -4808,12 +6513,7 @@
       },
       "CreateTaskRequest": {
         "required": [
-          "title",
-          "description",
-          "dueDate",
-          "priority",
-          "linkedMilestoneName",
-          "assigneeUserId"
+          "title"
         ],
         "type": "object",
         "properties": {
@@ -4837,11 +6537,9 @@
             "format": "date-time"
           },
           "priority": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
               "null",
-              "integer",
-              "string"
+              "integer"
             ],
             "format": "int32"
           },
@@ -4864,9 +6562,7 @@
         "required": [
           "name",
           "url",
-          "events",
-          "description",
-          "headers"
+          "events"
         ],
         "type": "object",
         "properties": {
@@ -4929,9 +6625,7 @@
           "recipientRole",
           "documentTypes",
           "subject",
-          "bodyHtml",
-          "bodyPlainText",
-          "tone"
+          "bodyHtml"
         ],
         "type": "object",
         "properties": {
@@ -4984,9 +6678,6 @@
         }
       },
       "EditProposalPayloadRequest": {
-        "required": [
-          "parameters"
-        ],
         "type": "object",
         "properties": {
           "parameters": {
@@ -5001,13 +6692,52 @@
           }
         }
       },
-      "ExtractExistingRequest": {
+      "Error": {
+        "title": "Error",
         "required": [
-          "state",
-          "documentTypeHint",
-          "transactionIdOverride",
-          "side"
+          "error"
         ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "required": [
+              "code",
+              "message"
+            ],
+            "type": "object",
+            "properties": {
+              "code": {
+                "enum": [
+                  "unauthorized",
+                  "insufficient_scope",
+                  "not_found",
+                  "validation_error",
+                  "conflict",
+                  "rate_limited"
+                ],
+                "type": "string",
+                "description": "Stable machine-readable error code."
+              },
+              "message": {
+                "type": "string",
+                "description": "Human-readable explanation. Do not parse or match on this."
+              },
+              "fields": {
+                "type": [
+                  "null",
+                  "object"
+                ],
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "description": "Present on `validation_error` only: per-field messages keyed by the offending request property."
+              }
+            }
+          }
+        },
+        "description": "The single error envelope used by every `4xx`/`5xx` response on this API. Inspect `error.code` for branching — it is a stable machine-readable string; `error.message` is human-facing prose and may be reworded without notice."
+      },
+      "ExtractExistingRequest": {
         "type": "object",
         "properties": {
           "state": {
@@ -5038,13 +6768,6 @@
         }
       },
       "InviteRecipientRequest": {
-        "required": [
-          "displayLabel",
-          "email",
-          "contactId",
-          "audienceTier",
-          "expiresAt"
-        ],
         "type": "object",
         "properties": {
           "displayLabel": {
@@ -5084,10 +6807,7 @@
       "JsonElement": {},
       "KeyDateInput": {
         "required": [
-          "keyDateType",
-          "dateValue",
-          "isCustom",
-          "label"
+          "keyDateType"
         ],
         "type": "object",
         "properties": {
@@ -5120,12 +6840,7 @@
       },
       "KickOffExtractionRequest": {
         "required": [
-          "uploadId",
-          "filename",
-          "state",
-          "documentTypeHint",
-          "transactionId",
-          "side"
+          "uploadId"
         ],
         "type": "object",
         "properties": {
@@ -5169,11 +6884,6 @@
         }
       },
       "LinkContactRequest": {
-        "required": [
-          "contactId",
-          "role",
-          "isPrimary"
-        ],
         "type": "object",
         "properties": {
           "contactId": {
@@ -5200,8 +6910,7 @@
       "LogActivityRequest": {
         "required": [
           "type",
-          "summary",
-          "details"
+          "summary"
         ],
         "type": "object",
         "properties": {
@@ -5250,9 +6959,7 @@
       },
       "OwnerBody": {
         "required": [
-          "email",
-          "firstName",
-          "lastName"
+          "email"
         ],
         "type": "object",
         "properties": {
@@ -5274,14 +6981,6 @@
         }
       },
       "RegisterDeviceRequest": {
-        "required": [
-          "installationId",
-          "platform",
-          "appVersion",
-          "pushToken",
-          "capabilities",
-          "permissions"
-        ],
         "type": "object",
         "properties": {
           "installationId": {
@@ -5329,9 +7028,6 @@
         }
       },
       "RejectProposalRequest": {
-        "required": [
-          "reason"
-        ],
         "type": "object",
         "properties": {
           "reason": {
@@ -5343,10 +7039,6 @@
         }
       },
       "RenderTemplateRequest": {
-        "required": [
-          "templateId",
-          "slug"
-        ],
         "type": "object",
         "properties": {
           "templateId": {
@@ -5365,9 +7057,6 @@
         }
       },
       "ReorderDocumentsRequest": {
-        "required": [
-          "orderedDocumentIds"
-        ],
         "type": "object",
         "properties": {
           "orderedDocumentIds": {
@@ -5383,9 +7072,6 @@
         }
       },
       "ReplaceDocumentsRequest": {
-        "required": [
-          "documentIds"
-        ],
         "type": "object",
         "properties": {
           "documentIds": {
@@ -5401,12 +7087,6 @@
         }
       },
       "ReplaceDocumentVersionRequest": {
-        "required": [
-          "uploadId",
-          "filename",
-          "sizeBytes",
-          "contentType"
-        ],
         "type": "object",
         "properties": {
           "uploadId": {
@@ -5422,11 +7102,9 @@
             ]
           },
           "sizeBytes": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
               "null",
-              "integer",
-              "string"
+              "integer"
             ],
             "format": "int64"
           },
@@ -5439,9 +7117,6 @@
         }
       },
       "ReplyMessageRequest": {
-        "required": [
-          "messageContent"
-        ],
         "type": "object",
         "properties": {
           "messageContent": {
@@ -5457,9 +7132,6 @@
         }
       },
       "RescheduleTaskRequest": {
-        "required": [
-          "dueDate"
-        ],
         "type": "object",
         "properties": {
           "dueDate": {
@@ -5472,11 +7144,6 @@
         }
       },
       "ScheduleMessageRequest": {
-        "required": [
-          "toEmail",
-          "subject",
-          "body"
-        ],
         "type": "object",
         "properties": {
           "toEmail": {
@@ -5536,11 +7203,6 @@
         }
       },
       "SendEmailMessageRequest": {
-        "required": [
-          "toEmail",
-          "subject",
-          "body"
-        ],
         "type": "object",
         "properties": {
           "toEmail": {
@@ -5589,25 +7251,17 @@
             "type": [
               "null",
               "string"
-            ],
-            "format": "uuid"
+            ]
           },
           "replyToMessageId": {
             "type": [
               "null",
               "string"
-            ],
-            "format": "uuid"
+            ]
           }
         }
       },
       "ShareToPartyRequest": {
-        "required": [
-          "toPhoneNumber",
-          "contactId",
-          "message",
-          "expirationHours"
-        ],
         "type": "object",
         "properties": {
           "toPhoneNumber": {
@@ -5630,22 +7284,15 @@
             ]
           },
           "expirationHours": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
               "null",
-              "integer",
-              "string"
+              "integer"
             ],
             "format": "int32"
           }
         }
       },
       "ShareToThreadRequest": {
-        "required": [
-          "documentId",
-          "message",
-          "expirationHours"
-        ],
         "type": "object",
         "properties": {
           "documentId": {
@@ -5662,20 +7309,15 @@
             ]
           },
           "expirationHours": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
               "null",
-              "integer",
-              "string"
+              "integer"
             ],
             "format": "int32"
           }
         }
       },
       "SplitDocumentRequest": {
-        "required": [
-          "segments"
-        ],
         "type": "object",
         "properties": {
           "segments": {
@@ -5690,11 +7332,6 @@
         }
       },
       "SplitSegment": {
-        "required": [
-          "startPage",
-          "endPage",
-          "documentType"
-        ],
         "type": "object",
         "properties": {
           "startPage": {
@@ -5722,10 +7359,6 @@
         }
       },
       "StartConversationRequest": {
-        "required": [
-          "toPhoneNumber",
-          "messageContent"
-        ],
         "type": "object",
         "properties": {
           "toPhoneNumber": {
@@ -5744,8 +7377,7 @@
             "type": [
               "null",
               "string"
-            ],
-            "format": "uuid"
+            ]
           },
           "forceOverride": {
             "type": "boolean",
@@ -5754,12 +7386,6 @@
         }
       },
       "StatusSummaryRequest": {
-        "required": [
-          "audience",
-          "subject",
-          "bodyMarkdown",
-          "keyPointBullets"
-        ],
         "type": "object",
         "properties": {
           "audience": {
@@ -5792,11 +7418,6 @@
         }
       },
       "UpdateDocumentRequest": {
-        "required": [
-          "name",
-          "category",
-          "documentType"
-        ],
         "type": "object",
         "properties": {
           "name": {
@@ -5820,11 +7441,6 @@
         }
       },
       "UpdateKeyDateRequest": {
-        "required": [
-          "newValue",
-          "source",
-          "calculationNotes"
-        ],
         "type": "object",
         "properties": {
           "newValue": {
@@ -5848,9 +7464,6 @@
         }
       },
       "UpdateNotesRequest": {
-        "required": [
-          "notes"
-        ],
         "type": "object",
         "properties": {
           "notes": {
@@ -5865,12 +7478,7 @@
         "required": [
           "name",
           "url",
-          "events",
-          "description",
-          "headers",
-          "isActive",
-          "circuitBreakerEnabled",
-          "timeoutSeconds"
+          "events"
         ],
         "type": "object",
         "properties": {
@@ -5923,11 +7531,9 @@
             ]
           },
           "timeoutSeconds": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
               "null",
-              "integer",
-              "string"
+              "integer"
             ],
             "format": "int32"
           }
@@ -5935,12 +7541,7 @@
       },
       "UploadDocumentRequest": {
         "required": [
-          "fileBase64",
-          "filename",
-          "state",
-          "documentTypeHint",
-          "transactionId",
-          "side"
+          "fileBase64"
         ],
         "type": "object",
         "properties": {
@@ -5985,8 +7586,7 @@
       },
       "UploadUrlRequest": {
         "required": [
-          "filename",
-          "contentType"
+          "filename"
         ],
         "type": "object",
         "properties": {
@@ -6001,6 +7601,144 @@
               "null",
               "string"
             ]
+          }
+        }
+      },
+      "WebhookEvent": {
+        "title": "WebhookEvent",
+        "required": [
+          "eventType",
+          "eventId",
+          "timestamp",
+          "organizationId",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "eventType": {
+            "enum": [
+              "transaction.created",
+              "transaction.status_changed",
+              "transaction.closed",
+              "document.uploaded",
+              "document.deleted",
+              "task.created",
+              "task.completed",
+              "extraction.completed",
+              "key_date.updated",
+              "key_date.completed",
+              "contact.created",
+              "disclosure.recipient_viewed",
+              "form.submission_received",
+              "webhook.test"
+            ],
+            "type": "string",
+            "description": "Which event this is — one of the types listed in this section."
+          },
+          "eventId": {
+            "type": "string",
+            "description": "Stable per-delivery id. Retries reuse it — deduplicate on this value.",
+            "format": "uuid"
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "UTC send time.",
+            "format": "date-time"
+          },
+          "organizationId": {
+            "type": "string",
+            "description": "The organization the event belongs to. Always the organization that owns the subscription — a webhook never carries another tenant's data."
+          },
+          "userId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The acting user, when the event was caused by a person rather than a job.",
+            "format": "uuid"
+          },
+          "userName": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Display name of the acting user, when there is one."
+          },
+          "data": {
+            "type": "object",
+            "description": "Event-specific payload. Additive — ignore unrecognised fields."
+          }
+        },
+        "description": "The envelope wrapping every webhook delivery. Identical across all event types."
+      }
+    },
+    "responses": {
+      "Unauthorized": {
+        "description": "The `Authorization` header is missing, malformed, or the key has been revoked. Send `Authorization: Bearer <key>`. (`code: \"unauthorized\"`)",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "Forbidden": {
+        "description": "The key is valid but lacks the scope this operation requires, or it is the wrong credential tier — an organization key (`mcp_at_…`) on a partner route, or a partner key (`rsk_…`) anywhere else. (`code: \"insufficient_scope\"`)",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "No such resource **for this credential**. A record that exists but belongs to another organization also returns `404`, never `403` — existence is never disclosed across tenants. Do not treat `404` as evidence that an ID is unused. (`code: \"not_found\"`)",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "ValidationError": {
+        "description": "The request was understood but a field failed validation; see `error.fields`. (`code: \"validation_error\"`)",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "Conflict": {
+        "description": "The request conflicts with current state — for example reusing an `Idempotency-Key` with a different request body. (`code: \"conflict\"`)",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "RateLimited": {
+        "description": "Rate limit exceeded for this key. Buckets are per key, per minute, fixed window: **300 reads** (GET/HEAD) and **60 writes** (POST/PUT/PATCH/DELETE). Wait for the window named by `Retry-After`, then retry. (`code: \"rate_limited\"`)",
+        "headers": {
+          "Retry-After": {
+            "description": "Seconds to wait before retrying. Always `60` — the fixed window length.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
           }
         }
       }
@@ -6080,5 +7818,560 @@
       "name": "Organizations (Partner)",
       "description": "White-label partner tier. Provision and read the organizations in your book of business. Requires a partner key (rsk_…), not an organization key."
     }
-  ]
+  ],
+  "webhooks": {
+    "transaction.created": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "When a new transaction is created",
+        "description": "Sent when: the `transaction.created` event occurs in your organization.\n\n**Delivery.** `POST` to your subscription URL with these headers:\n\n- `X-Webhook-Signature` — `sha256=<hex>`, an HMAC-SHA256 of the **raw request body** using your subscription's signing secret. Compute it over the bytes as received, before any JSON parsing or re-serialization, and compare in constant time.\n- `X-Webhook-Event-Type` — the event type, matching this entry.\n- `X-Webhook-Event-Id` — a per-delivery UUID. **Deduplicate on this**: retries reuse it.\n- `X-Webhook-Timestamp` — ISO-8601 UTC send time.\n\nSubscribe with `POST /api/v1/webhooks` (use `\"*\"` to receive every event). Rotate the secret with `POST /api/v1/webhooks/{id}/regenerate-secret`, and fire a sample with `POST /api/v1/webhooks/{id}/test`.\n\n`data` is the event-specific body and is **additive** — new fields may appear at any time, so ignore ones you do not recognise.",
+        "operationId": "webhook_transaction_created",
+        "requestBody": {
+          "description": "The `transaction.created` event envelope, POSTed to your subscription URL.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookEvent"
+              },
+              "example": {
+                "eventType": "transaction.created",
+                "eventId": "3f2a91c7-5d64-4e18-9b03-8c7d1e4a6f52",
+                "timestamp": "2026-08-04T15:42:07.1183940Z",
+                "organizationId": "org-9fc8a1d2e3b4",
+                "userId": "1c9e6b40-72af-4d35-8e21-5b0a3f7c9d16",
+                "userName": "Jordan Rivera",
+                "data": {
+                  "transactionId": "8a4c2e10-9f5b-4713-b6d8-0e2a7c5f3149",
+                  "propertyAddress": "144 Peachtree Walk NE"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Any 2xx acknowledges receipt. Respond within your subscription's timeout; anything else is recorded as a failed delivery and retried, and repeated failures open the circuit breaker on the subscription."
+          }
+        },
+        "security": []
+      }
+    },
+    "transaction.status_changed": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "When a transaction status changes",
+        "description": "Sent when: the `transaction.status_changed` event occurs in your organization.\n\n**Delivery.** `POST` to your subscription URL with these headers:\n\n- `X-Webhook-Signature` — `sha256=<hex>`, an HMAC-SHA256 of the **raw request body** using your subscription's signing secret. Compute it over the bytes as received, before any JSON parsing or re-serialization, and compare in constant time.\n- `X-Webhook-Event-Type` — the event type, matching this entry.\n- `X-Webhook-Event-Id` — a per-delivery UUID. **Deduplicate on this**: retries reuse it.\n- `X-Webhook-Timestamp` — ISO-8601 UTC send time.\n\nSubscribe with `POST /api/v1/webhooks` (use `\"*\"` to receive every event). Rotate the secret with `POST /api/v1/webhooks/{id}/regenerate-secret`, and fire a sample with `POST /api/v1/webhooks/{id}/test`.\n\n`data` is the event-specific body and is **additive** — new fields may appear at any time, so ignore ones you do not recognise.",
+        "operationId": "webhook_transaction_status_changed",
+        "requestBody": {
+          "description": "The `transaction.status_changed` event envelope, POSTed to your subscription URL.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookEvent"
+              },
+              "example": {
+                "eventType": "transaction.status_changed",
+                "eventId": "3f2a91c7-5d64-4e18-9b03-8c7d1e4a6f52",
+                "timestamp": "2026-08-04T15:42:07.1183940Z",
+                "organizationId": "org-9fc8a1d2e3b4",
+                "userId": "1c9e6b40-72af-4d35-8e21-5b0a3f7c9d16",
+                "userName": "Jordan Rivera",
+                "data": {
+                  "transactionId": "8a4c2e10-9f5b-4713-b6d8-0e2a7c5f3149",
+                  "fromStatus": "Under Contract",
+                  "toStatus": "Closed"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Any 2xx acknowledges receipt. Respond within your subscription's timeout; anything else is recorded as a failed delivery and retried, and repeated failures open the circuit breaker on the subscription."
+          }
+        },
+        "security": []
+      }
+    },
+    "transaction.closed": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "When a transaction is closed",
+        "description": "Sent when: the `transaction.closed` event occurs in your organization.\n\n**Delivery.** `POST` to your subscription URL with these headers:\n\n- `X-Webhook-Signature` — `sha256=<hex>`, an HMAC-SHA256 of the **raw request body** using your subscription's signing secret. Compute it over the bytes as received, before any JSON parsing or re-serialization, and compare in constant time.\n- `X-Webhook-Event-Type` — the event type, matching this entry.\n- `X-Webhook-Event-Id` — a per-delivery UUID. **Deduplicate on this**: retries reuse it.\n- `X-Webhook-Timestamp` — ISO-8601 UTC send time.\n\nSubscribe with `POST /api/v1/webhooks` (use `\"*\"` to receive every event). Rotate the secret with `POST /api/v1/webhooks/{id}/regenerate-secret`, and fire a sample with `POST /api/v1/webhooks/{id}/test`.\n\n`data` is the event-specific body and is **additive** — new fields may appear at any time, so ignore ones you do not recognise.",
+        "operationId": "webhook_transaction_closed",
+        "requestBody": {
+          "description": "The `transaction.closed` event envelope, POSTed to your subscription URL.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookEvent"
+              },
+              "example": {
+                "eventType": "transaction.closed",
+                "eventId": "3f2a91c7-5d64-4e18-9b03-8c7d1e4a6f52",
+                "timestamp": "2026-08-04T15:42:07.1183940Z",
+                "organizationId": "org-9fc8a1d2e3b4",
+                "userId": "1c9e6b40-72af-4d35-8e21-5b0a3f7c9d16",
+                "userName": "Jordan Rivera",
+                "data": {
+                  "transactionId": "8a4c2e10-9f5b-4713-b6d8-0e2a7c5f3149",
+                  "propertyAddress": "144 Peachtree Walk NE"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Any 2xx acknowledges receipt. Respond within your subscription's timeout; anything else is recorded as a failed delivery and retried, and repeated failures open the circuit breaker on the subscription."
+          }
+        },
+        "security": []
+      }
+    },
+    "document.uploaded": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "When a document is uploaded to a transaction",
+        "description": "Sent when: the `document.uploaded` event occurs in your organization.\n\n**Delivery.** `POST` to your subscription URL with these headers:\n\n- `X-Webhook-Signature` — `sha256=<hex>`, an HMAC-SHA256 of the **raw request body** using your subscription's signing secret. Compute it over the bytes as received, before any JSON parsing or re-serialization, and compare in constant time.\n- `X-Webhook-Event-Type` — the event type, matching this entry.\n- `X-Webhook-Event-Id` — a per-delivery UUID. **Deduplicate on this**: retries reuse it.\n- `X-Webhook-Timestamp` — ISO-8601 UTC send time.\n\nSubscribe with `POST /api/v1/webhooks` (use `\"*\"` to receive every event). Rotate the secret with `POST /api/v1/webhooks/{id}/regenerate-secret`, and fire a sample with `POST /api/v1/webhooks/{id}/test`.\n\n`data` is the event-specific body and is **additive** — new fields may appear at any time, so ignore ones you do not recognise.",
+        "operationId": "webhook_document_uploaded",
+        "requestBody": {
+          "description": "The `document.uploaded` event envelope, POSTed to your subscription URL.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookEvent"
+              },
+              "example": {
+                "eventType": "document.uploaded",
+                "eventId": "3f2a91c7-5d64-4e18-9b03-8c7d1e4a6f52",
+                "timestamp": "2026-08-04T15:42:07.1183940Z",
+                "organizationId": "org-9fc8a1d2e3b4",
+                "userId": "1c9e6b40-72af-4d35-8e21-5b0a3f7c9d16",
+                "userName": "Jordan Rivera",
+                "data": {
+                  "documentId": "d0f6b1a2-4c3e-4f1b-9a7d-2e5c8b0a1f34",
+                  "transactionId": "8a4c2e10-9f5b-4713-b6d8-0e2a7c5f3149",
+                  "filename": "purchase-agreement.pdf"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Any 2xx acknowledges receipt. Respond within your subscription's timeout; anything else is recorded as a failed delivery and retried, and repeated failures open the circuit breaker on the subscription."
+          }
+        },
+        "security": []
+      }
+    },
+    "document.deleted": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "When a document is deleted",
+        "description": "Sent when: the `document.deleted` event occurs in your organization.\n\n**Delivery.** `POST` to your subscription URL with these headers:\n\n- `X-Webhook-Signature` — `sha256=<hex>`, an HMAC-SHA256 of the **raw request body** using your subscription's signing secret. Compute it over the bytes as received, before any JSON parsing or re-serialization, and compare in constant time.\n- `X-Webhook-Event-Type` — the event type, matching this entry.\n- `X-Webhook-Event-Id` — a per-delivery UUID. **Deduplicate on this**: retries reuse it.\n- `X-Webhook-Timestamp` — ISO-8601 UTC send time.\n\nSubscribe with `POST /api/v1/webhooks` (use `\"*\"` to receive every event). Rotate the secret with `POST /api/v1/webhooks/{id}/regenerate-secret`, and fire a sample with `POST /api/v1/webhooks/{id}/test`.\n\n`data` is the event-specific body and is **additive** — new fields may appear at any time, so ignore ones you do not recognise.",
+        "operationId": "webhook_document_deleted",
+        "requestBody": {
+          "description": "The `document.deleted` event envelope, POSTed to your subscription URL.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookEvent"
+              },
+              "example": {
+                "eventType": "document.deleted",
+                "eventId": "3f2a91c7-5d64-4e18-9b03-8c7d1e4a6f52",
+                "timestamp": "2026-08-04T15:42:07.1183940Z",
+                "organizationId": "org-9fc8a1d2e3b4",
+                "userId": "1c9e6b40-72af-4d35-8e21-5b0a3f7c9d16",
+                "userName": "Jordan Rivera",
+                "data": {
+                  "documentId": "d0f6b1a2-4c3e-4f1b-9a7d-2e5c8b0a1f34",
+                  "transactionId": "8a4c2e10-9f5b-4713-b6d8-0e2a7c5f3149",
+                  "filename": "purchase-agreement.pdf"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Any 2xx acknowledges receipt. Respond within your subscription's timeout; anything else is recorded as a failed delivery and retried, and repeated failures open the circuit breaker on the subscription."
+          }
+        },
+        "security": []
+      }
+    },
+    "task.created": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "When a new task is created",
+        "description": "Sent when: the `task.created` event occurs in your organization.\n\n**Delivery.** `POST` to your subscription URL with these headers:\n\n- `X-Webhook-Signature` — `sha256=<hex>`, an HMAC-SHA256 of the **raw request body** using your subscription's signing secret. Compute it over the bytes as received, before any JSON parsing or re-serialization, and compare in constant time.\n- `X-Webhook-Event-Type` — the event type, matching this entry.\n- `X-Webhook-Event-Id` — a per-delivery UUID. **Deduplicate on this**: retries reuse it.\n- `X-Webhook-Timestamp` — ISO-8601 UTC send time.\n\nSubscribe with `POST /api/v1/webhooks` (use `\"*\"` to receive every event). Rotate the secret with `POST /api/v1/webhooks/{id}/regenerate-secret`, and fire a sample with `POST /api/v1/webhooks/{id}/test`.\n\n`data` is the event-specific body and is **additive** — new fields may appear at any time, so ignore ones you do not recognise.",
+        "operationId": "webhook_task_created",
+        "requestBody": {
+          "description": "The `task.created` event envelope, POSTed to your subscription URL.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookEvent"
+              },
+              "example": {
+                "eventType": "task.created",
+                "eventId": "3f2a91c7-5d64-4e18-9b03-8c7d1e4a6f52",
+                "timestamp": "2026-08-04T15:42:07.1183940Z",
+                "organizationId": "org-9fc8a1d2e3b4",
+                "userId": "1c9e6b40-72af-4d35-8e21-5b0a3f7c9d16",
+                "userName": "Jordan Rivera",
+                "data": {
+                  "taskId": "b7e05d92-1a48-4c36-95f7-6d3e8a0b2c54",
+                  "transactionId": "8a4c2e10-9f5b-4713-b6d8-0e2a7c5f3149",
+                  "title": "Order home inspection"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Any 2xx acknowledges receipt. Respond within your subscription's timeout; anything else is recorded as a failed delivery and retried, and repeated failures open the circuit breaker on the subscription."
+          }
+        },
+        "security": []
+      }
+    },
+    "task.completed": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "When a task is marked complete",
+        "description": "Sent when: the `task.completed` event occurs in your organization.\n\n**Delivery.** `POST` to your subscription URL with these headers:\n\n- `X-Webhook-Signature` — `sha256=<hex>`, an HMAC-SHA256 of the **raw request body** using your subscription's signing secret. Compute it over the bytes as received, before any JSON parsing or re-serialization, and compare in constant time.\n- `X-Webhook-Event-Type` — the event type, matching this entry.\n- `X-Webhook-Event-Id` — a per-delivery UUID. **Deduplicate on this**: retries reuse it.\n- `X-Webhook-Timestamp` — ISO-8601 UTC send time.\n\nSubscribe with `POST /api/v1/webhooks` (use `\"*\"` to receive every event). Rotate the secret with `POST /api/v1/webhooks/{id}/regenerate-secret`, and fire a sample with `POST /api/v1/webhooks/{id}/test`.\n\n`data` is the event-specific body and is **additive** — new fields may appear at any time, so ignore ones you do not recognise.",
+        "operationId": "webhook_task_completed",
+        "requestBody": {
+          "description": "The `task.completed` event envelope, POSTed to your subscription URL.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookEvent"
+              },
+              "example": {
+                "eventType": "task.completed",
+                "eventId": "3f2a91c7-5d64-4e18-9b03-8c7d1e4a6f52",
+                "timestamp": "2026-08-04T15:42:07.1183940Z",
+                "organizationId": "org-9fc8a1d2e3b4",
+                "userId": "1c9e6b40-72af-4d35-8e21-5b0a3f7c9d16",
+                "userName": "Jordan Rivera",
+                "data": {
+                  "taskId": "b7e05d92-1a48-4c36-95f7-6d3e8a0b2c54",
+                  "transactionId": "8a4c2e10-9f5b-4713-b6d8-0e2a7c5f3149",
+                  "title": "Order home inspection"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Any 2xx acknowledges receipt. Respond within your subscription's timeout; anything else is recorded as a failed delivery and retried, and repeated failures open the circuit breaker on the subscription."
+          }
+        },
+        "security": []
+      }
+    },
+    "extraction.completed": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "When a document extraction job finishes (includes jobId + status)",
+        "description": "Sent when: the `extraction.completed` event occurs in your organization.\n\n**Delivery.** `POST` to your subscription URL with these headers:\n\n- `X-Webhook-Signature` — `sha256=<hex>`, an HMAC-SHA256 of the **raw request body** using your subscription's signing secret. Compute it over the bytes as received, before any JSON parsing or re-serialization, and compare in constant time.\n- `X-Webhook-Event-Type` — the event type, matching this entry.\n- `X-Webhook-Event-Id` — a per-delivery UUID. **Deduplicate on this**: retries reuse it.\n- `X-Webhook-Timestamp` — ISO-8601 UTC send time.\n\nSubscribe with `POST /api/v1/webhooks` (use `\"*\"` to receive every event). Rotate the secret with `POST /api/v1/webhooks/{id}/regenerate-secret`, and fire a sample with `POST /api/v1/webhooks/{id}/test`.\n\n`data` is the event-specific body and is **additive** — new fields may appear at any time, so ignore ones you do not recognise.",
+        "operationId": "webhook_extraction_completed",
+        "requestBody": {
+          "description": "The `extraction.completed` event envelope, POSTed to your subscription URL.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookEvent"
+              },
+              "example": {
+                "eventType": "extraction.completed",
+                "eventId": "3f2a91c7-5d64-4e18-9b03-8c7d1e4a6f52",
+                "timestamp": "2026-08-04T15:42:07.1183940Z",
+                "organizationId": "org-9fc8a1d2e3b4",
+                "userId": "1c9e6b40-72af-4d35-8e21-5b0a3f7c9d16",
+                "userName": "Jordan Rivera",
+                "data": {
+                  "jobId": "6b1f9c4d-8e2a-4b7c-9f10-3d5a7e2c8b41",
+                  "status": "completed",
+                  "documentId": "d0f6b1a2-4c3e-4f1b-9a7d-2e5c8b0a1f34"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Any 2xx acknowledges receipt. Respond within your subscription's timeout; anything else is recorded as a failed delivery and retried, and repeated failures open the circuit breaker on the subscription."
+          }
+        },
+        "security": []
+      }
+    },
+    "key_date.updated": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "When a key date is added or changed on a transaction",
+        "description": "Sent when: the `key_date.updated` event occurs in your organization.\n\n**Delivery.** `POST` to your subscription URL with these headers:\n\n- `X-Webhook-Signature` — `sha256=<hex>`, an HMAC-SHA256 of the **raw request body** using your subscription's signing secret. Compute it over the bytes as received, before any JSON parsing or re-serialization, and compare in constant time.\n- `X-Webhook-Event-Type` — the event type, matching this entry.\n- `X-Webhook-Event-Id` — a per-delivery UUID. **Deduplicate on this**: retries reuse it.\n- `X-Webhook-Timestamp` — ISO-8601 UTC send time.\n\nSubscribe with `POST /api/v1/webhooks` (use `\"*\"` to receive every event). Rotate the secret with `POST /api/v1/webhooks/{id}/regenerate-secret`, and fire a sample with `POST /api/v1/webhooks/{id}/test`.\n\n`data` is the event-specific body and is **additive** — new fields may appear at any time, so ignore ones you do not recognise.",
+        "operationId": "webhook_key_date_updated",
+        "requestBody": {
+          "description": "The `key_date.updated` event envelope, POSTed to your subscription URL.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookEvent"
+              },
+              "example": {
+                "eventType": "key_date.updated",
+                "eventId": "3f2a91c7-5d64-4e18-9b03-8c7d1e4a6f52",
+                "timestamp": "2026-08-04T15:42:07.1183940Z",
+                "organizationId": "org-9fc8a1d2e3b4",
+                "userId": "1c9e6b40-72af-4d35-8e21-5b0a3f7c9d16",
+                "userName": "Jordan Rivera",
+                "data": {
+                  "transactionId": "8a4c2e10-9f5b-4713-b6d8-0e2a7c5f3149",
+                  "keyDateType": "ClosingDate",
+                  "dateValue": "2026-09-15"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Any 2xx acknowledges receipt. Respond within your subscription's timeout; anything else is recorded as a failed delivery and retried, and repeated failures open the circuit breaker on the subscription."
+          }
+        },
+        "security": []
+      }
+    },
+    "key_date.completed": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "When a key date is marked complete",
+        "description": "Sent when: the `key_date.completed` event occurs in your organization.\n\n**Delivery.** `POST` to your subscription URL with these headers:\n\n- `X-Webhook-Signature` — `sha256=<hex>`, an HMAC-SHA256 of the **raw request body** using your subscription's signing secret. Compute it over the bytes as received, before any JSON parsing or re-serialization, and compare in constant time.\n- `X-Webhook-Event-Type` — the event type, matching this entry.\n- `X-Webhook-Event-Id` — a per-delivery UUID. **Deduplicate on this**: retries reuse it.\n- `X-Webhook-Timestamp` — ISO-8601 UTC send time.\n\nSubscribe with `POST /api/v1/webhooks` (use `\"*\"` to receive every event). Rotate the secret with `POST /api/v1/webhooks/{id}/regenerate-secret`, and fire a sample with `POST /api/v1/webhooks/{id}/test`.\n\n`data` is the event-specific body and is **additive** — new fields may appear at any time, so ignore ones you do not recognise.",
+        "operationId": "webhook_key_date_completed",
+        "requestBody": {
+          "description": "The `key_date.completed` event envelope, POSTed to your subscription URL.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookEvent"
+              },
+              "example": {
+                "eventType": "key_date.completed",
+                "eventId": "3f2a91c7-5d64-4e18-9b03-8c7d1e4a6f52",
+                "timestamp": "2026-08-04T15:42:07.1183940Z",
+                "organizationId": "org-9fc8a1d2e3b4",
+                "userId": "1c9e6b40-72af-4d35-8e21-5b0a3f7c9d16",
+                "userName": "Jordan Rivera",
+                "data": {
+                  "transactionId": "8a4c2e10-9f5b-4713-b6d8-0e2a7c5f3149",
+                  "keyDateType": "ClosingDate",
+                  "dateValue": "2026-09-15"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Any 2xx acknowledges receipt. Respond within your subscription's timeout; anything else is recorded as a failed delivery and retried, and repeated failures open the circuit breaker on the subscription."
+          }
+        },
+        "security": []
+      }
+    },
+    "contact.created": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "When a new contact is created",
+        "description": "Sent when: the `contact.created` event occurs in your organization.\n\n**Delivery.** `POST` to your subscription URL with these headers:\n\n- `X-Webhook-Signature` — `sha256=<hex>`, an HMAC-SHA256 of the **raw request body** using your subscription's signing secret. Compute it over the bytes as received, before any JSON parsing or re-serialization, and compare in constant time.\n- `X-Webhook-Event-Type` — the event type, matching this entry.\n- `X-Webhook-Event-Id` — a per-delivery UUID. **Deduplicate on this**: retries reuse it.\n- `X-Webhook-Timestamp` — ISO-8601 UTC send time.\n\nSubscribe with `POST /api/v1/webhooks` (use `\"*\"` to receive every event). Rotate the secret with `POST /api/v1/webhooks/{id}/regenerate-secret`, and fire a sample with `POST /api/v1/webhooks/{id}/test`.\n\n`data` is the event-specific body and is **additive** — new fields may appear at any time, so ignore ones you do not recognise.",
+        "operationId": "webhook_contact_created",
+        "requestBody": {
+          "description": "The `contact.created` event envelope, POSTed to your subscription URL.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookEvent"
+              },
+              "example": {
+                "eventType": "contact.created",
+                "eventId": "3f2a91c7-5d64-4e18-9b03-8c7d1e4a6f52",
+                "timestamp": "2026-08-04T15:42:07.1183940Z",
+                "organizationId": "org-9fc8a1d2e3b4",
+                "userId": "1c9e6b40-72af-4d35-8e21-5b0a3f7c9d16",
+                "userName": "Jordan Rivera",
+                "data": {
+                  "contactId": "4e8b1f07-3c92-4a56-8d14-7f2b9c0e5a38",
+                  "email": "buyer@example.com"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Any 2xx acknowledges receipt. Respond within your subscription's timeout; anything else is recorded as a failed delivery and retried, and repeated failures open the circuit breaker on the subscription."
+          }
+        },
+        "security": []
+      }
+    },
+    "disclosure.recipient_viewed": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "When a disclosure package recipient opens the disclosure",
+        "description": "Sent when: the `disclosure.recipient_viewed` event occurs in your organization.\n\n**Delivery.** `POST` to your subscription URL with these headers:\n\n- `X-Webhook-Signature` — `sha256=<hex>`, an HMAC-SHA256 of the **raw request body** using your subscription's signing secret. Compute it over the bytes as received, before any JSON parsing or re-serialization, and compare in constant time.\n- `X-Webhook-Event-Type` — the event type, matching this entry.\n- `X-Webhook-Event-Id` — a per-delivery UUID. **Deduplicate on this**: retries reuse it.\n- `X-Webhook-Timestamp` — ISO-8601 UTC send time.\n\nSubscribe with `POST /api/v1/webhooks` (use `\"*\"` to receive every event). Rotate the secret with `POST /api/v1/webhooks/{id}/regenerate-secret`, and fire a sample with `POST /api/v1/webhooks/{id}/test`.\n\n`data` is the event-specific body and is **additive** — new fields may appear at any time, so ignore ones you do not recognise.",
+        "operationId": "webhook_disclosure_recipient_viewed",
+        "requestBody": {
+          "description": "The `disclosure.recipient_viewed` event envelope, POSTed to your subscription URL.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookEvent"
+              },
+              "example": {
+                "eventType": "disclosure.recipient_viewed",
+                "eventId": "3f2a91c7-5d64-4e18-9b03-8c7d1e4a6f52",
+                "timestamp": "2026-08-04T15:42:07.1183940Z",
+                "organizationId": "org-9fc8a1d2e3b4",
+                "userId": "1c9e6b40-72af-4d35-8e21-5b0a3f7c9d16",
+                "userName": "Jordan Rivera",
+                "data": {
+                  "packageId": "9d3f7a21-6e08-4b95-a742-1c5e8b0d3f67",
+                  "recipientId": "2b6c4e08-5a71-4f93-8d20-3e7a1c9b5f04"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Any 2xx acknowledges receipt. Respond within your subscription's timeout; anything else is recorded as a failed delivery and retried, and repeated failures open the circuit breaker on the subscription."
+          }
+        },
+        "security": []
+      }
+    },
+    "form.submission_received": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "When a public form submission is received",
+        "description": "Sent when: the `form.submission_received` event occurs in your organization.\n\n**Delivery.** `POST` to your subscription URL with these headers:\n\n- `X-Webhook-Signature` — `sha256=<hex>`, an HMAC-SHA256 of the **raw request body** using your subscription's signing secret. Compute it over the bytes as received, before any JSON parsing or re-serialization, and compare in constant time.\n- `X-Webhook-Event-Type` — the event type, matching this entry.\n- `X-Webhook-Event-Id` — a per-delivery UUID. **Deduplicate on this**: retries reuse it.\n- `X-Webhook-Timestamp` — ISO-8601 UTC send time.\n\nSubscribe with `POST /api/v1/webhooks` (use `\"*\"` to receive every event). Rotate the secret with `POST /api/v1/webhooks/{id}/regenerate-secret`, and fire a sample with `POST /api/v1/webhooks/{id}/test`.\n\n`data` is the event-specific body and is **additive** — new fields may appear at any time, so ignore ones you do not recognise.",
+        "operationId": "webhook_form_submission_received",
+        "requestBody": {
+          "description": "The `form.submission_received` event envelope, POSTed to your subscription URL.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookEvent"
+              },
+              "example": {
+                "eventType": "form.submission_received",
+                "eventId": "3f2a91c7-5d64-4e18-9b03-8c7d1e4a6f52",
+                "timestamp": "2026-08-04T15:42:07.1183940Z",
+                "organizationId": "org-9fc8a1d2e3b4",
+                "userId": "1c9e6b40-72af-4d35-8e21-5b0a3f7c9d16",
+                "userName": "Jordan Rivera",
+                "data": {
+                  "submissionId": "7c1e5a93-4b28-4d06-9f35-8a0d2e6b1c47",
+                  "formId": "5a9d3c71-2e46-4b80-91f5-6c8b0a4e7d23"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Any 2xx acknowledges receipt. Respond within your subscription's timeout; anything else is recorded as a failed delivery and retried, and repeated failures open the circuit breaker on the subscription."
+          }
+        },
+        "security": []
+      }
+    },
+    "webhook.test": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "Test webhook (triggered manually)",
+        "description": "Sent when: you trigger a test delivery manually. Useful for verifying your signature check.\n\n**Delivery.** `POST` to your subscription URL with these headers:\n\n- `X-Webhook-Signature` — `sha256=<hex>`, an HMAC-SHA256 of the **raw request body** using your subscription's signing secret. Compute it over the bytes as received, before any JSON parsing or re-serialization, and compare in constant time.\n- `X-Webhook-Event-Type` — the event type, matching this entry.\n- `X-Webhook-Event-Id` — a per-delivery UUID. **Deduplicate on this**: retries reuse it.\n- `X-Webhook-Timestamp` — ISO-8601 UTC send time.\n\nSubscribe with `POST /api/v1/webhooks` (use `\"*\"` to receive every event). Rotate the secret with `POST /api/v1/webhooks/{id}/regenerate-secret`, and fire a sample with `POST /api/v1/webhooks/{id}/test`.\n\n`data` is the event-specific body and is **additive** — new fields may appear at any time, so ignore ones you do not recognise.",
+        "operationId": "webhook_webhook_test",
+        "requestBody": {
+          "description": "The `webhook.test` event envelope, POSTed to your subscription URL.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookEvent"
+              },
+              "example": {
+                "eventType": "webhook.test",
+                "eventId": "3f2a91c7-5d64-4e18-9b03-8c7d1e4a6f52",
+                "timestamp": "2026-08-04T15:42:07.1183940Z",
+                "organizationId": "org-9fc8a1d2e3b4",
+                "userId": "1c9e6b40-72af-4d35-8e21-5b0a3f7c9d16",
+                "userName": "Jordan Rivera",
+                "data": {
+                  "message": "This is a test delivery from DocJacket."
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Any 2xx acknowledges receipt. Respond within your subscription's timeout; anything else is recorded as a failed delivery and retried, and repeated failures open the circuit breaker on the subscription."
+          }
+        },
+        "security": []
+      }
+    }
+  }
 }
