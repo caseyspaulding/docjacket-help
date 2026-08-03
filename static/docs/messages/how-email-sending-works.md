@@ -69,3 +69,34 @@ back to DocJacket's email service when none is available.
 Connect a mailbox for every team member who sends deal email, so their messages
 always come from their own address and replies reach them directly.
 :::
+
+## Can you tell if a client opened an email?
+
+Sometimes — and it depends on **which mailbox actually sent the message**, which is
+the same distinction as the rest of this page.
+
+| How it was sent | Open tracking |
+|---|---|
+| From **your connected Gmail or Outlook** | **No.** DocJacket hands the message to your mailbox and it goes out as your own email. |
+| From **DocJacket's email service** (no connected mailbox — the fallback described above) | **Yes.** DocJacket records when it was delivered and when it was first opened. |
+
+When an email *is* tracked, an **Email opened** entry appears on the transaction's
+activity timeline, and the message shows its delivery status.
+
+This surprises people, so it's worth stating plainly: **connecting your mailbox
+gives up open tracking.** That's not a setting you can toggle — it's a consequence
+of the message being sent by Gmail or Outlook rather than by DocJacket. Once Gmail
+sends it, it's an ordinary email from your account, and DocJacket has no more
+visibility into it than into anything else you send from Gmail.
+
+Most teams consider that the right trade. Sending from your own mailbox means better
+deliverability, replies land in your inbox, and the message looks like it came from
+you — which matters more on a deal than knowing whether someone opened it.
+
+:::note What you can always see
+Regardless of how a message was sent, the transaction's **Email** tab lists what was
+sent and what came back. Replies file themselves onto the deal when you started the
+thread from DocJacket — see
+[Getting Email Into DocJacket](./getting-email-into-docjacket.mdx). Read receipts and
+"has my client seen this" are the only things that depend on the sending path.
+:::
