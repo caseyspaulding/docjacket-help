@@ -28,6 +28,27 @@ Some dates are governed transaction dates, also called canonical key dates. A go
 
 Custom key dates are one-off dates for a specific deal. They can still appear on the timeline, link to tasks, and use reminders, but they do not replace governed transaction date fields.
 
+### Why the timeline isn't in date order — and how to fix it
+
+The closing timeline is in **manual order**, not date order. It keeps whatever order you
+arranged by dragging rows, which is deliberate — it lets you group related dates the way
+your office thinks about them.
+
+The side effect is that the timeline can look **out of chronological order**. This
+usually shows up after dates shift: a checklist sets the original order, then a
+deadline moves, and the row stays where it was rather than sliding to its new place in
+the sequence. Nothing is wrong with the dates themselves — only the display order.
+
+To put everything back in date order, click **Sort by date** above the timeline. It
+reorders every key date **earliest first**, sends undated rows to the bottom, and saves
+the new order, so it sticks until you drag something again.
+
+:::tip
+If key dates look like they're in the wrong sequence, try **Sort by date** before
+assuming a date is wrong — the dates are usually correct and only the manual ordering
+is stale.
+:::
+
 ### Editing dates
 
 Use the transaction edit page for governed transaction dates. On the timeline, a governed row may show **Edit on Transaction Details** instead of Delete. That means the date belongs to the transaction's canonical date fields; edit or clear it from the transaction details so DocJacket keeps the transaction record and timeline row aligned.

@@ -59,6 +59,56 @@ Examples:
 
 If a list applies broadly, leave filters blank.
 
+## Conditional documents — will it prompt me for the HOA addendum?
+
+A common question: *if there is an HOA mentioned in the contract, will DocJacket prompt
+me to upload the HOA addendum, or flag that the addendum is needed?* Yes — that's what
+conditional documents do, provided your list includes an HOA addendum marked as
+conditional.
+
+Applicability filters above decide whether a **whole list** applies. You can also mark
+an **individual document** as conditional, so it only shows up on deals where it's
+actually needed — an HOA addendum on HOA properties, a septic inspection where there's
+a septic system, a lead-paint disclosure on older homes.
+
+When you add a document to a list, mark it **If Applicable** and pick the condition
+that decides when it's needed. The conditions you can choose from are:
+
+| Category | Conditions |
+|---|---|
+| Property features | Property has an HOA · has solar · has septic · has a well · has a pool · radon contingency present · lead-paint concern |
+| Property | Built before a year (you set the year) |
+| Representation | Representing the buyer · representing the seller |
+| Financing | Buyer is financing (loan) · cash deal (no loan) |
+| Occupancy | Tenant occupied |
+| Location | County is… (you set the county) |
+| Other | Home warranty included |
+
+### What happens when the list is applied
+
+DocJacket checks each condition against what it knows about the deal — including
+details read off the contract during extraction — and does one of three things:
+
+- **Condition is true** → the document is added as a normal required item, the same as
+  any unconditional one. So yes: if the deal has an HOA, an HOA-conditional document
+  appears in the required list and shows as missing until you upload it.
+- **Condition is false** → the document is left off that deal entirely, so your required
+  list isn't cluttered with paperwork that doesn't apply.
+- **DocJacket can't tell yet** → the document is added but **flagged**, showing the
+  condition in plain language (for example, "the HOA contingency") so you can confirm it
+  applies or remove it. This is the safe default: an unanswered question never silently
+  drops a document you might need.
+
+That last case is the common one early in a deal, before the contract has been read or
+the contingency fields are filled in. It's why you may see a document flagged for
+confirmation rather than simply appearing or not.
+
+:::note
+Conditions are evaluated **when the list is applied** to a transaction. If you later
+learn the property has an HOA, update the deal and re-apply the list — or add the
+document by hand — rather than expecting an already-applied list to change on its own.
+:::
+
 ## Default, active, and inactive lists
 
 Only active lists are available when applying a template on a transaction.
