@@ -1,6 +1,6 @@
 ---
 sidebar_label: Email and Automation
-sidebar_position: 11
+sidebar_position: 12
 description: Configure email template categories, working hours, notification preferences, and rule-based email or SMS automation.
 ---
 

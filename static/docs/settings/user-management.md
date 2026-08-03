@@ -1,6 +1,6 @@
 ---
 sidebar_label: User Management
-sidebar_position: 5
+sidebar_position: 6
 description: Invite team members to your DocJacket organization, assign roles, manage seats, and control who can access transactions and settings.
 ---
 

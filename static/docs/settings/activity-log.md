@@ -1,6 +1,6 @@
 ---
 sidebar_label: Activity Log
-sidebar_position: 14
+sidebar_position: 15
 description: Review organization-wide user and system activity in DocJacket — a searchable audit log of who did what, and when, across your account.
 ---
 

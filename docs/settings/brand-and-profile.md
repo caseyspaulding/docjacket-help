@@ -33,8 +33,9 @@ You can update:
 - Real estate license number
 - Timezone
 - SMS reminder consent
+- Sign-in email
 
-Your email address is managed by your sign-in provider and cannot be changed from the profile page.
+Your sign-in email — the address you use to log in — is shown here as well. You can change it yourself: click **Change** next to **Sign-in Email**. This works whether you signed up with Google, Microsoft, or a magic link. See [Changing Your Sign-In Email](./changing-your-sign-in-email.md) for the full walkthrough, including what to do if the address is already in use.
 
 ## Timezone
 
