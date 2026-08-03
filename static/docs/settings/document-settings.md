@@ -1,6 +1,6 @@
 ---
 sidebar_label: Document Settings
-sidebar_position: 10
+sidebar_position: 11
 description: Configure DocJacket document types, statuses, and automatic file-naming rules so every uploaded file is organized consistently.
 ---
 

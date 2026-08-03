@@ -1,6 +1,6 @@
 ---
 sidebar_label: SMS Settings
-sidebar_position: 12
+sidebar_position: 13
 description: Manage your dedicated business SMS number, shared-number fallback, monthly usage, extra credits, and number release.
 ---
 

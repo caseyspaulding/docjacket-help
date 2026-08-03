@@ -1,6 +1,6 @@
 ---
 sidebar_label: Contact Settings
-sidebar_position: 7
+sidebar_position: 8
 description: Manage DocJacket contact types, service-provider grouping, and the tags you use to organize contacts across every transaction.
 ---
 
