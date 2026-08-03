@@ -86,6 +86,20 @@ Sections can include:
 
 Public forms show your organization logo/name, the form title, welcome message, grouped sections, and a branded submit button.
 
+## Renaming a form
+
+To change the name of an online form, open the form in the builder and edit the **Name**
+field, then save. The new name applies everywhere the form is listed, and existing share
+links keep working — renaming does not break a link you've already sent or invalidate
+submissions you've already collected.
+
+:::note Renaming a blank contract PDF is different
+This is renaming an **online form** (a web form you send to collect information). Blank
+contract PDFs live under
+[Approved Form Templates](../documents/approved-form-templates.md) and are managed
+separately.
+:::
+
 ## Publishing and versions
 
 When you edit fields, DocJacket saves a published snapshot after a short pause. The Share step shows the current live version and version history.
