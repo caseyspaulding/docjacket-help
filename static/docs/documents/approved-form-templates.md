@@ -25,6 +25,32 @@ Each template can include:
 - Flexible checkboxes completed during send prep
 - Signer roles, such as Buyer, Seller, Agent, or Broker
 
+## Where to store blank contracts and association forms
+
+If you're looking for where to **store blank contracts** — the empty purchase agreement,
+listing agreement, disclosures, and addenda you reuse on every deal — this is the place.
+Approved form templates are DocJacket's library of blank contracts and forms.
+
+This includes the standard forms you get from your state or local association, however
+you obtained them:
+
+- **CAR forms** (California Association of REALTORS)
+- **TREC** forms (Texas), **FAR/BAR** (Florida), and other state association packets
+- Blank contracts exported or downloaded from zipForm, your MLS, or your brokerage intranet
+- Your own brokerage disclosures and office-specific paperwork
+
+To get a CAR form — or any blank contract — into DocJacket, **download the blank PDF from
+your association or forms provider first, then upload that PDF here.** DocJacket keeps
+your uploaded copy, so you don't have to download the contract again each time you use
+it. Once a form is uploaded and published, you reuse it from inside DocJacket.
+
+:::note These are blank forms, not client intake forms
+Approved form templates are **blank contract PDFs you send for signature**. They are
+different from [Online Forms](../templates/online-forms.md), which are web forms you send
+clients and agents to *collect information* — an intake questionnaire, not a contract PDF.
+If you want somewhere to keep blank contracts, you want this page.
+:::
+
 ## Upload a template
 
 1. Open **Offices**
