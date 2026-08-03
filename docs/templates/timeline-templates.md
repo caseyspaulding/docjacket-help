@@ -111,10 +111,84 @@ Checklist tasks are the work your team completes during the transaction. Tasks c
 - Subtasks
 - Scheduled emails
 - On-completion email actions
+- **Conditional Task** — only create this task when the deal matches a condition (see [Conditional tasks](#conditional-tasks))
 
 Tasks should reference the key date they depend on. For example, a task can be due 3 days before **Final Walkthrough** instead of hardcoding the same rule from **Closing Date**.
 
 ![Checklist task editor showing task details, priority, phase, due-date context, and an automation count on the selected task](/img/templates/checklist-task-automation.png)
+
+## Conditional tasks
+
+Some tasks only apply to certain deals — a septic inspection, an HOA document review,
+a task that only matters on a cash deal. **You do not need a separate checklist for
+each combination.** Build one checklist with every task in it, and mark the
+situational ones conditional. A conditional task whose condition isn't met is simply
+**not created** when you apply the checklist, so the deal only gets the work that
+actually applies.
+
+To make a task conditional, open the task in the checklist builder and, under
+**Options**, tick **Conditional Task**. A **Transaction field** dropdown appears —
+pick the field that decides whether the task applies.
+
+### Which fields you can gate on
+
+The **Transaction field** dropdown is a fixed list. It contains:
+
+| Field | Behaves as |
+|---|---|
+| Cash deal | Yes/no flag |
+| Sellers only | Yes/no flag |
+| HOA contingency | Contingency |
+| Radon contingency | Contingency |
+| Septic contingency | Contingency |
+| Well contingency | Contingency |
+| Pool contingency | Contingency |
+| Solar contingency | Contingency |
+| Lead paint contingency | Contingency |
+| Inspection contingency | Contingency |
+| Smart-home contingency | Contingency |
+| Home-warranty contingency | Contingency |
+
+The two kinds behave differently, and the difference matters:
+
+- **Yes/no flags** (Cash deal, Sellers only) — the task is created **only when the flag
+  is on**. If the flag is off, or nothing has been filled in yet, the task is skipped.
+- **Contingencies** — the task is created **unless** the contingency is explicitly set
+  to **N/A** on the deal. If it's Active, or nobody has set it yet, you still get the
+  task. This is deliberate: an unanswered contingency shouldn't quietly drop work.
+
+### Gating on financed vs. cash deals
+
+There is a **Cash deal** field, but there is **no "financed" field**. Because a yes/no
+flag only creates the task when the flag is on, gating a financing task on **Cash
+deal** would attach it to cash deals only — the opposite of what you want.
+
+The way to handle financing work is to put it in the checklist **normally**, with no
+condition, and instead mark the *cash-specific* tasks conditional on **Cash deal**.
+Financed deals are the common case, so let them be the default and gate the exception.
+
+### The "If label" box is cosmetic
+
+Under the field dropdown there's an **If label** box (for example, `If HOA`). This is
+**text only — it does not gate anything.** It just prints on the task row so your team
+can see at a glance when a task applies. If you type a label but don't pick a
+**Transaction field**, the task is created on every deal.
+
+### Conditions that aren't available yet
+
+The dropdown above is the complete list. Common conditions that are **not** currently
+supported include a buyer's **home sale contingency**, a **suitable housing**
+contingency, and financing type beyond the cash flag. For those, either leave the task
+unconditional and delete it on deals where it doesn't apply, or remove whole task
+groups during apply — the apply dialog lets you deselect individual tasks and skip
+entire groups before anything is created.
+
+:::note Conditional in the checklist builder vs. on a task
+The **Conditional Task** checkbox in the *checklist builder* controls whether a task
+gets created at all. There is also a conditional marker on an individual task inside a
+transaction ([Task Options](../tasks/task-options.md)) — that one is a **label** on
+work that already exists, and it doesn't create or remove anything.
+:::
 
 ## Automations
 
@@ -165,6 +239,33 @@ DocJacket can:
 - Preserve manually added items and contract-extracted dates when replacing template-generated items
 
 After applying, the transaction has real key dates and real tasks. Moving key dates can update linked task due dates according to their rules.
+
+### Applying a second checklist to the same transaction
+
+You can apply more than one checklist to the same deal, and by default the second one
+**adds to** what's already there — it does not wipe the first. This is what makes the
+listing-then-contract workflow work on a single record:
+
+1. Create the deal as a listing and apply your **listing** checklist — order photos,
+   sign the listing agreement, get it on the MLS.
+2. Work the listing. When it goes under contract, **don't start a new deal** — change
+   the existing one's status (and type, if you use Listing/Purchase/Sale). See
+   [Turning a listing into a sale or purchase](../transactions/listings.md#turning-a-listing-into-a-sale-or-purchase).
+3. Apply your **contract-to-close** checklist to that same transaction.
+
+Both sets of tasks and key dates now live on one file, with one address, one contact
+list, and one document set — and the listing history stays attached.
+
+The apply dialog shows any checklists already applied, so you can see what's there
+before adding another. If you *do* want the new checklist to take over, tick **Replace
+existing key dates and tasks** — that removes the previously applied *template-generated*
+items on both the key-date and task side. Items you added by hand, and dates extracted
+from the contract, are preserved either way.
+
+:::tip
+Leave **Replace** unticked when you're layering a second workflow onto a deal. Tick it
+only when you're correcting a checklist you applied by mistake.
+:::
 
 ## Saving a transaction as a checklist
 
