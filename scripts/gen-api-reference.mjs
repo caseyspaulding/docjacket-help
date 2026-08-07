@@ -114,7 +114,7 @@ Two credential types:
 
 | Key | Prefix | Use |
 |---|---|---|
-| **Organization key** | ${code('mcp_at_…')} | Acts within a single organization. Mint one under **Settings → AI & API Access**. Covers every section except Organizations (Partner). |
+| **Organization key** | ${code('mcp_at_…')} | Acts within a single organization. Mint one under **Settings → Advanced → API Keys**. Covers every section except Organizations (Partner). |
 | **Partner key** | ${code('rsk_…')} | Cross-tenant provisioning and read for white-label partners. Accepted only on the ${code('/api/v1/orgs/*')} operations. |
 
 Organization keys carry one or more **scopes**, listed per operation in the tables below:
