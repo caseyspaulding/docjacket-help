@@ -14,7 +14,7 @@
 //
 // Usage: node scripts/mirror-docs-md.mjs
 
-import {readdir, readFile, writeFile, mkdir, stat} from 'node:fs/promises';
+import {readdir, readFile, writeFile, mkdir, stat, unlink, rmdir} from 'node:fs/promises';
 import {join, dirname, relative} from 'node:path';
 import {fileURLToPath} from 'node:url';
 
@@ -24,6 +24,10 @@ const DOCS_DIR = join(REPO_ROOT, 'docs');
 const OUT_DIR = join(REPO_ROOT, 'static', 'docs');
 
 const SITE = 'https://help.docjacket.com';
+
+// Stamped into every mirror, and the sole thing prune() will delete on. Keep it
+// in sync with the sourceHint below — a mismatch makes prune a silent no-op.
+const SOURCE_MARKER = '<!-- Source: docs/';
 
 function stripMdx(body) {
   let out = body;
@@ -84,8 +88,52 @@ function canonicalUrl(srcPath) {
   return `${SITE}/docs/${slug}`;
 }
 
+// Delete mirrors whose source page no longer exists.
+//
+// This script only ever wrote, so deleting a docs page left its .md mirror
+// serving forever. Docusaurus redirects the HTML route, but the mirror is a
+// static file — nothing redirects it, and it keeps answering with whatever the
+// page said the day it was removed. When docs/integrations/{rest-api,webhooks}
+// moved into the Developer API section (#72), both mirrors stayed behind, and
+// the rest-api one went on telling readers to mint keys under a menu that had
+// been renamed away. That surfaced as a partner support thread on 2026-08-07.
+//
+// Deletes only files this script provably wrote — the SOURCE_MARKER it stamps
+// into every mirror. Anything hand-placed under static/docs/ has no marker and
+// is reported rather than removed, so a future non-generated file here cannot
+// be silently eaten by a prebuild.
+async function prune(written) {
+  let pruned = 0;
+  const foreign = [];
+
+  for await (const path of walk(OUT_DIR)) {
+    if (written.has(path)) continue;
+    const raw = await readFile(path, 'utf8').catch(() => '');
+    if (!raw.includes(SOURCE_MARKER)) {
+      foreign.push(relative(REPO_ROOT, path));
+      continue;
+    }
+    await unlink(path);
+    pruned++;
+  }
+
+  // Drop directories the prune emptied, innermost first, so a removed section
+  // does not leave a bare folder behind. rmdir on a non-empty directory throws
+  // and is swallowed, which is the intent — only genuinely empty ones go.
+  const dirs = [];
+  for await (const path of walk(OUT_DIR)) dirs.push(dirname(path));
+  for (const dir of [...new Set(dirs)].sort((a, b) => b.length - a.length)) {
+    if (dir !== OUT_DIR) await rmdir(dir).catch(() => {});
+  }
+
+  if (foreign.length)
+    console.warn(`[mirror-docs-md] left ${foreign.length} unrecognized file(s) in place: ${foreign.join(', ')}`);
+  return pruned;
+}
+
 async function main() {
   let count = 0;
+  const written = new Set();
   for await (const src of walk(DOCS_DIR)) {
     const raw = await readFile(src, 'utf8');
     const {fm, body} = splitFrontmatter(raw);
@@ -93,15 +141,21 @@ async function main() {
     if (!cleaned) continue;
 
     const url = canonicalUrl(src);
-    const sourceHint = `<!-- Canonical: ${url} -->\n<!-- Source: docs/${relative(DOCS_DIR, src).replace(/\\/g, '/')} -->\n\n`;
+    const sourceHint = `<!-- Canonical: ${url} -->\n${SOURCE_MARKER}${relative(DOCS_DIR, src).replace(/\\/g, '/')} -->\n\n`;
 
     const out = (fm ? fm + '\n\n' : '') + sourceHint + cleaned + '\n';
     const dst = outputPath(src);
     await mkdir(dirname(dst), {recursive: true});
     await writeFile(dst, out, 'utf8');
+    written.add(dst);
     count++;
   }
-  console.log(`[mirror-docs-md] wrote ${count} .md files under ${relative(REPO_ROOT, OUT_DIR)}/`);
+
+  const pruned = await prune(written);
+  console.log(
+    `[mirror-docs-md] wrote ${count} .md files under ${relative(REPO_ROOT, OUT_DIR)}/` +
+    (pruned ? `, pruned ${pruned} orphaned mirror(s)` : ''),
+  );
 }
 
 main().catch((err) => {
