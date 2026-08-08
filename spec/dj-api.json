@@ -4900,6 +4900,166 @@
         }
       }
     },
+    "/api/v1/account/deletion/status": {
+      "get": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Whether workspace deletion is scheduled, and whether the caller may act on it",
+        "description": "Reports whether this workspace is scheduled for deletion, when the purge falls due, and how long the grace period is. Readable by any member with the read scope, because a pending deletion ends the workspace for all of them. The `isOwner` flag tells a client whether to offer the delete and export controls at all, so it can hide them rather than render a button that fails.\n\n**Requires the `read` scope.**",
+        "operationId": "AccountDeletionStatus",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
+          }
+        }
+      }
+    },
+    "/api/v1/account/deletion/request": {
+      "post": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Schedule this workspace for deletion after the grace period",
+        "description": "Schedules the workspace for permanent deletion once the grace period elapses, freezes it, and emails a cancel link. Nothing is deleted at the time of the call. Owner only, and `confirmName` must equal the workspace name exactly — a mismatch returns 422 and schedules nothing.\n\n**Requires the `actions` scope.**",
+        "operationId": "RequestAccountDeletion",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/RequestAccountDeletionBody"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
+          }
+        }
+      }
+    },
+    "/api/v1/account/deletion/cancel": {
+      "post": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Cancel a scheduled workspace deletion",
+        "description": "Cancels a pending deletion and unfreezes the workspace — the in-app equivalent of the emailed cancel link, for an owner who is still signed in. Owner only. Returns `cancelled: false` when there was nothing scheduled.\n\n**Requires the `actions` scope.**",
+        "operationId": "CancelAccountDeletion",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
+          }
+        }
+      }
+    },
+    "/api/v1/account/export/latest": {
+      "get": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Status of the most recent workspace data export",
+        "description": "Returns the most recent export for this workspace with its build progress, or `exists: false` if one has never been requested. A completed export whose artifact has passed its expiry reports as `expired`, since the file is gone. Owner only.\n\n**Requires the `read` scope.**",
+        "operationId": "LatestAccountExport",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
+          }
+        }
+      }
+    },
+    "/api/v1/account/export/request": {
+      "post": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Start building a full export of this workspace's data",
+        "description": "Starts building a full archive of this workspace's data; the finished download arrives by email, so there is nothing to fetch from this response. Owner only. One export runs at a time — calling again while one is building returns that one with `alreadyRunning: true` rather than starting a second.\n\n**Requires the `actions` scope.**",
+        "operationId": "RequestAccountExport",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
+          }
+        }
+      }
+    },
     "/api/v1/webhook-events": {
       "get": {
         "tags": [
@@ -7128,6 +7288,17 @@
           "forceOverride": {
             "type": "boolean",
             "default": false
+          }
+        }
+      },
+      "RequestAccountDeletionBody": {
+        "type": "object",
+        "properties": {
+          "confirmName": {
+            "type": [
+              "null",
+              "string"
+            ]
           }
         }
       },
