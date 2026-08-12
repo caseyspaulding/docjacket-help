@@ -17,6 +17,8 @@ Authorization: Bearer mcp_at_YOUR_KEY
 
 A key looks like `mcp_at_…`, is tied to a single organization, and works for both the REST API and [AI Access](/docs/ai-access).
 
+Building something that connects *other people's* DocJacket accounts — an app your customers sign into? Don't mint a key each. Use [OAuth](#apps-that-connect-many-accounts) instead.
+
 ## Create a key
 
 1. In DocJacket, go to **Settings → API Keys** (Owner or Admin role required).
@@ -78,6 +80,21 @@ curl "https://api.docjacket.com/api/v1/usage?days=30" \
 
 For a full audit trail of every call (across all keys), see **Settings → AI Access → Activity log**.
 
+## Apps that connect many accounts
+
+Everything above assumes you hold the key for an account you control. If you're building an app that connects *your customers'* DocJacket accounts — a mobile app, a portal, a CRM integration you sell — minting a key per customer by hand doesn't scale, and it puts you in the business of storing their credentials.
+
+Use OAuth instead. Your app registers once; each user signs in and authorizes their own account; you receive an access token scoped to that account. Same operations, same `read` / `draft` / `actions` scopes, and the user can disconnect you at any time without anyone rotating a key.
+
+The tokens work on the REST API exactly as an `mcp_at_` key does — put them in the same `Authorization: Bearer …` header. The full flow, including registration, PKCE, refresh rotation, and revocation, is documented in [How OAuth works](/docs/ai-access/oauth).
+
+Two things worth knowing before you build:
+
+- **Refresh tokens rotate.** Every refresh returns a new one and retires the old. Presenting a spent refresh token is treated as a stolen-credential replay and disconnects that user, so store the new token before you use it and never retry a failed refresh with the old one.
+- **A token can stop working before it expires.** We re-check the user's membership on every call, so if they're removed from the organization access ends immediately. Treat a `401` as "this account needs reconnecting", not as a transient error to retry.
+
 ## Partners
 
 White-label partners authenticate with a separate reseller key (`rsk_…`) that spans every organization in their book of business — see the [Partner API](./reseller.mdx).
+
+Mint one yourself in the partner console under **API keys**. It's shown once and stored as a hash, so give each system its own key and revoke them independently. A partner key never reads deal data — to act inside a customer's account, use an organization key or an OAuth token for that account.

@@ -53,6 +53,8 @@ DocJacket's MCP server is OAuth 2.1 + PKCE + Dynamic Client Registration (RFC 75
 
 This page is for the curious and for the security-conscious. **You don't need to read it to use AI Access** — the consent screen is the only step you ever interact with.
 
+**Building an app on the [Developer API](/docs/api)?** Then you do need this page, and it's the flow you want. The tokens below work on the REST API exactly as they do on MCP — same `Authorization: Bearer …` header, same scopes — so an app that connects many customer accounts registers once here rather than asking each customer to mint and paste a key.
+
 ## See it in action
 
 <div style={{position: 'relative', paddingBottom: '62.5%', height: 0, margin: '1.5rem 0', borderRadius: '8px', overflow: 'hidden'}}>
@@ -184,7 +186,9 @@ A few clients don't (yet) support paste-URL OAuth and need a personal access tok
 - **Cowork** — org-installed plugin; a long-lived token is the right primitive for org-wide install. ([setup](/docs/ai-access/cowork))
 - **Gemini CLI** — Dynamic Client Registration support isn't shipped on Gemini's MCP client yet. ([setup](/docs/ai-access/gemini))
 - **Codex CLI** — works either way; many users prefer the token + `codex secret set` flow. ([setup](/docs/ai-access/codex))
-- **Custom HTTP clients / scripts** — paste a token straight into your `Authorization: Bearer …` header.
+- **Your own scripts and back-office tools** — when the account is yours, a token you paste into your `Authorization: Bearer …` header is simpler than a consent flow, and there is nobody to ask for consent anyway.
+
+This is about *whose* account you're reaching, not about REST versus MCP. If you're building something that connects **other people's** accounts — an app you ship to customers — use OAuth, on either surface. A key per customer means storing their credentials and minting one by hand for every signup.
 
 Mint tokens at [app.docjacket.com/settings/ai-access](https://app.docjacket.com/settings/ai-access). They scope per-org, can be labeled, and can be revoked independently of OAuth-issued tokens.
 

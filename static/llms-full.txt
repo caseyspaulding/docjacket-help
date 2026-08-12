@@ -8324,6 +8324,8 @@ DocJacket's MCP server is OAuth 2.1 + PKCE + Dynamic Client Registration (RFC 75
 
 This page is for the curious and for the security-conscious. **You don't need to read it to use AI Access** — the consent screen is the only step you ever interact with.
 
+**Building an app on the [Developer API](/docs/api)?** Then you do need this page, and it's the flow you want. The tokens below work on the REST API exactly as they do on MCP — same `Authorization: Bearer …` header, same scopes — so an app that connects many customer accounts registers once here rather than asking each customer to mint and paste a key.
+
 ## See it in action
 
 <div style={{position: 'relative', paddingBottom: '62.5%', height: 0, margin: '1.5rem 0', borderRadius: '8px', overflow: 'hidden'}}>
@@ -8455,7 +8457,9 @@ A few clients don't (yet) support paste-URL OAuth and need a personal access tok
 - **Cowork** — org-installed plugin; a long-lived token is the right primitive for org-wide install. ([setup](/docs/ai-access/cowork))
 - **Gemini CLI** — Dynamic Client Registration support isn't shipped on Gemini's MCP client yet. ([setup](/docs/ai-access/gemini))
 - **Codex CLI** — works either way; many users prefer the token + `codex secret set` flow. ([setup](/docs/ai-access/codex))
-- **Custom HTTP clients / scripts** — paste a token straight into your `Authorization: Bearer …` header.
+- **Your own scripts and back-office tools** — when the account is yours, a token you paste into your `Authorization: Bearer …` header is simpler than a consent flow, and there is nobody to ask for consent anyway.
+
+This is about *whose* account you're reaching, not about REST versus MCP. If you're building something that connects **other people's** accounts — an app you ship to customers — use OAuth, on either surface. A key per customer means storing their credentials and minting one by hand for every signup.
 
 Mint tokens at [app.docjacket.com/settings/ai-access](https://app.docjacket.com/settings/ai-access). They scope per-org, can be labeled, and can be revoked independently of OAuth-issued tokens.
 
@@ -8569,10 +8573,12 @@ Tenant isolation is enforced at the SQL layer. Every MCP tool call adds `WHERE O
 
 The DocJacket API lets your own systems — CRMs, dashboards, back-office tools, scripts, and custom automations — read and act on your transactions, contacts, tasks, key dates, documents, and disclosures.
 
-Everything lives under one base URL and one credential:
+Everything lives under one base URL:
 
 - **Base URL:** `https://api.docjacket.com`
-- **Auth:** an API key sent as a bearer token — `Authorization: Bearer mcp_at_…`
+- **Auth:** a bearer token — `Authorization: Bearer mcp_at_…`
+
+For your own account, that token is an API key you mint. If you're building an app that connects *other people's* accounts, it's an OAuth token they grant you — see [Authentication](./authentication.mdx#apps-that-connect-many-accounts).
 
 **Live reference:** [api.docjacket.com/reference](https://api.docjacket.com/reference) — generated from the deployed API, so it never drifts. The machine-readable spec is at [api.docjacket.com/openapi.json](https://api.docjacket.com/openapi.json) (point Postman, an SDK generator, or an AI agent at it).
 
@@ -8626,6 +8632,8 @@ Authorization: Bearer mcp_at_YOUR_KEY
 ```
 
 A key looks like `mcp_at_…`, is tied to a single organization, and works for both the REST API and [AI Access](/docs/ai-access).
+
+Building something that connects *other people's* DocJacket accounts — an app your customers sign into? Don't mint a key each. Use [OAuth](#apps-that-connect-many-accounts) instead.
 
 ## Create a key
 
@@ -8688,9 +8696,24 @@ curl "https://api.docjacket.com/api/v1/usage?days=30" \
 
 For a full audit trail of every call (across all keys), see **Settings → AI Access → Activity log**.
 
+## Apps that connect many accounts
+
+Everything above assumes you hold the key for an account you control. If you're building an app that connects *your customers'* DocJacket accounts — a mobile app, a portal, a CRM integration you sell — minting a key per customer by hand doesn't scale, and it puts you in the business of storing their credentials.
+
+Use OAuth instead. Your app registers once; each user signs in and authorizes their own account; you receive an access token scoped to that account. Same operations, same `read` / `draft` / `actions` scopes, and the user can disconnect you at any time without anyone rotating a key.
+
+The tokens work on the REST API exactly as an `mcp_at_` key does — put them in the same `Authorization: Bearer …` header. The full flow, including registration, PKCE, refresh rotation, and revocation, is documented in [How OAuth works](/docs/ai-access/oauth).
+
+Two things worth knowing before you build:
+
+- **Refresh tokens rotate.** Every refresh returns a new one and retires the old. Presenting a spent refresh token is treated as a stolen-credential replay and disconnects that user, so store the new token before you use it and never retry a failed refresh with the old one.
+- **A token can stop working before it expires.** We re-check the user's membership on every call, so if they're removed from the organization access ends immediately. Treat a `401` as "this account needs reconnecting", not as a transient error to retry.
+
 ## Partners
 
 White-label partners authenticate with a separate reseller key (`rsk_…`) that spans every organization in their book of business — see the [Partner API](./reseller.mdx).
+
+Mint one yourself in the partner console under **API keys**. It's shown once and stored as a hash, so give each system its own key and revoke them independently. A partner key never reads deal data — to act inside a customer's account, use an organization key or an OAuth token for that account.
 
 ---
 
@@ -9018,20 +9041,21 @@ For request and response schemas, error codes, and examples, read the [raw speci
 
 ## Authentication
 
-Every request carries an API key as a bearer token:
+Every request carries a bearer token:
 
 ```
 Authorization: Bearer mcp_at_YOUR_KEY
 ```
 
-Two credential types:
+Three credential types:
 
-| Key | Prefix | Use |
+| Credential | Prefix | Use |
 |---|---|---|
 | **Organization key** | `mcp_at_…` | Acts within a single organization. Mint one under **Settings → Advanced → API Keys**. Covers every section except Organizations (Partner). |
+| **OAuth access token** | — | Reaches the same operations with the same scopes, but each user authorizes your app instead of pasting a key. This is the one to use when your app serves many accounts. See [How OAuth works](/docs/ai-access/oauth). |
 | **Partner key** | `rsk_…` | Cross-tenant provisioning and read for white-label partners. Accepted only on the `/api/v1/orgs/*` operations. |
 
-Organization keys carry one or more **scopes**, listed per operation in the tables below:
+Organization credentials — keys and OAuth tokens alike — carry one or more **scopes**, listed per operation in the tables below:
 
 | Scope | Grants |
 |---|---|
