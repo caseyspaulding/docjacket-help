@@ -3697,6 +3697,10 @@ You can:
 
 **Example:** Show "Submit buyer's pre-approval letter" to the buyer-side portal contact, but keep internal compliance tasks hidden.
 
+A portal-visible task also appears in the agent's **My Tasks** list on their portal hub. If you have turned on **Let agents manage tasks from their portal**, agents can check these off themselves — they still cannot edit or delete them. See [Portal for Agents](../client-portal/portal-for-agents.mdx).
+
+Leaving contact selection empty means every portal contact on the deal can see the task, and any of them can complete it when that setting is on. Select specific contacts when it should be one person's job.
+
 ## Reminders
 
 Use **Reminders** to get notified before the task is due. Reminder choices include 1, 2, 3, 5, 7, or 14 days before the due date.
@@ -9499,7 +9503,7 @@ Each transaction card can show:
 - **Closing date** — The expected closing date when present
 - **Role, type, and side** — The agent's transaction role plus deal type/side context
 - **Document count** — How many documents are visible through the portal
-- **Pending task count** — How many visible tasks remain open
+- **Pending task count** — How many portal-visible tasks remain open. Select it to open **My Tasks** for that deal
 - **Next action** — The next visible task due on the transaction, including overdue status
 - **Calendar shortcut** — A quick calendar-subscribe action for that transaction
 - **View Details** — Opens the transaction-specific branded portal
@@ -9507,6 +9511,53 @@ Each transaction card can show:
 ![Agent portal hub with active transaction cards, calendar shortcuts, document counts, pending task counts, and View Details actions](/img/client-portal/agent-portal-hub.png)
 
 The hub is meant for quick triage. Agents can see which deals are active, how many visible documents and pending tasks are available, then use **Calendar** for the transaction feed or **View Details** to open the full portal for one deal.
+
+## My Tasks
+
+The hub has a third view alongside **Active** and **All Deals**. **My Tasks** collects every portal-visible task from every deal the agent is on into one list, grouped by when it is due:
+
+- **Overdue**
+- **Today**
+- **This week**
+- **Later**
+- **No due date**
+
+Each row names its property, so an agent working five deals can see everything on their plate in one place instead of opening each portal in turn. Agents can also reach it by selecting the pending count on any transaction card, which opens the list for that deal.
+
+![Agent portal My Tasks list grouped into Overdue, Today, This week, and Later, each row showing its property address, priority, and due date, with a collapsed Completed group at the bottom](/img/client-portal/agent-portal-my-tasks.png)
+
+In this example the agent added **Chase HOA docs from the seller** themselves — their own tasks are marked **Yours** and carry edit and delete controls. Everything else came from the coordinator, so the agent can complete it but not change it.
+
+A task appears here on the same terms it appears anywhere else in the portal: it must be portal-visible (the eye icon on the task), and if you scoped it to specific portal contacts, only those contacts see it. Completed work shows in a collapsed **Completed** group when you have turned on **Show completed tasks in the portal**.
+
+## Letting agents manage tasks
+
+By default, agents read the list and you check things off. You can let agents act on it instead.
+
+Go to **Settings → Organization → Client portal** and turn on **Let agents manage tasks from their portal**. It is off until you turn it on, and it applies to your whole organization.
+
+With it on, an agent can:
+
+- **Check off the tasks you gave them**, and reopen one they ticked by mistake
+- **Keep their own to-do list on the deal** — add, edit, and delete tasks they created themselves
+
+An agent can never:
+
+- **Edit or delete your tasks.** Your checklist is yours; they can only complete or reopen those items
+- **Reopen a task you skipped.** Skipping is a decision you made, and it stays made
+- **Expose their own notes to your client.** Tasks an agent adds for themselves never appear on the client portal
+
+### What you see
+
+Tasks an agent adds show up in the deal's **Tasks** tab and on your **Tasks** page, marked **Added by** their name, so outside work never reads as part of your own checklist.
+
+They stay out of your Morning Brief, your calendar, and your overdue counts. An agent's personal reminder is not work you owe, and it will not push your real work out of your morning email.
+
+### Before you turn it on
+
+A portal link is designed to be bookmarked, which also means it can be forwarded. Anyone holding an agent's link can do the things listed above. If a link reaches someone it should not have, revoke it from the contact's portal-link controls — that cuts off access for that agent immediately, reading included.
+
+Agents are limited to 50 of their own tasks per deal.
 
 ## Transaction detail portal
 
