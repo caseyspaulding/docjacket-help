@@ -9524,6 +9524,10 @@ The hub has a third view alongside **Active** and **All Deals**. **My Tasks** co
 
 Each row names its property, so an agent working five deals can see everything on their plate in one place instead of opening each portal in turn. Agents can also reach it by selecting the pending count on any transaction card, which opens the list for that deal.
 
+![Agent portal My Tasks list grouped into Overdue, Today, This week, and Later, each row showing its property address, priority, and due date, with a collapsed Completed group at the bottom](/img/client-portal/agent-portal-my-tasks.png)
+
+In this example the agent added **Chase HOA docs from the seller** themselves — their own tasks are marked **Yours** and carry edit and delete controls. Everything else came from the coordinator, so the agent can complete it but not change it.
+
 A task appears here on the same terms it appears anywhere else in the portal: it must be portal-visible (the eye icon on the task), and if you scoped it to specific portal contacts, only those contacts see it. Completed work shows in a collapsed **Completed** group when you have turned on **Show completed tasks in the portal**.
 
 ## Letting agents manage tasks
