@@ -37,6 +37,10 @@ You can:
 
 **Example:** Show "Submit buyer's pre-approval letter" to the buyer-side portal contact, but keep internal compliance tasks hidden.
 
+A portal-visible task also appears in the agent's **My Tasks** list on their portal hub. If you have turned on **Let agents manage tasks from their portal**, agents can check these off themselves — they still cannot edit or delete them. See [Portal for Agents](../client-portal/portal-for-agents.mdx).
+
+Leaving contact selection empty means every portal contact on the deal can see the task, and any of them can complete it when that setting is on. Select specific contacts when it should be one person's job.
+
 ## Reminders
 
 Use **Reminders** to get notified before the task is due. Reminder choices include 1, 2, 3, 5, 7, or 14 days before the due date.
