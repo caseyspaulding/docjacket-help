@@ -26,7 +26,7 @@ The organization-wide **Tasks** page is for daily work across all transactions. 
 ## Common actions
 
 - Quick-add a one-off task from a transaction
-- Use **Add checklist** to add a saved task workflow
+- Use **Add Playbook** to add a saved task workflow
 - Generate suggested tasks for the transaction
 - Complete, skip, or reopen tasks
 - Assign tasks to team members

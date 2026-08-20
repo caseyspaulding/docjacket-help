@@ -29,14 +29,14 @@ When the template is applied, DocJacket creates the calculated key dates and any
 
 ## Adding Playbook tasks from the Tasks tab
 
-The transaction **Tasks** tab also has **Add checklist**. That picker is task-focused:
+The transaction **Tasks** tab also has **Add Playbook**. That picker is task-focused:
 
 - You can select one or more Playbooks.
 - The created tasks stay grouped under the Playbook name.
 - Due dates calculate from the transaction's existing key dates when the Playbook has due-date rules.
 - Mismatched or milestone-only templates may still appear, but DocJacket creates only what the template contains.
 
-Use **Generate Timeline** from Overview for key-date-and-task timeline setup. Use **Add checklist** from Tasks when you mainly want to add saved task workflows to an existing transaction.
+Use **Generate Timeline** from Overview for key-date-and-task timeline setup. Use **Add Playbook** from Tasks when you mainly want to add saved task workflows to an existing transaction.
 
 ## What's in a template
 
