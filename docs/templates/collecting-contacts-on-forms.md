@@ -1,6 +1,6 @@
 ---
 sidebar_label: Collecting Contacts on Forms
-sidebar_position: 7
+sidebar_position: 8
 description: How the Contact Picker works on online forms, and how to make sure an intake form captures a person's email and phone — not just their name.
 ---
 

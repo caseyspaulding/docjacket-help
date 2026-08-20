@@ -1,6 +1,6 @@
 ---
 sidebar_label: Online Forms
-sidebar_position: 6
+sidebar_position: 7
 description: Build reusable online forms for collecting structured information, creating transactions, updating transactions, and routing Front Door submissions.
 ---
 
@@ -23,7 +23,7 @@ Forms can be standalone public intake forms or transaction-specific forms, depen
 
 The builder has three steps:
 
-- **Setup** — Basic information, branding, messages, theme, section styling, and checklist binding
+- **Setup** — Basic information, branding, messages, theme, section styling, and Checklist Binding
 - **Fields** — Field canvas, field palette, field properties, ordering, and conditional display
 - **Share** — Public or transaction-specific links, version history, and form preview
 
@@ -160,4 +160,4 @@ Use an online form when you need consistent answers from someone outside your te
 
 ## How forms fit with transactions
 
-Form responses give you structured data that can be reviewed and used by the team. For repeatable transaction workflows, combine forms with [checklists](./timeline-templates.md), [email templates](./email-templates.md), [smart fields](./smart-fields.md), and [Front Door](../front-door/leads-and-ctas.md).
+Form responses give you structured data that can be reviewed and used by the team. For repeatable transaction workflows, combine forms with [Playbooks](./timeline-templates.md), [email templates](./email-templates.md), [smart fields](./smart-fields.md), and [Front Door](../front-door/leads-and-ctas.md).

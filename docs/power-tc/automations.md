@@ -1,16 +1,16 @@
 ---
 sidebar_label: "Task automations: draft-and-review"
 sidebar_position: 5
-description: Preconfigure checklist task emails, then review or adjust them on the transaction task drawer before sending.
+description: Preconfigure Playbook task emails, then review or adjust them on the transaction task drawer before sending.
 ---
 
 # Task automations: draft-and-review
 
-Here's where the checklist and the email library connect — and where most people either under-use automation or set it up to fire blindly. The expert approach is **draft-and-review**: preconfigure the repeatable email work on the checklist template, then review or adjust it on the live transaction before anything goes out.
+Here's where the Playbook and the email library connect — and where most people either under-use automation or set it up to fire blindly. The expert approach is **draft-and-review**: preconfigure the repeatable email work on the Playbook template, then review or adjust it on the live transaction before anything goes out.
 
 ## How it works
 
-Wire an email template to a checklist template task with an **"on completion"** trigger. When that checklist is applied to a transaction, the live task carries the linked email with it. You can also open the task's **Task Details** drawer on the transaction and add, remove, or edit linked emails for that deal only.
+Wire an email template to a Playbook template task with an **"on completion"** trigger. When that Playbook is applied to a transaction, the live task carries the linked email with it. You can also open the task's **Task Details** drawer on the transaction and add, remove, or edit linked emails for that deal only.
 
 Then, when a configured task is ready to send — either from the task drawer's **View** action or from the completion flow — DocJacket:
 
@@ -23,7 +23,7 @@ Then, when a configured task is ready to send — either from the task drawer's 
 You glance at it, tweak if needed, and send. If a live task shows **Task Emails (0)**, completion will not prompt or create an email for that task.
 
 ```
-Checklist template task → On-completion email rule
+Playbook template task → On-completion email rule
                         → Applied live task shows Task Emails
                         → Review merged email
                         → Send when ready
@@ -62,14 +62,14 @@ If completing the task wouldn't normally make you send someone an email, don't a
 
 ## Wire an automation
 
-1. Open a checklist template and select a task.
+1. Open a Playbook template and select a task.
 2. Open the task's **On completion** automation section.
 3. Link the email template that should be prepared when the task is completed.
 4. Confirm the role-based recipients, smart-field coverage, and any document attachments.
 5. Leave **Require review before sending** on.
-6. Save the checklist template.
+6. Save the Playbook template.
 
-After the checklist is applied to a transaction, open that task from the transaction's **Tasks** tab. The **Task Details** drawer shows the inherited emails under **Task Emails**. From there, you can click **View** to review the merged message, or link another email template for this one transaction.
+After the Playbook is applied to a transaction, open that task from the transaction's **Tasks** tab. The **Task Details** drawer shows the inherited emails under **Task Emails**. From there, you can click **View** to review the merged message, or link another email template for this one transaction.
 
 ![Task on-completion rule with an email template, role-based recipients, and Require review before sending turned on](/img/power-tc/automations-rule.png)
 

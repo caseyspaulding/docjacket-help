@@ -15,9 +15,9 @@ Link email templates to tasks so the right email is ready at the right point in 
 Worried the system might email a client something you didn't want? It won't. By default, automations **draft** the email and hold it in your **Review queue** for one-click approve, edit, or skip — a client or agent never hears from DocJacket until you say so. Sending automatically is strictly opt-in, per email. You can also turn on an organization-wide safety switch so *every* automated email waits for review (see [Review before sending](#review-before-sending) below). This "draft-and-review" habit is how our most active coordinators send hundreds of emails with near-zero mistakes.
 :::
 
-Most task email automation starts in a checklist template, then becomes editable transaction-specific automation after the checklist is applied. Use templates for repeatable workflows; use the transaction task drawer when a real deal needs an adjustment.
+Most task email automation starts in a Playbook template, then becomes editable transaction-specific automation after the Playbook is applied. Use templates for repeatable workflows; use the transaction task drawer when a real deal needs an adjustment.
 
-![Checklist task automation settings in the reusable checklist builder](/img/templates/checklist-task-automation.png)
+![Playbook task automation settings in the reusable Playbook builder](/img/templates/checklist-task-automation.png)
 
 ## When a task email fires
 
@@ -68,7 +68,7 @@ So a task like "Title commitment received" can quietly notify you when the date 
 
 You can set the delivery mode in two places:
 
-- **On a checklist template** — open the checklist, expand the task's reminder, and use **When this fires** under the timing controls. Every deal created from that checklist inherits your choice. Set it here when it should apply to all future deals.
+- **On a Playbook template** — open the Playbook, expand the task's reminder, and use **When this fires** under the timing controls. Every deal created from that Playbook inherits your choice. Set it here when it should apply to all future deals.
 - **On a single deal** — open the transaction, click the task, and use **When this fires** in the **Task emails** section of Task Details. This changes only that one deal.
 
 ### Reading the status on a task
@@ -80,12 +80,12 @@ In the **Task emails** section, each linked email shows what has already happene
 
 If an email has already been sent, its **Review & send** button goes away — there is nothing left to send. Notify-mode emails keep the button, because a notification isn't an email.
 
-## Configuring automation in a checklist
+## Configuring automation in a Playbook
 
-Use checklist templates when the same task should prepare or schedule the same email every time the workflow is applied.
+Use Playbook templates when the same task should prepare or schedule the same email every time the workflow is applied.
 
-1. Go to **Templates > Checklists**
-1. Open a checklist in **My Checklists**
+1. Go to **Templates → Playbooks**
+1. Open a Playbook in **My Playbooks**
 1. Open the **Tasks** or **Automations** view
 1. Select the task that should trigger the email
 1. Add the email reminder
@@ -93,11 +93,11 @@ Use checklist templates when the same task should prepare or schedule the same e
 1. Set the timing — offset, anchor date, and send time
 1. Set **When this fires** — *Draft email for review* or *Just notify me in-app*
 1. Set recipients and document attachments
-1. Save the checklist
+1. Save the Playbook
 
-Shared system checklists are read-only. Copy a shared checklist before adding or changing email automations.
+Shared system Playbooks are read-only. Copy a shared Playbook before adding or changing email automations.
 
-When the checklist is applied, DocJacket copies those automation rules onto the transaction's tasks. The copied rules can then use that transaction's contacts, dates, documents, and smart-field data.
+When the Playbook is applied, DocJacket copies those automation rules onto the transaction's tasks. The copied rules can then use that transaction's contacts, dates, documents, and smart-field data.
 
 ## Adjusting automation on a transaction
 
@@ -114,7 +114,7 @@ Use the transaction task drawer when the automation exists only for one deal, or
 
 Completing a task with review-required email automation prepares the email for the **Review queue**. Setting a date on the email means it can also fire on that date — see [When a task email fires](#when-a-task-email-fires).
 
-Changes made here apply to **this deal only**. To change how future deals behave, edit the checklist template instead.
+Changes made here apply to **this deal only**. To change how future deals behave, edit the Playbook template instead.
 
 ## Recipients and documents
 
@@ -127,7 +127,7 @@ Task email automation can use:
 
 The linked email template still controls the subject, body, smart fields, and any template-level auto-attachments.
 
-Build and test the template in **Templates > Email Templates** first. The checklist automation controls decide when the email is prepared or sent, while the email template controls the content, default recipient logic, and template-level document attachments.
+Build and test the template in **Templates > Email Templates** first. The Playbook automation controls decide when the email is prepared or sent, while the email template controls the content, default recipient logic, and template-level document attachments.
 
 ### Where recipients come from
 
@@ -155,7 +155,7 @@ Either way, the promise is the same: **nothing reaches a client or agent until y
 
 ## Runtime review
 
-When the checklist is applied to a transaction, DocJacket creates the tasks and their email automation rules. Before sending or parking a draft for review, DocJacket renders smart fields against that transaction.
+When the Playbook is applied to a transaction, DocJacket creates the tasks and their email automation rules. Before sending or parking a draft for review, DocJacket renders smart fields against that transaction.
 
 If data is missing or a placeholder is unrecognized, review the email before sending. Missing transaction data should be fixed on the transaction. Unrecognized placeholders should be fixed in the email template.
 
@@ -166,10 +166,10 @@ Review-required emails appear in the topbar **Review queue** under **Ready for R
 - Use **Require review before sending** for client-facing or high-risk emails.
 - Use **Just notify me in-app** for date-based deadline heads-ups you don't want to clear off your queue — you'll still get the email when you complete the task.
 - Use **Draft email for review** for anything that should actually reach a client or agent on its date.
-- Set the delivery mode on the **checklist template** so new deals inherit it, rather than fixing each deal one at a time.
+- Set the delivery mode on the **Playbook template** so new deals inherit it, rather than fixing each deal one at a time.
 - Set **Recipients by Role** on the email template once, instead of setting recipients on every task that uses it.
 - Test the linked [email template](../templates/email-templates.md) before attaching it to automation.
-- Combine email automation with [checklists](./task-templates.mdx) to set up entire email workflows for a transaction type.
+- Combine email automation with [Playbooks](./task-templates.mdx) to set up entire email workflows for a transaction type.
 
 ## If an email didn't appear
 

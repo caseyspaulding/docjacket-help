@@ -1,20 +1,20 @@
 ---
-sidebar_label: Build a checklist template matrix
+sidebar_label: Build a Playbook template matrix
 sidebar_position: 1
-description: Stop running deals from your head. Build a set of reusable checklists — one for each kind of deal you handle — so every new file starts fully structured.
+description: Stop running deals from your head. Build a set of reusable Playbooks — one for each kind of deal you handle — so every new file starts fully structured.
 ---
 
-# Build a checklist template matrix
+# Build a Playbook template matrix
 
-The difference between a TC who feels buried and one who runs 25+ deals calmly isn't effort — it's **encoding**. The expert moves their repeatable process into DocJacket *once*, so every new file starts fully structured. The foundation of that is your checklist templates.
+The difference between a TC who feels buried and one who runs 25+ deals calmly isn't effort — it's **encoding**. The expert moves their repeatable process into DocJacket *once*, so every new file starts fully structured. The foundation of that is your Playbook templates.
 
 :::tip The big idea
-Don't have *a* checklist. Have a **matrix** of them — one for each kind of deal you actually handle.
+Don't have *a* Playbook. Have a **matrix** of them — one for each kind of deal you actually handle.
 :::
 
-## Why one checklist isn't enough
+## Why one Playbook isn't enough
 
-A single generic checklist forces a choice on every file: either it's missing steps for some deal types, or it's cluttered with steps that don't apply. A matrix solves that — the right file gets the right list, with nothing irrelevant and nothing missing.
+A single generic Playbook forces a choice on every file: either it's missing steps for some deal types, or it's cluttered with steps that don't apply. A matrix solves that — the right file gets the right list, with nothing irrelevant and nothing missing.
 
 Our most productive coordinators organize their templates along four axes:
 
@@ -49,7 +49,7 @@ You don't build the whole matrix on day one. Start with the four that cover most
 3. **Listing**
 4. **Your busiest client or team**
 
-Then clone-and-tweak. Every time you notice you're hand-adjusting the same checklist the same way for a certain kind of deal, that's your signal to save it as its own template.
+Then clone-and-tweak. Every time you notice you're hand-adjusting the same Playbook the same way for a certain kind of deal, that's your signal to save it as its own template.
 
 ## How to create a template
 
@@ -58,7 +58,7 @@ Then clone-and-tweak. Every time you notice you're hand-adjusting the same check
 3. Name it clearly along your axes — e.g. `Buyer Side — Traditional` or `Seller Side — Spanish`.
 4. Build out the phases and tasks (covered in the [next article](./phase-backbone.md)).
 
-![Checklists list showing several named templates — buyer side, seller side, listing, and a client team template](/img/power-tc/template-matrix-list.png)
+![Playbooks list showing several named templates — buyer side, seller side, listing, and a client team template](/img/power-tc/template-matrix-list.png)
 
 ## Next
 

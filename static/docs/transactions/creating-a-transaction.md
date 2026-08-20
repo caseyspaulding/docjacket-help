@@ -57,5 +57,5 @@ You can fill in the rest later — contacts, documents, key dates, and tasks can
 Once your transaction is created, you'll land on the [Transaction Overview](./transaction-overview.mdx). From there, you'll typically want to:
 
 1. [Add contacts](/docs/contacts) — buyers, sellers, agents, title company, lender
-2. [Apply a checklist](/docs/templates/task-templates) — sets up reusable task work for the deal
+2. [Apply a Playbook](/docs/templates/task-templates) — sets up reusable task work for the deal
 3. [Upload documents](/docs/documents/uploading-documents) — contracts, disclosures, and other files

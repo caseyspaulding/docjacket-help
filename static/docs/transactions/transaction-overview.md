@@ -18,16 +18,16 @@ The Overview tab is where most TCs spend their time. It shows everything importa
 The Overview is customizable, so your organization may hide, pin, or collapse some sections. Common sections include:
 
 ### Closing Timeline
-The closing timeline appears near the top of the Overview when the section is visible. It shows transaction key dates, status, missing-date warnings, linked task progress, reminders, and the checklist template that created the timeline when one has been applied.
+The closing timeline appears near the top of the Overview when the section is visible. It shows transaction key dates, status, missing-date warnings, linked task progress, reminders, and the Playbook template that created the timeline when one has been applied.
 
-Use **Generate Timeline** to calculate key dates and linked tasks from one checklist template. The confirmation step shows the transaction anchor dates, key-date count, task count, owner assignments, phases, and the replacement option before anything is created.
+Use **Generate Timeline** to calculate key dates and linked tasks from one Playbook template. The confirmation step shows the transaction anchor dates, key-date count, task count, owner assignments, phases, and the replacement option before anything is created.
 
 The timeline has two views:
 
 - **Vertical checklist view** — A list of key dates with status, phase, governed Key Date Type, linked tasks, reminders, and drag handles for visual order.
 - **Pipeline view** — A horizontal visual timeline for scanning complete, upcoming, overdue, needs-date, and not-applicable items.
 
-Use **Add** to add a one-off key date. Use **Edit Template** when the transaction timeline came from a checklist and you want to change the reusable template. Use **Save as Template** to turn the transaction's current key dates and tasks into a reusable checklist.
+Use **Add** to add a one-off key date. Use **Edit Template** when the transaction timeline came from a Playbook and you want to change the reusable template. Use **Save as Template** to turn the transaction's current key dates and tasks into a reusable Playbook.
 
 ### Risk Insights
 When a transaction has a stored risk assessment, a risk chip appears in the transaction header. Click it to review the summary, risk factors, mitigations, recommendations, and to re-run the assessment.

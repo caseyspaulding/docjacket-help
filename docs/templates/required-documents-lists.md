@@ -1,6 +1,6 @@
 ---
 sidebar_label: Required Documents Lists
-sidebar_position: 9
+sidebar_position: 10
 description: Create reusable required document lists for each transaction type, side, state, financing type, and workflow.
 ---
 
@@ -31,7 +31,7 @@ Document names are simple placeholders, such as:
 - Appraisal
 - Closing Disclosure
 
-Keep names close to what your team already calls the files. That makes the transaction checklist easier to scan and makes linked uploads easier to recognize.
+Keep names close to what your team already calls the files. That makes the transaction Playbook easier to scan and makes linked uploads easier to recognize.
 
 ## Applicability filters
 

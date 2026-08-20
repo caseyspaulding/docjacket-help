@@ -1,6 +1,6 @@
 ---
 sidebar_label: Applying Form Submissions
-sidebar_position: 8
+sidebar_position: 9
 description: Review an online form submission and map its answers onto a transaction — contacts, property details, financials, custom fields, status, and dates.
 ---
 
@@ -48,11 +48,11 @@ There are two ways to get contingency deadlines onto a transaction from a form �
 **Or capture an actual calendar date.** If the contract gives fixed dates, add a **Date** field for each deadline (Inspection, Financing, Appraisal, Closing, Contract, and so on) and map it to that key date. DocJacket writes the value straight to the deal's [Key Dates](../transactions/key-dates-and-financials.mdx) — on an existing transaction (map on the **Forms** tab and apply) or as the deal is created from an intake form.
 
 :::tip Use the right target for day counts
-Day-count auto-calculation happens when you map the number field to a **Periods (days)** target above — a number mapped to a plain custom field just stays a number. If you need a day-count deadline that isn't in that list, use a [checklist / timeline template](./timeline-templates.md) with an anchor + offset rule (e.g. *Inspection Deadline = Effective Date + 10 calendar days*). See [Contingencies & Repairs](../transactions/contingencies-and-repairs.mdx).
+Day-count auto-calculation happens when you map the number field to a **Periods (days)** target above — a number mapped to a plain custom field just stays a number. If you need a day-count deadline that isn't in that list, use a [Playbook / timeline template](./timeline-templates.md) with an anchor + offset rule (e.g. *Inspection Deadline = Effective Date + 10 calendar days*). See [Contingencies & Repairs](../transactions/contingencies-and-repairs.mdx).
 :::
 
 ## Tips
 
 - Map **contacts, financials, and deadlines** on the Forms tab of an existing deal — they apply immediately.
-- The contract gives **day counts**? Map a number field to a **Periods (days)** target and DocJacket calculates the deadline. Only need a day-count that isn't a recognized period? Use a [checklist](./timeline-templates.md) with anchor-date rules instead.
+- The contract gives **day counts**? Map a number field to a **Periods (days)** target and DocJacket calculates the deadline. Only need a day-count that isn't a recognized period? Use a [Playbook](./timeline-templates.md) with anchor-date rules instead.
 - A form field's *type* isn't enforced against its target — point a **Date** field at a date target (or a number field at a Periods target) so the value is read correctly.

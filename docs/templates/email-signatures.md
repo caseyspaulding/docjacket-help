@@ -1,6 +1,6 @@
 ---
 sidebar_label: Email Signatures
-sidebar_position: 5
+sidebar_position: 6
 description: Create branded DocJacket email signatures and apply them automatically when you send transaction and task emails to clients and agents.
 ---
 

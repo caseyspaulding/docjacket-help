@@ -1,12 +1,12 @@
 ---
 sidebar_label: Key Date Library
-sidebar_position: 3
+sidebar_position: 4
 description: Build reusable key date rules with anchor dates, offsets, business-day handling, and governed key date types.
 ---
 
 # Key Date Library
 
-The Key Date Library stores individual reusable date rules. These are the building blocks that checklist templates use to create a transaction timeline.
+The Key Date Library stores individual reusable date rules. These are the building blocks that Playbook templates use to create a transaction timeline.
 
 Examples:
 
@@ -14,7 +14,7 @@ Examples:
 - Possession Date = Closing Date + 1 business day
 - Inspection Deadline = Effective Date + 10 calendar days
 
-A key date template is the date-logic layer. A checklist is the workflow layer that consumes those dates and attaches tasks, due-date offsets, and email automation.
+A key date template is the date-logic layer. A Playbook is the workflow layer that consumes those dates and attaches tasks, due-date offsets, and email automation.
 
 ## Key Date Library page
 
@@ -95,7 +95,7 @@ Use **Key Date Type** when the date maps to a standard DocJacket concept such as
 
 Governed types help DocJacket connect the same concept across:
 
-- Checklists
+- Playbooks
 - Transactions
 - Calendar visibility
 - Reports
@@ -107,7 +107,7 @@ The name can still match your team's language. If the name looks like a known ke
 Leave **Key Date Type** blank for organization-specific dates that do not map to a standard concept.
 
 :::tip Set a governed type whenever you can
-A governed **Key Date Type** is what connects the same date across checklists, the calendar, reports, smart fields, and integrations. The name can still match your team's language — the type is what makes automation reliable. Only leave it blank for truly organization-specific dates.
+A governed **Key Date Type** is what connects the same date across Playbooks, the calendar, reports, smart fields, and integrations. The name can still match your team's language — the type is what makes automation reliable. Only leave it blank for truly organization-specific dates.
 :::
 
 ## State, side, priority, and status
@@ -144,9 +144,9 @@ DocJacket prevents deleting a key date while it is still referenced. If delete i
 
 Update or remove those references first, then delete the key date.
 
-## How checklists use key dates
+## How Playbooks use key dates
 
-Checklist templates consume key dates. Tasks should reference the key date they depend on instead of recreating the same date logic.
+Playbook templates consume key dates. Tasks should reference the key date they depend on instead of recreating the same date logic.
 
 Good:
 
@@ -160,12 +160,12 @@ Keeping the date rule in the Key Date Library prevents drift when the rule chang
 
 ## Custom key dates
 
-Leave **Key Date Type** blank for organization-specific dates that do not map to a standard DocJacket concept. Custom key dates can still be used in checklists and transactions, but governed types make automation, reporting, calendar sync, and smart fields more reliable.
+Leave **Key Date Type** blank for organization-specific dates that do not map to a standard DocJacket concept. Custom key dates can still be used in Playbooks and transactions, but governed types make automation, reporting, calendar sync, and smart fields more reliable.
 
 ## Tips
 
 - Use governed Key Date Types whenever the date maps to a standard transaction concept.
 - Use custom key dates for internal or state-specific events that DocJacket should not treat as a standard concept.
 - Prefer business-day rules when the contract language says business days.
-- Keep the key date rule here and let checklist tasks reference it.
-- Duplicate shared key dates instead of editing around them in a checklist.
+- Keep the key date rule here and let Playbook tasks reference it.
+- Duplicate shared key dates instead of editing around them in a Playbook.

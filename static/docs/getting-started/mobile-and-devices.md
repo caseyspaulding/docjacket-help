@@ -15,7 +15,7 @@ description: Is there a DocJacket mobile app? How DocJacket works on phones, tab
 
 ## On a phone or tablet
 
-The DocJacket interface works in a mobile browser. For heavier work — reviewing a contract, building checklists, mapping form fields — a larger screen is more comfortable, but you can check transactions, tasks, and messages on the go.
+The DocJacket interface works in a mobile browser. For heavier work — reviewing a contract, building Playbooks, mapping form fields — a larger screen is more comfortable, but you can check transactions, tasks, and messages on the go.
 
 **Tip:** add DocJacket to your phone's home screen from your browser's share menu for one-tap access that feels like an app.
 

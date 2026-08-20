@@ -1,7 +1,7 @@
 ---
 sidebar_label: Transaction Reports
 sidebar_position: 2
-description: Generate, send, and schedule transaction reports in DocJacket — with SitRep templates, section toggles, PDFs, checklists, and commission statements.
+description: Generate, send, and schedule transaction reports in DocJacket — with SitRep templates, section toggles, PDFs, Playbooks, and commission statements.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/reports/transaction-reports -->

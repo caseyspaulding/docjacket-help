@@ -72,7 +72,7 @@ You can pick from your existing contacts or create new ones on the fly.
 Use the **Tasks** tab to get the work moving:
 
 1. Add one-off tasks with the quick-add bar
-2. Use **Add checklist** when you have a reusable checklist ready
+2. Use **Add checklist** when you have a reusable Playbook ready
 3. Use **Generate** to get suggested tasks for this transaction
 4. Review due dates, assignees, priorities, and task status
 
@@ -82,7 +82,7 @@ Use the closing timeline on the **Overview** to track closing, contract, inspect
 
 ## Check your tasks
 
-Head to the **Tasks** tab. Tasks can be grouped by checklist and filtered by status or assignee.
+Head to the **Tasks** tab. Tasks can be grouped by Playbook and filtered by status or assignee.
 
 Priorities are:
 
@@ -91,9 +91,9 @@ Priorities are:
 - **Medium**
 - **Low**
 
-You can add tasks manually, add a checklist, or let AI suggest tasks based on the transaction details.
+You can add tasks manually, add a Playbook, or let AI suggest tasks based on the transaction details.
 
-![Transaction Tasks tab with checklist tasks, due dates, completion status, and task controls](/img/tasks/transaction-tasks-tab.png)
+![Transaction Tasks tab with Playbook tasks, due dates, completion status, and task controls](/img/tasks/transaction-tasks-tab.png)
 
 ## You're all set!
 

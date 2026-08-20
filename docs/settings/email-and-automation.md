@@ -67,12 +67,12 @@ Notification preferences are personal. Changing your notifications does not chan
 
 Use **Settings > Automation Rules** to create and manage rule-based notifications and messages.
 
-Automation rules can send email, SMS, or both when a transaction enters a status or when a configured checklist task is completed. Rules use active email templates, recipient logic, and delivery-channel settings.
+Automation rules can send email, SMS, or both when a transaction enters a status or when a configured Playbook task is completed. Rules use active email templates, recipient logic, and delivery-channel settings.
 
 Current rule triggers include:
 
 - **When a transaction enters a status** — Fires on future status changes only. Existing transactions already in that status are not triggered retroactively.
-- **When a checklist task is completed** — Fires when a transaction task created from the selected checklist task template is marked complete.
+- **When a Playbook task is completed** — Fires when a transaction task created from the selected Playbook task template is marked complete.
 
 Rules can send to transaction contact roles, direct email addresses, or both. Direct email entries are checked before the rule is saved, and duplicate direct addresses are collapsed case-insensitively.
 

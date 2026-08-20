@@ -2,7 +2,7 @@
 title: Templates
 sidebar_label: Overview
 sidebar_position: 1
-description: Create reusable checklists, key date rules, email templates, forms, document lists, and report templates to save time on every transaction.
+description: Create reusable Playbooks, key date rules, email templates, forms, document lists, and report templates to save time on every transaction.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/templates -->
@@ -10,31 +10,38 @@ description: Create reusable checklists, key date rules, email templates, forms,
 
 # Templates
 
-Templates save you time by letting you reuse emails, checklists, key date rules, online forms, required document lists, reports, and more. Set them up once and apply them to any transaction.
+Templates save you time by letting you reuse emails, Playbooks, key date rules, online forms, required document lists, reports, and more. Set them up once and apply them to any transaction.
 
 The **Templates** page in the sidebar is your template hub. It is organized into sections that match the cards in the app.
+
+## Playbooks
+
+- **Playbooks** — The whole process for a deal type: key dates, tasks, automations, and required documents in one place. Set it up once, then apply it to every matching transaction.
+
+:::info Looking for Checklists?
+Checklists were renamed **Playbooks** in August 2026. It's the same feature — the card
+at the top of the Templates page — and your existing checklists are under the **My
+Playbooks** tab. See [Playbooks](./timeline-templates.md).
+:::
 
 ## Communication
 
 - **Email Templates** — Reusable email content with smart fields
 - **Email Signatures** — Branded signatures for outgoing emails
+- **PDF Forms** — Office-scoped eSign/PDF form templates. Upload a blank PDF, let AI map the fields, and send for signature, auto-filled from the transaction.
 - **Online Forms** — Public and transaction-specific forms for collecting information, creating transactions, and routing Front Door submissions
 
-## Checklists & Key Dates
+## Library
 
-- **Checklists** — Master workflows for each deal type, with key dates, tasks, and automations that can be applied to transactions
-- **Key Date Library** — Individual reusable date rules, such as "Final Walkthrough = 1 business day before Closing"
-
-Checklists and the Key Date Library are separate. The Key Date Library defines reusable date logic. Checklists consume those key dates and attach the task workflow, due-date offsets, and email automation.
-
-:::note Two layers, one workflow
-The **Key Date Library** is the *date logic* (for example, "Final Walkthrough = 1 business day before Closing"). A **Checklist** is the *workflow* that consumes those dates and adds the tasks, due-date offsets, and email automation. Define a date rule once in the library, then reuse it across every checklist.
-:::
-
-## Documents
+The reusable pieces a Playbook draws on.
 
 - **Required Documents Lists** — Document requirements for different transaction types
+- **Key Date Library** — Individual reusable date rules, such as "Final Walkthrough = 1 business day before Closing"
 - **Smart Fields** — Template variables for auto-populating transaction, document, and communication data
+
+:::note Two layers, one workflow
+The **Key Date Library** is the *date logic* (for example, "Final Walkthrough = 1 business day before Closing"). A **Playbook** is the *workflow* that consumes those dates and adds the tasks, due-date offsets, and email automation. Define a date rule once in the library, then reuse it across every Playbook.
+:::
 
 ## Reports
 
@@ -42,8 +49,8 @@ The **Key Date Library** is the *date logic* (for example, "Final Walkthrough = 
 
 ## In this section
 
-- [Checklists](./timeline-templates.md) — Build reusable workflows with key dates, tasks, and automations
-- [Key Date Library](./task-templates.md) — Define reusable date rules that checklists consume
+- [Playbooks](./timeline-templates.md) — Build reusable workflows with key dates, tasks, and automations
+- [Key Date Library](./task-templates.md) — Define reusable date rules that Playbooks consume
 - [Email Templates](./email-templates.md) — Write reusable email content
 - [Email Signatures](./email-signatures.md) — Create branded signatures for outgoing email
 - [Online Forms](./online-forms.md) — Build public and transaction-specific forms for intake, updates, and Front Door CTAs

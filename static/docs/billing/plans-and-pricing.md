@@ -17,7 +17,7 @@ All paid plans include the full DocJacket feature set:
 
 - Unlimited transactions
 - AI contract extraction and task generation
-- Checklists and key date templates
+- Playbooks and key date templates
 - Document management and DocDrop
 - Client portal
 - Email integration (Gmail and Outlook)
@@ -32,7 +32,7 @@ The free plan is a great way to try DocJacket before committing. It includes:
 - **3 active transactions**, with AI contract extraction on them
 - **Up to 2 team members**
 - Unlimited intake forms and unlimited client & agent portals
-- Email automation, templates, and checklist templates
+- Email automation, templates, and Playbook templates
 
 Upgrade to a paid plan for unlimited active transactions and AI extractions, SMS messaging, a custom domain, MCP access, and priority support.
 
