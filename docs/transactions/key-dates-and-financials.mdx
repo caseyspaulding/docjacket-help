@@ -21,7 +21,7 @@ The closing timeline on the Overview shows your most important transaction dates
 - **Final walkthrough** — When the final walkthrough is scheduled
 - **Other key dates** — Any additional dates relevant to the deal
 
-Some dates are governed transaction dates, also called canonical key dates. A governed key date has a standard **Key Date Type**, such as Closing Date, Effective Date, Inspection Deadline, Financing Deadline, Final Walkthrough, or Possession Date. These standard types make tasks, reminders, calendar sync, reporting, smart fields, and checklist rules use the same anchor date.
+Some dates are governed transaction dates, also called canonical key dates. A governed key date has a standard **Key Date Type**, such as Closing Date, Effective Date, Inspection Deadline, Financing Deadline, Final Walkthrough, or Possession Date. These standard types make tasks, reminders, calendar sync, reporting, smart fields, and Playbook rules use the same anchor date.
 
 Custom key dates are one-off dates for a specific deal. They can still appear on the timeline, link to tasks, and use reminders, but they do not replace governed transaction date fields.
 
@@ -32,7 +32,7 @@ arranged by dragging rows, which is deliberate — it lets you group related dat
 your office thinks about them.
 
 The side effect is that the timeline can look **out of chronological order**. This
-usually shows up after dates shift: a checklist sets the original order, then a
+usually shows up after dates shift: a Playbook sets the original order, then a
 deadline moves, and the row stays where it was rather than sliding to its new place in
 the sequence. Nothing is wrong with the dates themselves — only the display order.
 
@@ -50,7 +50,7 @@ is stale.
 
 Use the transaction edit page for governed transaction dates. On the timeline, a governed row may show **Edit on Transaction Details** instead of Delete. That means the date belongs to the transaction's canonical date fields; edit or clear it from the transaction details so DocJacket keeps the transaction record and timeline row aligned.
 
-Use the key-date drawer for custom or checklist-generated timeline dates. You can update the due date, status, notes, reminders, linked tasks, and portal note visibility. If a key date is missing its anchor, it appears as **Needs date** until the upstream transaction date is filled in.
+Use the key-date drawer for custom or Playbook-generated timeline dates. You can update the due date, status, notes, reminders, linked tasks, and portal note visibility. If a key date is missing its anchor, it appears as **Needs date** until the upstream transaction date is filled in.
 
 When you move a key date, DocJacket may show a cascade preview before saving. Review the affected tasks, downstream key dates, manually overridden dates, completed dates, and missing-rule items before applying the change. For why some dates recalculate automatically and others don't, see [Recalculating Deadlines](./recalculating-deadlines.mdx).
 

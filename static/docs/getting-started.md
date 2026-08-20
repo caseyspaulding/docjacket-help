@@ -19,7 +19,7 @@ Whether you're an independent TC juggling 30+ files or an agent keeping tabs on 
 - **Document extraction** — Upload contracts and supporting documents, then review extracted buyers, sellers, property details, key dates, financials, and contingencies before saving.
 - **Smart splitting** — Split multi-document PDFs into individual documents before extraction.
 - **Key-date timelines** — Track closing, contract, inspection, financing, appraisal, possession, and other important dates.
-- **Task management** — Add one-off tasks, apply checklists, generate suggested tasks, assign work, and track status.
+- **Task management** — Add one-off tasks, apply Playbooks, generate suggested tasks, assign work, and track status.
 - **Client portal** — Give clients and agents a branded place to see selected deal information, documents, forms, and messages.
 - **Messages and inbox** — Keep transaction communication connected to the right deal.
 - **Reports and calculators** — Prepare transaction reports, commission statements, and deal-specific calculations.

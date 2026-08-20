@@ -1,12 +1,12 @@
 ---
 sidebar_label: The 6-phase deal backbone & smart due dates
 sidebar_position: 2
-description: Give every checklist the same phase structure so any file is readable at a glance, and anchor task due dates to key dates so your schedule builds itself.
+description: Give every Playbook the same phase structure so any file is readable at a glance, and anchor task due dates to key dates so your schedule builds itself.
 ---
 
 # The 6-phase deal backbone & smart due dates
 
-A great checklist isn't just a pile of tasks — it has a **structure** that mirrors how a deal actually moves. Give every template the same backbone and any file becomes readable at a glance.
+A great Playbook isn't just a pile of tasks — it has a **structure** that mirrors how a deal actually moves. Give every template the same backbone and any file becomes readable at a glance.
 
 ## The 6 phases
 

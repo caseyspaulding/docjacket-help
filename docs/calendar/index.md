@@ -12,7 +12,7 @@ Use the Calendar to see closings, key dates, task due dates, and custom events i
 
 ## In this section
 
-- [Checklists & Key Dates](./timeline-templates.mdx) — Pre-built workflows with key dates, tasks, and automations
+- [Playbooks & Key Dates](./timeline-templates.mdx) — Pre-built workflows with key dates, tasks, and automations
 - [Key Dates List](./key-dates.md) — See upcoming and overdue key dates across every transaction
 - [Anchor Dates](./anchor-dates.md) — How one date drives all the others
 - [Calendar View](./calendar-view.mdx) — See closings, key dates, tasks, and custom events across your transactions

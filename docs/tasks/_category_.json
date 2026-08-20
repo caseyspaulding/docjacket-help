@@ -3,6 +3,6 @@
   "position": 6,
   "link": {
     "type": "generated-index",
-    "description": "Create and manage tasks and checklists for every DocJacket transaction, with templates, assignments, due dates, and waiting-item tracking."
+    "description": "Create and manage tasks and Playbooks for every DocJacket transaction, with templates, assignments, due dates, and waiting-item tracking."
   }
 }

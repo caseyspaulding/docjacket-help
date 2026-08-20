@@ -19,7 +19,7 @@ Whether you're an independent TC juggling 30+ files or an agent keeping tabs on 
 - **Document extraction** — Upload contracts and supporting documents, then review extracted buyers, sellers, property details, key dates, financials, and contingencies before saving.
 - **Smart splitting** — Split multi-document PDFs into individual documents before extraction.
 - **Key-date timelines** — Track closing, contract, inspection, financing, appraisal, possession, and other important dates.
-- **Task management** — Add one-off tasks, apply checklists, generate suggested tasks, assign work, and track status.
+- **Task management** — Add one-off tasks, apply Playbooks, generate suggested tasks, assign work, and track status.
 - **Client portal** — Give clients and agents a branded place to see selected deal information, documents, forms, and messages.
 - **Messages and inbox** — Keep transaction communication connected to the right deal.
 - **Reports and calculators** — Prepare transaction reports, commission statements, and deal-specific calculations.
@@ -152,7 +152,7 @@ You can pick from your existing contacts or create new ones on the fly.
 Use the **Tasks** tab to get the work moving:
 
 1. Add one-off tasks with the quick-add bar
-2. Use **Add checklist** when you have a reusable checklist ready
+2. Use **Add checklist** when you have a reusable Playbook ready
 3. Use **Generate** to get suggested tasks for this transaction
 4. Review due dates, assignees, priorities, and task status
 
@@ -162,7 +162,7 @@ Use the closing timeline on the **Overview** to track closing, contract, inspect
 
 ## Check your tasks
 
-Head to the **Tasks** tab. Tasks can be grouped by checklist and filtered by status or assignee.
+Head to the **Tasks** tab. Tasks can be grouped by Playbook and filtered by status or assignee.
 
 Priorities are:
 
@@ -171,9 +171,9 @@ Priorities are:
 - **Medium**
 - **Low**
 
-You can add tasks manually, add a checklist, or let AI suggest tasks based on the transaction details.
+You can add tasks manually, add a Playbook, or let AI suggest tasks based on the transaction details.
 
-![Transaction Tasks tab with checklist tasks, due dates, completion status, and task controls](/img/tasks/transaction-tasks-tab.png)
+![Transaction Tasks tab with Playbook tasks, due dates, completion status, and task controls](/img/tasks/transaction-tasks-tab.png)
 
 ## You're all set!
 
@@ -211,7 +211,7 @@ The sidebar on the left is your main navigation. Here's what each section does:
 | **Transactions** | All your deals — search, filter, and manage |
 | **Tasks** | Organization-wide task list across all transactions |
 | **Pipeline** | Board views for transaction status, task due dates, and buyer offers |
-| **Templates** | Create and manage checklists, key date rules, email templates, forms, document lists, and report templates |
+| **Templates** | Create and manage Playbooks, key date rules, email templates, forms, document lists, and report templates |
 | **Inbox** | Your message center for transaction-related emails |
 | **Contacts** | Your contact database — clients, agents, vendors |
 | **Calendar** | See all key dates, tasks, reminders, and deadlines in a calendar view |
@@ -352,7 +352,7 @@ Signer roles are configured inside e-sign form templates. They are separate from
 
 ## On a phone or tablet
 
-The DocJacket interface works in a mobile browser. For heavier work — reviewing a contract, building checklists, mapping form fields — a larger screen is more comfortable, but you can check transactions, tasks, and messages on the go.
+The DocJacket interface works in a mobile browser. For heavier work — reviewing a contract, building Playbooks, mapping form fields — a larger screen is more comfortable, but you can check transactions, tasks, and messages on the go.
 
 **Tip:** add DocJacket to your phone's home screen from your browser's share menu for one-tap access that feels like an app.
 
@@ -430,7 +430,7 @@ In SkySlope, open the loop you want to move and **download its documents** (the 
 4. DocJacket extracts the deal details — **property address, buyer/seller and agents, key dates, and price/terms** — and shows them for review
 5. Check the extracted fields, then click **Create Transaction**
 
-The new transaction opens with its documents attached, its timeline and key dates populated, and its checklist ready — the same as any deal created in DocJacket.
+The new transaction opens with its documents attached, its timeline and key dates populated, and its Playbook ready — the same as any deal created in DocJacket.
 
 :::tip Do the active files first
 You don't need to migrate closed history. Start with your **live, in-progress deals** so nothing in flight slips, then bring over others as you have time.
@@ -438,7 +438,7 @@ You don't need to migrate closed history. Start with your **live, in-progress de
 
 ## What comes over — and what doesn't
 
-- **Comes over:** the documents you upload, and everything DocJacket extracts from them — property, contacts, key dates, financials, and a checklist.
+- **Comes over:** the documents you upload, and everything DocJacket extracts from them — property, contacts, key dates, financials, and a Playbook.
 - **Doesn't come over automatically:** SkySlope-specific notes, task history, or internal comments that live only inside SkySlope and aren't in the documents. Re-add anything critical as a task or note on the DocJacket transaction.
 
 ## Other ways to bring data in
@@ -894,17 +894,17 @@ If a user says, "I uploaded a contract but no transaction appeared," first check
 
 ## Power Playbook
 
-# Build a checklist template matrix
+# Build a Playbook template matrix
 
-The difference between a TC who feels buried and one who runs 25+ deals calmly isn't effort — it's **encoding**. The expert moves their repeatable process into DocJacket *once*, so every new file starts fully structured. The foundation of that is your checklist templates.
+The difference between a TC who feels buried and one who runs 25+ deals calmly isn't effort — it's **encoding**. The expert moves their repeatable process into DocJacket *once*, so every new file starts fully structured. The foundation of that is your Playbook templates.
 
 :::tip The big idea
-Don't have *a* checklist. Have a **matrix** of them — one for each kind of deal you actually handle.
+Don't have *a* Playbook. Have a **matrix** of them — one for each kind of deal you actually handle.
 :::
 
-## Why one checklist isn't enough
+## Why one Playbook isn't enough
 
-A single generic checklist forces a choice on every file: either it's missing steps for some deal types, or it's cluttered with steps that don't apply. A matrix solves that — the right file gets the right list, with nothing irrelevant and nothing missing.
+A single generic Playbook forces a choice on every file: either it's missing steps for some deal types, or it's cluttered with steps that don't apply. A matrix solves that — the right file gets the right list, with nothing irrelevant and nothing missing.
 
 Our most productive coordinators organize their templates along four axes:
 
@@ -939,7 +939,7 @@ You don't build the whole matrix on day one. Start with the four that cover most
 3. **Listing**
 4. **Your busiest client or team**
 
-Then clone-and-tweak. Every time you notice you're hand-adjusting the same checklist the same way for a certain kind of deal, that's your signal to save it as its own template.
+Then clone-and-tweak. Every time you notice you're hand-adjusting the same Playbook the same way for a certain kind of deal, that's your signal to save it as its own template.
 
 ## How to create a template
 
@@ -948,7 +948,7 @@ Then clone-and-tweak. Every time you notice you're hand-adjusting the same check
 3. Name it clearly along your axes — e.g. `Buyer Side — Traditional` or `Seller Side — Spanish`.
 4. Build out the phases and tasks (covered in the [next article](./phase-backbone.md)).
 
-![Checklists list showing several named templates — buyer side, seller side, listing, and a client team template](/img/power-tc/template-matrix-list.png)
+![Playbooks list showing several named templates — buyer side, seller side, listing, and a client team template](/img/power-tc/template-matrix-list.png)
 
 ## Next
 
@@ -958,7 +958,7 @@ Then clone-and-tweak. Every time you notice you're hand-adjusting the same check
 
 # The 6-phase deal backbone & smart due dates
 
-A great checklist isn't just a pile of tasks — it has a **structure** that mirrors how a deal actually moves. Give every template the same backbone and any file becomes readable at a glance.
+A great Playbook isn't just a pile of tasks — it has a **structure** that mirrors how a deal actually moves. Give every template the same backbone and any file becomes readable at a glance.
 
 ## The 6 phases
 
@@ -1149,11 +1149,11 @@ This keeps the right people looped in without anyone being surprised to be on (o
 
 # Task automations: draft-and-review
 
-Here's where the checklist and the email library connect — and where most people either under-use automation or set it up to fire blindly. The expert approach is **draft-and-review**: preconfigure the repeatable email work on the checklist template, then review or adjust it on the live transaction before anything goes out.
+Here's where the Playbook and the email library connect — and where most people either under-use automation or set it up to fire blindly. The expert approach is **draft-and-review**: preconfigure the repeatable email work on the Playbook template, then review or adjust it on the live transaction before anything goes out.
 
 ## How it works
 
-Wire an email template to a checklist template task with an **"on completion"** trigger. When that checklist is applied to a transaction, the live task carries the linked email with it. You can also open the task's **Task Details** drawer on the transaction and add, remove, or edit linked emails for that deal only.
+Wire an email template to a Playbook template task with an **"on completion"** trigger. When that Playbook is applied to a transaction, the live task carries the linked email with it. You can also open the task's **Task Details** drawer on the transaction and add, remove, or edit linked emails for that deal only.
 
 Then, when a configured task is ready to send — either from the task drawer's **View** action or from the completion flow — DocJacket:
 
@@ -1166,7 +1166,7 @@ Then, when a configured task is ready to send — either from the task drawer's 
 You glance at it, tweak if needed, and send. If a live task shows **Task Emails (0)**, completion will not prompt or create an email for that task.
 
 ```
-Checklist template task → On-completion email rule
+Playbook template task → On-completion email rule
                         → Applied live task shows Task Emails
                         → Review merged email
                         → Send when ready
@@ -1205,14 +1205,14 @@ If completing the task wouldn't normally make you send someone an email, don't a
 
 ## Wire an automation
 
-1. Open a checklist template and select a task.
+1. Open a Playbook template and select a task.
 2. Open the task's **On completion** automation section.
 3. Link the email template that should be prepared when the task is completed.
 4. Confirm the role-based recipients, smart-field coverage, and any document attachments.
 5. Leave **Require review before sending** on.
-6. Save the checklist template.
+6. Save the Playbook template.
 
-After the checklist is applied to a transaction, open that task from the transaction's **Tasks** tab. The **Task Details** drawer shows the inherited emails under **Task Emails**. From there, you can click **View** to review the merged message, or link another email template for this one transaction.
+After the Playbook is applied to a transaction, open that task from the transaction's **Tasks** tab. The **Task Details** drawer shows the inherited emails under **Task Emails**. From there, you can click **View** to review the merged message, or link another email template for this one transaction.
 
 ![Task on-completion rule with an email template, role-based recipients, and Require review before sending turned on](/img/power-tc/automations-rule.png)
 
@@ -1227,12 +1227,12 @@ After the checklist is applied to a transaction, open that task from the transac
 The full playbook can look like a lot — matrices, phases, hundreds of email templates. Don't let that stop you. The coordinators who get the most out of DocJacket all started small and grew. Here's the 80/20 for your first week.
 
 :::tip You do not need to build everything
-Three or four checklists and ten emails will carry the vast majority of your files. Build those, start working, and expand as patterns emerge.
+Three or four Playbooks and ten emails will carry the vast majority of your files. Build those, start working, and expand as patterns emerge.
 :::
 
-## Day 1–2: Your core checklists
+## Day 1–2: Your core Playbooks
 
-Create **3–4 checklist templates** (see [Build a checklist template matrix](./template-matrix.md)):
+Create **3–4 Playbook templates** (see [Build a Playbook template matrix](./template-matrix.md)):
 
 - Buyer Side
 - Seller Side
@@ -1259,27 +1259,27 @@ For each one:
 
 ## Day 4–5: Wire the automations
 
-Connect each email to its checklist task with an [on-completion, draft-and-review automation](./automations.md) — and **only** on tasks that email an external party. Leave **Require approval** on.
+Connect each email to its Playbook task with an [on-completion, draft-and-review automation](./automations.md) — and **only** on tasks that email an external party. Leave **Require approval** on.
 
 ## Then: grow it
 
 The rule that builds your library over time:
 
 :::tip
-**Every time you type the same email twice, make it a template. Every time you adjust a checklist the same way twice, make it a new template.**
+**Every time you type the same email twice, make it a template. Every time you adjust a Playbook the same way twice, make it a new template.**
 :::
 
 That's how a handful of templates becomes a complete operating system — without ever sitting down to "build everything."
 
 ## You're set up
 
-Once this is in place, a new file looks like: pick the right checklist → DocJacket extracts the contract and schedules every task → complete tasks as the deal moves → review and send the drafts it prepares. That's the difference between running deals from your head and having DocJacket run them with you.
+Once this is in place, a new file looks like: pick the right Playbook → DocJacket extracts the contract and schedules every task → complete tasks as the deal moves → review and send the drafts it prepares. That's the difference between running deals from your head and having DocJacket run them with you.
 
 ---
 
 **The full series:**
 
-1. [Build a checklist template matrix](./template-matrix.md)
+1. [Build a Playbook template matrix](./template-matrix.md)
 2. [The 6-phase deal backbone & smart due dates](./phase-backbone.md)
 3. [Your email template library](./email-library.md)
 4. [Role-based recipients & CC yourself](./role-recipients.md)
@@ -1388,7 +1388,7 @@ You can fill in the rest later — contacts, documents, key dates, and tasks can
 Once your transaction is created, you'll land on the [Transaction Overview](./transaction-overview.mdx). From there, you'll typically want to:
 
 1. [Add contacts](/docs/contacts) — buyers, sellers, agents, title company, lender
-2. [Apply a checklist](/docs/templates/task-templates) — sets up reusable task work for the deal
+2. [Apply a Playbook](/docs/templates/task-templates) — sets up reusable task work for the deal
 3. [Upload documents](/docs/documents/uploading-documents) — contracts, disclosures, and other files
 
 ---
@@ -1404,16 +1404,16 @@ The Overview tab is where most TCs spend their time. It shows everything importa
 The Overview is customizable, so your organization may hide, pin, or collapse some sections. Common sections include:
 
 ### Closing Timeline
-The closing timeline appears near the top of the Overview when the section is visible. It shows transaction key dates, status, missing-date warnings, linked task progress, reminders, and the checklist template that created the timeline when one has been applied.
+The closing timeline appears near the top of the Overview when the section is visible. It shows transaction key dates, status, missing-date warnings, linked task progress, reminders, and the Playbook template that created the timeline when one has been applied.
 
-Use **Generate Timeline** to calculate key dates and linked tasks from one checklist template. The confirmation step shows the transaction anchor dates, key-date count, task count, owner assignments, phases, and the replacement option before anything is created.
+Use **Generate Timeline** to calculate key dates and linked tasks from one Playbook template. The confirmation step shows the transaction anchor dates, key-date count, task count, owner assignments, phases, and the replacement option before anything is created.
 
 The timeline has two views:
 
 - **Vertical checklist view** — A list of key dates with status, phase, governed Key Date Type, linked tasks, reminders, and drag handles for visual order.
 - **Pipeline view** — A horizontal visual timeline for scanning complete, upcoming, overdue, needs-date, and not-applicable items.
 
-Use **Add** to add a one-off key date. Use **Edit Template** when the transaction timeline came from a checklist and you want to change the reusable template. Use **Save as Template** to turn the transaction's current key dates and tasks into a reusable checklist.
+Use **Add** to add a one-off key date. Use **Edit Template** when the transaction timeline came from a Playbook and you want to change the reusable template. Use **Save as Template** to turn the transaction's current key dates and tasks into a reusable Playbook.
 
 ### Risk Insights
 When a transaction has a stored risk assessment, a risk chip appears in the transaction header. Click it to review the summary, risk factors, mitigations, recommendations, and to re-run the assessment.
@@ -1478,7 +1478,7 @@ The closing timeline on the Overview shows your most important transaction dates
 - **Final walkthrough** — When the final walkthrough is scheduled
 - **Other key dates** — Any additional dates relevant to the deal
 
-Some dates are governed transaction dates, also called canonical key dates. A governed key date has a standard **Key Date Type**, such as Closing Date, Effective Date, Inspection Deadline, Financing Deadline, Final Walkthrough, or Possession Date. These standard types make tasks, reminders, calendar sync, reporting, smart fields, and checklist rules use the same anchor date.
+Some dates are governed transaction dates, also called canonical key dates. A governed key date has a standard **Key Date Type**, such as Closing Date, Effective Date, Inspection Deadline, Financing Deadline, Final Walkthrough, or Possession Date. These standard types make tasks, reminders, calendar sync, reporting, smart fields, and Playbook rules use the same anchor date.
 
 Custom key dates are one-off dates for a specific deal. They can still appear on the timeline, link to tasks, and use reminders, but they do not replace governed transaction date fields.
 
@@ -1489,7 +1489,7 @@ arranged by dragging rows, which is deliberate — it lets you group related dat
 your office thinks about them.
 
 The side effect is that the timeline can look **out of chronological order**. This
-usually shows up after dates shift: a checklist sets the original order, then a
+usually shows up after dates shift: a Playbook sets the original order, then a
 deadline moves, and the row stays where it was rather than sliding to its new place in
 the sequence. Nothing is wrong with the dates themselves — only the display order.
 
@@ -1507,7 +1507,7 @@ is stale.
 
 Use the transaction edit page for governed transaction dates. On the timeline, a governed row may show **Edit on Transaction Details** instead of Delete. That means the date belongs to the transaction's canonical date fields; edit or clear it from the transaction details so DocJacket keeps the transaction record and timeline row aligned.
 
-Use the key-date drawer for custom or checklist-generated timeline dates. You can update the due date, status, notes, reminders, linked tasks, and portal note visibility. If a key date is missing its anchor, it appears as **Needs date** until the upstream transaction date is filled in.
+Use the key-date drawer for custom or Playbook-generated timeline dates. You can update the due date, status, notes, reminders, linked tasks, and portal note visibility. If a key date is missing its anchor, it appears as **Needs date** until the upstream transaction date is filled in.
 
 When you move a key date, DocJacket may show a cascade preview before saving. Review the affected tasks, downstream key dates, manually overridden dates, completed dates, and missing-rule items before applying the change. For why some dates recalculate automatically and others don't, see [Recalculating Deadlines](./recalculating-deadlines.mdx).
 
@@ -1613,7 +1613,7 @@ Because it's one record and not two, there's no separate listing left behind. If
 ## Tips
 
 - Use transaction filters instead of looking for a separate Listings page.
-- Use checklists and required document lists that are built for listing workflows.
+- Use Playbooks and required document lists that are built for listing workflows.
 - Keep listing documents and disclosure packages in the same Documents tab as the rest of the transaction files.
 
 ---
@@ -1737,7 +1737,7 @@ To find the listing afterward, open **Transactions** and filter the type to **Li
 
 Often the "purchase" and the "listing" are the **same record**: you took a listing, it went under contract, and now the buyer has backed out. You want it to go back to being an active listing — still in your pipeline, with its tasks and key dates intact.
 
-In that case, **don't cancel the transaction.** Cancelling is a terminal status, so it winds the deal down — open tasks become **Skipped**, key dates become **Not Applicable**, and reminders and scheduled emails are **deleted**. Moving the transaction back to an open status afterward does **not** automatically restore any of that, so you'd end up rebuilding your listing checklist by hand.
+In that case, **don't cancel the transaction.** Cancelling is a terminal status, so it winds the deal down — open tasks become **Skipped**, key dates become **Not Applicable**, and reminders and scheduled emails are **deleted**. Moving the transaction back to an open status afterward does **not** automatically restore any of that, so you'd end up rebuilding your listing Playbook by hand.
 
 Instead, just move the deal **back to an active status**:
 
@@ -1763,7 +1763,7 @@ A common surprise: you update the **Contract Date** or **Closing Date**, but the
 
 ## Two kinds of dates
 
-- **Computed dates** come from a [checklist / timeline template](../templates/timeline-templates.md). Each is defined as a rule — an *anchor* (like Effective Date or Closing Date) plus an offset, e.g. *Inspection Deadline = Effective Date + 10 days*. Because a computed date knows its anchor, it can recalculate.
+- **Computed dates** come from a [Playbook / timeline template](../templates/timeline-templates.md). Each is defined as a rule — an *anchor* (like Effective Date or Closing Date) plus an offset, e.g. *Inspection Deadline = Effective Date + 10 days*. Because a computed date knows its anchor, it can recalculate.
 - **Manual dates** were typed in by hand or filled in from contract extraction. They're just a fixed date with no anchor, so nothing ties them to your contract or closing date.
 
 **Only computed dates recalculate.** Manual dates stay put until you change them yourself.
@@ -1773,7 +1773,7 @@ A common surprise: you update the **Contract Date** or **Closing Date**, but the
 When you edit a key date — say you push Closing back a week — DocJacket automatically recalculates everything built to depend on it:
 
 - **Computed key dates** anchored to it shift by their rule
-- **Task due dates** that were anchored to it (from a checklist) move too
+- **Task due dates** that were anchored to it (from a Playbook) move too
 - DocJacket may show a **cascade preview** first, so you can review the affected dates and tasks before saving
 
 Dates and tasks with a plain fixed date — and any date you've manually overridden — are left alone.
@@ -1782,7 +1782,7 @@ Dates and tasks with a plain fixed date — and any date you've manually overrid
 
 If you changed the contract or closing date and the other deadlines didn't follow, those deadlines were **manual** (typed or extracted) with no anchor. To fix them:
 
-1. **Apply a checklist / timeline template** to the transaction. The template stamps the anchor + offset rules, so those deadlines become computed dates that recalculate from your contract/closing date from then on. See [Checklists](../templates/timeline-templates.md).
+1. **Apply a Playbook / timeline template** to the transaction. The template stamps the anchor + offset rules, so those deadlines become computed dates that recalculate from your contract/closing date from then on. See [Playbooks](../templates/timeline-templates.md).
 2. Or **edit each deadline by hand** — manual dates won't move on their own.
 
 If a key date *is* computed but shows a stale value because it was manually overridden, open its drawer and use **Overridden — reset** to recompute it from its anchor.
@@ -1795,7 +1795,7 @@ To put them back in date order, **drag the handle on each row** to reorder the t
 
 ## A note on task due dates
 
-A task's **Due Date** in the task drawer is a single date you set directly (and can clear). Tasks that got their due date from a checklist template are anchored to a key date and recompute automatically when that key date moves. If a task keeps snapping back to a key date and you want a permanently fixed date, that anchor lives on the [task template](../templates/task-templates.md) — adjust it there.
+A task's **Due Date** in the task drawer is a single date you set directly (and can clear). Tasks that got their due date from a Playbook template are anchored to a key date and recompute automatically when that key date moves. If a task keeps snapping back to a key date and you want a permanently fixed date, that anchor lives on the [task template](../templates/task-templates.md) — adjust it there.
 
 See also [Key Dates & Financials](./key-dates-and-financials.mdx).
 
@@ -1826,7 +1826,7 @@ Splitting one closing into two transactions means maintaining documents, contact
 
 ## One thing to do manually
 
-Applying a checklist doesn't automatically stack two checklists for a Dual deal — it picks a single default. So **apply your buyer-side checklist and your seller-side checklist yourself** so both sets of tasks and deadlines land on the transaction. See [Checklists](../templates/timeline-templates.md).
+Applying a Playbook doesn't automatically stack two Playbooks for a Dual deal — it picks a single default. So **apply your buyer-side Playbook and your seller-side Playbook yourself** so both sets of tasks and deadlines land on the transaction. See [Playbooks](../templates/timeline-templates.md).
 
 ## When two transactions make sense
 
@@ -2920,7 +2920,7 @@ Use the Calendar to see closings, key dates, task due dates, and custom events i
 
 ## In this section
 
-- [Checklists & Key Dates](./timeline-templates.mdx) — Pre-built workflows with key dates, tasks, and automations
+- [Playbooks & Key Dates](./timeline-templates.mdx) — Pre-built workflows with key dates, tasks, and automations
 - [Key Dates List](./key-dates.md) — See upcoming and overdue key dates across every transaction
 - [Anchor Dates](./anchor-dates.md) — How one date drives all the others
 - [Calendar View](./calendar-view.mdx) — See closings, key dates, tasks, and custom events across your transactions
@@ -2928,11 +2928,11 @@ Use the Calendar to see closings, key dates, task due dates, and custom events i
 
 ---
 
-# Checklists & Key Dates
+# Playbooks & Key Dates
 
-Checklist templates are pre-built workflows for different transaction types. Use one on a transaction and DocJacket can create the key dates, tasks, due-date rules, and automations that belong to that deal.
+Playbook templates are pre-built workflows for different transaction types. Use one on a transaction and DocJacket can create the key dates, tasks, due-date rules, and automations that belong to that deal.
 
-The **Key Date Library** holds reusable date rules. **Checklists** consume those key dates and add the tasks, due-date offsets, phases, assignments, and automation that use them.
+The **Key Date Library** holds reusable date rules. **Playbooks** consume those key dates and add the tasks, due-date offsets, phases, assignments, and automation that use them.
 
 ## Generating a closing timeline from Overview
 
@@ -2940,21 +2940,21 @@ The **Key Date Library** holds reusable date rules. **Checklists** consume those
 2. Go to the **Overview** tab
 3. Find the closing timeline near the top of the Overview
 4. Click **Generate Timeline**
-5. Choose a checklist template that matches the transaction type, side, and state
+5. Choose a Playbook template that matches the transaction type, side, and state
 6. Review the anchor dates, key dates, task counts, owner assignments, phases, and replacement option
 7. Apply the template
 
-This flow applies one checklist template at a time. It is the best path when you want DocJacket to create or replace the transaction's key-date timeline and linked task workflow from the transaction's anchor dates.
+This flow applies one Playbook template at a time. It is the best path when you want DocJacket to create or replace the transaction's key-date timeline and linked task workflow from the transaction's anchor dates.
 
-When the template is applied, DocJacket creates the calculated key dates and any linked tasks for that transaction. If the transaction already has checklist-generated items, the replacement option removes previously-applied template items while preserving manually added items and dates extracted from the contract.
+When the template is applied, DocJacket creates the calculated key dates and any linked tasks for that transaction. If the transaction already has Playbook-generated items, the replacement option removes previously-applied template items while preserving manually added items and dates extracted from the contract.
 
-## Adding checklist tasks from the Tasks tab
+## Adding Playbook tasks from the Tasks tab
 
 The transaction **Tasks** tab also has **Add checklist**. That picker is task-focused:
 
-- You can select one or more checklists.
-- The created tasks stay grouped under the checklist name.
-- Due dates calculate from the transaction's existing key dates when the checklist has due-date rules.
+- You can select one or more Playbooks.
+- The created tasks stay grouped under the Playbook name.
+- Due dates calculate from the transaction's existing key dates when the Playbook has due-date rules.
 - Mismatched or milestone-only templates may still appear, but DocJacket creates only what the template contains.
 
 Use **Generate Timeline** from Overview for key-date-and-task timeline setup. Use **Add checklist** from Tasks when you mainly want to add saved task workflows to an existing transaction.
@@ -2985,7 +2985,7 @@ Templates are a starting point. You can always add custom key dates for dates th
 2. Enter the key date name, Key Date Type if applicable, category, date, position, and description
 3. Open the key-date drawer to link tasks, add reminders, or adjust notes
 
-For reusable date logic, manage the rule in **Templates > Key Date Library** so future checklists can use the same definition.
+For reusable date logic, manage the rule in **Templates > Key Date Library** so future Playbooks can use the same definition.
 
 ## When dates change
 
@@ -2995,7 +2995,7 @@ If a moved key date affects linked tasks or downstream key dates, DocJacket show
 
 ## Creating your own templates
 
-Go to **Templates > Checklists** to create custom checklist templates for your workflow. Use **Templates > Key Date Library** to manage reusable key date types and rules that checklists can consume.
+Go to **Templates → Playbooks** to create custom Playbook templates for your workflow. Use **Templates > Key Date Library** to manage reusable key date types and rules that Playbooks can consume.
 
 ---
 
@@ -3043,7 +3043,7 @@ An anchor date is the reference point from which dependent key dates are calcula
 
 ## How it works
 
-When you generate a closing timeline from a checklist template, each key date rule can be defined as an offset from an anchor date:
+When you generate a closing timeline from a Playbook template, each key date rule can be defined as an offset from an anchor date:
 
 - "Inspection deadline: 10 days after anchor"
 - "Appraisal deadline: 21 days after anchor"
@@ -3218,9 +3218,9 @@ You can access tasks in two places:
 
 ![Organization-wide Tasks page with filters, saved views, and task rows](/img/tasks/tasks-page.png)
 
-Inside a transaction, tasks are grouped by checklist section. Each section shows progress, can be collapsed, and can be saved back as a checklist template. Rows show the task name, due date, completed date, notes, email/send indicators, and portal visibility.
+Inside a transaction, tasks are grouped by Playbook section. Each section shows progress, can be collapsed, and can be saved back as a Playbook template. Rows show the task name, due date, completed date, notes, email/send indicators, and portal visibility.
 
-The organization-wide **Tasks** page is for daily work across all transactions. Use it to search, filter by status or priority, show only tasks assigned to you, review broker-only work, or switch to a checklist-grouped view.
+The organization-wide **Tasks** page is for daily work across all transactions. Use it to search, filter by status or priority, show only tasks assigned to you, review broker-only work, or switch to a Playbook-grouped view.
 
 ## Common actions
 
@@ -3235,8 +3235,8 @@ The organization-wide **Tasks** page is for daily work across all transactions. 
 
 ## In this section
 
-- [Creating Tasks](./creating-tasks.mdx) — Quick add, checklists, generation, and task table controls
-- [Checklists](./task-templates.mdx) — Reusable key date and task workflows
+- [Creating Tasks](./creating-tasks.mdx) — Quick add, Playbooks, generation, and task table controls
+- [Playbooks](./task-templates.mdx) — Reusable key date and task workflows
 - [Subtasks](./subtasks.mdx) — Breaking tasks into steps
 - [Email Automation](./email-automation.mdx) — Prepare, review, schedule, or send task-linked emails
 - [Task Options](./task-options.md) — Portal visibility, completion behavior, conditional tasks, reminders, and tracking fields
@@ -3246,13 +3246,13 @@ The organization-wide **Tasks** page is for daily work across all transactions. 
 
 # Creating Tasks
 
-There are several ways to add tasks to a transaction. Use quick add for one-off work, apply a checklist when you want a full saved workflow, or let DocJacket suggest tasks from the transaction.
+There are several ways to add tasks to a transaction. Use quick add for one-off work, apply a Playbook when you want a full saved workflow, or let DocJacket suggest tasks from the transaction.
 
 ## Quick add
 
 The fastest way to create a single task is from a transaction's **Tasks** tab.
 
-![Transaction Tasks tab quick-add and checklist rows](/img/tasks/transaction-tasks-tab.png)
+![Transaction Tasks tab quick-add and Playbook rows](/img/tasks/transaction-tasks-tab.png)
 
 1. Type a task name in the quick-add bar
 2. Press **Enter** or click **Add**
@@ -3274,21 +3274,21 @@ The drawer also includes sections for subtasks, task email templates, scheduled 
 
 The **Key Date** task option highlights that task as an important date-style item in task and calendar views. It is not the same as assigning a governed Key Date Type to the transaction's closing timeline.
 
-## From a checklist
+## From a Playbook
 
-Use a checklist when you want a repeatable set of tasks and date rules.
+Use a Playbook when you want a repeatable set of tasks and date rules.
 
 From a transaction's **Tasks** tab:
 
 1. Click **Add checklist**
-2. Select one or more checklists
-3. Apply the selected checklist
+2. Select one or more Playbooks
+3. Apply the selected Playbook
 
-DocJacket adds the checklist's tasks and keeps them grouped under the checklist name. If the checklist includes due-date rules, those dates are calculated from the transaction's existing key dates.
+DocJacket adds the Playbook's tasks and keeps them grouped under the Playbook name. If the Playbook includes due-date rules, those dates are calculated from the transaction's existing key dates.
 
-The Tasks tab picker can apply multiple checklists. Use it when you mainly want saved task workflows. To create or replace the transaction's key-date timeline and linked task workflow from one checklist template, use **Generate Timeline** on the transaction Overview.
+The Tasks tab picker can apply multiple Playbooks. Use it when you mainly want saved task workflows. To create or replace the transaction's key-date timeline and linked task workflow from one Playbook template, use **Generate Timeline** on the transaction Overview.
 
-See [Checklists](./task-templates.mdx) for more.
+See [Playbooks](./task-templates.mdx) for more.
 
 ## AI-generated
 
@@ -3298,7 +3298,7 @@ See [AI Task Generation](/docs/ai-features/ai-task-generation) for details.
 
 ## Working in the task table
 
-The transaction **Tasks** tab shows tasks in checklist sections. Each section shows completed and total task counts, and each row includes the task name, due date, completed date, notes, sent indicators, and portal visibility.
+The transaction **Tasks** tab shows tasks in Playbook sections. Each section shows completed and total task counts, and each row includes the task name, due date, completed date, notes, sent indicators, and portal visibility.
 
 You can:
 
@@ -3307,8 +3307,8 @@ You can:
 - Sort by task, due date, completed date, or notes
 - Resize the table columns
 - Select multiple tasks for bulk complete or bulk delete
-- Drag rows within a checklist section to adjust visual order
-- Save a checklist section as a new checklist template
+- Drag rows within a Playbook section to adjust visual order
+- Save a Playbook section as a new Playbook template
 
 Changing row order does not change due dates.
 
@@ -3320,66 +3320,66 @@ Scheduled emails are client-facing emails tied to a date. Reminders are internal
 
 ---
 
-# Checklists
+# Playbooks
 
-Checklists are reusable transaction workflows. A checklist can add the key dates, task list, due-date offsets, assignee roles, and email automation you use for a transaction type.
+Playbooks are reusable transaction workflows. A Playbook can add the key dates, task list, due-date offsets, assignee roles, and email automation you use for a transaction type.
 
-A checklist is different from the **Key Date Library**. The Key Date Library defines reusable date rules. The checklist consumes those dates and creates the tasks, due-date offsets, phases, assignments, and automation that depend on them.
+A Playbook is different from the **Key Date Library**. The Key Date Library defines reusable date rules. The Playbook consumes those dates and creates the tasks, due-date offsets, phases, assignments, and automation that depend on them.
 
-## Applying a checklist
+## Applying a Playbook
 
 1. Open a transaction
 2. Go to the key-date timeline on the **Overview** tab
 3. Click **Generate Timeline**
-4. Pick the checklist you want
+4. Pick the Playbook you want
 5. Review the preview
 6. Assign task owners if needed
-7. Choose which phases to include if the checklist has phases
-8. Apply the checklist
+7. Choose which phases to include if the Playbook has phases
+8. Apply the Playbook
 
-The checklist's key dates and tasks are added to the transaction with priorities, due-date offsets, assignments, phases, and any configured email automation.
+The Playbook's key dates and tasks are added to the transaction with priorities, due-date offsets, assignments, phases, and any configured email automation.
 
-Email automation follows the checklist settings: scheduled emails are created against their configured due-date anchors, and on-completion emails either auto-send or wait in the Review queue's **Ready for Review** tab when review is required.
+Email automation follows the Playbook settings: scheduled emails are created against their configured due-date anchors, and on-completion emails either auto-send or wait in the Review queue's **Ready for Review** tab when review is required.
 
-If a transaction already has an applied checklist, DocJacket warns you before stacking another one. You can add the new checklist alongside existing work, or replace previously-applied template items when appropriate.
+If a transaction already has an applied Playbook, DocJacket warns you before stacking another one. You can add the new Playbook alongside existing work, or replace previously-applied template items when appropriate.
 
 Manually added items and contract-extracted dates are preserved when replacing template-generated items.
 
-## Creating a checklist
+## Creating a Playbook
 
-1. Go to **Templates > Checklists**
-2. Click **New Checklist**
+1. Go to **Templates → Playbooks**
+2. Click **New Playbook**
 3. Add a name, transaction type, property category, state, side, and description
-4. Save the template to open the checklist builder
+4. Save the template to open the Playbook builder
 5. Add key dates from the **Key Date Library**, or create new key dates in the builder
 6. Add tasks with names, phases, priorities, assignments, and due-date rules
 7. Link tasks to the key dates they depend on
 8. Add scheduled emails or on-completion actions if needed
-9. Test the checklist against a sample effective date
-10. Save the checklist
+9. Test the Playbook against a sample effective date
+10. Save the Playbook
 
-See [Checklists](../templates/timeline-templates.md) for the full builder guide.
+See [Playbooks](../templates/timeline-templates.md) for the full builder guide.
 
-## How checklists use key dates
+## How Playbooks use key dates
 
-Checklist tasks should point to key dates instead of duplicating date math.
+Playbook tasks should point to key dates instead of duplicating date math.
 
 | Good | Avoid |
 |------|-------|
 | Due 2 days before Inspection Deadline | Due 8 days after Effective Date because that happens to match inspection timing |
 | Due 1 business day before Closing Date | Due on a manually typed calendar date |
 
-That keeps date rules in the **Key Date Library** and task workflows in **Checklists**.
+That keeps date rules in the **Key Date Library** and task workflows in **Playbooks**.
 
 ## Task phases and assignments
 
-Checklist tasks can be grouped by phase. When applying a checklist, phases let you apply only the portion of the workflow you need.
+Playbook tasks can be grouped by phase. When applying a Playbook, phases let you apply only the portion of the workflow you need.
 
 The apply flow can also assign tasks by owner or label. If you use the same assignments often, save them as defaults for future applies.
 
 ## Email automation
 
-Checklist tasks can include email automation:
+Playbook tasks can include email automation:
 
 - Emails dated from the task due date or a Key Date
 - Emails prepared when the task is completed
@@ -3388,22 +3388,22 @@ Checklist tasks can include email automation:
 - Auto-send actions
 - Recipients and attached documents
 
-Setting these on the checklist is the efficient way to work: **every deal created from the checklist inherits them**, so you don't have to configure the same email deal by deal. Changing a setting on a live deal only affects that deal — the next one starts from the checklist again.
+Setting these on the Playbook is the efficient way to work: **every deal created from the Playbook inherits them**, so you don't have to configure the same email deal by deal. Changing a setting on a live deal only affects that deal — the next one starts from the Playbook again.
 
 See [Email Automation](./email-automation.mdx) for the task-email behavior, and [Delivery mode](./email-automation.mdx#delivery-mode) for what **When this fires** does.
 
-## Saving a transaction as a checklist
+## Saving a transaction as a Playbook
 
-If a transaction has a useful set of key dates, tasks, and automation rules, save it as a new checklist template. Then open the new checklist in the builder to clean it up before using it as a standard workflow.
+If a transaction has a useful set of key dates, tasks, and automation rules, save it as a new Playbook template. Then open the new Playbook in the builder to clean it up before using it as a standard workflow.
 
 ## Tips
 
-- Create checklists for each transaction type you handle, such as residential purchase, listing, land, or new build.
-- Include due-date offsets relative to key dates so DocJacket calculates actual dates when the checklist is applied.
-- Use phases to apply only part of a checklist.
-- You can apply multiple checklists to the same transaction when needed.
-- After applying a checklist, you can still add, remove, or modify individual key dates and tasks.
-- Keep reusable date rules in the **Key Date Library** and keep work steps in **Checklists**.
+- Create Playbooks for each transaction type you handle, such as residential purchase, listing, land, or new build.
+- Include due-date offsets relative to key dates so DocJacket calculates actual dates when the Playbook is applied.
+- Use phases to apply only part of a Playbook.
+- You can apply multiple Playbooks to the same transaction when needed.
+- After applying a Playbook, you can still add, remove, or modify individual key dates and tasks.
+- Keep reusable date rules in the **Key Date Library** and keep work steps in **Playbooks**.
 
 ---
 
@@ -3444,9 +3444,9 @@ Link email templates to tasks so the right email is ready at the right point in 
 Worried the system might email a client something you didn't want? It won't. By default, automations **draft** the email and hold it in your **Review queue** for one-click approve, edit, or skip — a client or agent never hears from DocJacket until you say so. Sending automatically is strictly opt-in, per email. You can also turn on an organization-wide safety switch so *every* automated email waits for review (see [Review before sending](#review-before-sending) below). This "draft-and-review" habit is how our most active coordinators send hundreds of emails with near-zero mistakes.
 :::
 
-Most task email automation starts in a checklist template, then becomes editable transaction-specific automation after the checklist is applied. Use templates for repeatable workflows; use the transaction task drawer when a real deal needs an adjustment.
+Most task email automation starts in a Playbook template, then becomes editable transaction-specific automation after the Playbook is applied. Use templates for repeatable workflows; use the transaction task drawer when a real deal needs an adjustment.
 
-![Checklist task automation settings in the reusable checklist builder](/img/templates/checklist-task-automation.png)
+![Playbook task automation settings in the reusable Playbook builder](/img/templates/checklist-task-automation.png)
 
 ## When a task email fires
 
@@ -3497,7 +3497,7 @@ So a task like "Title commitment received" can quietly notify you when the date 
 
 You can set the delivery mode in two places:
 
-- **On a checklist template** — open the checklist, expand the task's reminder, and use **When this fires** under the timing controls. Every deal created from that checklist inherits your choice. Set it here when it should apply to all future deals.
+- **On a Playbook template** — open the Playbook, expand the task's reminder, and use **When this fires** under the timing controls. Every deal created from that Playbook inherits your choice. Set it here when it should apply to all future deals.
 - **On a single deal** — open the transaction, click the task, and use **When this fires** in the **Task emails** section of Task Details. This changes only that one deal.
 
 ### Reading the status on a task
@@ -3509,12 +3509,12 @@ In the **Task emails** section, each linked email shows what has already happene
 
 If an email has already been sent, its **Review & send** button goes away — there is nothing left to send. Notify-mode emails keep the button, because a notification isn't an email.
 
-## Configuring automation in a checklist
+## Configuring automation in a Playbook
 
-Use checklist templates when the same task should prepare or schedule the same email every time the workflow is applied.
+Use Playbook templates when the same task should prepare or schedule the same email every time the workflow is applied.
 
-1. Go to **Templates > Checklists**
-1. Open a checklist in **My Checklists**
+1. Go to **Templates → Playbooks**
+1. Open a Playbook in **My Playbooks**
 1. Open the **Tasks** or **Automations** view
 1. Select the task that should trigger the email
 1. Add the email reminder
@@ -3522,11 +3522,11 @@ Use checklist templates when the same task should prepare or schedule the same e
 1. Set the timing — offset, anchor date, and send time
 1. Set **When this fires** — *Draft email for review* or *Just notify me in-app*
 1. Set recipients and document attachments
-1. Save the checklist
+1. Save the Playbook
 
-Shared system checklists are read-only. Copy a shared checklist before adding or changing email automations.
+Shared system Playbooks are read-only. Copy a shared Playbook before adding or changing email automations.
 
-When the checklist is applied, DocJacket copies those automation rules onto the transaction's tasks. The copied rules can then use that transaction's contacts, dates, documents, and smart-field data.
+When the Playbook is applied, DocJacket copies those automation rules onto the transaction's tasks. The copied rules can then use that transaction's contacts, dates, documents, and smart-field data.
 
 ## Adjusting automation on a transaction
 
@@ -3543,7 +3543,7 @@ Use the transaction task drawer when the automation exists only for one deal, or
 
 Completing a task with review-required email automation prepares the email for the **Review queue**. Setting a date on the email means it can also fire on that date — see [When a task email fires](#when-a-task-email-fires).
 
-Changes made here apply to **this deal only**. To change how future deals behave, edit the checklist template instead.
+Changes made here apply to **this deal only**. To change how future deals behave, edit the Playbook template instead.
 
 ## Recipients and documents
 
@@ -3556,7 +3556,7 @@ Task email automation can use:
 
 The linked email template still controls the subject, body, smart fields, and any template-level auto-attachments.
 
-Build and test the template in **Templates > Email Templates** first. The checklist automation controls decide when the email is prepared or sent, while the email template controls the content, default recipient logic, and template-level document attachments.
+Build and test the template in **Templates > Email Templates** first. The Playbook automation controls decide when the email is prepared or sent, while the email template controls the content, default recipient logic, and template-level document attachments.
 
 ### Where recipients come from
 
@@ -3584,7 +3584,7 @@ Either way, the promise is the same: **nothing reaches a client or agent until y
 
 ## Runtime review
 
-When the checklist is applied to a transaction, DocJacket creates the tasks and their email automation rules. Before sending or parking a draft for review, DocJacket renders smart fields against that transaction.
+When the Playbook is applied to a transaction, DocJacket creates the tasks and their email automation rules. Before sending or parking a draft for review, DocJacket renders smart fields against that transaction.
 
 If data is missing or a placeholder is unrecognized, review the email before sending. Missing transaction data should be fixed on the transaction. Unrecognized placeholders should be fixed in the email template.
 
@@ -3595,10 +3595,10 @@ Review-required emails appear in the topbar **Review queue** under **Ready for R
 - Use **Require review before sending** for client-facing or high-risk emails.
 - Use **Just notify me in-app** for date-based deadline heads-ups you don't want to clear off your queue — you'll still get the email when you complete the task.
 - Use **Draft email for review** for anything that should actually reach a client or agent on its date.
-- Set the delivery mode on the **checklist template** so new deals inherit it, rather than fixing each deal one at a time.
+- Set the delivery mode on the **Playbook template** so new deals inherit it, rather than fixing each deal one at a time.
 - Set **Recipients by Role** on the email template once, instead of setting recipients on every task that uses it.
 - Test the linked [email template](../templates/email-templates.md) before attaching it to automation.
-- Combine email automation with [checklists](./task-templates.mdx) to set up entire email workflows for a transaction type.
+- Combine email automation with [Playbooks](./task-templates.mdx) to set up entire email workflows for a transaction type.
 
 ## If an email didn't appear
 
@@ -3622,7 +3622,7 @@ An email set to **Just notify me in-app** doesn't prepare a draft when its date 
 
 - To send it now, use **Review & send** on that email. Notify-mode emails keep that button, because a notification isn't an email.
 - Completing the task also prepares it for review, even if the notification already went out.
-- If this email should always produce a draft on its date, change **When this fires** to **Draft email for review**. Change it on the [checklist template](./task-templates.mdx) so future deals inherit it, not just this deal.
+- If this email should always produce a draft on its date, change **When this fires** to **Draft email for review**. Change it on the [Playbook template](./task-templates.mdx) so future deals inherit it, not just this deal.
 
 See [Delivery mode](./email-automation.mdx#delivery-mode) for the full explanation.
 
@@ -3646,9 +3646,9 @@ If the email's recipient role has no contact assigned on that deal — a **Selle
 
 **What you'd see:** the **Task emails** section is empty.
 
-The task simply has nothing attached — completing it was never going to produce an email. This is common on tasks created by hand, or on a checklist where the automation was set up on a different task than you expected.
+The task simply has nothing attached — completing it was never going to produce an email. This is common on tasks created by hand, or on a Playbook where the automation was set up on a different task than you expected.
 
-**What to do:** link an email template to the task, or add the automation to the [checklist template](./task-templates.mdx) so it's there on every future deal.
+**What to do:** link an email template to the task, or add the automation to the [Playbook template](./task-templates.mdx) so it's there on every future deal.
 
 ## 5. The email sent automatically instead of waiting
 
@@ -3722,7 +3722,7 @@ Linked emails can use:
 - A transaction key date such as Closing Date or Inspection Deadline
 - A before/on/after offset from that anchor
 
-Use this section for deal-specific changes. For repeatable automations that should exist every time a checklist is applied, configure the task email in the checklist template first.
+Use this section for deal-specific changes. For repeatable automations that should exist every time a Playbook is applied, configure the task email in the Playbook template first.
 
 See [Email Automation](./email-automation.mdx) for the full workflow.
 
@@ -4549,31 +4549,38 @@ However an email arrives, its attachments come with it. When you assign an intak
 
 # Templates
 
-Templates save you time by letting you reuse emails, checklists, key date rules, online forms, required document lists, reports, and more. Set them up once and apply them to any transaction.
+Templates save you time by letting you reuse emails, Playbooks, key date rules, online forms, required document lists, reports, and more. Set them up once and apply them to any transaction.
 
 The **Templates** page in the sidebar is your template hub. It is organized into sections that match the cards in the app.
+
+## Playbooks
+
+- **Playbooks** — The whole process for a deal type: key dates, tasks, automations, and required documents in one place. Set it up once, then apply it to every matching transaction.
+
+:::info Looking for Checklists?
+Checklists were renamed **Playbooks** in August 2026. It's the same feature — the card
+at the top of the Templates page — and your existing checklists are under the **My
+Playbooks** tab. See [Playbooks](./timeline-templates.md).
+:::
 
 ## Communication
 
 - **Email Templates** — Reusable email content with smart fields
 - **Email Signatures** — Branded signatures for outgoing emails
+- **PDF Forms** — Office-scoped eSign/PDF form templates. Upload a blank PDF, let AI map the fields, and send for signature, auto-filled from the transaction.
 - **Online Forms** — Public and transaction-specific forms for collecting information, creating transactions, and routing Front Door submissions
 
-## Checklists & Key Dates
+## Library
 
-- **Checklists** — Master workflows for each deal type, with key dates, tasks, and automations that can be applied to transactions
-- **Key Date Library** — Individual reusable date rules, such as "Final Walkthrough = 1 business day before Closing"
-
-Checklists and the Key Date Library are separate. The Key Date Library defines reusable date logic. Checklists consume those key dates and attach the task workflow, due-date offsets, and email automation.
-
-:::note Two layers, one workflow
-The **Key Date Library** is the *date logic* (for example, "Final Walkthrough = 1 business day before Closing"). A **Checklist** is the *workflow* that consumes those dates and adds the tasks, due-date offsets, and email automation. Define a date rule once in the library, then reuse it across every checklist.
-:::
-
-## Documents
+The reusable pieces a Playbook draws on.
 
 - **Required Documents Lists** — Document requirements for different transaction types
+- **Key Date Library** — Individual reusable date rules, such as "Final Walkthrough = 1 business day before Closing"
 - **Smart Fields** — Template variables for auto-populating transaction, document, and communication data
+
+:::note Two layers, one workflow
+The **Key Date Library** is the *date logic* (for example, "Final Walkthrough = 1 business day before Closing"). A **Playbook** is the *workflow* that consumes those dates and adds the tasks, due-date offsets, and email automation. Define a date rule once in the library, then reuse it across every Playbook.
+:::
 
 ## Reports
 
@@ -4581,8 +4588,8 @@ The **Key Date Library** is the *date logic* (for example, "Final Walkthrough = 
 
 ## In this section
 
-- [Checklists](./timeline-templates.md) — Build reusable workflows with key dates, tasks, and automations
-- [Key Date Library](./task-templates.md) — Define reusable date rules that checklists consume
+- [Playbooks](./timeline-templates.md) — Build reusable workflows with key dates, tasks, and automations
+- [Key Date Library](./task-templates.md) — Define reusable date rules that Playbooks consume
 - [Email Templates](./email-templates.md) — Write reusable email content
 - [Email Signatures](./email-signatures.md) — Create branded signatures for outgoing email
 - [Online Forms](./online-forms.md) — Build public and transaction-specific forms for intake, updates, and Front Door CTAs
@@ -4592,30 +4599,37 @@ The **Key Date Library** is the *date logic* (for example, "Final Walkthrough = 
 
 ---
 
-# Checklists
+# Playbooks
 
-Checklists define the reusable workflow for a transaction type. A checklist can include **Key Dates**, **Tasks**, and **Automations** so a new transaction starts with the right deadlines, task list, and prepared emails.
+Playbooks define the reusable workflow for a transaction type. A Playbook can include **Key Dates**, **Tasks**, and **Automations** so a new transaction starts with the right deadlines, task list, and prepared emails.
+
+:::info Playbooks were previously called Checklists
+If you set your workflow up before August 2026, or you're following older notes, this
+is the same feature under a new name. **Templates → Playbooks** is where your
+checklists live — nothing was moved or lost, and your existing ones are all under the
+**My Playbooks** tab.
+:::
 
 The key idea:
 
 - **Key Date Library** defines reusable date rules
-- **Checklists** bundle those key dates with tasks and automations
-- **Transactions** apply a checklist to create real key dates and real tasks
+- **Playbooks** bundle those key dates with tasks and automations
+- **Transactions** apply a Playbook to create real key dates and real tasks
 
-This is the same product category as a reusable date-template workflow: set the date logic once, then apply it to future transactions. In DocJacket, that logic lives in the **Key Date Library**, and the checklist adds the work that depends on those dates.
+This is the same product category as a reusable date-template workflow: set the date logic once, then apply it to future transactions. In DocJacket, that logic lives in the **Key Date Library**, and the Playbook adds the work that depends on those dates.
 
-## Checklist list page
+## Playbook list page
 
-Go to **Templates > Checklists** to manage checklist templates.
+Go to **Templates → Playbooks** to manage Playbook templates.
 
-![Checklists list page with My Checklists, DocJacket Checklists, filters, default checklist guidance, and checklist cards](/img/templates/checklists-list.png)
+![Playbooks list page with My Playbooks, DocJacket Playbooks, filters, default Playbook guidance, and Playbook cards](/img/templates/checklists-list.png)
 
 The page has two tabs:
 
-- **My Checklists** — checklists your organization owns and can edit
-- **DocJacket Checklists** — ready-made checklists DocJacket provides, available to every organization
+- **My Playbooks** — Playbooks your organization owns and can edit
+- **DocJacket Playbooks** — ready-made Playbooks DocJacket provides, available to every organization
 
-DocJacket checklists are read-only. Use **Copy to My Checklists** or **Duplicate** before customizing key dates, tasks, or automations. Your copy shows a **Copied from** line so you can always tell where it started.
+DocJacket Playbooks are read-only. Use **Copy to My Playbooks** or **Duplicate** before customizing key dates, tasks, or automations. Your copy shows a **Copied from** line so you can always tell where it started.
 
 Use the filters to narrow the list by:
 
@@ -4623,30 +4637,30 @@ Use the filters to narrow the list by:
 - **Property Category** — Residential, Commercial, Land, Lease, New Build, and other categories
 - **Status** — Active or Inactive
 - **Complexity** — Lite or Standard
-- **Search** — checklist name or description
+- **Search** — Playbook name or description
 
-On **My Checklists**, you can mark an active checklist as the default. Default checklists can auto-apply when creating transactions for the matching state and type.
+On **My Playbooks**, you can mark an active Playbook as the default. Default Playbooks can auto-apply when creating transactions for the matching state and type.
 
-## Creating a checklist template
+## Creating a Playbook template
 
-1. Go to **Templates > Checklists**
-2. Click **New Checklist**
+1. Go to **Templates → Playbooks**
+2. Click **New Playbook**
 3. Add a name, transaction type, property category, state, side, and description
-4. Save the template to open the checklist builder
+4. Save the template to open the Playbook builder
 5. Add key dates from the **Key Date Library**, or create new key dates while building
 6. Add tasks and tie them to the key dates they belong to
 7. Add task timing rules, priorities, phases, and sections
 8. Add automations, such as scheduled emails or completion rules
-9. Use **Test template** to preview the checklist against a sample effective date
+9. Use **Test template** to preview the Playbook against a sample effective date
 10. Save the template
 
-The builder title may say **New Checklist Template** or **Edit Checklist Template**. The Templates hub and list page label this area **Checklists**.
+The builder title may say **Create Playbook** or **Edit Playbook**. The Templates hub and list page label this area **Playbooks**.
 
 ## Template settings
 
-The builder shows a **Template Summary** card with the checklist name, category, state, side, key-date count, task count, and automation count.
+The builder shows a **Template Summary** card with the Playbook name, category, state, side, key-date count, task count, and automation count.
 
-![Checklist builder with Template Summary, task tabs, AI Task Generator, Import CSV, and task rows grouped by key date](/img/templates/checklist-builder.png)
+![Playbook builder with Template Summary, task tabs, AI Task Generator, Import CSV, and task rows grouped by key date](/img/templates/checklist-builder.png)
 
 Use **Edit template settings** to change:
 
@@ -4657,11 +4671,11 @@ Use **Edit template settings** to change:
 - Side
 - Description
 
-DocJacket checklists are read-only. Copy one into **My Checklists** before editing settings, key dates, tasks, or automations.
+DocJacket Playbooks are read-only. Copy one into **My Playbooks** before editing settings, key dates, tasks, or automations.
 
 ## Adding key dates
 
-Key dates organize the checklist. For each key date you can define:
+Key dates organize the Playbook. For each key date you can define:
 
 - Name
 - Description
@@ -4678,14 +4692,14 @@ Key dates organize the checklist. For each key date you can define:
 
 Use **Add Key Date** in the builder. The drawer has two modes:
 
-- **Create New** — define a new key date rule directly inside the checklist
+- **Create New** — define a new key date rule directly inside the Playbook
 - **From Library** — pick an existing reusable key date from the Key Date Library
 
-If a shared key date needs customization, duplicate it first and use the copy in your checklist.
+If a shared key date needs customization, duplicate it first and use the copy in your Playbook.
 
 ## Adding tasks
 
-Checklist tasks are the work your team completes during the transaction. Tasks can include:
+Playbook tasks are the work your team completes during the transaction. Tasks can include:
 
 - Name and description
 - Phase and section
@@ -4703,18 +4717,18 @@ Checklist tasks are the work your team completes during the transaction. Tasks c
 
 Tasks should reference the key date they depend on. For example, a task can be due 3 days before **Final Walkthrough** instead of hardcoding the same rule from **Closing Date**.
 
-![Checklist task editor showing task details, priority, phase, due-date context, and an automation count on the selected task](/img/templates/checklist-task-automation.png)
+![Playbook task editor showing task details, priority, phase, due-date context, and an automation count on the selected task](/img/templates/checklist-task-automation.png)
 
 ## Conditional tasks
 
 Some tasks only apply to certain deals — a septic inspection, an HOA document review,
-a task that only matters on a cash deal. **You do not need a separate checklist for
-each combination.** Build one checklist with every task in it, and mark the
+a task that only matters on a cash deal. **You do not need a separate Playbook for
+each combination.** Build one Playbook with every task in it, and mark the
 situational ones conditional. A conditional task whose condition isn't met is simply
-**not created** when you apply the checklist, so the deal only gets the work that
+**not created** when you apply the Playbook, so the deal only gets the work that
 actually applies.
 
-To make a task conditional, open the task in the checklist builder and, under
+To make a task conditional, open the task in the Playbook builder and, under
 **Options**, tick **Conditional Task**. A **Transaction field** dropdown appears —
 pick the field that decides whether the task applies.
 
@@ -4751,7 +4765,7 @@ There is a **Cash deal** field, but there is **no "financed" field**. Because a 
 flag only creates the task when the flag is on, gating a financing task on **Cash
 deal** would attach it to cash deals only — the opposite of what you want.
 
-The way to handle financing work is to put it in the checklist **normally**, with no
+The way to handle financing work is to put it in the Playbook **normally**, with no
 condition, and instead mark the *cash-specific* tasks conditional on **Cash deal**.
 Financed deals are the common case, so let them be the default and gate the exception.
 
@@ -4771,8 +4785,8 @@ unconditional and delete it on deals where it doesn't apply, or remove whole tas
 groups during apply — the apply dialog lets you deselect individual tasks and skip
 entire groups before anything is created.
 
-:::note Conditional in the checklist builder vs. on a task
-The **Conditional Task** checkbox in the *checklist builder* controls whether a task
+:::note Conditional in the Playbook builder vs. on a task
+The **Conditional Task** checkbox in the *Playbook builder* controls whether a task
 gets created at all. There is also a conditional marker on an individual task inside a
 transaction ([Task Options](../tasks/task-options.md)) — that one is a **label** on
 work that already exists, and it doesn't create or remove anything.
@@ -4789,36 +4803,36 @@ Common automation uses include:
 - Include selected document categories
 - Trigger follow-up work when a task is completed
 
-Use **Review automations** to see every automation rule in the checklist, grouped by key date and task. From there, use **Edit** to jump back to the rule in the builder. Bulk editing across automation rules is not currently part of this drawer.
+Use **Review automations** to see every automation rule in the Playbook, grouped by key date and task. From there, use **Edit** to jump back to the rule in the builder. Bulk editing across automation rules is not currently part of this drawer.
 
 ## AI and bulk tools
 
-The checklist builder includes tools for faster setup:
+The Playbook builder includes tools for faster setup:
 
 - **AI Key Date Generator** — Describe the transaction workflow and review proposed key dates before applying them.
-- **AI Task Generator** — Generate proposed tasks linked to the key dates in the checklist.
+- **AI Task Generator** — Generate proposed tasks linked to the key dates in the Playbook.
 - **Import Tasks from CSV** — Bulk-import tasks from a spreadsheet.
-- **CSV export** — Download the checklist structure for review or offline editing.
+- **CSV export** — Download the Playbook structure for review or offline editing.
 - **Suggested tasks** — Add common tasks for known key date types.
 
 :::warning Review AI and imported items
-Generated and CSV-imported key dates and tasks are a starting point, not a finished checklist — review them before relying on the checklist with clients.
+Generated and CSV-imported key dates and tasks are a starting point, not a finished Playbook — review them before relying on the Playbook with clients.
 :::
 
-## Testing a checklist
+## Testing a Playbook
 
-Use **Test template** to preview the checklist against a sample effective date. The preview shows key dates, linked tasks, computed sample dates when available, and tasks not linked to any key date.
+Use **Test template** to preview the Playbook against a sample effective date. The preview shows key dates, linked tasks, computed sample dates when available, and tasks not linked to any key date.
 
 The preview is for template review. It is computed client-side and does not include configured holidays. Real transactions also use the transaction's actual contract dates, holidays, and any dates already extracted or entered.
 
-## Applying a checklist to a transaction
+## Applying a Playbook to a transaction
 
-From the transaction Overview's closing timeline, click **Generate Timeline** and pick a checklist.
+From the transaction Overview's closing timeline, click **Generate Timeline** and pick a Playbook.
 
 DocJacket can:
 
-- Scope available checklists by the transaction's state, side, and type
-- Show existing applied checklists so users do not accidentally stack duplicates
+- Scope available Playbooks by the transaction's state, side, and type
+- Show existing applied Playbooks so users do not accidentally stack duplicates
 - Preview how many key dates and tasks will be created
 - Show anchor dates used for calculation
 - Assign tasks by owner or label
@@ -4828,101 +4842,111 @@ DocJacket can:
 
 After applying, the transaction has real key dates and real tasks. Moving key dates can update linked task due dates according to their rules.
 
-### Applying a second checklist to the same transaction
+### Applying a second Playbook to the same transaction
 
-You can apply more than one checklist to the same deal, and by default the second one
+You can apply more than one Playbook to the same deal, and by default the second one
 **adds to** what's already there — it does not wipe the first. This is what makes the
 listing-then-contract workflow work on a single record:
 
-1. Create the deal as a listing and apply your **listing** checklist — order photos,
+1. Create the deal as a listing and apply your **listing** Playbook — order photos,
    sign the listing agreement, get it on the MLS.
 2. Work the listing. When it goes under contract, **don't start a new deal** — change
    the existing one's status (and type, if you use Listing/Purchase/Sale). See
    [Turning a listing into a sale or purchase](../transactions/listings.md#turning-a-listing-into-a-sale-or-purchase).
-3. Apply your **contract-to-close** checklist to that same transaction.
+3. Apply your **contract-to-close** Playbook to that same transaction.
 
 Both sets of tasks and key dates now live on one file, with one address, one contact
 list, and one document set — and the listing history stays attached.
 
-The apply dialog shows any checklists already applied, so you can see what's there
-before adding another. If you *do* want the new checklist to take over, tick **Replace
+The apply dialog shows any Playbooks already applied, so you can see what's there
+before adding another. If you *do* want the new Playbook to take over, tick **Replace
 existing key dates and tasks** — that removes the previously applied *template-generated*
 items on both the key-date and task side. Items you added by hand, and dates extracted
 from the contract, are preserved either way.
 
 :::tip
 Leave **Replace** unticked when you're layering a second workflow onto a deal. Tick it
-only when you're correcting a checklist you applied by mistake.
+only when you're correcting a Playbook you applied by mistake.
 :::
 
-## Saving a transaction as a checklist
+## Saving a transaction as a Playbook
 
-If you customize a transaction's key dates, tasks, and automations, you can save that work as a new checklist template. This is useful when a live deal becomes the model for a better workflow.
+If you customize a transaction's key dates, tasks, and automations, you can save that work as a new Playbook template. This is useful when a live deal becomes the model for a better workflow.
 
-After saving, open the new checklist in the builder to clean up names, sections, assignments, and automations.
+After saving, open the new Playbook in the builder to clean up names, sections, assignments, and automations.
 
-## Checklists vs. key date rules
+## Playbooks vs. key date rules
 
-The **Key Date Library** stores individual reusable date rules. A checklist bundles those rules with tasks and automations.
+The **Key Date Library** stores individual reusable date rules. A Playbook bundles those rules with tasks and automations.
 
 Example:
 
 - **Key Date rule:** Final Walkthrough = Closing Date - 1 business day
-- **Checklist task:** Schedule walkthrough = Final Walkthrough - 3 days
+- **Playbook task:** Schedule walkthrough = Final Walkthrough - 3 days
 - **Automation:** Prepare walkthrough reminder email when the task is due
 
 ## Tips
 
 - Start with the built-in templates and customize them for your specific workflow
 - Create state-specific variations — a Texas residential close has different deadlines than a Florida one
-- Include the most common tasks in your template so they are created when the checklist is applied
+- Include the most common tasks in your template so they are created when the Playbook is applied
 - Keep date calculation logic in the Key Date Library when the same rule will be reused
 - Use task phases so users can apply only the work they need
-- Test the checklist before applying it to a live transaction
+- Test the Playbook before applying it to a live transaction
 - Review and update templates periodically as regulations or your workflow change
 
 ---
 
-# Transaction Playbooks
+# What a Playbook Is
 
 A **Playbook** is a reusable, ready-to-go setup for a **deal type** — think of it as a smart digital folder that bundles everything a transaction of that type needs into one process you apply in a single click. Set it up once, reuse it on every deal.
 
 ## What's in a Playbook
 
-A Playbook combines the **Workflow Building Blocks** for a given deal type:
+A Playbook covers everything a deal of that type needs:
 
-- A **[Checklist](./timeline-templates.md)** — the key dates and tasks for that deal type (the dates & tasks part of the Playbook).
-- A **[Required Documents List](./required-documents-lists.md)** — which documents are required, including conditional "required if…" rules (the documents part).
+- **Key dates and tasks** — the deadlines and work for that deal type, with due-date offsets and assignments.
+- **[Required documents](./required-documents-lists.md)** — which documents are required, including conditional "required if…" rules.
 - **Automations** — the rules and reminders that run for that deal type.
 
 So instead of hand-adding tasks, key dates, and a document list to every new deal, the Playbook stamps all of it on at once.
 
 ## Where to find them
 
-Open **Templates** → the **Transaction Playbooks** section. The building blocks a Playbook is made of — **Checklists**, **Required Documents Lists**, and the **Key Date Library** — live in the same Templates area under **Workflow Building Blocks**.
+Open **Templates** → **Playbooks** — the card at the top of the page. The reusable
+pieces a Playbook draws on — **Required Documents Lists**, the **Key Date Library**,
+and **Smart Fields** — are in the same Templates area under **Library**.
+
+:::info Playbooks were previously called Checklists
+If you're following older notes, **Templates → Playbooks** is where your checklists
+live. Your existing ones are all under the **My Playbooks** tab. Full guide:
+[Playbooks](./timeline-templates.md).
+:::
 
 ## Creating a Playbook
 
-1. Go to **Templates → Playbooks** and create a new Playbook (or use **Create Playbook from this checklist** on a Checklist to seed one from an existing setup).
-2. Choose the **Checklist** (tasks + key dates) and the **Required Documents List** for that deal type.
+1. Go to **Templates → Playbooks** and click **New Playbook**.
+2. Add the key dates and tasks for the deal type, and attach the **Required Documents List** that applies.
 3. Save it — it's now reusable across deals.
+
+See [Playbooks](./timeline-templates.md) for the full builder walkthrough.
 
 ## Applying a Playbook to a deal
 
 Apply a Playbook to a transaction and DocJacket sets up the whole deal at once — its tasks, key dates, and required documents — in a **single click**. Two conveniences:
 
 - **Auto-setup:** a new deal can be set up automatically from a matching Playbook.
-- **Save what you built:** when you set a deal up by hand (applying a checklist and a required-documents list), DocJacket offers to save that combination as a Playbook for next time — so the manual setup becomes one-click from then on.
+- **Save what you built:** when you set a deal up by hand, DocJacket offers to save that work as a Playbook for next time — so the manual setup becomes one-click from then on.
 
 ## Not the same as AI "playbooks"
 
-If you use DocJacket's [AI Access](../ai-access/index.mdx) features, you may see the AI **slash commands** (e.g. `/docjacket:morning-briefing`) referred to as "playbooks." Those are a separate, developer/power-user thing — pre-written AI command recipes. **Transaction Playbooks** on this page are the reusable deal-setup bundles under Templates, and are what most people mean by "playbooks" in DocJacket.
+If you use DocJacket's [AI Access](../ai-access/index.mdx) features, you may see the AI **slash commands** (e.g. `/docjacket:morning-briefing`) referred to as "playbooks." Those are a separate, developer/power-user thing — pre-written AI command recipes. **Playbooks** on this page are the reusable deal setups under Templates, and are what most people mean by "playbooks" in DocJacket.
 
 ---
 
 # Key Date Library
 
-The Key Date Library stores individual reusable date rules. These are the building blocks that checklist templates use to create a transaction timeline.
+The Key Date Library stores individual reusable date rules. These are the building blocks that Playbook templates use to create a transaction timeline.
 
 Examples:
 
@@ -4930,7 +4954,7 @@ Examples:
 - Possession Date = Closing Date + 1 business day
 - Inspection Deadline = Effective Date + 10 calendar days
 
-A key date template is the date-logic layer. A checklist is the workflow layer that consumes those dates and attaches tasks, due-date offsets, and email automation.
+A key date template is the date-logic layer. A Playbook is the workflow layer that consumes those dates and attaches tasks, due-date offsets, and email automation.
 
 ## Key Date Library page
 
@@ -5011,7 +5035,7 @@ Use **Key Date Type** when the date maps to a standard DocJacket concept such as
 
 Governed types help DocJacket connect the same concept across:
 
-- Checklists
+- Playbooks
 - Transactions
 - Calendar visibility
 - Reports
@@ -5023,7 +5047,7 @@ The name can still match your team's language. If the name looks like a known ke
 Leave **Key Date Type** blank for organization-specific dates that do not map to a standard concept.
 
 :::tip Set a governed type whenever you can
-A governed **Key Date Type** is what connects the same date across checklists, the calendar, reports, smart fields, and integrations. The name can still match your team's language — the type is what makes automation reliable. Only leave it blank for truly organization-specific dates.
+A governed **Key Date Type** is what connects the same date across Playbooks, the calendar, reports, smart fields, and integrations. The name can still match your team's language — the type is what makes automation reliable. Only leave it blank for truly organization-specific dates.
 :::
 
 ## State, side, priority, and status
@@ -5060,9 +5084,9 @@ DocJacket prevents deleting a key date while it is still referenced. If delete i
 
 Update or remove those references first, then delete the key date.
 
-## How checklists use key dates
+## How Playbooks use key dates
 
-Checklist templates consume key dates. Tasks should reference the key date they depend on instead of recreating the same date logic.
+Playbook templates consume key dates. Tasks should reference the key date they depend on instead of recreating the same date logic.
 
 Good:
 
@@ -5076,15 +5100,15 @@ Keeping the date rule in the Key Date Library prevents drift when the rule chang
 
 ## Custom key dates
 
-Leave **Key Date Type** blank for organization-specific dates that do not map to a standard DocJacket concept. Custom key dates can still be used in checklists and transactions, but governed types make automation, reporting, calendar sync, and smart fields more reliable.
+Leave **Key Date Type** blank for organization-specific dates that do not map to a standard DocJacket concept. Custom key dates can still be used in Playbooks and transactions, but governed types make automation, reporting, calendar sync, and smart fields more reliable.
 
 ## Tips
 
 - Use governed Key Date Types whenever the date maps to a standard transaction concept.
 - Use custom key dates for internal or state-specific events that DocJacket should not treat as a standard concept.
 - Prefer business-day rules when the contract language says business days.
-- Keep the key date rule here and let checklist tasks reference it.
-- Duplicate shared key dates instead of editing around them in a checklist.
+- Keep the key date rule here and let Playbook tasks reference it.
+- Duplicate shared key dates instead of editing around them in a Playbook.
 
 ---
 
@@ -5345,7 +5369,7 @@ Forms can be standalone public intake forms or transaction-specific forms, depen
 
 The builder has three steps:
 
-- **Setup** — Basic information, branding, messages, theme, section styling, and checklist binding
+- **Setup** — Basic information, branding, messages, theme, section styling, and Checklist Binding
 - **Fields** — Field canvas, field palette, field properties, ordering, and conditional display
 - **Share** — Public or transaction-specific links, version history, and form preview
 
@@ -5482,7 +5506,7 @@ Use an online form when you need consistent answers from someone outside your te
 
 ## How forms fit with transactions
 
-Form responses give you structured data that can be reviewed and used by the team. For repeatable transaction workflows, combine forms with [checklists](./timeline-templates.md), [email templates](./email-templates.md), [smart fields](./smart-fields.md), and [Front Door](../front-door/leads-and-ctas.md).
+Form responses give you structured data that can be reviewed and used by the team. For repeatable transaction workflows, combine forms with [Playbooks](./timeline-templates.md), [email templates](./email-templates.md), [smart fields](./smart-fields.md), and [Front Door](../front-door/leads-and-ctas.md).
 
 ---
 
@@ -5579,13 +5603,13 @@ There are two ways to get contingency deadlines onto a transaction from a form �
 **Or capture an actual calendar date.** If the contract gives fixed dates, add a **Date** field for each deadline (Inspection, Financing, Appraisal, Closing, Contract, and so on) and map it to that key date. DocJacket writes the value straight to the deal's [Key Dates](../transactions/key-dates-and-financials.mdx) — on an existing transaction (map on the **Forms** tab and apply) or as the deal is created from an intake form.
 
 :::tip Use the right target for day counts
-Day-count auto-calculation happens when you map the number field to a **Periods (days)** target above — a number mapped to a plain custom field just stays a number. If you need a day-count deadline that isn't in that list, use a [checklist / timeline template](./timeline-templates.md) with an anchor + offset rule (e.g. *Inspection Deadline = Effective Date + 10 calendar days*). See [Contingencies & Repairs](../transactions/contingencies-and-repairs.mdx).
+Day-count auto-calculation happens when you map the number field to a **Periods (days)** target above — a number mapped to a plain custom field just stays a number. If you need a day-count deadline that isn't in that list, use a [Playbook / timeline template](./timeline-templates.md) with an anchor + offset rule (e.g. *Inspection Deadline = Effective Date + 10 calendar days*). See [Contingencies & Repairs](../transactions/contingencies-and-repairs.mdx).
 :::
 
 ## Tips
 
 - Map **contacts, financials, and deadlines** on the Forms tab of an existing deal — they apply immediately.
-- The contract gives **day counts**? Map a number field to a **Periods (days)** target and DocJacket calculates the deadline. Only need a day-count that isn't a recognized period? Use a [checklist](./timeline-templates.md) with anchor-date rules instead.
+- The contract gives **day counts**? Map a number field to a **Periods (days)** target and DocJacket calculates the deadline. Only need a day-count that isn't a recognized period? Use a [Playbook](./timeline-templates.md) with anchor-date rules instead.
 - A form field's *type* isn't enforced against its target — point a **Date** field at a date target (or a number field at a Periods target) so the value is read correctly.
 
 ---
@@ -5617,7 +5641,7 @@ Document names are simple placeholders, such as:
 - Appraisal
 - Closing Disclosure
 
-Keep names close to what your team already calls the files. That makes the transaction checklist easier to scan and makes linked uploads easier to recognize.
+Keep names close to what your team already calls the files. That makes the transaction Playbook easier to scan and makes linked uploads easier to recognize.
 
 ## Applicability filters
 
@@ -6333,7 +6357,7 @@ These are the AI features inside DocJacket. They are separate from **[AI Access]
 ## In this section
 
 - [Contract Extraction](./contract-extraction.mdx) — How AI reads your contracts
-- [AI Task Generation](./ai-task-generation.mdx) — Let AI build your task checklist
+- [AI Task Generation](./ai-task-generation.mdx) — Let AI build your task Playbook
 - [Risk Insights](./ai-insights.mdx) — Risk assessments and document checks
 - [Smart Document Splitting](./smart-document-splitting.mdx) — Automatically split bundled PDFs
 
@@ -6408,7 +6432,7 @@ See [Extraction Review](../operations/extraction-review.md) for the full save-st
 
 # AI Task Generation
 
-Don't want to build your task checklist from scratch? Let AI analyze your transaction and suggest tasks for you.
+Don't want to build your task Playbook from scratch? Let AI analyze your transaction and suggest tasks for you.
 
 ## How it works
 
@@ -6419,7 +6443,7 @@ Don't want to build your task checklist from scratch? Let AI analyze your transa
 5. Select the suggestions you want to keep, or use **Select All**
 6. Click **Add Selected**
 
-The selected tasks are added to the transaction with their suggested name, description, and priority. Review the generated list before adding it; the generator is meant to supplement your judgment, not replace a checklist you already trust.
+The selected tasks are added to the transaction with their suggested name, description, and priority. Review the generated list before adding it; the generator is meant to supplement your judgment, not replace a Playbook you already trust.
 
 ## What makes the suggestions good
 
@@ -6433,11 +6457,11 @@ The transaction task generator uses:
 
 ## AI vs. Templates
 
-Both AI generation and [checklists](/docs/templates/task-templates) can populate your task list. Here's when to use each:
+Both AI generation and [Playbooks](/docs/templates/task-templates) can populate your task list. Here's when to use each:
 
 | Use AI generation when... | Use templates when... |
 |--------------------------|----------------------|
-| You want tasks tailored to this specific deal | You have a proven checklist you use every time |
+| You want tasks tailored to this specific deal | You have a proven Playbook you use every time |
 | It's an unusual transaction type | You want consistent tasks across all deals |
 | You're not sure what tasks you need | You've already customized a template you love |
 
@@ -10880,12 +10904,12 @@ Notification preferences are personal. Changing your notifications does not chan
 
 Use **Settings > Automation Rules** to create and manage rule-based notifications and messages.
 
-Automation rules can send email, SMS, or both when a transaction enters a status or when a configured checklist task is completed. Rules use active email templates, recipient logic, and delivery-channel settings.
+Automation rules can send email, SMS, or both when a transaction enters a status or when a configured Playbook task is completed. Rules use active email templates, recipient logic, and delivery-channel settings.
 
 Current rule triggers include:
 
 - **When a transaction enters a status** — Fires on future status changes only. Existing transactions already in that status are not triggered retroactively.
-- **When a checklist task is completed** — Fires when a transaction task created from the selected checklist task template is marked complete.
+- **When a Playbook task is completed** — Fires when a transaction task created from the selected Playbook task template is marked complete.
 
 Rules can send to transaction contact roles, direct email addresses, or both. Direct email entries are checked before the rule is saved, and duplicate direct addresses are collapsed case-insensitively.
 
@@ -11084,7 +11108,7 @@ All paid plans include the full DocJacket feature set:
 
 - Unlimited transactions
 - AI contract extraction and task generation
-- Checklists and key date templates
+- Playbooks and key date templates
 - Document management and DocDrop
 - Client portal
 - Email integration (Gmail and Outlook)
@@ -11099,7 +11123,7 @@ The free plan is a great way to try DocJacket before committing. It includes:
 - **3 active transactions**, with AI contract extraction on them
 - **Up to 2 team members**
 - Unlimited intake forms and unlimited client & agent portals
-- Email automation, templates, and checklist templates
+- Email automation, templates, and Playbook templates
 
 Upgrade to a paid plan for unlimited active transactions and AI extractions, SMS messaging, a custom domain, MCP access, and priority support.
 

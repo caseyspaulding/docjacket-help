@@ -34,5 +34,5 @@ Because it's one record and not two, there's no separate listing left behind. If
 ## Tips
 
 - Use transaction filters instead of looking for a separate Listings page.
-- Use checklists and required document lists that are built for listing workflows.
+- Use Playbooks and required document lists that are built for listing workflows.
 - Keep listing documents and disclosure packages in the same Documents tab as the rest of the transaction files.

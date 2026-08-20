@@ -58,7 +58,7 @@ Linked emails can use:
 - A transaction key date such as Closing Date or Inspection Deadline
 - A before/on/after offset from that anchor
 
-Use this section for deal-specific changes. For repeatable automations that should exist every time a checklist is applied, configure the task email in the checklist template first.
+Use this section for deal-specific changes. For repeatable automations that should exist every time a Playbook is applied, configure the task email in the Playbook template first.
 
 See [Email Automation](./email-automation.mdx) for the full workflow.
 

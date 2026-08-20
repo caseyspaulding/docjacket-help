@@ -10,7 +10,7 @@ An anchor date is the reference point from which dependent key dates are calcula
 
 ## How it works
 
-When you generate a closing timeline from a checklist template, each key date rule can be defined as an offset from an anchor date:
+When you generate a closing timeline from a Playbook template, each key date rule can be defined as an offset from an anchor date:
 
 - "Inspection deadline: 10 days after anchor"
 - "Appraisal deadline: 21 days after anchor"

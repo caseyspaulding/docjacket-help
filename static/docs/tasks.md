@@ -2,7 +2,7 @@
 title: Tasks
 sidebar_label: Overview
 sidebar_position: 1
-description: Manage tasks and checklists for your real estate transactions — with priorities, subtasks, templates, and email automation.
+description: Manage tasks and Playbooks for your real estate transactions — with priorities, subtasks, templates, and email automation.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/tasks -->
@@ -19,9 +19,9 @@ You can access tasks in two places:
 
 ![Organization-wide Tasks page with filters, saved views, and task rows](/img/tasks/tasks-page.png)
 
-Inside a transaction, tasks are grouped by checklist section. Each section shows progress, can be collapsed, and can be saved back as a checklist template. Rows show the task name, due date, completed date, notes, email/send indicators, and portal visibility.
+Inside a transaction, tasks are grouped by Playbook section. Each section shows progress, can be collapsed, and can be saved back as a Playbook template. Rows show the task name, due date, completed date, notes, email/send indicators, and portal visibility.
 
-The organization-wide **Tasks** page is for daily work across all transactions. Use it to search, filter by status or priority, show only tasks assigned to you, review broker-only work, or switch to a checklist-grouped view.
+The organization-wide **Tasks** page is for daily work across all transactions. Use it to search, filter by status or priority, show only tasks assigned to you, review broker-only work, or switch to a Playbook-grouped view.
 
 ## Common actions
 
@@ -36,8 +36,8 @@ The organization-wide **Tasks** page is for daily work across all transactions. 
 
 ## In this section
 
-- [Creating Tasks](./creating-tasks.mdx) — Quick add, checklists, generation, and task table controls
-- [Checklists](./task-templates.mdx) — Reusable key date and task workflows
+- [Creating Tasks](./creating-tasks.mdx) — Quick add, Playbooks, generation, and task table controls
+- [Playbooks](./task-templates.mdx) — Reusable key date and task workflows
 - [Subtasks](./subtasks.mdx) — Breaking tasks into steps
 - [Email Automation](./email-automation.mdx) — Prepare, review, schedule, or send task-linked emails
 - [Task Options](./task-options.md) — Portal visibility, completion behavior, conditional tasks, reminders, and tracking fields

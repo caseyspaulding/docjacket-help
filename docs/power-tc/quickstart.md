@@ -9,12 +9,12 @@ description: The 80/20 setup. You don't need hundreds of templates to get produc
 The full playbook can look like a lot — matrices, phases, hundreds of email templates. Don't let that stop you. The coordinators who get the most out of DocJacket all started small and grew. Here's the 80/20 for your first week.
 
 :::tip You do not need to build everything
-Three or four checklists and ten emails will carry the vast majority of your files. Build those, start working, and expand as patterns emerge.
+Three or four Playbooks and ten emails will carry the vast majority of your files. Build those, start working, and expand as patterns emerge.
 :::
 
-## Day 1–2: Your core checklists
+## Day 1–2: Your core Playbooks
 
-Create **3–4 checklist templates** (see [Build a checklist template matrix](./template-matrix.md)):
+Create **3–4 Playbook templates** (see [Build a Playbook template matrix](./template-matrix.md)):
 
 - Buyer Side
 - Seller Side
@@ -41,27 +41,27 @@ For each one:
 
 ## Day 4–5: Wire the automations
 
-Connect each email to its checklist task with an [on-completion, draft-and-review automation](./automations.md) — and **only** on tasks that email an external party. Leave **Require approval** on.
+Connect each email to its Playbook task with an [on-completion, draft-and-review automation](./automations.md) — and **only** on tasks that email an external party. Leave **Require approval** on.
 
 ## Then: grow it
 
 The rule that builds your library over time:
 
 :::tip
-**Every time you type the same email twice, make it a template. Every time you adjust a checklist the same way twice, make it a new template.**
+**Every time you type the same email twice, make it a template. Every time you adjust a Playbook the same way twice, make it a new template.**
 :::
 
 That's how a handful of templates becomes a complete operating system — without ever sitting down to "build everything."
 
 ## You're set up
 
-Once this is in place, a new file looks like: pick the right checklist → DocJacket extracts the contract and schedules every task → complete tasks as the deal moves → review and send the drafts it prepares. That's the difference between running deals from your head and having DocJacket run them with you.
+Once this is in place, a new file looks like: pick the right Playbook → DocJacket extracts the contract and schedules every task → complete tasks as the deal moves → review and send the drafts it prepares. That's the difference between running deals from your head and having DocJacket run them with you.
 
 ---
 
 **The full series:**
 
-1. [Build a checklist template matrix](./template-matrix.md)
+1. [Build a Playbook template matrix](./template-matrix.md)
 2. [The 6-phase deal backbone & smart due dates](./phase-backbone.md)
 3. [Your email template library](./email-library.md)
 4. [Role-based recipients & CC yourself](./role-recipients.md)

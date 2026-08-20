@@ -23,7 +23,7 @@ An email set to **Just notify me in-app** doesn't prepare a draft when its date 
 
 - To send it now, use **Review & send** on that email. Notify-mode emails keep that button, because a notification isn't an email.
 - Completing the task also prepares it for review, even if the notification already went out.
-- If this email should always produce a draft on its date, change **When this fires** to **Draft email for review**. Change it on the [checklist template](./task-templates.mdx) so future deals inherit it, not just this deal.
+- If this email should always produce a draft on its date, change **When this fires** to **Draft email for review**. Change it on the [Playbook template](./task-templates.mdx) so future deals inherit it, not just this deal.
 
 See [Delivery mode](./email-automation.mdx#delivery-mode) for the full explanation.
 
@@ -47,9 +47,9 @@ If the email's recipient role has no contact assigned on that deal — a **Selle
 
 **What you'd see:** the **Task emails** section is empty.
 
-The task simply has nothing attached — completing it was never going to produce an email. This is common on tasks created by hand, or on a checklist where the automation was set up on a different task than you expected.
+The task simply has nothing attached — completing it was never going to produce an email. This is common on tasks created by hand, or on a Playbook where the automation was set up on a different task than you expected.
 
-**What to do:** link an email template to the task, or add the automation to the [checklist template](./task-templates.mdx) so it's there on every future deal.
+**What to do:** link an email template to the task, or add the automation to the [Playbook template](./task-templates.mdx) so it's there on every future deal.
 
 ## 5. The email sent automatically instead of waiting
 

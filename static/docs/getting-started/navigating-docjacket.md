@@ -33,7 +33,7 @@ The sidebar on the left is your main navigation. Here's what each section does:
 | **Transactions** | All your deals — search, filter, and manage |
 | **Tasks** | Organization-wide task list across all transactions |
 | **Pipeline** | Board views for transaction status, task due dates, and buyer offers |
-| **Templates** | Create and manage checklists, key date rules, email templates, forms, document lists, and report templates |
+| **Templates** | Create and manage Playbooks, key date rules, email templates, forms, document lists, and report templates |
 | **Inbox** | Your message center for transaction-related emails |
 | **Contacts** | Your contact database — clients, agents, vendors |
 | **Calendar** | See all key dates, tasks, reminders, and deadlines in a calendar view |

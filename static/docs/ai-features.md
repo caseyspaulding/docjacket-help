@@ -27,6 +27,6 @@ These are the AI features inside DocJacket. They are separate from **[AI Access]
 ## In this section
 
 - [Contract Extraction](./contract-extraction.mdx) — How AI reads your contracts
-- [AI Task Generation](./ai-task-generation.mdx) — Let AI build your task checklist
+- [AI Task Generation](./ai-task-generation.mdx) — Let AI build your task Playbook
 - [Risk Insights](./ai-insights.mdx) — Risk assessments and document checks
 - [Smart Document Splitting](./smart-document-splitting.mdx) — Automatically split bundled PDFs
