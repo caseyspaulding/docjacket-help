@@ -97,7 +97,7 @@ Clicking **Allow** redirects you back to the assistant with a one-time authoriza
 The assistant POSTs the auth code to `https://app.docjacket.com/oauth/token` along with the PKCE verifier (proving it's the same client that started the flow). DocJacket returns:
 
 - **access_token** — a signed JWT, valid 1 hour, bound to your user, your org, the client, and the resource indicator
-- **refresh_token** — opaque token (prefixed `mcp_rt_`), valid 30 days, single-use (rotates on every exchange)
+- **refresh_token** — opaque token (prefixed `mcp_rt_`), valid 90 days, single-use (rotates on every exchange)
 
 ## 6. Tool calls
 
@@ -119,9 +119,13 @@ Today the consent screen asks for all three so you can pre-authorize, but only `
 
 ## Refresh + rotation
 
-When the access token expires (1h), the assistant exchanges the refresh token for a new pair. The old refresh token is invalidated **immediately** — even one millisecond after exchange. This is **single-use refresh** per OAuth 2.1.
+When the access token expires (1h), the assistant exchanges the refresh token for a new pair. The old one is retired in the same breath — this is **single-use refresh** per OAuth 2.1.
 
-If your assistant misbehaves and tries to reuse a refresh token (e.g., concurrent processes), DocJacket revokes the entire refresh family. The assistant will fall back to re-consent.
+**Running the same assistant in two places at once is fine.** Tools like the Codex CLI can have several processes sharing one saved credential, and they often refresh at the same moment: one wins the race and rotates the token, the other arrives a second later holding what is now the old one. For a short window after a rotation, presenting the just-used token again is treated as what it almost always is — a second session catching up, or a retry after a dropped response — and that caller is handed its own fresh token. Both sessions keep working, and neither is signed out.
+
+Outside that window, re-presenting a spent refresh token is treated as a leaked credential: DocJacket revokes the whole chain of tokens descended from it, and the assistant falls back to re-consent. That is the intended protection — if someone copies your refresh token, the moment either of you uses it after the other, the entire chain dies rather than quietly serving you both.
+
+Nothing here needs configuring. If an assistant does end up asking you to reconnect, the fix is the same as it has always been: consent again.
 
 ## Revocation
 
