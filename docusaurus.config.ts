@@ -21,6 +21,14 @@ const config: Config = {
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
+  // Anchors fail the build too, same as links. Left at the default 'warn', the
+  // whole tool catalog shipped with all 33 of its "Pairs with" cross-links
+  // pointing at anchors that did not exist — the headings slugify with
+  // underscores (`get_offer`), the links were hand-written in kebab
+  // (`#get-offer`). The warning was printed on every build for months and
+  // scrolled past every time, because a warning that never fails is a warning
+  // nobody reads.
+  onBrokenAnchors: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
   i18n: {
