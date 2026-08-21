@@ -152,7 +152,7 @@ You can pick from your existing contacts or create new ones on the fly.
 Use the **Tasks** tab to get the work moving:
 
 1. Add one-off tasks with the quick-add bar
-2. Use **Add checklist** when you have a reusable Playbook ready
+2. Use **Add Playbook** when you have a reusable Playbook ready
 3. Use **Generate** to get suggested tasks for this transaction
 4. Review due dates, assignees, priorities, and task status
 
@@ -2950,14 +2950,14 @@ When the template is applied, DocJacket creates the calculated key dates and any
 
 ## Adding Playbook tasks from the Tasks tab
 
-The transaction **Tasks** tab also has **Add checklist**. That picker is task-focused:
+The transaction **Tasks** tab also has **Add Playbook**. That picker is task-focused:
 
 - You can select one or more Playbooks.
 - The created tasks stay grouped under the Playbook name.
 - Due dates calculate from the transaction's existing key dates when the Playbook has due-date rules.
 - Mismatched or milestone-only templates may still appear, but DocJacket creates only what the template contains.
 
-Use **Generate Timeline** from Overview for key-date-and-task timeline setup. Use **Add checklist** from Tasks when you mainly want to add saved task workflows to an existing transaction.
+Use **Generate Timeline** from Overview for key-date-and-task timeline setup. Use **Add Playbook** from Tasks when you mainly want to add saved task workflows to an existing transaction.
 
 ## What's in a template
 
@@ -3225,7 +3225,7 @@ The organization-wide **Tasks** page is for daily work across all transactions. 
 ## Common actions
 
 - Quick-add a one-off task from a transaction
-- Use **Add checklist** to add a saved task workflow
+- Use **Add Playbook** to add a saved task workflow
 - Generate suggested tasks for the transaction
 - Complete, skip, or reopen tasks
 - Assign tasks to team members
@@ -3280,7 +3280,7 @@ Use a Playbook when you want a repeatable set of tasks and date rules.
 
 From a transaction's **Tasks** tab:
 
-1. Click **Add checklist**
+1. Click **Add Playbook**
 2. Select one or more Playbooks
 3. Apply the selected Playbook
 

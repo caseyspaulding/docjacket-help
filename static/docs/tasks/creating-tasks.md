@@ -43,7 +43,7 @@ Use a Playbook when you want a repeatable set of tasks and date rules.
 
 From a transaction's **Tasks** tab:
 
-1. Click **Add checklist**
+1. Click **Add Playbook**
 2. Select one or more Playbooks
 3. Apply the selected Playbook
 
