@@ -89,3 +89,36 @@ If the date change affects dependent work, DocJacket may show a cascade preview 
 | New construction | Permit approval date or contract date |
 | Commercial lease | Lease commencement date |
 | Short sale | Bank approval date |
+
+## Common questions
+
+### "Is Contract Date the date the contract was accepted?"
+
+Yes. Contract Date is the date of **final acceptance** — the day the last required party signed. If an offer is signed over a weekend and becomes binding on the Monday, Monday is the Contract Date.
+
+Effective Date, Acceptance Date and Binding Agreement Date normally mean that same moment. Your Playbook uses whichever one your state's contract uses, so you'll usually see only one of them in play on a deal. See [Four names for the same date](#four-names-for-the-same-date).
+
+### "Where does the contract executed date go?"
+
+Into whichever of those four anchors your Playbook uses. They're filled from the same event when your contract is read, so there's nothing extra for you to enter.
+
+If you'd rather the deadline read "Executed Date" on screen, [rename it](#use-your-own-wording) and leave the Key Date Type as it is, so reminders and reports still find it.
+
+If you track *fully executed* as its own date, separate from signing, that one belongs on Binding Agreement Date — see [When signed and fully executed are different days](#when-signed-and-fully-executed-are-different-days).
+
+### "How do I change 'Effective Date' to read 'Executed Date'?"
+
+Two different things carry that name, and the answer depends on which one you mean:
+
+- **The deadline in your list.** [Rename it](#use-your-own-wording) — about fifteen seconds.
+- **The Anchor Date dropdown inside a date rule.** Those labels are fixed and can't be renamed. But Contract Date, Acceptance Date and Binding Agreement Date all mean the same moment as Effective Date, so choosing the one your state's contract actually uses gives you identical dates with the wording you expect.
+
+### "I uploaded a contract and it didn't set up my dates"
+
+First, check when it happened. **If it was before 6 August 2026, upload the contract again** — this is fixed. Deals whose Playbook anchored on Acceptance Date or Binding Agreement Date didn't receive those dates from the contract, so their deadlines fell back to a standard timeframe and were marked **Estimated**. Acceptance Date is the primary anchor in roughly 45 states, so this affected a lot of deals.
+
+If the dates are still empty after re-uploading, that's a different problem — contact support and include the deal and the contract.
+
+:::note An "Estimated" badge isn't an error
+It means the deadline wasn't found in the contract, so DocJacket calculated it from a standard timeframe. Open the key date and set it to confirm.
+:::
