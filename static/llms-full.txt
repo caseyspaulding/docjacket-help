@@ -7694,7 +7694,7 @@ Compare every offer on a listing side by side. Returns one column per offer with
 - Compares current versions only; for an offer's revision chain use get_offer.
 - Accept is not available over MCP by design — a human accepts in the app.
 
-**Pairs with** [`list_offers`](#list-offers) · [`get_offer`](#get-offer)
+**Pairs with** [`list_offers`](#list_offers) · [`get_offer`](#get_offer)
 
 **Example call**
 
@@ -7768,7 +7768,7 @@ Return one form template with its full field list — each field's key, label, t
 - Field MapsToTransactionField is the canonical key (e.g. 'Buyer'); the actual DB column is resolved via FormFieldAllowlist at apply time.
 - Returns FORM_NOT_FOUND when the id is unknown or belongs to a different org (no SYSTEM fallback either).
 
-**Pairs with** [`list_form_links`](#list-form-links) · [`list_form_submissions`](#list-form-submissions)
+**Pairs with** [`list_form_links`](#list_form_links) · [`list_form_submissions`](#list_form_submissions)
 
 **Example call**
 
@@ -7788,7 +7788,7 @@ Return field-level data for one form submission — each submitted value alongsi
 - WasApplied=true means the field is already on the transaction — don't double-apply.
 - ApprovalStatus is per-field ('pending' / 'approved' / 'rejected') — submissions with RequiresApproval can have a mix and still be 'partially_approved' at the parent level.
 
-**Pairs with** [`list_form_submissions`](#list-form-submissions) · [`get_form_definition`](#get-form-definition)
+**Pairs with** [`list_form_submissions`](#list_form_submissions) · [`get_form_definition`](#get_form_definition)
 
 **Example call**
 
@@ -7807,7 +7807,7 @@ Return a composite snapshot of intake progress for a transaction: parties presen
 - Pure read — no side effects. The LLM can call this freely to check state without worrying about mutations.
 - missingRecommendedSteps is a heuristic, not a hard schema. New step codes may be added as the intake workflow matures.
 
-**Pairs with** [`get_transaction`](#get-transaction) · [`get_key_dates`](#get-key-dates) · [`get_open_tasks`](#get-open-tasks) · [`apply_extraction`](#apply-extraction)
+**Pairs with** [`get_transaction`](#get_transaction) · [`get_key_dates`](#get_key_dates) · [`get_open_tasks`](#get_open_tasks) · [`apply_extraction`](#apply_extraction)
 
 **Example call**
 
@@ -7826,7 +7826,7 @@ Get the structured Key Date list for one transaction. Returns each Key Date's na
 - Empty array is a valid response — distinguish from TRANSACTION_NOT_FOUND, which means the id is missing or cross-tenant.
 - daysUntil is computed against server-side UtcNow.Date; for displaying to the user, prefer their local date.
 
-**Pairs with** [`get_transaction`](#get-transaction) · [`get_upcoming_key_dates`](#get-upcoming-key-dates) · [`update_key_date`](#update-key-date)
+**Pairs with** [`get_transaction`](#get_transaction) · [`get_upcoming_key_dates`](#get_upcoming_key_dates) · [`update_key_date`](#update_key_date)
 
 **Example call**
 
@@ -7846,7 +7846,7 @@ List the required documents that haven't been uploaded yet on a transaction. Whe
 
 *Requires `read`.*
 
-**Pairs with** [`get_transaction_context`](#get-transaction-context) · [`send_document_request`](#send-document-request) · [`get_next_required_actions`](#get-next-required-actions)
+**Pairs with** [`get_transaction_context`](#get_transaction_context) · [`send_document_request`](#send_document_request) · [`get_next_required_actions`](#get_next_required_actions)
 
 ### `get_next_required_actions`
 
@@ -7866,7 +7866,7 @@ Get a single buyer offer with its full revision history. Returns the thread summ
 - Buyer contact details are private (R4); only the buyer label/name is returned, not email/phone.
 - Accept is not available over MCP by design — a human accepts in the app.
 
-**Pairs with** [`list_offers`](#list-offers) · [`compare_offers`](#compare-offers)
+**Pairs with** [`list_offers`](#list_offers) · [`compare_offers`](#compare_offers)
 
 **Example call**
 
@@ -7892,7 +7892,7 @@ Get the Playbook (Deal Folder) a transaction was set up from — its name, scope
 - based_on_playbook_id is a soft reference (no FK): a Playbook can be deleted after a deal is linked — then playbookExists=false with the id/name still echoed.
 - Components reference timeline-templates / document-template-sets by id + type; template names are not resolved here (use the document-set output via get_missing_documents).
 
-**Pairs with** [`get_transaction`](#get-transaction) · [`get_transaction_graph`](#get-transaction-graph) · [`get_missing_documents`](#get-missing-documents)
+**Pairs with** [`get_transaction`](#get_transaction) · [`get_transaction_graph`](#get_transaction_graph) · [`get_missing_documents`](#get_missing_documents)
 
 **Example call**
 
@@ -7917,7 +7917,7 @@ Get the full state of a single transaction by ID. Returns address, parties (buye
 - Returns TRANSACTION_NOT_FOUND for both genuinely-missing IDs and IDs that exist in another tenant. The two cases are indistinguishable by design (no existence leak).
 - Key Dates are joined into the response — call get_key_dates only when you need just the deadlines and want a lighter payload.
 
-**Pairs with** [`get_key_dates`](#get-key-dates) · [`get_missing_documents`](#get-missing-documents) · [`get_contacts`](#get-contacts)
+**Pairs with** [`get_key_dates`](#get_key_dates) · [`get_missing_documents`](#get_missing_documents) · [`get_contacts`](#get_contacts)
 
 **Example call**
 
@@ -7937,7 +7937,7 @@ Get curated, purpose-shaped context for a single transaction in ONE call — the
 - Narrative excerpts only appear when the org has AI retrieval enabled; otherwise the packet is facts-only (ragUsed=false). The 'graph' block is always returned.
 - Pass 'purpose' to shape what's emphasized; pass 'query' to steer the narrative retrieval (defaults are derived from purpose).
 
-**Pairs with** [`get_transaction`](#get-transaction) · [`get_missing_documents`](#get-missing-documents) · [`get_next_required_actions`](#get-next-required-actions) · [`search_transaction_context`](#search-transaction-context)
+**Pairs with** [`get_transaction`](#get_transaction) · [`get_missing_documents`](#get_missing_documents) · [`get_next_required_actions`](#get_next_required_actions) · [`search_transaction_context`](#search_transaction_context)
 
 **Example call**
 
@@ -7956,7 +7956,7 @@ Get the relationship graph for a transaction — parties by role, key dates, ope
 - Returns TRANSACTION_NOT_FOUND for both missing IDs and IDs in another tenant (no existence leak).
 - No retrieval / no document excerpts — this is structural facts only. Use get_transaction_context for semantic narrative.
 
-**Pairs with** [`get_transaction_context`](#get-transaction-context) · [`search_transaction_context`](#search-transaction-context) · [`get_missing_documents`](#get-missing-documents)
+**Pairs with** [`get_transaction_context`](#get_transaction_context) · [`search_transaction_context`](#search_transaction_context) · [`get_missing_documents`](#get_missing_documents)
 
 **Example call**
 
@@ -7982,7 +7982,7 @@ List every active transaction in the current organization (statuses tagged 'open
 - statusType='open' covers Active/Pending/Under Contract but excludes Closed — historical context needs search_transactions.
 - include_parties + include_key_dates each add a per-transaction round-trip; default both off when you only need the address/status list.
 
-**Pairs with** [`get_next_required_actions`](#get-next-required-actions) · [`get_transaction`](#get-transaction) · [`get_missing_documents`](#get-missing-documents)
+**Pairs with** [`get_next_required_actions`](#get_next_required_actions) · [`get_transaction`](#get_transaction) · [`get_missing_documents`](#get_missing_documents)
 
 **Example call**
 
@@ -8002,7 +8002,7 @@ List recently-uploaded documents in the caller's organization, with enough metad
 
 *Requires `read` · granular scope `documents:read`.*
 
-**Pairs with** [`extract_existing_document`](#extract-existing-document) · [`get_extraction_results`](#get-extraction-results) · [`get_missing_documents`](#get-missing-documents)
+**Pairs with** [`extract_existing_document`](#extract_existing_document) · [`get_extraction_results`](#get_extraction_results) · [`get_missing_documents`](#get_missing_documents)
 
 ### `list_email_templates`
 
@@ -8016,7 +8016,7 @@ List email templates available in the current organization. Returns a compact li
 - Filters by isActive=true automatically — deactivated drafts are hidden. No flag to include them.
 - System templates and org templates are merged in the same list; the isSystem flag distinguishes them.
 
-**Pairs with** [`get_email_template`](#get-email-template) · [`render_email_template`](#render-email-template) · [`get_merge_fields`](#get-merge-fields)
+**Pairs with** [`get_email_template`](#get_email_template) · [`render_email_template`](#render_email_template) · [`get_merge_fields`](#get_merge_fields)
 
 **Example call**
 
@@ -8036,7 +8036,7 @@ List form links sent on a transaction — intake forms, disclosures, BYOF templa
 - shareUrl is rendered against App:BaseUrl; for prod that's https://app.docjacket.com/forms/\{token\}.
 - An 'Active' status doesn't mean unsubmitted — submissionCount can be >0 while the link still accepts more.
 
-**Pairs with** [`list_form_submissions`](#list-form-submissions) · [`get_form_definition`](#get-form-definition)
+**Pairs with** [`list_form_submissions`](#list_form_submissions) · [`get_form_definition`](#get_form_definition)
 
 **Example call**
 
@@ -8057,7 +8057,7 @@ List form submissions — without transactionId returns the organization-wide in
 - formPurpose accepts a string OR array; array maps to SQL IN. Valid keys are 'create_transaction' (new-deal intake), 'update_transaction', and 'additive' — these are the only values stored, so other strings match nothing.
 - since is an ISO datetime in UTC. For 'today' queries the agent should compute start-of-day in the user's local TZ then convert to UTC.
 
-**Pairs with** [`get_form_submission`](#get-form-submission) · [`list_form_links`](#list-form-links) · [`get_form_definition`](#get-form-definition)
+**Pairs with** [`get_form_submission`](#get_form_submission) · [`list_form_links`](#list_form_links) · [`get_form_definition`](#get_form_definition)
 
 **Example call**
 
@@ -8077,7 +8077,7 @@ List buyer-offer threads on the organization's listings. Omit listing_transactio
 - escalation here is just a flag + cap; the full increment/clause text is on compare_offers / get_offer.
 - Accept is not available over MCP by design — surface the offer to the human to accept in the app.
 
-**Pairs with** [`compare_offers`](#compare-offers) · [`get_offer`](#get-offer)
+**Pairs with** [`compare_offers`](#compare_offers) · [`get_offer`](#get_offer)
 
 **Example call**
 
@@ -8121,7 +8121,7 @@ Search contacts in the current organization by free-text query against name, ema
 - For exact-email lookup (e.g. matching an inbound email), prefer find_contact_by_email. This tool is for fuzzy human-typed queries.
 - Empty results suggest create_contact; the breadcrumbs surface that follow-up automatically.
 
-**Pairs with** [`get_contact`](#get-contact) · [`find_contact_by_email`](#find-contact-by-email) · [`create_contact`](#create-contact) · [`add_contact_to_transaction`](#add-contact-to-transaction)
+**Pairs with** [`get_contact`](#get_contact) · [`find_contact_by_email`](#find_contact_by_email) · [`create_contact`](#create_contact) · [`add_contact_to_transaction`](#add_contact_to_transaction)
 
 **Example call**
 
@@ -8141,7 +8141,7 @@ Semantic search over a single transaction's indexed text (documents, and — as 
 - Org-isolated: a transactionId from another tenant yields no results rather than an error (no existence leak).
 - Searches indexed deal text only (currently document OCR; emails/notes are added as the corpus widens).
 
-**Pairs with** [`get_transaction_context`](#get-transaction-context) · [`get_transaction_graph`](#get-transaction-graph)
+**Pairs with** [`get_transaction_context`](#get_transaction_context) · [`get_transaction_graph`](#get_transaction_graph)
 
 **Example call**
 
@@ -8240,7 +8240,7 @@ Create a custom contact role in the current organization, for use with add_conta
 - Prefer an existing system role when one fits — custom roles don't participate in overview cards, contact blocks, or named smart fields.
 - A similar-name match (e.g. 'Attorney' vs the system 'Buyer's Attorney') fails with SIMILAR_ROLES_EXIST; re-emit with ignoreSimilar=true only when the new role is genuinely distinct.
 
-**Pairs with** [`add_contact_to_transaction`](#add-contact-to-transaction) · [`get_contacts`](#get-contacts)
+**Pairs with** [`add_contact_to_transaction`](#add_contact_to_transaction) · [`get_contacts`](#get_contacts)
 
 ### `create_disclosure_package`
 
@@ -8254,7 +8254,7 @@ Create a reusable email template in the organization. Templates hold a subject a
 
 *Requires `actions`.*
 
-**Pairs with** [`render_email_template`](#render-email-template) · [`get_email_template`](#get-email-template) · [`list_email_templates`](#list-email-templates) · [`get_merge_fields`](#get-merge-fields)
+**Pairs with** [`render_email_template`](#render_email_template) · [`get_email_template`](#get_email_template) · [`list_email_templates`](#list_email_templates) · [`get_merge_fields`](#get_merge_fields)
 
 ### `create_reminder`
 
@@ -8274,7 +8274,7 @@ Start the extraction pipeline on a document that's already in DocJacket (uploade
 
 *Requires `actions` · granular scope `upload_document`.*
 
-**Pairs with** [`list_documents`](#list-documents) · [`get_extraction_results`](#get-extraction-results) · [`apply_extraction`](#apply-extraction)
+**Pairs with** [`list_documents`](#list_documents) · [`get_extraction_results`](#get_extraction_results) · [`apply_extraction`](#apply_extraction)
 
 ### `invite_disclosure_recipient`
 
@@ -8340,7 +8340,7 @@ Upload a contract PDF and start the extraction pipeline in one call. FALLBACK PA
 
 - Base64 bytes ride in chat context for the rest of the conversation. Prefer request_upload_url + kick_off_extraction for anything over ~1 MB.
 
-**Pairs with** [`request_upload_url`](#request-upload-url) · [`kick_off_extraction`](#kick-off-extraction) · [`get_extraction_results`](#get-extraction-results) · [`apply_extraction`](#apply-extraction)
+**Pairs with** [`request_upload_url`](#request_upload_url) · [`kick_off_extraction`](#kick_off_extraction) · [`get_extraction_results`](#get_extraction_results) · [`apply_extraction`](#apply_extraction)
 
 ## Where to go next
 
