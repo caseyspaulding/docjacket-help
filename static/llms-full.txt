@@ -10464,6 +10464,18 @@ They'll receive an email with a link to join your organization.
 
 The Team Members page also shows seat usage. If your plan is at capacity, DocJacket may prompt you to upgrade or add another seat before sending the invite.
 
+### If they already have a DocJacket account
+
+Plenty of people you invite will have used DocJacket before — at a previous brokerage, or on their own.
+
+**If they aren't currently in a workspace**, they don't need to hunt down the invitation email. Signing in normally — with Google, or by requesting a sign-in link — puts them straight into your organization, and the invitation is marked accepted. That covers someone who left a previous brokerage, and someone who signed up but never finished setting up a workspace of their own.
+
+**If they're already working in another organization**, joining yours takes clicking the link in the invitation email. Signing in normally leaves them where they are. This is deliberate: entering someone's email address should never move them out of the workspace holding their live transactions.
+
+**If more than one organization has invited them**, DocJacket won't choose on their behalf — they'll be asked to use the invitation link for the one they mean to join.
+
+If you invited someone and they aren't showing up on your Team Members page, check whether the invitation is still listed as pending. If it is, resend it and have them click the link in the email.
+
 ## Roles and permissions
 
 Each team member is assigned a role that controls what they can see and do. You can create custom roles in **Settings > Roles** with granular permissions for:
