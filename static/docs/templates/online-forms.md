@@ -26,7 +26,7 @@ Forms can be standalone public intake forms or transaction-specific forms, depen
 
 The builder has three steps:
 
-- **Setup** — Basic information, branding, messages, theme, section styling, and Checklist Binding
+- **Setup** — Basic information, branding, messages, theme, section styling, and Playbook Binding
 - **Fields** — Field canvas, field palette, field properties, ordering, and conditional display
 - **Share** — Public or transaction-specific links, version history, and form preview
 
