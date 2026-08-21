@@ -202,9 +202,9 @@ Inside DocJacket:
 
 **"Authorization with the MCP server failed"** — Remove the connector from Codex / ChatGPT settings and re-add it to clear stale state. If the problem persists, send the reference ID the assistant shows to <a href="mailto:support@docjacket.com">support@docjacket.com</a>.
 
-**Codex CLI auth keeps re-prompting** — Your refresh token may have been invalidated (single-use rotation — concurrent processes can race). Delete the entry from `~/.codex/credentials` and re-consent.
+**Codex CLI auth keeps re-prompting** — Running several Codex processes against one saved credential no longer causes this; simultaneous refreshes are handled ([how rotation works](/docs/ai-access/oauth#refresh--rotation)). If you are still being asked to reconnect, the saved credential is stale or was revoked — delete the entry from `~/.codex/credentials` and re-consent.
 
-**"Token is invalid, expired, or revoked"** — Either you revoked the client in DocJacket → Settings → AI Access, or the refresh token expired after 30 days of inactivity. Re-consent to reconnect.
+**"Token is invalid, expired, or revoked"** — Either you revoked the client in DocJacket → Settings → AI Access, or the refresh token expired after 90 days of inactivity. Re-consent to reconnect.
 
 ## Read more
 
