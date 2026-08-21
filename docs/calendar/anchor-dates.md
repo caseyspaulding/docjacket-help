@@ -60,7 +60,7 @@ You don't have to adopt DocJacket's vocabulary. A key date has a **Name** that y
 
 To rename one:
 
-1. Go to **Templates → Key Date Library**.
+1. Go to **Templates → Key Date Library** (`/library/milestones`).
 2. Find the key date and click the pencil to edit it.
 3. Change **Name** to whatever your brokerage calls it.
 4. Leave **Key Date Type** as it is.
