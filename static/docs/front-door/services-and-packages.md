@@ -1,7 +1,7 @@
 ---
 sidebar_label: Services and Packages
 sidebar_position: 3
-description: Create Front Door services, public pricing, service filters, checklist-template links, and bundled packages.
+description: Create Front Door services, public pricing, service filters, Playbook links, and bundled packages.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/front-door/services-and-packages -->
@@ -44,9 +44,9 @@ Services can optionally be filtered by:
 
 Leaving a filter blank means the service applies broadly. Use filters when the same Front Door needs to support different kinds of prospects or intake paths.
 
-## Checklist template link
+## Playbook link
 
-A service can link to a checklist template. When an intake flow creates a transaction from that service, DocJacket can use the linked checklist template so the work plan is ready faster.
+A service can link to a Playbook. When an intake flow creates a transaction from that service, DocJacket can use the linked Playbook so the work plan is ready faster.
 
 ## Packages
 

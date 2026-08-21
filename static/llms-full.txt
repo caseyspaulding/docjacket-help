@@ -3974,9 +3974,9 @@ Services can optionally be filtered by:
 
 Leaving a filter blank means the service applies broadly. Use filters when the same Front Door needs to support different kinds of prospects or intake paths.
 
-## Checklist template link
+## Playbook link
 
-A service can link to a checklist template. When an intake flow creates a transaction from that service, DocJacket can use the linked checklist template so the work plan is ready faster.
+A service can link to a Playbook. When an intake flow creates a transaction from that service, DocJacket can use the linked Playbook so the work plan is ready faster.
 
 ## Packages
 
@@ -5369,7 +5369,7 @@ Forms can be standalone public intake forms or transaction-specific forms, depen
 
 The builder has three steps:
 
-- **Setup** — Basic information, branding, messages, theme, section styling, and Checklist Binding
+- **Setup** — Basic information, branding, messages, theme, section styling, and Playbook Binding
 - **Fields** — Field canvas, field palette, field properties, ordering, and conditional display
 - **Share** — Public or transaction-specific links, version history, and form preview
 
