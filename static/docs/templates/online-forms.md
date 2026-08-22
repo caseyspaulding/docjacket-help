@@ -108,7 +108,19 @@ Use **Preview** to open the public form as a recipient would see it. Preview lin
 
 ## Sharing forms
 
-Create-transaction forms can use a standalone public form link. Anyone with the link can submit the form without a DocJacket account.
+Create-transaction forms can use a standalone public form link — the shareable link you hand to agents, put on your website, or send in an email. Anyone with the link can submit the form without a DocJacket account.
+
+### The public intake link, the QR code, and the website embed
+
+Open the form and go to the builder's **Share** step. Create a link there first — until one exists, the public URL, QR code, and embed snippet have nothing to point at. The card then has three tabs:
+
+- **Link** — the public form URL. **Copy link** puts it on your clipboard; **Open** previews it as a submitter sees it. This is the one to paste into an email or hand to an agent. Use a *tracked* link instead when you want to know which source a submission came from.
+- **QR code** — **Download PNG**, for yard signs, flyers, and open-house materials, so someone can scan straight to the form.
+- **Embed** — turn the toggle **On**, then copy the snippet to drop the form onto your own site (Wix, Squarespace, WordPress, or custom). Take the **script** snippet unless you have a reason not to — it auto-resizes to the form. An iframe snippet is offered as the fallback.
+
+:::note Only Create Transaction forms get a standalone link
+If the **Share** step won't offer you a public link, check the form's purpose. **Update Transaction** and **Additive** forms are sent from a specific deal instead — see below.
+:::
 
 Update and additive forms need a transaction-specific link. To create one:
 

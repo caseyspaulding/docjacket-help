@@ -48,6 +48,8 @@ Three anchor names all mean that same binding moment, because states and contrac
 
 Your Playbook uses whichever one your state's contract uses, so you'll normally see only one of those three in play on a deal. **Contract Date is not one of them** — it's the separate, earlier offer date.
 
+Your contract may not use any of those three words for it. **Mutual acceptance** (the usual wording in Washington and Oregon), **mutual execution** or **MEC** (Colorado), and **fully executed** all describe that same binding moment, and DocJacket reads them into whichever of the three anchors your state's Playbook uses. So when a contract says a period runs "X days after mutual acceptance", it's counting from the binding date — the one your deadlines already anchor on.
+
 :::warning Don't swap Contract Date in for one of the other three
 They aren't interchangeable. Substituting Contract Date for Effective Date in a date rule moves every deadline built on it, usually one to three days early.
 :::
@@ -114,6 +116,14 @@ No — and this one catches people out. **Contract Date is the day the buyer sig
 If an offer is signed on the Friday and accepted on the Monday, Friday is the Contract Date and Monday is the Effective Date. Your deadlines count from Monday.
 
 Acceptance Date and Binding Agreement Date are other names for that same binding moment; your Playbook uses whichever one your state's contract uses. See [Which date your deadlines count from](#which-date-your-deadlines-count-from).
+
+### "Is the Effective Date the same as the written acceptance date?"
+
+Usually no — and in Pennsylvania, definitely not.
+
+On a Pennsylvania Agreement of Sale, "written acceptance" names a **deadline**: Paragraph 5(A) reads *"Written acceptance of all parties will be on or before [date]"* — the date by which acceptance has to happen. The Effective Date is the day it actually happened. DocJacket keeps the two apart and records the Pennsylvania line as its own deadline, **Written acceptance deadline**, separate from both Contract Date and Effective Date.
+
+Outside that context, if your contract uses "written acceptance" to describe the moment the last required party signed, then yes — that is the binding moment, and it's the same thing as Effective Date, Acceptance Date or Binding Agreement Date.
 
 ### "Where does the contract executed date go?"
 
