@@ -2676,6 +2676,8 @@ The **E-Signatures** page gives you one place to review signature requests and s
 
 ## Do I need DocuSign?
 
+However you spell it — DocuSign, Docu-Sign, or docu sign — the answer is the same.
+
 No. E-signature is built into DocJacket — there is no separate service to buy, connect, or
 sign into, and no per-envelope fee from a third party. You send a document for signature
 from a transaction or as a form packet built from your office's approved templates, and
@@ -3220,6 +3222,8 @@ Three anchor names all mean that same binding moment, because states and contrac
 
 Your Playbook uses whichever one your state's contract uses, so you'll normally see only one of those three in play on a deal. **Contract Date is not one of them** — it's the separate, earlier offer date.
 
+Your contract may not use any of those three words for it. **Mutual acceptance** (the usual wording in Washington and Oregon), **mutual execution** or **MEC** (Colorado), and **fully executed** all describe that same binding moment, and DocJacket reads them into whichever of the three anchors your state's Playbook uses. So when a contract says a period runs "X days after mutual acceptance", it's counting from the binding date — the one your deadlines already anchor on.
+
 :::warning Don't swap Contract Date in for one of the other three
 They aren't interchangeable. Substituting Contract Date for Effective Date in a date rule moves every deadline built on it, usually one to three days early.
 :::
@@ -3286,6 +3290,14 @@ No — and this one catches people out. **Contract Date is the day the buyer sig
 If an offer is signed on the Friday and accepted on the Monday, Friday is the Contract Date and Monday is the Effective Date. Your deadlines count from Monday.
 
 Acceptance Date and Binding Agreement Date are other names for that same binding moment; your Playbook uses whichever one your state's contract uses. See [Which date your deadlines count from](#which-date-your-deadlines-count-from).
+
+### "Is the Effective Date the same as the written acceptance date?"
+
+Usually no — and in Pennsylvania, definitely not.
+
+On a Pennsylvania Agreement of Sale, "written acceptance" names a **deadline**: Paragraph 5(A) reads *"Written acceptance of all parties will be on or before [date]"* — the date by which acceptance has to happen. The Effective Date is the day it actually happened. DocJacket keeps the two apart and records the Pennsylvania line as its own deadline, **Written acceptance deadline**, separate from both Contract Date and Effective Date.
+
+Outside that context, if your contract uses "written acceptance" to describe the moment the last required party signed, then yes — that is the binding moment, and it's the same thing as Effective Date, Acceptance Date or Binding Agreement Date.
 
 ### "Where does the contract executed date go?"
 
@@ -4458,7 +4470,8 @@ always come from their own address and replies reach them directly.
 ## Can you tell if a client opened an email?
 
 Sometimes — and it depends on **which mailbox actually sent the message**, which is
-the same distinction as the rest of this page.
+the same distinction as the rest of this page. So no, connecting Gmail does not make
+every message trackable; it does the opposite.
 
 | How it was sent | Open tracking |
 |---|---|
@@ -5691,7 +5704,19 @@ Use **Preview** to open the public form as a recipient would see it. Preview lin
 
 ## Sharing forms
 
-Create-transaction forms can use a standalone public form link. Anyone with the link can submit the form without a DocJacket account.
+Create-transaction forms can use a standalone public form link — the shareable link you hand to agents, put on your website, or send in an email. Anyone with the link can submit the form without a DocJacket account.
+
+### The public intake link, the QR code, and the website embed
+
+Open the form and go to the builder's **Share** step. Create a link there first — until one exists, the public URL, QR code, and embed snippet have nothing to point at. The card then has three tabs:
+
+- **Link** — the public form URL. **Copy link** puts it on your clipboard; **Open** previews it as a submitter sees it. This is the one to paste into an email or hand to an agent. Use a *tracked* link instead when you want to know which source a submission came from.
+- **QR code** — **Download PNG**, for yard signs, flyers, and open-house materials, so someone can scan straight to the form.
+- **Embed** — turn the toggle **On**, then copy the snippet to drop the form onto your own site (Wix, Squarespace, WordPress, or custom). Take the **script** snippet unless you have a reason not to — it auto-resizes to the form. An iframe snippet is offered as the fallback.
+
+:::note Only Create Transaction forms get a standalone link
+If the **Share** step won't offer you a public link, check the form's purpose. **Update Transaction** and **Additive** forms are sent from a specific deal instead — see below.
+:::
 
 Update and additive forms need a transaction-specific link. To create one:
 

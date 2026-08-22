@@ -13,6 +13,8 @@ The **E-Signatures** page gives you one place to review signature requests and s
 
 ## Do I need DocuSign?
 
+However you spell it — DocuSign, Docu-Sign, or docu sign — the answer is the same.
+
 No. E-signature is built into DocJacket — there is no separate service to buy, connect, or
 sign into, and no per-envelope fee from a third party. You send a document for signature
 from a transaction or as a form packet built from your office's approved templates, and
