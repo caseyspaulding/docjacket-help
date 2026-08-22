@@ -3049,7 +3049,7 @@ When you generate a closing timeline from a Playbook template, each key date rul
 - "Appraisal deadline: 21 days after anchor"
 - "Closing: 30 days after anchor"
 
-The **anchor date** is usually the date the contract became binding. Which name that date goes by depends on your state — see [Four names for the same date](#four-names-for-the-same-date) below. It can also be any other date your rules reference, such as a listing date or a lease commencement date.
+The **anchor date** is usually the date the contract became binding. Which name that date goes by depends on your state — see [Which date your deadlines count from](#which-date-your-deadlines-count-from) below. It can also be any other date your rules reference, such as a listing date or a lease commencement date.
 
 ## Setting the anchor date
 
@@ -3057,28 +3057,40 @@ When you generate a timeline, DocJacket uses the transaction dates already enter
 
 You can review and adjust key dates later from the closing timeline on the transaction **Overview** tab.
 
-## Four names for the same date
+## Which date your deadlines count from
 
-Most Playbooks anchor on the moment a contract becomes binding — the point when the last required party has signed. DocJacket carries four separate anchors for that one moment, because states and contract forms call it different things:
+A purchase contract has **two** signature events, and DocJacket records them as two different dates:
+
+| The event | The date | When |
+|-----------|----------|------|
+| The **buyer signs the offer** | **Contract Date** | The earlier of the two |
+| The **seller accepts** — the contract is now binding | **Effective Date** | Usually 1–3 days later |
+
+**Deadlines count from the binding moment**, not from the offer. An offer signed on a Friday and accepted on the Monday gives a 10-day inspection deadline that runs from Monday.
+
+Three anchor names all mean that same binding moment, because states and contract forms word it differently:
 
 | Anchor | Where you'll see it |
 |--------|---------------------|
 | **Effective Date** | Contracts that use "effective" for the binding moment |
-| **Contract Date** | The general-purpose name |
 | **Acceptance Date** | The primary anchor in roughly 45 states' Playbooks |
 | **Binding Agreement Date** | Contracts that say "binding agreement" |
 
-These are not four different deadlines. Your Playbook uses whichever one your state's contract uses, so you'll normally see only one of them in play on a deal. When a contract is read, DocJacket fills them from the same event — there's nothing extra for you to enter.
+Your Playbook uses whichever one your state's contract uses, so you'll normally see only one of those three in play on a deal. **Contract Date is not one of them** — it's the separate, earlier offer date.
 
-:::tip Can't find a date you know you have?
-It's almost always here, under one of the other three names. Check all four before assuming it didn't come through.
+:::warning Don't swap Contract Date in for one of the other three
+They aren't interchangeable. Substituting Contract Date for Effective Date in a date rule moves every deadline built on it, usually one to three days early.
+:::
+
+:::tip Seeing both Contract Date and Effective Date on a deal, a day apart?
+That's correct, and it's what a contract with two signature dates should produce. The buyer signed one day; the seller accepted the next.
 :::
 
 ## When signed and fully executed are different days
 
-Some coordinators track two dates rather than one: the day the contract was signed, and the day it became **fully executed**. Those are often a day apart — an offer signed on a Sunday can become binding on the Monday.
+This is the normal case rather than the exception: the day the offer was signed and the day it became **fully executed** are usually different, often by a day — an offer signed on a Sunday can become binding on the Monday.
 
-If you work that way, keep them separate rather than merging them:
+Keep them separate rather than merging them:
 
 | What you're recording | Key Date Type to use |
 |-----------------------|----------------------|
@@ -3106,7 +3118,7 @@ The Key Date Type is how reminders, reports, calendar sync, and FollowUpBoss syn
 Two things to know about renaming:
 
 - It applies to **new** deals. A deal that's already open keeps the name it had when it was created — rename the key date on that deal directly if you need to change a live one.
-- The **Anchor Date** dropdown inside a date rule is a fixed list and can't be renamed. If none of its wording matches your contract, pick whichever of the four binding-date anchors above your state uses; they point at the same moment.
+- The **Anchor Date** dropdown inside a date rule is a fixed list and can't be renamed. If none of its wording matches your contract, pick whichever of the three binding-date anchors above your state uses — Effective, Acceptance or Binding Agreement. They point at the same moment; Contract Date does not.
 
 ## Why this matters
 
@@ -3118,7 +3130,7 @@ If the date change affects dependent work, DocJacket may show a cascade preview 
 
 | Scenario | Typical anchor date |
 |----------|-------------------|
-| Standard residential purchase | Whichever of the four binding-date anchors your state's contract uses |
+| Standard residential purchase | Whichever of the three binding-date anchors your state's contract uses — Effective, Acceptance or Binding Agreement |
 | New construction | Permit approval date or contract date |
 | Commercial lease | Lease commencement date |
 | Short sale | Bank approval date |
@@ -3127,13 +3139,15 @@ If the date change affects dependent work, DocJacket may show a cascade preview 
 
 ### "Is Contract Date the date the contract was accepted?"
 
-Yes. Contract Date is the date of **final acceptance** — the day the last required party signed. If an offer is signed over a weekend and becomes binding on the Monday, Monday is the Contract Date.
+No — and this one catches people out. **Contract Date is the day the buyer signed the offer.** The date of final acceptance, when the last required party signed and the contract became binding, is the **Effective Date**.
 
-Effective Date, Acceptance Date and Binding Agreement Date normally mean that same moment. Your Playbook uses whichever one your state's contract uses, so you'll usually see only one of them in play on a deal. See [Four names for the same date](#four-names-for-the-same-date).
+If an offer is signed on the Friday and accepted on the Monday, Friday is the Contract Date and Monday is the Effective Date. Your deadlines count from Monday.
+
+Acceptance Date and Binding Agreement Date are other names for that same binding moment; your Playbook uses whichever one your state's contract uses. See [Which date your deadlines count from](#which-date-your-deadlines-count-from).
 
 ### "Where does the contract executed date go?"
 
-Into whichever of those four anchors your Playbook uses. They're filled from the same event when your contract is read, so there's nothing extra for you to enter.
+*Executed* means the contract is binding, so it goes to the binding anchor your Playbook uses — Effective Date, Acceptance Date or Binding Agreement Date. Not Contract Date, which is the earlier offer date.
 
 If you'd rather the deadline read "Executed Date" on screen, [rename it](#use-your-own-wording) and leave the Key Date Type as it is, so reminders and reports still find it.
 
@@ -3144,7 +3158,7 @@ If you track *fully executed* as its own date, separate from signing, that one b
 Two different things carry that name, and the answer depends on which one you mean:
 
 - **The deadline in your list.** [Rename it](#use-your-own-wording) — about fifteen seconds.
-- **The Anchor Date dropdown inside a date rule.** Those labels are fixed and can't be renamed. But Contract Date, Acceptance Date and Binding Agreement Date all mean the same moment as Effective Date, so choosing the one your state's contract actually uses gives you identical dates with the wording you expect.
+- **The Anchor Date dropdown inside a date rule.** Those labels are fixed and can't be renamed. **Acceptance Date** and **Binding Agreement Date** mean the same binding moment as Effective Date, so you can pick whichever your state's contract uses. Don't reach for **Contract Date** here — it's the earlier offer date, and swapping it in moves your deadlines.
 
 ### "I uploaded a contract and it didn't set up my dates"
 
