@@ -1,12 +1,25 @@
 ---
 sidebar_label: E-Signatures
 sidebar_position: 10
-description: Review DocJacket e-signature requests and track signer completion status across every document on a transaction, in one view.
+description: Whether you need DocuSign with DocJacket (you don't — e-signature is built in), plus how to review e-signature requests and track signer completion across every document on a transaction.
 ---
 
 # E-Signatures
 
 The **E-Signatures** page gives you one place to review signature requests and signing progress. However you spell it — e-signature, esignature, e-sign, or electronic signature — this is where DocJacket tracks documents you've sent to be signed.
+
+## Do I need DocuSign?
+
+No. E-signature is built into DocJacket — there is no separate service to buy, connect, or
+sign into, and no per-envelope fee from a third party. You send a document for signature
+from a transaction or as a form packet built from your office's approved templates, and
+signers complete it in their browser without creating an account.
+
+If your brokerage still sends some paperwork through another service, a mixed setup keeps
+working. Completed documents emailed in from **DocuSign**, **Dotloop**, **SkySlope**,
+**zipForms (Lone Wolf)**, or **CTM eContracts** are recognised as coming from that service
+and can be filed to the right deal from the transaction's
+[Email tab](../messages/inbox.mdx).
 
 Signature requests can come from a transaction document or from a form packet built from office-approved templates. The E-Signatures page tracks requests across statuses such as pending, partially completed, completed, cancelled, declined, or expired.
 
