@@ -4900,6 +4900,166 @@
         }
       }
     },
+    "/api/v1/account/deletion/status": {
+      "get": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Whether workspace deletion is scheduled, and whether the caller may act on it",
+        "description": "Reports whether this workspace is scheduled for deletion, when the purge falls due, and how long the grace period is. Readable by any member with the read scope, because a pending deletion ends the workspace for all of them. The `isOwner` flag tells a client whether to offer the delete and export controls at all, so it can hide them rather than render a button that fails.\n\n**Requires the `read` scope.**",
+        "operationId": "AccountDeletionStatus",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
+          }
+        }
+      }
+    },
+    "/api/v1/account/deletion/request": {
+      "post": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Schedule this workspace for deletion after the grace period",
+        "description": "Schedules the workspace for permanent deletion once the grace period elapses, freezes it, and emails a cancel link. Nothing is deleted at the time of the call. Owner only, and `confirmName` must equal the workspace name exactly — a mismatch returns 422 and schedules nothing.\n\n**Requires the `actions` scope.**",
+        "operationId": "RequestAccountDeletion",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/RequestAccountDeletionBody"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
+          }
+        }
+      }
+    },
+    "/api/v1/account/deletion/cancel": {
+      "post": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Cancel a scheduled workspace deletion",
+        "description": "Cancels a pending deletion and unfreezes the workspace — the in-app equivalent of the emailed cancel link, for an owner who is still signed in. Owner only. Returns `cancelled: false` when there was nothing scheduled.\n\n**Requires the `actions` scope.**",
+        "operationId": "CancelAccountDeletion",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
+          }
+        }
+      }
+    },
+    "/api/v1/account/export/latest": {
+      "get": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Status of the most recent workspace data export",
+        "description": "Returns the most recent export for this workspace with its build progress, or `exists: false` if one has never been requested. A completed export whose artifact has passed its expiry reports as `expired`, since the file is gone. Owner only.\n\n**Requires the `read` scope.**",
+        "operationId": "LatestAccountExport",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
+          }
+        }
+      }
+    },
+    "/api/v1/account/export/request": {
+      "post": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Start building a full export of this workspace's data",
+        "description": "Starts building a full archive of this workspace's data; the finished download arrives by email, so there is nothing to fetch from this response. Owner only. One export runs at a time — calling again while one is building returns that one with `alreadyRunning: true` rather than starting a second.\n\n**Requires the `actions` scope.**",
+        "operationId": "RequestAccountExport",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
+          }
+        }
+      }
+    },
     "/api/v1/webhook-events": {
       "get": {
         "tags": [
@@ -7131,6 +7291,17 @@
           }
         }
       },
+      "RequestAccountDeletionBody": {
+        "type": "object",
+        "properties": {
+          "confirmName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
       "RescheduleTaskRequest": {
         "type": "object",
         "properties": {
@@ -7199,6 +7370,34 @@
               "null",
               "string"
             ]
+          },
+          "documentIds": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "documentFileNames": {
+            "type": [
+              "null",
+              "object"
+            ],
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "attachments": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/SendMessageAttachment"
+            }
           }
         }
       },
@@ -7254,6 +7453,27 @@
             ]
           },
           "replyToMessageId": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "SendMessageAttachment": {
+        "required": [
+          "fileName",
+          "url"
+        ],
+        "type": "object",
+        "properties": {
+          "fileName": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "contentType": {
             "type": [
               "null",
               "string"
@@ -7749,6 +7969,21 @@
         "description": "Organization API key — `Authorization: Bearer mcp_at_…`\n\nMint one in DocJacket under **Settings → Advanced → API Keys**. The key acts within a single organization and carries one or more scopes:\n\n- `read` — GETs.\n- `draft` — low-risk writes (completing a task, saving a status summary).\n- `actions` — side-effecting writes (sending email, deleting, provisioning).\n\nEach operation below notes the scope it requires. `GET /api/v1/catalog` returns the same list with a `callable` flag computed against *your* key. The identical key also connects AI assistants over MCP at `https://mcp.docjacket.com/mcp`.",
         "scheme": "bearer"
       },
+      "OAuth2": {
+        "type": "oauth2",
+        "description": "OAuth 2.1 access token — `Authorization: Bearer <access token>`\n\nReaches the same operations as an organization API key, with the same `read` / `draft` / `actions` scopes. Use it when your application acts for many users: register once, then each user authorizes their own DocJacket account and you hold a token per user. The organization is carried in the token's `org_id` claim — key your storage on it.\n\nAuthorization code + PKCE (`S256` only). Public client: there is no client secret. Register dynamically (RFC 7591) at `/oauth/register`, and read the endpoints from `/.well-known/oauth-authorization-server` rather than hardcoding them.\n\nAccess tokens last 1 hour; refresh tokens last 90 days and **rotate on every use**. Presenting an already-used refresh token is treated as a replay and revokes every live token for that user and client — store the new one before using it, and never retry a failed refresh with the old one. Membership is re-read on every call, so a user removed from the organization loses access immediately rather than at token expiry: treat `401` as \"reconnect this account\", not as a transient error.",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://app.docjacket.com/oauth/authorize",
+            "tokenUrl": "https://app.docjacket.com/oauth/token",
+            "scopes": {
+              "read": "Read transactions, key dates, tasks, documents, contacts, communications.",
+              "draft": "Low-risk writes: complete a task, update a key date, save a status summary.",
+              "actions": "Side-effecting writes: send email or SMS, delete, share a document externally."
+            }
+          }
+        }
+      },
       "PartnerApiKey": {
         "type": "http",
         "description": "White-label partner key — `Authorization: Bearer rsk_…`\n\nCross-tenant credential for resellers, accepted only on the `/api/v1/orgs/*` operations (the **Organizations (Partner)** section). Organization API keys (`mcp_at_…`) are rejected there, and a partner key is rejected everywhere else. Requests for an organization the key does not own return `404` rather than `403`, so ownership is never disclosed.",
@@ -7759,6 +7994,9 @@
   "security": [
     {
       "OrgApiKey": []
+    },
+    {
+      "OAuth2": []
     }
   ],
   "tags": [
