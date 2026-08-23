@@ -3416,6 +3416,12 @@ Only the person **sending** needs Google Calendar connected — the people you i
 
 If you're asked to connect Google Calendar even though you already have, disconnect it under **Settings → Integrations** and connect it again. That refreshes the connection and clears the prompt.
 
+## If you use Outlook
+
+Calendar Invites organizes from a connected **Google Calendar** only — there's no Outlook equivalent. Connecting Outlook Calendar under **Settings → Integrations** does not enable this feature; a real invitation still has to be organized from Google.
+
+If your organization runs on Outlook and nobody wants to connect a Google account, use a subscription feed instead: at **Settings → Calendar → Subscribe from any calendar**, each person gets their own link that pulls their deadlines — closings, key dates, and tasks — into Outlook, Apple Calendar, or any app that reads a calendar subscription. It's not an invitation you send to specific people on a deal; it's a personal feed that stays current automatically as dates move. It won't get an event onto someone else's calendar the way an invite does, but it's the way to see your own deadlines in Outlook without touching Google.
+
 ## See who accepted
 
 After you send, each invited person shows a response status:
