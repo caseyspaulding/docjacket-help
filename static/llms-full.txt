@@ -3519,6 +3519,17 @@ The organization-wide **Tasks** page is for daily work across all transactions. 
 
 There are several ways to add tasks to a transaction. Use quick add for one-off work, apply a Playbook when you want a full saved workflow, or let DocJacket suggest tasks from the transaction.
 
+<div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', margin: '1.5rem 0' }}>
+  <iframe
+    src="https://app.supademo.com/embed/cmt791jia4sp9qm83x1z9lz09?embed_v=2"
+    title="Build your task list and set due dates - walkthrough"
+    allow="fullscreen"
+    allowFullScreen
+    loading="lazy"
+    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0, borderRadius: 8 }}
+  />
+</div>
+
 ## Quick add
 
 The fastest way to create a single task is from a transaction's **Tasks** tab.
@@ -3578,10 +3589,19 @@ You can:
 - Sort by task, due date, completed date, or notes
 - Resize the table columns
 - Select multiple tasks for bulk complete or bulk delete
-- Drag rows within a Playbook section to adjust visual order
+- Drag rows to reorder them - see the next section for the setting that turns dragging on
 - Save a Playbook section as a new Playbook template
 
-Changing row order does not change due dates.
+## Reordering tasks - and why it won't let you drag them
+
+If you try to rearrange tasks and the rows won't move, dragging isn't broken - it's off because your office orders tasks by due date. The switch is **Settings > Organization > Order tasks by**:
+
+- **Due date - soonest first** (the default) - whatever's due next is at the top. Drag-reorder is off in this mode, because a hand-placed position would be undone by the date sort the moment the list refreshes.
+- **My Playbook order** - the sequence you built in your Playbook, for when the order of the work matters more than what's due next. This is also what turns on **drag to reorder** on a deal's Tasks tab.
+
+On due-date order, the Tasks tab shows an **Enable drag reorder** link that jumps straight to that setting. The choice is office-wide and applies everywhere tasks are listed - the deal's Tasks tab and the client / agent portal - so what you see and what your agent sees always match.
+
+Changing row order never changes due dates.
 
 ## Task email and reminder timing
 
@@ -3641,6 +3661,10 @@ Playbook tasks should point to key dates instead of duplicating date math.
 | Due 1 business day before Closing Date | Due on a manually typed calendar date |
 
 That keeps date rules in the **Key Date Library** and task workflows in **Playbooks**.
+
+## Conditional tasks
+
+A Playbook task can carry a condition — cash deal, sellers only, or any contingency (home warranty, septic, lead paint, and more). When the Playbook is applied, the deal's own details decide whether the task is created, so one Playbook covers every variation — you don't have to build a separate checklist for each scenario. See [Task Options](./task-options.md) for the full list of condition fields.
 
 ## Task phases and assignments
 
@@ -3960,6 +3984,14 @@ Use the top of the drawer for the basics:
 
 If a task is blocked by another task, DocJacket shows a blocked indicator until the dependency is cleared.
 
+## Due dates: linked to a key date, your own, or cleared
+
+Tasks that came from a Playbook are usually **linked to a key date** - "Option Fee Receipt" lands one day after the Effective Date automatically, with no typing.
+
+- **Type your own date** and it replaces the calculated one. If the anchor key date later moves, the date rule recalculates from the new anchor.
+- **Unlink a task's due date from a key date** by **clearing** the date: a cleared date stays cleared, and DocJacket will not re-date the task when key dates shift. Set a date again whenever you're ready.
+- A task with no due date is fine - it simply isn't planned yet.
+
 ## Portal Visibility
 
 Use **Portal Visibility** when a task should be visible to transaction parties in the portal.
@@ -4010,14 +4042,19 @@ The drawer's **Options** section includes settings for how the task behaves:
 - **Key Date** — highlights the task as an important date-style item in task and calendar views. This is not a replacement for the transaction's canonical key dates.
 - **Notify on Complete** — sends linked emails when the task is marked complete
 - **Notify Contact** — chooses the contact for completion notification when enabled
-- **Conditional Task** — labels the task as only relevant under certain conditions
+- **Conditional Task** — the task applies only when a condition on the deal is true, and is skipped automatically at Playbook apply when it isn't
 - **Est. Hours** and **Actual Hours** — track estimated and actual work time
 
 ## Conditional Task
 
-Use a conditional label when the task only applies in some transactions. The label appears on the task row so your team can see why it exists.
+Mark a task **Conditional** when it only applies to some deals — and pick the **Transaction field** that decides. The system then knows whether the task applies on its own: when a Playbook is applied, the deal's own details decide whether each conditional task is created. You do not need to make a different checklist for every variation like warranty, financing, or cash deals.
 
-**Example:** "Schedule septic inspection" — only relevant for properties with septic systems, not city sewer.
+- **Cash deal** and **Sellers only** create the task only when that is true on the deal — financing-only work never appears on a cash deal.
+- **Contingency conditions** — HOA, radon, septic, well, pool, solar, lead paint, inspection, smart home, and home warranty — skip the task only when the deal marks that contingency **N/A**.
+
+The condition is set in the Playbook builder: open the task, check **Conditional Task**, and choose the Transaction field. The label appears on the task row so your team can see why the task exists.
+
+**Example:** "Schedule septic inspection" with the Septic contingency condition — created on deals with a septic contingency, skipped when the deal marks it N/A.
 
 ## Comments
 

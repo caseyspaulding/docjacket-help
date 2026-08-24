@@ -22,6 +22,14 @@ Use the top of the drawer for the basics:
 
 If a task is blocked by another task, DocJacket shows a blocked indicator until the dependency is cleared.
 
+## Due dates: linked to a key date, your own, or cleared
+
+Tasks that came from a Playbook are usually **linked to a key date** - "Option Fee Receipt" lands one day after the Effective Date automatically, with no typing.
+
+- **Type your own date** and it replaces the calculated one. If the anchor key date later moves, the date rule recalculates from the new anchor.
+- **Unlink a task's due date from a key date** by **clearing** the date: a cleared date stays cleared, and DocJacket will not re-date the task when key dates shift. Set a date again whenever you're ready.
+- A task with no due date is fine - it simply isn't planned yet.
+
 ## Portal Visibility
 
 Use **Portal Visibility** when a task should be visible to transaction parties in the portal.
@@ -72,14 +80,19 @@ The drawer's **Options** section includes settings for how the task behaves:
 - **Key Date** — highlights the task as an important date-style item in task and calendar views. This is not a replacement for the transaction's canonical key dates.
 - **Notify on Complete** — sends linked emails when the task is marked complete
 - **Notify Contact** — chooses the contact for completion notification when enabled
-- **Conditional Task** — labels the task as only relevant under certain conditions
+- **Conditional Task** — the task applies only when a condition on the deal is true, and is skipped automatically at Playbook apply when it isn't
 - **Est. Hours** and **Actual Hours** — track estimated and actual work time
 
 ## Conditional Task
 
-Use a conditional label when the task only applies in some transactions. The label appears on the task row so your team can see why it exists.
+Mark a task **Conditional** when it only applies to some deals — and pick the **Transaction field** that decides. The system then knows whether the task applies on its own: when a Playbook is applied, the deal's own details decide whether each conditional task is created. You do not need to make a different checklist for every variation like warranty, financing, or cash deals.
 
-**Example:** "Schedule septic inspection" — only relevant for properties with septic systems, not city sewer.
+- **Cash deal** and **Sellers only** create the task only when that is true on the deal — financing-only work never appears on a cash deal.
+- **Contingency conditions** — HOA, radon, septic, well, pool, solar, lead paint, inspection, smart home, and home warranty — skip the task only when the deal marks that contingency **N/A**.
+
+The condition is set in the Playbook builder: open the task, check **Conditional Task**, and choose the Transaction field. The label appears on the task row so your team can see why the task exists.
+
+**Example:** "Schedule septic inspection" with the Septic contingency condition — created on deals with a septic contingency, skipped when the deal marks it N/A.
 
 ## Comments
 

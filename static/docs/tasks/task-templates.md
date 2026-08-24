@@ -58,6 +58,10 @@ Playbook tasks should point to key dates instead of duplicating date math.
 
 That keeps date rules in the **Key Date Library** and task workflows in **Playbooks**.
 
+## Conditional tasks
+
+A Playbook task can carry a condition — cash deal, sellers only, or any contingency (home warranty, septic, lead paint, and more). When the Playbook is applied, the deal's own details decide whether the task is created, so one Playbook covers every variation — you don't have to build a separate checklist for each scenario. See [Task Options](./task-options.md) for the full list of condition fields.
+
 ## Task phases and assignments
 
 Playbook tasks can be grouped by phase. When applying a Playbook, phases let you apply only the portion of the workflow you need.

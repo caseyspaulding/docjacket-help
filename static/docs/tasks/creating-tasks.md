@@ -11,6 +11,17 @@ description: Add tasks to a DocJacket transaction — quick-add, full task drawe
 
 There are several ways to add tasks to a transaction. Use quick add for one-off work, apply a Playbook when you want a full saved workflow, or let DocJacket suggest tasks from the transaction.
 
+<div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', margin: '1.5rem 0' }}>
+  <iframe
+    src="https://app.supademo.com/embed/cmt791jia4sp9qm83x1z9lz09?embed_v=2"
+    title="Build your task list and set due dates - walkthrough"
+    allow="fullscreen"
+    allowFullScreen
+    loading="lazy"
+    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0, borderRadius: 8 }}
+  />
+</div>
+
 ## Quick add
 
 The fastest way to create a single task is from a transaction's **Tasks** tab.
@@ -70,10 +81,19 @@ You can:
 - Sort by task, due date, completed date, or notes
 - Resize the table columns
 - Select multiple tasks for bulk complete or bulk delete
-- Drag rows within a Playbook section to adjust visual order
+- Drag rows to reorder them - see the next section for the setting that turns dragging on
 - Save a Playbook section as a new Playbook template
 
-Changing row order does not change due dates.
+## Reordering tasks - and why it won't let you drag them
+
+If you try to rearrange tasks and the rows won't move, dragging isn't broken - it's off because your office orders tasks by due date. The switch is **Settings > Organization > Order tasks by**:
+
+- **Due date - soonest first** (the default) - whatever's due next is at the top. Drag-reorder is off in this mode, because a hand-placed position would be undone by the date sort the moment the list refreshes.
+- **My Playbook order** - the sequence you built in your Playbook, for when the order of the work matters more than what's due next. This is also what turns on **drag to reorder** on a deal's Tasks tab.
+
+On due-date order, the Tasks tab shows an **Enable drag reorder** link that jumps straight to that setting. The choice is office-wide and applies everywhere tasks are listed - the deal's Tasks tab and the client / agent portal - so what you see and what your agent sees always match.
+
+Changing row order never changes due dates.
 
 ## Task email and reminder timing
 
