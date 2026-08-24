@@ -54,6 +54,17 @@ Open a transaction and go to **Contacts** to manage the contacts for that deal.
 
 To add another contact — for example an escrow, title, or lender contact — to an existing deal:
 
+<div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', margin: '1.5rem 0' }}>
+  <iframe
+    src="https://app.supademo.com/embed/cmt6h3enb3ow2qm83nre265fs?embed_v=2"
+    title="Add a contact to a deal - walkthrough"
+    allow="fullscreen"
+    allowFullScreen
+    loading="lazy"
+    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0, borderRadius: 8 }}
+  />
+</div>
+
 1. Open the transaction and click the **Contacts** tab in the row of tabs across the top.
 2. Click the **Add Contact** button in the top-right corner of the tab. (This is the "add another contact" button — it is labeled **Add Contact**.)
 3. In the drawer that slides out, search for the person or company. If they are already in your contacts they appear as you type; if not, click **Create New Contact** to add them.
@@ -61,6 +72,8 @@ To add another contact — for example an escrow, title, or lender contact — t
 5. Click **Add Contact** to save them onto the transaction.
 
 You can also add a contact from an empty **expected role** slot by clicking **Assign** on that role card, which opens the same drawer with the role pre-selected.
+
+Search results show the email address each contact record will use - that is how you tell two similar records apart. Once added, the person appears under the **Contacts** pill in the deal's [email composer](../messages/sending-emails.mdx), and role-based template emails include them automatically.
 
 :::tip Don't see the Contacts tab or the Add Contact button?
 The **Add Contact** button lives only on the transaction's **Contacts** tab, not on the Overview. If the Contacts tab itself is missing, it has likely been hidden for your view — open the transaction's **Overview**, click **Customize View**, and turn **Contacts** back on. The tab (and the Add Contact button) will reappear.
