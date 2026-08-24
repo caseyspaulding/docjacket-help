@@ -32,6 +32,8 @@ In the composer you can:
 - Pick an email signature
 - Save a draft, send now, or use **Schedule** to send later
 
+If you navigate away mid-message, DocJacket asks before anything is lost - **Save draft & leave** keeps the recipients and everything else you entered under **Email > Inbox > Drafts** until you are ready to finish and send.
+
 The email is stored with the transaction automatically after it sends.
 
 :::tip AI Draft or a template?
@@ -42,15 +44,37 @@ Use **AI Draft** for a one-off message you need to write quickly. Reach for an [
 
 The recipient row is designed so you do not have to open separate To, Cc, and Bcc dialogs.
 
-Use the search box to add recipients from:
+<div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', margin: '1.5rem 0' }}>
+  <iframe
+    src="https://app.supademo.com/embed/cmt6hkbhd3p8oqm83nq7u38is?embed_v=2"
+    title="Email everyone on a deal at once - recipient picker walkthrough"
+    allow="fullscreen"
+    allowFullScreen
+    loading="lazy"
+    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0, borderRadius: 8 }}
+  />
+</div>
 
-- **Roles** on the transaction
-- **Contacts** on the transaction
-- **All contacts**
-- **Groups**
-- **Companies**
+Use the search box to add recipients, or filter it with the pills on the right:
 
-After adding a recipient, use the chip controls to switch that person between **To**, **Cc**, and **Bcc**, or remove the chip.
+- **Roles** - one row per role on this transaction. A role can hold several people: if the deal has two sellers, the Seller row shows **2 contacts** and one click adds both. This is the fast way to get a second buyer or second seller onto an email.
+- **Contacts** - the people already on this transaction, each shown with the exact email address they will receive.
+- **All contacts** - your whole org-wide address book, **excluding anyone already on this transaction** (deal people live under **Contacts** instead). Use it to bring in a past contact from an earlier deal.
+- **Groups** and **Companies** - reusable recipient lists and company records.
+- Or type any email address directly.
+
+After adding a recipient, use the chip controls to switch that person between **To**, **Cc**, and **Bcc**, or remove the chip. Each chip shows the role, name, and address, so you can see exactly who gets the email before you send.
+
+### A contact won't populate in the To field
+
+If someone has a contact record, their email has been added, and they are attached to the transaction, but they still do not appear when you search:
+
+1. **Check which pill is selected.** **All contacts** deliberately excludes people already on this transaction - so searching it for someone attached to the deal returns "no contacts match." Switch to **Contacts** (or **Roles**) and they will be there.
+2. **Check they are not already a chip.** A person already added as a recipient no longer shows in the pick list.
+3. **Check the contact record has an email address.** A transaction contact without an email cannot be added as a recipient - open the transaction's **Contacts** tab, expand the person, and add one.
+4. **Type the address directly.** The search box accepts any email address as a fallback.
+
+Template and automated emails resolve recipients by **role**, so a second buyer or second seller also auto-populates on those sends once they are on the transaction with the right role - see [Contact Roles](../contacts/contact-roles.md).
 
 ## Scheduling an email
 
