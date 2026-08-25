@@ -1507,7 +1507,26 @@ is stale.
 
 Use the transaction edit page for governed transaction dates. On the timeline, a governed row may show **Edit on Transaction Details** instead of Delete. That means the date belongs to the transaction's canonical date fields; edit or clear it from the transaction details so DocJacket keeps the transaction record and timeline row aligned.
 
-Use the key-date drawer for custom or Playbook-generated timeline dates. You can update the due date, status, notes, reminders, linked tasks, and portal note visibility. Reminders here can go by email, text message, or both — and when you save the deal as a Playbook, these reminders are captured (texts included) and re-created on future deals you apply it to. If a key date is missing its anchor, it appears as **Needs date** until the upstream transaction date is filled in.
+Use the key-date drawer for custom or Playbook-generated timeline dates. You can update the due date, the time, status, notes, reminders, linked tasks, and portal note visibility. Reminders here can go by email, text message, or both — and when you save the deal as a Playbook, these reminders are captured (texts included) and re-created on future deals you apply it to. If a key date is missing its anchor, it appears as **Needs date** until the upstream transaction date is filled in.
+
+### Adding the appointment time
+
+**Time (optional)** sits just under the due date. Use it when you know what time the appointment is actually scheduled for — the 2:00 PM inspection, the 9:00 AM closing.
+
+It is blank until someone types it, on every date. DocJacket never guesses a time and never fills one in from the contract, because the appointment is usually scheduled after the contract is signed.
+
+Once a time is set, text reminders about that date say it:
+
+> Inspection Deadline for 123 Main St is due August 30, 2026 **at 2:00 PM.**
+
+Leave it blank and the reminder reads exactly as it always has, naming only the day. Clear a time you no longer want with **Clear** next to the field, and the texts stop mentioning a time.
+
+A few things worth knowing:
+
+- **The time is the appointment's, not the reminder's.** When a reminder goes out is set separately, in the reminder itself.
+- **It doesn't move the date.** A 2:00 PM time on an August 30 date is still an August 30 deadline everywhere else in DocJacket — the timeline, the calendar, and the day-before appointment text all still work off the date.
+- **It survives your other edits.** Re-applying a Playbook, moving the date, or a new contract coming in through extraction all leave a time you typed alone.
+- **Appointment confirmation texts don't include it automatically.** Those use your own wording, so add `{{appointment_time}}` to them in **Settings > SMS** if you want it there too.
 
 When you move a key date, DocJacket may show a cascade preview before saving. Review the affected tasks, downstream key dates, manually overridden dates, completed dates, and missing-rule items before applying the change. For why some dates recalculate automatically and others don't, see [Recalculating Deadlines](./recalculating-deadlines.mdx).
 
@@ -11450,6 +11469,32 @@ DocJacket sends a few automatic texts on your behalf — key-date reminders and 
 
 Each message shows its default wording, the merge fields you can use (like the property address and the date), and a character count. Edit the text, save, and every future send uses your version; **Reset to default** brings the original back. The sender line, reply instructions, and opt-out notice are added automatically and can't be removed.
 
+### Different wording per appointment type
+
+The appointment heads-up has a **Per appointment type** section underneath it, with a box for **Inspection**, **Final walk-through**, **Closing**, and **Appraisal**.
+
+Leave a type alone and it keeps using the wording above it — the box shows *Using the wording above*, or *Using the built-in default* if you haven't customized that either. Give a type its own text and only that type changes; it's marked *Its own wording*, with its own **Reset to default**.
+
+This is for when one appointment needs to say more than the others:
+
+- **Inspection** — "The inspection at 123 Main St is tomorrow. We recommend arriving for the last hour."
+- **Appraisal** — "Heads up: the appraisal at 123 Main St is tomorrow."
+
+Resetting the shared wording at the top does **not** wipe the types you customized. They keep their own text; only the types that were following along fall back to the built-in default.
+
+### Including the appointment time
+
+Appointment messages accept an `{{appointment_time}}` merge field, filled from the **Time (optional)** field on the key date. It's empty when nobody typed a time, so write the sentence to read sensibly either way, or use it only on the types your team always schedules.
+
+Key-date **reminders** already include the time on their own — you don't need to add anything for those. See [Key Dates & Financials](../transactions/key-dates-and-financials.mdx#adding-the-appointment-time).
+
+### What DocJacket checks when you save
+
+Two checks run on wording you save:
+
+- **Plain characters only.** Curly quotes, em dashes and other characters that come along when text is pasted from a word processor are rejected, and the message names the character to replace. One of them more than doubles what every text costs to send, so it's worth the swap.
+- **Length.** If an appointment message would go out as more than one segment at a typical property address, DocJacket says so. It still sends, and still arrives as one message — it's a heads-up, not a block.
+
 ## Appointment confirmation style
 
 The day before an inspection, final walk-through, closing, or appraisal, DocJacket can text the agent about the appointment. For each of those date types, choose the style that fits how your team works:
@@ -11459,6 +11504,8 @@ The day before an inspection, final walk-through, closing, or appraisal, DocJack
 - **Off** — no text for that date type
 
 Organizations start with Confirm on all four types; changing a type affects only future texts.
+
+The **Notify** text can read differently for each type — see [Different wording per appointment type](#different-wording-per-appointment-type).
 
 ## Releasing a number
 

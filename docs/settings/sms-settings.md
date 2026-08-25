@@ -76,6 +76,32 @@ DocJacket sends a few automatic texts on your behalf — key-date reminders and 
 
 Each message shows its default wording, the merge fields you can use (like the property address and the date), and a character count. Edit the text, save, and every future send uses your version; **Reset to default** brings the original back. The sender line, reply instructions, and opt-out notice are added automatically and can't be removed.
 
+### Different wording per appointment type
+
+The appointment heads-up has a **Per appointment type** section underneath it, with a box for **Inspection**, **Final walk-through**, **Closing**, and **Appraisal**.
+
+Leave a type alone and it keeps using the wording above it — the box shows *Using the wording above*, or *Using the built-in default* if you haven't customized that either. Give a type its own text and only that type changes; it's marked *Its own wording*, with its own **Reset to default**.
+
+This is for when one appointment needs to say more than the others:
+
+- **Inspection** — "The inspection at 123 Main St is tomorrow. We recommend arriving for the last hour."
+- **Appraisal** — "Heads up: the appraisal at 123 Main St is tomorrow."
+
+Resetting the shared wording at the top does **not** wipe the types you customized. They keep their own text; only the types that were following along fall back to the built-in default.
+
+### Including the appointment time
+
+Appointment messages accept an `{{appointment_time}}` merge field, filled from the **Time (optional)** field on the key date. It's empty when nobody typed a time, so write the sentence to read sensibly either way, or use it only on the types your team always schedules.
+
+Key-date **reminders** already include the time on their own — you don't need to add anything for those. See [Key Dates & Financials](../transactions/key-dates-and-financials.mdx#adding-the-appointment-time).
+
+### What DocJacket checks when you save
+
+Two checks run on wording you save:
+
+- **Plain characters only.** Curly quotes, em dashes and other characters that come along when text is pasted from a word processor are rejected, and the message names the character to replace. One of them more than doubles what every text costs to send, so it's worth the swap.
+- **Length.** If an appointment message would go out as more than one segment at a typical property address, DocJacket says so. It still sends, and still arrives as one message — it's a heads-up, not a block.
+
 ## Appointment confirmation style
 
 The day before an inspection, final walk-through, closing, or appraisal, DocJacket can text the agent about the appointment. For each of those date types, choose the style that fits how your team works:
@@ -85,6 +111,8 @@ The day before an inspection, final walk-through, closing, or appraisal, DocJack
 - **Off** — no text for that date type
 
 Organizations start with Confirm on all four types; changing a type affects only future texts.
+
+The **Notify** text can read differently for each type — see [Different wording per appointment type](#different-wording-per-appointment-type).
 
 ## Releasing a number
 
