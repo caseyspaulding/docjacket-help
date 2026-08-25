@@ -74,6 +74,8 @@ Reminders to contacts respect texting consent and opt-outs, and the task still n
 
 Use **Task emails** to link an email template to the task. Linked task emails can be reviewed and sent from the task, and completion can prompt you to send or skip any pending linked emails. When a linked email is configured to require review, it appears in the topbar Review queue's **Ready for Review** tab before sending.
 
+When you open a task email to review and send it, the **To, CC, and BCC lines come prefilled** from the template's recipient roles, resolved to the actual people on this deal — and you can edit any of them before sending. If a CC line comes up blank, the drawer tells you why, role by role: usually the role isn't assigned on the deal, or the person in it has **no email address on file**. Add the contact to the role (or add their email) and reopen the email to see it fill in.
+
 Linked emails can use:
 
 - The task's auto-send date

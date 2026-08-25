@@ -84,6 +84,10 @@ do not need to change anything in your Google account first, and removing DocJac
 from your Google account does not change or unlock your DocJacket login. Use the
 **Change** button on the profile page.
 
+### "I changed my email and now Sign in with Google doesn't work"
+
+That's expected — changing your sign-in email disconnects Google/Microsoft sign-in on purpose, because the old Google account vouched for the old address. Reconnecting takes a minute: sign in with a magic link to your new address, go to **Settings > Profile**, and click **Connect Google** (or **Connect Microsoft**). After the provider's sign-in screen, the one-click button works again.
+
 ### "Should I just delete my account and make a new one?"
 
 No — and please don't. Creating a fresh account loses your transactions, documents,
@@ -100,6 +104,8 @@ Changing your sign-in email changes **only how you log in**. In particular:
 - Your organization, team members, and role are unaffected.
 - Your billing and subscription are unaffected.
 - Email already sent from DocJacket is unaffected.
+- **Google/Microsoft sign-in is disconnected** and needs a one-minute reconnect from
+  **Settings > Profile** (**Connect Google** / **Connect Microsoft**) — see above.
 
 ## Related
 

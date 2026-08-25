@@ -4036,6 +4036,8 @@ Reminders to contacts respect texting consent and opt-outs, and the task still n
 
 Use **Task emails** to link an email template to the task. Linked task emails can be reviewed and sent from the task, and completion can prompt you to send or skip any pending linked emails. When a linked email is configured to require review, it appears in the topbar Review queue's **Ready for Review** tab before sending.
 
+When you open a task email to review and send it, the **To, CC, and BCC lines come prefilled** from the template's recipient roles, resolved to the actual people on this deal — and you can edit any of them before sending. If a CC line comes up blank, the drawer tells you why, role by role: usually the role isn't assigned on the deal, or the person in it has **no email address on file**. Add the contact to the role (or add their email) and reopen the email to see it fill in.
+
 Linked emails can use:
 
 - The task's auto-send date
@@ -4991,6 +4993,8 @@ Use the filters to narrow the list by:
 - **Search** — Playbook name or description
 
 On **My Playbooks**, you can mark an active Playbook as the default. Default Playbooks can auto-apply when creating transactions for the matching state and type.
+
+An **Inactive** Playbook can't auto-apply and can't be set as the default. To bring one back, click **Activate** on its row in the list — the Inactive badge clears immediately, and the Playbook is usable and default-eligible again. (DocJacket system Playbooks can't be activated or deactivated; copy one to My Playbooks instead.)
 
 ## Creating a Playbook template
 
@@ -10648,6 +10652,15 @@ You can update:
 
 Your sign-in email — the address you use to log in — is shown here as well. You can change it yourself: click **Change** next to **Sign-in Email**. This works whether you signed up with Google, Microsoft, or a magic link. See [Changing Your Sign-In Email](./changing-your-sign-in-email.md) for the full walkthrough, including what to do if the address is already in use.
 
+## Sign-in method
+
+The profile page also shows how you sign in. If you use an emailed magic link, you can click **Connect Google** or **Connect Microsoft** to link that account — you'll go through the provider's normal sign-in once, and from then on the **Sign in with Google** (or Microsoft) button works for you at the login page.
+
+Connecting requires both being signed in to DocJacket *and* completing the provider sign-in, so nobody can attach an account to a profile they don't control. Two situations where this helps:
+
+- **You signed up with a magic link** and want the one-click Google or Microsoft button instead.
+- **You changed your sign-in email**, which disconnects Google/Microsoft sign-in for safety — reconnect here afterwards.
+
 ## Timezone
 
 Your timezone affects how dates and reminders display for you. Use **Detect from browser** if you want DocJacket to choose the timezone from your current browser settings.
@@ -10738,6 +10751,10 @@ do not need to change anything in your Google account first, and removing DocJac
 from your Google account does not change or unlock your DocJacket login. Use the
 **Change** button on the profile page.
 
+### "I changed my email and now Sign in with Google doesn't work"
+
+That's expected — changing your sign-in email disconnects Google/Microsoft sign-in on purpose, because the old Google account vouched for the old address. Reconnecting takes a minute: sign in with a magic link to your new address, go to **Settings > Profile**, and click **Connect Google** (or **Connect Microsoft**). After the provider's sign-in screen, the one-click button works again.
+
 ### "Should I just delete my account and make a new one?"
 
 No — and please don't. Creating a fresh account loses your transactions, documents,
@@ -10754,6 +10771,8 @@ Changing your sign-in email changes **only how you log in**. In particular:
 - Your organization, team members, and role are unaffected.
 - Your billing and subscription are unaffected.
 - Email already sent from DocJacket is unaffected.
+- **Google/Microsoft sign-in is disconnected** and needs a one-minute reconnect from
+  **Settings > Profile** (**Connect Google** / **Connect Microsoft**) — see above.
 
 ## Related
 

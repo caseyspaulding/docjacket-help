@@ -49,6 +49,8 @@ Use the filters to narrow the list by:
 
 On **My Playbooks**, you can mark an active Playbook as the default. Default Playbooks can auto-apply when creating transactions for the matching state and type.
 
+An **Inactive** Playbook can't auto-apply and can't be set as the default. To bring one back, click **Activate** on its row in the list — the Inactive badge clears immediately, and the Playbook is usable and default-eligible again. (DocJacket system Playbooks can't be activated or deactivated; copy one to My Playbooks instead.)
+
 ## Creating a Playbook template
 
 1. Go to **Templates → Playbooks**
