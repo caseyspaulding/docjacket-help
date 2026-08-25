@@ -1507,7 +1507,7 @@ is stale.
 
 Use the transaction edit page for governed transaction dates. On the timeline, a governed row may show **Edit on Transaction Details** instead of Delete. That means the date belongs to the transaction's canonical date fields; edit or clear it from the transaction details so DocJacket keeps the transaction record and timeline row aligned.
 
-Use the key-date drawer for custom or Playbook-generated timeline dates. You can update the due date, status, notes, reminders, linked tasks, and portal note visibility. If a key date is missing its anchor, it appears as **Needs date** until the upstream transaction date is filled in.
+Use the key-date drawer for custom or Playbook-generated timeline dates. You can update the due date, status, notes, reminders, linked tasks, and portal note visibility. Reminders here can go by email, text message, or both — and when you save the deal as a Playbook, these reminders are captured (texts included) and re-created on future deals you apply it to. If a key date is missing its anchor, it appears as **Needs date** until the upstream transaction date is filled in.
 
 When you move a key date, DocJacket may show a cascade preview before saving. Review the affected tasks, downstream key dates, manually overridden dates, completed dates, and missing-rule items before applying the change. For why some dates recalculate automatically and others don't, see [Recalculating Deadlines](./recalculating-deadlines.mdx).
 
@@ -4008,11 +4008,29 @@ A portal-visible task also appears in the agent's **My Tasks** list on their por
 
 Leaving contact selection empty means every portal contact on the deal can see the task, and any of them can complete it when that setting is on. Select specific contacts when it should be one person's job.
 
+## Report Visibility
+
+Tasks also carry a second eye for **SitRep reports**. Every task shows on generated and scheduled SitReps by default; turn **Show on Report** off to keep a task out of the report's task section without touching its portal visibility. The two eyes are independent — a task can be portal-visible but report-hidden, or the reverse.
+
 ## Reminders
 
-Use **Reminders** to get notified before the task is due. Reminder choices include 1, 2, 3, 5, 7, or 14 days before the due date.
+Use **My Reminders** to get notified before the task is due. Reminder choices include 1, 2, 3, 5, 7, or 14 days before the due date. You get an in-app notification and an email — and you can choose to get a **text message** too, or instead. Texts go to the verified mobile number on your profile; if you haven't verified a number yet, DocJacket shows a link to do that first.
+
+A reminder needs a due date to count down from. If the task doesn't have a due date, DocJacket asks you to set one before adding the reminder.
 
 **Example:** Set a 3-day reminder for "Order home warranty" so your team has time to coordinate before closing.
+
+## Remind someone about a task
+
+My Reminders only notify you. To remind **someone else** — like the agent who owes a signature or a resolution — use **Remind someone** in the task drawer. It opens the same reminder composer used on key dates:
+
+- Pick who gets it — deal contacts by role or by name
+- Choose email, text message, or both, with a preview of the text before you save
+- Choose how many days before the due date it goes out
+
+Reminders to contacts respect texting consent and opt-outs, and the task still needs a due date first.
+
+**Example:** "Close out the listing in the MLS" is due the day after closing — remind yourself by text, and remind the agent three days ahead by email.
 
 ## Task emails
 
@@ -5240,7 +5258,7 @@ A Playbook covers everything a deal of that type needs:
 
 - **Key dates and tasks** — the deadlines and work for that deal type, with due-date offsets and assignments.
 - **[Required documents](./required-documents-lists.md)** — which documents are required, including conditional "required if…" rules.
-- **Automations** — the rules and reminders that run for that deal type.
+- **Automations** — the rules and reminders that run for that deal type, including text-message reminders on key dates and tasks.
 
 So instead of hand-adding tasks, key dates, and a document list to every new deal, the Playbook stamps all of it on at once.
 
@@ -5269,7 +5287,9 @@ See [Playbooks](./timeline-templates.md) for the full builder walkthrough.
 Apply a Playbook to a transaction and DocJacket sets up the whole deal at once — its tasks, key dates, and required documents — in a **single click**. Two conveniences:
 
 - **Auto-setup:** a new deal can be set up automatically from a matching Playbook.
-- **Save what you built:** when you set a deal up by hand, DocJacket offers to save that work as a Playbook for next time — so the manual setup becomes one-click from then on.
+- **Save what you built:** when you set a deal up by hand, DocJacket offers to save that work as a Playbook for next time — so the manual setup becomes one-click from then on. The reminders you configured on key dates and tasks are captured too, text messages included, and re-created on every deal you apply the Playbook to.
+
+**Text messages are shown before they're scheduled.** If a Playbook includes SMS reminders, the apply confirmation lists every text it's about to set up — who it goes to and how many days before its date — and you can untick any of them. Unticking a text keeps its key date or task; it only skips the message. If your organization can't send SMS yet (no texting plan or no business number), DocJacket sets up everything else and skips the texts.
 
 ## Not the same as AI "playbooks"
 
@@ -6563,6 +6583,8 @@ SitRep templates can include these sections:
 - **Commission Details** — Sales price, commission breakdown, credits, referral fee, and cooperating commission
 
 Each section pulls live data from the transaction when the report is generated.
+
+The **Tasks** section honors each task's **Show on Report** eye: every task is included by default, and turning the eye off on a task keeps it out of reports without hiding it from your team. See [Task Options](../tasks/task-options.md#report-visibility).
 
 ## Internal notes vs custom notes
 
@@ -9962,6 +9984,39 @@ You still control access through the portal link and visibility settings. Docume
 
 ---
 
+# Agent Briefing
+
+An **Agent Briefing** is an automatic digest that keeps an agent on top of their to-dos without you texting them by hand. On a schedule you choose, DocJacket emails the agent their open portal tasks — overdue and due in the next 7 days — across **every deal they're on**, with a link to their [agent portal](./portal-for-agents.mdx). Optionally it also sends a short text nudge with the same link.
+
+## Setting it up
+
+1. Open the agent's **contact page** (Contacts, then the agent).
+2. Find the **Agent Briefing** card.
+3. Turn it on and choose:
+   - **Daily or weekly** — and for weekly, which day
+   - **Send time** and timezone
+   - **Email, text, or both**
+
+That's it — the briefing sends itself from then on, always reflecting the current task list.
+
+## What the agent receives
+
+- An **email** listing their overdue tasks and tasks due in the next 7 days, grouped by deal, with a link to their agent portal. It sends **from your connected Gmail or Outlook**, so it looks like it came from you and replies come back to you.
+- If texting is on, one short **text** — "You have 4 tasks due this week across your deals" — with the portal link. Texts respect the agent's texting consent and opt-outs, and use one SMS credit per message.
+
+## What's included — and what isn't
+
+The briefing shows only **portal-visible** tasks — the same ones the agent sees on their portal hub. The portal eye on each task stays your control over what agents see; anything you keep internal never appears in a briefing.
+
+Two quiet rules keep it from becoming noise:
+
+- **Nothing due, nothing sent.** An agent with no open portal tasks doesn't get an empty briefing.
+- **At most one briefing per agent per day**, even if more than one schedule points at them.
+
+**Example:** Set an agent's briefing to weekly, Monday at 8:00 AM, email and text. Every Monday they get "here's your week" from your address — automatically — and there's no excuse for a missed signature.
+
+---
+
 # Sharing Portal Links
 
 Portal links are how clients, agents, and other transaction parties access their portal view. Each link is unique, secure, and managed individually.
@@ -10957,6 +11012,12 @@ When task syncing is off:
 
 Each transaction also has a Google Calendar toggle on its Overview. Turn that off to hide just that transaction from Google Calendar without disconnecting Google Calendar for the whole organization.
 
+### Only sync my deals
+
+By default, calendar sync puts every synced transaction in your organization on your Google Calendar. If you're on a team and only want your own, turn on **Only sync my deals** in **Settings > Calendar** — your calendar then shows just the deals assigned to you or created by you, and events from other deals are removed from Google automatically. The setting is per person; teammates' calendars aren't affected.
+
+If you delete a DocJacket event from Google Calendar by hand, DocJacket respects that: the date stays in DocJacket, but that event won't be pushed back onto your Google Calendar.
+
 ## Holidays
 
 Organization holidays count as non-business days for business-day scheduling rules.
@@ -11360,6 +11421,26 @@ Before sending, DocJacket checks the recipient phone number, unresolved merge fi
 
 If a contact has already received several texts that day, DocJacket shows a warning before the user sends another text. Users can continue only after confirming the send.
 
+## Message wording
+
+DocJacket sends a few automatic texts on your behalf — key-date reminders and appointment confirmations. The **Message wording** section in **Settings > SMS** lets you rewrite what each of them says:
+
+- The key-date **reminder** text
+- The **appointment confirmation** question, and the follow-ups sent after a Y or N reply
+- The plain **appointment heads-up** used when you don't need a Y/N answer
+
+Each message shows its default wording, the merge fields you can use (like the property address and the date), and a character count. Edit the text, save, and every future send uses your version; **Reset to default** brings the original back. The sender line, reply instructions, and opt-out notice are added automatically and can't be removed.
+
+## Appointment confirmation style
+
+The day before an inspection, final walk-through, closing, or appraisal, DocJacket can text the agent about the appointment. For each of those date types, choose the style that fits how your team works:
+
+- **Confirm (Y/N)** — asks "Confirm you'll be at…?" and routes the reply: Y reminds the agent and client, N alerts the agent to reschedule
+- **Notify** — a plain "heads up, this is tomorrow" text with no reply needed — a common choice for appraisals, which most parties don't attend
+- **Off** — no text for that date type
+
+Organizations start with Confirm on all four types; changing a type affects only future texts.
+
 ## Releasing a number
 
 The **Danger Zone** appears when your organization has a dedicated number.
@@ -11394,7 +11475,7 @@ Turn off **Email Notifications** if you do not want notification emails. In-app 
 
 ## Morning Briefing
 
-DocJacket can send you a daily morning briefing email with overdue tasks, upcoming deadlines, and suggested actions.
+DocJacket can send you a daily morning briefing email with overdue tasks, upcoming deadlines, and suggested actions. It also lists the **reminders scheduled to go out over the next 7 days** — email and text — so you can review what's queued before it sends.
 
 When **Morning Briefing** is on, choose:
 

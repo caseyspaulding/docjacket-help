@@ -14,7 +14,7 @@ A Playbook covers everything a deal of that type needs:
 
 - **Key dates and tasks** — the deadlines and work for that deal type, with due-date offsets and assignments.
 - **[Required documents](./required-documents-lists.md)** — which documents are required, including conditional "required if…" rules.
-- **Automations** — the rules and reminders that run for that deal type.
+- **Automations** — the rules and reminders that run for that deal type, including text-message reminders on key dates and tasks.
 
 So instead of hand-adding tasks, key dates, and a document list to every new deal, the Playbook stamps all of it on at once.
 
@@ -43,7 +43,9 @@ See [Playbooks](./timeline-templates.md) for the full builder walkthrough.
 Apply a Playbook to a transaction and DocJacket sets up the whole deal at once — its tasks, key dates, and required documents — in a **single click**. Two conveniences:
 
 - **Auto-setup:** a new deal can be set up automatically from a matching Playbook.
-- **Save what you built:** when you set a deal up by hand, DocJacket offers to save that work as a Playbook for next time — so the manual setup becomes one-click from then on.
+- **Save what you built:** when you set a deal up by hand, DocJacket offers to save that work as a Playbook for next time — so the manual setup becomes one-click from then on. The reminders you configured on key dates and tasks are captured too, text messages included, and re-created on every deal you apply the Playbook to.
+
+**Text messages are shown before they're scheduled.** If a Playbook includes SMS reminders, the apply confirmation lists every text it's about to set up — who it goes to and how many days before its date — and you can untick any of them. Unticking a text keeps its key date or task; it only skips the message. If your organization can't send SMS yet (no texting plan or no business number), DocJacket sets up everything else and skips the texts.
 
 ## Not the same as AI "playbooks"
 

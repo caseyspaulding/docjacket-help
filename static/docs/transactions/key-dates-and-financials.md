@@ -53,7 +53,7 @@ is stale.
 
 Use the transaction edit page for governed transaction dates. On the timeline, a governed row may show **Edit on Transaction Details** instead of Delete. That means the date belongs to the transaction's canonical date fields; edit or clear it from the transaction details so DocJacket keeps the transaction record and timeline row aligned.
 
-Use the key-date drawer for custom or Playbook-generated timeline dates. You can update the due date, status, notes, reminders, linked tasks, and portal note visibility. If a key date is missing its anchor, it appears as **Needs date** until the upstream transaction date is filled in.
+Use the key-date drawer for custom or Playbook-generated timeline dates. You can update the due date, status, notes, reminders, linked tasks, and portal note visibility. Reminders here can go by email, text message, or both — and when you save the deal as a Playbook, these reminders are captured (texts included) and re-created on future deals you apply it to. If a key date is missing its anchor, it appears as **Needs date** until the upstream transaction date is filled in.
 
 When you move a key date, DocJacket may show a cascade preview before saving. Review the affected tasks, downstream key dates, manually overridden dates, completed dates, and missing-rule items before applying the change. For why some dates recalculate automatically and others don't, see [Recalculating Deadlines](./recalculating-deadlines.mdx).
 

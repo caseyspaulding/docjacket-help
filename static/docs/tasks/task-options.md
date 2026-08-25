@@ -49,11 +49,29 @@ A portal-visible task also appears in the agent's **My Tasks** list on their por
 
 Leaving contact selection empty means every portal contact on the deal can see the task, and any of them can complete it when that setting is on. Select specific contacts when it should be one person's job.
 
+## Report Visibility
+
+Tasks also carry a second eye for **SitRep reports**. Every task shows on generated and scheduled SitReps by default; turn **Show on Report** off to keep a task out of the report's task section without touching its portal visibility. The two eyes are independent — a task can be portal-visible but report-hidden, or the reverse.
+
 ## Reminders
 
-Use **Reminders** to get notified before the task is due. Reminder choices include 1, 2, 3, 5, 7, or 14 days before the due date.
+Use **My Reminders** to get notified before the task is due. Reminder choices include 1, 2, 3, 5, 7, or 14 days before the due date. You get an in-app notification and an email — and you can choose to get a **text message** too, or instead. Texts go to the verified mobile number on your profile; if you haven't verified a number yet, DocJacket shows a link to do that first.
+
+A reminder needs a due date to count down from. If the task doesn't have a due date, DocJacket asks you to set one before adding the reminder.
 
 **Example:** Set a 3-day reminder for "Order home warranty" so your team has time to coordinate before closing.
+
+## Remind someone about a task
+
+My Reminders only notify you. To remind **someone else** — like the agent who owes a signature or a resolution — use **Remind someone** in the task drawer. It opens the same reminder composer used on key dates:
+
+- Pick who gets it — deal contacts by role or by name
+- Choose email, text message, or both, with a preview of the text before you save
+- Choose how many days before the due date it goes out
+
+Reminders to contacts respect texting consent and opt-outs, and the task still needs a due date first.
+
+**Example:** "Close out the listing in the MLS" is due the day after closing — remind yourself by text, and remind the agent three days ahead by email.
 
 ## Task emails
 

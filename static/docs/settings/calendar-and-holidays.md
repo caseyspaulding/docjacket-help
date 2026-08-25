@@ -31,6 +31,12 @@ When task syncing is off:
 
 Each transaction also has a Google Calendar toggle on its Overview. Turn that off to hide just that transaction from Google Calendar without disconnecting Google Calendar for the whole organization.
 
+### Only sync my deals
+
+By default, calendar sync puts every synced transaction in your organization on your Google Calendar. If you're on a team and only want your own, turn on **Only sync my deals** in **Settings > Calendar** — your calendar then shows just the deals assigned to you or created by you, and events from other deals are removed from Google automatically. The setting is per person; teammates' calendars aren't affected.
+
+If you delete a DocJacket event from Google Calendar by hand, DocJacket respects that: the date stays in DocJacket, but that event won't be pushed back onto your Google Calendar.
+
 ## Holidays
 
 Organization holidays count as non-business days for business-day scheduling rules.
