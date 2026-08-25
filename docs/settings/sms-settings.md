@@ -66,6 +66,26 @@ Before sending, DocJacket checks the recipient phone number, unresolved merge fi
 
 If a contact has already received several texts that day, DocJacket shows a warning before the user sends another text. Users can continue only after confirming the send.
 
+## Message wording
+
+DocJacket sends a few automatic texts on your behalf — key-date reminders and appointment confirmations. The **Message wording** section in **Settings > SMS** lets you rewrite what each of them says:
+
+- The key-date **reminder** text
+- The **appointment confirmation** question, and the follow-ups sent after a Y or N reply
+- The plain **appointment heads-up** used when you don't need a Y/N answer
+
+Each message shows its default wording, the merge fields you can use (like the property address and the date), and a character count. Edit the text, save, and every future send uses your version; **Reset to default** brings the original back. The sender line, reply instructions, and opt-out notice are added automatically and can't be removed.
+
+## Appointment confirmation style
+
+The day before an inspection, final walk-through, closing, or appraisal, DocJacket can text the agent about the appointment. For each of those date types, choose the style that fits how your team works:
+
+- **Confirm (Y/N)** — asks "Confirm you'll be at…?" and routes the reply: Y reminds the agent and client, N alerts the agent to reschedule
+- **Notify** — a plain "heads up, this is tomorrow" text with no reply needed — a common choice for appraisals, which most parties don't attend
+- **Off** — no text for that date type
+
+Organizations start with Confirm on all four types; changing a type affects only future texts.
+
 ## Releasing a number
 
 The **Danger Zone** appears when your organization has a dedicated number.

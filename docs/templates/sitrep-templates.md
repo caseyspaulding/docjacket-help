@@ -57,6 +57,8 @@ SitRep templates can include these sections:
 
 Each section pulls live data from the transaction when the report is generated.
 
+The **Tasks** section honors each task's **Show on Report** eye: every task is included by default, and turning the eye off on a task keeps it out of reports without hiding it from your team. See [Task Options](../tasks/task-options.md#report-visibility).
+
 ## Internal notes vs custom notes
 
 Be careful with note sections:

@@ -28,7 +28,7 @@ Turn off **Email Notifications** if you do not want notification emails. In-app 
 
 ## Morning Briefing
 
-DocJacket can send you a daily morning briefing email with overdue tasks, upcoming deadlines, and suggested actions.
+DocJacket can send you a daily morning briefing email with overdue tasks, upcoming deadlines, and suggested actions. It also lists the **reminders scheduled to go out over the next 7 days** — email and text — so you can review what's queued before it sends.
 
 When **Morning Briefing** is on, choose:
 
