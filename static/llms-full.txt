@@ -4982,6 +4982,17 @@ checklists live — nothing was moved or lost, and your existing ones are all un
 **My Playbooks** tab.
 :::
 
+## "I don't see Checklists on the Templates page"
+
+If you are looking for **Checklists** and don't see that card on the Templates page,
+you're in the right place — that card is now **Playbooks**. It sits at the top of the
+Templates page with a **Formerly Checklists** label next to its name, above the
+Communication section that holds Email Templates and Email Signatures.
+
+Your saved checklist templates are all inside it, under the **My Playbooks** tab.
+Nothing was moved or lost, and no plan or permission level hides the Checklists page —
+if you can see Email Templates, the Playbooks card is on the same page.
+
 The key idea:
 
 - **Key Date Library** defines reusable date rules
