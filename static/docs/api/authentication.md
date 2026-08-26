@@ -35,8 +35,8 @@ It's tied to a single workspace, and the same key works for both the REST API an
 
 <div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', margin: '1.5rem 0' }}>
   <iframe
-    src="https://app.supademo.com/embed/cms3vb8j600jczh0jfn0wwj4w"
-    title="Creating a DocJacket API key — step-by-step walkthrough"
+    src="https://app.supademo.com/embed/cmtaev1qh0001ow1ycewocbfd?embed_v=2"
+    title="Mint a workspace API key — step-by-step walkthrough"
     allow="fullscreen"
     allowFullScreen
     loading="lazy"
