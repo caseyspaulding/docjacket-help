@@ -129,7 +129,7 @@ Nothing here needs configuring. If an assistant does end up asking you to reconn
 
 ## Revocation
 
-**DocJacket → Settings → AI Access → Connected Clients.** Click **Revoke** on any client.
+**DocJacket → Settings → API & AI Access → Connected Clients.** Click **Revoke** on any client.
 
 What happens:
 
@@ -154,7 +154,7 @@ A few clients don't (yet) support paste-URL OAuth and need a personal access tok
 
 This is about *whose* account you're reaching, not about REST versus MCP. If you're building something that connects **other people's** accounts — an app you ship to customers — use OAuth, on either surface. A key per customer means storing their credentials and minting one by hand for every signup.
 
-Mint tokens at [app.docjacket.com/settings/ai-access](https://app.docjacket.com/settings/ai-access). They scope per-org, can be labeled, and can be revoked independently of OAuth-issued tokens.
+Mint tokens at [app.docjacket.com/settings/api-access](https://app.docjacket.com/settings/api-access). They scope per-org, can be labeled, and can be revoked independently of OAuth-issued tokens.
 
 ## What we never see
 

@@ -18,7 +18,7 @@ Building something that connects *other people's* DocJacket accounts — an app 
 
 ## Create a key
 
-1. In DocJacket, go to **Settings → API Keys** (Owner or Admin role required).
+1. In DocJacket, go to **Settings → Advanced → API & AI Access** and open the **API keys** tab (Owner or Admin role required).
 2. Click **New API key**, give it a name (e.g. "Back-office sync"), and choose its scopes.
 3. Copy the key — **it's shown exactly once.** DocJacket stores only a one-way hash, so it can't be shown again. If you lose it, create a new one.
 
@@ -43,7 +43,7 @@ Scopes are tiers — each includes progressively more power. Grant the minimum a
 | `draft` | Low-risk writes — complete a task, log activity, apply a checklist, add key dates |
 | `actions` | Side-effect writes — create contacts, upload & extract documents, send emails, manage disclosure packages |
 
-You can change a key's scopes at any time from **Settings → API Keys → Edit scopes** — the key keeps working with the new grant, and the change is recorded in the [activity log](/docs/ai-access/permissions). Every change is auditable.
+You can change a key's scopes at any time from **Settings → API & AI Access → Edit scopes** — the key keeps working with the new grant, and the change is recorded in the [activity log](/docs/ai-access/permissions). Every change is auditable.
 
 ## Advanced restrictions (optional)
 
@@ -64,7 +64,7 @@ This is how you build a least-privilege key — e.g. a read key limited to just 
 ## Rotate & revoke
 
 - **Rotate:** create a new key, update your integration, then revoke the old one.
-- **Revoke:** **Settings → API Keys → Revoke.** Access stops immediately and can't be undone.
+- **Revoke:** **Settings → API & AI Access → Revoke.** Access stops immediately and can't be undone.
 
 ## See a key's usage
 
@@ -75,7 +75,7 @@ curl "https://api.docjacket.com/api/v1/usage?days=30" \
   -H "Authorization: Bearer mcp_at_YOUR_KEY"
 ```
 
-For a full audit trail of every call (across all keys), see **Settings → AI Access → Activity log**.
+For a full audit trail of every call (across all keys), see **Settings → API & AI Access → Activity log**.
 
 ## Apps that connect many accounts
 

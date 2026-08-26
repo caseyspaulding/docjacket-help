@@ -194,7 +194,7 @@ Same as the Claude side. Each Codex or ChatGPT install gets its own `client_id`.
 
 Inside DocJacket:
 
-- **Settings → AI Access** lists every connected client with last-used timestamp.
+- **Settings → API & AI Access** lists every connected client with last-used timestamp.
 - **Activity log** shows every tool call: who, what, when, what arguments, what result.
 - **Revoke** any client with one click. The next request returns HTTP 401 — the assistant will fall back to re-consent if you want to reconnect.
 
@@ -204,7 +204,7 @@ Inside DocJacket:
 
 **Codex CLI auth keeps re-prompting** — Running several Codex processes against one saved credential no longer causes this; simultaneous refreshes are handled ([how rotation works](/docs/ai-access/oauth#refresh--rotation)). If you are still being asked to reconnect, the saved credential is stale or was revoked — delete the entry from `~/.codex/credentials` and re-consent.
 
-**"Token is invalid, expired, or revoked"** — Either you revoked the client in DocJacket → Settings → AI Access, or the refresh token expired after 90 days of inactivity. Re-consent to reconnect.
+**"Token is invalid, expired, or revoked"** — Either you revoked the client in DocJacket → Settings → API & AI Access, or the refresh token expired after 90 days of inactivity. Re-consent to reconnect.
 
 ## Read more
 

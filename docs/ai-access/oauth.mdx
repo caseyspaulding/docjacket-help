@@ -31,7 +31,7 @@ description: How DocJacket's OAuth 2.1 flow works — discovery, Dynamic Client 
       "name": "How do I revoke an assistant's access?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Go to DocJacket → Settings → AI Access, find the assistant in the connected-clients list, and click Revoke. The next request from that client returns 401 Unauthorized; the user will have to re-consent if they want to reconnect."
+        "text": "Go to DocJacket → Settings → API & AI Access, find the assistant in the connected-clients list, and click Revoke. The next request from that client returns 401 Unauthorized; the user will have to re-consent if they want to reconnect."
       }
     },
     {
@@ -169,7 +169,7 @@ Nothing here needs configuring. If an assistant does end up asking you to reconn
 
 ## Revocation
 
-**DocJacket → Settings → AI Access → Connected Clients.** Click **Revoke** on any client.
+**DocJacket → Settings → API & AI Access → Connected Clients.** Click **Revoke** on any client.
 
 What happens:
 
@@ -194,7 +194,7 @@ A few clients don't (yet) support paste-URL OAuth and need a personal access tok
 
 This is about *whose* account you're reaching, not about REST versus MCP. If you're building something that connects **other people's** accounts — an app you ship to customers — use OAuth, on either surface. A key per customer means storing their credentials and minting one by hand for every signup.
 
-Mint tokens at [app.docjacket.com/settings/ai-access](https://app.docjacket.com/settings/ai-access). They scope per-org, can be labeled, and can be revoked independently of OAuth-issued tokens.
+Mint tokens at [app.docjacket.com/settings/api-access](https://app.docjacket.com/settings/api-access). They scope per-org, can be labeled, and can be revoked independently of OAuth-issued tokens.
 
 ## What we never see
 

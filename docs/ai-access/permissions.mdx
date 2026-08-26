@@ -31,7 +31,7 @@ description: How DocJacket's MCP scopes work — the read, draft, and action tie
       "name": "Where do I see what an AI assistant has actually called?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "DocJacket → Settings → AI Access → Activity Log. Every tool call is logged with the client name, tool name, arguments, outcome, and latency. Filterable by client, tool, or outcome. Use this to audit what your AI assistants have been up to."
+        "text": "DocJacket → Settings → API & AI Access → Activity Log. Every tool call is logged with the client name, tool name, arguments, outcome, and latency. Filterable by client, tool, or outcome. Use this to audit what your AI assistants have been up to."
       }
     }
   ]
@@ -86,7 +86,7 @@ If your account has draft or action scopes enabled later, you can re-consent or 
 
 Every MCP tool call lands in your Activity Log within seconds:
 
-- **DocJacket → Settings → AI Access → Activity Log**
+- **DocJacket → Settings → API & AI Access → Activity Log**
 
 Each row shows:
 
@@ -102,7 +102,7 @@ Filter by client to see what one AI surface has been doing. Filter by tool to sp
 
 ## Revoking
 
-**Settings → AI Access → Connected Clients** (for OAuth) **or** Personal Access Tokens (for bearer).
+**Settings → API & AI Access → Connected Clients** (for OAuth) **or** Personal Access Tokens (for bearer).
 
 Click **Revoke** on any row. The next tool call from that client returns HTTP 401. The user will either fall back to re-consent (if they want to reconnect) or fail gracefully.
 
