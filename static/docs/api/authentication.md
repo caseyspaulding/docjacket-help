@@ -101,7 +101,7 @@ The tokens work on the REST API exactly as an `mcp_at_` key does — put them in
 3. **Request scopes** `read draft actions` at sign-in; access tokens last 1 hour, refresh tokens 90 days.
 4. **Revoke on logout** at `/oauth/revoke`, and key your storage on the token's `org_id` claim — that's which workspace the user belongs to.
 
-The full flow, including registration, PKCE, refresh rotation, and revocation, is documented in [How OAuth works](/docs/ai-access/oauth).
+The step-by-step build path with runnable requests is **[Build an app (quickstart)](./build-an-app.mdx)**; the protocol deep-dive is [How OAuth works](/docs/ai-access/oauth).
 
 Two things worth knowing before you build:
 

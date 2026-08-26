@@ -13,7 +13,7 @@ DocJacket's MCP server is OAuth 2.1 + PKCE + Dynamic Client Registration (RFC 75
 
 This page is for the curious and for the security-conscious. **You don't need to read it to use AI Access** — the consent screen is the only step you ever interact with.
 
-**Building an app on the [Developer API](/docs/api)?** Then you do need this page, and it's the flow you want. The tokens below work on the REST API exactly as they do on MCP — same `Authorization: Bearer …` header, same scopes — so an app that connects many customer accounts registers once here rather than asking each customer to mint and paste a key.
+**Building an app on the [Developer API](/docs/api)?** Then you do need this page, and it's the flow you want — start with the **[Build an app quickstart](/docs/api/build-an-app)**, which walks the whole thing with runnable requests. The tokens below work on the REST API exactly as they do on MCP — same `Authorization: Bearer …` header, same scopes — so an app that connects many customer accounts registers once here rather than asking each customer to mint and paste a key.
 
 ## See it in action
 
@@ -107,15 +107,15 @@ If the token is missing or invalid, DocJacket returns **HTTP 401** with a `WWW-A
 
 ## Scopes
 
-DocJacket exposes three scopes:
+DocJacket exposes three scopes — all live, all enforced per token:
 
-| Scope | What it covers | Status |
-|---|---|---|
-| `read` | Search transactions, get details, list deadlines, contingencies, missing docs, contacts | **Live in v0.9** |
-| `draft` | Prepare emails and task suggestions for your approval. Nothing sends. | v1.0 |
-| `actions` | Send communications and make changes on your behalf with per-action confirmation | v1.0+ |
+| Scope | What it covers |
+|---|---|
+| `read` | Search transactions, get details, list deadlines, contingencies, missing docs, contacts |
+| `draft` | Prepare emails and task suggestions for your approval. Nothing sends. |
+| `actions` | Send communications and make changes on your behalf, with per-action confirmation |
 
-Today the consent screen asks for all three so you can pre-authorize, but only `read` actually does anything — the others are reserved for the next release.
+The tier you grant at consent is exactly what the token can do — tiers are checked exactly, not hierarchically, and a client registered for a narrower scope can never request a wider one.
 
 ## Refresh + rotation
 
