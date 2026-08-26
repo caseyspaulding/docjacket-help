@@ -114,7 +114,7 @@ Three credential types:
 
 | Credential | Prefix | Use |
 |---|---|---|
-| **Organization key** | ${code('mcp_at_…')} | Acts within a single organization. Mint one under **Settings → Advanced → API Keys**. Covers every section except Organizations (Partner). |
+| **Organization key** | ${code('mcp_at_…')} | Acts within a single organization. Mint one under **Settings → Advanced → API & AI Access** (API keys tab). Covers every section except Organizations (Partner). |
 | **OAuth access token** | — | Reaches the same operations with the same scopes, but each user authorizes your app instead of pasting a key. This is the one to use when your app serves many accounts. See [How OAuth works](/docs/ai-access/oauth). |
 | **Partner key** | ${code('rsk_…')} | Cross-tenant provisioning and read for white-label partners. Accepted only on the ${code('/api/v1/orgs/*')} operations. |
 
