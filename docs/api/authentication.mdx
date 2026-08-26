@@ -6,15 +6,23 @@ description: Create, scope, rotate, and revoke DocJacket API keys. Choose read/d
 
 # Authentication & API keys
 
-Every request authenticates with an API key sent as a bearer token:
+Every request carries a bearer token — but *which* token depends on who is calling. There are three credentials, and they are not interchangeable:
+
+- **Workspace API key** (`mcp_at_…`) — your own code acting in one workspace you administer. Minted in the app; this page is mostly about these.
+- **OAuth token** — an app *other people* sign in to. Each user authorizes their own account; your app never holds a key. See [Apps that connect many accounts](#apps-that-connect-many-accounts) below.
+- **Partner key** (`rsk_…`) — white-label partners provisioning workspaces and seats. It **cannot read deal data** — see [Partners](#partners).
+
+:::tip Building an app your customers sign in to?
+Stop before you mint anything. A workspace key per customer doesn't scale and makes you the custodian of their credentials — jump straight to [Apps that connect many accounts](#apps-that-connect-many-accounts).
+:::
+
+A workspace key is sent as:
 
 ```
 Authorization: Bearer mcp_at_YOUR_KEY
 ```
 
-A key looks like `mcp_at_…`, is tied to a single organization, and works for both the REST API and [AI Access](/docs/ai-access).
-
-Building something that connects *other people's* DocJacket accounts — an app your customers sign into? Don't mint a key each. Use [OAuth](#apps-that-connect-many-accounts) instead.
+It's tied to a single workspace, and the same key works for both the REST API and [AI Access](/docs/ai-access).
 
 ## Create a key
 
@@ -83,7 +91,14 @@ Everything above assumes you hold the key for an account you control. If you're 
 
 Use OAuth instead. Your app registers once; each user signs in and authorizes their own account; you receive an access token scoped to that account. Same operations, same `read` / `draft` / `actions` scopes, and the user can disconnect you at any time without anyone rotating a key.
 
-The tokens work on the REST API exactly as an `mcp_at_` key does — put them in the same `Authorization: Bearer …` header. The full flow, including registration, PKCE, refresh rotation, and revocation, is documented in [How OAuth works](/docs/ai-access/oauth).
+The tokens work on the REST API exactly as an `mcp_at_` key does — put them in the same `Authorization: Bearer …` header. Your developer's starting list:
+
+1. **Discover, don't hardcode:** endpoints come from `https://app.docjacket.com/.well-known/oauth-authorization-server`.
+2. **Register once** at `/oauth/register` (standard dynamic client registration; authorization code + PKCE, public client — no secret).
+3. **Request scopes** `read draft actions` at sign-in; access tokens last 1 hour, refresh tokens 90 days.
+4. **Revoke on logout** at `/oauth/revoke`, and key your storage on the token's `org_id` claim — that's which workspace the user belongs to.
+
+The full flow, including registration, PKCE, refresh rotation, and revocation, is documented in [How OAuth works](/docs/ai-access/oauth).
 
 Two things worth knowing before you build:
 

@@ -12,18 +12,32 @@ description: Build on DocJacket with the public REST API — read and act on tra
 
 The DocJacket API lets your own systems — CRMs, dashboards, back-office tools, scripts, and custom automations — read and act on your transactions, contacts, tasks, key dates, documents, and disclosures.
 
-Everything lives under one base URL:
+Everything lives under one base URL, and every request carries a bearer token:
 
 - **Base URL:** `https://api.docjacket.com`
-- **Auth:** a bearer token — `Authorization: Bearer mcp_at_…`
-
-For your own account, that token is an API key you mint. If you're building an app that connects *other people's* accounts, it's an OAuth token they grant you — see [Authentication](./authentication.mdx#apps-that-connect-many-accounts).
+- **Auth:** `Authorization: Bearer <your credential>`
 
 **Live reference:** [api.docjacket.com/reference](https://api.docjacket.com/reference) — generated from the deployed API, so it never drifts. The machine-readable spec is at [api.docjacket.com/openapi.json](https://api.docjacket.com/openapi.json) (point Postman, an SDK generator, or an AI agent at it).
 
-## One credential, two doorways
+## Which credential do I need?
 
-The same `mcp_at_` key powers both the REST API (this section) and [AI Access](/docs/ai-access) — connecting AI assistants like Claude and ChatGPT over MCP. Use the **API** when *your code* calls DocJacket; use **AI Access** when *an AI assistant* does. Same permissions model, same audit trail.
+Start here — *what* goes in that `Authorization` header depends on **who is calling**, and picking the wrong one is the single most common integration mistake:
+
+| Who is calling? | Use | Looks like | Where you get it |
+|---|---|---|---|
+| **Your own code, against your own workspace** — a script, a CRM sync, a back-office tool you run | **Workspace API key** | `mcp_at_…` | In the app: **Settings → Advanced → API & AI Access → API keys** ([how](./authentication.mdx#create-a-key)) |
+| **An app other people sign in to** — a mobile app, a portal, an integration you sell | **OAuth sign-in** — each user authorizes their *own* account; your app never holds a key | a short-lived token per user | Register your app once, then users sign in ([how OAuth works](/docs/ai-access/oauth)) |
+| **A white-label partner's systems** — opening customer workspaces, managing seats | **Partner key** | `rsk_…` | Partner console → **API keys** ([Partner API](./reseller.mdx)) |
+| **An AI assistant** — Claude, ChatGPT, Gemini | **AI Access** — connect by pasting a URL, no code | handled for you | [AI Access](/docs/ai-access) |
+
+Two rules that save the most support email:
+
+- **A partner key never reads deal data.** `rsk_…` works only on the partner provisioning endpoints. To read or change what's *inside* a workspace, you need a workspace key or an OAuth token for that workspace — a partner key returns `401` on every data endpoint, no matter who minted it.
+- **If users sign in to your thing, don't mint keys for them.** One workspace key per customer doesn't scale past a handful of accounts and makes you the custodian of their credentials. OAuth is the shape that scales — and it's the same endpoints with the same scopes.
+
+## One key, two doorways
+
+Within a single workspace, the same `mcp_at_` key powers both the REST API (this section) and [AI Access](/docs/ai-access) — connecting AI assistants like Claude and ChatGPT over MCP. Use the **API** when *your code* calls DocJacket; use **AI Access** when *an AI assistant* does. Same permissions model, same audit trail.
 
 ## Your first call
 
