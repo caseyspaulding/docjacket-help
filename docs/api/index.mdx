@@ -23,7 +23,7 @@ Start here — *what* goes in that `Authorization` header depends on **who is ca
 | Who is calling? | Use | Looks like | Where you get it |
 |---|---|---|---|
 | **Your own code, against your own workspace** — a script, a CRM sync, a back-office tool you run | **Workspace API key** | `mcp_at_…` | In the app: **Settings → Advanced → API & AI Access → API keys** ([how](./authentication.mdx#create-a-key)) |
-| **An app other people sign in to** — a mobile app, a portal, an integration you sell | **OAuth sign-in** — each user authorizes their *own* account; your app never holds a key | a short-lived token per user | Register your app once, then users sign in ([how OAuth works](/docs/ai-access/oauth)) |
+| **An app other people sign in to** — a mobile app, a portal, an integration you sell | **OAuth sign-in** — each user authorizes their *own* account; your app never holds a key | a short-lived token per user | Register your app once, then users sign in — [quickstart](./build-an-app.mdx) |
 | **A white-label partner's systems** — opening customer workspaces, managing seats | **Partner key** | `rsk_…` | Partner console → **API keys** ([Partner API](./reseller.mdx)) |
 | **An AI assistant** — Claude, ChatGPT, Gemini | **AI Access** — connect by pasting a URL, no code | handled for you | [AI Access](/docs/ai-access) |
 
@@ -65,6 +65,7 @@ Prefer to read the whole surface at once? **[All operations](./reference.mdx)** 
 ## In this section
 
 - **[Authentication & API keys](./authentication.mdx)** — create, scope, rotate, and revoke keys.
+- **[Build an app (quickstart)](./build-an-app.mdx)** — end-to-end: explore with a key, register your app, sign users in with OAuth.
 - **[Making requests](./making-requests.mdx)** — conventions, errors, rate limits, and recipes.
 - **[All operations](./reference.mdx)** — every endpoint, grouped by resource, with method, path, and required scope.
 - **[Webhooks](./webhooks.mdx)** — subscribe to events and verify signatures.
