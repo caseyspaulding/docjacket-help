@@ -7240,7 +7240,7 @@ The assistant calls into DocJacket, gets a grounded answer from your real book o
 
 - **Paste-URL-and-go.** No API keys, no per-user credentials to manage. You paste `https://mcp.docjacket.com/mcp` into the assistant's connector settings, complete a one-time consent screen, and you're done.
 - **Per-user consent.** Each user on your DocJacket account authorizes their own assistant. There's no shared admin token that exposes everyone's data.
-- **Revocable from settings.** **DocJacket → Settings → AI Access** lists every assistant you've connected. Revoke any of them with one click — the next request from that client returns "unauthorized."
+- **Revocable from settings.** **DocJacket → Settings → API & AI Access** lists every assistant you've connected. Revoke any of them with one click — the next request from that client returns "unauthorized."
 - **Audited.** Every tool call goes through DocJacket's audit log: which user, which assistant, which tool, what arguments, what result. You can see exactly what an assistant has been doing on your behalf.
 - **Chat is the approval gate for writes.** Both write tiers are live. Each write executes only after you confirm it in the assistant's chat — the conversation itself is the approval step.
 
@@ -7400,7 +7400,7 @@ Every connector gets its own `client_id`. Inside Claude, you can:
 
 Inside DocJacket:
 
-- **Settings → AI Access** lists every connected client with last-used timestamp.
+- **Settings → API & AI Access** lists every connected client with last-used timestamp.
 - **Activity log** shows every tool call: who, what, when, what arguments, what result.
 - **Revoke** any client with one click. The next request from that client returns HTTP 401 — Claude will fall back to re-consent if you want to reconnect.
 
@@ -7410,7 +7410,7 @@ Inside DocJacket:
 
 **Tools don't appear after connecting** — Refresh the Claude page or restart Claude Desktop. The tool list is cached client-side and sometimes needs a manual refresh.
 
-**"Token is invalid, expired, or revoked"** — Your token has been revoked (from DocJacket → Settings → AI Access) or your assistant has been disconnected for more than 90 days. Re-consent to reconnect.
+**"Token is invalid, expired, or revoked"** — Your token has been revoked (from DocJacket → Settings → API & AI Access) or your assistant has been disconnected for more than 90 days. Re-consent to reconnect.
 
 **Pro plan required** — Connecting is free, but actually loading tools requires a DocJacket Pro plan on the connecting user's account. If you're on Free, upgrade at [docjacket.com/pricing](https://www.docjacket.com/pricing).
 
@@ -7534,7 +7534,7 @@ Same as the Claude side. Each Codex or ChatGPT install gets its own `client_id`.
 
 Inside DocJacket:
 
-- **Settings → AI Access** lists every connected client with last-used timestamp.
+- **Settings → API & AI Access** lists every connected client with last-used timestamp.
 - **Activity log** shows every tool call: who, what, when, what arguments, what result.
 - **Revoke** any client with one click. The next request returns HTTP 401 — the assistant will fall back to re-consent if you want to reconnect.
 
@@ -7544,7 +7544,7 @@ Inside DocJacket:
 
 **Codex CLI auth keeps re-prompting** — Running several Codex processes against one saved credential no longer causes this; simultaneous refreshes are handled ([how rotation works](/docs/ai-access/oauth#refresh--rotation)). If you are still being asked to reconnect, the saved credential is stale or was revoked — delete the entry from `~/.codex/credentials` and re-consent.
 
-**"Token is invalid, expired, or revoked"** — Either you revoked the client in DocJacket → Settings → AI Access, or the refresh token expired after 90 days of inactivity. Re-consent to reconnect.
+**"Token is invalid, expired, or revoked"** — Either you revoked the client in DocJacket → Settings → API & AI Access, or the refresh token expired after 90 days of inactivity. Re-consent to reconnect.
 
 ## Read more
 
@@ -7580,7 +7580,7 @@ Inside DocJacket:
 
 Cowork uses a personal access token (not paste-URL OAuth) because the plugin is installed once for the whole workspace.
 
-1. Open [app.docjacket.com/settings/ai-access](https://app.docjacket.com/settings/ai-access).
+1. Open [app.docjacket.com/settings/api-access](https://app.docjacket.com/settings/api-access).
 2. Click **New token**, pick the **Cowork Plugin** preset for the label, scope `read`.
 3. **Copy the plaintext token immediately** — it's shown exactly once.
 4. In Cowork, open **Settings → Connectors → DocJacket** and paste it.
@@ -7641,7 +7641,7 @@ It's read-only. It doesn't send emails, modify deals, or write to DocJacket — 
 
 Same as every other AI Access connection:
 
-- **Settings → AI Access** lists the Cowork token alongside any per-user OAuth connections.
+- **Settings → API & AI Access** lists the Cowork token alongside any per-user OAuth connections.
 - **Activity log** shows every tool call: who, what, when, what arguments, what result.
 - **Revoke** the Cowork token with one click. The plugin stops working instantly for every Cowork member; the install record stays so you can re-paste a fresh token without re-installing.
 
@@ -7657,7 +7657,7 @@ We publish release notes in the [plugin repo](https://github.com/docjacket-inc/c
 
 **Plugin shows but tools aren't loading** — Check that the token is actually pasted in **Cowork → Settings → Connectors → DocJacket**. The plugin install is one step; the connector token is a separate step.
 
-**"Authorization failed" on tool calls** — The token may have been revoked from DocJacket. Mint a fresh one at [settings/ai-access](https://app.docjacket.com/settings/ai-access) and update the Cowork connector.
+**"Authorization failed" on tool calls** — The token may have been revoked from DocJacket. Mint a fresh one at [settings/api-access](https://app.docjacket.com/settings/api-access) and update the Cowork connector.
 
 **Skill or slash command not appearing** — Hit **Update** in the Cowork plugin list to pull the latest manifest. If still missing, [file an issue](https://github.com/docjacket-inc/claude-plugin/issues) on the plugin repo.
 
@@ -7680,7 +7680,7 @@ DocJacket works with the **Gemini CLI** today via personal access token. Paste-U
 ## Quick start (Gemini CLI, bearer token)
 
 1. **Mint a token:**
-   - Open [app.docjacket.com/settings/ai-access](https://app.docjacket.com/settings/ai-access).
+   - Open [app.docjacket.com/settings/api-access](https://app.docjacket.com/settings/api-access).
    - Click **New token**, label it `Gemini`, scope `read`.
    - **Copy the plaintext token immediately** — it's shown exactly once.
 
@@ -7749,13 +7749,13 @@ No tokens to copy, no `mcp.json` to edit, per-user revocation. Until then, the t
 
 ## Permissions, audit, revocation
 
-- **Settings → AI Access** lists your Gemini token alongside other connected clients.
+- **Settings → API & AI Access** lists your Gemini token alongside other connected clients.
 - **Activity log** shows every tool call: who, what, when, what arguments, what result.
 - **Revoke** the Gemini token with one click. The next CLI tool call returns HTTP 401.
 
 ## Troubleshooting
 
-**"Authorization failed"** — The token is invalid, expired, or revoked. Mint a fresh one at [settings/ai-access](https://app.docjacket.com/settings/ai-access) and update `~/.gemini/mcp.json`.
+**"Authorization failed"** — The token is invalid, expired, or revoked. Mint a fresh one at [settings/api-access](https://app.docjacket.com/settings/api-access) and update `~/.gemini/mcp.json`.
 
 **Tools don't appear after restart** — Check the JSON syntax in `mcp.json`. A missing comma or extra brace will make the Gemini CLI skip the server entry. Validate with `cat ~/.gemini/mcp.json | jq`.
 
@@ -8862,7 +8862,7 @@ Nothing here needs configuring. If an assistant does end up asking you to reconn
 
 ## Revocation
 
-**DocJacket → Settings → AI Access → Connected Clients.** Click **Revoke** on any client.
+**DocJacket → Settings → API & AI Access → Connected Clients.** Click **Revoke** on any client.
 
 What happens:
 
@@ -8887,7 +8887,7 @@ A few clients don't (yet) support paste-URL OAuth and need a personal access tok
 
 This is about *whose* account you're reaching, not about REST versus MCP. If you're building something that connects **other people's** accounts — an app you ship to customers — use OAuth, on either surface. A key per customer means storing their credentials and minting one by hand for every signup.
 
-Mint tokens at [app.docjacket.com/settings/ai-access](https://app.docjacket.com/settings/ai-access). They scope per-org, can be labeled, and can be revoked independently of OAuth-issued tokens.
+Mint tokens at [app.docjacket.com/settings/api-access](https://app.docjacket.com/settings/api-access). They scope per-org, can be labeled, and can be revoked independently of OAuth-issued tokens.
 
 ## What we never see
 
@@ -8952,7 +8952,7 @@ If your account has draft or action scopes enabled later, you can re-consent or 
 
 Every MCP tool call lands in your Activity Log within seconds:
 
-- **DocJacket → Settings → AI Access → Activity Log**
+- **DocJacket → Settings → API & AI Access → Activity Log**
 
 Each row shows:
 
@@ -8968,7 +8968,7 @@ Filter by client to see what one AI surface has been doing. Filter by tool to sp
 
 ## Revoking
 
-**Settings → AI Access → Connected Clients** (for OAuth) **or** Personal Access Tokens (for bearer).
+**Settings → API & AI Access → Connected Clients** (for OAuth) **or** Personal Access Tokens (for bearer).
 
 Click **Revoke** on any row. The next tool call from that client returns HTTP 401. The user will either fall back to re-consent (if they want to reconnect) or fail gracefully.
 
@@ -9063,7 +9063,7 @@ Building something that connects *other people's* DocJacket accounts — an app 
 
 ## Create a key
 
-1. In DocJacket, go to **Settings → API Keys** (Owner or Admin role required).
+1. In DocJacket, go to **Settings → Advanced → API & AI Access** and open the **API keys** tab (Owner or Admin role required).
 2. Click **New API key**, give it a name (e.g. "Back-office sync"), and choose its scopes.
 3. Copy the key — **it's shown exactly once.** DocJacket stores only a one-way hash, so it can't be shown again. If you lose it, create a new one.
 
@@ -9088,7 +9088,7 @@ Scopes are tiers — each includes progressively more power. Grant the minimum a
 | `draft` | Low-risk writes — complete a task, log activity, apply a checklist, add key dates |
 | `actions` | Side-effect writes — create contacts, upload & extract documents, send emails, manage disclosure packages |
 
-You can change a key's scopes at any time from **Settings → API Keys → Edit scopes** — the key keeps working with the new grant, and the change is recorded in the [activity log](/docs/ai-access/permissions). Every change is auditable.
+You can change a key's scopes at any time from **Settings → API & AI Access → Edit scopes** — the key keeps working with the new grant, and the change is recorded in the [activity log](/docs/ai-access/permissions). Every change is auditable.
 
 ## Advanced restrictions (optional)
 
@@ -9109,7 +9109,7 @@ This is how you build a least-privilege key — e.g. a read key limited to just 
 ## Rotate & revoke
 
 - **Rotate:** create a new key, update your integration, then revoke the old one.
-- **Revoke:** **Settings → API Keys → Revoke.** Access stops immediately and can't be undone.
+- **Revoke:** **Settings → API & AI Access → Revoke.** Access stops immediately and can't be undone.
 
 ## See a key's usage
 
@@ -9120,7 +9120,7 @@ curl "https://api.docjacket.com/api/v1/usage?days=30" \
   -H "Authorization: Bearer mcp_at_YOUR_KEY"
 ```
 
-For a full audit trail of every call (across all keys), see **Settings → AI Access → Activity log**.
+For a full audit trail of every call (across all keys), see **Settings → API & AI Access → Activity log**.
 
 ## Apps that connect many accounts
 
@@ -9477,7 +9477,7 @@ Three credential types:
 
 | Credential | Prefix | Use |
 |---|---|---|
-| **Organization key** | `mcp_at_…` | Acts within a single organization. Mint one under **Settings → Advanced → API Keys**. Covers every section except Organizations (Partner). |
+| **Organization key** | `mcp_at_…` | Acts within a single organization. Mint one under **Settings → Advanced → API & AI Access** (API keys tab). Covers every section except Organizations (Partner). |
 | **OAuth access token** | — | Reaches the same operations with the same scopes, but each user authorizes your app instead of pasting a key. This is the one to use when your app serves many accounts. See [How OAuth works](/docs/ai-access/oauth). |
 | **Partner key** | `rsk_…` | Cross-tenant provisioning and read for white-label partners. Accepted only on the `/api/v1/orgs/*` operations. |
 

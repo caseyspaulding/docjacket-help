@@ -31,7 +31,7 @@ description: Install the DocJacket plugin in Claude Cowork — org-wide MCP plug
 
 Cowork uses a personal access token (not paste-URL OAuth) because the plugin is installed once for the whole workspace.
 
-1. Open [app.docjacket.com/settings/ai-access](https://app.docjacket.com/settings/ai-access).
+1. Open [app.docjacket.com/settings/api-access](https://app.docjacket.com/settings/api-access).
 2. Click **New token**, pick the **Cowork Plugin** preset for the label, scope `read`.
 3. **Copy the plaintext token immediately** — it's shown exactly once.
 4. In Cowork, open **Settings → Connectors → DocJacket** and paste it.
@@ -92,7 +92,7 @@ It's read-only. It doesn't send emails, modify deals, or write to DocJacket — 
 
 Same as every other AI Access connection:
 
-- **Settings → AI Access** lists the Cowork token alongside any per-user OAuth connections.
+- **Settings → API & AI Access** lists the Cowork token alongside any per-user OAuth connections.
 - **Activity log** shows every tool call: who, what, when, what arguments, what result.
 - **Revoke** the Cowork token with one click. The plugin stops working instantly for every Cowork member; the install record stays so you can re-paste a fresh token without re-installing.
 
@@ -108,7 +108,7 @@ We publish release notes in the [plugin repo](https://github.com/docjacket-inc/c
 
 **Plugin shows but tools aren't loading** — Check that the token is actually pasted in **Cowork → Settings → Connectors → DocJacket**. The plugin install is one step; the connector token is a separate step.
 
-**"Authorization failed" on tool calls** — The token may have been revoked from DocJacket. Mint a fresh one at [settings/ai-access](https://app.docjacket.com/settings/ai-access) and update the Cowork connector.
+**"Authorization failed" on tool calls** — The token may have been revoked from DocJacket. Mint a fresh one at [settings/api-access](https://app.docjacket.com/settings/api-access) and update the Cowork connector.
 
 **Skill or slash command not appearing** — Hit **Update** in the Cowork plugin list to pull the latest manifest. If still missing, [file an issue](https://github.com/docjacket-inc/claude-plugin/issues) on the plugin repo.
 

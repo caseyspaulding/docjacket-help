@@ -23,7 +23,7 @@ The assistant calls into DocJacket, gets a grounded answer from your real book o
 
 - **Paste-URL-and-go.** No API keys, no per-user credentials to manage. You paste `https://mcp.docjacket.com/mcp` into the assistant's connector settings, complete a one-time consent screen, and you're done.
 - **Per-user consent.** Each user on your DocJacket account authorizes their own assistant. There's no shared admin token that exposes everyone's data.
-- **Revocable from settings.** **DocJacket → Settings → AI Access** lists every assistant you've connected. Revoke any of them with one click — the next request from that client returns "unauthorized."
+- **Revocable from settings.** **DocJacket → Settings → API & AI Access** lists every assistant you've connected. Revoke any of them with one click — the next request from that client returns "unauthorized."
 - **Audited.** Every tool call goes through DocJacket's audit log: which user, which assistant, which tool, what arguments, what result. You can see exactly what an assistant has been doing on your behalf.
 - **Chat is the approval gate for writes.** Both write tiers are live. Each write executes only after you confirm it in the assistant's chat — the conversation itself is the approval step.
 

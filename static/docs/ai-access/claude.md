@@ -122,7 +122,7 @@ Every connector gets its own `client_id`. Inside Claude, you can:
 
 Inside DocJacket:
 
-- **Settings → AI Access** lists every connected client with last-used timestamp.
+- **Settings → API & AI Access** lists every connected client with last-used timestamp.
 - **Activity log** shows every tool call: who, what, when, what arguments, what result.
 - **Revoke** any client with one click. The next request from that client returns HTTP 401 — Claude will fall back to re-consent if you want to reconnect.
 
@@ -132,7 +132,7 @@ Inside DocJacket:
 
 **Tools don't appear after connecting** — Refresh the Claude page or restart Claude Desktop. The tool list is cached client-side and sometimes needs a manual refresh.
 
-**"Token is invalid, expired, or revoked"** — Your token has been revoked (from DocJacket → Settings → AI Access) or your assistant has been disconnected for more than 90 days. Re-consent to reconnect.
+**"Token is invalid, expired, or revoked"** — Your token has been revoked (from DocJacket → Settings → API & AI Access) or your assistant has been disconnected for more than 90 days. Re-consent to reconnect.
 
 **Pro plan required** — Connecting is free, but actually loading tools requires a DocJacket Pro plan on the connecting user's account. If you're on Free, upgrade at [docjacket.com/pricing](https://www.docjacket.com/pricing).
 

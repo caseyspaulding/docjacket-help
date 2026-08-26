@@ -54,7 +54,7 @@ If your account has draft or action scopes enabled later, you can re-consent or 
 
 Every MCP tool call lands in your Activity Log within seconds:
 
-- **DocJacket → Settings → AI Access → Activity Log**
+- **DocJacket → Settings → API & AI Access → Activity Log**
 
 Each row shows:
 
@@ -70,7 +70,7 @@ Filter by client to see what one AI surface has been doing. Filter by tool to sp
 
 ## Revoking
 
-**Settings → AI Access → Connected Clients** (for OAuth) **or** Personal Access Tokens (for bearer).
+**Settings → API & AI Access → Connected Clients** (for OAuth) **or** Personal Access Tokens (for bearer).
 
 Click **Revoke** on any row. The next tool call from that client returns HTTP 401. The user will either fall back to re-consent (if they want to reconnect) or fail gracefully.
 
