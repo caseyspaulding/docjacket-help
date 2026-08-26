@@ -29,6 +29,19 @@ This page is for the curious and for the security-conscious. **You don't need to
 
 The 30-second walkthrough above is the entire flow: paste URL → consent screen → Allow → tools loaded. Everything below explains what happens under the hood.
 
+Prefer stills? The stepped version walks the same journey from the end user's seat — sign-in, consent, the connection appearing under **Connected agents**, and one-click revoke:
+
+<div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', margin: '1.5rem 0' }}>
+  <iframe
+    src="https://app.supademo.com/embed/cmtagv2c10001pu1z5g0klwa6?embed_v=2"
+    title="What your customer sees — OAuth consent, step by step"
+    allow="fullscreen"
+    allowFullScreen
+    loading="lazy"
+    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0, borderRadius: 8 }}
+  />
+</div>
+
 ## The flow at a glance
 
 ```mermaid

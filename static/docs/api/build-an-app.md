@@ -103,6 +103,19 @@ https://app.docjacket.com/oauth/authorize
 
 The user signs in with their normal DocJacket login, sees a consent screen naming your app and the scopes, and clicks **Allow**. The browser redirects to `yourapp://auth?code=…` — a **single-use code valid for 60 seconds**, so exchange it immediately.
 
+Here is that moment from your user's side — sign-in, the consent screen, and the revoke control they always keep:
+
+<div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', margin: '1.5rem 0' }}>
+  <iframe
+    src="https://app.supademo.com/embed/cmtagv2c10001pu1z5g0klwa6?embed_v=2"
+    title="What your customer sees — OAuth consent, step by step"
+    allow="fullscreen"
+    allowFullScreen
+    loading="lazy"
+    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0, borderRadius: 8 }}
+  />
+</div>
+
 PKCE is mandatory and `S256`-only. Every mainstream OAuth library (AppAuth, expo-auth-session, oauth2 crates/gems/packages) handles the verifier/challenge pair for you.
 
 ## Step 4 — Exchange the code for tokens
