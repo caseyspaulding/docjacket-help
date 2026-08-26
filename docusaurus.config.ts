@@ -36,6 +36,15 @@ const config: Config = {
     locales: ['en'],
   },
 
+  // Renders ```mermaid fences as diagrams. A syntax error inside a fence fails
+  // the build rather than shipping a broken figure, so `npm run build` is the
+  // check on every diagram under docs/.
+  markdown: {
+    mermaid: true,
+  },
+
+  themes: ['@docusaurus/theme-mermaid'],
+
   plugins: [
     [
       '@docusaurus/plugin-client-redirects',

@@ -71,13 +71,25 @@ The 30-second walkthrough above is the entire flow: paste URL → consent screen
 
 ## The flow at a glance
 
-```
-1. Discovery        → assistant fetches DocJacket's well-known metadata
-2. Registration     → assistant creates its own client_id (DCR)
-3. Authorize        → assistant redirects you to DocJacket
-4. Consent          → you see what's being asked, click Allow
-5. Token exchange   → assistant trades the auth code for an access token
-6. Tool calls       → assistant sends MCP requests with the bearer
+```mermaid
+sequenceDiagram
+    participant App as Your app
+    participant Browser
+    participant Auth as DocJacket auth server
+    participant API as DocJacket API
+
+    App->>Auth: Register once at /oauth/register (DCR)
+    Auth-->>App: client_id — no secret
+    App->>Browser: Open /oauth/authorize + PKCE challenge
+    Browser->>Auth: User signs in and consents
+    Auth-->>Browser: Redirect with single-use code (60s)
+    Browser-->>App: code
+    App->>Auth: Exchange code + verifier at /oauth/token
+    Auth-->>App: Access token — 1h JWT, org_id claim<br/>Refresh token — 90d, rotates
+    App->>API: Bearer calls to /api/v1
+    API-->>App: Data, within the granted scopes
+    App->>Auth: Refresh hourly — each rotation retires the old token
+    App->>Auth: POST /oauth/revoke on logout
 ```
 
 Each step in detail:

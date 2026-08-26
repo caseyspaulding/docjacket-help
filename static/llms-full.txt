@@ -8764,13 +8764,25 @@ The 30-second walkthrough above is the entire flow: paste URL → consent screen
 
 ## The flow at a glance
 
-```
-1. Discovery        → assistant fetches DocJacket's well-known metadata
-2. Registration     → assistant creates its own client_id (DCR)
-3. Authorize        → assistant redirects you to DocJacket
-4. Consent          → you see what's being asked, click Allow
-5. Token exchange   → assistant trades the auth code for an access token
-6. Tool calls       → assistant sends MCP requests with the bearer
+```mermaid
+sequenceDiagram
+    participant App as Your app
+    participant Browser
+    participant Auth as DocJacket auth server
+    participant API as DocJacket API
+
+    App->>Auth: Register once at /oauth/register (DCR)
+    Auth-->>App: client_id — no secret
+    App->>Browser: Open /oauth/authorize + PKCE challenge
+    Browser->>Auth: User signs in and consents
+    Auth-->>Browser: Redirect with single-use code (60s)
+    Browser-->>App: code
+    App->>Auth: Exchange code + verifier at /oauth/token
+    Auth-->>App: Access token — 1h JWT, org_id claim<br/>Refresh token — 90d, rotates
+    App->>API: Bearer calls to /api/v1
+    API-->>App: Data, within the granted scopes
+    App->>Auth: Refresh hourly — each rotation retires the old token
+    App->>Auth: POST /oauth/revoke on logout
 ```
 
 Each step in detail:
@@ -9016,6 +9028,18 @@ Start here — *what* goes in that `Authorization` header depends on **who is ca
 | **An app other people sign in to** — a mobile app, a portal, an integration you sell | **OAuth sign-in** — each user authorizes their *own* account; your app never holds a key | a short-lived token per user | Register your app once, then users sign in — [quickstart](./build-an-app.mdx) |
 | **A white-label partner's systems** — opening customer workspaces, managing seats | **Partner key** | `rsk_…` | Partner console → **API keys** ([Partner API](./reseller.mdx)) |
 | **An AI assistant** — Claude, ChatGPT, Gemini | **AI Access** — connect by pasting a URL, no code | handled for you | [AI Access](/docs/ai-access) |
+
+```mermaid
+flowchart LR
+  A["Your own scripts &amp; tools"] --> K["Workspace API key<br/>mcp_at_…"]
+  B["An app your customers sign in to"] --> O["Per-user OAuth token"]
+  C["A white-label partner's systems"] --> R["Partner key<br/>rsk_…"]
+
+  K --> D["Workspace data<br/>transactions, tasks,<br/>documents, messaging"]
+  O --> D
+  R --> P["Provisioning<br/>create workspaces, manage seats"]
+  R -. "✗ rejected" .-> D
+```
 
 Two rules that save the most support email:
 
@@ -9417,6 +9441,13 @@ curl -X POST https://api.docjacket.com/api/v1/webhooks/SUBSCRIPTION_ID/test \
 # Partner API
 
 White-label partners get a separate **reseller key** (`rsk_…`) that spans every organization in their book of business — for provisioning new tenants and reading their state. It's distinct from the per-organization `mcp_at_` key.
+
+```mermaid
+flowchart LR
+  P["Partner backend"] -- "rsk_ provision" --> W["Workspace per customer"]
+  C["Customer (agent)"] -- "OAuth sign-in" --> W
+  P -. "per-workspace mcp_at_<br/>userless jobs only" .-> W
+```
 
 Ask us to set you up as a partner to get a reseller key.
 
@@ -9823,6 +9854,31 @@ Everything you build this way carries over unchanged: OAuth tokens call **the sa
 
 Generate a typed client from the machine-readable spec at [api.docjacket.com/openapi.json](https://api.docjacket.com/openapi.json), and keep the [live reference](https://api.docjacket.com/reference) open while you work.
 
+## The whole flow at a glance
+
+```mermaid
+sequenceDiagram
+    participant App as Your app
+    participant Browser
+    participant Auth as DocJacket auth server
+    participant API as DocJacket API
+
+    App->>Auth: Register once at /oauth/register (DCR)
+    Auth-->>App: client_id — no secret
+    App->>Browser: Open /oauth/authorize + PKCE challenge
+    Browser->>Auth: User signs in and consents
+    Auth-->>Browser: Redirect with single-use code (60s)
+    Browser-->>App: code
+    App->>Auth: Exchange code + verifier at /oauth/token
+    Auth-->>App: Access token — 1h JWT, org_id claim<br/>Refresh token — 90d, rotates
+    App->>API: Bearer calls to /api/v1
+    API-->>App: Data, within the granted scopes
+    App->>Auth: Refresh hourly — each rotation retires the old token
+    App->>Auth: POST /oauth/revoke on logout
+```
+
+Steps 1–6 below walk that flow with runnable requests.
+
 ## Step 1 — Discover the endpoints
 
 Never hardcode OAuth URLs — fetch them:
@@ -9932,6 +9988,13 @@ The two rules that prevent the two most common production incidents:
 Your [partner key](./reseller.mdx) (`rsk_…`) keeps its job — server-side provisioning: creating a workspace for each new customer, inviting seats. It never reads deal data. The flow composes cleanly with the steps above: your signup flow provisions the workspace with the partner key, the new customer completes their first sign-in, and from then on your app acts as them via their own token.
 
 A per-workspace `mcp_at_` key enters only if your backend needs to run jobs against a workspace **with no user signed in** (nightly syncs, batch imports). If you have that need, [tell us](mailto:support@docjacket.com) — don't build a key-collection habit preemptively.
+
+```mermaid
+flowchart LR
+  P["Partner backend"] -- "rsk_ provision" --> W["Workspace per customer"]
+  C["Customer (agent)"] -- "OAuth sign-in" --> W
+  P -. "per-workspace mcp_at_<br/>userless jobs only" .-> W
+```
 
 ## Deeper reading
 

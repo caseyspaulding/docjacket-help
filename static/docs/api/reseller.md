@@ -11,6 +11,13 @@ description: White-label partners provision and manage customer organizations ac
 
 White-label partners get a separate **reseller key** (`rsk_…`) that spans every organization in their book of business — for provisioning new tenants and reading their state. It's distinct from the per-organization `mcp_at_` key.
 
+```mermaid
+flowchart LR
+  P["Partner backend"] -- "rsk_ provision" --> W["Workspace per customer"]
+  C["Customer (agent)"] -- "OAuth sign-in" --> W
+  P -. "per-workspace mcp_at_<br/>userless jobs only" .-> W
+```
+
 Ask us to set you up as a partner to get a reseller key.
 
 ## Authentication

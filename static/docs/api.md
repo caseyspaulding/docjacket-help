@@ -30,6 +30,18 @@ Start here — *what* goes in that `Authorization` header depends on **who is ca
 | **A white-label partner's systems** — opening customer workspaces, managing seats | **Partner key** | `rsk_…` | Partner console → **API keys** ([Partner API](./reseller.mdx)) |
 | **An AI assistant** — Claude, ChatGPT, Gemini | **AI Access** — connect by pasting a URL, no code | handled for you | [AI Access](/docs/ai-access) |
 
+```mermaid
+flowchart LR
+  A["Your own scripts &amp; tools"] --> K["Workspace API key<br/>mcp_at_…"]
+  B["An app your customers sign in to"] --> O["Per-user OAuth token"]
+  C["A white-label partner's systems"] --> R["Partner key<br/>rsk_…"]
+
+  K --> D["Workspace data<br/>transactions, tasks,<br/>documents, messaging"]
+  O --> D
+  R --> P["Provisioning<br/>create workspaces, manage seats"]
+  R -. "✗ rejected" .-> D
+```
+
 Two rules that save the most support email:
 
 - **A partner key never reads deal data.** `rsk_…` works only on the partner provisioning endpoints. To read or change what's *inside* a workspace, you need a workspace key or an OAuth token for that workspace — a partner key returns `401` on every data endpoint, no matter who minted it.
