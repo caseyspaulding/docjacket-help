@@ -44,6 +44,19 @@ Two rules that save the most support email:
 - **A partner key never reads deal data.** `rsk_…` works only on the partner provisioning endpoints. To read or change what's *inside* a workspace, you need a workspace key or an OAuth token for that workspace — a partner key returns `401` on every data endpoint, no matter who minted it.
 - **If users sign in to your thing, don't mint keys for them.** One workspace key per customer doesn't scale past a handful of accounts and makes you the custodian of their credentials. OAuth is the shape that scales — and it's the same endpoints with the same scopes.
 
+If you're a white-label partner, this is the distinction in fifteen seconds — the partner console's keys, then the same customer's workspace keys:
+
+<div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', margin: '1.5rem 0' }}>
+  <iframe
+    src="https://app.supademo.com/embed/cmtaiolmg003not1yd92l3kzo?embed_v=2"
+    title="Which key is which — partner key vs workspace key"
+    allow="fullscreen"
+    allowFullScreen
+    loading="lazy"
+    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0, borderRadius: 8 }}
+  />
+</div>
+
 ## One key, two doorways
 
 Within a single workspace, the same `mcp_at_` key powers both the REST API (this section) and [AI Access](/docs/ai-access) — connecting AI assistants like Claude and ChatGPT over MCP. Use the **API** when *your code* calls DocJacket; use **AI Access** when *an AI assistant* does. Same permissions model, same audit trail.
