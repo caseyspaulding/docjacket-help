@@ -283,8 +283,15 @@ items on both the key-date and task side. Items you added by hand, and dates ext
 from the contract, are preserved either way.
 
 :::tip
-Leave **Replace** unticked when you're layering a second workflow onto a deal. Tick it
-only when you're correcting a Playbook you applied by mistake.
+Leave **Replace** unticked when you're layering a second workflow onto a deal.
+
+If you're correcting a Playbook you applied by mistake and it's the **only** one
+on the deal, ticking Replace is fine. But if the deal already has **more than one**
+applied checklist and you only want to drop one of them, don't tick Replace — it
+clears every applied checklist's tasks (and every template-generated key date on
+the deal) at once, not just the one you meant to fix. Instead, go to the **Tasks**
+tab, click the trash icon on the specific checklist's header to remove just its
+tasks, then apply the right Playbook — it adds cleanly to what's left.
 :::
 
 ## Saving a transaction as a Playbook
