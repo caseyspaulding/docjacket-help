@@ -28,9 +28,14 @@ The Playbook's key dates and tasks are added to the transaction with priorities,
 
 Email automation follows the Playbook settings: scheduled emails are created against their configured due-date anchors, and on-completion emails either auto-send or wait in the Review queue's **Ready for Review** tab when review is required.
 
-If a transaction already has an applied Playbook, DocJacket warns you before stacking another one. You can add the new Playbook alongside existing work, or replace previously-applied template items when appropriate.
+If a transaction already has an applied Playbook, DocJacket warns you before stacking
+another one. You can add the new Playbook alongside existing work, or replace
+previously-applied template items when appropriate — see
+[Applying a second Playbook to the same transaction](../templates/timeline-templates.md#applying-a-second-playbook-to-the-same-transaction)
+for when Replace is the wrong tool and what to use instead.
 
-Manually added items and contract-extracted dates are preserved when replacing template-generated items.
+Manually added items and contract-extracted dates are preserved when replacing
+template-generated items.
 
 ## Creating a Playbook
 
