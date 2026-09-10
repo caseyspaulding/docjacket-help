@@ -32,7 +32,9 @@ The main sections are:
 - **Today's Briefing** - Closings today, overdue tasks, tasks due today, upcoming deadlines, new emails, completed extractions, new assignments, and workload level
 - **Pending Uploads** - Documents that finished extracting but have not been saved as a transaction, listing, or update yet
 - **Closing Soon** - Transactions with closing dates in the next seven days
-- **Tasks** - Tasks due today or overdue and assigned to you
+- **Going Live Soon** - Listings with a go-live date in the next 14 days; only appears when you have a listing going live
+- **Key Dates** - Upcoming and overdue key dates across your deals, covering dates overdue or due in the next two weeks
+- **Tasks** - Your most urgent open tasks across all deals: overdue and due-today first, then upcoming (up to 10). Nothing here filters by assignee; use the Tasks page for that.
 - **Waiting On** - Deals currently blocked, grouped by phase; click a phase to open the transactions list filtered to that phase
 - **Outstanding Payments** - Logged TC fees that are not paid yet, when the payments widget applies
 - **This Month** - New transactions, closed transactions, active volume, and pending tasks
@@ -53,7 +55,7 @@ Common ways to tailor the dashboard:
 Collapsed and expanded sections are a personal browser preference. They do not change what teammates see in their own accounts.
 :::
 
-Some dashboard sections appear only when they apply. **Pending Uploads** appears only when there are extraction groups awaiting review. **Outstanding Payments** appears when the payments widget applies to your compensation setup.
+Some dashboard sections appear only when they apply. **Pending Uploads** appears only when there are extraction groups awaiting review. **Going Live Soon** appears only when you have a listing with a go-live date coming up. **Outstanding Payments** appears when the payments widget applies to your compensation setup.
 
 ## Daily digest
 
