@@ -11541,7 +11541,9 @@ From the **Document Types** tab, you can:
 - Edit existing types
 - Delete unused types
 
-Each type card shows the name, description, required/inactive badges, and how many documents currently use that type. Some system defaults also include matching keywords that help DocJacket recognize common document names.
+Each type card shows the name, description, required/inactive badges, and how many documents currently use that type.
+
+Document types are not matched on filenames. When a file goes through Upload & Extract or the packet splitter, DocJacket reads the document's content to detect its type; for a direct upload without extraction, the type is whatever you choose in the upload dialog or the checklist item you upload into.
 
 Inactive document types no longer appear for new selections, but existing documents keep their current value. Use this when a type should be retired without changing historical files.
 
@@ -11586,6 +11588,8 @@ Naming rules use tokens that are replaced with transaction and document data. Co
 - `{TransactionType}`
 
 Additional supported tokens include `{OriginalFileName}`, `{RequiredDocKey}`, `{StartPage}`, `{EndPage}`, `{PageRange}`, `{TransactionId}`, `{Counter}`, and formatted dates such as `{Date:MM-dd-yyyy}`.
+
+`{DocType}` is the document's detected type — for example, a Colorado Amend/Extend form that goes through Upload & Extract is recognized from its content, so `{DocType}` resolves to "Amend & Extend" regardless of what the file was called. The filename is never used to decide the type. For a direct upload without extraction, `{DocType}` is the type you select in the upload dialog (or the checklist item you upload into); if none is selected, it falls back to "Document".
 
 DocJacket automatically removes empty token fragments, cleans invalid filename characters, and adds `.pdf` when the generated name does not include it.
 
