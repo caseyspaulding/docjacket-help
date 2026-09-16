@@ -25,6 +25,7 @@ Use **Email Notifications** to decide whether DocJacket sends notification email
 - **Deadline reminders** — Upcoming tasks and key-date contingencies
 - **Task and milestone completions** — Work completed for you
 - **Document activity** — New uploads, approvals, or rejections
+- **Inbox activity** — The "New email received" notice DocJacket sends when an email arrives in your DocJacket inbox, and requests to join your team. Untick this to stop the email-received notices without turning off anything else; the bell in the app still shows them
 - **System alerts** — Account, billing, and AI action alerts
 
 Turn off **Email Notifications** if you do not want notification emails. In-app notifications can still appear if that separate setting is enabled.
