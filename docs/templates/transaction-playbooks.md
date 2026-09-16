@@ -14,7 +14,7 @@ A Playbook covers everything a deal of that type needs:
 
 - **Key dates and tasks** — the deadlines and work for that deal type, with due-date offsets and assignments.
 - **[Required documents](./required-documents-lists.md)** — which documents are required, including conditional "required if…" rules.
-- **Automations** — the rules and reminders that run for that deal type, including text-message reminders on key dates and tasks.
+- **Automations** — the rules and reminders that run for that deal type. Automations you add in the Playbook builder send email; text-message reminders get into a Playbook by setting them up on a deal first (see below).
 
 So instead of hand-adding tasks, key dates, and a document list to every new deal, the Playbook stamps all of it on at once.
 
@@ -44,6 +44,8 @@ Apply a Playbook to a transaction and DocJacket sets up the whole deal at once �
 
 - **Auto-setup:** a new deal can be set up automatically from a matching Playbook.
 - **Save what you built:** when you set a deal up by hand, DocJacket offers to save that work as a Playbook for next time — so the manual setup becomes one-click from then on. The reminders you configured on key dates and tasks are captured too, text messages included, and re-created on every deal you apply the Playbook to.
+
+**There is no SMS option on a Playbook task or key date in the builder.** A task's automations in the builder are email only — the same is true of key-date automations. To put an automated text in a Playbook, set the reminder up on a live deal (open the task, expand **My Reminders**, and use **Remind someone…**; key dates have the same composer in their drawer), choose **SMS** or **Email + SMS**, then click **Save as Template** on the deal's Key Dates tab. The saved Playbook keeps those text reminders and re-creates them on every deal you apply it to. The text uses the reminder wording under **Settings › SMS › Message wording** — it is not a template you write per task the way an email is.
 
 **Text messages are shown before they're scheduled.** If a Playbook includes SMS reminders, the apply confirmation lists every text it's about to set up — who it goes to and how many days before its date — and you can untick any of them. Unticking a text keeps its key date or task; it only skips the message. If your organization can't send SMS yet (no texting plan or no business number), DocJacket sets up everything else and skips the texts.
 
