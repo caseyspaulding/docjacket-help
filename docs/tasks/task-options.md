@@ -57,13 +57,14 @@ Use **My Reminders** for your own notifications. Each signed-in teammate has sep
 1. Save a due date on the task.
 2. Choose **On the due date**, or **1, 2, 3, 5, 7, or 14 days before**.
 3. Click **Add reminder**. Choose **Email**, **SMS**, or **Email + SMS** for that timing.
-4. Add another timing if needed, then click **Save my reminders**.
+4. For each additional timing, choose the timing and click **Add reminder** again. Choose its delivery channel. Selecting a timing alone does not add it to your reminder list.
+5. Check that every timing appears in the list, then click **Save my reminders** to save them together.
 
 You can use each timing once. Removing one leaves your other reminders and your teammates' settings alone. SMS needs a verified mobile number and an available organization SMS service.
 
 The scheduled-date preview helps you check the timing. Past send times are skipped; completing or skipping the task, or archiving the transaction, stops pending delivery. Removing and re-adding the same timing does not replay an occurrence already sent or cancelled for that due date.
 
-**Example:** Add 7 days and 2 days before "Order home warranty" to get two personal reminders.
+**Example:** For "Order home warranty," choose **7 days before** and click **Add reminder**. Then choose **2 days before** and click **Add reminder** again. With both rows visible, click **Save my reminders**. You now have two personal reminders; your teammates' settings are unchanged.
 
 ## Remind someone about a task
 
