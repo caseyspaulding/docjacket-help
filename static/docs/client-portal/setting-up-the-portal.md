@@ -67,7 +67,9 @@ To keep the name and role visible while restricting the email and phone, use **P
 
 If you choose **Selected portal viewers** and leave everyone unchecked, then click **Save detail visibility**, no portal viewer can see that contact's email or phone—including the listing agent. The contact's name and role remain visible unless you hide the entire contact with its eye button. An empty selection here does **not** mean everyone; task portal visibility uses a different rule.
 
-Click **Save detail visibility**. These detail restrictions also apply to the portal PDF. Generic links and legacy links that cannot identify one viewer show restricted contacts' names and roles only. An agent link does not bypass the selection. SitRep reports use the contact's overall visibility, not an individual portal viewer's selection.
+Click **Save detail visibility**. These detail restrictions also apply to the portal PDF. Generic links and legacy links that cannot identify one viewer show restricted contacts' names and roles only. An agent link does not bypass the selection.
+
+**SitRep reports are different:** **Selected portal viewers** and **No portal viewers** do not restrict contact details in ordinary SitRep reports, including newly generated SitReps. SitReps use the contact's overall eye-button visibility instead. To omit the contact from a new SitRep, hide the entire contact with its eye button. No setting changes a SitRep or PDF that someone already downloaded.
 
 Check the exact recipient's link in the **Portal** tab preview. Previously downloaded PDFs cannot be recalled; generate a new copy after changing visibility. Contact merges keep the more restrictive visibility and may require you to select the intended viewers again.
 
