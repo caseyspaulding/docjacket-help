@@ -4084,7 +4084,7 @@ Use this section for deal-specific changes. For repeatable automations that shou
 
 A newly rendered template reads the transaction's saved dates. An email already open for editing is a snapshot: changing a date does not silently replace your draft.
 
-Choose **Refresh from transaction**, review the proposed subject and message, then choose **Replace subject and message** or **Keep current draft**. Replacement keeps recipients, attachments, and the selected signature. Refreshing does not send the email. Save the transaction date first.
+Save the transaction date first, then click **Refresh** in the composer (its tooltip reads "Refresh the transaction data in this email draft"). The subject and message are rerendered from the template with the latest saved values in one click, replacing any edits you made to that text; recipients, attachments, and the selected signature stay as they are. Refreshing does not send the email. Older drafts that store the signature inside the message cannot be refreshed — update their dates by hand or start a new email from the template.
 
 See [Email Automation](./email-automation.mdx) for the full workflow.
 
