@@ -225,6 +225,11 @@ Common automation uses include:
 - Send a linked email template
 - Include selected document categories
 - Trigger follow-up work when a task is completed
+- Send an automated text message (SMS) instead of, or as well as, the email
+
+**Delivery.** Every task automation has a **Deliver by** choice: **Email**, **SMS**, or **Email + SMS**. Pick SMS and the builder checks your texting setup on the spot — if SMS isn't on your plan or you haven't set up a business number yet, a chip says so and the save tells you why. Email automations are never affected.
+
+**Key-date reminders.** Select a key date and open its **Reminders** panel. **Add reminder** lets you set when it goes out — **Days before the key date** (add one or several, for a countdown like 7 and 3 days), **On the key date**, or **When it's marked complete** — who receives it (**Recipients by role**, plus direct addresses under **Also email**), the **Email template**, **Deliver by**, and **Require review before sending**. Each saved reminder is labelled **Waits for review** or **Sends automatically**; edit it in place or **Remove** it. Removing a reminder from the Playbook does not change deals that were already created from it.
 
 Use **Review automations** to see every automation rule in the Playbook, grouped by key date and task. From there, use **Edit** to jump back to the rule in the builder. Bulk editing across automation rules is not currently part of this drawer.
 

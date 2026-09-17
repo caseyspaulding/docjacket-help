@@ -1756,20 +1756,25 @@ To find the listing afterward, open **Transactions** and filter the type to **Li
 
 ## A deal fell through — putting a listing back on the market
 
-Often the "purchase" and the "listing" are the **same record**: you took a listing, it went under contract, and now the buyer has backed out. You want it to go back to being an active listing — still in your pipeline, with its tasks and key dates intact.
+Often the "purchase" and the "listing" are the **same record**: you took a listing, it went under contract, and now the buyer has backed out. You want it to go back to being an active listing — still in your pipeline, without the buyer's information cluttering it up.
 
 In that case, **don't cancel the transaction.** Cancelling is a terminal status, so it winds the deal down — open tasks become **Skipped**, key dates become **Not Applicable**, and reminders and scheduled emails are **deleted**. Moving the transaction back to an open status afterward does **not** automatically restore any of that, so you'd end up rebuilding your listing Playbook by hand.
 
-Instead, just move the deal **back to an active status**:
+Instead, move the deal **back to an active listing status** — and let DocJacket clear the buyer out for you:
 
-1. Open the transaction and click the **status chip** (or drag its card in the Pipeline)
+1. Open the listing and click the **status chip** (or drag its card in the Pipeline)
 2. Change the status from **Under Contract** back to an open listing status — **Active**, **MLS Active**, or whichever your office uses
-3. If you'd also switched the transaction **type** to *Purchase* or *Sale* when it went under contract, change it back to **Listing**
+3. DocJacket recognises that a listing is leaving its under-contract status and asks **"Buyer fell through?"**. The dialog lists exactly what it is about to do — how many buyer-side contacts it will remove, which contract fields it will clear, how many contract key dates and tasks it will retire, and how many pending emails and reminders it will cancel — then offers two buttons:
+   - **Put back on market** — removes the buyer, the buyer's agent and any other buyer-side contacts from this deal (their contact records are kept), clears the contract fields (buyer names, purchase price, earnest money, financing and loan details, contract and under-contract dates), retires the key dates and closing-checklist tasks that came with the contract (marked *not applicable* and *skipped*, never deleted), cancels the contract's pending emails and unsent reminders, marks the accepted offer **withdrawn**, and moves the deal to the status you picked. **Kept:** every document, your listing-side contacts, and the listing's own key dates and tasks.
+   - **Just change the status** — the plain status change: the deal moves to the status you picked and nothing else is touched.
+4. **Cancel** keeps the deal exactly as it was.
 
-Because the deal never moved into a Cancelled or Closed status, nothing was wound down — your tasks, key dates, and automation are all still there, and the listing stays right where it was in your queue.
+If your office has an automation that runs when a deal enters the status you picked (a "back to Active" email, say), the dialog tells you so — it will run either way, the same as any other status change.
+
+The dialog only appears on **listing-side** deals moving out of an under-contract status. A buyer-side deal, or a listing moving between two active statuses, gets the ordinary status change with no prompt.
 
 :::tip Cancel vs. change status
-Cancel when the deal is truly dead and you want its pending work to stop. If the property is simply going back on the market, **change the status** instead — that keeps the listing active and preserves everything.
+Cancel when the deal is truly dead and you want its pending work to stop. If the property is simply going back on the market, **change the status** instead — and choose **Put back on market** if you want the buyer's data gone, or **Just change the status** if you'd rather tidy it up yourself.
 :::
 
 ## Reopening a transaction
@@ -4040,11 +4045,18 @@ Tasks also carry a second eye for **SitRep reports**. Every task shows on genera
 
 ## Reminders
 
-Use **My Reminders** to get notified before the task is due. Reminder choices include 1, 2, 3, 5, 7, or 14 days before the due date. You get an in-app notification and an email — and you can choose to get a **text message** too, or instead. Texts go to the verified mobile number on your profile; if you haven't verified a number yet, DocJacket shows a link to do that first.
+Use **My Reminders** for your own notifications. Each signed-in teammate has separate settings.
 
-A reminder needs a due date to count down from. If the task doesn't have a due date, DocJacket asks you to set one before adding the reminder.
+1. Save a due date on the task.
+2. Choose **On the due date**, or **1, 2, 3, 5, 7, or 14 days before**.
+3. Click **Add reminder**. Choose **Email**, **SMS**, or **Email + SMS** for that timing.
+4. Add another timing if needed, then click **Save my reminders**.
 
-**Example:** Set a 3-day reminder for "Order home warranty" so your team has time to coordinate before closing.
+You can use each timing once. Removing one leaves your other reminders and your teammates' settings alone. SMS needs a verified mobile number and an available organization SMS service.
+
+The scheduled-date preview helps you check the timing. Past send times are skipped; completing or skipping the task, or archiving the transaction, stops pending delivery. Removing and re-adding the same timing does not replay an occurrence already sent or cancelled for that due date.
+
+**Example:** Add 7 days and 2 days before "Order home warranty" to get two personal reminders.
 
 ## Remind someone about a task
 
@@ -4072,6 +4084,12 @@ Linked emails can use:
 - A before/on/after offset from that anchor
 
 Use this section for deal-specific changes. For repeatable automations that should exist every time a Playbook is applied, configure the task email in the Playbook template first.
+
+### Changed dates and an open email draft
+
+A newly rendered template reads the transaction's saved dates. An email already open for editing is a snapshot: changing a date does not silently replace your draft.
+
+Save the transaction date first, then click **Refresh** in the composer (its tooltip reads "Refresh the transaction data in this email draft"). The subject and message are rerendered from the template with the latest saved values in one click, replacing any edits you made to that text; recipients, attachments, and the selected signature stay as they are. Refreshing does not send the email. Older drafts that store the signature inside the message cannot be refreshed — update their dates by hand or start a new email from the template.
 
 See [Email Automation](./email-automation.mdx) for the full workflow.
 
@@ -4856,6 +4874,12 @@ If a placeholder is not recognized, fix the template syntax before using it with
 - Use Draft status while testing a new template
 - Send a test email before activating templates with conditions or auto-attached documents
 
+## Refresh transaction data in a draft
+
+Save the transaction's date changes first. In the template-based composer, click **Refresh**. The tooltip says “Refresh the transaction data in this email draft.” This rerenders the template's subject and message with the latest saved transaction values, replacing any edits to that text. Your recipients, attachments, and selected signature stay as they are. An open draft does not update automatically, and refresh never sends the email.
+
+Older drafts may store the signature inside the message instead of separately. Refresh is disabled for those drafts to protect the saved signature. Update their dates manually or start a new email from the template.
+
 ---
 
 # Getting Email Into DocJacket
@@ -5196,6 +5220,11 @@ Common automation uses include:
 - Send a linked email template
 - Include selected document categories
 - Trigger follow-up work when a task is completed
+- Send an automated text message (SMS) instead of, or as well as, the email
+
+**Delivery.** Every task automation has a **Deliver by** choice: **Email**, **SMS**, or **Email + SMS**. Pick SMS and the builder checks your texting setup on the spot — if SMS isn't on your plan or you haven't set up a business number yet, a chip says so and the save tells you why. Email automations are never affected.
+
+**Key-date reminders.** Select a key date and open its **Reminders** panel. **Add reminder** lets you set when it goes out — **Days before the key date** (add one or several, for a countdown like 7 and 3 days), **On the key date**, or **When it's marked complete** — who receives it (**Recipients by role**, plus direct addresses under **Also email**), the **Email template**, **Deliver by**, and **Require review before sending**. Each saved reminder is labelled **Waits for review** or **Sends automatically**; edit it in place or **Remove** it. Removing a reminder from the Playbook does not change deals that were already created from it.
 
 Use **Review automations** to see every automation rule in the Playbook, grouped by key date and task. From there, use **Edit** to jump back to the rule in the builder. Bulk editing across automation rules is not currently part of this drawer.
 
@@ -5308,7 +5337,7 @@ A Playbook covers everything a deal of that type needs:
 
 - **Key dates and tasks** — the deadlines and work for that deal type, with due-date offsets and assignments.
 - **[Required documents](./required-documents-lists.md)** — which documents are required, including conditional "required if…" rules.
-- **Automations** — the rules and reminders that run for that deal type. Automations you add in the Playbook builder send email; text-message reminders get into a Playbook by setting them up on a deal first (see below).
+- **Automations** — the rules and reminders that run for that deal type, by email, text message (SMS), or both. You author them in the Playbook builder: each task automation has a **Deliver by** choice, and every key date has its own **Reminders** panel (see below).
 
 So instead of hand-adding tasks, key dates, and a document list to every new deal, the Playbook stamps all of it on at once.
 
@@ -5339,7 +5368,9 @@ Apply a Playbook to a transaction and DocJacket sets up the whole deal at once �
 - **Auto-setup:** a new deal can be set up automatically from a matching Playbook.
 - **Save what you built:** when you set a deal up by hand, DocJacket offers to save that work as a Playbook for next time — so the manual setup becomes one-click from then on. The reminders you configured on key dates and tasks are captured too, text messages included, and re-created on every deal you apply the Playbook to.
 
-**There is no SMS option on a Playbook task or key date in the builder.** A task's automations in the builder are email only — the same is true of key-date automations. To put an automated text in a Playbook, set the reminder up on a live deal (open the task, expand **My Reminders**, and use **Remind someone…**; key dates have the same composer in their drawer), choose **SMS** or **Email + SMS**, then click **Save as Template** on the deal's Key Dates tab. The saved Playbook keeps those text reminders and re-creates them on every deal you apply it to. The text uses the reminder wording under **Settings › SMS › Message wording** — it is not a template you write per task the way an email is.
+**Automated texts are set up in the builder, the same way as emails.** On a task, open its automation and use **Deliver by** to choose **Email**, **SMS**, or **Email + SMS** — an automated SMS on a task works just like an automated email. On a key date, open the **Reminders** panel and click **Add reminder**: choose when it goes out (**Days before the key date** — add one or several, e.g. 7 and 3 — **On the key date**, or **When it's marked complete**), who gets it (**Recipients by role**, plus any direct addresses under **Also email**), the **Email template**, **Deliver by**, and whether it should **Require review before sending**. Each reminder shows **Waits for review** or **Sends automatically**, and you can edit or remove it in place; removing one doesn't touch deals you've already created. If SMS isn't on your plan yet, or you haven't set up a business number, the picker says so (**SMS isn't on your plan** / **No SMS number yet**) and the save tells you why — email reminders are never affected. The text itself uses the reminder wording under **Settings › SMS › Message wording**; it is not a template you write per task the way an email is.
+
+You can still build a text reminder on a live deal instead (open the task, expand **My Reminders**, and use **Remind someone…**; key dates have the same composer in their drawer) and then click **Save as Template** on the deal's Key Dates tab — the saved Playbook keeps those reminders, text messages included.
 
 **Text messages are shown before they're scheduled.** If a Playbook includes SMS reminders, the apply confirmation lists every text it's about to set up — who it goes to and how many days before its date — and you can untick any of them. Unticking a text keeps its key date or task; it only skips the message. If your organization can't send SMS yet (no texting plan or no business number), DocJacket sets up everything else and skips the texts.
 
@@ -10167,6 +10198,20 @@ The public portal is primarily a branded overview page. Depending on the portal 
 - A property switcher when the same contact has access to multiple active transactions
 
 You control visibility at the document and task level, so sensitive items stay private unless you specifically share them. Document visibility can also be restricted to selected portal contacts and can allow or withhold portal download controls. Agent portals may also show agent-facing financial details and recent activity that client portals do not show.
+
+## Contact visibility and private details
+
+Open the transaction's **Contacts** tab and expand the contact. Use the eye button to hide that contact entirely from the portal, portal PDF, and newly generated SitRep reports. It does not remove the contact from your internal transaction.
+
+To keep the name and role visible while restricting the email and phone, use **Portal contact details**:
+
+- **Everyone with a portal link** shares the details with all viewers.
+- **Selected portal viewers** shares them only with the deal contacts you select.
+- **No portal viewers** keeps the email and phone out of every portal view.
+
+Click **Save detail visibility**. These detail restrictions also apply to the portal PDF. Generic links and legacy links that cannot identify one viewer show restricted contacts' names and roles only. An agent link does not bypass the selection. SitRep reports use the contact's overall visibility, not an individual portal viewer's selection.
+
+Check the exact recipient's link in the **Portal** tab preview. Previously downloaded PDFs cannot be recalled; generate a new copy after changing visibility. Contact merges keep the more restrictive visibility and may require you to select the intended viewers again.
 
 ## Link management
 

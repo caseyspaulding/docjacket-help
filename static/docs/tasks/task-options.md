@@ -55,11 +55,18 @@ Tasks also carry a second eye for **SitRep reports**. Every task shows on genera
 
 ## Reminders
 
-Use **My Reminders** to get notified before the task is due. Reminder choices include 1, 2, 3, 5, 7, or 14 days before the due date. You get an in-app notification and an email — and you can choose to get a **text message** too, or instead. Texts go to the verified mobile number on your profile; if you haven't verified a number yet, DocJacket shows a link to do that first.
+Use **My Reminders** for your own notifications. Each signed-in teammate has separate settings.
 
-A reminder needs a due date to count down from. If the task doesn't have a due date, DocJacket asks you to set one before adding the reminder.
+1. Save a due date on the task.
+2. Choose **On the due date**, or **1, 2, 3, 5, 7, or 14 days before**.
+3. Click **Add reminder**. Choose **Email**, **SMS**, or **Email + SMS** for that timing.
+4. Add another timing if needed, then click **Save my reminders**.
 
-**Example:** Set a 3-day reminder for "Order home warranty" so your team has time to coordinate before closing.
+You can use each timing once. Removing one leaves your other reminders and your teammates' settings alone. SMS needs a verified mobile number and an available organization SMS service.
+
+The scheduled-date preview helps you check the timing. Past send times are skipped; completing or skipping the task, or archiving the transaction, stops pending delivery. Removing and re-adding the same timing does not replay an occurrence already sent or cancelled for that due date.
+
+**Example:** Add 7 days and 2 days before "Order home warranty" to get two personal reminders.
 
 ## Remind someone about a task
 
@@ -87,6 +94,12 @@ Linked emails can use:
 - A before/on/after offset from that anchor
 
 Use this section for deal-specific changes. For repeatable automations that should exist every time a Playbook is applied, configure the task email in the Playbook template first.
+
+### Changed dates and an open email draft
+
+A newly rendered template reads the transaction's saved dates. An email already open for editing is a snapshot: changing a date does not silently replace your draft.
+
+Save the transaction date first, then click **Refresh** in the composer (its tooltip reads "Refresh the transaction data in this email draft"). The subject and message are rerendered from the template with the latest saved values in one click, replacing any edits you made to that text; recipients, attachments, and the selected signature stay as they are. Refreshing does not send the email. Older drafts that store the signature inside the message cannot be refreshed — update their dates by hand or start a new email from the template.
 
 See [Email Automation](./email-automation.mdx) for the full workflow.
 
