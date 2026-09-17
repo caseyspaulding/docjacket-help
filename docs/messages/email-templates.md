@@ -91,3 +91,9 @@ If a placeholder is not recognized, fix the template syntax before using it with
 - Link email templates to [tasks](../tasks/email-automation.mdx) for automated sending
 - Use Draft status while testing a new template
 - Send a test email before activating templates with conditions or auto-attached documents
+
+## Refresh a template-based draft after dates change
+
+Save the transaction's date changes first. In the template-based composer, choose **Refresh from transaction** to review freshly rendered text. Choose **Replace subject and message** to accept it or **Keep current draft** to retain your edits. Your recipients, attachments, and selected signature stay as they are. An open draft does not update automatically, and refresh never sends the email.
+
+Older drafts may store the signature inside the message instead of separately. Refresh is disabled for those drafts to protect the saved signature. Update their dates manually or start a new email from the template.
