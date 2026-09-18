@@ -2,7 +2,7 @@
 title: API reference — all operations
 sidebar_label: All operations
 sidebar_position: 6
-description: Every operation in the DocJacket REST API — 115 endpoints grouped by resource, with method, path, and required scope. Generated from the OpenAPI specification.
+description: Every operation in the DocJacket REST API — 120 endpoints grouped by resource, with method, path, and required scope. Generated from the OpenAPI specification.
 ---
 
 {/* GENERATED FILE — do not edit by hand.
@@ -12,7 +12,7 @@ description: Every operation in the DocJacket REST API — 115 endpoints grouped
 
 # API reference — all operations
 
-The DocJacket REST API lets your own systems read and act on transactions, contacts, tasks, key dates, documents, extractions, disclosures, and templates. This page lists **all 115 operations** in one place, grouped by resource, so the whole surface is readable without running JavaScript or parsing the raw specification.
+The DocJacket REST API lets your own systems read and act on transactions, contacts, tasks, key dates, documents, extractions, disclosures, and templates. This page lists **all 120 operations** in one place, grouped by resource, so the whole surface is readable without running JavaScript or parsing the raw specification.
 
 - **Base URL:** `https://api.docjacket.com`
 - **Interactive reference** (try-it console, client snippets): [api.docjacket.com/reference](https://api.docjacket.com/reference)
@@ -79,7 +79,7 @@ See [Making requests](./making-requests.mdx) for the full conventions and [Versi
 
 ## Operations
 
-115 operations across 14 sections.
+120 operations across 14 sections.
 
 ### Meta
 
@@ -274,6 +274,11 @@ Your own organization — settings, the transaction-status vocabulary, notificat
 
 | Method | Path | Description | Scope |
 |---|---|---|---|
+| POST | `/api/v1/account/deletion/cancel` | Cancel a scheduled workspace deletion | `actions` |
+| POST | `/api/v1/account/deletion/request` | Schedule this workspace for deletion after the grace period | `actions` |
+| GET | `/api/v1/account/deletion/status` | Whether workspace deletion is scheduled, and whether the caller may act on it | `read` |
+| GET | `/api/v1/account/export/latest` | Status of the most recent workspace data export | `read` |
+| POST | `/api/v1/account/export/request` | Start building a full export of this workspace's data | `actions` |
 | POST | `/api/v1/devices/register` | Register or refresh a mobile device for the authenticated user | `actions` |
 | GET | `/api/v1/notifications` | List the signed-in user's notification inbox | `read` |
 | GET | `/api/v1/notifications/unread-count` | Unread notification count for the signed-in user | `read` |
