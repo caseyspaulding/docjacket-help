@@ -19,6 +19,7 @@ Transaction contacts are grouped by role category on the transaction **Contacts*
 
 **Primary (Clients)**
 - Buyer, Seller
+- Buyer's Representative (POA / Trustee), Seller's Representative (POA / Trustee) — someone acting for the buyer or seller under a power of attorney, or as trustee, executor, or guardian. This is **not** the buyer's agent or listing agent; add agents under Buyer Agent or Listing Agent. See [Buyer's Representative is not the buyer's agent](../templates/smart-fields.md#buyers-representative-is-not-the-buyers-agent).
 
 **Professional (Agents)**
 - Listing Agent, Buyer Agent, cooperating agent roles
