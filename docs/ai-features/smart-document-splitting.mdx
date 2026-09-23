@@ -21,6 +21,18 @@ If DocJacket detects one document spanning the full PDF, it skips the split step
 
 Smart Split appears in the broader **Upload Documents** extraction wizard. The transaction **Documents > Files > Extract Data** flow uploads directly into an existing transaction and then opens extraction progress/review.
 
+## Splitting documents for a transaction you already have
+
+You can run Smart Split into an existing deal. Start **Upload Documents**, upload the combined PDF, and under where the documents should go choose **Add to Existing Transaction**, then pick the deal. The split files and extracted data go to that transaction.
+
+## Can I split a document that's already in my transaction?
+
+**Not from inside the deal today.** There is no split button for a PDF that's already attached to a transaction. Smart Split only runs while you upload through **Upload Documents**.
+
+If the combined PDF is already on the deal, download it from the transaction and upload it again through **Upload Documents** with **Add to Existing Transaction**. You can then delete the original combined file from the deal if you no longer need it.
+
+If you use DocJacket's [API or AI Access](../ai-access/index.mdx), the public API can split a document that's already stored: `POST /api/v1/documents/{id}/split` with the page ranges you want.
+
 ## What the review screen shows
 
 The Smart Split review screen includes:

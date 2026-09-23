@@ -18,6 +18,19 @@ checklists live — nothing was moved or lost, and your existing ones are all un
 **My Playbooks** tab.
 :::
 
+## Is a checklist different from a Playbook?
+
+**No. It's the same feature, renamed in August 2026.** There is no separate checklist object and no "checklist inside a Playbook." What used to be called a checklist is now called a Playbook.
+
+One Playbook holds everything for a deal type:
+
+- **Key dates**
+- **Tasks** (with phases, due-date rules, and repeating schedules)
+- **Automations** (emails, texts, and key-date reminders)
+- **Required documents**: attach one or more Required Documents Lists in the Playbook builder's **Required documents** section
+
+You don't need to bundle a checklist and a document list together, because the Playbook already holds both. If you see older notes about "checklists and Playbooks" as two different things, or about Playbooks being a folder that wraps a checklist, those describe an older setup.
+
 ## "I don't see Checklists on the Templates page"
 
 If you are looking for **Checklists** and don't see that card on the Templates page,
@@ -141,6 +154,35 @@ Tasks should reference the key date they depend on. For example, a task can be d
 To add a task, click **Add Task**, fill in the panel that opens on the right, and click **Add task** at the bottom of the panel — it is also in the panel's header strip. That button is what saves the task to the Playbook; while a new task is unsaved the panel shows a **Not added yet** badge. The page-level **Save** at the top also adds an open task before it saves the Playbook settings. Closing the panel with **×** or **Cancel** discards a new task (DocJacket asks first if you have typed anything).
 
 ![Playbook task editor showing task details, priority, phase, due-date context, and an automation count on the selected task](/img/templates/checklist-task-automation.png)
+
+## Repeating tasks
+
+A Playbook task can recur: every week, or every 2 weeks, on the day you choose. This is how you build a weekly compliance check, a "Friday update to the client" email task, or any other every-Monday / every-Friday routine into every deal.
+
+In the task panel, under **Task Details**, set **Repeat** to **Weekly** or **Every 2 weeks** and pick the day in **On**.
+
+A task either repeats **or** is due relative to a key date, never both. If **Due date is based on** (under **When it's due**) is set to a key date, the **Repeat** control is hidden. Clear that anchor to make the task repeat. DocJacket won't save a task that has both.
+
+When you apply the Playbook to a deal, the first occurrence is due on the first matching day on or after the day you apply it (apply on a Friday and a "weekly on Friday" task is due that same day). Completing an occurrence creates the next one. The series ends when the deal closes. See [Repeating tasks](../tasks/creating-tasks.mdx#repeating-tasks-recurring-weekly-tasks) for how occurrences behave on a deal.
+
+## Playbook phases
+
+Every Playbook task can be given a **Playbook phase**. The phase list is fixed. These are the phases, in order:
+
+| Phase | Typical work |
+|---|---|
+| **Pre-Listing** | Listing agreement, photos, disclosures, prep before the listing goes live |
+| **Active Listing** | MLS, showings, feedback, and offers while the listing is on the market |
+| **Intake** | Open the file, confirm the parties, collect the executed contract |
+| **Due Diligence** | Inspections, repair negotiation, contingency tracking |
+| **Financing** | Loan application, appraisal, loan approval |
+| **Pre-Closing** | Title, HOA/estoppel, walkthrough, closing disclosure, scheduling the closing |
+| **Closing** | Closing day itself: signing, funding, recording, keys |
+| **Post-Close** | Deliver documents, request a review, close out the file |
+
+**You can't add, rename, or delete phases.** There is no "add phase" button, and the **Playbook phase** dropdown only offers the eight phases above. If your listing tasks don't seem to fit, use **Pre-Listing** and **Active Listing**; those are the listing phases.
+
+When you apply a Playbook, you can choose to apply only selected phases.
 
 ## Conditional tasks
 

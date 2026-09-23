@@ -1,7 +1,7 @@
 ---
 sidebar_label: Transaction Configuration
 sidebar_position: 10
-description: Configure DocJacket transaction roles, statuses, fields, custom fields, contingencies, and key-date statuses to match how your team works.
+description: Configure DocJacket transaction roles, default TC fees, statuses, fields, custom fields, contingencies, and key-date statuses to match how your team works.
 ---
 
 # Transaction Configuration
@@ -26,6 +26,21 @@ From the Transaction Roles page, you can:
 - Edit or delete custom roles
 
 System roles are protected. You can use them, but you cannot edit or delete them. Custom roles that are already used on transactions cannot be deleted until those assignments are moved or removed.
+
+## Default Fees (your default TC fee)
+
+To set your default TC fee, go to **Settings > Default Fees** (it's in the **Transactions** group of the Settings menu, at `/settings/fees`). It isn't under Billing or Organization. Billing is your DocJacket subscription, not the fee you charge on deals.
+
+The default fee is a standing transaction coordination fee that DocJacket posts automatically as a fee line on every new deal's **Fees & Payments** ledger (on the deal's **Payments** tab), so your expected TC income is already there instead of being typed in on each file.
+
+- **Base fee:** the **Amount** and an optional **Description** (for example, *TC Fee*).
+- **Per-side overrides:** a different amount for **Buyer**, **Seller**, or **Dual** deals. Leave a side's amount blank to use the base fee. Enter **0** to charge no fee on that side.
+
+Click **Save**. The default applies only to deals created from then on. Existing deals are never changed, and deleting the fee from one deal doesn't add it back.
+
+Anyone can view the default fee. Changing it takes a workspace owner or admin, unless an owner has turned on **Allow team members to edit Playbooks and settings** under **Settings > Organization**.
+
+To bill the fee to an agent and collect it online, see [Invoices & Payment Requests](../transactions/invoices-and-payment-requests.mdx).
 
 ## Transaction Statuses
 
@@ -90,6 +105,12 @@ To assign a field's section, you have two options:
 :::tip Sort once, stay organized
 New custom fields start out unsorted. Assign their sections once — the bulk tool makes quick work of it — and every transaction form stays organized from then on.
 :::
+
+### Custom fields are for transactions, not contacts
+
+Custom fields belong to **transactions** only. Each value is saved on a deal, so there's no way to add a custom field to a **contact** (a client, agent, or vendor). A smart field used as a contact detail would have to be re-entered on every deal.
+
+**Tracking a client's birthday?** You don't need a custom field for that. Contacts have a built-in **Birthday** field (and a **Home Anniversary** field) on the **New Contact** form, and **Birthday** is a column you can include when you import contacts. Upcoming birthdays and home anniversaries show on the **Contacts > Follow-ups** tab, soonest first.
 
 ## Contingencies
 

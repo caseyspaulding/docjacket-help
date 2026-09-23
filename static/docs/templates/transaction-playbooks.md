@@ -9,7 +9,9 @@ description: What Playbooks are in DocJacket — reusable, per-deal-type setups 
 
 # What a Playbook Is
 
-A **Playbook** is a reusable, ready-to-go setup for a **deal type** — think of it as a smart digital folder that bundles everything a transaction of that type needs into one process you apply in a single click. Set it up once, reuse it on every deal.
+A **Playbook** is a reusable, ready-to-go setup for a **deal type**: the key dates, tasks, automations, and required documents a transaction of that type needs, applied in a single click. Set it up once, reuse it on every deal.
+
+A Playbook is what DocJacket used to call a **checklist**. It's the same feature under a new name, not a second object that contains a checklist.
 
 ## What's in a Playbook
 
