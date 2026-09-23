@@ -21,7 +21,7 @@ Create **3–4 Playbook templates** (see [Build a Playbook template matrix](./te
 - Listing
 - Your busiest client or team
 
-Build each on the [6-phase backbone](./phase-backbone.md): Intake → Under Contract → Financing → Due Diligence → Pre-Closing → Post-Close.
+Build each on the [phase backbone](./phase-backbone.md): Pre-Listing → Active Listing for listings, then Intake → Due Diligence → Financing → Pre-Closing → Closing → Post-Close once a deal is under contract.
 
 ## Day 2–3: Smart due dates
 
@@ -62,7 +62,7 @@ Once this is in place, a new file looks like: pick the right Playbook → DocJac
 **The full series:**
 
 1. [Build a Playbook template matrix](./template-matrix.md)
-2. [The 6-phase deal backbone & smart due dates](./phase-backbone.md)
+2. [The deal phase backbone & smart due dates](./phase-backbone.md)
 3. [Your email template library](./email-library.md)
 4. [Role-based recipients & CC yourself](./role-recipients.md)
 5. [Task automations: draft-and-review](./automations.md)

@@ -17,7 +17,9 @@ This is different from [Google Calendar sync](./calendar-view.mdx), which pushes
 
 ## Send an invite
 
-1. Open the transaction and click a **key date** to open its details panel.
+There is no "Calendar invites" button on the Key Dates list or at the top of a deal. The invite lives **inside each key date**: open the date's details panel and look for the **Calendar invite** section.
+
+1. Open the transaction and click a **key date** (for example, the closing date) to open its details panel.
 2. Expand the **Calendar invite** section.
 3. Tick the people to invite. You'll see everyone on the deal with their role, plus an **Also add me** row so you can put the date on your own calendar at the same time.
 4. Click **Send invite** and confirm.
@@ -36,20 +38,29 @@ The list offers the contacts on that transaction who have an email address and a
 
 If someone you expected is missing, check that they're added to the transaction, that their contact record has an email address, and that they haven't been switched off from transaction updates.
 
+## What has to be in place
+
+For the **Send invite** button to work, all of these need to be true:
+
+1. **The organization setting is on.** **Settings → Organization → Send calendar invites for key dates** (on by default). When it's off, the Calendar invite section still appears but says *"Calendar invites are turned off for this organization in Settings → Organization."*
+2. **The key date has a date.** Otherwise the section says *"Set a due date to send a calendar invite."*
+3. **At least one person is ticked.** Your deal contacts with an email address are listed, plus **Also add me**.
+4. **A Google Calendar is connected for the deal's organizer.** Each deal sends its invites from one Google Calendar: normally the calendar of the team member assigned to the deal, or the account owner's if no one is assigned. It has to be the same Google account the deal's email sends from. If that calendar isn't connected, the section shows *"Invites send from a connected Google Calendar"* with a link to **Settings → Integrations**.
+
 ## Do the people you invite need a Google account?
 
-Only the person **sending** needs Google Calendar connected — the people you invite do not.
+Only the **organizer** needs Google Calendar connected — the people you invite do not.
 
-- **You (the sender):** the invite is created on your connected Google Calendar and sent from there, so the deal's coordinator needs **Google Calendar** connected under **Settings → Integrations**. See [Google Workspace](../integrations/google-workspace.mdx) for how to connect.
+- **The organizer:** the invite is created on the organizer's connected Google Calendar and sent from there, so that person needs **Google Calendar** connected under **Settings → Integrations**. See [Google Workspace](../integrations/google-workspace.mdx) for how to connect.
 - **The people you invite:** nothing to connect, and they don't need a Google account. They receive a normal calendar-invitation email with Accept and Decline, and it works with whatever calendar they use — Google, Outlook, or Apple.
 
 If you're asked to connect Google Calendar even though you already have, disconnect it under **Settings → Integrations** and connect it again. That refreshes the connection and clears the prompt.
 
-## If you use Outlook
+## If you use Outlook: adding the closing date to your Outlook calendar
 
-Calendar Invites organizes from a connected **Google Calendar** only — there's no Outlook equivalent. Connecting Outlook Calendar under **Settings → Integrations** does not enable this feature; a real invitation still has to be organized from Google.
+Calendar Invites organizes from a connected **Google Calendar** only — there's no Outlook equivalent. Connecting Outlook Calendar under **Settings → Integrations** does not enable this feature, and it does **not** sync your closing dates or key dates into Outlook either.
 
-If your organization runs on Outlook and nobody wants to connect a Google account, use a subscription feed instead: at **Settings → Calendar → Subscribe from any calendar**, each person gets their own link that pulls their deadlines — closings, key dates, and tasks — into Outlook, Apple Calendar, or any app that reads a calendar subscription. It's not an invitation you send to specific people on a deal; it's a personal feed that stays current automatically as dates move. It won't get an event onto someone else's calendar the way an invite does, but it's the way to see your own deadlines in Outlook without touching Google.
+To get your closing dates and other deadlines onto your Outlook calendar, use the subscription feed: go to **Settings → Calendar → Subscribe from any calendar**, click **Create subscription link**, and add that link to Outlook as a subscribed (internet) calendar. It works with Outlook, Apple Calendar, and Google Calendar, needs no account connection, and keeps itself up to date as dates change. It's a feed for your own calendar, not an invitation to other people on the deal.
 
 ## See who accepted
 
@@ -72,10 +83,12 @@ You don't have to resend invites when things change:
 
 ## Turning it on
 
-Calendar invites are switched on for most organizations already. If you don't see a **Calendar invite** section when you open a key date, an admin can enable it:
+Calendar invites are on by default. The **Calendar invite** section always appears in a key date's details panel. If it says calendar invites are turned off for your organization, an admin can enable them:
 
 1. Go to **Settings → Organization**.
 2. Turn on **Send calendar invites for key dates**.
+
+If you turned the setting on and still can't send, check the other items under [What has to be in place](#what-has-to-be-in-place): the date needs a due date, someone needs to be ticked, and the deal's organizer needs a connected Google Calendar.
 
 ## Good to know
 

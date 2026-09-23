@@ -34,6 +34,20 @@ By default, calendar sync puts every synced transaction in your organization on 
 
 If you delete a DocJacket event from Google Calendar by hand, DocJacket respects that: the date stays in DocJacket, but that event won't be pushed back onto your Google Calendar.
 
+## Outlook, Apple Calendar, or any other calendar: subscribe
+
+Calendar sync only pushes to **Google Calendar**. Connecting an Outlook account under **Settings > Integrations** does not sync closing dates or key dates to Outlook.
+
+To see your closing dates and deadlines in Outlook (or Apple Calendar), use **Settings > Calendar > Subscribe from any calendar**:
+
+1. Click **Create subscription link**.
+2. Copy the link.
+3. In Outlook, add it as a calendar you subscribe to from the internet (in Apple Calendar, **New Calendar Subscription**).
+
+The subscription covers deadlines across all deals in your workspace, needs no account connection, and updates itself as dates change. It's read-only on your side: you change dates in DocJacket, not in Outlook.
+
+To send a calendar invitation for one date to other people on a deal, use [Calendar Invites](../calendar/calendar-invites.md) instead.
+
 ## Holidays
 
 Organization holidays count as non-business days for business-day scheduling rules.

@@ -451,6 +451,33 @@ Need help moving a batch of deals? Reach out to DocJacket support and we'll help
 
 ---
 
+# Contacting Support
+
+You can reach the DocJacket team from inside the app, and every reply comes back to the same place.
+
+## Sending a support request
+
+- **From Ask AI.** In the Ask AI panel, click **Send to support**. DocJacket drafts the request with the page you're on and an excerpt of the conversation. Review it, remove anything private, and click **Send request**.
+- **From the Contact Support page.** On the **Your Support Requests** tab, type your question and click **Send request**.
+- **Reporting a problem.** Open the **Help & Support** menu (the help icon in the top bar) and choose **Report a problem**. After you submit, DocJacket takes you to the **Support Tickets** tab so you can follow it.
+
+## Where do I see the reply to my ticket or support request?
+
+Replies land on the **Contact Support** page in DocJacket (`/help/contact`), not only in your email.
+
+- **Replies to a message or support request** appear on the **Your Support Requests** tab as a conversation. You can reply right there.
+- **Problems you reported with Report a problem** are listed on the **Support Tickets** tab, along with problems anyone else at your organization reported. Click a ticket to see its status, our responses, and the resolution once it's fixed.
+
+You'll know a reply has arrived because:
+
+- **A "Support replied" notice pops up** while you're using DocJacket, with no refresh needed. If your browser allows notifications and DocJacket is in a background tab, you also get a browser notification.
+- **The sidebar shows a "Support replied (N)" link** while you have unread replies. Click it to open your support requests.
+- **You also get an email** if you haven't read the reply in DocJacket within about 5 minutes. If you read it in the app first, no email is sent.
+
+After you send a request, allow up to 24 hours for a reply.
+
+---
+
 ## Operations
 
 # Operations
@@ -929,7 +956,7 @@ You don't need a template for everything. Create a new one when a deal type or c
 - **Language** deserves a parallel set if you serve clients in more than one language.
 
 :::note Works in any state
-The *structure* here is universal. The state-specific parts — how many days an inspection period runs, which documents are required — you'll plug into the tasks themselves (see [The 6-phase deal backbone](./phase-backbone.md)). The matrix idea works the same in Florida, California, or Texas.
+The *structure* here is universal. The state-specific parts — how many days an inspection period runs, which documents are required — you'll plug into the tasks themselves (see [The deal phase backbone](./phase-backbone.md)). The matrix idea works the same in Florida, California, or Texas.
 :::
 
 ## Start with four, not forty
@@ -954,30 +981,38 @@ Then clone-and-tweak. Every time you notice you're hand-adjusting the same Playb
 
 ## Next
 
-→ [The 6-phase deal backbone & smart due dates](./phase-backbone.md)
+→ [The deal phase backbone & smart due dates](./phase-backbone.md)
 
 ---
 
-# The 6-phase deal backbone & smart due dates
+# The deal phase backbone & smart due dates
 
 A great Playbook isn't just a pile of tasks — it has a **structure** that mirrors how a deal actually moves. Give every template the same backbone and any file becomes readable at a glance.
 
-## The 6 phases
+## The phases
 
-Group every task into one of six phases, in order:
+Every Playbook task has a **Playbook phase**. DocJacket has a fixed list of eight phases, in this order:
 
 ```
-Intake → Under Contract → Financing → Due Diligence → Pre-Closing → Post-Close
+Pre-Listing → Active Listing → Intake → Due Diligence → Financing → Pre-Closing → Closing → Post-Close
 ```
 
 | Phase | What lives here |
 |---|---|
-| **Intake** | Open the file, confirm parties, collect the executed contract, set up the deal |
-| **Under Contract** | Introductions, send executed docs, open escrow/title |
-| **Financing** | Loan application status, appraisal ordering & scheduling |
+| **Pre-Listing** | Listing agreement, photos, disclosures, prep before the listing goes live |
+| **Active Listing** | MLS, showings, feedback, and offers while the listing is on the market |
+| **Intake** | Open the file, confirm parties, collect the executed contract, introductions, open escrow/title |
 | **Due Diligence** | Inspection scheduling, repair negotiation, contingency tracking |
+| **Financing** | Loan application status, appraisal ordering & scheduling |
 | **Pre-Closing** | The heavy phase — title, HOA/estoppel, walk-through, closing disclosure, scheduling the closing |
+| **Closing** | Closing day: signing, funding, recording, keys |
 | **Post-Close** | Deliver documents, request a review, close out the file |
+
+A buyer or seller contract-to-close file uses **Intake** through **Post-Close**. A listing file starts in **Pre-Listing** and **Active Listing**, then picks up the contract phases once it goes under contract.
+
+:::note The phase list is fixed
+You can't add, rename, or remove phases, and there is no "add phase" button. The **Playbook phase** dropdown on a task offers the eight phases above. There is no "Under Contract" phase: work that starts once a contract is signed (introductions, sending executed docs, opening escrow/title) goes in **Intake**.
+:::
 
 :::tip Pre-Closing is where deals go wrong
 In a real workload, Pre-Closing is consistently the heaviest phase — it's where the most balls get dropped. Front-load detail there.
@@ -997,14 +1032,14 @@ When DocJacket extracts the contract's key dates, **every anchored task schedule
 
 To set an anchored due date on a template task:
 
-1. Open the task in the template.
-2. Under **Due date**, choose **Relative to a key date**.
-3. Pick the key date (Inspection Deadline, Financing Deadline, Closing, and so on), the number of days, and before/after.
+1. Open the task in the Playbook.
+2. Under **When it's due**, pick the key date in **Due date is based on** (Inspection Deadline, Financing Deadline, Closing, and so on).
+3. Enter the number of **Days** and choose **Before / after**.
 
 ![Task editor with the due date set relative to a key date — for example, 3 days after the Inspection Deadline](/img/power-tc/phase-backbone-due-date.png)
 
 :::note State-specific: this is where your days go
-The *number of days* for inspection, financing, and appraisal periods come from **your state's contract and your local practice** — they're not the same everywhere. The 6-phase structure is universal; the day-counts are yours to set. Set them once per template and every file inherits them.
+The *number of days* for inspection, financing, and appraisal periods come from **your state's contract and your local practice** — they're not the same everywhere. The phase structure is universal; the day-counts are yours to set. Set them once per template and every file inherits them.
 :::
 
 ## Next
@@ -1241,7 +1276,7 @@ Create **3–4 Playbook templates** (see [Build a Playbook template matrix](./te
 - Listing
 - Your busiest client or team
 
-Build each on the [6-phase backbone](./phase-backbone.md): Intake → Under Contract → Financing → Due Diligence → Pre-Closing → Post-Close.
+Build each on the [phase backbone](./phase-backbone.md): Pre-Listing → Active Listing for listings, then Intake → Due Diligence → Financing → Pre-Closing → Closing → Post-Close once a deal is under contract.
 
 ## Day 2–3: Smart due dates
 
@@ -1282,7 +1317,7 @@ Once this is in place, a new file looks like: pick the right Playbook → DocJac
 **The full series:**
 
 1. [Build a Playbook template matrix](./template-matrix.md)
-2. [The 6-phase deal backbone & smart due dates](./phase-backbone.md)
+2. [The deal phase backbone & smart due dates](./phase-backbone.md)
 3. [Your email template library](./email-library.md)
 4. [Role-based recipients & CC yourself](./role-recipients.md)
 5. [Task automations: draft-and-review](./automations.md)
@@ -1877,6 +1912,10 @@ This keeps the property, agent, and deal details on the invoice automatically, a
 Invoices are only for a coordinator's **own service fee** — for example a **Transaction Coordination Fee** billed to the agent, broker, or team you're working the file for.
 
 Invoices are **not** for earnest money, escrow, commissions, closing funds, or any buyer/seller money. It's one payer (the agent) paying one payee (your own business) for your coordination service.
+
+## Setting a default TC fee
+
+To have your standard TC fee posted automatically as a fee line on every new deal's **Fees & Payments** ledger, set it once under **Settings > Default Fees** (`/settings/fees`), with optional different amounts for Buyer, Seller, and Dual deals. The default TC fee is not under Billing or Organization. See [Default Fees](../settings/transaction-configuration.md#default-fees-your-default-tc-fee).
 
 ## Before you can get paid
 
@@ -3093,6 +3132,72 @@ A contact can belong to multiple groups.
 
 ---
 
+# Linking Contacts Together
+
+DocJacket has three ways to link contacts to each other. Which one you want depends on what the link should do:
+
+| You want to... | Use |
+|---|---|
+| Automatically add an escrow officer's assistant (or a lender's processor) to every deal the officer joins | **Auto-add to deals** (companions) |
+| Record that two people are connected, such as an assistant and the officer they work for, or a spouse | **Connections** (relationships) |
+| Link a person to their title company, escrow company, lender, or brokerage | **Organization** |
+
+All three are on the contact's detail page. Open **Contacts**, click the person, and look for the cards and fields below.
+
+## Link an escrow officer and their assistant (companions)
+
+The most common case: every time you add a particular escrow officer to a deal, you also want their assistant on it. Set this up once on the officer's contact:
+
+1. Open the **escrow officer's** contact.
+2. Find the **Auto-add to deals** card ("When this contact joins a deal, bring these people too").
+3. Click **+**.
+4. Search for and pick the **assistant**.
+5. Pick the assistant's **role on the deal** (for example, the escrow or title assistant role your office uses).
+6. Click **Add**.
+
+From then on, whenever the officer is added to a deal, DocJacket adds the assistant to the same deal with that role. You don't have to remember to add the assistant separately. This works whether the officer is added by hand, from contract extraction, as a default contact, or from a form submission.
+
+Good to know:
+
+- **It's one-way.** The link goes *from* the officer *to* the assistant. Adding the assistant to a deal does not bring in the officer. If you want both directions, add the link on each contact.
+- **It only affects deals going forward.** Deals the officer is already on aren't changed. Removing the link later doesn't remove the assistant from deals they were already added to.
+- **You can add more than one companion.** An officer with two assistants, or a lender with a processor and a loan officer assistant, can bring all of them.
+- **The same pattern works for any team**: a lender and their processor, an agent and their showing assistant, a transaction attorney and their paralegal.
+
+## Link two contacts together (Connections)
+
+To link 2 contacts together just to record that they are connected, without changing what happens on deals, use the **Connections** card on the contact's page:
+
+1. Open one of the two contacts.
+2. On the **Connections** card, click **+**.
+3. Search for and pick the other person.
+4. Choose how they're linked:
+   - **Working:** Assistant, Assistant To, Manager, Colleague
+   - **Personal:** Spouse, Wife, Husband, Domestic Partner, Partner, Girlfriend, Boyfriend
+5. Click **Add**.
+
+The link shows on both people's **Connections** cards, with the label you chose. For an escrow officer and their assistant, open the officer and link the assistant as **Assistant** (or open the assistant and link the officer as **Assistant To**).
+
+The **Connections** card also lists, automatically, other people this contact has shared deals with and their roles on those deals. You don't need to add those by hand.
+
+A Connections link is a record only. It does **not** add anyone to a deal. If you want the assistant added to deals automatically, use **Auto-add to deals** above. You can use both.
+
+## Link a person to their title company or other company (Organization)
+
+To connect a person to the company they work for (a title company, escrow company, lender, or brokerage), use the **Organization** field on the person's contact page. Search for the company and pick it, or create it from the same field if it isn't there yet.
+
+Company records live under **Contacts → Organizations**. Linking people to one organization is how you keep, say, every officer and assistant at one title company together.
+
+Linking a person to an organization does not, by itself, add anyone to a deal. To have an assistant follow a specific officer onto deals, use **Auto-add to deals** on the officer.
+
+## Related
+
+- [Managing Contacts](./managing-contacts.mdx): adding, editing, and merging contacts
+- [Contact Roles](./contact-roles.md): the roles contacts can hold on a deal
+- [Contact Groups](./contact-groups.md): reusable lists of contacts
+
+---
+
 ## Calendar & Deadlines
 
 # Calendar & Deadlines
@@ -3427,7 +3532,9 @@ This is different from [Google Calendar sync](./calendar-view.mdx), which pushes
 
 ## Send an invite
 
-1. Open the transaction and click a **key date** to open its details panel.
+There is no "Calendar invites" button on the Key Dates list or at the top of a deal. The invite lives **inside each key date**: open the date's details panel and look for the **Calendar invite** section.
+
+1. Open the transaction and click a **key date** (for example, the closing date) to open its details panel.
 2. Expand the **Calendar invite** section.
 3. Tick the people to invite. You'll see everyone on the deal with their role, plus an **Also add me** row so you can put the date on your own calendar at the same time.
 4. Click **Send invite** and confirm.
@@ -3446,20 +3553,29 @@ The list offers the contacts on that transaction who have an email address and a
 
 If someone you expected is missing, check that they're added to the transaction, that their contact record has an email address, and that they haven't been switched off from transaction updates.
 
+## What has to be in place
+
+For the **Send invite** button to work, all of these need to be true:
+
+1. **The organization setting is on.** **Settings → Organization → Send calendar invites for key dates** (on by default). When it's off, the Calendar invite section still appears but says *"Calendar invites are turned off for this organization in Settings → Organization."*
+2. **The key date has a date.** Otherwise the section says *"Set a due date to send a calendar invite."*
+3. **At least one person is ticked.** Your deal contacts with an email address are listed, plus **Also add me**.
+4. **A Google Calendar is connected for the deal's organizer.** Each deal sends its invites from one Google Calendar: normally the calendar of the team member assigned to the deal, or the account owner's if no one is assigned. It has to be the same Google account the deal's email sends from. If that calendar isn't connected, the section shows *"Invites send from a connected Google Calendar"* with a link to **Settings → Integrations**.
+
 ## Do the people you invite need a Google account?
 
-Only the person **sending** needs Google Calendar connected — the people you invite do not.
+Only the **organizer** needs Google Calendar connected — the people you invite do not.
 
-- **You (the sender):** the invite is created on your connected Google Calendar and sent from there, so the deal's coordinator needs **Google Calendar** connected under **Settings → Integrations**. See [Google Workspace](../integrations/google-workspace.mdx) for how to connect.
+- **The organizer:** the invite is created on the organizer's connected Google Calendar and sent from there, so that person needs **Google Calendar** connected under **Settings → Integrations**. See [Google Workspace](../integrations/google-workspace.mdx) for how to connect.
 - **The people you invite:** nothing to connect, and they don't need a Google account. They receive a normal calendar-invitation email with Accept and Decline, and it works with whatever calendar they use — Google, Outlook, or Apple.
 
 If you're asked to connect Google Calendar even though you already have, disconnect it under **Settings → Integrations** and connect it again. That refreshes the connection and clears the prompt.
 
-## If you use Outlook
+## If you use Outlook: adding the closing date to your Outlook calendar
 
-Calendar Invites organizes from a connected **Google Calendar** only — there's no Outlook equivalent. Connecting Outlook Calendar under **Settings → Integrations** does not enable this feature; a real invitation still has to be organized from Google.
+Calendar Invites organizes from a connected **Google Calendar** only — there's no Outlook equivalent. Connecting Outlook Calendar under **Settings → Integrations** does not enable this feature, and it does **not** sync your closing dates or key dates into Outlook either.
 
-If your organization runs on Outlook and nobody wants to connect a Google account, use a subscription feed instead: at **Settings → Calendar → Subscribe from any calendar**, each person gets their own link that pulls their deadlines — closings, key dates, and tasks — into Outlook, Apple Calendar, or any app that reads a calendar subscription. It's not an invitation you send to specific people on a deal; it's a personal feed that stays current automatically as dates move. It won't get an event onto someone else's calendar the way an invite does, but it's the way to see your own deadlines in Outlook without touching Google.
+To get your closing dates and other deadlines onto your Outlook calendar, use the subscription feed: go to **Settings → Calendar → Subscribe from any calendar**, click **Create subscription link**, and add that link to Outlook as a subscribed (internet) calendar. It works with Outlook, Apple Calendar, and Google Calendar, needs no account connection, and keeps itself up to date as dates change. It's a feed for your own calendar, not an invitation to other people on the deal.
 
 ## See who accepted
 
@@ -3482,10 +3598,12 @@ You don't have to resend invites when things change:
 
 ## Turning it on
 
-Calendar invites are switched on for most organizations already. If you don't see a **Calendar invite** section when you open a key date, an admin can enable it:
+Calendar invites are on by default. The **Calendar invite** section always appears in a key date's details panel. If it says calendar invites are turned off for your organization, an admin can enable them:
 
 1. Go to **Settings → Organization**.
 2. Turn on **Send calendar invites for key dates**.
+
+If you turned the setting on and still can't send, check the other items under [What has to be in place](#what-has-to-be-in-place): the date needs a due date, someone needs to be ticked, and the deal's organizer needs a connected Google Calendar.
 
 ## Good to know
 
@@ -3581,6 +3699,22 @@ Click any task to open the detail drawer on the right side. The main fields are:
 The drawer also includes sections for subtasks, task email templates, scheduled emails, reminders, portal visibility, task options, comments, and read-only completion info.
 
 The **Key Date** task option highlights that task as an important date-style item in task and calendar views. It is not the same as assigning a governed Key Date Type to the transaction's closing timeline.
+
+## Repeating tasks (recurring weekly tasks)
+
+Yes, you can make a task recur on the same day each week. Use it for work that comes around on a schedule: a weekly compliance check, a Friday update email to the client, a Monday file review.
+
+In the task drawer, set **Repeat** to **Weekly** or **Every 2 weeks**, then pick the day in **On** (Monday through Sunday). **Doesn't repeat** turns it off. The **Due Date** is the next occurrence; the repeat setting decides how the task renews.
+
+How a repeating task behaves:
+
+- **One occurrence is open at a time.** When you complete the task (or skip it), DocJacket creates the next one, due on the next matching day. If you finish late, the next one lands on the next upcoming day instead of piling up missed weeks.
+- **The series stops when the deal is closed, archived, or deleted.**
+- **Each new occurrence keeps the task's setup**: assignee, portal visibility, reminders, and linked task email templates. That's how "email the client an update every Friday" works. Notes, completion details, dependencies, and one-time auto-send dates are not carried over.
+- **Subtasks can't repeat.**
+- In the task table, a repeating task shows a small repeat icon. Hover over it to see the schedule and which occurrence it is (for example, *Repeats weekly on Friday · #4*).
+
+To put a repeating task on every deal, set **Repeat** on the task in your Playbook. See [Repeating tasks in a Playbook](../templates/timeline-templates.md#repeating-tasks).
 
 ## From a Playbook
 
@@ -5014,6 +5148,19 @@ checklists live — nothing was moved or lost, and your existing ones are all un
 **My Playbooks** tab.
 :::
 
+## Is a checklist different from a Playbook?
+
+**No. It's the same feature, renamed in August 2026.** There is no separate checklist object and no "checklist inside a Playbook." What used to be called a checklist is now called a Playbook.
+
+One Playbook holds everything for a deal type:
+
+- **Key dates**
+- **Tasks** (with phases, due-date rules, and repeating schedules)
+- **Automations** (emails, texts, and key-date reminders)
+- **Required documents**: attach one or more Required Documents Lists in the Playbook builder's **Required documents** section
+
+You don't need to bundle a checklist and a document list together, because the Playbook already holds both. If you see older notes about "checklists and Playbooks" as two different things, or about Playbooks being a folder that wraps a checklist, those describe an older setup.
+
 ## "I don't see Checklists on the Templates page"
 
 If you are looking for **Checklists** and don't see that card on the Templates page,
@@ -5137,6 +5284,35 @@ Tasks should reference the key date they depend on. For example, a task can be d
 To add a task, click **Add Task**, fill in the panel that opens on the right, and click **Add task** at the bottom of the panel — it is also in the panel's header strip. That button is what saves the task to the Playbook; while a new task is unsaved the panel shows a **Not added yet** badge. The page-level **Save** at the top also adds an open task before it saves the Playbook settings. Closing the panel with **×** or **Cancel** discards a new task (DocJacket asks first if you have typed anything).
 
 ![Playbook task editor showing task details, priority, phase, due-date context, and an automation count on the selected task](/img/templates/checklist-task-automation.png)
+
+## Repeating tasks
+
+A Playbook task can recur: every week, or every 2 weeks, on the day you choose. This is how you build a weekly compliance check, a "Friday update to the client" email task, or any other every-Monday / every-Friday routine into every deal.
+
+In the task panel, under **Task Details**, set **Repeat** to **Weekly** or **Every 2 weeks** and pick the day in **On**.
+
+A task either repeats **or** is due relative to a key date, never both. If **Due date is based on** (under **When it's due**) is set to a key date, the **Repeat** control is hidden. Clear that anchor to make the task repeat. DocJacket won't save a task that has both.
+
+When you apply the Playbook to a deal, the first occurrence is due on the first matching day on or after the day you apply it (apply on a Friday and a "weekly on Friday" task is due that same day). Completing an occurrence creates the next one. The series ends when the deal closes. See [Repeating tasks](../tasks/creating-tasks.mdx#repeating-tasks-recurring-weekly-tasks) for how occurrences behave on a deal.
+
+## Playbook phases
+
+Every Playbook task can be given a **Playbook phase**. The phase list is fixed. These are the phases, in order:
+
+| Phase | Typical work |
+|---|---|
+| **Pre-Listing** | Listing agreement, photos, disclosures, prep before the listing goes live |
+| **Active Listing** | MLS, showings, feedback, and offers while the listing is on the market |
+| **Intake** | Open the file, confirm the parties, collect the executed contract |
+| **Due Diligence** | Inspections, repair negotiation, contingency tracking |
+| **Financing** | Loan application, appraisal, loan approval |
+| **Pre-Closing** | Title, HOA/estoppel, walkthrough, closing disclosure, scheduling the closing |
+| **Closing** | Closing day itself: signing, funding, recording, keys |
+| **Post-Close** | Deliver documents, request a review, close out the file |
+
+**You can't add, rename, or delete phases.** There is no "add phase" button, and the **Playbook phase** dropdown only offers the eight phases above. If your listing tasks don't seem to fit, use **Pre-Listing** and **Active Listing**; those are the listing phases.
+
+When you apply a Playbook, you can choose to apply only selected phases.
 
 ## Conditional tasks
 
@@ -5330,7 +5506,9 @@ Example:
 
 # What a Playbook Is
 
-A **Playbook** is a reusable, ready-to-go setup for a **deal type** — think of it as a smart digital folder that bundles everything a transaction of that type needs into one process you apply in a single click. Set it up once, reuse it on every deal.
+A **Playbook** is a reusable, ready-to-go setup for a **deal type**: the key dates, tasks, automations, and required documents a transaction of that type needs, applied in a single click. Set it up once, reuse it on every deal.
+
+A Playbook is what DocJacket used to call a **checklist**. It's the same feature under a new name, not a second object that contains a checklist.
 
 ## What's in a Playbook
 
@@ -6990,6 +7168,18 @@ If DocJacket detects one document spanning the full PDF, it skips the split step
 
 Smart Split appears in the broader **Upload Documents** extraction wizard. The transaction **Documents > Files > Extract Data** flow uploads directly into an existing transaction and then opens extraction progress/review.
 
+## Splitting documents for a transaction you already have
+
+You can run Smart Split into an existing deal. Start **Upload Documents**, upload the combined PDF, and under where the documents should go choose **Add to Existing Transaction**, then pick the deal. The split files and extracted data go to that transaction.
+
+## Can I split a document that's already in my transaction?
+
+**Not from inside the deal today.** There is no split button for a PDF that's already attached to a transaction. Smart Split only runs while you upload through **Upload Documents**.
+
+If the combined PDF is already on the deal, download it from the transaction and upload it again through **Upload Documents** with **Add to Existing Transaction**. You can then delete the original combined file from the deal if you no longer need it.
+
+If you use DocJacket's [API or AI Access](../ai-access/index.mdx), the public API can split a document that's already stored: `POST /api/v1/documents/{id}/split` with the page ranges you want.
+
 ## What the review screen shows
 
 The Smart Split review screen includes:
@@ -7950,7 +8140,7 @@ The fastest way to see it work:
 # Slash Commands
 
 :::note Not the same as Transaction Playbooks
-These AI slash commands are a developer/power-user feature and are sometimes loosely called "playbooks." They are **not** [Transaction Playbooks](../templates/transaction-playbooks.md) — the reusable deal-setup bundles under **Templates** that most people mean by "playbooks" in DocJacket.
+These AI slash commands are a developer/power-user feature and are sometimes loosely called "playbooks." They are **not** [Transaction Playbooks](../templates/transaction-playbooks.md) — the reusable deal setups (formerly called checklists) under **Templates** that most people mean by "playbooks" in DocJacket.
 :::
 
 The DocJacket plugin ships nine pre-built slash commands. Each one is a pre-written workflow that chains the right DocJacket MCP tools. Current read-first commands work with a read token; commands that send messages, create transactions, or update records require draft or action scopes to be enabled for your account.
@@ -10633,7 +10823,9 @@ Connect Outlook Mail to send transaction email through Microsoft 365. Outlook Ma
 
 ### Outlook Calendar
 
-The Outlook Calendar card connects Microsoft calendar access from the integrations page. Use it when your workflow depends on Microsoft calendar permissions.
+The Outlook Calendar card connects Microsoft calendar access from the integrations page.
+
+Connecting Outlook Calendar does **not** put your closing dates, key dates, or tasks on your Outlook calendar, and it can't send [calendar invites](../calendar/calendar-invites.md) (those are organized from Google Calendar). To get your deadlines into Outlook, use the subscription link at **Settings > Calendar > Subscribe from any calendar** and add it to Outlook as a subscribed calendar. See [Calendar and Holidays](../settings/calendar-and-holidays.md#outlook-apple-calendar-or-any-other-calendar-subscribe).
 
 ### OneDrive
 
@@ -10945,7 +11137,7 @@ Access Settings from the sidebar — it's at the bottom of the navigation.
 - [Connections](/docs/api/webhooks) — Webhook connections for external tools
 - [Integrations](../integrations/index.md) — Gmail, Google Calendar, Google Drive, Microsoft, and other connected services
 - [Follow Up Boss](../integrations/follow-up-boss.md) — Follow Up Boss connection, mappings, imports, and sync behavior
-- [Transaction Configuration](./transaction-configuration.md) — Transaction roles, statuses, field options, custom fields, contingencies, and key date statuses
+- [Transaction Configuration](./transaction-configuration.md) — Transaction roles, default TC fees, statuses, field options, custom fields, contingencies, and key date statuses
 - [Document Settings](./document-settings.md) — Active document types, document statuses, required flags, and file naming rules
 - [Email and Automation Settings](./email-and-automation.md) — Email categories, working hours, rule triggers, delivery channels, and review-first behavior
 - [SMS Settings](./sms-settings.md) — Dedicated SMS number, usage, credits, and number release
@@ -11422,6 +11614,20 @@ By default, calendar sync puts every synced transaction in your organization on 
 
 If you delete a DocJacket event from Google Calendar by hand, DocJacket respects that: the date stays in DocJacket, but that event won't be pushed back onto your Google Calendar.
 
+## Outlook, Apple Calendar, or any other calendar: subscribe
+
+Calendar sync only pushes to **Google Calendar**. Connecting an Outlook account under **Settings > Integrations** does not sync closing dates or key dates to Outlook.
+
+To see your closing dates and deadlines in Outlook (or Apple Calendar), use **Settings > Calendar > Subscribe from any calendar**:
+
+1. Click **Create subscription link**.
+2. Copy the link.
+3. In Outlook, add it as a calendar you subscribe to from the internet (in Apple Calendar, **New Calendar Subscription**).
+
+The subscription covers deadlines across all deals in your workspace, needs no account connection, and updates itself as dates change. It's read-only on your side: you change dates in DocJacket, not in Outlook.
+
+To send a calendar invitation for one date to other people on a deal, use [Calendar Invites](../calendar/calendar-invites.md) instead.
+
 ## Holidays
 
 Organization holidays count as non-business days for business-day scheduling rules.
@@ -11468,6 +11674,21 @@ From the Transaction Roles page, you can:
 - Edit or delete custom roles
 
 System roles are protected. You can use them, but you cannot edit or delete them. Custom roles that are already used on transactions cannot be deleted until those assignments are moved or removed.
+
+## Default Fees (your default TC fee)
+
+To set your default TC fee, go to **Settings > Default Fees** (it's in the **Transactions** group of the Settings menu, at `/settings/fees`). It isn't under Billing or Organization. Billing is your DocJacket subscription, not the fee you charge on deals.
+
+The default fee is a standing transaction coordination fee that DocJacket posts automatically as a fee line on every new deal's **Fees & Payments** ledger (on the deal's **Payments** tab), so your expected TC income is already there instead of being typed in on each file.
+
+- **Base fee:** the **Amount** and an optional **Description** (for example, *TC Fee*).
+- **Per-side overrides:** a different amount for **Buyer**, **Seller**, or **Dual** deals. Leave a side's amount blank to use the base fee. Enter **0** to charge no fee on that side.
+
+Click **Save**. The default applies only to deals created from then on. Existing deals are never changed, and deleting the fee from one deal doesn't add it back.
+
+Anyone can view the default fee. Changing it takes a workspace owner or admin, unless an owner has turned on **Allow team members to edit Playbooks and settings** under **Settings > Organization**.
+
+To bill the fee to an agent and collect it online, see [Invoices & Payment Requests](../transactions/invoices-and-payment-requests.mdx).
 
 ## Transaction Statuses
 
@@ -11532,6 +11753,12 @@ To assign a field's section, you have two options:
 :::tip Sort once, stay organized
 New custom fields start out unsorted. Assign their sections once — the bulk tool makes quick work of it — and every transaction form stays organized from then on.
 :::
+
+### Custom fields are for transactions, not contacts
+
+Custom fields belong to **transactions** only. Each value is saved on a deal, so there's no way to add a custom field to a **contact** (a client, agent, or vendor). A smart field used as a contact detail would have to be re-entered on every deal.
+
+**Tracking a client's birthday?** You don't need a custom field for that. Contacts have a built-in **Birthday** field (and a **Home Anniversary** field) on the **New Contact** form, and **Birthday** is a column you can include when you import contacts. Upcoming birthdays and home anniversaries show on the **Contacts > Follow-ups** tab, soonest first.
 
 ## Contingencies
 

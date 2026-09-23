@@ -37,7 +37,7 @@ You don't need a template for everything. Create a new one when a deal type or c
 - **Language** deserves a parallel set if you serve clients in more than one language.
 
 :::note Works in any state
-The *structure* here is universal. The state-specific parts — how many days an inspection period runs, which documents are required — you'll plug into the tasks themselves (see [The 6-phase deal backbone](./phase-backbone.md)). The matrix idea works the same in Florida, California, or Texas.
+The *structure* here is universal. The state-specific parts — how many days an inspection period runs, which documents are required — you'll plug into the tasks themselves (see [The deal phase backbone](./phase-backbone.md)). The matrix idea works the same in Florida, California, or Texas.
 :::
 
 ## Start with four, not forty
@@ -62,4 +62,4 @@ Then clone-and-tweak. Every time you notice you're hand-adjusting the same Playb
 
 ## Next
 
-→ [The 6-phase deal backbone & smart due dates](./phase-backbone.md)
+→ [The deal phase backbone & smart due dates](./phase-backbone.md)

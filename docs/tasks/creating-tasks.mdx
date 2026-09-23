@@ -45,6 +45,22 @@ The drawer also includes sections for subtasks, task email templates, scheduled 
 
 The **Key Date** task option highlights that task as an important date-style item in task and calendar views. It is not the same as assigning a governed Key Date Type to the transaction's closing timeline.
 
+## Repeating tasks (recurring weekly tasks)
+
+Yes, you can make a task recur on the same day each week. Use it for work that comes around on a schedule: a weekly compliance check, a Friday update email to the client, a Monday file review.
+
+In the task drawer, set **Repeat** to **Weekly** or **Every 2 weeks**, then pick the day in **On** (Monday through Sunday). **Doesn't repeat** turns it off. The **Due Date** is the next occurrence; the repeat setting decides how the task renews.
+
+How a repeating task behaves:
+
+- **One occurrence is open at a time.** When you complete the task (or skip it), DocJacket creates the next one, due on the next matching day. If you finish late, the next one lands on the next upcoming day instead of piling up missed weeks.
+- **The series stops when the deal is closed, archived, or deleted.**
+- **Each new occurrence keeps the task's setup**: assignee, portal visibility, reminders, and linked task email templates. That's how "email the client an update every Friday" works. Notes, completion details, dependencies, and one-time auto-send dates are not carried over.
+- **Subtasks can't repeat.**
+- In the task table, a repeating task shows a small repeat icon. Hover over it to see the schedule and which occurrence it is (for example, *Repeats weekly on Friday · #4*).
+
+To put a repeating task on every deal, set **Repeat** on the task in your Playbook. See [Repeating tasks in a Playbook](../templates/timeline-templates.md#repeating-tasks).
+
 ## From a Playbook
 
 Use a Playbook when you want a repeatable set of tasks and date rules.
