@@ -11487,10 +11487,27 @@ Each team member is assigned a role that controls what they can see and do. You 
 
 The Roles page separates system roles from custom roles. You can create a custom role, choose its permissions, show or hide each role's permissions, edit custom roles, and delete unused custom roles.
 
+## Changing a member's role
+
+1. Go to **Settings > Team Members**
+2. Click the **⋮** menu on the member's row
+3. Choose **Change role**
+4. Pick the new role and click **Save**
+
+The new role takes effect right away. If you changed your own role, the menus and settings you can reach update without signing out.
+
+A few rules keep your organization safe:
+
+- **Only an Owner can make someone an Owner, or change an Owner's role.** Admins can change everyone else's role.
+- **Every organization keeps at least one Owner.** If you're the only Owner and want a different role, make someone else an Owner first, then change your own.
+
+A role controls what someone can **do** in DocJacket. It isn't the title people see on your emails — that comes from your signature. If you're the only person in your organization, stay an Owner and put your job title (for example "Transaction Coordinator") in your [email signature](../templates/email-signatures.md).
+
 ## Managing members and invitations
 
 From **Settings > Team Members**, you can:
 
+- **Change a member's role** - See [Changing a member's role](#changing-a-members-role)
 - **Deactivate a member** - Remove their access without deleting their account
 - **Reactivate a member** - Restore access when your seat limit allows it
 - **Remove a member** - Permanently remove them from your organization
