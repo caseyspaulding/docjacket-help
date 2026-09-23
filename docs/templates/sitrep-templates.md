@@ -50,7 +50,7 @@ SitRep templates can include these sections:
 - **Documents** — Document progress by type and pending documents
 - **Documents Needed** — Outstanding required documents with due dates and blocking flags
 - **HOA Information** — HOA contact information and dues
-- **Utilities Information** — Utility provider details
+- **Utilities Information** — The deal's utility providers (electric, gas, water, sewer, trash, internet), with provider name, phone, and account number. Enter them in the **Utility Providers** card on the transaction's **Overview** tab. The section is left out of the report when no providers are entered. See [Tracking utility providers](../transactions/transaction-overview.mdx#tracking-utility-providers).
 - **Internal Notes** — Team-only notes from the transaction
 - **Custom Notes** — Notes typed at generation or send time
 - **Commission Details** — Sales price, commission breakdown, credits, referral fee, and cooperating commission

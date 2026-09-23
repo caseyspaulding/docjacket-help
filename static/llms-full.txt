@@ -1493,8 +1493,30 @@ Recent emails related to this transaction. See unread counts and click through t
 ### Parties and Contacts
 The people involved in the deal. The overview can show buyers, sellers, agents, title company, lender, vendors, and additional contacts, with links into the full Contacts tab.
 
+### Utility Providers
+Who to call for utilities at the property. See [Tracking utility providers](#tracking-utility-providers) below.
+
 ### System Credentials
 Store login details for MLS, tax portals, and other external systems used in this transaction. Keeps everything in one place so you're not hunting through emails for passwords.
+
+## Tracking utility providers
+
+Keep the property's utility providers on the deal so you know who to call for utilities — electric, gas, water, sewer, trash, and internet — without digging through emails.
+
+1. Open the transaction and go to the **Overview** tab
+2. Find the **Utility Providers** card in the right-hand column. It starts collapsed — click the card header to expand it
+3. Click **Add utility provider**
+4. Choose the **Type**: Electric, Gas, Water, Sewer, Trash, Internet, or Other
+5. Enter the **Provider** name, **Phone**, and **Account #**. You need at least one of these three
+6. Click **Save**
+
+Each provider shows as a row in the card with its type, provider name, phone number, and account number. Use the edit icon to change a row, or the remove icon to take it off the deal.
+
+The **Utilities Information** section of a SitRep report shows these utility providers. If the card is empty, that section is left out of the report. See [SitRep Templates](../templates/sitrep-templates.md#available-sections).
+
+:::tip Don't see the card?
+The Overview is customizable. If the **Utility Providers** card is missing, open **Customize View** on the Overview and turn it back on.
+:::
 
 ---
 
@@ -6839,7 +6861,7 @@ SitRep templates can include these sections:
 - **Documents** — Document progress by type and pending documents
 - **Documents Needed** — Outstanding required documents with due dates and blocking flags
 - **HOA Information** — HOA contact information and dues
-- **Utilities Information** — Utility provider details
+- **Utilities Information** — The deal's utility providers (electric, gas, water, sewer, trash, internet), with provider name, phone, and account number. Enter them in the **Utility Providers** card on the transaction's **Overview** tab. The section is left out of the report when no providers are entered. See [Tracking utility providers](../transactions/transaction-overview.mdx#tracking-utility-providers).
 - **Internal Notes** — Team-only notes from the transaction
 - **Custom Notes** — Notes typed at generation or send time
 - **Commission Details** — Sales price, commission breakdown, credits, referral fee, and cooperating commission
