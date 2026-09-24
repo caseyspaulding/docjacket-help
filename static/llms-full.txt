@@ -2133,7 +2133,6 @@ From a transaction's **Documents** tab, you can:
 - **Upload files** — Choose a category, then upload a PDF, Word file, or image.
 - **Track completeness** — Use **Documents Needed** to add requirements, apply document templates, link uploads, and track received/overdue/blocking items.
 - **Review received documents** — Search, filter, reorder, rename, batch-rename, change document type/status, download, share, delete, and mark documents as sent.
-- **Run document checks** — Use **AI Check** for document risk scans and contract checks for missing signatures, initials, dates, and checkboxes.
 - **Extract data** — Use **Extract Data** to upload documents, run extraction, review changed fields, and update an existing transaction.
 - **Control portal visibility** — Use the eye icon to show or hide documents on the Agent and Client Portals, optionally restrict visibility to selected portal contacts, and decide whether portal viewers can download the file.
 - **Connect to Google Drive** — Import from Drive, export selected/all documents, and link or change the transaction's Drive folder.
@@ -2340,22 +2339,6 @@ For each required document, you can:
 - Remove the requirement if it no longer applies
 
 Uploading from the checklist is best when a file satisfies a specific placeholder, because DocJacket links the new file to that requirement immediately. If the transaction has a linked Google Drive folder, linked uploads can also show an **Open in Drive** shortcut.
-
-## Document checks
-
-The **Documents Received** table also has an **AI Check** column. Use it to run document risk scans and contract checks on uploaded documents.
-
-AI Check has two separate result types:
-
-- **Risk** — Flags risky clauses or document concerns for review.
-- **Contract** — Checks for missing signatures, initials, dates, and checkboxes.
-
-When a check finds something, open the risk drawer or **Contract Check** viewer from the result chip. You can dismiss reviewed risk findings or contract-check issues from those review surfaces.
-
-Those checks are separate from the Documents Needed checklist, but together they help answer two different questions:
-
-- Did we receive the required file?
-- Does the received file need review?
 
 ## Why this matters
 
@@ -7140,36 +7123,11 @@ Click the chip to open the risk drawer. The drawer shows:
 
 Use **Re-run assessment** in the drawer to refresh the assessment from the current transaction state.
 
-## Document checks
-
-On the transaction **Documents** tab, the **AI Check** column handles document-level review.
-
-Use it to:
-
-- Run a risk scan on an uploaded document
-- View risk findings
-- Dismiss findings after review
-- Check a contract for missing signatures or initials
-- Open the contract-check viewer when issues are found
-
-## AI Check statuses
-
-The **AI Check** column can show two independent results:
-
-- **Risk** — A document risk scan. Results can show scanning, clean, or a risk count.
-- **Contract** — A contract check for missing signatures, initials, dates, and checkboxes. Results can show scanning, signed, or an issue count.
-
-If neither check has run yet, the row shows **Scan**. Clicking it starts both the risk scan and contract check for that document.
-
-When documents are selected in the **Documents Received** table, the bulk **AI Check** action runs on the selected documents. If nothing is selected, it runs on documents that have not been risk-scanned yet. Contract checks run in parallel for documents that have not already been contract-checked.
-
-Risk findings open in a drawer with severity, description, flagged clause text when available, suggested action, page reference, and a dismiss action. Contract issues open in the **Contract Check** viewer with the PDF and issue overlays.
-
 ## How to use insights
 
 Treat risk insights as review prompts. They help you decide where to look, but they do not replace your normal transaction review.
 
-If you resolve a concern, re-run the relevant assessment or document check so the displayed result reflects the latest transaction state.
+If you resolve a concern, re-run the assessment so the displayed result reflects the latest transaction state.
 
 ---
 
