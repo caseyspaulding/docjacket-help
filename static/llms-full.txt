@@ -3013,6 +3013,7 @@ Transaction contacts are grouped by role category on the transaction **Contacts*
 
 **Primary (Clients)**
 - Buyer, Seller
+- Buyer's Representative (POA / Trustee), Seller's Representative (POA / Trustee) — someone acting for the buyer or seller under a power of attorney, or as trustee, executor, or guardian. This is **not** the buyer's agent or listing agent; add agents under Buyer Agent or Listing Agent. See [Buyer's Representative is not the buyer's agent](../templates/smart-fields.md#buyers-representative-is-not-the-buyers-agent).
 
 **Professional (Agents)**
 - Listing Agent, Buyer Agent, cooperating agent roles
@@ -6538,6 +6539,21 @@ There are two different issues:
 
 Fix unrecognized placeholders in the template. Fix missing values by updating the transaction data.
 
+## Buyer's Representative is not the buyer's agent
+
+The **Buyer's Representative (POA / Trustee)** and **Seller's Representative (POA / Trustee)** smart fields are **not** the agent. They fill in someone acting for the buyer or seller themselves: a power of attorney (attorney-in-fact), trustee, executor, guardian, or an officer signing for a company.
+
+If you want the buyer's agent, the listing agent, or the other side's agent, use the agent fields instead:
+
+| You want | Use |
+| --- | --- |
+| Buyer's agent | `{{buyer_agent_name}}`, `{{buyer_agent_email}}`, `{{buyer_agent_phone}}`, `{{buyer_agent_brokerage}}` |
+| Listing agent (seller's agent) | `{{listing_agent_name}}`, `{{listing_agent_email}}`, `{{listing_agent_phone}}`, `{{listing_agent_brokerage}}` |
+| Someone acting for the buyer (POA / trustee) | `{{buyers_representative_name}}`, `{{buyers_representative_email}}`, `{{buyers_representative_phone}}` |
+| Someone acting for the seller (POA / trustee) | `{{sellers_representative_name}}`, `{{sellers_representative_email}}`, `{{sellers_representative_phone}}` |
+
+**Buyer's representative smart field blank, or it doesn't appear in Preview?** That usually means you placed the representative field in an email meant for the buyer's agent. Most deals have no Buyer's Representative contact, so the field stays empty. Swap it for `{{buyer_agent_name}}` (or the matching `buyer_agent_` field) and Preview will show the agent.
+
 ## Full field reference
 
 This is the complete built-in smart-field library. Your organization can also add its own [custom smart fields](#custom-smart-fields), and some fields only populate for specific workflows (for example, leasing or state-specific dates). Insert fields from the smart-field picker so the syntax is always correct.
@@ -6601,6 +6617,12 @@ A map link builds from the **address on file** (street, city, state, ZIP) for th
 | Seller's Attorney Email | `{{sellers_attorney_email}}` |
 | Seller's Attorney Phone | `{{sellers_attorney_phone}}` |
 | Seller's Attorney Firm | `{{sellers_attorney_company}}` |
+| Buyer's Representative (POA / Trustee) Name | `{{buyers_representative_name}}` |
+| Buyer's Representative (POA / Trustee) Email | `{{buyers_representative_email}}` |
+| Buyer's Representative (POA / Trustee) Phone | `{{buyers_representative_phone}}` |
+| Seller's Representative (POA / Trustee) Name | `{{sellers_representative_name}}` |
+| Seller's Representative (POA / Trustee) Email | `{{sellers_representative_email}}` |
+| Seller's Representative (POA / Trustee) Phone | `{{sellers_representative_phone}}` |
 | Home Inspector Name | `{{home_inspector_name}}` |
 | Home Inspector Email | `{{home_inspector_email}}` |
 | Home Inspector Phone | `{{home_inspector_phone}}` |
