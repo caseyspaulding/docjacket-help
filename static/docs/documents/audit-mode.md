@@ -51,22 +51,6 @@ For each required document, you can:
 
 Uploading from the checklist is best when a file satisfies a specific placeholder, because DocJacket links the new file to that requirement immediately. If the transaction has a linked Google Drive folder, linked uploads can also show an **Open in Drive** shortcut.
 
-## Document checks
-
-The **Documents Received** table also has an **AI Check** column. Use it to run document risk scans and contract checks on uploaded documents.
-
-AI Check has two separate result types:
-
-- **Risk** — Flags risky clauses or document concerns for review.
-- **Contract** — Checks for missing signatures, initials, dates, and checkboxes.
-
-When a check finds something, open the risk drawer or **Contract Check** viewer from the result chip. You can dismiss reviewed risk findings or contract-check issues from those review surfaces.
-
-Those checks are separate from the Documents Needed checklist, but together they help answer two different questions:
-
-- Did we receive the required file?
-- Does the received file need review?
-
 ## Why this matters
 
 For TCs managing dozens of files per transaction, it's easy to lose track of what's been collected and what's still outstanding. Documents Needed gives you a clear picture so you can:
