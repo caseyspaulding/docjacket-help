@@ -113,7 +113,7 @@ New custom fields start out unsorted. Assign their sections once — the bulk to
 
 Custom fields belong to **transactions** only. Each value is saved on a deal, so there's no way to add a custom field to a **contact** (a client, agent, or vendor). A smart field used as a contact detail would have to be re-entered on every deal.
 
-**Tracking a client's birthday?** You don't need a custom field for that. Contacts have a built-in **Birthday** field (and a **Home Anniversary** field) on the **New Contact** form, and **Birthday** is a column you can include when you import contacts. Upcoming birthdays and home anniversaries show on the **Contacts > Follow-ups** tab, soonest first.
+**Tracking a client's birthday?** You don't need a custom field for that. Contacts have a built-in **Birthday** field (and a **Home Anniversary** field). Fill them in on the **New Contact** form, or add or change them later on the contact's page under **Overview › Details**. **Birthday** is also a column you can include when you import contacts. Upcoming birthdays and home anniversaries show on the **Contacts > Follow-ups** tab, soonest first.
 
 ## Contingencies
 
