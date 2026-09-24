@@ -22,6 +22,7 @@ From the **Contacts** page, use the **People** view for individual contacts or t
 - Additional emails and phone numbers
 - License number, website, and social links
 - Address
+- Birthday and Home Anniversary (people only)
 - Tags
 - Notes
 
@@ -86,6 +87,7 @@ Open a contact to manage their full profile. From the detail page you can:
 - Change the profile photo
 - Edit name, organization, type, tags, emails, phones, address, website, social links, license number, and notes inline
 - Use **Get directions** to open the contact's address in Google Maps, or **Copy map link** to grab a clickable map link you can paste into an email — useful for directions to closing, an earnest-money drop-off, or an alternate closing location
+- Add, change, or clear **Birthday** and **Home Anniversary** under **Overview › Details** (people only). An empty field shows **Add birthday**. Upcoming dates appear on **Contacts > Follow-ups**.
 - Mark primary email and phone rows
 - Record SMS consent for each phone number
 - Review related transactions, offers, and activity

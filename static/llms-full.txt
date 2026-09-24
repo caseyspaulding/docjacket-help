@@ -2917,6 +2917,7 @@ From the **Contacts** page, use the **People** view for individual contacts or t
 - Additional emails and phone numbers
 - License number, website, and social links
 - Address
+- Birthday and Home Anniversary (people only)
 - Tags
 - Notes
 
@@ -2981,6 +2982,7 @@ Open a contact to manage their full profile. From the detail page you can:
 - Change the profile photo
 - Edit name, organization, type, tags, emails, phones, address, website, social links, license number, and notes inline
 - Use **Get directions** to open the contact's address in Google Maps, or **Copy map link** to grab a clickable map link you can paste into an email — useful for directions to closing, an earnest-money drop-off, or an alternate closing location
+- Add, change, or clear **Birthday** and **Home Anniversary** under **Overview › Details** (people only). An empty field shows **Add birthday**. Upcoming dates appear on **Contacts > Follow-ups**.
 - Mark primary email and phone rows
 - Record SMS consent for each phone number
 - Review related transactions, offers, and activity
@@ -11777,7 +11779,7 @@ New custom fields start out unsorted. Assign their sections once — the bulk to
 
 Custom fields belong to **transactions** only. Each value is saved on a deal, so there's no way to add a custom field to a **contact** (a client, agent, or vendor). A smart field used as a contact detail would have to be re-entered on every deal.
 
-**Tracking a client's birthday?** You don't need a custom field for that. Contacts have a built-in **Birthday** field (and a **Home Anniversary** field) on the **New Contact** form, and **Birthday** is a column you can include when you import contacts. Upcoming birthdays and home anniversaries show on the **Contacts > Follow-ups** tab, soonest first.
+**Tracking a client's birthday?** You don't need a custom field for that. Contacts have a built-in **Birthday** field (and a **Home Anniversary** field). Fill them in on the **New Contact** form, or add or change them later on the contact's page under **Overview › Details**. **Birthday** is also a column you can include when you import contacts. Upcoming birthdays and home anniversaries show on the **Contacts > Follow-ups** tab, soonest first.
 
 ## Contingencies
 
