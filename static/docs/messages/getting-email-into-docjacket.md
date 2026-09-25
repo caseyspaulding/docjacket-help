@@ -50,6 +50,10 @@ Use the intake queue as a **fallback**, not your primary method:
 - Great for: occasional messages where you can't tell which deal they belong to yet, or capturing documents before a transaction exists.
 - Not great as: your only way to get email in. Auto-forwarding a full mailbox here creates a large sorting burden and mixes real deal correspondence with noise.
 
+## Start a new deal from a contract
+
+To **start a deal**, don't use the intake address: forward the signed contract to your **new-deal address** (also on the **Inbox** page, next to **Start a deal from a signed contract**). DocJacket reads the contract and creates the deal, or asks you to approve it. See [Start a Deal by Email](../transactions/start-a-deal-by-email.mdx).
+
 ## Which one should I use?
 
 | Situation | Best approach |
@@ -57,6 +61,7 @@ Use the intake queue as a **fallback**, not your primary method:
 | Starting a conversation on a deal | **Send from the deal** — replies come back automatically |
 | A reply to something you sent from DocJacket | Nothing to do — it files itself |
 | A one-off outside email that clearly belongs to a deal | **Forward to the deal email address** |
+| A signed contract for a deal that doesn't exist yet | **Forward to the new-deal address** — DocJacket sets up the deal |
 | Mail you can't yet match to a deal, or docs before a deal exists | **Forward to the intake address** and assign it later |
 
 **Rule of thumb:** the more communication you *start* inside DocJacket, the less sorting you do later. Reach for forwarding when you're bringing in a thread you didn't begin — and lean on the intake queue only as a catch-all.

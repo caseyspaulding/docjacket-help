@@ -44,6 +44,10 @@ Depending on the draft, you may be able to:
 
 This tab is the review-first safety step for automation output. Click a card to open the detail view. Nothing sends from here until you approve, send, skip, or dismiss the item.
 
+### New deals from email
+
+A contract forwarded to your new-deal address that DocJacket didn't create on its own, for example because the sender isn't on your team, arrives here as a card that says why. Pick **Buyer**, **Seller**, or **Not sure yet** to create the deal, or dismiss it. The same choice also comes to you in a pop-up. See [Start a Deal by Email](../transactions/start-a-deal-by-email.mdx).
+
 ### Cards that need a recipient
 
 Some cards arrive flagged as needing a recipient. This happens when an automated email's recipient role has no contact assigned on that deal — a **Seller** email on a deal with no seller yet, for example.

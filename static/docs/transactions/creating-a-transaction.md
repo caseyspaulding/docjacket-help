@@ -11,6 +11,10 @@ description: Two ways to start a new DocJacket transaction — AI-powered upload
 
 There are two main ways to create a transaction in DocJacket: upload documents and extract the details, or use the manual transaction form.
 
+:::tip Or just forward the contract
+You can also forward a signed contract to your organization's new-deal address and DocJacket creates the deal for you. See [Start a Deal by Email](./start-a-deal-by-email.mdx).
+:::
+
 ## Upload Documents (recommended)
 
 The fastest way to get a deal set up is the **Upload Documents** flow.

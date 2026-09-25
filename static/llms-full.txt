@@ -747,6 +747,10 @@ Depending on the draft, you may be able to:
 
 This tab is the review-first safety step for automation output. Click a card to open the detail view. Nothing sends from here until you approve, send, skip, or dismiss the item.
 
+### New deals from email
+
+A contract forwarded to your new-deal address that DocJacket didn't create on its own, for example because the sender isn't on your team, arrives here as a card that says why. Pick **Buyer**, **Seller**, or **Not sure yet** to create the deal, or dismiss it. The same choice also comes to you in a pop-up. See [Start a Deal by Email](../transactions/start-a-deal-by-email.mdx).
+
 ### Cards that need a recipient
 
 Some cards arrive flagged as needing a recipient. This happens when an automated email's recipient role has no contact assigned on that deal — a **Seller** email on a deal with no seller yet, for example.
@@ -1367,6 +1371,7 @@ The CSV includes core transaction details such as address, project, status, side
 ## In this section
 
 - [Creating a Transaction](./creating-a-transaction.mdx) — Start a new deal manually or with AI extraction
+- [Start a Deal by Email](./start-a-deal-by-email.mdx) — Forward a signed contract to your new-deal address
 - [Transaction Overview](./transaction-overview.mdx) — Everything about a deal at a glance
 - [Key Dates & Financials](./key-dates-and-financials.mdx) — Managing dates, prices, and loan details
 - [Contingencies & Repairs](./contingencies-and-repairs.mdx) — Track contingency status and repair requests
@@ -1378,6 +1383,10 @@ The CSV includes core transaction details such as address, project, status, side
 # Creating a Transaction
 
 There are two main ways to create a transaction in DocJacket: upload documents and extract the details, or use the manual transaction form.
+
+:::tip Or just forward the contract
+You can also forward a signed contract to your organization's new-deal address and DocJacket creates the deal for you. See [Start a Deal by Email](./start-a-deal-by-email.mdx).
+:::
 
 ## Upload Documents (recommended)
 
@@ -2115,6 +2124,102 @@ That's the system working as intended rather than an error. See [Security & Priv
 
 - [Archiving a Transaction](./archiving-a-transaction.mdx) — what archiving winds down, and archive vs. cancel vs. delete
 - [Cancelling or Closing a Transaction](./canceling-a-transaction.mdx) — ending a deal with a terminal status
+
+---
+
+# Start a Deal by Email
+
+Every DocJacket organization has a **new-deal address**. Forward a signed contract to it and DocJacket reads the contract and sets up the deal for you. There's no upload screen to open and nothing to type.
+
+## Find your new-deal address
+
+Open **Inbox**. At the top of the page, next to **Start a deal from a signed contract**, is your address. It looks like this:
+
+```
+your-company-newdeal@intake.docjacket.com
+```
+
+Click the copy button next to it, and save it as a contact in your email so it's easy to forward to.
+
+:::note Two different intake addresses
+Your **intake address**, without `-newdeal`, is a catch-all: anything sent there lands in your Inbox for you to file by hand (see [Getting Email into DocJacket](../messages/getting-email-into-docjacket.mdx)). Only the **new-deal address** reads the contract and starts a deal.
+:::
+
+## What to send
+
+- **Attach the signed contract as a PDF.** Use a purchase agreement or a listing agreement with the property address on it.
+- You can attach more than one PDF, for example the contract and its disclosures. DocJacket reads them as one packet, takes the deal's details from the contract, and files every attachment on the new deal.
+- An amendment or disclosure **on its own** doesn't start a deal. Forward those to the deal instead.
+
+## What happens next
+
+DocJacket reads the contract, which usually takes a minute or two. While it reads, your team's notification says **Reading the contract from …**. Then one of two things happens.
+
+### Sent by someone on your team: the deal is created
+
+When the email comes from an **active member of your organization**, and DocJacket can set the deal up on its own, it creates the deal. It fills in the address, parties, price and dates from the contract, and files the email and its attachments on the deal.
+
+- DocJacket doesn't guess **which side you represent**. It asks you (see below).
+- **Playbooks are never applied automatically.** DocJacket suggests one, and you decide.
+- A contract whose closing date is more than 30 days in the past is filed as a **Closed** deal instead of a live one, so you don't get a deal full of overdue deadlines.
+
+### Anything else: a proposal for you to approve
+
+Sometimes DocJacket won't create the deal on its own. It makes a **proposal** instead, and the proposal says why. The reasons:
+
+- The sender isn't an active member of your organization, for example the other agent or a lender.
+- One of the attached documents couldn't be read.
+- An attached document names a different property.
+- The property address couldn't be read from the contract itself.
+- The contract has date terms that need a person to review them.
+
+Nothing is lost either way: the contract has been read, and approving the proposal creates the deal. Proposals also appear in the [Review queue](../operations/pending-review.md) (the document-tasks icon in the top bar), and on the email in your **Inbox**.
+
+## The new-deal pop-up
+
+Each new deal and proposal is brought to you in a pop-up the next time you're in DocJacket, or straight away if you're already signed in.
+
+**For a proposal**, choose the side to approve it:
+
+1. If the contract is old, choose **File as closed record** or **Create as live deal**.
+2. Click **Buyer**, **Seller**, or **Not sure yet**. This creates the deal.
+3. Or click **Reject** if it shouldn't be a deal, or **Open in Review** to look at it there first.
+
+**For a deal that was created for you**, click **Buyer**, **Seller**, or **Not sure yet**.
+
+**Then the playbook.** When your organization has a playbook that fits the deal, DocJacket offers it by name: click **Apply playbook** to set up its tasks and deadlines, or **Not now**. When nothing fits exactly, the pop-up points you to the deal, where you can pick one with **Apply Playbook**.
+
+Good to know:
+
+- **Later** hides the pop-up for the rest of your session. It comes back next time until someone deals with it, and the item stays in your bell and in the Review queue.
+- When several are waiting, the pop-up shows **and N more waiting** and takes you through them one at a time.
+- Everyone who's notified sees the same pop-up, but the **first answer counts**. If a teammate has already set it up, you'll see who did it and the pop-up moves on.
+- If your plan's deal limit stops a proposal from becoming a deal, the pop-up says so.
+
+## Who is notified
+
+- The **sender**, if they're a member of your organization.
+- Every **owner**, **admin**, and **transaction coordinator** in your organization.
+- **Brokers** are notified only about contracts they forwarded themselves.
+
+Each of them gets a bell notification, **New deal from email needs review** or **New deal created from email**, and an email if **Transaction updates** is turned on under **Settings › Notifications**.
+
+A team member who can't approve deals still sees the pop-up for a contract they sent. It tells them an admin needs to approve it.
+
+## Limits
+
+- **15 emails per sender per day** go to the new-deal address. Past that, the email is still filed in your Inbox, and you can read it later with **Read this contract**.
+- Reading a contract uses your plan's **AI extraction** allowance. If you've reached it, the email in your Inbox says **This contract wasn't read automatically**, and **Read this contract** works again once your allowance frees up.
+- When several PDFs arrive together, the deal's details come from the **contract**. The other documents are filed on the deal, but their details aren't applied.
+
+## Troubleshooting
+
+| What you see | Why | What to do |
+|---|---|---|
+| Nothing happened | The email had no PDF, or only an amendment or disclosure | Forward the signed contract as a PDF |
+| The email says **This contract wasn't read automatically** | Your plan's AI extraction limit was reached, or more than 15 were sent from one address that day | Click **Read this contract** on the email (for the extraction limit, once it frees up or after upgrading) |
+| A proposal instead of a deal | See [the reasons above](#anything-else-a-proposal-for-you-to-approve) | Pick the side in the pop-up, or approve it in the Review queue |
+| The deal was created as Closed | The contract's closing date is more than 30 days past | That's expected for back-filing an old deal; change the status on the deal if it's still active |
 
 ---
 
@@ -5068,6 +5173,10 @@ Use the intake queue as a **fallback**, not your primary method:
 - Great for: occasional messages where you can't tell which deal they belong to yet, or capturing documents before a transaction exists.
 - Not great as: your only way to get email in. Auto-forwarding a full mailbox here creates a large sorting burden and mixes real deal correspondence with noise.
 
+## Start a new deal from a contract
+
+To **start a deal**, don't use the intake address: forward the signed contract to your **new-deal address** (also on the **Inbox** page, next to **Start a deal from a signed contract**). DocJacket reads the contract and creates the deal, or asks you to approve it. See [Start a Deal by Email](../transactions/start-a-deal-by-email.mdx).
+
 ## Which one should I use?
 
 | Situation | Best approach |
@@ -5075,6 +5184,7 @@ Use the intake queue as a **fallback**, not your primary method:
 | Starting a conversation on a deal | **Send from the deal** — replies come back automatically |
 | A reply to something you sent from DocJacket | Nothing to do — it files itself |
 | A one-off outside email that clearly belongs to a deal | **Forward to the deal email address** |
+| A signed contract for a deal that doesn't exist yet | **Forward to the new-deal address** — DocJacket sets up the deal |
 | Mail you can't yet match to a deal, or docs before a deal exists | **Forward to the intake address** and assign it later |
 
 **Rule of thumb:** the more communication you *start* inside DocJacket, the less sorting you do later. Reach for forwarding when you're bringing in a thread you didn't begin — and lean on the intake queue only as a catch-all.
