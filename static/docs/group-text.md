@@ -23,7 +23,7 @@ The [Text the Assistant (SMS)](../ai-features/text-the-assistant.mdx) feature le
 ## What it does
 
 1. **Captures** — every participant's message lands on the deal, with who sent it and when.
-2. **Shows** — the whole group reads as one color-coded, two-sided conversation on the **Texts** tab, each person named.
+2. **Shows** — the whole group reads as one color-coded, two-sided conversation labelled **Group text** on the **Texts** tab, each person named. Texts you send someone directly stay in their own conversation, apart from the group (see [How to use it](./how-to-use.mdx#direct-texts-stay-in-their-own-conversation)).
 3. **Proposes** — when a message contains a real action or date, DocJacket adds an approval-gated proposal in your **Review queue** (and inline in the thread), with the exact quote as evidence.
 4. **Stays quiet** — ordinary chatter ("thanks," "sounds good") produces nothing, and DocJacket **never replies in the group**.
 
