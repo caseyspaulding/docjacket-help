@@ -7452,7 +7452,7 @@ The [Text the Assistant (SMS)](../ai-features/text-the-assistant.mdx) feature le
 ## What it does
 
 1. **Captures** — every participant's message lands on the deal, with who sent it and when.
-2. **Shows** — the whole group reads as one color-coded, two-sided conversation on the **Texts** tab, each person named.
+2. **Shows** — the whole group reads as one color-coded, two-sided conversation labelled **Group text** on the **Texts** tab, each person named. Texts you send someone directly stay in their own conversation, apart from the group (see [How to use it](./how-to-use.mdx#direct-texts-stay-in-their-own-conversation)).
 3. **Proposes** — when a message contains a real action or date, DocJacket adds an approval-gated proposal in your **Review queue** (and inline in the thread), with the exact quote as evidence.
 4. **Stays quiet** — ordinary chatter ("thanks," "sounds good") produces nothing, and DocJacket **never replies in the group**.
 
@@ -7514,9 +7514,17 @@ Add DocJacket as a participant **when you create the group text**, not to a thre
 
 Back in DocJacket, open the transaction's **Texts** tab. The group text shows up as **one merged conversation**:
 
-- Everyone's messages are woven into a single thread — not one conversation per person.
+- It's labelled **Group text**, with a purple **Group** badge in the conversation list.
+- Everyone's group messages are woven into that one thread, not one conversation per person.
 - Each participant has their **own name and color**, and people alternate sides, so it reads like a group chat you can scan at a glance.
 - You **don't have to read the whole thread** — that's what the proposals are for (next page).
+- The group conversation is **read-only in DocJacket**. DocJacket reads the group but can't post into it, so reply from your phone, or use **New Message** to text one person directly.
+
+## Direct texts stay in their own conversation
+
+Texting someone on the deal one-to-one, with **New Message** on the **Texts** tab, starts a separate conversation with that person, and **their replies stay in it**. They don't get mixed into the group text, even when that person is also in the group.
+
+One edge case: if you texted someone directly in the **last 72 hours** and their next message goes to the group instead, it may show in your direct conversation with them rather than in **Group text**. Text messages don't say which thread a reply was meant for, so DocJacket keeps it with the conversation you most recently had with that person.
 
 ## Good to know
 
