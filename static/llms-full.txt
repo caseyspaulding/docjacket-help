@@ -4554,22 +4554,21 @@ Recommended sizes:
 
 ### Hero image looks darker at the top and bottom
 
-DocJacket adds a dark shading over the hero photo so white text and icons on top of it stay readable. On the **Portrait photo** hero the shading is light at the very top, clear through the upper middle, and gets much darker toward the bottom. Any text that is part of your image, such as a tagline designed into a banner, gets darkened if it sits near the top or bottom edge.
+DocJacket adds a dark shading over the hero photo so white text on top of it stays readable. On the **Portrait photo** hero the shading is light at the very top, clear through the upper middle, and gets much darker toward the bottom. Any text that is part of your image, such as a tagline designed into a banner, gets darkened if it sits near the top or bottom edge.
 
-On the **Portrait photo** hero, the shading appears whenever something sits on top of the photo:
+On the **Portrait photo** hero, the shading appears only when one of these sits on top of the photo:
 
 - Your logo, when **Show organization logo on the hero** is checked
 - Your name and tagline, when **Show name & tagline on the hero** is checked
-- The round contact icons along the bottom of the hero. These come from the **Contact** section: your **Phone**, **Public email**, and any **Social links** you have filled in. They show on the hero even if the Contact section itself is hidden.
 
-To show a banner that already has your name and tagline in it:
+To show a banner that already has your name and tagline in it, with no shading:
 
 1. In the **Hero** editor, uncheck **Show organization logo on the hero**.
 2. Uncheck **Show name & tagline on the hero**.
 3. Set **Image display** to **Full image — no crop** so the banner shows whole.
 4. Click **Save**.
 
-If you have a phone number, public email, or social links in the **Contact** section, the hero still shows those icons, so the shading stays. Your phone number is used across DocJacket, including for text messages, so don't clear it just to remove the shading. Instead, place the text in your banner in the upper middle of the image, where the shading is clear, and keep it out of the bottom third.
+The round contact icons still show along the bottom left of the hero. They come from the **Contact** section: your **Phone**, **Public email**, and any **Social links** you have filled in, and they show even if the Contact section itself is hidden. With the shading off, each icon sits on its own small dark circle so it stays visible on a light image, and the rest of the photo is left as uploaded. Keep important parts of your banner out of the bottom-left corner so the icons don't cover them.
 
 The **Cover band** style always adds a light shading over its strip, whatever is turned on. If you want a banner to show as close to its original as possible, use the **Portrait photo** style.
 
