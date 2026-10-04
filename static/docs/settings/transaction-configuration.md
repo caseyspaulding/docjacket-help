@@ -78,6 +78,28 @@ Each option can have a stored value and an optional display label. You can add c
 
 System options are protected. You can hide or reorder them, but you cannot rename, edit, or delete them. A default option cannot be hidden until another option is set as the default.
 
+## Waiting On Options
+
+Use **Settings > Waiting On** (under **Transactions**) to manage the options in a deal's **Waiting On** picker.
+
+The page lists every option in the same order the picker shows them. Each row shows the option's phase, such as Inspection, Repairs, Attorney, Appraisal, Loan-Title, Closing, or Other. The phase decides which group the deal falls under in the dashboard's **Waiting On** widget.
+
+From this page, you can:
+
+- Click **Add Option** to add your own option with a name, a phase, and a color
+- Drag options into the order you want the picker to list them
+- Hide options your team doesn't use, and show them again later
+- Rename, recolor, or change the phase of options you added
+- Delete options you added
+
+Options marked **Built-in** are the standard ones every organization starts with. You can hide or reorder them, but you can't rename or delete them. Hidden options are marked **Hidden** and no longer appear in the picker; deals already set to a hidden option keep it.
+
+Renaming an option you added updates every deal that uses it. An option that deals are currently waiting on can't be deleted. Move those deals to a different option first, or hide the option instead.
+
+Option names must be unique. If you try to add a name that matches a hidden option, show the hidden one instead of adding it again.
+
+If you can't change organization settings, the page is view-only. A workspace owner or admin can make changes, or an owner can turn on **Allow team members to edit Playbooks and settings** under **Settings > Organization**.
+
 ## Custom Fields
 
 Use **Settings > Custom Fields** to capture transaction-specific data that is not part of the standard transaction form.
