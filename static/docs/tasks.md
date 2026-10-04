@@ -34,6 +34,18 @@ The organization-wide **Tasks** page is for daily work across all transactions. 
 - Show selected tasks on the client portal
 - Track subtasks and team comments in the drawer
 
+## Print a task list
+
+To print a transaction's tasks, or save them as a PDF:
+
+1. Open the transaction
+2. Click the **Reports** tab
+3. Click **More**, then **Print Checklist**
+
+A checklist PDF of that transaction's tasks opens in a new browser tab. Print it or save it from there. Tasks are grouped by section, each with a checkbox. Completed tasks are marked with an X and show the date they were completed.
+
+The printed checklist covers one transaction at a time. The **Tasks** page in the sidebar and a transaction's **Tasks** tab don't have their own print button. Use **Reports › More › Print Checklist** to print or export a task list.
+
 ## In this section
 
 - [Creating Tasks](./creating-tasks.mdx) — Quick add, Playbooks, generation, and task table controls
