@@ -3761,6 +3761,24 @@ The organization-wide **Tasks** page is for daily work across all transactions. 
 - Show selected tasks on the client portal
 - Track subtasks and team comments in the drawer
 
+## Print a task list
+
+To print a transaction's tasks, or save them as a PDF:
+
+1. Open the transaction
+2. Click the **Tasks** tab
+3. Click **Print**
+
+You can also print from the **Reports** tab: click **More**, then **Print Checklist**. Both open the same PDF.
+
+A checklist PDF of that transaction's tasks opens in a new browser tab. Print it or save it from there. Tasks are grouped by section, each with a checkbox:
+
+- Open tasks show their due date
+- Completed tasks are marked with an X and show the date they were completed
+- Skipped tasks are greyed out and marked **Skipped**
+
+The checklist covers one transaction at a time. The **Tasks** page in the sidebar, which lists tasks across all your transactions, doesn't have a print button.
+
 ## In this section
 
 - [Creating Tasks](./creating-tasks.mdx) — Quick add, Playbooks, generation, and task table controls
@@ -11113,7 +11131,7 @@ The transaction Reports tab includes these file actions:
 
 - **Export file record** — exports the transaction's communication log and documents as one archive for your compliance file. See [File Record & Communication Log](/docs/reports/file-record).
 - **Generate PDF** — creates the selected transaction summary PDF
-- **Print Checklist** — generates a checklist-style PDF from the transaction tasks
+- **Print Checklist** (under **More**) — prints the transaction's task list as a checklist PDF, with due dates and completed tasks checked off. The **Print** button on the transaction's **Tasks** tab opens the same PDF. See [Print a task list](/docs/tasks#print-a-task-list).
 - **Commission Statement** — generates a commission statement for the transaction
 
 PDF branding uses your organization's report colors and footer text from organization settings.
