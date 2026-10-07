@@ -27,6 +27,58 @@ Each transaction card can show:
 
 The hub is meant for quick triage. Agents can see which deals are active, how many visible documents and pending tasks are available, then use **Calendar** for the transaction feed or **View Details** to open the full portal for one deal.
 
+## Cards or a table
+
+Agents can switch the deal list between **Cards** and **Table** with the toggle above the list. The choice is remembered in that browser, so an agent who prefers the table sees it next time.
+
+The table lists one deal per row with these columns:
+
+- **Address** and **Unit**
+- **Status**
+- **Side** — the deal type and side
+- **Details** — property details, when any deal has them
+- **Price** — the purchase price, or the list price marked *list* when there's no purchase price yet
+- **Contract** — the contract date
+- **P&S** — the purchase & sale (P&S) agreement deadline. This column only appears when at least one deal in the list has a P&S date
+- **Mortgage Commitment** — the mortgage commitment (financing) deadline. This column only appears when at least one deal in the list has a Mortgage Commitment date
+- **Closing** — the closing date
+
+The P&S and Mortgage Commitment dates come from the deal's key dates (the purchase & sale deadline and the financing deadline). If a column you expect is missing, none of the deals in the list has that key date filled in yet.
+
+The bottom row totals the number of deals and their prices. An agent can open any of their own deals by clicking its row.
+
+## My deals and Whole team (team view)
+
+By default an agent's portal lists only the deals they are on. If you want agents to see your team's other deals too — like a shared board — turn on the team view:
+
+1. Go to **Settings > Organization** and scroll to **Client portal**
+2. Tick **Agents see the team's deals**
+3. Under **Statuses the team list may show**, tick the statuses team deals may appear in
+4. Optionally tick **Show price & property details on team deals** (price, property type, beds, baths, sq ft, and monthly HOA/condo fee — only the ones filled in on the deal)
+5. Click **Save agent portal filters**
+
+Agents then see a **My deals** / **Whole team** switch on their portal. **Whole team** lists the team's deals in the statuses you ticked, showing the address, unit, status, side, and dates (plus price and details if you allowed them). It never shows contacts, documents, tasks, or messages, and an agent can't open a deal they aren't on — their own deals are marked **Yours** and are the only ones they can open.
+
+The team view is off until you turn it on, and it applies to every agent portal in your organization. If no statuses are ticked, the team list is empty.
+
+## Status buttons on the agent portal
+
+Status buttons are one-click filters above the agent's deal list — for example **Active**, **Coming Soon**, **On Market**, **Off Market**, **Closed**. Each button shows the deals in the statuses you choose, in whichever list the agent is looking at (**My deals**, or **Whole team** when the team view is on).
+
+To set them up:
+
+1. Go to **Settings > Organization** and scroll to **Client portal**
+2. Find **Status buttons on the agent portal**
+3. Click **Start from the suggested set** to begin with Active, Closed, Coming Soon, On Market, and Off Market, or click **Add button** to make your own
+4. Give each button a label (up to 40 characters) and tick the transaction statuses it should show. Suggested buttons are matched to your statuses with the same name; tick statuses for any button that shows **Pick at least one status**
+5. Click **Save agent portal filters**
+
+You can have up to 12 buttons. Use **Remove** to delete one.
+
+On the portal, clicking a button filters the list to deals in those statuses — including closed deals, so a **Closed** button works even though the default view shows active deals. Clicking the same button again clears the filter.
+
+These settings have their own **Save agent portal filters** button, separate from the page's **Save Changes**. Only Owners and Admins can change them.
+
 ## My Tasks
 
 The hub has a third view alongside **Active** and **All Deals**. **My Tasks** collects every portal-visible task from every deal the agent is on into one list, grouped by when it is due:

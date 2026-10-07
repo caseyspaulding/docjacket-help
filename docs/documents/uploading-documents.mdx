@@ -88,6 +88,31 @@ Documents don't only come from manual uploads:
 - **Google Drive** — Import files from Drive or export transaction files back to Drive (see [Google Drive Integration](./google-drive-integration.mdx))
 - **E-sign packets** — Completed DocJacket e-sign packets save the signed PDF back to the transaction
 
+## Renaming a document
+
+To rename one file on a deal:
+
+1. Open the transaction and go to the **Documents** tab
+2. Click the **pencil icon** next to the document's name (tooltip **Rename**). You can also open the row's **⋯** menu (**More actions**) — or right-click the row — and choose **Rename**
+3. Type the new name and press **Enter** (or click the checkmark). Press **Esc** to cancel
+
+You can also rename from the document preview: click the document's name to open the preview, click **Rename** at the bottom, type the new name, and click **Save**.
+
+Renaming changes only the name shown in DocJacket and on downloads; the file itself, its category, and where it's linked stay the same. Team members with the **Viewer** role can't rename documents.
+
+### Renaming all documents at once (Batch Rename)
+
+To rename every document on a deal to a consistent pattern — for example `123 Main St - Purchase Agreement.pdf`:
+
+1. Open the transaction's **Documents** tab
+2. Click **Batch Rename** in the toolbar (tooltip: *Rename all documents using naming rules*). The button appears when the deal has a property address
+3. In the **Batch Rename Documents** panel, check the **Property Address** used in the names
+4. Click **Rename All**
+
+The panel then lists each document as **old name → new name**, plus any that were skipped (for example **Name unchanged**). Click **Close** when you're done.
+
+Batch Rename always applies to **all** documents on the deal — there's no option to rename only the ones you've ticked, and no preview before **Rename All**. New names come from your organization's naming rule (your default **Split** rule) in **Settings > Documents > Naming Rules**, using tokens like `{PropertyAddress}`, `{DocType}`, and `{Date}`. If you haven't set up a rule, each file is named after its document type (for example `Purchase Agreement.pdf`). Admins can edit naming rules; see [Document Settings](../settings/document-settings.md).
+
 ## Deleting a document
 
 To remove a file from a transaction:

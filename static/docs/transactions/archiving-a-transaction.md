@@ -39,7 +39,7 @@ Archiving is not just a filter. DocJacket winds the deal's live work down so it 
 DocJacket stamps the date it happened, so an archived deal tells you *when* it was archived rather than just showing a state.
 
 :::caution Your client loses portal access immediately
-Revoking the portal link is the one change anyone outside your office notices. If a buyer, seller, or agent is still using the portal to watch the timeline or upload documents, hold off on archiving — their link stops working the moment you do. Restoring the deal reactivates it, but it is dead in between.
+Revoking the portal link is the one change anyone outside your office notices. If a buyer, seller, or agent is still using the portal to watch the timeline or download documents, hold off on archiving — their link stops working the moment you do. Restoring the deal reactivates it, but it is dead in between.
 :::
 
 ## Archive, cancel, or delete?

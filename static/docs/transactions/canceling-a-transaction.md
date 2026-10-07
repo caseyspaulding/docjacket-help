@@ -22,6 +22,24 @@ Cancelling is a status change. Move the transaction into any status whose type i
 
 All four do the same thing. Closing a completed deal works the same way, using a **Closed**-type status. See [Transaction Statuses](./transaction-statuses.mdx) for how status types work and how to add your own.
 
+## Closing out a file
+
+When a deal has closed and you want to close out the file — mark it as closed — change its status to a **Closed**-type status:
+
+1. Open the transaction
+2. Click the **status chip** next to the property address at the top of the page (it shows the current status, such as **Under Contract**, with a small arrow; tooltip **Click to change status**)
+3. Pick **Closed** (or your own status whose type is Closed)
+4. A confirmation appears under the header: *"Ends the deal: cancels unsent reminders and scheduled emails, skips open tasks, marks key dates not applicable."* Click **Mark Closed** to confirm, or the **Keep** button (for example **Keep Under Contract**) to back out
+
+You'll see **Status updated to Closed**. What a status does depends on its **type**, not its name — a custom status like "Funded" or "Recorded" closes the deal only if its type is Closed. Check or change types in **Settings > Statuses** (the **Transaction Statuses** page).
+
+Closing a deal does **not** hide it from your Transactions list or turn off the client portal — the deal stays visible as a closed deal, and its portal link keeps working. To clear it out of your working list as well, **archive** it afterwards (see [Archiving a Transaction](./archiving-a-transaction.mdx)).
+
+### Close vs. archive
+
+- **Close** answers *what happened*: the deal closed. Use it on closing day.
+- **Archive** answers *do I still need to see it*: it hides the deal from the active list and revokes portal links. Use it later, once the file is reconciled. An archived deal comes back with **Restore** — see [Restoring or Deleting an Archived Transaction](./restoring-an-archived-transaction.mdx).
+
 ## What happens when you cancel or close
 
 Moving a transaction from an open status into a **Closed** or **Cancelled** status is a *terminal* transition. DocJacket automatically winds down the deal's pending work — **only for that transaction**:
@@ -51,7 +69,7 @@ If you have a separate listing and a separate purchase:
 To find the listing afterward, open **Transactions** and filter the type to **Listing** (see [Listings](./listings.md)).
 
 :::caution If you turned a listing into a sale or purchase
-[Turning a listing into a sale or purchase](./listings.md#turning-a-listing-into-a-sale-or-purchase) doesn't create a second record — it changes the *same* record's type. In that case there is no separate listing to keep, and cancelling the transaction cancels that single record. If you want it to go back to being an active listing, change its **type and status** back rather than cancelling — cancel will not restore or re-create a listing.
+[Converting a listing to a purchase](./listings.md#when-a-listing-goes-under-contract) doesn't create a second record — it changes the *same* record's type. In that case there is no separate listing to keep, and cancelling the transaction cancels that single record. If you want it to go back to being an active listing, change its **type and status** back rather than cancelling — cancel will not restore or re-create a listing.
 :::
 
 ## A deal fell through — putting a listing back on the market

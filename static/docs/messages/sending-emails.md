@@ -65,6 +65,10 @@ Use the search box to add recipients, or filter it with the pills on the right:
 
 After adding a recipient, use the chip controls to switch that person between **To**, **Cc**, and **Bcc**, or remove the chip. Each chip shows the role, name, and address, so you can see exactly who gets the email before you send.
 
+### Copying yourself on every email (automatic BCC)
+
+If your organization turned on **Always BCC on deal emails** or **BCC the TC assigned to the deal** in **Settings > Organization > Deal emails**, those addresses are already on the **Bcc** line when you start a new message, **Reply**, **Reply all**, or **Forward**. They appear as normal Bcc chips — remove one with its **×** to leave it off this email. See [Deal emails: always BCC](../settings/organization-settings.mdx#deal-emails-always-bcc-an-address-or-the-assigned-tc).
+
 ### A contact won't populate in the To field
 
 If someone has a contact record, their email has been added, and they are attached to the transaction, but they still do not appear when you search:
