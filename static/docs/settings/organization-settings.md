@@ -41,6 +41,33 @@ Organization settings also control email defaults used by reminders and schedule
 - **Always CC on Reminders** - Adds one or more addresses to the Cc line of every reminder sent from your organization
 - **Default send time for scheduled emails** - Sets the local send hour used when an individual scheduled email does not specify its own time
 
+## Deal emails: always BCC an address or the assigned TC
+
+Want to get copied on every email that goes out from a deal, or blind copy the assigned TC automatically? Use the **Deal emails** section of **Settings > Organization**. It has two settings:
+
+- **Always BCC on deal emails** — one or more email addresses, separated by commas (for example `admin@example.com, files@example.com`). These addresses are blind-copied on deal emails. Use it to copy yourself on all emails, to keep a broker compliance or file-archive mailbox in the loop, or to give a team lead a copy of everything.
+- **BCC the TC assigned to the deal** — tick this to blind copy the TC assigned to the deal (the deal's assigned user) on the same emails. Each deal BCCs its own assigned TC, so you don't have to type anyone's address.
+
+Click **Save Changes** at the bottom of the page. Only Owners and Admins can change these settings. If one of the addresses isn't a valid email, the save is refused and the message names the bad address. Clear the field and save to stop BCCing.
+
+### Which emails get the BCC
+
+- **Task and checklist emails** — emails sent from a task's email action, including Playbook task emails.
+- **Emails you write on a deal** — a new message from the deal's email composer, and **Reply**, **Reply all**, and **Forward**.
+
+### You see the BCC and can remove it
+
+The BCC is never added secretly at send time. It shows up on the **Bcc** line of the draft, as a recipient chip, before you send. To leave it off one email, remove that chip with its **×** — the setting stays on for everything else.
+
+A draft you saved, or a scheduled email you edit, keeps the Bcc it had when it was saved; it isn't filled in again.
+
+### When the BCC is skipped
+
+- **Internal-only emails.** A task email that only goes to people on your own DocJacket team (every To and Cc address belongs to an active team member) is not BCC'd, and neither is a task email marked internal-only.
+- **No duplicates.** If an address is already on the **To** or **Cc** line, it isn't added to **Bcc** again.
+
+This is separate from **Always CC on Reminders** (above), which only applies to reminder emails and uses the Cc line.
+
 ## Automation review
 
 Use **Review auto-emails before sending** to decide whether organization-wide automation rules should send directly or pause for review.

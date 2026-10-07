@@ -152,6 +152,19 @@ To add a task, click **Add Task**, fill in the panel that opens on the right, an
 
 ![Playbook task editor showing task details, priority, phase, due-date context, and an automation count on the selected task](/img/templates/checklist-task-automation.png)
 
+## A task due the same day as a key date
+
+Yes — a task can be due **on** a key date, not just before or after it. Enter **0** days:
+
+1. Open the task in the Playbook builder
+2. Under **When it's due**, pick the key date in **Due date is based on** (for example **Closing Date** or **Inspection Deadline**)
+3. Type **0** in **Days**. **Before / after** doesn't matter when the offset is zero
+4. The **Preview** reads *"This task will be due on Closing Date."* and the task row shows **Due on Closing Date**
+
+Use this for same-day work such as "Confirm wire received" on the closing date or "Send inspection notice" on the inspection deadline. Type the 0 — if you leave **Days** empty, the preview reads *"This task will be due during …"* instead.
+
+A zero-day task lands on exactly the key date's day, even when **Count using** is **Business days**. If that day is a weekend or holiday, the task stays there unless you set **Weekend / holiday handling** to **Use next business day** or **Use previous business day**. When the key date moves on a deal, the task's due date moves with it (unless someone pinned the task's date by hand).
+
 ## Repeating tasks
 
 A Playbook task can recur: every week, or every 2 weeks, on the day you choose. This is how you build a weekly compliance check, a "Friday update to the client" email task, or any other every-Monday / every-Friday routine into every deal.
@@ -317,10 +330,14 @@ listing-then-contract workflow work on a single record:
 
 1. Create the deal as a listing and apply your **listing** Playbook — order photos,
    sign the listing agreement, get it on the MLS.
-2. Work the listing. When it goes under contract, **don't start a new deal** — change
-   the existing one's status (and type, if you use Listing/Purchase/Sale). See
-   [Turning a listing into a sale or purchase](../transactions/listings.md#turning-a-listing-into-a-sale-or-purchase).
-3. Apply your **contract-to-close** Playbook to that same transaction.
+2. Work the listing. When it goes under contract, **don't start a new deal** — upload
+   the accepted contract into the listing and keep **Mark under contract** ticked on the
+   review screen, or click **Convert to Purchase** on the listing's **Listing** tab. Either
+   one turns the same record into a Purchase and moves it to your under-contract status. See
+   [When a listing goes under contract](../transactions/listings.md#when-a-listing-goes-under-contract).
+3. Apply your **contract-to-close** Playbook to that same transaction. (A deal that was
+   created from a Playbook never gets a default closing checklist added automatically, so
+   this step is yours.)
 
 Both sets of tasks and key dates now live on one file, with one address, one contact
 list, and one document set — and the listing history stays attached.

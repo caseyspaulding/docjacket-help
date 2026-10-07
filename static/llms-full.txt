@@ -329,6 +329,14 @@ Portal access is separate from team roles. A client, agent, lender, title contac
 
 Use the transaction **Portal** tab to invite contacts, send portal links, and adjust guest access.
 
+## Can agents upload their own documents?
+
+It depends on whether the agent is a member of your DocJacket team or an outside agent you share a portal link with.
+
+**Agents on your team (the Agent role).** Yes. A team member with the **Agent** role can open a deal's **Documents** tab and click **Upload**, the same way a TC does. Every team role except **Viewer** can upload documents and make changes on a deal. A **Viewer** is read-only: they can see and download files but can't upload, rename, or delete them. To give an agent upload rights, invite them from **Settings > Team Members** with the **Agent** role (or change their role from **Viewer** to **Agent**).
+
+**Outside agents (client portal / agent portal link).** Not through the portal. The portal shows an agent the deal's shared documents to view and download, but there is no upload button on the portal. To let a cooperating agent or the other side's agent send you documents without a DocJacket seat, give them the deal's [DocDrop](../documents/docdrop.mdx) email address (**Copy DocDrop** on the transaction overview): anything they email to it is filed on that deal's **Documents** tab for you to review.
+
 ## Signer roles
 
 E-sign form templates also use signer roles. These roles decide which signer completes each field on a form template, such as Buyer, Buyer 2, Seller, Seller 2, Buyer Agent, or Listing Agent.
@@ -1686,16 +1694,51 @@ Creating a new listing also starts from the transaction creation flow with the l
 
 A listing record uses the same transaction workspace: overview, contacts, documents, tasks, messages, notes, and reports. Listing-specific details appear inside the transaction when the record is a listing.
 
-## Turning a listing into a sale or purchase
+## When a listing goes under contract
 
-A listing and a purchase (or sale) are the **same kind of record** — a transaction — distinguished only by its **Type** (Listing, Purchase, or Sale). So to turn a listing into a sale or a purchase, you don't create a new deal or copy anything: you just change the **Type** of the existing record, and it keeps all of its contacts, documents, key dates, tasks, and history.
+When your listing gets an accepted offer — the listing went under contract — keep working on **the same file**. You don't need to start a new deal for the sale: DocJacket turns the listing into a Purchase on the same record, so every document, contact, key date, note, and bit of history carries over.
 
-1. Open the listing from **Transactions** (filter the type to **Listing** if you need to find it).
-2. Change the transaction's **Type** from **Listing** to **Purchase** or **Sale**.
+There are two ways to do it.
 
-That's it — it's the same record, now tracked as a purchase or sale. Nothing is duplicated and nothing is lost.
+### Upload the accepted purchase contract into the listing
 
-Because it's one record and not two, there's no separate listing left behind. If you later need it to be a listing again — for example the deal fell through and it's going back on the market — change the **Type** back to **Listing** and set its **status** back to an active listing status. See [Cancelling or Closing a Transaction](./canceling-a-transaction.mdx) for the full "deal fell through" flow.
+This is the quickest way when you have the signed contract in hand.
+
+1. Open the listing and go to its **Documents** tab.
+2. Upload the accepted purchase contract (**Upload**), then click **Extract data** on that document (the ⋯ menu on the row, or the extract icon).
+3. On the review screen, check that **Destination** is **Add to Existing Transaction** with this listing selected.
+4. Because the document is a contract with a contract or acceptance date and the deal is still a Listing, the review screen shows a **Mark under contract** checkbox — already ticked — with the status it will move to (for example **Mark under contract → Under Contract**). Its note reads: *"Converts this listing to a Purchase, moves it to your under-contract status and switches to the closing checklist."*
+5. Review the extracted dates and fields, then click **Update Transaction**.
+
+With **Mark under contract** ticked, applying the contract also:
+
+- Changes the deal's type from **Listing** to **Purchase** on the same file (the seller side is kept)
+- Moves it to your under-contract status
+- Applies your organization's default closing checklist for that state and side, dated from the contract, if you have one set up. If the listing was created from a Playbook, no checklist is added automatically — apply your contract-to-close Playbook from the deal yourself
+- Fills in the contract-received date if it was empty
+- Records "Type changed from Listing to Purchase (under contract)" in the activity log
+
+The confirmation reads **Transaction updated and marked under contract**. Untick **Mark under contract** if you only want the contract's data applied and want the deal to stay a Listing for now.
+
+The checkbox doesn't appear for listing-side paperwork (listing agreements, MLS sheets, seller intake forms, addenda, disclosures, buyer representation agreements), or when no contract date was found.
+
+### Use Convert to Purchase on the listing
+
+If you'd rather convert first and upload the contract afterward:
+
+1. Open the listing and go to its **Listing** tab.
+2. Click **Convert to Purchase** at the top of the tab.
+3. Confirm. The dialog explains that the listing becomes a Purchase deal on the seller side, moves to your under-contract status, gets your closing checklist, and stays the same file — documents, contacts, dates and notes all carry over.
+
+You'll see **Converted — This is now a Purchase deal**. The same closing-checklist rule applies: your default closing checklist is added only when one exists for that state and side and the listing wasn't created from a Playbook. Then upload the signed contract and review/apply its extracted dates as usual.
+
+**Convert to Purchase** only appears on a listing that is in an open status and has both a property address and a seller filled in.
+
+### Changing the type by hand
+
+You can also change the deal's **Type** from the transaction's **Edit** form. That only changes the label: it doesn't move the status or apply a closing checklist, so the two options above are usually better when a listing goes under contract.
+
+Because it's one record and not two, there's no separate listing left behind. If the deal falls through and the property goes back on the market, change its **status** back to an active listing status — DocJacket offers **Put back on market** to clear the buyer out. See [Cancelling or Closing a Transaction](./canceling-a-transaction.mdx#a-deal-fell-through--putting-a-listing-back-on-the-market) for the full "deal fell through" flow.
 
 ## Tips
 
@@ -1761,7 +1804,7 @@ You can change a transaction's status in a few ways:
 
 ## Custom statuses
 
-If the default statuses don't match your workflow, create custom statuses in **Settings > Transaction Statuses**. For example, some TCs add statuses like:
+If the default statuses don't match your workflow, create custom statuses in **Settings > Statuses** (the **Transaction Statuses** page). For example, some TCs add statuses like:
 
 - **Under Review** — Contract received but not yet fully executed
 - **Clear to Close** — All conditions met, just waiting for the closing date
@@ -1787,6 +1830,24 @@ Cancelling is a status change. Move the transaction into any status whose type i
 4. **From the transaction's Edit form** — change the **Status** field and save
 
 All four do the same thing. Closing a completed deal works the same way, using a **Closed**-type status. See [Transaction Statuses](./transaction-statuses.mdx) for how status types work and how to add your own.
+
+## Closing out a file
+
+When a deal has closed and you want to close out the file — mark it as closed — change its status to a **Closed**-type status:
+
+1. Open the transaction
+2. Click the **status chip** next to the property address at the top of the page (it shows the current status, such as **Under Contract**, with a small arrow; tooltip **Click to change status**)
+3. Pick **Closed** (or your own status whose type is Closed)
+4. A confirmation appears under the header: *"Ends the deal: cancels unsent reminders and scheduled emails, skips open tasks, marks key dates not applicable."* Click **Mark Closed** to confirm, or the **Keep** button (for example **Keep Under Contract**) to back out
+
+You'll see **Status updated to Closed**. What a status does depends on its **type**, not its name — a custom status like "Funded" or "Recorded" closes the deal only if its type is Closed. Check or change types in **Settings > Statuses** (the **Transaction Statuses** page).
+
+Closing a deal does **not** hide it from your Transactions list or turn off the client portal — the deal stays visible as a closed deal, and its portal link keeps working. To clear it out of your working list as well, **archive** it afterwards (see [Archiving a Transaction](./archiving-a-transaction.mdx)).
+
+### Close vs. archive
+
+- **Close** answers *what happened*: the deal closed. Use it on closing day.
+- **Archive** answers *do I still need to see it*: it hides the deal from the active list and revokes portal links. Use it later, once the file is reconciled. An archived deal comes back with **Restore** — see [Restoring or Deleting an Archived Transaction](./restoring-an-archived-transaction.mdx).
 
 ## What happens when you cancel or close
 
@@ -1817,7 +1878,7 @@ If you have a separate listing and a separate purchase:
 To find the listing afterward, open **Transactions** and filter the type to **Listing** (see [Listings](./listings.md)).
 
 :::caution If you turned a listing into a sale or purchase
-[Turning a listing into a sale or purchase](./listings.md#turning-a-listing-into-a-sale-or-purchase) doesn't create a second record — it changes the *same* record's type. In that case there is no separate listing to keep, and cancelling the transaction cancels that single record. If you want it to go back to being an active listing, change its **type and status** back rather than cancelling — cancel will not restore or re-create a listing.
+[Converting a listing to a purchase](./listings.md#when-a-listing-goes-under-contract) doesn't create a second record — it changes the *same* record's type. In that case there is no separate listing to keep, and cancelling the transaction cancels that single record. If you want it to go back to being an active listing, change its **type and status** back rather than cancelling — cancel will not restore or re-create a listing.
 :::
 
 ## A deal fell through — putting a listing back on the market
@@ -2030,7 +2091,7 @@ Archiving is not just a filter. DocJacket winds the deal's live work down so it 
 DocJacket stamps the date it happened, so an archived deal tells you *when* it was archived rather than just showing a state.
 
 :::caution Your client loses portal access immediately
-Revoking the portal link is the one change anyone outside your office notices. If a buyer, seller, or agent is still using the portal to watch the timeline or upload documents, hold off on archiving — their link stops working the moment you do. Restoring the deal reactivates it, but it is dead in between.
+Revoking the portal link is the one change anyone outside your office notices. If a buyer, seller, or agent is still using the portal to watch the timeline or download documents, hold off on archiving — their link stops working the moment you do. Restoring the deal reactivates it, but it is dead in between.
 :::
 
 ## Archive, cancel, or delete?
@@ -2071,10 +2132,13 @@ On the Transactions page, click **Archived** in the top right. The count badge t
 
 ## Restoring a deal
 
-From the Archived view, either:
+To unarchive a deal (bring it back from the archive), use any of these:
 
 1. **Tick one or more rows** and click **Restore** in the bulk-action bar, or
-2. **Use the row's ⋮ menu** and choose **Restore**
+2. **Use the row's ⋮ menu** and choose **Restore**, or
+3. **Open the archived deal** — it still opens, with an amber banner reading *"This transaction is archived"* and the date — and click **Restore transaction** in the banner
+
+An archived deal is not locked: you can open it and read every tab without restoring it. Restore only when you want it back in your active list.
 
 ![Archived Transactions view with a row selected and the Restore action showing](/img/transactions/archived-transactions.png)
 
@@ -2307,6 +2371,31 @@ Documents don't only come from manual uploads:
 - **DocDrop** — Contacts can email documents directly into the transaction (see [DocDrop](./docdrop.mdx))
 - **Google Drive** — Import files from Drive or export transaction files back to Drive (see [Google Drive Integration](./google-drive-integration.mdx))
 - **E-sign packets** — Completed DocJacket e-sign packets save the signed PDF back to the transaction
+
+## Renaming a document
+
+To rename one file on a deal:
+
+1. Open the transaction and go to the **Documents** tab
+2. Click the **pencil icon** next to the document's name (tooltip **Rename**). You can also open the row's **⋯** menu (**More actions**) — or right-click the row — and choose **Rename**
+3. Type the new name and press **Enter** (or click the checkmark). Press **Esc** to cancel
+
+You can also rename from the document preview: click the document's name to open the preview, click **Rename** at the bottom, type the new name, and click **Save**.
+
+Renaming changes only the name shown in DocJacket and on downloads; the file itself, its category, and where it's linked stay the same. Team members with the **Viewer** role can't rename documents.
+
+### Renaming all documents at once (Batch Rename)
+
+To rename every document on a deal to a consistent pattern — for example `123 Main St - Purchase Agreement.pdf`:
+
+1. Open the transaction's **Documents** tab
+2. Click **Batch Rename** in the toolbar (tooltip: *Rename all documents using naming rules*). The button appears when the deal has a property address
+3. In the **Batch Rename Documents** panel, check the **Property Address** used in the names
+4. Click **Rename All**
+
+The panel then lists each document as **old name → new name**, plus any that were skipped (for example **Name unchanged**). Click **Close** when you're done.
+
+Batch Rename always applies to **all** documents on the deal — there's no option to rename only the ones you've ticked, and no preview before **Rename All**. New names come from your organization's naming rule (your default **Split** rule) in **Settings > Documents > Naming Rules**, using tokens like `{PropertyAddress}`, `{DocType}`, and `{Date}`. If you haven't set up a rule, each file is named after its document type (for example `Purchase Agreement.pdf`). Admins can edit naming rules; see [Document Settings](../settings/document-settings.md).
 
 ## Deleting a document
 
@@ -3831,6 +3920,14 @@ The drawer also includes sections for subtasks, task email templates, scheduled 
 
 The **Key Date** task option highlights that task as an important date-style item in task and calendar views. It is not the same as assigning a governed Key Date Type to the transaction's closing timeline.
 
+### Due relative to a key date (including the same day)
+
+In the task drawer, the **Due Date** control has two modes: **Date** (pick a calendar date) and **Relative** (count from one of the deal's dates). In **Relative**, enter the number of days, choose **before** or **after**, and pick the date to count from — for example *5 days before Closing Date*. The task's due date then moves whenever that date moves.
+
+To make a task due **on the same day** as a key date, enter **0** days. The preview reads *"This task will be due on Closing Date."* The quick-add calendar button next to **Add a task...** opens the same choices.
+
+To build same-day tasks into every deal, set the offset in your Playbook instead — see [A task due the same day as a key date](../templates/timeline-templates.md#a-task-due-the-same-day-as-a-key-date).
+
 ## Repeating tasks (recurring weekly tasks)
 
 Yes, you can make a task recur on the same day each week. Use it for work that comes around on a schedule: a weekly compliance check, a Friday update email to the client, a Monday file review.
@@ -5064,6 +5161,10 @@ Use the search box to add recipients, or filter it with the pills on the right:
 
 After adding a recipient, use the chip controls to switch that person between **To**, **Cc**, and **Bcc**, or remove the chip. Each chip shows the role, name, and address, so you can see exactly who gets the email before you send.
 
+### Copying yourself on every email (automatic BCC)
+
+If your organization turned on **Always BCC on deal emails** or **BCC the TC assigned to the deal** in **Settings > Organization > Deal emails**, those addresses are already on the **Bcc** line when you start a new message, **Reply**, **Reply all**, or **Forward**. They appear as normal Bcc chips — remove one with its **×** to leave it off this email. See [Deal emails: always BCC](../settings/organization-settings.mdx#deal-emails-always-bcc-an-address-or-the-assigned-tc).
+
 ### A contact won't populate in the To field
 
 If someone has a contact record, their email has been added, and they are attached to the transaction, but they still do not appear when you search:
@@ -5473,6 +5574,19 @@ To add a task, click **Add Task**, fill in the panel that opens on the right, an
 
 ![Playbook task editor showing task details, priority, phase, due-date context, and an automation count on the selected task](/img/templates/checklist-task-automation.png)
 
+## A task due the same day as a key date
+
+Yes — a task can be due **on** a key date, not just before or after it. Enter **0** days:
+
+1. Open the task in the Playbook builder
+2. Under **When it's due**, pick the key date in **Due date is based on** (for example **Closing Date** or **Inspection Deadline**)
+3. Type **0** in **Days**. **Before / after** doesn't matter when the offset is zero
+4. The **Preview** reads *"This task will be due on Closing Date."* and the task row shows **Due on Closing Date**
+
+Use this for same-day work such as "Confirm wire received" on the closing date or "Send inspection notice" on the inspection deadline. Type the 0 — if you leave **Days** empty, the preview reads *"This task will be due during …"* instead.
+
+A zero-day task lands on exactly the key date's day, even when **Count using** is **Business days**. If that day is a weekend or holiday, the task stays there unless you set **Weekend / holiday handling** to **Use next business day** or **Use previous business day**. When the key date moves on a deal, the task's due date moves with it (unless someone pinned the task's date by hand).
+
 ## Repeating tasks
 
 A Playbook task can recur: every week, or every 2 weeks, on the day you choose. This is how you build a weekly compliance check, a "Friday update to the client" email task, or any other every-Monday / every-Friday routine into every deal.
@@ -5638,10 +5752,14 @@ listing-then-contract workflow work on a single record:
 
 1. Create the deal as a listing and apply your **listing** Playbook — order photos,
    sign the listing agreement, get it on the MLS.
-2. Work the listing. When it goes under contract, **don't start a new deal** — change
-   the existing one's status (and type, if you use Listing/Purchase/Sale). See
-   [Turning a listing into a sale or purchase](../transactions/listings.md#turning-a-listing-into-a-sale-or-purchase).
-3. Apply your **contract-to-close** Playbook to that same transaction.
+2. Work the listing. When it goes under contract, **don't start a new deal** — upload
+   the accepted contract into the listing and keep **Mark under contract** ticked on the
+   review screen, or click **Convert to Purchase** on the listing's **Listing** tab. Either
+   one turns the same record into a Purchase and moves it to your under-contract status. See
+   [When a listing goes under contract](../transactions/listings.md#when-a-listing-goes-under-contract).
+3. Apply your **contract-to-close** Playbook to that same transaction. (A deal that was
+   created from a Playbook never gets a default closing checklist added automatically, so
+   this step is yours.)
 
 Both sets of tasks and key dates now live on one file, with one address, one contact
 list, and one document set — and the listing history stays attached.
@@ -6111,7 +6229,7 @@ The signature editor uses the same rich editor used elsewhere in DocJacket. You 
 - Format text
 - Add links
 - Insert line breaks
-- Upload images
+- Add images with the editor's image button (PNG or JPG work best; a photo pasted from Outlook or Apple Mail usually doesn't come through)
 - Add brokerage or compliance language
 - Preview the rendered signature before saving
 
@@ -6120,6 +6238,37 @@ Keep signature images small enough for email. Large logos or wide banners can ma
 :::tip Send yourself a test
 After changing a logo or adding long disclaimer language, send yourself a test email. Signatures can render differently across email clients, and a quick test catches oversized images or broken links before clients see them.
 :::
+
+## Using HTML in your signature
+
+Want to put HTML in your signature — for example a signature with a logo, a headshot, and social icons that you built in a signature generator? Use the editor's HTML mode.
+
+1. Go to **Templates > Email Signatures** and open a signature (or click **New Signature**)
+2. Above **Signature Content**, switch the editor from **Visual** to **HTML**
+3. Paste the HTML from your signature generator into the box
+4. Check the **Preview** panel
+5. Click **Save**
+
+DocJacket remembers which mode each signature uses, so an HTML signature reopens in HTML mode.
+
+### Images in an HTML signature
+
+- **Images must be https links.** An image whose address starts with `http://`, or has no address scheme, is removed when you save. Embedded `data:` images are removed too.
+- **Need to host an image?** In HTML mode, click **Upload image** and pick a PNG, JPG, GIF, or WebP file under 20 MB. DocJacket stores the image, resizes it to at most 800 px on its longest side, and inserts an `<img>` tag with its https link where your cursor was in the HTML box.
+
+### What DocJacket removes for safety
+
+Every signature is cleaned when you save. Scripts, forms and form fields, iframes, `<style>` blocks, event handlers such as `onclick`, HTML comments, and `javascript:` links are removed. Tables, inline `style="..."` formatting, fonts, colors, images, and links keep working. Links can be `https`, `http`, `mailto:` (email), or `tel:` (phone) — a bare email address becomes a `mailto:` link and a bare `www.` address becomes an `https://` link.
+
+If anything was removed, you'll see a **Some content was removed** message listing what was taken out, and the HTML box shows the cleaned version.
+
+### Size limit
+
+Gmail cuts off messages at around 100 KB, which hides a too-large signature behind **[Message clipped]**. If an HTML signature is over that size, DocJacket shows **This signature is too large to display in full** and won't save it. The usual cause is an embedded image — host it with **Upload image** instead.
+
+### Switching back to Visual
+
+Switching from **HTML** to **Visual** asks **Switch to the visual editor?** first. The visual editor can't keep tables, columns, or most custom styling, so editing there may flatten your layout. Choose **Keep HTML** to stay in HTML mode.
 
 ## Default signature
 
@@ -10682,6 +10831,58 @@ Each transaction card can show:
 
 The hub is meant for quick triage. Agents can see which deals are active, how many visible documents and pending tasks are available, then use **Calendar** for the transaction feed or **View Details** to open the full portal for one deal.
 
+## Cards or a table
+
+Agents can switch the deal list between **Cards** and **Table** with the toggle above the list. The choice is remembered in that browser, so an agent who prefers the table sees it next time.
+
+The table lists one deal per row with these columns:
+
+- **Address** and **Unit**
+- **Status**
+- **Side** — the deal type and side
+- **Details** — property details, when any deal has them
+- **Price** — the purchase price, or the list price marked *list* when there's no purchase price yet
+- **Contract** — the contract date
+- **P&S** — the purchase & sale (P&S) agreement deadline. This column only appears when at least one deal in the list has a P&S date
+- **Mortgage Commitment** — the mortgage commitment (financing) deadline. This column only appears when at least one deal in the list has a Mortgage Commitment date
+- **Closing** — the closing date
+
+The P&S and Mortgage Commitment dates come from the deal's key dates (the purchase & sale deadline and the financing deadline). If a column you expect is missing, none of the deals in the list has that key date filled in yet.
+
+The bottom row totals the number of deals and their prices. An agent can open any of their own deals by clicking its row.
+
+## My deals and Whole team (team view)
+
+By default an agent's portal lists only the deals they are on. If you want agents to see your team's other deals too — like a shared board — turn on the team view:
+
+1. Go to **Settings > Organization** and scroll to **Client portal**
+2. Tick **Agents see the team's deals**
+3. Under **Statuses the team list may show**, tick the statuses team deals may appear in
+4. Optionally tick **Show price & property details on team deals** (price, property type, beds, baths, sq ft, and monthly HOA/condo fee — only the ones filled in on the deal)
+5. Click **Save agent portal filters**
+
+Agents then see a **My deals** / **Whole team** switch on their portal. **Whole team** lists the team's deals in the statuses you ticked, showing the address, unit, status, side, and dates (plus price and details if you allowed them). It never shows contacts, documents, tasks, or messages, and an agent can't open a deal they aren't on — their own deals are marked **Yours** and are the only ones they can open.
+
+The team view is off until you turn it on, and it applies to every agent portal in your organization. If no statuses are ticked, the team list is empty.
+
+## Status buttons on the agent portal
+
+Status buttons are one-click filters above the agent's deal list — for example **Active**, **Coming Soon**, **On Market**, **Off Market**, **Closed**. Each button shows the deals in the statuses you choose, in whichever list the agent is looking at (**My deals**, or **Whole team** when the team view is on).
+
+To set them up:
+
+1. Go to **Settings > Organization** and scroll to **Client portal**
+2. Find **Status buttons on the agent portal**
+3. Click **Start from the suggested set** to begin with Active, Closed, Coming Soon, On Market, and Off Market, or click **Add button** to make your own
+4. Give each button a label (up to 40 characters) and tick the transaction statuses it should show. Suggested buttons are matched to your statuses with the same name; tick statuses for any button that shows **Pick at least one status**
+5. Click **Save agent portal filters**
+
+You can have up to 12 buttons. Use **Remove** to delete one.
+
+On the portal, clicking a button filters the list to deals in those statuses — including closed deals, so a **Closed** button works even though the default view shows active deals. Clicking the same button again clears the filter.
+
+These settings have their own **Save agent portal filters** button, separate from the page's **Save Changes**. Only Owners and Admins can change them.
+
 ## My Tasks
 
 The hub has a third view alongside **Active** and **All Deals**. **My Tasks** collects every portal-visible task from every deal the agent is on into one list, grouped by when it is due:
@@ -11371,6 +11572,33 @@ Organization settings also control email defaults used by reminders and schedule
 
 - **Always CC on Reminders** - Adds one or more addresses to the Cc line of every reminder sent from your organization
 - **Default send time for scheduled emails** - Sets the local send hour used when an individual scheduled email does not specify its own time
+
+## Deal emails: always BCC an address or the assigned TC
+
+Want to get copied on every email that goes out from a deal, or blind copy the assigned TC automatically? Use the **Deal emails** section of **Settings > Organization**. It has two settings:
+
+- **Always BCC on deal emails** — one or more email addresses, separated by commas (for example `admin@example.com, files@example.com`). These addresses are blind-copied on deal emails. Use it to copy yourself on all emails, to keep a broker compliance or file-archive mailbox in the loop, or to give a team lead a copy of everything.
+- **BCC the TC assigned to the deal** — tick this to blind copy the TC assigned to the deal (the deal's assigned user) on the same emails. Each deal BCCs its own assigned TC, so you don't have to type anyone's address.
+
+Click **Save Changes** at the bottom of the page. Only Owners and Admins can change these settings. If one of the addresses isn't a valid email, the save is refused and the message names the bad address. Clear the field and save to stop BCCing.
+
+### Which emails get the BCC
+
+- **Task and checklist emails** — emails sent from a task's email action, including Playbook task emails.
+- **Emails you write on a deal** — a new message from the deal's email composer, and **Reply**, **Reply all**, and **Forward**.
+
+### You see the BCC and can remove it
+
+The BCC is never added secretly at send time. It shows up on the **Bcc** line of the draft, as a recipient chip, before you send. To leave it off one email, remove that chip with its **×** — the setting stays on for everything else.
+
+A draft you saved, or a scheduled email you edit, keeps the Bcc it had when it was saved; it isn't filled in again.
+
+### When the BCC is skipped
+
+- **Internal-only emails.** A task email that only goes to people on your own DocJacket team (every To and Cc address belongs to an active team member) is not BCC'd, and neither is a task email marked internal-only.
+- **No duplicates.** If an address is already on the **To** or **Cc** line, it isn't added to **Bcc** again.
+
+This is separate from **Always CC on Reminders** (above), which only applies to reminder emails and uses the Cc line.
 
 ## Automation review
 

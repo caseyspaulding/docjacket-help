@@ -38,7 +38,7 @@ The signature editor uses the same rich editor used elsewhere in DocJacket. You 
 - Format text
 - Add links
 - Insert line breaks
-- Upload images
+- Add images with the editor's image button (PNG or JPG work best; a photo pasted from Outlook or Apple Mail usually doesn't come through)
 - Add brokerage or compliance language
 - Preview the rendered signature before saving
 
@@ -47,6 +47,37 @@ Keep signature images small enough for email. Large logos or wide banners can ma
 :::tip Send yourself a test
 After changing a logo or adding long disclaimer language, send yourself a test email. Signatures can render differently across email clients, and a quick test catches oversized images or broken links before clients see them.
 :::
+
+## Using HTML in your signature
+
+Want to put HTML in your signature — for example a signature with a logo, a headshot, and social icons that you built in a signature generator? Use the editor's HTML mode.
+
+1. Go to **Templates > Email Signatures** and open a signature (or click **New Signature**)
+2. Above **Signature Content**, switch the editor from **Visual** to **HTML**
+3. Paste the HTML from your signature generator into the box
+4. Check the **Preview** panel
+5. Click **Save**
+
+DocJacket remembers which mode each signature uses, so an HTML signature reopens in HTML mode.
+
+### Images in an HTML signature
+
+- **Images must be https links.** An image whose address starts with `http://`, or has no address scheme, is removed when you save. Embedded `data:` images are removed too.
+- **Need to host an image?** In HTML mode, click **Upload image** and pick a PNG, JPG, GIF, or WebP file under 20 MB. DocJacket stores the image, resizes it to at most 800 px on its longest side, and inserts an `<img>` tag with its https link where your cursor was in the HTML box.
+
+### What DocJacket removes for safety
+
+Every signature is cleaned when you save. Scripts, forms and form fields, iframes, `<style>` blocks, event handlers such as `onclick`, HTML comments, and `javascript:` links are removed. Tables, inline `style="..."` formatting, fonts, colors, images, and links keep working. Links can be `https`, `http`, `mailto:` (email), or `tel:` (phone) — a bare email address becomes a `mailto:` link and a bare `www.` address becomes an `https://` link.
+
+If anything was removed, you'll see a **Some content was removed** message listing what was taken out, and the HTML box shows the cleaned version.
+
+### Size limit
+
+Gmail cuts off messages at around 100 KB, which hides a too-large signature behind **[Message clipped]**. If an HTML signature is over that size, DocJacket shows **This signature is too large to display in full** and won't save it. The usual cause is an embedded image — host it with **Upload image** instead.
+
+### Switching back to Visual
+
+Switching from **HTML** to **Visual** asks **Switch to the visual editor?** first. The visual editor can't keep tables, columns, or most custom styling, so editing there may flatten your layout. Choose **Keep HTML** to stay in HTML mode.
 
 ## Default signature
 
