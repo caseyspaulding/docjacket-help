@@ -69,21 +69,21 @@ If you have a separate listing and a separate purchase:
 To find the listing afterward, open **Transactions** and filter the type to **Listing** (see [Listings](./listings.md)).
 
 :::caution If you turned a listing into a sale or purchase
-[Converting a listing to a purchase](./listings.md#when-a-listing-goes-under-contract) doesn't create a second record — it changes the *same* record's type. In that case there is no separate listing to keep, and cancelling the transaction cancels that single record. If you want it to go back to being an active listing, change its **type and status** back rather than cancelling — cancel will not restore or re-create a listing.
+[Converting a listing to a purchase](./listings.md#when-a-listing-goes-under-contract) doesn't create a second record — it changes the *same* record's type. In that case there is no separate listing to keep, and cancelling the transaction cancels that single record. If it's going back on the market, change its status back to an active listing status rather than cancelling (see the next section). If you already cancelled it, change the status from Cancelled back to an active status — DocJacket offers the same **Buyer fell through?** reset.
 :::
 
 ## A deal fell through — putting a listing back on the market
 
 Often the "purchase" and the "listing" are the **same record**: you took a listing, it went under contract, and now the buyer has backed out. You want it to go back to being an active listing — still in your pipeline, without the buyer's information cluttering it up.
 
-In that case, **don't cancel the transaction.** Cancelling is a terminal status, so it winds the deal down — open tasks become **Skipped**, key dates become **Not Applicable**, and reminders and scheduled emails are **deleted**. Moving the transaction back to an open status afterward does **not** automatically restore any of that, so you'd end up rebuilding your listing Playbook by hand.
+The best move is to **change the status straight back to an active listing status** rather than cancelling. Cancelling is a terminal status, so it winds the deal down — open tasks become **Skipped**, key dates become **Not Applicable**, and reminders and scheduled emails are **deleted** — and that work stays wound down when you reopen the deal, so you'd re-apply your listing Playbook afterward.
 
-Instead, move the deal **back to an active listing status** — and let DocJacket clear the buyer out for you:
+To put the listing back on the market and let DocJacket clear the buyer out for you:
 
 1. Open the listing and click the **status chip** (or drag its card in the Pipeline)
 2. Change the status from **Under Contract** back to an open listing status — **Active**, **MLS Active**, or whichever your office uses
 3. DocJacket recognises that a listing is leaving its under-contract status and asks **"Buyer fell through?"**. The dialog lists exactly what it is about to do — how many buyer-side contacts it will remove, which contract fields it will clear, how many contract key dates and tasks it will retire, and how many pending emails and reminders it will cancel — then offers two buttons:
-   - **Put back on market** — removes the buyer, the buyer's agent and any other buyer-side contacts from this deal (their contact records are kept), clears the contract fields (buyer names, purchase price, earnest money, financing and loan details, contract and under-contract dates), retires the key dates and closing-checklist tasks that came with the contract (marked *not applicable* and *skipped*, never deleted), cancels the contract's pending emails and unsent reminders, marks the accepted offer **withdrawn**, and moves the deal to the status you picked. **Kept:** every document, your listing-side contacts, and the listing's own key dates and tasks.
+   - **Put back on market** — removes the buyer, the buyer's agent and any other buyer-side contacts from this deal, along with the buyer's lender — the loan officer, the processor and the lender details on the deal (their contact records are kept) — clears the contract fields (buyer names, purchase price, earnest money, financing and loan details, contract and under-contract dates), retires the key dates and closing-checklist tasks that came with the contract (marked *not applicable* and *skipped*, never deleted), cancels the contract's pending emails and unsent reminders, marks the accepted offer **withdrawn**, and moves the deal to the status you picked. **Kept:** every document, your listing-side contacts, the title company, and the listing's own key dates and tasks.
    - **Just change the status** — the plain status change: the deal moves to the status you picked and nothing else is touched.
 4. **Cancel** keeps the deal exactly as it was.
 
@@ -91,8 +91,20 @@ If your office has an automation that runs when a deal enters the status you pic
 
 The dialog only appears on **listing-side** deals moving out of an under-contract status. A buyer-side deal, or a listing moving between two active statuses, gets the ordinary status change with no prompt.
 
+### If you already marked it Cancelled
+
+If you cancelled the deal when the buyer walked away, you can still reset it: change the status from **Cancelled** back to an active listing status. If the deal was under contract before you cancelled it, DocJacket asks **"Buyer fell through?"** and **Put back on market** works the same way. Tasks and key dates the cancellation already skipped or marked not applicable stay that way — re-apply your listing Playbook for the new listing period. A listing you cancelled while it was still on the market gets the ordinary status change.
+
+### Dual-side deals
+
+If you represented both the buyer and the seller, **Put back on market** turns the deal into a seller-side listing. The Buying Agent comes off the deal and the Listing Agent stays — even when you were both.
+
+### Closed deals
+
+A deal marked **Closed** isn't reset this way: a sold home coming back on the market is a new deal. If a deal was marked Closed by mistake, change its status back first.
+
 :::tip Cancel vs. change status
-Cancel when the deal is truly dead and you want its pending work to stop. If the property is simply going back on the market, **change the status** instead — and choose **Put back on market** if you want the buyer's data gone, or **Just change the status** if you'd rather tidy it up yourself.
+Cancel when the deal is truly dead and you want its pending work to stop. If the property is going back on the market, **change the status** to an active listing status instead — and choose **Put back on market** if you want the buyer's data gone, or **Just change the status** if you'd rather tidy it up yourself. Already cancelled it? Changing the status back to active offers the same reset.
 :::
 
 ## Reopening a transaction
