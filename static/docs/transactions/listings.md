@@ -67,7 +67,7 @@ You'll see **Converted — This is now a Purchase deal**. The same closing-check
 
 You can also change the deal's **Type** from the transaction's **Edit** form. That only changes the label: it doesn't move the status or apply a closing checklist, so the two options above are usually better when a listing goes under contract.
 
-Because it's one record and not two, there's no separate listing left behind. If the deal falls through and the property goes back on the market, change its **status** back to an active listing status — DocJacket offers **Put back on market** to clear the buyer out. See [Cancelling or Closing a Transaction](./canceling-a-transaction.mdx#a-deal-fell-through--putting-a-listing-back-on-the-market) for the full "deal fell through" flow.
+Because it's one record and not two, there's no separate listing left behind. If the deal falls through and the property goes back on the market, change its **status** back to an active listing status — DocJacket offers **Put back on market** to clear the buyer out, even if you already marked the deal Cancelled. See [Cancelling or Closing a Transaction](./canceling-a-transaction.mdx#a-deal-fell-through--putting-a-listing-back-on-the-market) for the full "deal fell through" flow.
 
 ## Tips
 
