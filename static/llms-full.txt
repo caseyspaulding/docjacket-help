@@ -1892,9 +1892,38 @@ To put the listing back on the market and let DocJacket clear the buyer out for 
 1. Open the listing and click the **status chip** (or drag its card in the Pipeline)
 2. Change the status from **Under Contract** back to an open listing status — **Active**, **MLS Active**, or whichever your office uses
 3. DocJacket recognises that a listing is leaving its under-contract status and asks **"Buyer fell through?"**. The dialog lists exactly what it is about to do — how many buyer-side contacts it will remove, which contract fields it will clear, how many contract key dates and tasks it will retire, and how many pending emails and reminders it will cancel — then offers two buttons:
-   - **Put back on market** — removes the buyer, the buyer's agent and any other buyer-side contacts from this deal, along with the buyer's lender — the loan officer, the processor and the lender details on the deal (their contact records are kept) — clears the contract fields (buyer names, purchase price, earnest money, financing and loan details, contract and under-contract dates), retires the key dates and closing-checklist tasks that came with the contract (marked *not applicable* and *skipped*, never deleted), cancels the contract's pending emails and unsent reminders, marks the accepted offer **withdrawn**, and moves the deal to the status you picked. **Kept:** every document, your listing-side contacts, the title company, and the listing's own key dates and tasks.
+   - **Put back on market** — removes the buyer, the buyer's agent and any other buyer-side contacts from this deal, along with the buyer's lender — the loan officer, the processor and the lender details on the deal (their contact records are kept) — clears the contract fields, retires the key dates and closing-checklist tasks that came with the contract (marked *not applicable* and *skipped*, never deleted), cancels the contract's pending emails and unsent reminders, marks the accepted offer **withdrawn**, and moves the deal to the status you picked. **Kept:** every document, your listing-side contacts, and the listing's own key dates and tasks.
    - **Just change the status** — the plain status change: the deal moves to the status you picked and nothing else is touched.
 4. **Cancel** keeps the deal exactly as it was.
+
+### What the reset clears and what it keeps
+
+**Cleared** — everything that came from the buyer's contract:
+
+- The buyer and second buyer, the buyer's agent, and the selling agent and selling firm
+- Purchase price, earnest money, down payment, appraisal gap, option fee, balance to close, and the financing and loan details (including the cash-deal setting)
+- Seller concessions and credits: seller closing-cost contribution (amount and percent), seller credit to the buyer, and credits
+- The buyer's home warranty: the warranty company and contact, whether it's included, the buyer's share and the home-warranty contingency
+- Buyer-side commission dollars: the buyer's agent commission amount, the cooperating agent commission, and the buy-side commission split
+- The contract's dates, periods and deadlines: contract and under-contract dates, offer dates, inspection, option, due-diligence, title, attorney-review and final walkthrough dates, and the contingency choices, periods and statuses
+- The buyer's lender details
+
+**Kept** — everything that belongs to the listing: the list price, the listing commission rate, the seller's agent commission, the listing agent, the buyer's agent commission *rate* your listing offers, any home warranty the seller agreed to provide in the listing agreement, and the seller's own title company.
+
+If the list price is empty — common when only the sale price was filled in while the deal was under contract — the dialog says **List price is empty. Set it after the reset.** DocJacket never copies the old sale price into the list price, so fill it in yourself once the listing is back on the market.
+
+### Title and escrow
+
+The dialog has a box **Also remove title & escrow**, ticked by default. Who chooses title varies by state — in Arizona, for example, title and escrow come with the buyer's offer.
+
+- **Ticked** — the title and escrow contacts (title company, escrow officer, title rep and the like) come off the deal along with the buyer, and the title company, escrow company, escrow agent, escrow holder, escrow number and wire instructions are cleared. The dialog counts the title contacts it will remove.
+- **Unticked** — title and escrow stay on the listing exactly as they are. Use this when the seller chose title.
+
+The seller's own title company (used in split-closing states such as Tennessee) is never removed.
+
+### Re-applying a Playbook after the reset
+
+Once the listing is back on the market, applying a Playbook (for example when the next offer comes in) creates **fresh key dates** for the new contract. Dates the old contract left behind — closing, loan approval and other dates marked *not applicable* or *waived*, and contract dates that were completed before the reset, such as the old Contract Date — are not reused. The apply preview no longer lists them under **key dates already on this deal**, and the new dates start as pending, dated by the Playbook. The listing's own completed dates, such as the Listing Date, are kept as they are.
 
 If your office has an automation that runs when a deal enters the status you picked (a "back to Active" email, say), the dialog tells you so — it will run either way, the same as any other status change.
 
@@ -1902,7 +1931,7 @@ The dialog only appears on **listing-side** deals moving out of an under-contrac
 
 ### If you already marked it Cancelled
 
-If you cancelled the deal when the buyer walked away, you can still reset it: change the status from **Cancelled** back to an active listing status. If the deal was under contract before you cancelled it, DocJacket asks **"Buyer fell through?"** and **Put back on market** works the same way. Tasks and key dates the cancellation already skipped or marked not applicable stay that way — re-apply your listing Playbook for the new listing period. A listing you cancelled while it was still on the market gets the ordinary status change.
+If you cancelled the deal when the buyer walked away, you can still reset it: change the status from **Cancelled** back to an active listing status. If the deal was under contract before you cancelled it, DocJacket asks **"Buyer fell through?"** and **Put back on market** works the same way. Tasks and key dates the cancellation already skipped or marked not applicable stay that way — re-apply your listing Playbook for the new listing period, and it creates fresh dates rather than reusing the old contract's. A listing you cancelled while it was still on the market gets the ordinary status change.
 
 ### Dual-side deals
 
