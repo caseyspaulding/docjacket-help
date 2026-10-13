@@ -1923,7 +1923,7 @@ The seller's own title company (used in split-closing states such as Tennessee) 
 
 ### Re-applying a Playbook after the reset
 
-Once the listing is back on the market, applying a Playbook (for example when the next offer comes in) creates **fresh key dates** for the new contract. Dates the old contract left behind — closing, loan approval and other dates marked *not applicable* or *waived*, and contract dates that were completed before the reset, such as the old Contract Date — are not reused. The apply preview no longer lists them under **key dates already on this deal**, and the new dates start as pending, dated by the Playbook. The listing's own completed dates, such as the Listing Date, are kept as they are.
+Once the listing is back on the market, applying a Playbook (for example when the next offer comes in) creates **fresh key dates** for the new contract. Dates the old contract left behind — closing, loan approval and other dates marked *not applicable* or *waived*, and contract dates that were completed before the reset, such as the old Contract Date — are not reused. The apply preview no longer lists them under **key dates already on this deal**, and the new dates start as pending, dated by the Playbook. The listing's own completed dates, such as the Listing Date, are kept as they are. This only applies to dates set before the listing went back on the market. On a deal that was never put back on the market, re-applying a Playbook keeps waived and not-applicable dates as they are.
 
 If your office has an automation that runs when a deal enters the status you picked (a "back to Active" email, say), the dialog tells you so — it will run either way, the same as any other status change.
 
