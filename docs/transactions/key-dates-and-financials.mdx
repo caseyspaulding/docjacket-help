@@ -85,7 +85,7 @@ The financials section gives you a quick snapshot of the money side:
 - **Additional deposit** — A second earnest-money or deposit amount when applicable
 - **Loan amount** — If the buyer is financing
 - **Down payment** — Calculated from price minus loan amount
-- **Seller concession** — Seller-paid credits or concessions
+- **Seller concession** — Seller-paid credits or concessions, in dollars or as a percentage of the price (see below)
 - **Appraisal gap** — Any appraisal-gap amount tracked on the deal
 - **Home warranty amounts** — Buyer-paid or seller-paid home warranty amounts
 - **Financing type** — Cash, financed, or other financing category
@@ -93,6 +93,17 @@ The financials section gives you a quick snapshot of the money side:
 ### Editing financials
 
 Use the transaction edit page to update financial fields. If you used AI extraction to create the transaction, these fields may be pre-populated from the contract — just verify they're correct before saving.
+
+### Seller concession as a percentage
+
+Many contracts state the seller concession as a percentage, such as "3% of the purchase price". To enter it that way, open the transaction edit page and use the **$ / %** switch next to **Seller Concession**:
+
+- **$** — type the dollar amount. This is the default.
+- **%** — type the percent the contract states, such as `3`. DocJacket works out the dollars from the purchase price, or from the list price when there is no purchase price yet. The dollars appear under the field as you type.
+
+The financial summary shows a percentage the way you entered it, with the dollars beside it, for example **3% ($8,940)**. If the purchase price changes later, the dollars update to match the new price. Emails, forms and the portal that use the seller concession get the dollar amount.
+
+Switching back to **$** keeps the dollar amount the percentage worked out to.
 
 :::tip
 If you're tracking commission splits or detailed closing costs, you can add custom fields in **Settings > Custom Fields**.
