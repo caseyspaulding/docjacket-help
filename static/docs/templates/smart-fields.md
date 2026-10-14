@@ -56,7 +56,7 @@ Smart fields are most useful when combined with other templates:
 
 - [Email templates](./email-templates.md) can insert transaction values into subject lines and message bodies.
 - Task email sends can render smart fields before the message goes out.
-- [SitRep templates](./sitrep-templates.md) can include transaction details in reports.
+- [Transaction Summary templates](./sitrep-templates.md) can include transaction details in reports.
 - Required document and form workflows can rely on consistent field names.
 
 In the email template editor, you can insert smart fields from the side panel or open the smart-field picker. The picker has two tabs:

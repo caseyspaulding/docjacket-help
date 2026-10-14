@@ -6,7 +6,7 @@ description: Create reusable required document lists for each transaction type, 
 
 # Required Documents Lists
 
-Required Documents Lists define which documents should be collected for a transaction. They power the **Documents Needed** panel on a transaction, help the team see what is still missing, and appear in SitRep reporting.
+Required Documents Lists define which documents should be collected for a transaction. They power the **Documents Needed** panel on a transaction, help the team see what is still missing, and appear in Transaction Summaries.
 
 Use them when your team repeatedly needs the same document checklist for a buyer, seller, listing, lease, referral, or state-specific workflow.
 
@@ -161,9 +161,9 @@ For example:
 
 Link the uploaded file to the required document so DocJacket can count it as received and show the transaction's document status accurately.
 
-## Relationship to SitRep reports
+## Relationship to Transaction Summaries
 
-The required-document checklist appears in SitRep reporting, so the list you apply to a transaction affects what the team can report as missing, received, overdue, or blocking.
+The required-document checklist appears in Transaction Summaries, so the list you apply to a transaction affects what the team can report as missing, received, overdue, or blocking.
 
 ## Tips
 

@@ -1,30 +1,34 @@
 ---
-sidebar_label: SitRep Templates
+sidebar_label: Transaction Summary Templates
 sidebar_position: 12
-description: Configure reusable SitRep report templates in DocJacket so transaction status updates go out consistently formatted every time.
+description: Configure reusable Transaction Summary templates (formerly SitRep templates) in DocJacket so transaction status updates go out consistently formatted every time.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/templates/sitrep-templates -->
 <!-- Source: docs/templates/sitrep-templates.md -->
 
-# SitRep Templates
+# Transaction Summary Templates
 
-SitRep templates control the structure of transaction status reports. They decide which live transaction sections are included when you generate, send, or schedule a SitRep.
+:::note Formerly SitRep Templates
+Transaction Summaries were previously called Situation Reports (SitReps). Transaction Summary Templates were previously called SitRep Templates. Only the name changed; your templates, schedules, and settings carry over as they were.
+:::
 
-Use SitRep templates when different audiences need different report formats. For example, a client-facing weekly update may include key dates, tasks, and documents needed, while an internal update may include team-only notes.
+Transaction Summary templates control the structure of transaction status reports. They decide which live transaction sections are included when you generate, send, or schedule a Transaction Summary.
+
+Use Transaction Summary templates when different audiences need different report formats. For example, a client-facing weekly update may include key dates, tasks, and documents needed, while an internal update may include team-only notes.
 
 ## Custom and system templates
 
-The SitRep Templates page has two tabs:
+The Transaction Summary Templates page has two tabs:
 
 - **Custom** — Templates your organization can create, edit, duplicate, and delete
 - **System** — Pre-built DocJacket templates that can be viewed or duplicated
 
-System templates are read-only. Duplicate a system template to create an editable custom version.
+System templates are read-only. Duplicate a system template to create an editable custom version. The built-in system template is named **Standard Transaction Summary** (formerly Standard SitRep).
 
-## Creating a SitRep template
+## Creating a Transaction Summary template
 
-1. Go to **Templates > SitRep Templates**
+1. Go to **Templates > Transaction Summary Templates**
 2. Click **New Template**
 3. Enter the template name
 4. Choose a category
@@ -44,7 +48,7 @@ Use categories to keep report templates organized and to make scheduling choices
 
 ## Available sections
 
-SitRep templates can include these sections:
+Transaction Summary templates can include these sections:
 
 - **Property Details** — Address, county, MLS number, transaction type, and side
 - **Key Dates** — Key date status indicators and closing timeline context
@@ -60,7 +64,7 @@ SitRep templates can include these sections:
 
 Each section pulls live data from the transaction when the report is generated.
 
-The **Tasks** section honors each task's **Show on Report** eye: every task is included by default, and turning the eye off on a task keeps it out of reports without hiding it from your team. See [Task Options](../tasks/task-options.md#report-visibility).
+The **Tasks** section honors each task's **Show on Transaction Summaries** eye: every task is included by default, and turning the eye off on a task keeps it out of reports without hiding it from your team. See [Task Options](../tasks/task-options.md#report-visibility).
 
 ## Internal notes vs custom notes
 
@@ -73,22 +77,22 @@ Be careful with note sections:
 The **Internal Notes** section pulls your team-only notes straight into the report. Leave it off any template you send to clients — keep a separate client-safe template and an internal one. Use **Custom Notes** when you want a one-off message on a client report.
 :::
 
-## Using a SitRep template
+## Using a Transaction Summary template
 
 Open a transaction and go to the **Reports** section. From there, you can:
 
-1. Choose a SitRep template
+1. Choose a Transaction Summary template
 2. Review the selected report sections
 3. Override sections for that specific send or PDF
 4. Add custom notes if needed
 5. Generate a PDF
-6. Send the SitRep to selected recipients
+6. Send the Transaction Summary to selected recipients
 
-If the transaction has a SitRep delivery schedule, changing section toggles from the Reports page can update the scheduled SitRep.
+If the transaction has a delivery schedule, changing section toggles from the Reports page can update the scheduled Transaction Summary.
 
-## Scheduling SitReps
+## Scheduling Transaction Summaries
 
-From a transaction's **Reports** section, use **Schedule Delivery** to create or edit a recurring SitRep schedule.
+From a transaction's **Reports** section, use **Schedule Delivery** to create or edit a recurring Transaction Summary schedule.
 
 A schedule can include:
 

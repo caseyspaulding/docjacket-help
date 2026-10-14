@@ -89,7 +89,7 @@ Keep the property's utility providers on the deal so you know who to call for ut
 
 Each provider shows as a row in the card with its type, provider name, phone number, and account number. Use the edit icon to change a row, or the remove icon to take it off the deal.
 
-The **Utilities Information** section of a SitRep report shows these utility providers. If the card is empty, that section is left out of the report. See [SitRep Templates](../templates/sitrep-templates.md#available-sections).
+The **Utilities Information** section of a Transaction Summary shows these utility providers. If the card is empty, that section is left out of the report. See [Transaction Summary Templates](../templates/sitrep-templates.md#available-sections).
 
 :::tip Don't see the card?
 The Overview is customizable. If the **Utility Providers** card is missing, open **Customize View** on the Overview and turn it back on.

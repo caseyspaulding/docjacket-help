@@ -1,12 +1,16 @@
 ---
 sidebar_label: Transaction Reports
 sidebar_position: 2
-description: Generate, send, and schedule transaction reports in DocJacket — with SitRep templates, section toggles, PDFs, Playbooks, and commission statements.
+description: Generate, send, and schedule transaction reports in DocJacket — with Transaction Summary templates, section toggles, PDFs, Playbooks, and commission statements.
 ---
 
 # Transaction Reports
 
-Use a transaction's **Reports** tab to create client-ready summaries from live transaction data. Reports can include property details, contacts, tasks, documents, key dates, custom notes, and other sections defined by your SitRep templates.
+Use a transaction's **Reports** tab to create client-ready Transaction Summaries from live transaction data. Reports can include property details, contacts, tasks, documents, key dates, custom notes, and other sections defined by your Transaction Summary templates.
+
+:::note Formerly Situation Report (SitRep)
+The Transaction Summary was previously called the Situation Report (SitRep). Only the name changed: existing templates, schedules, and settings carry over. The PDF is now titled **TRANSACTION SUMMARY**, and its file name is `Transaction-Summary-yyyy-MM-dd.pdf`.
+:::
 
 ![Transaction Reports tab with report template, section toggles, PDF, schedule, and send controls](/img/reports/transaction-reports-tab.png)
 
@@ -20,11 +24,11 @@ The page loads the current property details, participants, task counts, document
 
 ## Choose a report template
 
-Use **Report Template** to choose a saved SitRep template, or use **Custom** to manage the section choices manually.
+Use **Report Template** to choose a saved Transaction Summary template (for example, **Standard Transaction Summary**), or use **Custom** to manage the section choices manually.
 
 When you choose a template, DocJacket applies that template's saved sections. You can still override the section toggles on the transaction report before generating or sending.
 
-See [SitRep Templates](/docs/templates/sitrep-templates) for template setup.
+See [Transaction Summary Templates](/docs/templates/sitrep-templates) for template setup.
 
 ## Select sections
 
@@ -37,7 +41,7 @@ Use **Custom Notes** for one-off report notes, such as a cover message or client
 The transaction Reports tab includes these file actions:
 
 - **Export file record** — exports the transaction's communication log and documents as one archive for your compliance file. See [File Record & Communication Log](/docs/reports/file-record).
-- **Generate PDF** — creates the selected transaction summary PDF
+- **Generate PDF** — downloads the Transaction Summary PDF with the selected sections (file name `Transaction-Summary-yyyy-MM-dd.pdf`)
 - **Print Checklist** (under **More**) — prints the transaction's task list as a checklist PDF, with due dates and completed tasks checked off. The **Print** button on the transaction's **Tasks** tab opens the same PDF. See [Print a task list](/docs/tasks#print-a-task-list).
 - **Commission Statement** — generates a commission statement for the transaction
 
@@ -49,13 +53,13 @@ The Reports tab holds two different things. The **status report** is what you se
 
 ## Send to clients
 
-Click **Send to Client** to send the selected report sections by email. You can choose transaction contacts with email addresses and add extra email addresses manually.
+Click **Send to Client** to send a Transaction Summary with the selected report sections by email. You can choose transaction contacts with email addresses and add extra email addresses manually.
 
 If Gmail or Outlook is connected, the report email sends from your connected mailbox. Otherwise, DocJacket sends it and BCCs you.
 
 ## Schedule delivery
 
-Use **Schedule Delivery** to send recurring SitReps. A schedule includes:
+Use **Schedule Delivery** to send recurring Transaction Summaries. A schedule includes:
 
 - Daily or weekly frequency
 - Day of week for weekly reports
