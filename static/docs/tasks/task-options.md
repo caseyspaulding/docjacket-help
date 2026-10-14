@@ -51,7 +51,7 @@ Leaving contact selection empty means every portal contact on the deal can see t
 
 ## Report Visibility
 
-Tasks also carry a second eye for **SitRep reports**. Every task shows on generated and scheduled SitReps by default; turn **Show on Report** off to keep a task out of the report's task section without touching its portal visibility. The two eyes are independent — a task can be portal-visible but report-hidden, or the reverse.
+Tasks also carry a second eye for **Transaction Summaries**. Every task shows on generated and scheduled Transaction Summaries by default; turn **Show on Transaction Summaries** off to keep a task out of the report's task section without touching its portal visibility. The two eyes are independent — a task can be portal-visible but report-hidden, or the reverse.
 
 ## Reminders
 

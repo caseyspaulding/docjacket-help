@@ -1529,7 +1529,7 @@ Keep the property's utility providers on the deal so you know who to call for ut
 
 Each provider shows as a row in the card with its type, provider name, phone number, and account number. Use the edit icon to change a row, or the remove icon to take it off the deal.
 
-The **Utilities Information** section of a SitRep report shows these utility providers. If the card is empty, that section is left out of the report. See [SitRep Templates](../templates/sitrep-templates.md#available-sections).
+The **Utilities Information** section of a Transaction Summary shows these utility providers. If the card is empty, that section is left out of the report. See [Transaction Summary Templates](../templates/sitrep-templates.md#available-sections).
 
 :::tip Don't see the card?
 The Overview is customizable. If the **Utility Providers** card is missing, open **Customize View** on the Overview and turn it back on.
@@ -2572,7 +2572,7 @@ You can build the list in two ways:
 - **Apply template** - choose a reusable document template from **Templates > Documents**
 - **Add required document** - add one required document directly on the transaction
 
-Required documents also appear in SitRep reports, so keeping this checklist current improves status reporting.
+Required documents also appear in Transaction Summaries, so keeping this checklist current improves status reporting.
 
 ## Link or upload received files
 
@@ -4455,7 +4455,7 @@ Leaving contact selection empty means every portal contact on the deal can see t
 
 ## Report Visibility
 
-Tasks also carry a second eye for **SitRep reports**. Every task shows on generated and scheduled SitReps by default; turn **Show on Report** off to keep a task out of the report's task section without touching its portal visibility. The two eyes are independent — a task can be portal-visible but report-hidden, or the reverse.
+Tasks also carry a second eye for **Transaction Summaries**. Every task shows on generated and scheduled Transaction Summaries by default; turn **Show on Transaction Summaries** off to keep a task out of the report's task section without touching its portal visibility. The two eyes are independent — a task can be portal-visible but report-hidden, or the reverse.
 
 ## Reminders
 
@@ -5021,7 +5021,7 @@ depending on how it was sent:
 |---|---|
 | You compose, reply, or forward from a deal | **You** (the signed-in user) |
 | Task emails, reminders, and automation-rule emails | The deal's **assigned coordinator** — or the **account owner** if the deal is unassigned |
-| Situation reports and other scheduled reports | The person who **created the schedule** |
+| Transaction Summaries and other scheduled reports | The person who **created the schedule** |
 
 If that person hasn't connected a mailbox, see the fallback behavior below.
 
@@ -5463,7 +5463,7 @@ The **Key Date Library** is the *date logic* (for example, "Final Walkthrough = 
 
 ## Reports
 
-- **SitRep Templates** — Structured templates for transaction status reports
+- **Transaction Summary Templates** — Structured templates for transaction status reports. Transaction Summaries were previously called Situation Reports (SitReps).
 
 ## In this section
 
@@ -5474,7 +5474,7 @@ The **Key Date Library** is the *date logic* (for example, "Final Walkthrough = 
 - [Online Forms](./online-forms.md) — Build public and transaction-specific forms for intake, updates, and Front Door CTAs
 - [Required Documents Lists](./required-documents-lists.md) — Define required document checklists by transaction type
 - [Smart Fields](./smart-fields.md) — Manage reusable fields for document and communication data
-- [SitRep Templates](./sitrep-templates.md) — Control the sections used in transaction status reports
+- [Transaction Summary Templates](./sitrep-templates.md) — Control the sections used in transaction status reports
 
 ---
 
@@ -6632,7 +6632,7 @@ Day-count auto-calculation happens when you map the number field to a **Periods 
 
 # Required Documents Lists
 
-Required Documents Lists define which documents should be collected for a transaction. They power the **Documents Needed** panel on a transaction, help the team see what is still missing, and appear in SitRep reporting.
+Required Documents Lists define which documents should be collected for a transaction. They power the **Documents Needed** panel on a transaction, help the team see what is still missing, and appear in Transaction Summaries.
 
 Use them when your team repeatedly needs the same document checklist for a buyer, seller, listing, lease, referral, or state-specific workflow.
 
@@ -6787,9 +6787,9 @@ For example:
 
 Link the uploaded file to the required document so DocJacket can count it as received and show the transaction's document status accurately.
 
-## Relationship to SitRep reports
+## Relationship to Transaction Summaries
 
-The required-document checklist appears in SitRep reporting, so the list you apply to a transaction affects what the team can report as missing, received, overdue, or blocking.
+The required-document checklist appears in Transaction Summaries, so the list you apply to a transaction affects what the team can report as missing, received, overdue, or blocking.
 
 ## Tips
 
@@ -6850,7 +6850,7 @@ Smart fields are most useful when combined with other templates:
 
 - [Email templates](./email-templates.md) can insert transaction values into subject lines and message bodies.
 - Task email sends can render smart fields before the message goes out.
-- [SitRep templates](./sitrep-templates.md) can include transaction details in reports.
+- [Transaction Summary templates](./sitrep-templates.md) can include transaction details in reports.
 - Required document and form workflows can rely on consistent field names.
 
 In the email template editor, you can insert smart fields from the side panel or open the smart-field picker. The picker has two tabs:
@@ -7203,24 +7203,28 @@ Custom key dates surface as smart fields automatically. Any active key date that
 
 ---
 
-# SitRep Templates
+# Transaction Summary Templates
 
-SitRep templates control the structure of transaction status reports. They decide which live transaction sections are included when you generate, send, or schedule a SitRep.
+:::note Formerly SitRep Templates
+Transaction Summaries were previously called Situation Reports (SitReps). Transaction Summary Templates were previously called SitRep Templates. Only the name changed; your templates, schedules, and settings carry over as they were.
+:::
 
-Use SitRep templates when different audiences need different report formats. For example, a client-facing weekly update may include key dates, tasks, and documents needed, while an internal update may include team-only notes.
+Transaction Summary templates control the structure of transaction status reports. They decide which live transaction sections are included when you generate, send, or schedule a Transaction Summary.
+
+Use Transaction Summary templates when different audiences need different report formats. For example, a client-facing weekly update may include key dates, tasks, and documents needed, while an internal update may include team-only notes.
 
 ## Custom and system templates
 
-The SitRep Templates page has two tabs:
+The Transaction Summary Templates page has two tabs:
 
 - **Custom** — Templates your organization can create, edit, duplicate, and delete
 - **System** — Pre-built DocJacket templates that can be viewed or duplicated
 
-System templates are read-only. Duplicate a system template to create an editable custom version.
+System templates are read-only. Duplicate a system template to create an editable custom version. The built-in system template is named **Standard Transaction Summary** (formerly Standard SitRep).
 
-## Creating a SitRep template
+## Creating a Transaction Summary template
 
-1. Go to **Templates > SitRep Templates**
+1. Go to **Templates > Transaction Summary Templates**
 2. Click **New Template**
 3. Enter the template name
 4. Choose a category
@@ -7240,7 +7244,7 @@ Use categories to keep report templates organized and to make scheduling choices
 
 ## Available sections
 
-SitRep templates can include these sections:
+Transaction Summary templates can include these sections:
 
 - **Property Details** — Address, county, MLS number, transaction type, and side
 - **Key Dates** — Key date status indicators and closing timeline context
@@ -7256,7 +7260,7 @@ SitRep templates can include these sections:
 
 Each section pulls live data from the transaction when the report is generated.
 
-The **Tasks** section honors each task's **Show on Report** eye: every task is included by default, and turning the eye off on a task keeps it out of reports without hiding it from your team. See [Task Options](../tasks/task-options.md#report-visibility).
+The **Tasks** section honors each task's **Show on Transaction Summaries** eye: every task is included by default, and turning the eye off on a task keeps it out of reports without hiding it from your team. See [Task Options](../tasks/task-options.md#report-visibility).
 
 ## Internal notes vs custom notes
 
@@ -7269,22 +7273,22 @@ Be careful with note sections:
 The **Internal Notes** section pulls your team-only notes straight into the report. Leave it off any template you send to clients — keep a separate client-safe template and an internal one. Use **Custom Notes** when you want a one-off message on a client report.
 :::
 
-## Using a SitRep template
+## Using a Transaction Summary template
 
 Open a transaction and go to the **Reports** section. From there, you can:
 
-1. Choose a SitRep template
+1. Choose a Transaction Summary template
 2. Review the selected report sections
 3. Override sections for that specific send or PDF
 4. Add custom notes if needed
 5. Generate a PDF
-6. Send the SitRep to selected recipients
+6. Send the Transaction Summary to selected recipients
 
-If the transaction has a SitRep delivery schedule, changing section toggles from the Reports page can update the scheduled SitRep.
+If the transaction has a delivery schedule, changing section toggles from the Reports page can update the scheduled Transaction Summary.
 
-## Scheduling SitReps
+## Scheduling Transaction Summaries
 
-From a transaction's **Reports** section, use **Schedule Delivery** to create or edit a recurring SitRep schedule.
+From a transaction's **Reports** section, use **Schedule Delivery** to create or edit a recurring Transaction Summary schedule.
 
 A schedule can include:
 
@@ -10785,7 +10789,7 @@ You control visibility at the document and task level, so sensitive items stay p
 
 ## Contact visibility and private details
 
-Open the transaction's **Contacts** tab and expand the contact. Use the eye button to hide that contact entirely from the portal, portal PDF, and newly generated SitRep reports. It does not remove the contact from your internal transaction.
+Open the transaction's **Contacts** tab and expand the contact. Use the eye button to hide that contact entirely from the portal, portal PDF, and newly generated Transaction Summaries. It does not remove the contact from your internal transaction.
 
 To keep the name and role visible while restricting the email and phone, use **Portal contact details**:
 
@@ -10797,7 +10801,7 @@ If you choose **Selected portal viewers** and leave everyone unchecked, then cli
 
 Click **Save detail visibility**. These detail restrictions also apply to the portal PDF. Generic links and legacy links that cannot identify one viewer show restricted contacts' names and roles only. An agent link does not bypass the selection.
 
-**SitRep reports are different:** **Selected portal viewers** and **No portal viewers** do not restrict contact details in ordinary SitRep reports, including newly generated SitReps. SitReps use the contact's overall eye-button visibility instead. To omit the contact from a new SitRep, hide the entire contact with its eye button. No setting changes a SitRep or PDF that someone already downloaded.
+**Transaction Summaries are different:** **Selected portal viewers** and **No portal viewers** do not restrict contact details in Transaction Summaries, including newly generated ones. Transaction Summaries use the contact's overall eye-button visibility instead. To omit the contact from a new Transaction Summary, hide the entire contact with its eye button. No setting changes a Transaction Summary or PDF that someone already downloaded.
 
 Check the exact recipient's link in the **Portal** tab preview. Previously downloaded PDFs cannot be recalled; generate a new copy after changing visibility. Contact merges keep the more restrictive visibility and may require you to select the intended viewers again.
 
@@ -11352,7 +11356,11 @@ The **Pipeline** page is a separate sidebar page. It is documented here because 
 
 # Transaction Reports
 
-Use a transaction's **Reports** tab to create client-ready summaries from live transaction data. Reports can include property details, contacts, tasks, documents, key dates, custom notes, and other sections defined by your SitRep templates.
+Use a transaction's **Reports** tab to create client-ready Transaction Summaries from live transaction data. Reports can include property details, contacts, tasks, documents, key dates, custom notes, and other sections defined by your Transaction Summary templates.
+
+:::note Formerly Situation Report (SitRep)
+The Transaction Summary was previously called the Situation Report (SitRep). Only the name changed: existing templates, schedules, and settings carry over. The PDF is now titled **TRANSACTION SUMMARY**, and its file name is `Transaction-Summary-yyyy-MM-dd.pdf`.
+:::
 
 ![Transaction Reports tab with report template, section toggles, PDF, schedule, and send controls](/img/reports/transaction-reports-tab.png)
 
@@ -11366,11 +11374,11 @@ The page loads the current property details, participants, task counts, document
 
 ## Choose a report template
 
-Use **Report Template** to choose a saved SitRep template, or use **Custom** to manage the section choices manually.
+Use **Report Template** to choose a saved Transaction Summary template (for example, **Standard Transaction Summary**), or use **Custom** to manage the section choices manually.
 
 When you choose a template, DocJacket applies that template's saved sections. You can still override the section toggles on the transaction report before generating or sending.
 
-See [SitRep Templates](/docs/templates/sitrep-templates) for template setup.
+See [Transaction Summary Templates](/docs/templates/sitrep-templates) for template setup.
 
 ## Select sections
 
@@ -11383,7 +11391,7 @@ Use **Custom Notes** for one-off report notes, such as a cover message or client
 The transaction Reports tab includes these file actions:
 
 - **Export file record** — exports the transaction's communication log and documents as one archive for your compliance file. See [File Record & Communication Log](/docs/reports/file-record).
-- **Generate PDF** — creates the selected transaction summary PDF
+- **Generate PDF** — downloads the Transaction Summary PDF with the selected sections (file name `Transaction-Summary-yyyy-MM-dd.pdf`)
 - **Print Checklist** (under **More**) — prints the transaction's task list as a checklist PDF, with due dates and completed tasks checked off. The **Print** button on the transaction's **Tasks** tab opens the same PDF. See [Print a task list](/docs/tasks#print-a-task-list).
 - **Commission Statement** — generates a commission statement for the transaction
 
@@ -11395,13 +11403,13 @@ The Reports tab holds two different things. The **status report** is what you se
 
 ## Send to clients
 
-Click **Send to Client** to send the selected report sections by email. You can choose transaction contacts with email addresses and add extra email addresses manually.
+Click **Send to Client** to send a Transaction Summary with the selected report sections by email. You can choose transaction contacts with email addresses and add extra email addresses manually.
 
 If Gmail or Outlook is connected, the report email sends from your connected mailbox. Otherwise, DocJacket sends it and BCCs you.
 
 ## Schedule delivery
 
-Use **Schedule Delivery** to send recurring SitReps. A schedule includes:
+Use **Schedule Delivery** to send recurring Transaction Summaries. A schedule includes:
 
 - Daily or weekly frequency
 - Day of week for weekly reports

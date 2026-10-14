@@ -45,7 +45,7 @@ The **Key Date Library** is the *date logic* (for example, "Final Walkthrough = 
 
 ## Reports
 
-- **SitRep Templates** — Structured templates for transaction status reports
+- **Transaction Summary Templates** — Structured templates for transaction status reports. Transaction Summaries were previously called Situation Reports (SitReps).
 
 ## In this section
 
@@ -56,4 +56,4 @@ The **Key Date Library** is the *date logic* (for example, "Final Walkthrough = 
 - [Online Forms](./online-forms.md) — Build public and transaction-specific forms for intake, updates, and Front Door CTAs
 - [Required Documents Lists](./required-documents-lists.md) — Define required document checklists by transaction type
 - [Smart Fields](./smart-fields.md) — Manage reusable fields for document and communication data
-- [SitRep Templates](./sitrep-templates.md) — Control the sections used in transaction status reports
+- [Transaction Summary Templates](./sitrep-templates.md) — Control the sections used in transaction status reports

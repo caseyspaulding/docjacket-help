@@ -57,7 +57,7 @@ You control visibility at the document and task level, so sensitive items stay p
 
 ## Contact visibility and private details
 
-Open the transaction's **Contacts** tab and expand the contact. Use the eye button to hide that contact entirely from the portal, portal PDF, and newly generated SitRep reports. It does not remove the contact from your internal transaction.
+Open the transaction's **Contacts** tab and expand the contact. Use the eye button to hide that contact entirely from the portal, portal PDF, and newly generated Transaction Summaries. It does not remove the contact from your internal transaction.
 
 To keep the name and role visible while restricting the email and phone, use **Portal contact details**:
 
@@ -69,7 +69,7 @@ If you choose **Selected portal viewers** and leave everyone unchecked, then cli
 
 Click **Save detail visibility**. These detail restrictions also apply to the portal PDF. Generic links and legacy links that cannot identify one viewer show restricted contacts' names and roles only. An agent link does not bypass the selection.
 
-**SitRep reports are different:** **Selected portal viewers** and **No portal viewers** do not restrict contact details in ordinary SitRep reports, including newly generated SitReps. SitReps use the contact's overall eye-button visibility instead. To omit the contact from a new SitRep, hide the entire contact with its eye button. No setting changes a SitRep or PDF that someone already downloaded.
+**Transaction Summaries are different:** **Selected portal viewers** and **No portal viewers** do not restrict contact details in Transaction Summaries, including newly generated ones. Transaction Summaries use the contact's overall eye-button visibility instead. To omit the contact from a new Transaction Summary, hide the entire contact with its eye button. No setting changes a Transaction Summary or PDF that someone already downloaded.
 
 Check the exact recipient's link in the **Portal** tab preview. Previously downloaded PDFs cannot be recalled; generate a new copy after changing visibility. Contact merges keep the more restrictive visibility and may require you to select the intended viewers again.
 
