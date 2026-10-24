@@ -17,7 +17,7 @@ New organizations start with a broader status set than just Active and Closed. C
 | **Active** | The default open status for new transactions |
 | **Pending** | Open work that is waiting on something before it moves forward |
 | **Under Contract** | Contract work is underway |
-| **New Lead**, **Pre Market Listing**, **Listing Set Up**, **MLS Active** | Listing and lead stages your team may use before or during active listing work |
+| **New Lead**, **Pre Market Listing**, **Listing Set Up**, **MLS Active** | Listing and lead stages your team may use before or during active listing work. Each is still a deal, so it uses a deal slot and triggers deal automations. To track a prospect who has no contract yet, add a contact with the **Lead** type instead (see [Track a lead before there's a contract](../contacts/track-a-lead-before-theres-a-contract.md)) |
 | **Obtaining Pre Approval**, **Submitting Offer** | Buyer-side stages before a full transaction is underway |
 | **Transaction In Process**, **CTC Received**, **Closing Care** | Open transaction stages as the deal moves toward closing |
 | **Impediment**, **Communication Stopped**, **On Hold** | Open statuses for blocked or paused work |
@@ -36,7 +36,7 @@ Each status has a type:
 
 Closed and cancelled statuses are terminal. When you move a transaction from an open status into a closed or cancelled status, DocJacket closes out related pending work behind the scenes. Incomplete key dates are cancelled, open tasks are skipped, pending scheduled messages and scheduled emails are cancelled or removed, and unsent reminders are cleared.
 
-Buyer-offer stages are handled separately from the Settings status editor. Offer-stage transactions appear on the Pipeline page's **Buyer Offers** tab and can be promoted into the regular transaction pipeline.
+Buyer-offer stages are handled separately from the Settings status editor. A deal in an offer-type status does not appear on any Pipeline board. The Pipeline page's **Buyer Offers** tab shows offers received on your listings, grouped by offer status; it is not a list of deals.
 
 ## Using statuses
 
@@ -48,7 +48,7 @@ On the **Transactions** page, use the status filter to see only the deals in a s
 
 The **Pipeline** page shows transactions as a Kanban board. Each column represents an active non-offer status. Drag and drop transaction cards between columns to update their status. If the save fails, DocJacket rolls the card back.
 
-The Pipeline page also has **Tasks** and **Buyer Offers** tabs. Tasks are grouped by due date. Buyer Offers keeps offer-stage work separate until you promote an offer into the main transaction pipeline.
+The Pipeline page also has **Tasks** and **Buyer Offers** tabs. Tasks are grouped by due date. Buyer Offers lists offers received on your listings by offer status (Submitted, Under Review, Countered, Accepted, Not Selected); it does not show deals.
 
 ### Changing a transaction's status
 

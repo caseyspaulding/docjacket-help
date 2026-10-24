@@ -57,7 +57,9 @@ Built-in lead presets include:
 - Work with me
 - Home search
 
-After the visitor submits the form, they see a thank-you message and the lead appears in **Front Door > Leads**.
+After the visitor submits the form, they see a thank-you message and the lead appears in **Front Door > Leads**. Submissions do not appear in the Pipeline Inbox column.
+
+When the visitor gives an email address, DocJacket also finds or creates a contact for them. A new contact gets the **Lead** contact type and a tag for the form they used (for example `valuation_lead`, `consultation_lead`, `call_lead`, `quote_lead`, `inquiry_lead`, or `home_search_lead`). If a contact with that email already exists, it is reused and tagged. Submissions without an email stay on the Leads page only. DocJacket also emails a notification to your public email, or to the account owner if no public email is set. Nothing creates a deal automatically.
 
 ## Secondary actions
 
