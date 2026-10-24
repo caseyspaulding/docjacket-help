@@ -64,7 +64,7 @@ The hero has two styles, set by **Hero style**:
 - **Portrait photo — full-bleed hero** — one large photo across the top of the page.
 - **Cover band — cover strip + round avatar** — a short strip across the top with your headshot in a circle below it.
 
-### Image size
+### What size does my hero image need to be?
 
 Uploads can be JPEG, PNG, WebP, or GIF, up to 8 MB.
 
@@ -87,7 +87,9 @@ Recommended sizes:
 - **Cover band, band options** — a wide image about **1280 × 240 px**, with nothing important near the top or bottom.
 - **Full image — no crop** — any width of **1280 px or more**, at your design's own shape. The whole image shows on every screen size, scaled to fit the page width. Use this for a pre-made banner, such as one designed in Canva.
 
-### Hero image looks darker at the top and bottom
+### Why is my hero image darker on the edges, and how do I fix it?
+
+Short answer: the dark shading over the hero can't be dialed up or down, but it only appears when your logo or your name and tagline sit on top of the photo. Turn those off and your image shows as uploaded. The steps are below.
 
 DocJacket adds a dark shading over the hero photo so white text on top of it stays readable. On the **Portrait photo** hero the shading is light at the very top, clear through the upper middle, and gets much darker toward the bottom. Any text that is part of your image, such as a tagline designed into a banner, gets darkened if it sits near the top or bottom edge.
 

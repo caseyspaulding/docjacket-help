@@ -30,6 +30,14 @@ Use **Email Notifications** to decide whether DocJacket sends notification email
 
 Turn off **Email Notifications** if you do not want notification emails. In-app notifications can still appear if that separate setting is enabled.
 
+## Can I turn off text alerts when a document is approved?
+
+DocJacket doesn't send a text message when a document is approved, so there is no text alert to turn off. When a document is approved, the person who uploaded it gets a **Document Approved** notification in the bell, plus an email. Nobody is notified about their own approval: if you uploaded the document and approve it yourself, you get neither.
+
+To stop the **Document Approved** email, go to **Settings > Notifications**, make sure **Email Notifications** is on, and untick **Document activity** (new uploads, approvals, rejections). Turning off **Email Notifications** stops every notification email instead. The same **Document activity** box also covers document rejections and new uploads.
+
+If the texts you're seeing come from a deal's group text or from a client replying, those are separate from document approvals. See [SMS settings](./sms-settings.md).
+
 ## Morning Briefing
 
 DocJacket can send you a daily morning briefing email with overdue tasks, upcoming deadlines, and suggested actions. It also lists the **reminders scheduled to go out over the next 7 days** — email and text — so you can review what's queued before it sends.
