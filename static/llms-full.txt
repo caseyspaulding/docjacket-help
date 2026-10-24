@@ -1776,7 +1776,7 @@ New organizations start with a broader status set than just Active and Closed. C
 | **Active** | The default open status for new transactions |
 | **Pending** | Open work that is waiting on something before it moves forward |
 | **Under Contract** | Contract work is underway |
-| **New Lead**, **Pre Market Listing**, **Listing Set Up**, **MLS Active** | Listing and lead stages your team may use before or during active listing work |
+| **New Lead**, **Pre Market Listing**, **Listing Set Up**, **MLS Active** | Listing and lead stages your team may use before or during active listing work. Each is still a deal, so it uses a deal slot and triggers deal automations. To track a prospect who has no contract yet, add a contact with the **Lead** type instead (see [Track a lead before there's a contract](../contacts/track-a-lead-before-theres-a-contract.md)) |
 | **Obtaining Pre Approval**, **Submitting Offer** | Buyer-side stages before a full transaction is underway |
 | **Transaction In Process**, **CTC Received**, **Closing Care** | Open transaction stages as the deal moves toward closing |
 | **Impediment**, **Communication Stopped**, **On Hold** | Open statuses for blocked or paused work |
@@ -1795,7 +1795,7 @@ Each status has a type:
 
 Closed and cancelled statuses are terminal. When you move a transaction from an open status into a closed or cancelled status, DocJacket closes out related pending work behind the scenes. Incomplete key dates are cancelled, open tasks are skipped, pending scheduled messages and scheduled emails are cancelled or removed, and unsent reminders are cleared.
 
-Buyer-offer stages are handled separately from the Settings status editor. Offer-stage transactions appear on the Pipeline page's **Buyer Offers** tab and can be promoted into the regular transaction pipeline.
+Buyer-offer stages are handled separately from the Settings status editor. A deal in an offer-type status does not appear on any Pipeline board. The Pipeline page's **Buyer Offers** tab shows offers received on your listings, grouped by offer status; it is not a list of deals.
 
 ## Using statuses
 
@@ -1807,7 +1807,7 @@ On the **Transactions** page, use the status filter to see only the deals in a s
 
 The **Pipeline** page shows transactions as a Kanban board. Each column represents an active non-offer status. Drag and drop transaction cards between columns to update their status. If the save fails, DocJacket rolls the card back.
 
-The Pipeline page also has **Tasks** and **Buyer Offers** tabs. Tasks are grouped by due date. Buyer Offers keeps offer-stage work separate until you promote an offer into the main transaction pipeline.
+The Pipeline page also has **Tasks** and **Buyer Offers** tabs. Tasks are grouped by due date. Buyer Offers lists offers received on your listings by offer status (Submitted, Under Review, Countered, Accepted, Not Selected); it does not show deals.
 
 ### Changing a transaction's status
 
@@ -3370,6 +3370,34 @@ A transaction contact can also be marked **Primary**. Use this when one buyer, s
 
 ---
 
+# Track a lead before there's a contract
+
+Use this page when you want a spot to enter leads even if you don't have a contract yet, or to add active buyers who are not yet under contract.
+
+Keep these people as **contacts** with the **Lead** contact type. Do not create a deal in a lead status such as **New Lead** just to hold them. Every deal uses one of your plan's deal slots (on the Free plan, deals count toward a lifetime limit) and triggers deal automations. A contact does neither.
+
+## Add a lead
+
+1. Open **Contacts**.
+2. Click **New Contact**.
+3. Enter the name, email, phone, and anything else you know.
+4. Set **Contact Type** to **Lead**.
+5. Save the contact.
+
+**Lead** is one of the contact types every organization starts with. You can add tags and notes on the same form, for example a tag for the lead source or "pre-approved buyer".
+
+Leads also arrive on their own from some places: Follow Up Boss contacts whose stage is Lead come in with the Lead type, a CSV import can map a column to it, and a visitor who fills in a Front Door form with an email becomes a contact with the Lead type. See [Leads and CTAs](../front-door/leads-and-ctas.md).
+
+## Find your leads
+
+On the **Contacts** page, open the type filter (it shows **All Types** until you pick one) and choose **Lead**. The list narrows to contacts of that type. You can combine it with search, tags, and **Active only**.
+
+## When there's a contract
+
+When a lead goes under contract, create the deal then and add the lead's contact to it. Change the contact's type if it no longer fits Lead (for example, to a buyer or seller client type). See [Managing contacts](./managing-contacts.mdx) for editing a contact.
+
+---
+
 # Contact Groups
 
 Contact groups let you organize contacts into reusable lists. Use them for preferred vendors, agent partners, office-specific lists, regional contacts, or any group your team references often.
@@ -4920,7 +4948,9 @@ Built-in lead presets include:
 - Work with me
 - Home search
 
-After the visitor submits the form, they see a thank-you message and the lead appears in **Front Door > Leads**.
+After the visitor submits the form, they see a thank-you message and the lead appears in **Front Door > Leads**. Submissions do not appear in the Pipeline Inbox column.
+
+When the visitor gives an email address, DocJacket also finds or creates a contact for them. A new contact gets the **Lead** contact type and a tag for the form they used (for example `valuation_lead`, `consultation_lead`, `call_lead`, `quote_lead`, `inquiry_lead`, or `home_search_lead`). If a contact with that email already exists, it is reused and tagged. Submissions without an email stay on the Leads page only. DocJacket also emails a notification to your public email, or to the account owner if no public email is set. Nothing creates a deal automatically.
 
 ## Secondary actions
 
@@ -11463,7 +11493,7 @@ The **Pipeline** page is a visual board for work in motion. It has three tabs:
 
 - **Transactions** — non-offer transactions grouped by active transaction status
 - **Tasks** — open tasks grouped by due-date bucket across transactions
-- **Buyer Offers** — offer-stage transactions that can be promoted into the regular transaction pipeline
+- **Buyer Offers** — offers you have received on your listings, grouped by offer status
 
 Use the tabs at the top of the Pipeline page to switch views.
 
@@ -11471,7 +11501,7 @@ Use the tabs at the top of the Pipeline page to switch views.
 
 The Transactions view is a Kanban board. Each column represents an active non-offer transaction status configured for your organization. Transaction cards appear in the column that matches their current status.
 
-If your team hides a status in settings, that status stops appearing as a Pipeline column. If a transaction is in an offer-stage status, it belongs in **Buyer Offers** instead of the main Transactions board.
+If your team hides a status in settings, that status stops appearing as a Pipeline column. A deal sitting in an offer-type status does not appear on any Pipeline board, and it does not move to the **Buyer Offers** tab; find it on the Transactions list instead.
 
 ### Transaction cards
 
@@ -11496,7 +11526,7 @@ Moving a transaction from an open status into a closed or cancelled status is a 
 
 When unprocessed intakes exist, the Transactions view shows an **Inbox** column before the status columns. Click an intake card to review it, confirm the transaction details, and convert it into a transaction.
 
-The Inbox column is for inbound leads, Front Door submissions, and other intake items that have not been processed yet. Inbox cards do not appear on the Buyer Offers tab.
+Inbox cards do not appear on the Buyer Offers tab. Front Door form submissions do not land in this column; they go to **Front Door > Leads** and, when the visitor gave an email, to a contact. See [Leads and CTAs](../front-door/leads-and-ctas.md). To track a prospect who has no contract yet, see [Track a lead before there's a contract](../contacts/track-a-lead-before-theres-a-contract.md).
 
 ## Tasks view
 
@@ -11524,13 +11554,15 @@ You can:
 
 ## Buyer Offers view
 
-The Buyer Offers view shows offer-stage transactions separately from the regular transaction pipeline. These cards use offer-stage statuses rather than your normal open, closed, or cancelled transaction statuses.
+The Buyer Offers tab lists the offers you have received on your listings, not deals. Each card is one buyer's offer on one listing, and the offers are grouped into columns by offer status: **Submitted**, **Under Review**, **Countered**, **Accepted**, and **Not Selected**.
 
-When an offer becomes an active transaction, use **Promote to Transaction** on the card. Promotion moves the offer out of Buyer Offers and into the main Transactions board at the organization's default transaction status.
+A card shows the buyer, the listing address, the offer amount, and, when they apply, a review state, an escalation clause, the expiration time, and the buyer's agent and brokerage. Click a card to open the listing's offers section.
+
+Offers are not transactions. Creating a deal with an offer-type status does not put it on this tab.
 
 ## When to use Pipeline vs. Transactions list
 
-- **Pipeline** is best for board-style triage: moving transactions between statuses, working by task due date, and reviewing offer-stage work.
+- **Pipeline** is best for board-style triage: moving transactions between statuses, working by task due date, and reviewing offers received on your listings.
 - **Transactions list** is better for searching, filtering, saved views, inline editing fields, bulk scanning, and working with many transactions at once.
 
 Both surfaces work with the same transaction records; they are different ways to manage the same work.
