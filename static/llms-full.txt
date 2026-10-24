@@ -7924,7 +7924,7 @@ The assistant calls into DocJacket, gets a grounded answer from your real book o
 - **Per-user consent.** Each user on your DocJacket account authorizes their own assistant. There's no shared admin token that exposes everyone's data.
 - **Revocable from settings.** **DocJacket → Settings → API & AI Access** lists every assistant you've connected. Revoke any of them with one click — the next request from that client returns "unauthorized."
 - **Audited.** Every tool call goes through DocJacket's audit log: which user, which assistant, which tool, what arguments, what result. You can see exactly what an assistant has been doing on your behalf.
-- **Chat is the approval gate for writes.** Both write tiers are live. Each write executes only after you confirm it in the assistant's chat — the conversation itself is the approval step.
+- **You set the approval gate for writes.** Both write tiers are live. DocJacket marks every write tool so the assistant knows it changes data; whether the assistant asks before running one is controlled by its per-tool approval settings.
 
 ## What's connected today
 
@@ -8594,9 +8594,9 @@ Each command chains DocJacket MCP tools — see the [full tool catalog](/docs/ai
 | **`/docjacket:email-triage`** | Match Gmail / Outlook inbox to active transactions, classify attachments, surface deadline-proximate threads |
 | **`/docjacket:doc-check`** | Document-completeness audit — for one transaction, or org-wide with urgency flags on closings within 14 days |
 | **`/docjacket:weekly-report`** | Closing-this-week, closed-this-week, new-files, stuck-deals, upcoming-closings, and stats — for the broker, the team, or your own records |
-| **`/docjacket:share-portal`** | Get the portal URL + calendar feed for a transaction; email delivery requires draft/action scopes |
+| **`/docjacket:share-portal`** | Get the portal URL + calendar feed for a transaction; email delivery requires the actions scope |
 | **`/docjacket:check-submissions`** | Review new intake-form submissions, see what each contains, decide next move per submission |
-| **`/docjacket:send-template`** | Pick a saved email template and render with merge fields; sending requires draft/action scopes |
+| **`/docjacket:send-template`** | Pick a saved email template and render with merge fields; sending requires the actions scope |
 | **`/docjacket:intake-contract`** | Review extraction from a contract PDF; creating the transaction requires action-tool access |
 
 ## Triage commands
@@ -8637,7 +8637,7 @@ Reads recent unread mail from the connected Gmail/Outlook, matches each sender t
 
 Two modes:
 
-- **With a transaction in context** — runs `get_missing_documents` for that one deal, names which recipient role typically provides each missing item, and can suggest a chase message. Sending that chase requires draft/action scopes.
+- **With a transaction in context** — runs `get_missing_documents` for that one deal, names which recipient role typically provides each missing item, and can suggest a chase message. Sending that chase requires the actions scope.
 - **No transaction in context** — org-wide audit across active deals, flagging anything closing within 14 days that still has gaps.
 
 **Best 24-48 hours before a closing**, or when a broker asks "what's the state of doc completeness across the team?"
@@ -8668,17 +8668,17 @@ The PDF-to-transaction workflow, which needs the actions tier. On a read-only or
 
 > *"Send the buyer intro email on the Smith deal."*
 
-Pick a saved email template, render it with the transaction's merge fields resolved, and show the rendered email inline for review. Sending through Gmail or Outlook requires draft/action scopes.
+Pick a saved email template, render it with the transaction's merge fields resolved, and show the rendered email inline for review. Sending through Gmail or Outlook requires the actions scope.
 
 **Read-first version:** resolve the deal, find contacts, and prepare the rendered template for review.
 
-**Draft/action-scope version:** send the reviewed message through the connected mailbox.
+**Actions-scope version:** send the reviewed message through the connected mailbox.
 
 ### `/docjacket:share-portal`
 
 > *"Share the portal with Sarah on the 412 Oak deal."*
 
-Pulls the portal URL + calendar feed URL for a transaction. If draft/action scopes are enabled, the assistant can also help prepare a share email to a party on the deal.
+Pulls the portal URL + calendar feed URL for a transaction. With the actions scope, the assistant can also send a share email to a party on the deal.
 
 **Chains:** `search_transactions` (if needed) → `get_portal_link` → `get_contacts`.
 
@@ -8686,7 +8686,7 @@ Pulls the portal URL + calendar feed URL for a transaction. If draft/action scop
 
 > *"What's new in my intake forms?"*
 
-Surveys recent intake-form submissions across your active forms, summarizes what each one contains, and offers obvious next moves per submission. Creating a transaction, sending a reply, or logging a dismissal requires draft/action scopes.
+Surveys recent intake-form submissions across your active forms, summarizes what each one contains, and offers obvious next moves per submission. Creating a transaction or sending a reply requires the actions scope; logging a dismissal needs only draft.
 
 **Chains:** `list_form_links` → `list_form_submissions` per form → `get_form_submission` for interesting ones → `get_form_definition` if you want to see the form schema → next-action handoff.
 
@@ -9526,9 +9526,9 @@ You see DocJacket's consent screen:
 > This will let the app act on data in your organization.
 >
 > It will be able to:
-> - **read** — Read your transactions, tasks, key dates, and contacts.
-> - **draft** — Prepare emails and task suggestions for your approval. (Nothing sends without your review.)
-> - **actions** — Send communications and make changes on your behalf. (Per-action confirmation still applies.)
+> - **Read your data** — Transactions, tasks, key dates, and contacts.
+> - **Update your data** — Tasks, key dates, Playbooks, and status. Internal changes only — no emails are sent.
+> - **Act on your behalf** — Send emails to your clients and agents, and make changes. Your assistant's own settings decide whether it asks you first.
 
 Clicking **Allow** redirects you back to the assistant with a one-time authorization code.
 
@@ -9552,8 +9552,8 @@ DocJacket exposes three scopes — all live, all enforced per token:
 | Scope | What it covers |
 |---|---|
 | `read` | Search transactions, get details, list deadlines, contingencies, missing docs, contacts |
-| `draft` | Prepare emails and task suggestions for your approval. Nothing sends. |
-| `actions` | Send communications and make changes on your behalf, with per-action confirmation |
+| `draft` | Update your own records: tasks, key dates, checklists, notes, and status. Nothing is sent to anyone. |
+| `actions` | Send email, create and delete records, and manage disclosure packages on your behalf |
 
 The tier you grant at consent is exactly what the token can do — tiers are checked exactly, not hierarchically, and a client registered for a narrower scope can never request a wider one.
 
@@ -9621,8 +9621,8 @@ DocJacket's MCP server exposes **67 tools** across three **scope tiers**, and su
 | Scope | What it covers | Approval flow |
 |---|---|---|
 | **`read`** (40 tools) | Search, lookup, list — e.g. `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions`, `mcp_health_check`. Nothing here changes a record or contacts anyone. | Auto-approved per conversation in most clients |
-| **`draft`** (7 tools) | Low-risk writes to your own records — `create_tasks`, `complete_task`, `update_key_date`, `add_key_dates_batch`, `apply_checklist`, `log_activity`, `save_status_summary`. **Nothing in this tier sends anything to anyone.** | Confirm in chat before each call |
-| **`actions`** (20 tools) | Side-effecting work — sending email (`send_client_update`, `send_document_request`, `send_agent_followup`, `send_email_to_agent`), creating and deleting records, and disclosure packages that expose documents outside the org. | Confirm in chat before each call |
+| **`draft`** (7 tools) | Low-risk writes to your own records — `create_tasks`, `complete_task`, `update_key_date`, `add_key_dates_batch`, `apply_checklist`, `log_activity`, `save_status_summary`. **Nothing in this tier sends anything to anyone.** | DocJacket marks these as write tools; the assistant asks first if its approval setting for the tool is on |
+| **`actions`** (20 tools) | Side-effecting work — sending email (`send_client_update`, `send_document_request`, `send_agent_followup`, `send_email_to_agent`), creating and deleting records, and disclosure packages that expose documents outside the org. | DocJacket marks these as write tools; the assistant asks first if its approval setting for the tool is on |
 
 The draft tier is the useful middle setting: an assistant can keep your tasks and deadlines current without ever being able to email a client. **[Browse all 67 tools →](/docs/ai-access/tool-catalog)** to see exactly what sits in each tier.
 
@@ -9635,7 +9635,7 @@ For both write tiers, supported MCP clients use a **confirm-then-execute** UX:
 3. You confirm or redirect.
 4. The assistant fires the tool only after you say yes.
 
-For external AI Access writes, DocJacket's server does not run a second approval queue after chat confirmation. We retired the old sidebar "Pending Review" page in May 2026 — the AI client chat already gates those writes, so a second approval inside DocJacket was duplicate work. This is separate from the in-app **Review queue**, which still handles DocJacket automation drafts, scheduled sends, recent activity, and pending uploads.
+For external AI Access writes, DocJacket's server does not run a second approval queue. We retired the old sidebar "Pending Review" page in May 2026 — the scope you grant and the assistant's own per-tool approval settings gate those writes. Outbound email can still be held by your organization's review settings. This is separate from the in-app **Review queue**, which still handles DocJacket automation drafts, scheduled sends, recent activity, and pending uploads.
 
 Read the [retirement spec](https://github.com/caseyspaulding/docjacket-v3/blob/main/docs/specs/REMOVE-PREPARED-WORK.md) for the full rationale.
 

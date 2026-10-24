@@ -25,7 +25,7 @@ The assistant calls into DocJacket, gets a grounded answer from your real book o
 - **Per-user consent.** Each user on your DocJacket account authorizes their own assistant. There's no shared admin token that exposes everyone's data.
 - **Revocable from settings.** **DocJacket → Settings → API & AI Access** lists every assistant you've connected. Revoke any of them with one click — the next request from that client returns "unauthorized."
 - **Audited.** Every tool call goes through DocJacket's audit log: which user, which assistant, which tool, what arguments, what result. You can see exactly what an assistant has been doing on your behalf.
-- **Chat is the approval gate for writes.** Both write tiers are live. Each write executes only after you confirm it in the assistant's chat — the conversation itself is the approval step.
+- **You set the approval gate for writes.** Both write tiers are live. DocJacket marks every write tool so the assistant knows it changes data; whether the assistant asks before running one is controlled by its per-tool approval settings.
 
 ## What's connected today
 

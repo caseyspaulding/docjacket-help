@@ -15,7 +15,7 @@ description: How DocJacket's MCP scopes work — the read, draft, and action tie
       "name": "What scopes does DocJacket's MCP server expose?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Three tiers, all live: read (40 tools — lookups such as search transactions, get key dates, list tasks, triage next actions), draft (7 tools — low-risk writes to your own records; nothing in this tier sends anything to anyone), and actions (20 tools — sending email, creating and deleting records, disclosure packages). Writes require confirmation in the assistant chat and are logged in AI Access activity."
+        "text": "Three tiers, all live: read (40 tools — lookups such as search transactions, get key dates, list tasks, triage next actions), draft (7 tools — low-risk writes to your own records; nothing in this tier sends anything to anyone), and actions (20 tools — sending email, creating and deleting records, disclosure packages). Every call is logged in AI Access activity. Whether the assistant asks you before a write is set in the assistant, not in DocJacket."
       }
     },
     {
@@ -48,8 +48,8 @@ DocJacket's MCP server exposes **67 tools** across three **scope tiers**, and su
 | Scope | What it covers | Approval flow |
 |---|---|---|
 | **`read`** (40 tools) | Search, lookup, list — e.g. `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions`, `mcp_health_check`. Nothing here changes a record or contacts anyone. | Auto-approved per conversation in most clients |
-| **`draft`** (7 tools) | Low-risk writes to your own records — `create_tasks`, `complete_task`, `update_key_date`, `add_key_dates_batch`, `apply_checklist`, `log_activity`, `save_status_summary`. **Nothing in this tier sends anything to anyone.** | Confirm in chat before each call |
-| **`actions`** (20 tools) | Side-effecting work — sending email (`send_client_update`, `send_document_request`, `send_agent_followup`, `send_email_to_agent`), creating and deleting records, and disclosure packages that expose documents outside the org. | Confirm in chat before each call |
+| **`draft`** (7 tools) | Low-risk writes to your own records — `create_tasks`, `complete_task`, `update_key_date`, `add_key_dates_batch`, `apply_checklist`, `log_activity`, `save_status_summary`. **Nothing in this tier sends anything to anyone.** | DocJacket marks these as write tools; the assistant asks first if its approval setting for the tool is on |
+| **`actions`** (20 tools) | Side-effecting work — sending email (`send_client_update`, `send_document_request`, `send_agent_followup`, `send_email_to_agent`), creating and deleting records, and disclosure packages that expose documents outside the org. | DocJacket marks these as write tools; the assistant asks first if its approval setting for the tool is on |
 
 The draft tier is the useful middle setting: an assistant can keep your tasks and deadlines current without ever being able to email a client. **[Browse all 67 tools →](/docs/ai-access/tool-catalog)** to see exactly what sits in each tier.
 
@@ -62,7 +62,7 @@ For both write tiers, supported MCP clients use a **confirm-then-execute** UX:
 3. You confirm or redirect.
 4. The assistant fires the tool only after you say yes.
 
-For external AI Access writes, DocJacket's server does not run a second approval queue after chat confirmation. We retired the old sidebar "Pending Review" page in May 2026 — the AI client chat already gates those writes, so a second approval inside DocJacket was duplicate work. This is separate from the in-app **Review queue**, which still handles DocJacket automation drafts, scheduled sends, recent activity, and pending uploads.
+For external AI Access writes, DocJacket's server does not run a second approval queue. We retired the old sidebar "Pending Review" page in May 2026 — the scope you grant and the assistant's own per-tool approval settings gate those writes. Outbound email can still be held by your organization's review settings. This is separate from the in-app **Review queue**, which still handles DocJacket automation drafts, scheduled sends, recent activity, and pending uploads.
 
 Read the [retirement spec](https://github.com/caseyspaulding/docjacket-v3/blob/main/docs/specs/REMOVE-PREPARED-WORK.md) for the full rationale.
 

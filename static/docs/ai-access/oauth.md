@@ -111,9 +111,9 @@ You see DocJacket's consent screen:
 > This will let the app act on data in your organization.
 >
 > It will be able to:
-> - **read** — Read your transactions, tasks, key dates, and contacts.
-> - **draft** — Prepare emails and task suggestions for your approval. (Nothing sends without your review.)
-> - **actions** — Send communications and make changes on your behalf. (Per-action confirmation still applies.)
+> - **Read your data** — Transactions, tasks, key dates, and contacts.
+> - **Update your data** — Tasks, key dates, Playbooks, and status. Internal changes only — no emails are sent.
+> - **Act on your behalf** — Send emails to your clients and agents, and make changes. Your assistant's own settings decide whether it asks you first.
 
 Clicking **Allow** redirects you back to the assistant with a one-time authorization code.
 
@@ -137,8 +137,8 @@ DocJacket exposes three scopes — all live, all enforced per token:
 | Scope | What it covers |
 |---|---|
 | `read` | Search transactions, get details, list deadlines, contingencies, missing docs, contacts |
-| `draft` | Prepare emails and task suggestions for your approval. Nothing sends. |
-| `actions` | Send communications and make changes on your behalf, with per-action confirmation |
+| `draft` | Update your own records: tasks, key dates, checklists, notes, and status. Nothing is sent to anyone. |
+| `actions` | Send email, create and delete records, and manage disclosure packages on your behalf |
 
 The tier you grant at consent is exactly what the token can do — tiers are checked exactly, not hierarchically, and a client registered for a narrower scope can never request a wider one.
 
