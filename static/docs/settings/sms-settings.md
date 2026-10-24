@@ -44,7 +44,12 @@ Free plans cannot send SMS. DocJacket shows the plan requirement and reminds use
 
 When the organization uses its included monthly texts, DocJacket prompts users to buy more credits. Click **Buy 250 More - $5** to start checkout for an additional credit block.
 
-Purchased credits apply to the current monthly usage bucket. If the organization reaches the monthly hard limit, DocJacket blocks additional SMS sends and prompts the team to contact support.
+Included texts and purchased credits work differently at the start of each billing month:
+
+- **Included texts reset.** Unused included texts don't carry over; each month starts with the plan's full included amount again.
+- **Purchased credits roll over.** Credits you bought stay on the account until they're used. DocJacket uses included texts first and draws on purchased credits only after the month's included texts run out.
+
+If the organization reaches the monthly hard limit, DocJacket blocks additional SMS sends and prompts the team to contact support.
 
 ## Sending and replies
 
