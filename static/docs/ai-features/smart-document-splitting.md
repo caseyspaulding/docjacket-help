@@ -30,9 +30,17 @@ You can run Smart Split into an existing deal. Start **Upload Documents**, uploa
 
 ## Can I split a document that's already in my transaction?
 
-**Not from inside the deal today.** There is no split button for a PDF that's already attached to a transaction. Smart Split only runs while you upload through **Upload Documents**.
+**Yes.** You can split a combined PDF that's already on a deal without uploading it again or starting a new transaction.
 
-If the combined PDF is already on the deal, download it from the transaction and upload it again through **Upload Documents** with **Add to Existing Transaction**. You can then delete the original combined file from the deal if you no longer need it.
+1. Open the transaction and go to its **Documents** tab.
+2. Open the PDF's **⋯** menu and choose **Split into documents**.
+3. DocJacket finds where each document starts, the same way it does during **Upload Documents**, and opens the split review.
+4. Check the parts. You can adjust the page ranges, rename a part, change its document type, add or remove a part, or untick one you don't want. If the AI split it wrong, this is where you fix it by hand.
+5. Click **Split into N documents**.
+
+Each part becomes its own document on the same deal. A part is filed under the document category for its detected type; if there isn't one, it stays in the original file's category. The original combined PDF is kept, so delete it yourself once you've checked the parts.
+
+**Split into documents** appears only on PDFs.
 
 If you use DocJacket's [API or AI Access](../ai-access/index.mdx), the public API can split a document that's already stored: `POST /api/v1/documents/{id}/split` with the page ranges you want.
 
