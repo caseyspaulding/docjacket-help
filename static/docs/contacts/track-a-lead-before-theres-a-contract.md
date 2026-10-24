@@ -15,11 +15,12 @@ Keep these people as **contacts** with the **Lead** contact type. Do not create 
 
 ## Add a lead
 
-1. Open **Contacts**.
-2. Click **New Contact**.
+1. Open **Contacts** and click **Leads** (next to **All** and **Past clients**).
+2. Click **New Lead**. The form opens titled **New Lead**, with **Contact Type** already set to **Lead**.
 3. Enter the name, email, phone, and anything else you know.
-4. Set **Contact Type** to **Lead**.
-5. Save the contact.
+4. Save the contact.
+
+You can also click **New Contact** from any Contacts view and set **Contact Type** to **Lead** yourself.
 
 **Lead** is one of the contact types every organization starts with. You can add tags and notes on the same form, for example a tag for the lead source or "pre-approved buyer".
 
@@ -27,7 +28,7 @@ Leads also arrive on their own from some places: Follow Up Boss contacts whose s
 
 ## Find your leads
 
-On the **Contacts** page, open the type filter (it shows **All Types** until you pick one) and choose **Lead**. The list narrows to contacts of that type. You can combine it with search, tags, and **Active only**.
+On the **Contacts** page, click **Leads** (next to **All** and **Past clients**). The list shows only contacts with the Lead type, and you can combine it with search, tags, and **Active only**. You can bookmark this view: its address ends in `?view=leads`. If your organization has turned off the Lead contact type, the **Leads** view doesn't appear.
 
 ## When there's a contract
 

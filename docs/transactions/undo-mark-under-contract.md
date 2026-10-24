@@ -6,6 +6,8 @@ description: How to turn a deal back into a listing after Mark under contract co
 
 # Undo "Mark under contract" — turn a deal back into a listing
 
+Accidentally marked a listing under contract and it turned into a purchase? Did your listing change to a purchase deal, or disappear from your listings, after you uploaded or applied an offer or contract? This page shows how to turn it back into a listing.
+
 You applied an extracted contract or offer to your listing with **Mark under contract** ticked, and the deal is now a Purchase when it should still be a listing. There is no one-click undo, but you can put the deal back by hand. It stays the same file, so documents, contacts, notes and history are untouched.
 
 ## What Mark under contract changed
