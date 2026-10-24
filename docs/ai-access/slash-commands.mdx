@@ -65,9 +65,9 @@ Each command chains DocJacket MCP tools — see the [full tool catalog](/docs/ai
 | **`/docjacket:email-triage`** | Match Gmail / Outlook inbox to active transactions, classify attachments, surface deadline-proximate threads |
 | **`/docjacket:doc-check`** | Document-completeness audit — for one transaction, or org-wide with urgency flags on closings within 14 days |
 | **`/docjacket:weekly-report`** | Closing-this-week, closed-this-week, new-files, stuck-deals, upcoming-closings, and stats — for the broker, the team, or your own records |
-| **`/docjacket:share-portal`** | Get the portal URL + calendar feed for a transaction; email delivery requires draft/action scopes |
+| **`/docjacket:share-portal`** | Get the portal URL + calendar feed for a transaction; email delivery requires the actions scope |
 | **`/docjacket:check-submissions`** | Review new intake-form submissions, see what each contains, decide next move per submission |
-| **`/docjacket:send-template`** | Pick a saved email template and render with merge fields; sending requires draft/action scopes |
+| **`/docjacket:send-template`** | Pick a saved email template and render with merge fields; sending requires the actions scope |
 | **`/docjacket:intake-contract`** | Review extraction from a contract PDF; creating the transaction requires action-tool access |
 
 ## Triage commands
@@ -108,7 +108,7 @@ Reads recent unread mail from the connected Gmail/Outlook, matches each sender t
 
 Two modes:
 
-- **With a transaction in context** — runs `get_missing_documents` for that one deal, names which recipient role typically provides each missing item, and can suggest a chase message. Sending that chase requires draft/action scopes.
+- **With a transaction in context** — runs `get_missing_documents` for that one deal, names which recipient role typically provides each missing item, and can suggest a chase message. Sending that chase requires the actions scope.
 - **No transaction in context** — org-wide audit across active deals, flagging anything closing within 14 days that still has gaps.
 
 **Best 24-48 hours before a closing**, or when a broker asks "what's the state of doc completeness across the team?"
@@ -139,17 +139,17 @@ The PDF-to-transaction workflow, which needs the actions tier. On a read-only or
 
 > *"Send the buyer intro email on the Smith deal."*
 
-Pick a saved email template, render it with the transaction's merge fields resolved, and show the rendered email inline for review. Sending through Gmail or Outlook requires draft/action scopes.
+Pick a saved email template, render it with the transaction's merge fields resolved, and show the rendered email inline for review. Sending through Gmail or Outlook requires the actions scope.
 
 **Read-first version:** resolve the deal, find contacts, and prepare the rendered template for review.
 
-**Draft/action-scope version:** send the reviewed message through the connected mailbox.
+**Actions-scope version:** send the reviewed message through the connected mailbox.
 
 ### `/docjacket:share-portal`
 
 > *"Share the portal with Sarah on the 412 Oak deal."*
 
-Pulls the portal URL + calendar feed URL for a transaction. If draft/action scopes are enabled, the assistant can also help prepare a share email to a party on the deal.
+Pulls the portal URL + calendar feed URL for a transaction. With the actions scope, the assistant can also send a share email to a party on the deal.
 
 **Chains:** `search_transactions` (if needed) → `get_portal_link` → `get_contacts`.
 
@@ -157,7 +157,7 @@ Pulls the portal URL + calendar feed URL for a transaction. If draft/action scop
 
 > *"What's new in my intake forms?"*
 
-Surveys recent intake-form submissions across your active forms, summarizes what each one contains, and offers obvious next moves per submission. Creating a transaction, sending a reply, or logging a dismissal requires draft/action scopes.
+Surveys recent intake-form submissions across your active forms, summarizes what each one contains, and offers obvious next moves per submission. Creating a transaction or sending a reply requires the actions scope; logging a dismissal needs only draft.
 
 **Chains:** `list_form_links` → `list_form_submissions` per form → `get_form_submission` for interesting ones → `get_form_definition` if you want to see the form schema → next-action handoff.
 
