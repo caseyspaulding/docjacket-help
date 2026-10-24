@@ -1475,6 +1475,10 @@ When a transaction has a stored risk assessment, a risk chip appears in the tran
 ### Waiting On
 The headline blocker for the deal. Use it to show what the transaction is currently waiting on, such as client action, signatures, title, lender, inspection, or closing. To add your own options or hide ones you don't use, see [Waiting On Options](../settings/transaction-configuration.md#waiting-on-options).
 
+#### Can I add an option to the Waiting On field?
+
+Yes. The picker isn't fixed. Go to **Settings > Waiting On** (under **Transactions**), click **Add Option**, and give it a name, a phase, and a color. The new option shows up in every deal's **Waiting On** picker. You can also hide the built-in options you don't use. Only a workspace owner or admin can change the list unless an owner has turned on **Allow team members to edit Playbooks and settings** under **Settings > Organization**.
+
 ### Financial Summary
 Purchase price, earnest money, loan amount, and other financial terms at a glance. Quick reference so you don't have to dig through the contract.
 
@@ -2093,6 +2097,20 @@ The payer clicks **Pay Invoice**, pays by card or bank on a secure checkout page
 If you'd rather send the pay link yourself (over text, in your own email, etc.), you can generate a payment link for the invoice instead of having DocJacket email it.
 :::
 
+## Can I modify the invoice design?
+
+You can change what appears on the invoice, but not its layout. The invoice PDF, the invoice email and the payment page all use one fixed design. You can customize:
+
+- **Business name, address, phone, email and website.** Go to **Settings > Get Paid** and fill in the **How you appear on invoices** card. A blank business name uses your organization name. Only a workspace owner or admin can edit it.
+- **Payment terms.** The text you type in **Payment terms** on that card prints on every invoice PDF.
+- **Invoice number prefix.** For example, a prefix of `FSC` numbers new invoices `FSC-2026-00001`. Invoices you already sent keep their numbers.
+- **Due in days.** New invoices get a due date this many days out. Leave it blank for due on receipt.
+- **Logo.** The invoice uses your organization logo, which you change under **Settings > Organization**.
+- **Colors.** The invoice uses your brand colors, which you set under **Settings > Brand**.
+- **Notes.** When you create an invoice, the optional **Notes** field prints on that invoice only. You can also rename the fee line (it starts as *Transaction Coordination Fee*) and add more fee lines.
+
+Invoices that are still unpaid also print a **Scan to pay online** QR code beside the total.
+
 ## Invoice statuses
 
 | Status | Meaning |
@@ -2260,6 +2278,12 @@ Click the copy button next to it, and save it as a contact in your email so it's
 :::note Two different intake addresses
 Your **intake address**, without `-newdeal`, is a catch-all: anything sent there lands in your Inbox for you to file by hand (see [Getting Email into DocJacket](../messages/getting-email-into-docjacket.mdx)). Only the **new-deal address** reads the contract and starts a deal.
 :::
+
+## Can I change my forward-to address so it doesn't have my name in it?
+
+No. The new-deal address isn't something you type in. It is your organization's subdomain plus `-newdeal` (for example `your-company-newdeal@intake.docjacket.com`), and DocJacket uses that same pattern to route the email back to your organization. The subdomain was chosen when the account was set up, and often comes from the account owner's name, which is why a name can appear in it. **Settings > Organization** shows it but has no way to edit it, and renaming your organization doesn't change it. See [Can I change my DocJacket subdomain?](../settings/organization-settings.mdx#can-i-change-my-docjacket-subdomain).
+
+If the address looks too personal to hand out, save it in your email as a contact with a name of your choice, such as "Start a deal", and forward to that. Only the contact's display name changes. The address behind it stays the same.
 
 ## What to send
 
@@ -4696,7 +4720,7 @@ The hero has two styles, set by **Hero style**:
 - **Portrait photo — full-bleed hero** — one large photo across the top of the page.
 - **Cover band — cover strip + round avatar** — a short strip across the top with your headshot in a circle below it.
 
-### Image size
+### What size does my hero image need to be?
 
 Uploads can be JPEG, PNG, WebP, or GIF, up to 8 MB.
 
@@ -4719,7 +4743,9 @@ Recommended sizes:
 - **Cover band, band options** — a wide image about **1280 × 240 px**, with nothing important near the top or bottom.
 - **Full image — no crop** — any width of **1280 px or more**, at your design's own shape. The whole image shows on every screen size, scaled to fit the page width. Use this for a pre-made banner, such as one designed in Canva.
 
-### Hero image looks darker at the top and bottom
+### Why is my hero image darker on the edges, and how do I fix it?
+
+Short answer: the dark shading over the hero can't be dialed up or down, but it only appears when your logo or your name and tagline sit on top of the photo. Turn those off and your image shows as uploaded. The steps are below.
 
 DocJacket adds a dark shading over the hero photo so white text on top of it stays readable. On the **Portrait photo** hero the shading is light at the very top, clear through the upper middle, and gets much darker toward the bottom. Any text that is part of your image, such as a tagline designed into a banner, gets darkened if it sits near the top or bottom edge.
 
@@ -11614,6 +11640,14 @@ From here, you can:
 - Review the DocJacket subdomain
 - Confirm whether a custom domain is verified
 
+## Can I change my DocJacket subdomain?
+
+No. The subdomain (the `your-name` part of `your-name.docjacket.com`) is chosen when the account is first set up. **Settings > Organization** shows it as read-only text, with no edit field, so it can't be changed from there, and changing your organization name later does not change it.
+
+Two things are built from it, so they stay the same too: your Front Door address, and your email addresses for [starting a deal by email](../transactions/start-a-deal-by-email.mdx).
+
+If what you want is your own web address instead of `.docjacket.com`, connect a custom domain under **Front Door > Domain**. See [Branding and Domains](../front-door/branding-and-domains.md#custom-domain).
+
 ## Report branding
 
 Organization settings include report-specific branding controls:
@@ -12655,6 +12689,14 @@ Use **Email Notifications** to decide whether DocJacket sends notification email
 - **System alerts** — Account, billing, and AI action alerts
 
 Turn off **Email Notifications** if you do not want notification emails. In-app notifications can still appear if that separate setting is enabled.
+
+## Can I turn off text alerts when a document is approved?
+
+DocJacket doesn't send a text message when a document is approved, so there is no text alert to turn off. When a document is approved, the person who uploaded it gets a **Document Approved** notification in the bell, plus an email. Nobody is notified about their own approval: if you uploaded the document and approve it yourself, you get neither.
+
+To stop the **Document Approved** email, go to **Settings > Notifications**, make sure **Email Notifications** is on, and untick **Document activity** (new uploads, approvals, rejections). Turning off **Email Notifications** stops every notification email instead. The same **Document activity** box also covers document rejections and new uploads.
+
+If the texts you're seeing come from a deal's group text or from a client replying, those are separate from document approvals. See [SMS settings](./sms-settings.md).
 
 ## Morning Briefing
 
