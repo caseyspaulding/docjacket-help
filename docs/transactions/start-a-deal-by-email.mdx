@@ -1,7 +1,7 @@
 ---
 sidebar_label: Start a Deal by Email
 sidebar_position: 2.5
-description: Forward a signed contract to your organization's new-deal address and DocJacket reads it and creates the deal — or asks you to approve it — then helps you pick the side and playbook.
+description: Forward a signed contract to your organization's new-deal address and DocJacket reads it and creates the deal — or asks you to approve it, or tells you why it couldn't — then helps you pick the side and playbook.
 ---
 
 # Start a Deal by Email
@@ -31,12 +31,13 @@ If the address looks too personal to hand out, save it in your email as a contac
 ## What to send
 
 - **Attach the signed contract as a PDF.** Use a purchase agreement or a listing agreement with the property address on it.
+- **Forwarding an email "as an attachment" works too.** If you use **Forward as attachment** in Gmail or Outlook, or your scanner sends the scan inside an email, DocJacket opens that forwarded email and reads the PDFs inside it.
 - You can attach more than one PDF, for example the contract and its disclosures. DocJacket reads them as one packet, takes the deal's details from the contract, and files every attachment on the new deal.
 - An amendment or disclosure **on its own** doesn't start a deal. Forward those to the deal instead.
 
 ## What happens next
 
-DocJacket reads the contract, which usually takes a minute or two. While it reads, your team's notification says **Reading the contract from …**. Then one of two things happens.
+DocJacket reads the contract, which usually takes a minute or two. While it reads, your team's notification says **Reading the contract from …**. Then one of three things happens: the deal is created, a proposal waits for your approval, or you're told why no deal could be started.
 
 ### Sent by someone on your team: the deal is created
 
@@ -54,9 +55,23 @@ Sometimes DocJacket won't create the deal on its own. It makes a **proposal** in
 - One of the attached documents couldn't be read.
 - An attached document names a different property.
 - The property address couldn't be read from the contract itself.
+- **A deal at this address already exists.** The proposal names the existing deal so you can file the email there instead, and DocJacket asks **Create a second deal anyway?** before it creates another one. It recognizes the property even when your deal stores just the street line and the contract has the full address.
 - The contract has date terms that need a person to review them.
 
 Nothing is lost either way: the contract has been read, and approving the proposal creates the deal. Proposals also appear in the [Review queue](../operations/pending-review.md) (the document-tasks icon in the top bar), and on the email in your **Inbox**.
+
+### When no deal can be started
+
+If DocJacket can't start a deal from the email, it tells you why with a notification. It never just stays quiet. Each notification opens the email in your **Inbox**.
+
+| Notification | What it means | What to do |
+|---|---|---|
+| **We didn't find a PDF in a forwarded email** | The email had no PDF attached, and none inside a forwarded email either | Attach the signed contract as a PDF and send it again |
+| **We didn't find a contract in a forwarded email** | The PDFs were read, but none of them is a purchase or listing agreement, for example only an addendum | Forward the signed contract. Send amendments and disclosures to the deal instead |
+| **We couldn't find the property address** | The contract was read, but it has no address DocJacket could use | Check the contract has the property address filled in, or create the deal by hand |
+| **We couldn't read a forwarded contract** | The document couldn't be read, even after DocJacket tried again | Open the email in your Inbox and use **Read it again**, or send a clearer copy |
+
+If the document reader has a brief hiccup, DocJacket tries again on its own a few minutes later before it tells you it couldn't read the contract.
 
 ## The new-deal pop-up
 
@@ -85,7 +100,7 @@ Good to know:
 - Every **owner**, **admin**, and **transaction coordinator** in your organization.
 - **Brokers** are notified only about contracts they forwarded themselves.
 
-Each of them gets a bell notification, **New deal from email needs review** or **New deal created from email**, and an email if **Transaction updates** is turned on under **Settings › Notifications**.
+Each of them gets a bell notification, **New deal from email needs review** or **New deal created from email** (or one of the [notifications above](#when-no-deal-can-be-started) when no deal could be started), and an email if **Transaction updates** is turned on under **Settings › Notifications**.
 
 A team member who can't approve deals still sees the pop-up for a contract they sent. It tells them an admin needs to approve it.
 
@@ -99,7 +114,8 @@ A team member who can't approve deals still sees the pop-up for a contract they 
 
 | What you see | Why | What to do |
 |---|---|---|
-| Nothing happened | The email had no PDF, or only an amendment or disclosure | Forward the signed contract as a PDF |
+| **We didn't find a PDF** or **We didn't find a contract** | No PDF arrived, or only an amendment or disclosure | Forward the signed contract as a PDF. See [When no deal can be started](#when-no-deal-can-be-started) |
+| Nothing happened at all, not even a notification | Check you sent it to the **new-deal** address (with `-newdeal`), not your plain intake address | Resend it to your new-deal address |
 | The email says **This contract wasn't read automatically** | Your plan's AI extraction limit was reached, or more than 15 were sent from one address that day | Click **Read this contract** on the email (for the extraction limit, once it frees up or after upgrading) |
 | A proposal instead of a deal | See [the reasons above](#anything-else-a-proposal-for-you-to-approve) | Pick the side in the pop-up, or approve it in the Review queue |
 | The deal was created as Closed | The contract's closing date is more than 30 days past | That's expected for back-filing an old deal; change the status on the deal if it's still active |
