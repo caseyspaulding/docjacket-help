@@ -9,7 +9,7 @@ description: Subscribe to DocJacket events over webhooks — manage subscription
 
 # Webhooks
 
-Webhooks push real-time events to your endpoint — a new transaction, a completed extraction, a viewed disclosure — so you can react instead of polling. Send them to Zapier, Slack, your own service, or any HTTPS URL.
+Webhooks push real-time events to your endpoint — a new transaction, a completed extraction, a viewed disclosure — so you can react instead of polling. Send them to Zapier, Slack, your CRM, your own service, or any HTTPS URL. Want deal events in GoHighLevel or another CRM? See [Send deal data to a CRM](/docs/integrations/send-deal-data-to-crm).
 
 You can manage webhook subscriptions two ways:
 
@@ -102,7 +102,69 @@ Every delivery is a `POST` with a JSON body in this envelope:
 }
 ```
 
-Payloads are **thin** — they carry IDs and a few key fields. Fetch the full resource from the REST API using the IDs when you need more. Fields may be added over time; ignore ones you don't recognize.
+The shape of `data` depends on the event. Most events are **thin**: they carry IDs and a few key fields, and you fetch the full resource from the REST API when you need more. The exception is the deal events (`transaction.created`, `transaction.status_changed`, `transaction.closed`), which also carry a full `deal` snapshot (address, status, price, closing date, TC fee, commissions, office, assignee, agents and custom fields), so you rarely need a follow-up call. Fields may be added over time; ignore ones you don't recognize.
+
+### Deal events
+
+Here is a `transaction.status_changed` delivery:
+
+```json
+{
+  "eventType": "transaction.status_changed",
+  "eventId": "3f2a91c7-5d64-4e18-9b03-8c7d1e4a6f52",
+  "timestamp": "2026-08-04T15:42:07.1183940Z",
+  "organizationId": "org-9fc8a1d2e3b4",
+  "userId": "1c9e6b40-72af-4d35-8e21-5b0a3f7c9d16",
+  "userName": "Jordan Rivera",
+  "data": {
+    "id": "8a4c2e10-9f5b-4713-b6d8-0e2a7c5f3149",
+    "oldStatus": "Under Contract",
+    "newStatus": "Closed",
+    "deal": {
+      "id": "8a4c2e10-9f5b-4713-b6d8-0e2a7c5f3149",
+      "address": "144 Peachtree Walk NE",
+      "city": "Atlanta",
+      "state": "GA",
+      "zip": "30309",
+      "county": "Fulton",
+      "side": "Buyer",
+      "type": "Purchase",
+      "status": "Closed",
+      "purchasePrice": 485000,
+      "closingDate": "2026-09-15",
+      "tcFee": 395,
+      "commissionAmount": 14550,
+      "commissionRate": 3,
+      "totalCommissionAmount": 29100,
+      "buyerAgentCommissionAmount": 14550,
+      "sellerAgentCommissionAmount": 14550,
+      "buyerAgentCommissionRate": 3,
+      "sellerAgentCommissionRate": 3,
+      "office": {
+        "id": "c3a8e1f4-7b20-4d59-a6e3-9f0b2d4c8e17",
+        "name": "Peachtree Realty Group"
+      },
+      "assignedTo": {
+        "id": "1c9e6b40-72af-4d35-8e21-5b0a3f7c9d16",
+        "name": "Jordan Rivera",
+        "email": "jordan@example.com"
+      },
+      "agents": [
+        { "role": "listing", "name": "Sam Patel", "email": "sam@example.com", "brokerage": "Northside Homes", "phone": "404-555-0142" },
+        { "role": "buyer", "name": "Alex Chen", "email": "alex@example.com", "brokerage": "Peachtree Realty Group", "phone": "404-555-0187" }
+      ],
+      "customFields": {
+        "lockbox_code": "4417",
+        "hoa_transfer_fee": null
+      }
+    }
+  }
+}
+```
+
+Commission rates are in percentage points (`3` means 3%). `commissionAmount` and `commissionRate` are for your side of the deal; on a dual-agency deal they add both sides together. `customFields` holds only your active custom fields, keyed by merge code; each value is the stored text, or `null` when unset.
+
+A deal that moves into a closed status sends `transaction.status_changed` and `transaction.closed`; both carry the same `deal` snapshot. For a plain-language walkthrough of sending these to a CRM, with a table of every `deal` field, see [Send deal data to GoHighLevel or another CRM](/docs/integrations/send-deal-data-to-crm).
 
 Each request also carries these headers:
 

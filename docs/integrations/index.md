@@ -31,6 +31,11 @@ DocJacket connects with the tools you already use. Set up integrations in **Sett
 - Track monthly usage and buy additional credits
 - Send and receive direct text messages from transaction threads
 
+### GoHighLevel and other CRMs
+- Send deal events (created, status changed, closed) to GoHighLevel, or any CRM that accepts a webhook
+- Use Zapier or Make for CRMs without webhook support
+- See [Send deal data to a CRM](./send-deal-data-to-crm.md)
+
 ### Developer API & webhooks
 Building your own integration? The [Developer API](/docs/api) covers the REST API, webhooks, and the partner API in depth.
 
@@ -39,4 +44,5 @@ Building your own integration? The [Developer API](/docs/api) covers the REST AP
 - [Google Workspace](./google-workspace.mdx) — Connect Gmail, Drive, Calendar, and Contacts
 - [Microsoft Outlook](./microsoft-outlook.mdx) — Connect Outlook Mail, Calendar, and OneDrive
 - [Follow Up Boss](./follow-up-boss.md) — Connect Follow Up Boss, manage sync settings, and review activity
+- [Send deal data to a CRM](./send-deal-data-to-crm.md) — Send deal events to GoHighLevel or any CRM with a webhook
 - [Developer API](/docs/api) — REST API, webhooks, and the partner API
