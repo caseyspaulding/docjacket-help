@@ -98,7 +98,7 @@ Each row names its property, so an agent working five deals can see everything o
 
 In this example the agent added **Chase HOA docs from the seller** themselves — their own tasks are marked **Yours** and carry edit and delete controls. Everything else came from the coordinator, so the agent can complete it but not change it.
 
-A task appears here on the same terms it appears anywhere else in the portal: it must be portal-visible (the eye icon on the task), and if you scoped it to specific portal contacts, only those contacts see it. Completed work shows in a collapsed **Completed** group when you have turned on **Show completed tasks in the portal**.
+A task appears here on the same terms it appears anywhere else in the portal: it must be portal-visible (the eye icon on the task), and if you scoped it to specific portal contacts, only those contacts see it. Tasks you assign to the agent also appear here marked **For you**, even when the eye is off. The agent selects **Mark done**, and you confirm it. See [Assign a task to a buyer, seller or agent](../tasks/assign-tasks-to-parties.md). Completed work shows in a collapsed **Completed** group when you have turned on **Show completed tasks in the portal**.
 
 ## Letting agents manage tasks
 
