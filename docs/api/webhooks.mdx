@@ -99,7 +99,7 @@ Every delivery is a `POST` with a JSON body in this envelope:
 }
 ```
 
-The shape of `data` depends on the event. Most events are **thin**: they carry IDs and a few key fields, and you fetch the full resource from the REST API when you need more. The exception is the deal events (`transaction.created`, `transaction.status_changed`, `transaction.closed`), which also carry a full `deal` snapshot (address, status, price, closing date, TC fee, office, assignee and agents), so you rarely need a follow-up call. Fields may be added over time; ignore ones you don't recognize.
+The shape of `data` depends on the event. Most events are **thin**: they carry IDs and a few key fields, and you fetch the full resource from the REST API when you need more. The exception is the deal events (`transaction.created`, `transaction.status_changed`, `transaction.closed`), which also carry a full `deal` snapshot (address, status, price, closing date, TC fee, commissions, office, assignee, agents and custom fields), so you rarely need a follow-up call. Fields may be added over time; ignore ones you don't recognize.
 
 ### Deal events
 
@@ -130,6 +130,13 @@ Here is a `transaction.status_changed` delivery:
       "purchasePrice": 485000,
       "closingDate": "2026-09-15",
       "tcFee": 395,
+      "commissionAmount": 14550,
+      "commissionRate": 3,
+      "totalCommissionAmount": 29100,
+      "buyerAgentCommissionAmount": 14550,
+      "sellerAgentCommissionAmount": 14550,
+      "buyerAgentCommissionRate": 3,
+      "sellerAgentCommissionRate": 3,
       "office": {
         "id": "c3a8e1f4-7b20-4d59-a6e3-9f0b2d4c8e17",
         "name": "Peachtree Realty Group"
@@ -140,13 +147,19 @@ Here is a `transaction.status_changed` delivery:
         "email": "jordan@example.com"
       },
       "agents": [
-        { "role": "listing", "name": "Sam Patel", "email": "sam@example.com", "brokerage": "Northside Homes" },
-        { "role": "buyer", "name": "Alex Chen", "email": "alex@example.com", "brokerage": "Peachtree Realty Group" }
-      ]
+        { "role": "listing", "name": "Sam Patel", "email": "sam@example.com", "brokerage": "Northside Homes", "phone": "404-555-0142" },
+        { "role": "buyer", "name": "Alex Chen", "email": "alex@example.com", "brokerage": "Peachtree Realty Group", "phone": "404-555-0187" }
+      ],
+      "customFields": {
+        "lockbox_code": "4417",
+        "hoa_transfer_fee": null
+      }
     }
   }
 }
 ```
+
+Commission rates are in percentage points (`3` means 3%). `commissionAmount` and `commissionRate` are for your side of the deal; on a dual-agency deal they add both sides together. `customFields` holds only your active custom fields, keyed by merge code; each value is the stored text, or `null` when unset.
 
 A deal that moves into a closed status sends `transaction.status_changed` and `transaction.closed`; both carry the same `deal` snapshot. For a plain-language walkthrough of sending these to a CRM, with a table of every `deal` field, see [Send deal data to GoHighLevel or another CRM](/docs/integrations/send-deal-data-to-crm).
 

@@ -10265,7 +10265,7 @@ Every delivery is a `POST` with a JSON body in this envelope:
 }
 ```
 
-The shape of `data` depends on the event. Most events are **thin**: they carry IDs and a few key fields, and you fetch the full resource from the REST API when you need more. The exception is the deal events (`transaction.created`, `transaction.status_changed`, `transaction.closed`), which also carry a full `deal` snapshot (address, status, price, closing date, TC fee, office, assignee and agents), so you rarely need a follow-up call. Fields may be added over time; ignore ones you don't recognize.
+The shape of `data` depends on the event. Most events are **thin**: they carry IDs and a few key fields, and you fetch the full resource from the REST API when you need more. The exception is the deal events (`transaction.created`, `transaction.status_changed`, `transaction.closed`), which also carry a full `deal` snapshot (address, status, price, closing date, TC fee, commissions, office, assignee, agents and custom fields), so you rarely need a follow-up call. Fields may be added over time; ignore ones you don't recognize.
 
 ### Deal events
 
@@ -10296,6 +10296,13 @@ Here is a `transaction.status_changed` delivery:
       "purchasePrice": 485000,
       "closingDate": "2026-09-15",
       "tcFee": 395,
+      "commissionAmount": 14550,
+      "commissionRate": 3,
+      "totalCommissionAmount": 29100,
+      "buyerAgentCommissionAmount": 14550,
+      "sellerAgentCommissionAmount": 14550,
+      "buyerAgentCommissionRate": 3,
+      "sellerAgentCommissionRate": 3,
       "office": {
         "id": "c3a8e1f4-7b20-4d59-a6e3-9f0b2d4c8e17",
         "name": "Peachtree Realty Group"
@@ -10306,13 +10313,19 @@ Here is a `transaction.status_changed` delivery:
         "email": "jordan@example.com"
       },
       "agents": [
-        { "role": "listing", "name": "Sam Patel", "email": "sam@example.com", "brokerage": "Northside Homes" },
-        { "role": "buyer", "name": "Alex Chen", "email": "alex@example.com", "brokerage": "Peachtree Realty Group" }
-      ]
+        { "role": "listing", "name": "Sam Patel", "email": "sam@example.com", "brokerage": "Northside Homes", "phone": "404-555-0142" },
+        { "role": "buyer", "name": "Alex Chen", "email": "alex@example.com", "brokerage": "Peachtree Realty Group", "phone": "404-555-0187" }
+      ],
+      "customFields": {
+        "lockbox_code": "4417",
+        "hoa_transfer_fee": null
+      }
     }
   }
 }
 ```
+
+Commission rates are in percentage points (`3` means 3%). `commissionAmount` and `commissionRate` are for your side of the deal; on a dual-agency deal they add both sides together. `customFields` holds only your active custom fields, keyed by merge code; each value is the stored text, or `null` when unset.
 
 A deal that moves into a closed status sends `transaction.status_changed` and `transaction.closed`; both carry the same `deal` snapshot. For a plain-language walkthrough of sending these to a CRM, with a table of every `deal` field, see [Send deal data to GoHighLevel or another CRM](/docs/integrations/send-deal-data-to-crm).
 
@@ -11667,7 +11680,7 @@ If you track something the standard deal fields do not cover, such as **Client T
 2. Create the field with a **Field Name**. DocJacket suggests a **Merge Code** from the name; it cannot be changed after the field is created.
 3. Fill the field in on your deals.
 
-Every custom field has a merge code, and the deal's merge fields endpoint (see [Pulling more data](#pulling-more-data-than-the-webhook-carries)) returns custom fields along with every other smart field. Today, use that endpoint to read custom field values into your CRM.
+Every custom field has a merge code. Custom field values now arrive in the webhook itself, under `customFields.<merge code>` (for example `data.deal.customFields.client_type`), so your CRM needs no extra API call to read them. Only your active custom fields are included. The value is the text stored on the deal, or `null` if the field is not filled in on that deal.
 
 ## What the CRM receives
 
@@ -11714,12 +11727,24 @@ These are the fields inside `deal`. In your CRM's mapping screen they usually ap
 | `agents[].name` | text | Agent's name |
 | `agents[].email` | text | Agent's email |
 | `agents[].brokerage` | text | Agent's brokerage |
+| `agents[].phone` | text | Agent's phone number |
+| `commissionAmount` | number | Commission amount for your side of the deal. On a dual-agency deal this is the buyer and seller amounts added together |
+| `commissionRate` | number | Commission rate for your side, in percentage points (`3` means 3%). On a dual-agency deal this is the two sides' rates added together |
+| `totalCommissionAmount` | number | Total commission on the deal, across both sides |
+| `buyerAgentCommissionAmount` | number | Commission amount for the buyer's agent |
+| `sellerAgentCommissionAmount` | number | Commission amount for the seller's agent |
+| `buyerAgentCommissionRate` | number | Buyer's agent commission rate, in percentage points (`3` means 3%) |
+| `sellerAgentCommissionRate` | number | Seller's agent commission rate, in percentage points (`3` means 3%) |
+| `customFields` | object | Your active custom fields, keyed by merge code |
+| `customFields.<merge code>` | text | The value stored for that custom field on this deal, or `null` if it is not filled in. Always text, even for number or date fields |
+
+The commission fields are `null` when no commission is recorded on the deal.
 
 Because `agents` is a list, some CRMs need an extra step to read it. If yours does not handle lists, Zapier or Make can pick out the listing agent and the buyer agent for you.
 
 ## Pulling more data than the webhook carries
 
-For anything the webhook does not include, the API returns every smart field and custom field for a deal:
+For anything the webhook does not include, the API returns every smart field and custom field for a deal (custom fields are also in the webhook under `customFields`):
 
 ```
 GET https://api.docjacket.com/api/v1/transactions/{id}/merge-fields

@@ -64,7 +64,7 @@ If you track something the standard deal fields do not cover, such as **Client T
 2. Create the field with a **Field Name**. DocJacket suggests a **Merge Code** from the name; it cannot be changed after the field is created.
 3. Fill the field in on your deals.
 
-Every custom field has a merge code, and the deal's merge fields endpoint (see [Pulling more data](#pulling-more-data-than-the-webhook-carries)) returns custom fields along with every other smart field. Today, use that endpoint to read custom field values into your CRM.
+Every custom field has a merge code. Custom field values now arrive in the webhook itself, under `customFields.<merge code>` (for example `data.deal.customFields.client_type`), so your CRM needs no extra API call to read them. Only your active custom fields are included. The value is the text stored on the deal, or `null` if the field is not filled in on that deal.
 
 ## What the CRM receives
 
@@ -111,12 +111,24 @@ These are the fields inside `deal`. In your CRM's mapping screen they usually ap
 | `agents[].name` | text | Agent's name |
 | `agents[].email` | text | Agent's email |
 | `agents[].brokerage` | text | Agent's brokerage |
+| `agents[].phone` | text | Agent's phone number |
+| `commissionAmount` | number | Commission amount for your side of the deal. On a dual-agency deal this is the buyer and seller amounts added together |
+| `commissionRate` | number | Commission rate for your side, in percentage points (`3` means 3%). On a dual-agency deal this is the two sides' rates added together |
+| `totalCommissionAmount` | number | Total commission on the deal, across both sides |
+| `buyerAgentCommissionAmount` | number | Commission amount for the buyer's agent |
+| `sellerAgentCommissionAmount` | number | Commission amount for the seller's agent |
+| `buyerAgentCommissionRate` | number | Buyer's agent commission rate, in percentage points (`3` means 3%) |
+| `sellerAgentCommissionRate` | number | Seller's agent commission rate, in percentage points (`3` means 3%) |
+| `customFields` | object | Your active custom fields, keyed by merge code |
+| `customFields.<merge code>` | text | The value stored for that custom field on this deal, or `null` if it is not filled in. Always text, even for number or date fields |
+
+The commission fields are `null` when no commission is recorded on the deal.
 
 Because `agents` is a list, some CRMs need an extra step to read it. If yours does not handle lists, Zapier or Make can pick out the listing agent and the buyer agent for you.
 
 ## Pulling more data than the webhook carries
 
-For anything the webhook does not include, the API returns every smart field and custom field for a deal:
+For anything the webhook does not include, the API returns every smart field and custom field for a deal (custom fields are also in the webhook under `customFields`):
 
 ```
 GET https://api.docjacket.com/api/v1/transactions/{id}/merge-fields
