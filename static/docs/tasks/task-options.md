@@ -49,6 +49,8 @@ A portal-visible task also appears in the agent's **My Tasks** list on their por
 
 Leaving contact selection empty means every portal contact on the deal can see the task, and any of them can complete it when that setting is on. Select specific contacts when it should be one person's job.
 
+To give a task to one person without turning the eye on for everyone, assign it instead. See [Assign a task to a buyer, seller or agent](./assign-tasks-to-parties.md).
+
 ## Report Visibility
 
 Tasks also carry a second eye for **Transaction Summaries**. Every task shows on generated and scheduled Transaction Summaries by default; turn **Show on Transaction Summaries** off to keep a task out of the report's task section without touching its portal visibility. The two eyes are independent — a task can be portal-visible but report-hidden, or the reverse.
