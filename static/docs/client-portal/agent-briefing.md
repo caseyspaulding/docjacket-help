@@ -29,7 +29,7 @@ That's it — the briefing sends itself from then on, always reflecting the curr
 
 ## What's included — and what isn't
 
-The briefing shows only **portal-visible** tasks — the same ones the agent sees on their portal hub. The portal eye on each task stays your control over what agents see; anything you keep internal never appears in a briefing.
+The briefing shows the same tasks the agent sees on their portal hub: tasks with the portal eye on, plus any task you've [assigned to that agent](../tasks/assign-tasks-to-parties.md). Anything you keep internal and haven't assigned to them never appears in a briefing.
 
 Two quiet rules keep it from becoming noise:
 
