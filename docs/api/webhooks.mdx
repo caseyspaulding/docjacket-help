@@ -66,9 +66,11 @@ Subscribe to `"*"` to receive every event type.
 | `key_date.updated` | When a key date is added or changed on a transaction |
 | `task.completed` | When a task is marked complete |
 | `task.created` | When a new task is created |
-| `transaction.closed` | When a transaction is closed |
+| `transaction.archived` | When a transaction is archived |
+| `transaction.closed` | When a transaction moves into a closed status, by any route (includes agents, office, price, TC fee and closing date) |
 | `transaction.created` | When a new transaction is created |
-| `transaction.status_changed` | When a transaction status changes |
+| `transaction.deleted` | When a transaction is deleted |
+| `transaction.status_changed` | When a transaction status changes (includes the deal snapshot) |
 | `webhook.test` | Test webhook (triggered manually) |
 
 {/* END GENERATED: webhook-events */}
