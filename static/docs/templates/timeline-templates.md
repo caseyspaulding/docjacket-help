@@ -295,11 +295,36 @@ The Playbook builder includes tools for faster setup:
 - **AI Key Date Generator** — Describe the transaction workflow and review proposed key dates before applying them.
 - **AI Task Generator** — Generate proposed tasks linked to the key dates in the Playbook.
 - **Import Tasks from CSV** — Bulk-import tasks from a spreadsheet.
-- **CSV export** — Download the Playbook structure for review or offline editing.
+- **Export** — Download the Playbook's key dates and tasks as a CSV file. See [Print or export a Playbook's key dates and tasks](#print-or-export-a-playbooks-key-dates-and-tasks).
 - **Suggested tasks** — Add common tasks for known key date types.
 
 :::warning Review AI and imported items
 Generated and CSV-imported key dates and tasks are a starting point, not a finished Playbook — review them before relying on the Playbook with clients.
+:::
+
+## Print or export a Playbook's key dates and tasks
+
+There is no Print button inside the Playbook builder. To print a Playbook — or share it, review it in a spreadsheet, or keep a copy — download it as a CSV file and print it from Excel, Google Sheets, or Numbers.
+
+**Where the CSV export button is:**
+
+1. Go to **Templates → Playbooks** and open the Playbook.
+2. Click the **Key dates** tab at the top of the builder. (The button is not on the **Combined View** or **Tasks** tabs, which is why it is easy to miss.)
+3. In the **Key Dates** panel header, next to **Add Key Date**, click **Export** — a small button with a download icon. Hovering over it shows **Download as CSV**.
+
+The file downloads straight away, named after the Playbook (for example `Florida Buyer.csv`).
+
+**What the CSV contains.** One file with **both key dates and tasks**, in two blocks:
+
+- **`# Key Dates`** — every key date in the Playbook: Order, Key Date, Side, Category, Priority, Date Rule, Anchor Field, Offset Days, Offset Direction, Day Calculation, Phase, and Required.
+- **`# Tasks`** — every task in the Playbook: Order, Task Name, Priority, Phase, Due Date Anchor, Offset Days, Direction, Conditional, Description, Template Group(s), Task Start Date Rule, and Predecessors.
+
+The export always includes every key date and every task, even if you typed something in **Filter key dates...** first. It lists the Playbook's date *rules* (for example "3 days after Effective Date") — a Playbook is a template, so there are no real calendar dates in it yet. Export works on DocJacket starter Playbooks too, even though they are read-only.
+
+The **Tasks** block uses the same column names as **Import CSV**, so you can edit the tasks in a spreadsheet and import them into another Playbook.
+
+:::tip Printing a deal's task list instead
+If what you want on paper is the task list for **one transaction** — with real due dates and completed tasks checked off — open the transaction's **Tasks** tab and click **Print**. That opens a printable checklist PDF of the deal's tasks. See [Print a task list](/docs/tasks#print-a-task-list).
 :::
 
 ## Testing a Playbook
