@@ -1,7 +1,7 @@
 ---
 sidebar_label: Getting Email Into DocJacket
 sidebar_position: 5
-description: The three ways email arrives in DocJacket, and the best-practice approach that files messages on the right deal automatically with no manual sorting.
+description: Why replies to your Gmail or Outlook don't appear on a deal by themselves, and the ways to get email and attachments onto the right transaction — the deal's DocDrop address, your intake address with a Gmail forwarding filter, and the Inbox.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/messages/getting-email-into-docjacket -->
@@ -9,69 +9,90 @@ description: The three ways email arrives in DocJacket, and the best-practice ap
 
 # Getting Email Into DocJacket
 
-There are three ways for email to land in DocJacket. They differ in one important way: **how much manual sorting you have to do afterward.** Picking the right approach is the difference between email that files itself on the correct transaction and email that piles up in a queue waiting for you to assign it.
+**Connecting Gmail (or Outlook) lets DocJacket send email as you. It does not let DocJacket read your inbox.** DocJacket only asks Google for permission to *send* mail, so it never sees what lands in your Gmail — including replies to emails you sent from a deal.
 
-This page explains all three, and which one to use.
+That is why the most common question here is: *"My Gmail replies aren't showing up on the deal."* The reply went to your Gmail inbox, and DocJacket has no way to see it until the email is sent or forwarded to a DocJacket address. This page covers the ways to do that, and where emails and attachments end up.
 
-## Best practice: send from DocJacket and let replies come back
+## Why replies land in your inbox, not on the deal
 
-**The cleanest way to get email into a deal is to send the first message from the deal.** When you send an email from a transaction's **Email** tab, DocJacket stamps it with a private reply address. When the recipient replies, that reply comes straight back to the **same transaction** — automatically attached, with no sorting on your part.
+When you send from a transaction's **Email** tab with Gmail connected, the message goes out **from your Gmail address**. A copy lands in your Gmail **Sent** folder, and **replies come back to your Gmail inbox** — exactly as if you'd sent it from Gmail yourself. Outlook works the same way. Automated emails that go out without a connected mailbox are sent by DocJacket with **Reply-To** set to your email address (or the account owner's), so those replies also go to an inbox — not to the deal.
 
-This is what we call the **reply loop**, and it is the recommended workflow:
+Either way, a reply only reaches the deal if it is also sent or forwarded to a DocJacket address. Your sent email does appear on the deal's **Email** tab; the reply doesn't, unless you use one of the options below. See [How Email Sending Works](./how-email-sending-works.mdx) for the details of sending.
 
-1. Open the transaction and go to the **Email** tab.
-2. Compose your message to the title company, agent, client, or vendor and send it.
-3. When they reply, the reply appears on that deal's timeline automatically — including any attachments they send back.
+## Option 1: CC the deal's DocDrop address
 
-Because the message is already tied to the deal, there is **nothing to assign and nothing to clean up**. Our most efficient users run almost all of their communication this way: they start threads from DocJacket, and the entire back-and-forth files itself.
+Every transaction can have its own email address, called its **DocDrop** address (also shown as the **deal email address**). Anything emailed to it is filed on that deal: the message appears on the deal's **Email** tab, and any attachments are added to the deal's **Documents**.
 
-:::tip
-The more you send from DocJacket, the more inbound email files itself. If most of your replies are landing in a queue you have to sort by hand, it usually means the original message was sent from your regular inbox instead of from the deal.
+To copy it:
+
+- On the transaction **Overview**, click **Copy DocDrop** in the toolbar at the top (it appears once the deal has a DocDrop address), or
+- Open the transaction's **Email** tab, then **Timeline**, and copy the deal email address shown at the top. If the deal doesn't have one yet, click **Generate deal email address**.
+
+Then:
+
+- **CC the DocDrop address** when you email the title company, lender, agent, or client. When they **Reply All**, their reply — and anything they attach — goes to the deal too. (A plain **Reply** only goes to you, so ask regular correspondents to reply all, or forward their reply as described next.)
+- **Give the address to people who send you documents**, so their files go straight to the deal.
+
+See [DocDrop](../documents/docdrop.mdx) for more.
+
+## Option 2: Forward a single email to the deal
+
+If a reply or document landed only in your Gmail, **forward that one email to the deal's DocDrop address**. The message and its attachments are filed on that transaction. This is the quickest fix for an email you can already see belongs to a specific deal.
+
+## Option 3: Auto-forward your Gmail to your intake address
+
+Your organization also has one **intake address** for all your deals. Set Gmail to forward deal mail to it automatically, and you don't have to forward anything by hand.
+
+**Find your intake address** in either place:
+
+- **Settings → Profile**, in the **Email Intelligence** section, under **Organization Intake Email**, or
+- **More → Inbox** in the left sidebar — the address appears next to **Forward to** at the top, with a **Copy intake email** button.
+
+**What happens to forwarded mail:**
+
+- **Replies to emails you sent from a deal file themselves.** If you sent the email from DocJacket through your connected Gmail, DocJacket recognizes the reply from its email threading headers and files it on that same deal — message on the **Email** tab, attachments in **Documents** — with no sorting.
+- **Other mail is matched to a deal when DocJacket can.** It suggests a transaction (or links it automatically when it is confident), based on whether the sender has been linked to a deal before and what the message is about.
+- **Anything it can't match waits in More → Inbox.** Open the email and click **Assign transaction**, pick the deal, and it is filed there with its attachments. See [Intake Queue](../operations/intake-queue.md).
+
+**Setting up the Gmail forwarding filter.** These steps happen in Gmail, not DocJacket:
+
+1. In Gmail, open **Settings** (the gear) → **See all settings** → **Forwarding and POP/IMAP**, click **Add a forwarding address**, and paste your intake address.
+2. Gmail sends a confirmation to that address before it will forward anything. Because the intake address belongs to DocJacket, DocJacket emails the confirmation link to your **account owner** with the subject **Confirm your email forwarding to DocJacket**. Click the link in that email to turn forwarding on.
+3. Back in Gmail **Settings**, open **Filters and Blocked Addresses** → **Create a new filter**. Describe the mail you want in DocJacket — for example, messages from your title companies, lenders, and agents — then choose **Forward it to** your intake address and save.
+
+:::tip Filter, don't forward everything
+Forwarding your **whole** mailbox works, but newsletters, marketing, and other non-deal mail will pile up in the Inbox for you to dismiss. A filter that only forwards deal-related mail keeps the Inbox short. Replies to emails you sent from DocJacket are filed on their deal either way.
 :::
-
-## Forward a single email to a specific deal
-
-When someone emails you outside of DocJacket — for example a thread you didn't start — you can forward that one message onto the right transaction using its **deal email address**.
-
-1. Open the transaction and go to the **Email** tab, then the **Timeline**.
-2. Copy the **deal email address** (or click **Generate deal email address** if the deal doesn't have one yet).
-3. Forward the outside email to that address.
-
-The message and its attachments file directly onto that transaction. This is the right tool for one-off messages that belong to a deal you can identify.
-
-## Forward your whole mailbox to the intake queue
-
-You can also forward mail to your organization's **intake address** (shown on the **Inbox** / intake queue, with a **Copy intake email** button). Anything sent there lands in a shared **intake queue** for your organization, where you assign each message to the correct deal.
-
-This is useful as a catch-all, but it comes with a trade-off: **everything you forward — including newsletters, marketing, and email-signature images — lands in the queue, and you have to assign each item by hand.** If you auto-forward an entire mailbox here, expect to spend time sorting.
-
-Use the intake queue as a **fallback**, not your primary method:
-
-- Great for: occasional messages where you can't tell which deal they belong to yet, or capturing documents before a transaction exists.
-- Not great as: your only way to get email in. Auto-forwarding a full mailbox here creates a large sorting burden and mixes real deal correspondence with noise.
 
 ## Start a new deal from a contract
 
-To **start a deal**, don't use the intake address: forward the signed contract to your **new-deal address** (also on the **Inbox** page, next to **Start a deal from a signed contract**). DocJacket reads the contract and creates the deal, or asks you to approve it. See [Start a Deal by Email](../transactions/start-a-deal-by-email.mdx).
+To **start a deal**, don't use the intake address: forward the signed contract to your **new-deal address** (on the **Inbox** page next to **Start a deal from a signed contract**, and in **Settings → Profile** under **Start a Deal from a Contract**). DocJacket reads the contract and creates the deal, or asks you to approve it. Send one contract at a time — this address is not for mailbox rules. See [Start a Deal by Email](../transactions/start-a-deal-by-email.mdx).
+
+## Where attachments go
+
+However an email reaches a deal — sent to its DocDrop address, filed automatically from the intake address, or assigned from the Inbox — **its attachments are added to that transaction's Documents tab**, and the email itself appears on the deal's **Email** tab.
+
+If attachments aren't showing on a deal, check that the email actually reached DocJacket:
+
+- An email that only went to your Gmail (a plain reply) never reaches DocJacket — forward it to the deal's DocDrop address.
+- An email forwarded to the intake address that DocJacket couldn't match is waiting in **More → Inbox** — assign it to the deal and its attachments come along.
+
+DocJacket does **not** automatically run extraction on these files; you choose when to start extraction from the deal's documents.
 
 ## Which one should I use?
 
 | Situation | Best approach |
 | --- | --- |
-| Starting a conversation on a deal | **Send from the deal** — replies come back automatically |
-| A reply to something you sent from DocJacket | Nothing to do — it files itself |
-| A one-off outside email that clearly belongs to a deal | **Forward to the deal email address** |
+| You're emailing a party about a deal and want their reply on the deal | **CC the deal's DocDrop address**, and ask them to Reply All |
+| A reply or document already landed only in your Gmail | **Forward it to the deal's DocDrop address** |
+| You want deal mail to reach DocJacket without forwarding by hand | **Gmail filter forwarding to your intake address** |
+| Forwarded mail DocJacket couldn't match | **More → Inbox → Assign transaction** |
 | A signed contract for a deal that doesn't exist yet | **Forward to the new-deal address** — DocJacket sets up the deal |
-| Mail you can't yet match to a deal, or docs before a deal exists | **Forward to the intake address** and assign it later |
-
-**Rule of thumb:** the more communication you *start* inside DocJacket, the less sorting you do later. Reach for forwarding when you're bringing in a thread you didn't begin — and lean on the intake queue only as a catch-all.
-
-## Attachments
-
-However an email arrives, its attachments come with it. When you assign an intake email to a deal — or when a reply lands on a deal it's already tied to — the attached files are added to that transaction's documents, pointing at the same file that arrived. DocJacket does **not** automatically run extraction on these files; extraction is always something you choose to start, so nothing is processed without your say-so.
 
 ## Related
 
+- [How Email Sending Works](./how-email-sending-works.mdx) — which mailbox sends, and where replies go
 - [Sending Emails](./sending-emails.mdx) — compose and send from a transaction
 - [Transaction Email](./inbox.mdx) — the Inbox, Timeline, Scheduled, and Notes tabs
-- [Email Templates](./email-templates.md) — reusable templates with smart fields
+- [DocDrop](../documents/docdrop.mdx) — a transaction's own email address
+- [Intake Queue](../operations/intake-queue.md) — assigning forwarded email to deals

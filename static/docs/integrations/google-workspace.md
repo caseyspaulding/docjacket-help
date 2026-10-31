@@ -23,6 +23,8 @@ Connect Gmail to send transaction email from your Gmail account. Gmail powers:
 - Drafts and sent-message history stored with the transaction in DocJacket
 - Attachment sending from transaction documents or uploaded files
 
+Gmail is **send-only**: DocJacket asks Google only for permission to send, and never reads your inbox. Replies to email you send from a deal come back to your Gmail inbox, not to the deal. To get replies and attachments onto a deal, CC the deal's DocDrop address or forward mail to your intake address — see [Getting Email Into DocJacket](../messages/getting-email-into-docjacket.mdx).
+
 Gmail also supports multiple connected accounts. After Gmail is connected, click **Manage accounts** to add another Gmail account, choose the primary account, or remove an account.
 
 For how sent mail is attributed and where replies go, see [How Email Sending Works](../messages/how-email-sending-works.mdx).

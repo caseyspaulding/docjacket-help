@@ -20,7 +20,7 @@ Use it for:
 
 ## Where to find it
 
-Open **Inbox** from the left sidebar. The page includes conversation filters for **All**, **Unread**, and **Unassigned**, plus type chips for **Forms** and **Email**.
+Open **More → Inbox** from the left sidebar. The page includes conversation filters for **All**, **Unread**, and **Unassigned**, plus type chips for **Forms** and **Email**.
 
 Use **Unassigned** when you want to focus on routing work that is not linked to a transaction yet. Use the type chips when you only want to process one inbound channel.
 

@@ -48,6 +48,8 @@ Because the email is sent from your real mailbox, replies go straight back to
 like any other email. (Sent and received messages from a deal are also listed on
 the transaction's **Email** tab for reference.)
 
+Because DocJacket never reads your inbox, a reply that only went to Gmail or Outlook does **not** appear on the deal by itself. To file replies and their attachments on the deal, CC the deal's DocDrop address or auto-forward deal mail to your intake address — see [Getting Email Into DocJacket](./getting-email-into-docjacket.mdx).
+
 ## Requiring a connected mailbox
 
 Organizations that want every deal email to come from a real mailbox — never a
