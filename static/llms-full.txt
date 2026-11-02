@@ -6426,7 +6426,7 @@ The list groups templates by stage and shows each template's active/draft status
 
 1. Go to **Templates > Email Templates** in the sidebar
 2. Click **New Template**
-3. Enter the template name and category
+3. Enter the template name and category. Pick from the default categories (Welcome, Reminder, Request, Confirmation, Update, Notification), listed in [Email and Automation Settings](../settings/email-and-automation.md#email-settings), or add your own category in **Settings > Email**
 4. Choose the side, audience, stage, and tone if helpful
 5. Choose whether the template is internal only
 6. Set default recipient roles or recipient rules
@@ -12975,6 +12975,19 @@ The **Emails & Alerts** group controls template organization, automated send tim
 Use **Settings > Email** to organize email templates into categories. Categories can have a name, description, color, and active or inactive status.
 
 Each category card shows the category color, name, description, active/inactive badge, and how many templates use that category. If your organization does not have categories yet, DocJacket creates the default category set when the page loads.
+
+The default categories are:
+
+| Category | Fits |
+|---|---|
+| Welcome | Intro and kick-off emails |
+| Reminder | Deadline nudges |
+| Request | Asking a party for something |
+| Confirmation | Confirming a date or receipt |
+| Update | Status updates and post-closing thank-yous |
+| Notification | Automated notices |
+
+Categories only organize and filter your templates. They do not change who receives an email or when it sends. If a template does not fit a default, add your own category.
 
 From this page, you can:
 

@@ -14,6 +14,19 @@ Use **Settings > Email** to organize email templates into categories. Categories
 
 Each category card shows the category color, name, description, active/inactive badge, and how many templates use that category. If your organization does not have categories yet, DocJacket creates the default category set when the page loads.
 
+The default categories are:
+
+| Category | Fits |
+|---|---|
+| Welcome | Intro and kick-off emails |
+| Reminder | Deadline nudges |
+| Request | Asking a party for something |
+| Confirmation | Confirming a date or receipt |
+| Update | Status updates and post-closing thank-yous |
+| Notification | Automated notices |
+
+Categories only organize and filter your templates. They do not change who receives an email or when it sends. If a template does not fit a default, add your own category.
+
 From this page, you can:
 
 - Add email template categories
