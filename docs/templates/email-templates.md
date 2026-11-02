@@ -29,7 +29,7 @@ The list groups templates by stage and shows each template's active/draft status
 
 1. Go to **Templates > Email Templates** in the sidebar
 2. Click **New Template**
-3. Enter the template name and category
+3. Enter the template name and category. Pick from the default categories (Welcome, Reminder, Request, Confirmation, Update, Notification), listed in [Email and Automation Settings](../settings/email-and-automation.md#email-settings), or add your own category in **Settings > Email**
 4. Choose the side, audience, stage, and tone if helpful
 5. Choose whether the template is internal only
 6. Set default recipient roles or recipient rules
