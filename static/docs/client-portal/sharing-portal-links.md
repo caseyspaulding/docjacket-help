@@ -49,12 +49,12 @@ Portal links are different from Disclosure Package links. Use a portal link when
 You can send the portal link by:
 
 - **Email from DocJacket** — Click the send button next to the link to compose and send an invitation email right from DocJacket
-- **Portal tab > Send Portal Links** — Select transaction contacts with email addresses, or add manual email addresses, and send portal-link invitations
-- **Contacts tab > Send Portal Links** — Select transaction contacts and choose email delivery where contact emails exist, or SMS delivery for contacts that already have an active portal link and phone number
+- **Portal tab > Send Portal Links** — Select transaction contacts and choose email, text, or both for each one, or add email addresses by hand
+- **Contacts tab > Send Portal Links** — Select transaction contacts and choose email, text, or both for each one
 - **Copy and paste** — Copy the link URL and share it however you prefer (email, text, etc.)
 - **Transaction Contacts tab** — Use each contact card to create, copy, regenerate, or revoke that contact's portal link
 
-SMS delivery uses the organization's SMS setup and safeguards. If you want to text a portal link from the transaction **Contacts** tab, create or regenerate that contact's portal link first so the text includes the active URL. Portal chat remains separate from SMS credits.
+Texts use your organization's SMS setup and safeguards. You don't need to create a link first. For each contact you text, DocJacket sends that contact's client portal link and creates one if they don't have it yet. Agent contacts get the deal's general client link. If a contact's link has been revoked or has expired, or the contact is set to Notify only, DocJacket skips that text and tells you why. To text a contact whose link is turned off, create a new link from their row on the **Contacts** tab, then send again.
 
 ## Managing links
 

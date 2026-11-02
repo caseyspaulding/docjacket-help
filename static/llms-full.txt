@@ -20,7 +20,7 @@ Whether you're an independent TC juggling 30+ files or an agent keeping tabs on 
 - **Smart splitting** — Split multi-document PDFs into individual documents before extraction.
 - **Key-date timelines** — Track closing, contract, inspection, financing, appraisal, possession, and other important dates.
 - **Task management** — Add one-off tasks, apply Playbooks, generate suggested tasks, assign work, and track status.
-- **Client portal** — Give clients and agents a branded place to see selected deal information, documents, forms, and messages.
+- **Client portal** — Give clients and agents a branded place to see deal status, key dates, shared documents, and portal-visible tasks.
 - **Messages and inbox** — Keep transaction communication connected to the right deal.
 - **Reports and calculators** — Prepare transaction reports, commission statements, and deal-specific calculations.
 
@@ -232,7 +232,8 @@ When you open a transaction, you'll see a tabbed layout:
 - **Tasks** — To-do list specific to this transaction
 - **Documents** — All files for this deal
 - **Contacts** — People involved in this transaction
-- **Messages** — Email, SMS, portal chat, and scheduled communication surfaces
+- **Email** — The deal's inbox, email timeline, scheduled sends, and internal notes
+- **Texts** — SMS and group-text conversations with the deal's contacts
 - **Portal** — Client and agent portal controls
 - **Forms** — Online form links and submissions
 - **Activity** — Recent activity for the deal
@@ -3353,7 +3354,7 @@ Open a contact to manage their full profile. From the detail page you can:
 - Manage agent portal status for agent-style contacts
 - Review offers tied to that contact from the Buyer Offers pipeline
 - Open the agent portal tab to create, copy, open, resend, or revoke an agent portal link
-- Review portal activity and SMS/portal message threads for that contact
+- Review portal activity and text message history for that contact
 
 Most common edits happen directly on the detail page. Use **Edit all fields** when you need the fuller form for fields that still live there.
 
@@ -3363,7 +3364,7 @@ Phone numbers can be marked with SMS consent from the contact detail page. Conse
 
 Use the primary-phone star to control which number DocJacket treats as the default contact number. Use the SMS consent icon to record or remove consent before relying on SMS reminders, portal-link texts, or direct SMS workflows.
 
-Portal chat does not require SMS consent and does not consume SMS credits. SMS sends still require a usable phone number, organization SMS access, and the sending safeguards described in **Settings > SMS**.
+SMS sends still require a usable phone number, organization SMS access, and the sending safeguards described in **Settings > SMS**.
 
 ---
 
@@ -11472,12 +11473,12 @@ Portal links are different from Disclosure Package links. Use a portal link when
 You can send the portal link by:
 
 - **Email from DocJacket** — Click the send button next to the link to compose and send an invitation email right from DocJacket
-- **Portal tab > Send Portal Links** — Select transaction contacts with email addresses, or add manual email addresses, and send portal-link invitations
-- **Contacts tab > Send Portal Links** — Select transaction contacts and choose email delivery where contact emails exist, or SMS delivery for contacts that already have an active portal link and phone number
+- **Portal tab > Send Portal Links** — Select transaction contacts and choose email, text, or both for each one, or add email addresses by hand
+- **Contacts tab > Send Portal Links** — Select transaction contacts and choose email, text, or both for each one
 - **Copy and paste** — Copy the link URL and share it however you prefer (email, text, etc.)
 - **Transaction Contacts tab** — Use each contact card to create, copy, regenerate, or revoke that contact's portal link
 
-SMS delivery uses the organization's SMS setup and safeguards. If you want to text a portal link from the transaction **Contacts** tab, create or regenerate that contact's portal link first so the text includes the active URL. Portal chat remains separate from SMS credits.
+Texts use your organization's SMS setup and safeguards. You don't need to create a link first. For each contact you text, DocJacket sends that contact's client portal link and creates one if they don't have it yet. Agent contacts get the deal's general client link. If a contact's link has been revoked or has expired, or the contact is set to Notify only, DocJacket skips that text and tells you why. To text a contact whose link is turned off, create a new link from their row on the **Contacts** tab, then send again.
 
 ## Managing links
 
