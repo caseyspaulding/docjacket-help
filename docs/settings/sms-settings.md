@@ -35,7 +35,7 @@ The **SMS Plan** card shows:
 - Whether the organization is using purchased credits
 - Any block reason, such as free-plan access or the monthly hard limit
 
-Free plans cannot send SMS. DocJacket shows the plan requirement and reminds users that portal chat is always free.
+Free plans cannot send SMS. On a Free plan, the Send button in each text composer is turned off, with a note that texting is available on paid plans and an Upgrade link.
 
 ## Credits and overages
 
@@ -61,7 +61,7 @@ From the SMS tab you can:
 - Use a saved SMS template
 - Review unread counts, typing indicators, delivery status, and inline action cards when available
 
-Threads may show SMS, Portal, or Email badges depending on how the contact is communicating. Portal chat is separate from SMS and does not count against SMS usage. Contacts with portal access can reply through the portal instead of using text credits.
+Threads may show SMS, Portal, or Email badges depending on how the contact is communicating.
 
 Replies return to the same message thread automatically, so the conversation stays attached to the transaction.
 
