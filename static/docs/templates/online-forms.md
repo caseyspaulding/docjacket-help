@@ -157,6 +157,8 @@ Transaction-specific form submissions appear on the transaction's **Forms** tab.
 - Mark fields as clear, needing documents, needing internal review, needing attorney review, or resolved
 - Apply mapped values to the transaction
 
+You can't delete a form submission yet, including a test submission you sent yourself. A submission doesn't change the deal unless you click **Apply to Transaction**, so a leftover test submission is harmless.
+
 Create-transaction submissions may enter the intake flow for review and routing before becoming a transaction record.
 
 For the full mapping workflow — including how to capture contingency dates — see [Applying Form Submissions](./applying-form-submissions.md).
