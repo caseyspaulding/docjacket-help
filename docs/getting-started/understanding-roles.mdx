@@ -10,38 +10,25 @@ DocJacket uses the word "role" in a few different places. The important thing is
 
 ## Team roles
 
-Team roles control what people inside your organization can see and do in DocJacket.
+Team roles control what people inside your organization can change in DocJacket.
 
-You manage these in **Settings > Roles** and assign them when inviting team members from **Settings > Team Members**.
+You assign these when inviting team members from **Settings > Team Members**.
 
-DocJacket includes these system roles:
+DocJacket includes these built-in roles:
 
-- **Owner** — Full access to everything, including organization settings, billing, and user management
-- **Admin** — Manage team, transactions, and settings, without deleting the organization
-- **Transaction Coordinator** — Manage assigned transactions, documents, deadlines, and workflow
-- **Agent** — View assigned transactions, upload documents, and communicate with clients
-- **Assistant** — Help with administrative tasks using limited access
-- **Viewer** — Read-only access to assigned transactions and documents
+- **Owner** — Full access, including billing, the team, settings, and deleting the workspace
+- **Admin** — Full access to billing, the team, settings, and every deal; cannot delete the workspace
+- **Broker** — Works every deal and reviews files for compliance, with the audit trail and compliance export
+- **Transaction Coordinator** — Works every deal: documents, dates, tasks, and email; can reveal saved MLS and portal passwords
+- **Agent** — Works every deal: documents, dates, tasks, and email
+- **Assistant** — Works every deal: documents, dates, tasks, and email
+- **Viewer** — Read-only access to every deal and its documents
 
-You can also create **custom roles** with specific permission sets.
+**Every team member sees every deal.** DocJacket has no setting that limits someone to the deals assigned to them, whatever their role. A role decides what a person can change — settings, the team, billing, saved passwords — and Viewer is read-only. To focus on your own work, use the **Mine** view on Transactions or **Assigned to me** on Tasks; these filter your own view and don't hide anything from anyone else.
 
-## Custom permissions
+## The Roles page
 
-Custom roles can include permissions across these areas:
-
-- Organization management
-- User management
-- Transaction management
-- Communication
-- Tasks and scheduling
-- Reports and analytics
-- General dashboard access
-- Billing
-- API and integrations
-
-Custom roles are useful when you have assistants, junior TCs, agents, or back-office users who need more than Viewer access but less than Admin access.
-
-System roles cannot be edited or deleted. Custom roles can be edited, and they can be deleted when no team members are assigned to them.
+**Settings > Roles** (Owner and Admin only) shows what each built-in role can do as a read-only table. The only thing you can change there is whether a role below Admin can open **Advanced settings**.
 
 ## Transaction contact roles
 
