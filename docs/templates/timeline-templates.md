@@ -197,68 +197,99 @@ When you apply a Playbook, you can choose to apply only selected phases.
 ## Conditional tasks
 
 Some tasks only apply to certain deals — a septic inspection, an HOA document review,
-a task that only matters on a cash deal. **You do not need a separate Playbook for
-each combination.** Build one Playbook with every task in it, and mark the
-situational ones conditional. A conditional task whose condition isn't met is simply
-**not created** when you apply the Playbook, so the deal only gets the work that
-actually applies.
+a task that only matters on a cash deal or a financed one. **You do not need a separate
+Playbook for each combination.** Build one Playbook with every task in it, and mark the
+situational ones conditional. A conditional task whose condition isn't met is **held
+back** when you apply the Playbook, so the deal only gets the work that applies. If the
+deal changes later, DocJacket offers the held-back task back to you
+(see [Held-back tasks and key dates](#held-back-tasks-and-key-dates)).
 
 To make a task conditional, open the task in the Playbook builder and, under
-**Options**, tick **Conditional Task**. A **Transaction field** dropdown appears —
-pick the field that decides whether the task applies.
+**Options**, tick **Conditional Task**. You then pick the condition one of two ways:
 
-### Which fields you can gate on
+- **Transaction field** — one field from a fixed list. Quickest for a single yes/no or
+  contingency condition.
+- **Build a rule with AND / OR instead** — a rule that can combine several conditions and
+  use your own custom fields. Use this for anything the fixed list can't say.
 
-The **Transaction field** dropdown is a fixed list. It contains:
+### Option 1: a single Transaction field
+
+The **Transaction field** list is fixed. It does not include your custom fields — use a
+rule (below) for those. It contains:
 
 | Field | Behaves as |
 |---|---|
 | Cash deal | Yes/no flag |
 | Sellers only | Yes/no flag |
-| HOA contingency | Contingency |
-| Radon contingency | Contingency |
-| Septic contingency | Contingency |
-| Well contingency | Contingency |
-| Pool contingency | Contingency |
-| Solar contingency | Contingency |
-| Lead paint contingency | Contingency |
-| Inspection contingency | Contingency |
-| Smart-home contingency | Contingency |
-| Home-warranty contingency | Contingency |
+| HOA, Radon, Septic, Well, Pool, Solar, Lead paint, Inspection, Smart-home, Home-warranty contingency | Contingency |
+| Sale of home (contingent on another closing) | Contingency |
+| Additional Deposit (key date set) | Created only when the deal has a real date for it |
+| Form 22L&A row elected (Survey, Perc Test, On-Site Sewage System, Water Quality, Water Quantity, Timber) | Created only for the rows elected on the form |
 
-The two kinds behave differently, and the difference matters:
+Flags and contingencies behave differently, and the difference matters:
 
 - **Yes/no flags** (Cash deal, Sellers only) — the task is created **only when the flag
   is on**. If the flag is off, or nothing has been filled in yet, the task is skipped.
-- **Contingencies** — the task is created **unless** the contingency is explicitly set
-  to **N/A** on the deal. If it's Active, or nobody has set it yet, you still get the
-  task. This is deliberate: an unanswered contingency shouldn't quietly drop work.
+- **Contingencies** — by default the task is created **unless** the contingency is
+  explicitly set to **N/A** on the deal, so an unanswered contingency doesn't quietly drop
+  work. For a contingency, a **When to create it** list appears: **Create unless marked
+  N/A** (the default) or **Create only when present**.
+
+**Additional Deposit (key date set)** is checked once, when the Playbook is applied: if
+the deal has no real date for it yet, the task isn't created, and a date added afterwards
+does not add it.
+
+### Option 2: a rule with AND / OR
+
+Click **Build a rule with AND / OR instead** (if a field is already chosen the link reads
+**Convert to a rule (AND / OR)**). The panel changes to **Add this task when**, and a
+rule replaces the single field. Click **Use a single field instead** to go back.
+
+Each line reads *[condition] [is / is not / is blank / is not blank] [value]*. Choose a
+condition from the first list:
+
+| Condition | Example |
+|---|---|
+| Representing | The buyer, the seller, or both sides |
+| State, County | State is FL |
+| Property type | Condo |
+| Loan type | Cash, Conventional, FHA, VA, USDA |
+| Property feature | HOA, Septic, Well, Pool, Solar, Radon, Lead paint |
+| **Deal flag** | **Buyer is financing**, Cash deal, Home warranty included, Tenant occupied |
+| Built before year | 1978 |
+| **Custom field** | Any custom field of your own |
+
+- **Deal flag** lines read **is true** / **is not true**. Use **Deal flag › Buyer is
+  financing** to gate financing-only tasks.
+- **Custom field** lines let you pick the field, then the operator. **is blank** and
+  **is not blank** need no value. For a **Dropdown** field, the value list is that
+  field's own options. Custom fields of every type work, but a Yes/No question needs to
+  be a Dropdown field — there is no checkbox field type.
+- **And** adds another line. Every line must be true.
+- **And any of…** adds an **Any of these** group; the group is true when any one of its
+  lines is. Click **Or** inside the group to add a line.
+
+A plain-English summary appears under the rule (for example, "Adds this task when: Septic system? is Yes"). Finish or
+remove every line before you save; a half-built rule can't be saved.
+
+If the deal doesn't yet have a value for something the rule needs (a custom field that's
+still blank), the task is held back until it does.
 
 ### Gating on financed vs. cash deals
 
-There is a **Cash deal** field, but there is **no "financed" field**. Because a yes/no
-flag only creates the task when the flag is on, gating a financing task on **Cash
-deal** would attach it to cash deals only — the opposite of what you want.
+Use either approach:
 
-The way to handle financing work is to put it in the Playbook **normally**, with no
-condition, and instead mark the *cash-specific* tasks conditional on **Cash deal**.
-Financed deals are the common case, so let them be the default and gate the exception.
+- Mark the financing task conditional with a rule of **Deal flag › Buyer is financing**
+  **is true**, or
+- Leave financing work unconditional and mark the cash-only tasks conditional on
+  **Cash deal**.
 
 ### The "If label" box is cosmetic
 
-Under the field dropdown there's an **If label** box (for example, `If HOA`). This is
+Under the condition there's an **If label** box (for example, `If HOA`). This is
 **text only — it does not gate anything.** It just prints on the task row so your team
-can see at a glance when a task applies. If you type a label but don't pick a
-**Transaction field**, the task is created on every deal.
-
-### Conditions that aren't available yet
-
-The dropdown above is the complete list. Common conditions that are **not** currently
-supported include a buyer's **home sale contingency**, a **suitable housing**
-contingency, and financing type beyond the cash flag. For those, either leave the task
-unconditional and delete it on deals where it doesn't apply, or remove whole task
-groups during apply — the apply dialog lets you deselect individual tasks and skip
-entire groups before anything is created.
+can see at a glance when a task applies. If you type a label but set no condition, the
+task is created on every deal and the builder warns you it is **not enforced**.
 
 :::note Conditional in the Playbook builder vs. on a task
 The **Conditional Task** checkbox in the *Playbook builder* controls whether a task
@@ -266,6 +297,69 @@ gets created at all. There is also a conditional marker on an individual task in
 transaction ([Task Options](../tasks/task-options.md)) — that one is a **label** on
 work that already exists, and it doesn't create or remove anything.
 :::
+
+## Only add a key date when…
+
+A key date can be conditional too — for example, a **Loan Approval** date that only
+belongs on financed deals.
+
+1. In the Playbook builder, open the **Key dates** tab.
+2. Click the key date's row, then **Edit key date**.
+3. Tick **Only add this key date when…**.
+4. Build the rule the same way as for a task (for example **Deal flag** **is true**
+   **Buyer is financing**), then **Save**.
+
+Unlike a task, a key date is added when the deal simply doesn't have the answer yet: it
+is held back only when the rule is known to be false. Tasks anchored to a held-back key
+date are held back with it.
+
+## Held-back tasks and key dates
+
+When you apply a Playbook, anything whose condition isn't met is left off the deal — but
+DocJacket remembers it. Nothing is added behind your back; you decide when it comes in.
+
+On the deal's **Tasks** tab, the **Optional tasks (N)** button lists tasks the Playbook
+left off. When a held-back item's condition becomes true, the button shows
+**N now applicable**, and opening it shows a **Now applicable** section: *"Your Playbook
+holds these back until a condition is met. It is now met."* Those rows are pre-ticked.
+Click **Add N tasks** to create them. (The section below it holds ordinary optional
+tasks — ones set not to be added to every deal — which stay unticked until you choose
+them.)
+
+A held-back **key date** comes back the same way, as one row: **[Key date name] (key date) +
+N tasks**. Its button reads **Add 1 key date and N tasks**, and the tasks are created
+linked to that date and get their due dates from it.
+
+**Example — a deal that turns out to be financed.** Your Playbook has a **Loan
+Approval** key date and loan tasks that apply when **Buyer is financing** is true. You
+apply it to a deal that was entered as cash, so they are held back. Later the buyer
+switches to a loan; you update the deal. Open **Optional tasks**, and **Loan Approval
+(key date) + N tasks** is waiting under **Now applicable**.
+
+**Example — setting a field mid-deal.** A task is conditional on a Dropdown custom field
+*Septic system type* **is** *Private*. The field was blank at apply, so the task was held
+back. Open the deal's **Overview**, set the field in the **Custom Fields** card, and
+return to the **Tasks** tab: the task is now under **Now applicable**.
+
+A task you deleted by hand after it was created is not offered back.
+
+## Brokerage add-on Playbooks
+
+A Playbook can be limited to specific brokerages. It then works as an **add-on**: it is
+offered next to the deal's main Playbook, and never replaces it.
+
+**Set one up.** Open the Playbook in the builder, find **Applies to**, and under
+**Brokerages** use **Add a brokerage** to pick one or more. A **Brokerage add-on** badge
+appears next to **Applies to**.
+
+**On a deal.** When the deal's agent works for one of those brokerages, the deal's
+**Overview** shows a banner, **Add [Playbook name]**, with *"Matched brokerage: …"*.
+Nothing is added until you click:
+
+- **Add** adds the add-on's tasks and documents alongside the main Playbook.
+- **Not for this deal** hides that banner on that deal, in the browser you're using.
+
+If more than three add-ons match, the rest fold into a **+N more** link.
 
 ## Automations
 

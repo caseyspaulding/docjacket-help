@@ -119,19 +119,23 @@ The drawer's **Options** section includes settings for how the task behaves:
 - **Key Date** — highlights the task as an important date-style item in task and calendar views. This is not a replacement for the transaction's canonical key dates.
 - **Notify on Complete** — sends linked emails when the task is marked complete
 - **Notify Contact** — chooses the contact for completion notification when enabled
-- **Conditional Task** — the task applies only when a condition on the deal is true, and is skipped automatically at Playbook apply when it isn't
+- **Conditional Task** — the task applies only when a condition on the deal is true, and is held back automatically at Playbook apply when it isn't (see below)
 - **Est. Hours** and **Actual Hours** — track estimated and actual work time
 
 ## Conditional Task
 
-Mark a task **Conditional** when it only applies to some deals — and pick the **Transaction field** that decides. The system then knows whether the task applies on its own: when a Playbook is applied, the deal's own details decide whether each conditional task is created. You do not need to make a different checklist for every variation like warranty, financing, or cash deals.
+Mark a task **Conditional** in the Playbook builder when it only applies to some deals. The deal's own details then decide, when the Playbook is applied, whether the task is created — you don't need a different Playbook for each variation like warranty, financing, or cash deals.
 
-- **Cash deal** and **Sellers only** create the task only when that is true on the deal — financing-only work never appears on a cash deal.
-- **Contingency conditions** — HOA, radon, septic, well, pool, solar, lead paint, inspection, smart home, and home warranty — skip the task only when the deal marks that contingency **N/A**.
+Open the task, tick **Conditional Task**, and choose the condition one of two ways:
 
-The condition is set in the Playbook builder: open the task, check **Conditional Task**, and choose the Transaction field. The label appears on the task row so your team can see why the task exists.
+- **Transaction field** — pick one field from a fixed list: **Cash deal** and **Sellers only** (created only when true), or a contingency such as HOA, septic, or sale of home (created unless the deal marks it N/A).
+- **Build a rule with AND / OR instead** — under **Add this task when**, combine several conditions, including **Deal flag** (such as **Buyer is financing**) and your own **Custom field** values (**is**, **is not**, **is blank**, **is not blank**). Use **And** for conditions that must all be true and **And any of…** when any one will do.
+
+The label appears on the task row so your team can see why the task exists.
 
 **Example:** "Schedule septic inspection" with the Septic contingency condition — created on deals with a septic contingency, skipped when the deal marks it N/A.
+
+If a task's condition isn't met when the Playbook is applied, it isn't lost. When the deal changes and the condition becomes true, the deal's **Optional tasks (N)** button on the **Tasks** tab shows **N now applicable**, and you can add the task from there. See [Held-back tasks and key dates](../templates/timeline-templates.md#held-back-tasks-and-key-dates) and the full list of conditions in [Conditional tasks](../templates/timeline-templates.md#conditional-tasks).
 
 ## Comments
 
