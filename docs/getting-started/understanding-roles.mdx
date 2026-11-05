@@ -1,7 +1,7 @@
 ---
 sidebar_label: Understanding Roles
 sidebar_position: 5
-description: How DocJacket roles work — team permissions, transaction contact roles, portal access, and signer roles.
+description: How DocJacket roles work — team permissions, limiting a role to its own deals, transaction contact roles, portal access, and signer roles.
 ---
 
 # Understanding Roles in DocJacket
@@ -24,7 +24,28 @@ DocJacket includes these built-in roles:
 - **Assistant** — Works every deal: documents, dates, tasks, and email
 - **Viewer** — Read-only access to every deal and its documents
 
-**Every team member sees every deal.** DocJacket has no setting that limits someone to the deals assigned to them, whatever their role. A role decides what a person can change — settings, the team, billing, saved passwords — and Viewer is read-only. To focus on your own work, use the **Mine** view on Transactions or **Assigned to me** on Tasks; these filter your own view and don't hide anything from anyone else.
+**By default, every team member sees every deal.** A role decides what a person can change — settings, the team, billing, saved passwords — and Viewer is read-only. To focus on your own work, use the **Mine** view on Transactions or **Assigned to me** on Tasks; these filter your own view and don't hide anything from anyone else. To actually keep a role to its own deals, use the **Deal visibility** setting below.
+
+### Limit a role to the deals its members are on
+
+Owners and Admins can limit chosen roles to **own deals only**. Open **Settings > Team Members** and find the **Deal visibility** card. It has one switch each for **Transaction Coordinator**, **Agent**, **Assistant**, **Viewer**, and **Broker**. All of them are off until you turn them on. Turning one on asks you to confirm and tells you how many members hold that role. Owners and Admins can't be limited and always see every deal.
+
+The setting belongs to the **role**, not to a person. Everyone who holds a limited role is limited, a new hire with that role is covered automatically, and changing a member's role changes what they can see on their very next page load. Members who are limited show an **Own deals only** badge in the team list.
+
+A limited member is "on" a deal when any one of these is true:
+
+- The deal is **assigned** to them
+- They **created** the deal
+- They are **listed on the deal as an agent** (a contact on the deal with their email address and an agent role, such as Listing Agent or Buyer's Agent)
+- They are **assigned a task** on the deal. An assigned task shares the whole deal with that person, so assign a task to bring someone onto a deal without reassigning it.
+
+For a limited member, a deal they aren't on behaves as if it doesn't exist. It doesn't appear in the deal list, pipeline, search, Tasks, Calendar, the dashboard, Ask AI answers, or the morning brief, and opening its link shows **Deal not found**.
+
+A few things work differently for a limited member:
+
+- **Contacts stay shared.** The contact list is one address book for the whole organization, so they can still create, edit, and delete contacts. The deals and tasks shown on a contact's page are limited to the deals they are on.
+- **Org-wide pages aren't available.** Reports, exports, the organization Inbox, the review queue, and the notification bell cover every deal, so they are hidden for limited members.
+- **API keys and AI connections (MCP) don't work for them.** An API key or AI-assistant connection made by a limited member is refused until their role is no longer limited.
 
 ## The Roles page
 

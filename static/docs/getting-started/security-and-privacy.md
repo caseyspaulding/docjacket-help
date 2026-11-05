@@ -18,7 +18,7 @@ This page summarizes how DocJacket keeps your documents and data secure and priv
 - **Encryption everywhere.** All data is encrypted **in transit with TLS 1.3** and **at rest with AES-256**.
 - **Enterprise-grade hosting.** Servers are located in the **United States** on enterprise-grade cloud infrastructure.
 - **Isolated per organization.** Each organization's data is separated at the database level — your data is never mixed with another org's.
-- **Role-based access.** A team member's role controls what they can change, such as settings, billing, and the team; Viewers are read-only. Everyone on your team can see every deal in your organization. See [Understanding Roles](./understanding-roles.mdx).
+- **Role-based access.** A team member's role controls what they can change, such as settings, billing, and the team; Viewers are read-only. By default everyone on your team can see every deal in your organization, and Owners and Admins can limit chosen roles (Transaction Coordinator, Agent, Assistant, Viewer, Broker) to only the deals those members are on. See [Understanding Roles](./understanding-roles.mdx).
 - **Automatic backups** run daily with **35-day retention** and geo-redundant storage, so data can be restored to a point in time within the past month.
 - **Immutable archive storage.** **Archived deals** are stored on immutable, non-erasable **WORM-compliant storage** (per California Code of Regulations § 2729), so records can't be altered or deleted after archiving. See [Audit Mode](../documents/audit-mode.mdx).
 - **Secure billing.** Payments are handled by a **PCI DSS Level 1** certified payment provider — DocJacket never stores full card numbers.
