@@ -257,38 +257,25 @@ DocJacket uses the word "role" in a few different places. The important thing is
 
 ## Team roles
 
-Team roles control what people inside your organization can see and do in DocJacket.
+Team roles control what people inside your organization can change in DocJacket.
 
-You manage these in **Settings > Roles** and assign them when inviting team members from **Settings > Team Members**.
+You assign these when inviting team members from **Settings > Team Members**.
 
-DocJacket includes these system roles:
+DocJacket includes these built-in roles:
 
-- **Owner** — Full access to everything, including organization settings, billing, and user management
-- **Admin** — Manage team, transactions, and settings, without deleting the organization
-- **Transaction Coordinator** — Manage assigned transactions, documents, deadlines, and workflow
-- **Agent** — View assigned transactions, upload documents, and communicate with clients
-- **Assistant** — Help with administrative tasks using limited access
-- **Viewer** — Read-only access to assigned transactions and documents
+- **Owner** — Full access, including billing, the team, settings, and deleting the workspace
+- **Admin** — Full access to billing, the team, settings, and every deal; cannot delete the workspace
+- **Broker** — Works every deal and reviews files for compliance, with the audit trail and compliance export
+- **Transaction Coordinator** — Works every deal: documents, dates, tasks, and email; can reveal saved MLS and portal passwords
+- **Agent** — Works every deal: documents, dates, tasks, and email
+- **Assistant** — Works every deal: documents, dates, tasks, and email
+- **Viewer** — Read-only access to every deal and its documents
 
-You can also create **custom roles** with specific permission sets.
+**Every team member sees every deal.** DocJacket has no setting that limits someone to the deals assigned to them, whatever their role. A role decides what a person can change — settings, the team, billing, saved passwords — and Viewer is read-only. To focus on your own work, use the **Mine** view on Transactions or **Assigned to me** on Tasks; these filter your own view and don't hide anything from anyone else.
 
-## Custom permissions
+## The Roles page
 
-Custom roles can include permissions across these areas:
-
-- Organization management
-- User management
-- Transaction management
-- Communication
-- Tasks and scheduling
-- Reports and analytics
-- General dashboard access
-- Billing
-- API and integrations
-
-Custom roles are useful when you have assistants, junior TCs, agents, or back-office users who need more than Viewer access but less than Admin access.
-
-System roles cannot be edited or deleted. Custom roles can be edited, and they can be deleted when no team members are assigned to them.
+**Settings > Roles** (Owner and Admin only) shows what each built-in role can do as a read-only table. The only thing you can change there is whether a role below Admin can open **Advanced settings**.
 
 ## Transaction contact roles
 
@@ -386,7 +373,7 @@ This page summarizes how DocJacket keeps your documents and data secure and priv
 - **Encryption everywhere.** All data is encrypted **in transit with TLS 1.3** and **at rest with AES-256**.
 - **Enterprise-grade hosting.** Servers are located in the **United States** on enterprise-grade cloud infrastructure.
 - **Isolated per organization.** Each organization's data is separated at the database level — your data is never mixed with another org's.
-- **Role-based access.** Team members only see what their role allows, and agents only see the transactions they're assigned to. See [Understanding Roles](./understanding-roles.mdx).
+- **Role-based access.** A team member's role controls what they can change, such as settings, billing, and the team; Viewers are read-only. Everyone on your team can see every deal in your organization. See [Understanding Roles](./understanding-roles.mdx).
 - **Automatic backups** run daily with **35-day retention** and geo-redundant storage, so data can be restored to a point in time within the past month.
 - **Immutable archive storage.** **Archived deals** are stored on immutable, non-erasable **WORM-compliant storage** (per California Code of Regulations § 2729), so records can't be altered or deleted after archiving. See [Audit Mode](../documents/audit-mode.mdx).
 - **Secure billing.** Payments are handled by a **PCI DSS Level 1** certified payment provider — DocJacket never stores full card numbers.
@@ -4366,6 +4353,12 @@ Some tasks are better broken into smaller steps. Subtasks let you do that while 
 
 If the parent task already has subtasks, the section opens with the progress count visible.
 
+## Subtasks and Playbooks
+
+Playbook (checklist) task templates do not have subtasks. The Playbook task editor has no "add subtask" control, and a Playbook cannot generate subtasks on a new deal. Subtasks are added by hand on a deal task (task drawer > **Subtasks** > **Add**).
+
+To get step-by-step work from a Playbook, add each step as its own task. Set a task's **Due date is based on** to another task so it comes after that one, and use the **Lives under** picker to keep related steps together.
+
 ## Tracking progress
 
 - Check off subtasks directly in the drawer as you complete them
@@ -6649,7 +6642,7 @@ Only one signature can be the default at a time. The default signature cannot be
 
 ## Using signatures
 
-When you compose an email from a transaction, DocJacket selects your default signature when one exists. You can choose another active signature from the composer, or choose no signature for that message.
+When you compose an email from a transaction, DocJacket selects a signature for you (see the order below). You can choose another active signature from the composer, or choose no signature for that message.
 
 Task email sends also show the default signature preview before sending.
 
@@ -6659,6 +6652,17 @@ For example:
 
 - Email template: inspection reminder body
 - Email signature: your name, brokerage, phone, website, and disclaimer
+
+## Which signature a deal uses
+
+Signatures can be set per deal. DocJacket picks the signature for a new email in this order:
+
+1. **The deal's own signature.** In a deal's Messages tab, open the composer **Signature** menu; under **New emails on this transaction** choose a signature. It applies to new emails on that deal only, and drafts already started keep theirs.
+2. **A Playbook default.** In a Playbook's settings, **Default email signature** is used when the Playbook is applied to a deal with no signature preference.
+3. **The sender's signature linked to the deal's agent.** In **Templates > Email Signatures**, open a signature and add contacts under **Use automatically on deals for this agent**. On deals where one of those contacts is the agent, that signature is used.
+4. **Your normal default signature.** Choose **Use normal default** in the same menu to go back to this.
+
+You can always change or clear the signature on a single message in the composer.
 
 ## Tips
 
@@ -6820,7 +6824,13 @@ Transaction-specific form submissions appear on the transaction's **Forms** tab.
 - Mark fields as clear, needing documents, needing internal review, needing attorney review, or resolved
 - Apply mapped values to the transaction
 
-You can't delete a form submission yet, including a test submission you sent yourself. A submission doesn't change the deal unless you click **Apply to Transaction**, so a leftover test submission is harmless.
+### Removing a test or unwanted submission
+
+On the deal's **Forms** tab, click the submission to expand it, then click **Remove submission** and confirm **Remove**. The submission disappears from the list and no longer counts toward the form link's submission total. Answers, uploads, and the audit trail are kept (it is hidden, not deleted). If a contact was created when the form was submitted, that contact stays.
+
+You can only remove a submission that has not changed the deal. **Remove submission** does not appear once you have clicked **Apply to Transaction** (or any of its answers were applied), or for a submission that created the deal. Anyone who can edit the deal can remove; view-only seats cannot.
+
+To clean up a test, remove the submission, then delete the form link itself from the **Form Links** list on the same tab if you no longer need it.
 
 Create-transaction submissions may enter the intake flow for review and routing before becoming a transaction record.
 
@@ -7226,6 +7236,15 @@ Supported conditions include:
 - `role == "Dual"`
 - `em_location == "Alt"`
 - `agent_has_assistant`
+
+Any smart field can be used in a condition, not just the ones above:
+
+- **Presence:** `{{ if buyer_agent_name }}` ... `{{ end }}` renders only when that contact is on the deal (blank values count as false). Use the same check for any role field, for example `listing_agent_email` or `title_company_name`.
+- **Custom fields:** use the field's merge code. `{{ if my_custom_field }}` (has a value) or `{{ if my_custom_field == "Option A" }}` (text must match the saved value exactly, including capitalization). Choice fields work the same way; a deal with no value saved counts as blank.
+- **Yes/no helpers:** `agent_has_assistant`.
+- **Combine and branch:** `&&`, `||`, `!`, `{{ else if ... }}`, and `{{ else }}`.
+
+Note: `role` means the deal side (Buyer, Seller, or Dual), not a contact's role on the deal. To vary text by who is on the deal, test the contact field's presence.
 
 Use lowercase `if` and `end`, use `==` for comparisons, and keep comparison values in double quotes.
 

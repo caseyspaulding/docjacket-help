@@ -157,7 +157,13 @@ Transaction-specific form submissions appear on the transaction's **Forms** tab.
 - Mark fields as clear, needing documents, needing internal review, needing attorney review, or resolved
 - Apply mapped values to the transaction
 
-You can't delete a form submission yet, including a test submission you sent yourself. A submission doesn't change the deal unless you click **Apply to Transaction**, so a leftover test submission is harmless.
+### Removing a test or unwanted submission
+
+On the deal's **Forms** tab, click the submission to expand it, then click **Remove submission** and confirm **Remove**. The submission disappears from the list and no longer counts toward the form link's submission total. Answers, uploads, and the audit trail are kept (it is hidden, not deleted). If a contact was created when the form was submitted, that contact stays.
+
+You can only remove a submission that has not changed the deal. **Remove submission** does not appear once you have clicked **Apply to Transaction** (or any of its answers were applied), or for a submission that created the deal. Anyone who can edit the deal can remove; view-only seats cannot.
+
+To clean up a test, remove the submission, then delete the form link itself from the **Form Links** list on the same tab if you no longer need it.
 
 Create-transaction submissions may enter the intake flow for review and routing before becoming a transaction record.
 

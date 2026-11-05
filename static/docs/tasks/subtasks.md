@@ -21,6 +21,12 @@ Some tasks are better broken into smaller steps. Subtasks let you do that while 
 
 If the parent task already has subtasks, the section opens with the progress count visible.
 
+## Subtasks and Playbooks
+
+Playbook (checklist) task templates do not have subtasks. The Playbook task editor has no "add subtask" control, and a Playbook cannot generate subtasks on a new deal. Subtasks are added by hand on a deal task (task drawer > **Subtasks** > **Add**).
+
+To get step-by-step work from a Playbook, add each step as its own task. Set a task's **Due date is based on** to another task so it comes after that one, and use the **Lives under** picker to keep related steps together.
+
 ## Tracking progress
 
 - Check off subtasks directly in the drawer as you complete them

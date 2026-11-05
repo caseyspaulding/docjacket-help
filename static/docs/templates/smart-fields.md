@@ -115,6 +115,15 @@ Supported conditions include:
 - `em_location == "Alt"`
 - `agent_has_assistant`
 
+Any smart field can be used in a condition, not just the ones above:
+
+- **Presence:** `{{ if buyer_agent_name }}` ... `{{ end }}` renders only when that contact is on the deal (blank values count as false). Use the same check for any role field, for example `listing_agent_email` or `title_company_name`.
+- **Custom fields:** use the field's merge code. `{{ if my_custom_field }}` (has a value) or `{{ if my_custom_field == "Option A" }}` (text must match the saved value exactly, including capitalization). Choice fields work the same way; a deal with no value saved counts as blank.
+- **Yes/no helpers:** `agent_has_assistant`.
+- **Combine and branch:** `&&`, `||`, `!`, `{{ else if ... }}`, and `{{ else }}`.
+
+Note: `role` means the deal side (Buyer, Seller, or Dual), not a contact's role on the deal. To vary text by who is on the deal, test the contact field's presence.
+
 Use lowercase `if` and `end`, use `==` for comparisons, and keep comparison values in double quotes.
 
 ## Validation and unresolved fields

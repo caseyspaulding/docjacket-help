@@ -93,7 +93,7 @@ Only one signature can be the default at a time. The default signature cannot be
 
 ## Using signatures
 
-When you compose an email from a transaction, DocJacket selects your default signature when one exists. You can choose another active signature from the composer, or choose no signature for that message.
+When you compose an email from a transaction, DocJacket selects a signature for you (see the order below). You can choose another active signature from the composer, or choose no signature for that message.
 
 Task email sends also show the default signature preview before sending.
 
@@ -103,6 +103,17 @@ For example:
 
 - Email template: inspection reminder body
 - Email signature: your name, brokerage, phone, website, and disclaimer
+
+## Which signature a deal uses
+
+Signatures can be set per deal. DocJacket picks the signature for a new email in this order:
+
+1. **The deal's own signature.** In a deal's Messages tab, open the composer **Signature** menu; under **New emails on this transaction** choose a signature. It applies to new emails on that deal only, and drafts already started keep theirs.
+2. **A Playbook default.** In a Playbook's settings, **Default email signature** is used when the Playbook is applied to a deal with no signature preference.
+3. **The sender's signature linked to the deal's agent.** In **Templates > Email Signatures**, open a signature and add contacts under **Use automatically on deals for this agent**. On deals where one of those contacts is the agent, that signature is used.
+4. **Your normal default signature.** Choose **Use normal default** in the same menu to go back to this.
+
+You can always change or clear the signature on a single message in the composer.
 
 ## Tips
 
