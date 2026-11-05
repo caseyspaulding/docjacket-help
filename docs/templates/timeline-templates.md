@@ -269,7 +269,7 @@ condition from the first list:
 - **And any of…** adds an **Any of these** group; the group is true when any one of its
   lines is. Click **Or** inside the group to add a line.
 
-A plain-English summary appears under the rule ("Adds this task when: …"). Finish or
+A plain-English summary appears under the rule (for example, "Adds this task when: Septic system? is Yes"). Finish or
 remove every line before you save; a half-built rule can't be saved.
 
 If the deal doesn't yet have a value for something the rule needs (a custom field that's
