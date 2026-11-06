@@ -21,11 +21,11 @@ DocJacket includes these built-in roles:
 
 - **Owner** — Full access, including billing, the team, settings, and deleting the workspace
 - **Admin** — Full access to billing, the team, settings, and every deal; cannot delete the workspace
-- **Broker** — Works every deal and reviews files for compliance, with the audit trail and compliance export
-- **Transaction Coordinator** — Works every deal: documents, dates, tasks, and email; can reveal saved MLS and portal passwords
-- **Agent** — Works every deal: documents, dates, tasks, and email
-- **Assistant** — Works every deal: documents, dates, tasks, and email
-- **Viewer** — Read-only access to every deal and its documents
+- **Broker** — Works deals and reviews files for compliance, with the audit trail and compliance export
+- **Transaction Coordinator** — Works deals: documents, dates, tasks, and email; can reveal saved MLS and portal passwords
+- **Agent** — Works deals: documents, dates, tasks, and email
+- **Assistant** — Works deals: documents, dates, tasks, and email
+- **Viewer** — Read-only: can open deals and their documents, but can't change anything
 
 **By default, every team member sees every deal.** A role decides what a person can change — settings, the team, billing, saved passwords — and Viewer is read-only. To focus on your own work, use the **Mine** view on Transactions or **Assigned to me** on Tasks; these filter your own view and don't hide anything from anyone else. To actually keep a role to its own deals, use the **Deal visibility** setting below.
 
@@ -42,7 +42,7 @@ A limited member is "on" a deal when any one of these is true:
 - They are **listed on the deal as an agent** (a contact on the deal with their email address and an agent role, such as Listing Agent or Buyer's Agent)
 - They are **assigned a task** on the deal. An assigned task shares the whole deal with that person, so assign a task to bring someone onto a deal without reassigning it.
 
-For a limited member, a deal they aren't on behaves as if it doesn't exist. It doesn't appear in the deal list, pipeline, search, Tasks, Calendar, the dashboard, Ask AI answers, or the morning brief, and opening its link shows **Deal not found**.
+For a limited member, a deal they aren't on behaves as if it doesn't exist. It doesn't appear in the deal list, pipeline, search, Tasks, Calendar, the dashboard, Ask AI answers, or the morning brief, and opening its link shows **Transaction not found** (or **Listing not found** for a listing).
 
 A few things work differently for a limited member:
 
@@ -52,7 +52,7 @@ A few things work differently for a limited member:
 
 ## The Roles page
 
-**Settings > Roles** (Owner and Admin only) shows what each built-in role can do as a read-only table. The only thing you can change there is whether a role below Admin can open **Advanced settings**.
+**Settings > Roles** (Owner and Admin only) shows what each built-in role can do as a read-only table. The only thing you can change there is whether a role below Admin can open **Advanced settings**. Which roles see only their own deals isn't set here; use the **Deal visibility** card on **Settings > Team Members**.
 
 ## Transaction contact roles
 
