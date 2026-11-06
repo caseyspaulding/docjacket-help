@@ -174,7 +174,7 @@ A Playbook task can recur: every week, or every 2 weeks, on the day you choose. 
 
 In the task panel, under **Task Details**, set **Repeat** to **Weekly** or **Every 2 weeks** and pick the day in **On**.
 
-A task either repeats **or** is due relative to a key date, never both. If **Due date is based on** (under **When it's due**) is set to a key date, the **Repeat** control is hidden. Clear that anchor to make the task repeat. DocJacket won't save a task that has both.
+A task either repeats **or** has its due date based on a key date, never both. If **Due date is based on** (under **When it's due**) is set to a key date, the **Repeat** control is hidden. Clear that anchor to make the task repeat. DocJacket won't save a task that has both.
 
 When you apply the Playbook to a deal, the first occurrence is due on the first matching day on or after the day you apply it (apply on a Friday and a "weekly on Friday" task is due that same day). Completing an occurrence creates the next one. The series ends when the deal closes. See [Repeating tasks](../tasks/creating-tasks.mdx#repeating-tasks-recurring-weekly-tasks) for how occurrences behave on a deal.
 
@@ -195,7 +195,7 @@ Every Playbook task can be given a **Playbook phase**. The phase list is fixed. 
 
 **You can't add, rename, or delete phases.** There is no "add phase" button, and the **Playbook phase** dropdown only offers the eight phases above. If your listing tasks don't seem to fit, use **Pre-Listing** and **Active Listing**; those are the listing phases.
 
-When you apply a Playbook, you can choose to apply only selected phases.
+When you apply a Playbook, the apply dialog groups its tasks by phase. Click **Clear** on a phase to leave its tasks out, or **All** to put them back.
 
 ## Conditional tasks
 
@@ -438,7 +438,7 @@ DocJacket can:
 - Preview how many key dates and tasks will be created
 - Show anchor dates used for calculation
 - Assign tasks by owner or label
-- Apply only selected phases
+- Leave out a phase's tasks (**Clear** / **All** per phase)
 - Replace previously-applied template items when needed
 - Preserve manually added items and contract-extracted dates when replacing template-generated items
 
