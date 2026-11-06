@@ -32,7 +32,7 @@ When someone states or confirms a date, DocJacket proposes a **key date** on the
 → **Proposed key date:** *Inspection = (that Thursday's date)*
 
 :::note Action items and dates only, for now
-Today DocJacket detects **action items** and **dates**. Detecting status changes ("we're under contract," "the deal fell through") and answering questions directly in the thread are on the roadmap — they aren't live yet.
+Today DocJacket detects **action items** and **dates**. Detecting status changes ("we're under contract," "the deal fell through") and answering questions directly in the thread are on the roadmap — they aren't live yet. <!-- until: docjacket-v3#3625 -->
 :::
 
 ## Where proposals show up
