@@ -45,6 +45,7 @@ function stripMdx(body) {
   out = out.replace(/^export\s.+?;?\s*$/gm, '');
   out = out.replace(/<([A-Z][A-Za-z0-9]*)([^>]*)\/>/g, '');
   out = out.replace(/<([A-Z][A-Za-z0-9]*)([^>]*)>([\s\S]*?)<\/\1>/g, (_m, _t, _a, inner) => inner);
+  out = out.replace(/<!--\s*until:[^>]*-->/g, '');
   out = out.replace(/\n{3,}/g, '\n\n');
   return out.trim();
 }
