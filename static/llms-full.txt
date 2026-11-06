@@ -70,7 +70,7 @@ When setup finishes, DocJacket creates the core workspace pieces for you:
 - Your organization
 - A default **Main Office**
 - A free starter subscription
-- System team roles like Owner, Admin, Transaction Coordinator, Agent, Assistant, and Viewer
+- Built-in team roles: Owner, Admin, Broker, Transaction Coordinator, Agent, Assistant, and Viewer
 - Default document categories, document statuses, transaction statuses, field options, tags, SMS templates, and message board templates
 
 ## You're in!
@@ -80,7 +80,7 @@ After setup, you'll land on your **Dashboard**. From here you can:
 - Create your first real transaction
 - Explore the sidebar to see all the features
 - Invite team members from **Settings > Team Members**
-- Customize permissions from **Settings > Roles**
+- See what each role can do in **Settings > Roles**
 - Click the **help chat** button anytime for quick answers
 
 Next up: [Set up your first transaction](./your-first-transaction.mdx)
@@ -265,11 +265,11 @@ DocJacket includes these built-in roles:
 
 - **Owner** — Full access, including billing, the team, settings, and deleting the workspace
 - **Admin** — Full access to billing, the team, settings, and every deal; cannot delete the workspace
-- **Broker** — Works every deal and reviews files for compliance, with the audit trail and compliance export
-- **Transaction Coordinator** — Works every deal: documents, dates, tasks, and email; can reveal saved MLS and portal passwords
-- **Agent** — Works every deal: documents, dates, tasks, and email
-- **Assistant** — Works every deal: documents, dates, tasks, and email
-- **Viewer** — Read-only access to every deal and its documents
+- **Broker** — Works deals and reviews files for compliance, with the audit trail and compliance export
+- **Transaction Coordinator** — Works deals: documents, dates, tasks, and email; can reveal saved MLS and portal passwords
+- **Agent** — Works deals: documents, dates, tasks, and email
+- **Assistant** — Works deals: documents, dates, tasks, and email
+- **Viewer** — Read-only: can open deals and their documents, but can't change anything
 
 **By default, every team member sees every deal.** A role decides what a person can change — settings, the team, billing, saved passwords — and Viewer is read-only. To focus on your own work, use the **Mine** view on Transactions or **Assigned to me** on Tasks; these filter your own view and don't hide anything from anyone else. To actually keep a role to its own deals, use the **Deal visibility** setting below.
 
@@ -286,7 +286,7 @@ A limited member is "on" a deal when any one of these is true:
 - They are **listed on the deal as an agent** (a contact on the deal with their email address and an agent role, such as Listing Agent or Buyer's Agent)
 - They are **assigned a task** on the deal. An assigned task shares the whole deal with that person, so assign a task to bring someone onto a deal without reassigning it.
 
-For a limited member, a deal they aren't on behaves as if it doesn't exist. It doesn't appear in the deal list, pipeline, search, Tasks, Calendar, the dashboard, Ask AI answers, or the morning brief, and opening its link shows **Deal not found**.
+For a limited member, a deal they aren't on behaves as if it doesn't exist. It doesn't appear in the deal list, pipeline, search, Tasks, Calendar, the dashboard, Ask AI answers, or the morning brief, and opening its link shows **Transaction not found** (or **Listing not found** for a listing).
 
 A few things work differently for a limited member:
 
@@ -296,7 +296,7 @@ A few things work differently for a limited member:
 
 ## The Roles page
 
-**Settings > Roles** (Owner and Admin only) shows what each built-in role can do as a read-only table. The only thing you can change there is whether a role below Admin can open **Advanced settings**.
+**Settings > Roles** (Owner and Admin only) shows what each built-in role can do as a read-only table. The only thing you can change there is whether a role below Admin can open **Advanced settings**. Which roles see only their own deals isn't set here; use the **Deal visibility** card on **Settings > Team Members**.
 
 ## Transaction contact roles
 
@@ -12685,18 +12685,21 @@ If you invited someone and they aren't showing up on your Team Members page, che
 
 ## Roles and permissions
 
-Each team member is assigned a role that controls what they can see and do. You can create custom roles in **Settings > Roles** with granular permissions for:
+Each team member has one role, and the role decides what they can do. DocJacket has seven built-in roles: **Owner**, **Admin**, **Broker**, **Transaction Coordinator**, **Agent**, **Assistant**, and **Viewer**. What each role can do is set by DocJacket. You can't create new roles or pick permissions for a role. To give someone different access, [change their role](#changing-a-members-role). For what each role is for, see [Understanding Roles](../getting-started/understanding-roles.mdx).
 
-- **Organization management** - Access to settings and organization config
-- **User management** - Ability to invite and manage other users
-- **Transaction management** - Create, edit, delete transactions
-- **Communication** - Send emails and access the inbox
-- **Tasks & scheduling** - Manage tasks and calendar
-- **Reports & analytics** - View and generate reports
-- **Billing** - Access subscription and payment details
-- **API & integrations** - Manage integrations and webhooks
+**Settings > Roles** (the **Roles** item under **Advanced** in the Settings menu) shows what each role can do as a read-only table. It is for Owners and Admins. The one thing you can change there is whether a role below Admin can open **Advanced settings**. If your organization created custom roles in the past, they are still listed there with a **Custom** badge, and you can delete one once no member holds it.
 
-The Roles page separates system roles from custom roles. You can create a custom role, choose its permissions, show or hide each role's permissions, edit custom roles, and delete unused custom roles.
+The **Roles** item under **Transactions** in the Settings menu is a different page: it manages the roles contacts play on a deal, such as Buyer or Listing Agent. See [Transaction Configuration](./transaction-configuration.md#transaction-roles).
+
+### Which deals each role sees
+
+By default, every team member sees every deal. Owners and Admins can limit the **Transaction Coordinator**, **Agent**, **Assistant**, **Viewer**, and **Broker** roles to the deals their members are on:
+
+1. Go to **Settings > Team Members**
+2. Find the **Deal visibility** card
+3. Turn on the switch for the role, and confirm
+
+Owners and Admins always see every deal, and a custom role can't be limited. The setting belongs to the role, so everyone who holds it is covered, including people you invite later. For what counts as being "on" a deal and what a limited member can't see, see [Limit a role to the deals its members are on](../getting-started/understanding-roles.mdx#limit-a-role-to-the-deals-its-members-are-on).
 
 ## Changing a member's role
 
@@ -12706,6 +12709,8 @@ The Roles page separates system roles from custom roles. You can create a custom
 4. Pick the new role and click **Save**
 
 The new role takes effect right away. If you changed your own role, the menus and settings you can reach update without signing out.
+
+If your organization uses **Deal visibility** and the new role is limited differently from the old one, the dialog tells you before you save whether the member will see every deal or only the deals they are on.
 
 A few rules keep your organization safe:
 

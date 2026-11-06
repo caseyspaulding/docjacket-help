@@ -40,7 +40,7 @@ When setup finishes, DocJacket creates the core workspace pieces for you:
 - Your organization
 - A default **Main Office**
 - A free starter subscription
-- System team roles like Owner, Admin, Transaction Coordinator, Agent, Assistant, and Viewer
+- Built-in team roles: Owner, Admin, Broker, Transaction Coordinator, Agent, Assistant, and Viewer
 - Default document categories, document statuses, transaction statuses, field options, tags, SMS templates, and message board templates
 
 ## You're in!
@@ -50,7 +50,7 @@ After setup, you'll land on your **Dashboard**. From here you can:
 - Create your first real transaction
 - Explore the sidebar to see all the features
 - Invite team members from **Settings > Team Members**
-- Customize permissions from **Settings > Roles**
+- See what each role can do in **Settings > Roles**
 - Click the **help chat** button anytime for quick answers
 
 Next up: [Set up your first transaction](./your-first-transaction.mdx)
