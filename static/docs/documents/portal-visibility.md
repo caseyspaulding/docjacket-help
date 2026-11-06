@@ -25,11 +25,12 @@ The eye icon toggles whether the document appears on Agent and Client Portals. W
 
 ## Visibility choices
 
-The dialog has three practical choices:
+The **Portal Visibility** panel lists the transaction's portal contacts, each with a checkbox:
 
-- **Hidden** — The document does not appear on portal links.
-- **Visible to all portal contacts** — Leave every contact unchecked. Any active portal contact for that transaction can see the document.
-- **Visible to selected portal contacts** — Check one or more portal contacts when only those people should see the document.
+- **Everyone with portal access**: leave every contact unchecked.
+- **Only some people**: check the contacts who should see it.
+
+Then click **Show on Portals** (or **Save** when the document is already visible). To hide the document from the portal entirely, turn its eye icon off.
 
 Contact restrictions use the transaction's portal contacts. If no contacts have portal access on the transaction, there may be no contact list to choose from yet.
 

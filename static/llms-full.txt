@@ -1057,7 +1057,7 @@ To set an anchored due date on a template task:
 2. Under **When it's due**, pick the key date in **Due date is based on** (Inspection Deadline, Financing Deadline, Closing, and so on).
 3. Enter the number of **Days** and choose **Before / after**.
 
-![Task editor with the due date set relative to a key date — for example, 3 days after the Inspection Deadline](/img/power-tc/phase-backbone-due-date.png)
+![Playbook task editor, When it's due section: Due date is based on Effective Date, Days 10, Before / after set to After, Count using Calendar days](/img/power-tc/phase-backbone-due-date.png)
 
 :::note State-specific: this is where your days go
 The *number of days* for inspection, financing, and appraisal periods come from **your state's contract and your local practice** — they're not the same everywhere. The phase structure is universal; the day-counts are yours to set. Set them once per template and every file inherits them.
@@ -2790,11 +2790,12 @@ The eye icon toggles whether the document appears on Agent and Client Portals. W
 
 ## Visibility choices
 
-The dialog has three practical choices:
+The **Portal Visibility** panel lists the transaction's portal contacts, each with a checkbox:
 
-- **Hidden** — The document does not appear on portal links.
-- **Visible to all portal contacts** — Leave every contact unchecked. Any active portal contact for that transaction can see the document.
-- **Visible to selected portal contacts** — Check one or more portal contacts when only those people should see the document.
+- **Everyone with portal access**: leave every contact unchecked.
+- **Only some people**: check the contacts who should see it.
+
+Then click **Show on Portals** (or **Save** when the document is already visible). To hide the document from the portal entirely, turn its eye icon off.
 
 Contact restrictions use the transaction's portal contacts. If no contacts have portal access on the transaction, there may be no contact list to choose from yet.
 
@@ -4185,13 +4186,13 @@ The drawer also includes sections for subtasks, task email templates, scheduled 
 
 The **Key Date** task option highlights that task as an important date-style item in task and calendar views. It is not the same as assigning a governed Key Date Type to the transaction's closing timeline.
 
-### Due relative to a key date (including the same day)
+### Due a set number of days from a deal date (including the same day)
 
 In the task drawer, the **Due Date** control has two modes: **Date** (pick a calendar date) and **Relative** (count from one of the deal's dates). In **Relative**, enter the number of days, choose **before** or **after**, and pick the date to count from — for example *5 days before Closing Date*. The task's due date then moves whenever that date moves.
 
 To make a task due **on the same day** as a key date, enter **0** days. The preview reads *"This task will be due on Closing Date."* The quick-add calendar button next to **Add a task...** opens the same choices.
 
-To build same-day tasks into every deal, set the offset in your Playbook instead — see [A task due the same day as a key date](../templates/timeline-templates.md#a-task-due-the-same-day-as-a-key-date).
+In a Playbook the control is different: under **When it's due**, pick the date in **Due date is based on**, then set **Days** and **Before / after**. There is no **Relative** option there. To build same-day tasks into every deal, see [A task due the same day as a key date](../templates/timeline-templates.md#a-task-due-the-same-day-as-a-key-date).
 
 ## Repeating tasks (recurring weekly tasks)
 
@@ -5954,7 +5955,7 @@ A Playbook task can recur: every week, or every 2 weeks, on the day you choose. 
 
 In the task panel, under **Task Details**, set **Repeat** to **Weekly** or **Every 2 weeks** and pick the day in **On**.
 
-A task either repeats **or** is due relative to a key date, never both. If **Due date is based on** (under **When it's due**) is set to a key date, the **Repeat** control is hidden. Clear that anchor to make the task repeat. DocJacket won't save a task that has both.
+A task either repeats **or** has its due date based on a key date, never both. If **Due date is based on** (under **When it's due**) is set to a key date, the **Repeat** control is hidden. Clear that anchor to make the task repeat. DocJacket won't save a task that has both.
 
 When you apply the Playbook to a deal, the first occurrence is due on the first matching day on or after the day you apply it (apply on a Friday and a "weekly on Friday" task is due that same day). Completing an occurrence creates the next one. The series ends when the deal closes. See [Repeating tasks](../tasks/creating-tasks.mdx#repeating-tasks-recurring-weekly-tasks) for how occurrences behave on a deal.
 
@@ -5975,7 +5976,7 @@ Every Playbook task can be given a **Playbook phase**. The phase list is fixed. 
 
 **You can't add, rename, or delete phases.** There is no "add phase" button, and the **Playbook phase** dropdown only offers the eight phases above. If your listing tasks don't seem to fit, use **Pre-Listing** and **Active Listing**; those are the listing phases.
 
-When you apply a Playbook, you can choose to apply only selected phases.
+When you apply a Playbook, the apply dialog groups its tasks by phase. Click **Clear** on a phase to leave its tasks out, or **All** to put them back.
 
 ## Conditional tasks
 
@@ -6218,7 +6219,7 @@ DocJacket can:
 - Preview how many key dates and tasks will be created
 - Show anchor dates used for calculation
 - Assign tasks by owner or label
-- Apply only selected phases
+- Leave out a phase's tasks (**Clear** / **All** per phase)
 - Replace previously-applied template items when needed
 - Preserve manually added items and contract-extracted dates when replacing template-generated items
 
@@ -11364,9 +11365,9 @@ To keep the name and role visible while restricting the email and phone, use **P
 - **Selected portal viewers** shares them only with the deal contacts you select.
 - **No portal viewers** keeps the email and phone out of every portal view.
 
-If you choose **Selected portal viewers** and leave everyone unchecked, then click **Save detail visibility**, no portal viewer can see that contact's email or phone—including the listing agent. The contact's name and role remain visible unless you hide the entire contact with its eye button. An empty selection here does **not** mean everyone; task portal visibility uses a different rule.
+If you choose **Selected portal viewers** and leave everyone unchecked, no portal viewer can see that contact's email or phone—including the listing agent. The contact's name and role remain visible unless you hide the entire contact with its eye button. An empty selection here does **not** mean everyone; task portal visibility uses a different rule.
 
-Click **Save detail visibility**. These detail restrictions also apply to the portal PDF. Generic links and legacy links that cannot identify one viewer show restricted contacts' names and roles only. An agent link does not bypass the selection.
+Your choice saves as soon as you change it. These detail restrictions also apply to the portal PDF. Generic links and legacy links that cannot identify one viewer show restricted contacts' names and roles only. An agent link does not bypass the selection.
 
 **Transaction Summaries are different:** **Selected portal viewers** and **No portal viewers** do not restrict contact details in Transaction Summaries, including newly generated ones. Transaction Summaries use the contact's overall eye-button visibility instead. To omit the contact from a new Transaction Summary, hide the entire contact with its eye button. No setting changes a Transaction Summary or PDF that someone already downloaded.
 
