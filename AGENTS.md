@@ -40,6 +40,8 @@ npm exec docusaurus build
 
 For product-facing docs, also run a focused stale-terminology scan over the changed files.
 
+**Absence claims expire.** A sentence saying DocJacket can't do something *yet* (or that something is "on the roadmap") must be followed by `<!-- until: docjacket-v3#<issue> -->` naming the open docjacket-v3 issue that would make it false. No issue, no "yet": state the current behavior without promising a change. `npm run check-until-markers` (and the daily `until-markers` workflow) fails once that issue closes — rewrite the sentence then. Ask AI quotes these pages verbatim; a stale "can't yet" became a wrong answer to a customer on 2026-11-05.
+
 ## Deployment
 
 Production hosting is Cloudflare Workers/static assets configured by `wrangler.jsonc`.

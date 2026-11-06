@@ -1,0 +1,27 @@
+name: until markers
+
+# Fails once a docjacket-v3 issue named in a `<!-- until: docjacket-v3#N -->` marker
+# closes, so a "can't do X yet" help sentence gets rewritten when the feature ships.
+# Own workflow (not validate.yml): it needs a secret and a daily schedule, and
+# validate.yml stays secret-free for PRs. Without the secret the check warns and passes.
+
+on:
+  schedule:
+    - cron: '0 7 * * *'
+  workflow_dispatch:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  until-markers:
+    runs-on: ubuntu-latest
+    env:
+      DOCJACKET_V3_ISSUES_TOKEN: ${{ secrets.DOCJACKET_V3_ISSUES_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm run check-until-markers

@@ -92,7 +92,7 @@ If you turned the setting on and still can't send, check the other items under [
 
 ## Good to know
 
-- **Key dates only.** Invitations are sent for key dates. Tasks can't be sent as invitations yet — they appear on your own calendar if you have task sync turned on, but they aren't sent to anyone else.
+- **Key dates only.** Invitations are sent for key dates. Tasks can't be sent as invitations yet — they appear on your own calendar if you have task sync turned on, but they aren't sent to anyone else. <!-- until: docjacket-v3#3711 -->
 - **Multiple businesses or brands.** If you send email from more than one connected account (for example, a team brand and your own company), invites go out from the calendar that matches the account the deal sends from. Connect a Google Calendar for each account you send from.
 - **First-time recipients on Gmail.** The first time you invite someone on Gmail who hasn't corresponded with you, Google may show the invitation as an email they click to add, rather than adding it to their calendar automatically. They still receive it and can respond. This is Google's behavior, not a DocJacket setting.
 - **Invite selectively.** Because you choose per date, you can invite agents to the milestones they care about — acceptance, deposit due, contingency removals, closing — without putting your internal dates on anyone else's calendar.
