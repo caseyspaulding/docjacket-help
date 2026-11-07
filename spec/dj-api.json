@@ -2759,6 +2759,15 @@
               "type": "string",
               "format": "uuid"
             }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "description": "Optional. Send a unique value (max 200 characters — a UUID is ideal) to make this call safe to retry. The first request executes and its response is stored; an identical retry replays that stored response verbatim with an `Idempotency-Replayed: true` header instead of performing the side effect again. Reusing a key for a *different* operation is rejected with `422`.",
+            "schema": {
+              "maxLength": 200,
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -2798,6 +2807,9 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
           "422": {
             "$ref": "#/components/responses/ValidationError"
           },
@@ -2832,6 +2844,15 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "description": "Optional. Send a unique value (max 200 characters — a UUID is ideal) to make this call safe to retry. The first request executes and its response is stored; an identical retry replays that stored response verbatim with an `Idempotency-Replayed: true` header instead of performing the side effect again. Reusing a key for a *different* operation is rejected with `422`.",
+            "schema": {
+              "maxLength": 200,
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -2863,6 +2884,9 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
           "422": {
             "$ref": "#/components/responses/ValidationError"
           },
@@ -2888,6 +2912,15 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "description": "Optional. Send a unique value (max 200 characters — a UUID is ideal) to make this call safe to retry. The first request executes and its response is stored; an identical retry replays that stored response verbatim with an `Idempotency-Replayed: true` header instead of performing the side effect again. Reusing a key for a *different* operation is rejected with `422`.",
+            "schema": {
+              "maxLength": 200,
+              "type": "string"
             }
           }
         ],
@@ -2919,6 +2952,9 @@
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
           },
           "422": {
             "$ref": "#/components/responses/ValidationError"
@@ -3878,7 +3914,7 @@
         "tags": [
           "Messaging"
         ],
-        "summary": "Queue a status-update email to a deal party for approval",
+        "summary": "Prepare a status-update email to a deal party: review queue, or preview then confirm",
         "description": "**Requires the `actions` scope.**",
         "operationId": "SendClientUpdateEmail",
         "parameters": [
@@ -3947,7 +3983,7 @@
         "tags": [
           "Messaging"
         ],
-        "summary": "Queue a document-request email to a deal party for approval",
+        "summary": "Prepare a document-request email to a deal party: review queue, or preview then confirm",
         "description": "**Requires the `actions` scope.**",
         "operationId": "SendDocumentRequestEmail",
         "parameters": [
@@ -4016,7 +4052,7 @@
         "tags": [
           "Messaging"
         ],
-        "summary": "Queue a follow-up email to an agent or vendor for approval",
+        "summary": "Prepare a follow-up email to an agent or vendor: review queue, or preview then confirm",
         "description": "**Requires the `actions` scope.**",
         "operationId": "SendAgentFollowupEmail",
         "parameters": [
@@ -4085,7 +4121,7 @@
         "tags": [
           "Messaging"
         ],
-        "summary": "Queue an email to an agent on the deal for approval",
+        "summary": "Prepare an email to an agent on the deal: review queue, or preview then confirm",
         "description": "**Requires the `actions` scope.**",
         "operationId": "SendEmailToAgent",
         "parameters": [
@@ -4118,6 +4154,66 @@
                   },
                   {
                     "$ref": "#/components/schemas/AgentEmailRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
+          }
+        }
+      }
+    },
+    "/api/v1/emails/confirm": {
+      "post": {
+        "tags": [
+          "Messaging"
+        ],
+        "summary": "Send or discard a previewed email with its confirm code",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "ConfirmEmailSend",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "description": "Optional. Send a unique value (max 200 characters — a UUID is ideal) to make this call safe to retry. The first request executes and its response is stored; an identical retry replays that stored response verbatim with an `Idempotency-Replayed: true` header instead of performing the side effect again. Reusing a key for a *different* operation is rejected with `422`.",
+            "schema": {
+              "maxLength": 200,
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ConfirmEmailRequest"
                   }
                 ]
               }
@@ -5846,7 +5942,7 @@
           "Proposals"
         ],
         "summary": "Approve an AI proposal",
-        "description": "**Requires the `actions` scope.**",
+        "description": "Approves one proposal. A create_transaction_from_email proposal creates a deal, so it requires a JSON body { side, createDuplicate?, fileAsHistorical? } where side is 'Buyer', 'Seller' or 'NotSure'. Without side it answers 409 side_required. If a live deal already exists at the address it answers 409 duplicate_deal with existingDeal { id, address, status }; repeat the call with createDuplicate: true only if a second deal is intended. An invalid side answers 422. Every other proposal type takes no body. Approving an email_draft or sms_consent_request proposal is available only to DocJacket's own apps; any other caller receives 403 client_not_allowed.\n\n**Requires the `actions` scope.**",
         "operationId": "ApproveProposal",
         "parameters": [
           {
@@ -5859,6 +5955,22 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ApproveProposalRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -6224,6 +6336,29 @@
           }
         }
       },
+      "ApproveProposalRequest": {
+        "type": "object",
+        "properties": {
+          "side": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "createDuplicate": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          },
+          "fileAsHistorical": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          }
+        }
+      },
       "AssignTaskRequest": {
         "type": "object",
         "properties": {
@@ -6332,6 +6467,26 @@
         "type": "object",
         "properties": {
           "completionNotes": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "ConfirmEmailRequest": {
+        "required": [
+          "confirmCode"
+        ],
+        "type": "object",
+        "properties": {
+          "confirmCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "decision": {
             "type": [
               "null",
               "string"
@@ -7913,7 +8068,7 @@
         }
       },
       "Forbidden": {
-        "description": "The key is valid but lacks the scope this operation requires, or it is the wrong credential tier — an organization key (`mcp_at_…`) on a partner route, or a partner key (`rsk_…`) anywhere else. (`code: \"insufficient_scope\"`) Sending an SMS, sharing a document by SMS, or scheduling an email from anything but DocJacket's own apps returns `code: \"client_not_allowed\"`.",
+        "description": "The key is valid but lacks the scope this operation requires, or it is the wrong credential tier — an organization key (`mcp_at_…`) on a partner route, or a partner key (`rsk_…`) anywhere else. (`code: \"insufficient_scope\"`) Sending an SMS, sharing a document by SMS, scheduling an email, or approving an email or text proposal from anything but DocJacket's own apps returns `code: \"client_not_allowed\"`.",
         "content": {
           "application/json": {
             "schema": {

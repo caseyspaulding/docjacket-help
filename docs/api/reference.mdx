@@ -2,7 +2,7 @@
 title: API reference — all operations
 sidebar_label: All operations
 sidebar_position: 6
-description: Every operation in the DocJacket REST API — 120 endpoints grouped by resource, with method, path, and required scope. Generated from the OpenAPI specification.
+description: Every operation in the DocJacket REST API — 121 endpoints grouped by resource, with method, path, and required scope. Generated from the OpenAPI specification.
 ---
 
 {/* GENERATED FILE — do not edit by hand.
@@ -12,7 +12,7 @@ description: Every operation in the DocJacket REST API — 120 endpoints grouped
 
 # API reference — all operations
 
-The DocJacket REST API lets your own systems read and act on transactions, contacts, tasks, key dates, documents, extractions, disclosures, and templates. This page lists **all 120 operations** in one place, grouped by resource, so the whole surface is readable without running JavaScript or parsing the raw specification.
+The DocJacket REST API lets your own systems read and act on transactions, contacts, tasks, key dates, documents, extractions, disclosures, and templates. This page lists **all 121 operations** in one place, grouped by resource, so the whole surface is readable without running JavaScript or parsing the raw specification.
 
 - **Base URL:** `https://api.docjacket.com`
 - **Interactive reference** (try-it console, client snippets): [api.docjacket.com/reference](https://api.docjacket.com/reference)
@@ -79,7 +79,7 @@ See [Making requests](./making-requests.mdx) for the full conventions and [Versi
 
 ## Operations
 
-120 operations across 14 sections.
+121 operations across 14 sections.
 
 ### Meta
 
@@ -134,14 +134,15 @@ Email and messaging on a deal — send client updates and document requests, dra
 | POST | `/api/v1/conversations/{threadId}/documents` | Share a document into an existing conversation via secure SMS link | `actions` |
 | GET | `/api/v1/conversations/{threadId}/messages` | List messages in a conversation thread | `read` |
 | POST | `/api/v1/conversations/{threadId}/messages` | Reply with an SMS in an existing conversation thread | `actions` |
+| POST | `/api/v1/emails/confirm` | Send or discard a previewed email with its confirm code | `actions` |
 | DELETE | `/api/v1/scheduled-messages/{messageId}` | Cancel a pending scheduled message | `actions` |
 | GET | `/api/v1/transactions/{transactionId}/communications` | List every message for a transaction across channels (SMS + email + in-app) | `read` |
 | POST | `/api/v1/transactions/{transactionId}/conversations` | Start a conversation by sending the first SMS on a deal | `actions` |
 | POST | `/api/v1/transactions/{transactionId}/draft-message` | Generate an AI message draft (never sends) | `draft` |
-| POST | `/api/v1/transactions/{transactionId}/emails/agent` | Queue an email to an agent on the deal for approval | `actions` |
-| POST | `/api/v1/transactions/{transactionId}/emails/agent-followup` | Queue a follow-up email to an agent or vendor for approval | `actions` |
-| POST | `/api/v1/transactions/{transactionId}/emails/client-update` | Queue a status-update email to a deal party for approval | `actions` |
-| POST | `/api/v1/transactions/{transactionId}/emails/document-request` | Queue a document-request email to a deal party for approval | `actions` |
+| POST | `/api/v1/transactions/{transactionId}/emails/agent` | Prepare an email to an agent on the deal: review queue, or preview then confirm | `actions` |
+| POST | `/api/v1/transactions/{transactionId}/emails/agent-followup` | Prepare a follow-up email to an agent or vendor: review queue, or preview then confirm | `actions` |
+| POST | `/api/v1/transactions/{transactionId}/emails/client-update` | Prepare a status-update email to a deal party: review queue, or preview then confirm | `actions` |
+| POST | `/api/v1/transactions/{transactionId}/emails/document-request` | Prepare a document-request email to a deal party: review queue, or preview then confirm | `actions` |
 | POST | `/api/v1/transactions/{transactionId}/messages` | Send an email on a deal (appears in the merged thread as channel=email) | `actions` |
 | GET | `/api/v1/transactions/{transactionId}/recipients` | List a deal's participants with role and per-channel availability | `read` |
 | GET | `/api/v1/transactions/{transactionId}/reports/communication-log` | Export a transaction's communication log (email + SMS) as a PDF, ZIP (with documents), or JSON | `read` |
