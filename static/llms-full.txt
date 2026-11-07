@@ -12699,6 +12699,8 @@ By default, every team member sees every deal. Owners and Admins can limit the *
 2. Find the **Deal visibility** card
 3. Turn on the switch for the role, and confirm
 
+A limited member doesn't see the deals they aren't on, or the tasks and key dates on those deals: they're left out of that member's **Tasks** page, **Calendar**, dashboard, and search. Assigning a member a task on a deal puts them on that deal, so they'll see it and its tasks.
+
 Owners and Admins always see every deal, and a custom role can't be limited. The setting belongs to the role, so everyone who holds it is covered, including people you invite later. For what counts as being "on" a deal and what a limited member can't see, see [Limit a role to the deals its members are on](../getting-started/understanding-roles.mdx#limit-a-role-to-the-deals-its-members-are-on).
 
 ## Changing a member's role
