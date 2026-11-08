@@ -29,6 +29,11 @@ DocJacket connects with the tools you already use. Set up integrations in **Sett
 - Map stages and fields
 - Review sync activity and automation behavior
 
+### Google Sheets
+- Send a row per deal to a Google Sheet commission tracker when the deal reaches a status you choose
+- Set up on its own page, **Settings > Advanced > Google Sheets**, not on the Integrations page
+- See [Google Sheets: export deals to a spreadsheet](./google-sheets.md)
+
 ### SMS
 - Provision a dedicated business SMS number
 - Track monthly usage and buy additional credits
@@ -47,5 +52,6 @@ Building your own integration? The [Developer API](/docs/api) covers the REST AP
 - [Google Workspace](./google-workspace.mdx) — Connect Gmail, Drive, Calendar, and Contacts
 - [Microsoft Outlook](./microsoft-outlook.mdx) — Connect Outlook Mail, Calendar, and OneDrive
 - [Follow Up Boss](./follow-up-boss.md) — Connect Follow Up Boss, manage sync settings, and review activity
+- [Google Sheets](./google-sheets.md) — Export a row for each deal to a Google Sheet commission tracker
 - [Send deal data to a CRM](./send-deal-data-to-crm.md) — Send deal events to GoHighLevel or any CRM with a webhook
 - [Developer API](/docs/api) — REST API, webhooks, and the partner API

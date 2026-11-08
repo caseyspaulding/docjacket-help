@@ -15,7 +15,7 @@ The Overview tab is where most TCs spend their time. It shows everything importa
 
 ## What's on the Overview
 
-The Overview is customizable, so your organization may hide, pin, or collapse some sections. Common sections include:
+The Overview is customizable. You can hide, pin, or collapse sections with **Customize View** (see [Customizing the deal page](#customizing-the-deal-page)). Common sections include:
 
 ### Closing Timeline
 The closing timeline appears near the top of the Overview when the section is visible. It shows transaction key dates, status, missing-date warnings, linked task progress, reminders, and the Playbook template that created the timeline when one has been applied.
@@ -79,6 +79,28 @@ Who to call for utilities at the property. See [Tracking utility providers](#tra
 
 ### System Credentials
 Store login details for MLS, tax portals, and other external systems used in this transaction. Keeps everything in one place so you're not hunting through emails for passwords.
+
+## Customizing the deal page
+
+### The header at the top
+
+The header at the top of a deal page is fixed. It shows the property address, the status chip, the type chip, the side chip (such as Buyer Side), and a line with the MLS number, city, state, ZIP, closing date, and price. Some deals also show a Sample chip or flag chips such as Short Sale, New construction, Subject to lease, or FUB Deal. Buttons for Checklist, Agreements & termination, Duplicate, and Edit sit alongside.
+
+You can't hide, move, or add items in the header. Each item appears when the deal has that value. To change what an item says, edit the deal (**Edit**), or click the status chip or the type chip to change those directly.
+
+### Customize View
+
+To change what shows on the page below the header, open the Overview tab and click **Customize View** on the toolbar. The drawer is titled "Customize Transaction View".
+
+- **Overview sections.** For each section, you can show or hide it, pin it to the top, and collapse it by default. A few cards can't be collapsed.
+- **Scope.** Choose whether your changes apply to **All my transactions**, to all deals of this type (for example, Purchase deals), or to **This transaction** only.
+- **Tabs and Default tab.** Under **All my transactions**, you can also show or hide whole tabs (the Overview tab always shows) and choose which tab opens first when you open a transaction.
+
+Customize View settings belong to you. Each person on your team sets up their own layout, and yours doesn't change what anyone else sees.
+
+### Field Display (for your whole organization)
+
+An owner or admin can choose which built-in fields appear on the Overview cards, by deal type and side, under **Settings > Custom Fields > Field Display**. See [Custom Fields](../settings/transaction-configuration.md#custom-fields). Field Display changes the Overview cards, not the header.
 
 ## Tracking utility providers
 
