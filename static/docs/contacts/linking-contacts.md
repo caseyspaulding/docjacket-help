@@ -16,6 +16,7 @@ DocJacket has three ways to link contacts to each other. Which one you want depe
 | Automatically add an escrow officer's assistant (or a lender's processor) to every deal the officer joins | **Auto-add to deals** (companions) |
 | Record that two people are connected, such as an assistant and the officer they work for, or a spouse | **Connections** (relationships) |
 | Link a person to their title company, escrow company, lender, or brokerage | **Organization** |
+| Show that two agents are on the same team | **Connections** (Colleague), a shared **Organization**, or a **Contact Group** |
 
 All three are on the contact's detail page. Open **Contacts**, click the person, and look for the cards and fields below.
 
@@ -64,6 +65,16 @@ To connect a person to the company they work for (a title company, escrow compan
 Company records live under **Contacts → Organizations**. Linking people to one organization is how you keep, say, every officer and assistant at one title company together.
 
 Linking a person to an organization does not, by itself, add anyone to a deal. To have an assistant follow a specific officer onto deals, use **Auto-add to deals** on the officer.
+
+## Show that two agents are on the same team
+
+DocJacket doesn't have a separate Team record for contacts. To show that two agents work together, use one of these:
+
+- **Connections, labelled Colleague.** Open one agent, click **+** on the **Connections** card, pick the other agent, and choose **Colleague**. The link shows on both agents' cards. This records a pair.
+- **The same Organization.** Create an organization named for the team or brokerage under **Contacts > Organizations**, then set it in the **Organization** field on each agent. This groups everyone at one company.
+- **A Contact Group.** Add both agents to a group under **Contacts > Groups**, for example one named for the team. This gives you a reusable list you can pick when you send to the whole team. See [Contact Groups](./contact-groups.md).
+
+None of these add anyone to a deal. To have one person follow another onto deals, use **Auto-add to deals**.
 
 ## Related
 
