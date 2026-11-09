@@ -43,13 +43,26 @@ The transaction Reports tab includes these file actions:
 - **Export file record** — exports the transaction's communication log and documents as one archive for your compliance file. See [File Record & Communication Log](/docs/reports/file-record).
 - **Generate PDF** — downloads the Transaction Summary PDF with the selected sections (file name `Transaction-Summary-yyyy-MM-dd.pdf`)
 - **Print Checklist** (under **More**) — prints the transaction's task list as a checklist PDF, with due dates and completed tasks checked off. The **Print** button on the transaction's **Tasks** tab opens the same PDF. See [Print a task list](/docs/tasks#print-a-task-list).
-- **Commission Statement** — generates a commission statement for the transaction
+- **Commission Statement** (under **More**) — downloads a commission statement PDF for the transaction. See [Commission statement](#commission-statement).
 
 PDF branding uses your organization's report colors and footer text from organization settings.
 
 :::note
 The Reports tab holds two different things. The **status report** is what you send to a client — property details, key dates, task progress. The **file record** is the compliance archive you keep: the full email and text history plus every document. If you already use CTM, SkySlope, or Dotloop for broker review, the file record is what you export at closing to file alongside it.
 :::
+
+### Commission statement
+
+DocJacket can generate a realtor commission statement as a PDF for a deal. On the deal's **Reports** tab, click **More**, then **Commission Statement**. The file downloads as `CommissionStatement-` followed by the date, for example `CommissionStatement-2026-01-15.pdf`.
+
+The PDF has these sections:
+
+- **Transaction Summary** - Purchase Price, Earnest Money, Closing date, and the buyers and sellers.
+- **Commission Details** - the Listing side and Buyer side, each with rate and amount; any Seller credit; Total commission; and the Referral fee (shown for information only).
+- **Agents and brokerage** - the Listing Agent and Buyer's Agent, each with license, brokerage, phone, and email, plus the Brokerage of Record.
+- **Closing Parties** - Title Company / Attorney, Escrow, and Lender.
+
+The statement has no admin or TC fee line. It downloads to your computer and is not saved to the deal's Documents. To send it to the title company or anyone else, download it, then attach it in the deal's email composer with **Attach > Upload from computer**.
 
 ## Send to clients
 

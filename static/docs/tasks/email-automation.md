@@ -30,6 +30,15 @@ An email linked to a task has **two** moments where it can fire. Understanding t
 
 The same linked email carries both. You don't choose one or the other — you configure the email once, and set its date and its delivery mode.
 
+### Can an email fire when a document arrives?
+
+No. A task email fires on its date or when you complete the task, and Automation Rules fire on a status change or a completed task. A document being received or uploaded - for example when a "Closing Confirmation" arrives - is not a trigger, and no setting completes a task when a file arrives. DocJacket won't prepare an email for review the moment a document is uploaded without a task being completed.
+
+Two things you can do instead:
+
+- Complete the task when you file the document. Completing it prepares the linked email; with **Require review before sending** on, the email is drafted into your Review queue and nothing is sent until you approve it.
+- Time the email to a date, such as the task's due date or a Key Date.
+
 For each linked email you can configure:
 
 - Email template

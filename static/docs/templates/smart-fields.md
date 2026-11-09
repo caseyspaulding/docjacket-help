@@ -174,6 +174,8 @@ A map link builds from the **address on file** (street, city, state, ZIP) for th
 | MLS Number | `{{mls_number}}` |
 | Transaction Type | `{{transaction_type}}` |
 | Transaction Status | `{{transaction_status}}` |
+| Client Portal Link | `{{portal_link}}` |
+| Open in DocJacket (transaction link) | `{{transaction_link}}` |
 | Closing Location | `{{closing_location}}` |
 | Closing Location Map Link | `{{closing_location_map_link}}` |
 | Alt. Earnest Money Location | `{{alt_em_location}}` |

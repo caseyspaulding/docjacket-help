@@ -9,7 +9,7 @@ description: Configure DocJacket document types, statuses, and automatic file-na
 
 # Document Settings
 
-Use **Settings > Documents** to control how transaction files are categorized, reviewed, and named.
+Use **Settings > Transactions > Documents** to control how transaction files are categorized, reviewed, and named.
 
 The page has three tabs:
 
@@ -49,6 +49,29 @@ Use the **Document Statuses** tab to create statuses such as Pending, Reviewed, 
 Each status card shows the status color, active/inactive state, and usage count. Inactive statuses no longer appear for new selection, but existing documents keep the status they already had.
 
 Document statuses with existing usage cannot be deleted. Change the affected documents to another status first, then delete the unused status.
+
+### Set a status on a document
+
+Statuses you create here appear on a transaction's **Documents** tab, **Files** subtab (Documents Received). Only active statuses are offered. There are three ways to set one:
+
+- Click the status badge on a file's row (its tooltip reads "Click to change status") and pick a status.
+- Open the row's **...** menu, or right-click the row, and choose **Set status**.
+- Tick several rows and click **Set status** in the bar above the list to change them all at once.
+
+Team members on a read-only seat cannot change a status.
+
+### What Rejected does
+
+Setting a file to **Rejected** from the Documents tab:
+
+- saves the status and writes "Document rejected" to the organization's Activity log;
+- sends a notification and an email to the team member who uploaded the file. Nothing is sent when you reject your own upload. The email follows that person's **Settings > Notifications > Document activity** preference;
+- shows a warning chip on the file's row (the same chip appears for **Revision Requested**);
+- does **not** email the other party, send a correction request, add a note to the deal, or reopen the matching Documents Needed item.
+
+The Documents tab does not ask for a reason when you reject a file.
+
+To record the problem and request a corrected copy, follow [When a received document is wrong](../documents/audit-mode.mdx#when-a-received-document-is-wrong).
 
 ## Naming Rules
 

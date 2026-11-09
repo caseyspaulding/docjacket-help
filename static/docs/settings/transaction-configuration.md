@@ -131,6 +131,18 @@ To assign a field's section, you have two options:
 New custom fields start out unsorted. Assign their sections once — the bulk tool makes quick work of it — and every transaction form stays organized from then on.
 :::
 
+### Show a field only on some deals ("Show when" rules)
+
+By default a custom field shows on every deal. A **Show when** rule limits a field to deals that match a condition, such as a particular state or the answer to another custom field.
+
+- **One field.** Edit the field and tick **Only show on deals that match a rule**. Build the rule with the condition builder: each line is a condition, an operator (is, is not, is blank, is not blank), and a value, and **And any of...** adds a group where any one line can match. Leave the box off to show the field on every deal.
+- **Several fields at once.** On the **Smart Fields** tab, tick the fields, click **Set show-when rule**, build the rule, then click **Apply rule**. Click **Always show** to remove the rule from all the selected fields.
+- A field with a rule shows a **Shown when:** badge on its card.
+
+A field that doesn't match a deal is hidden on that deal: it is left off the transaction Overview, the edit form, the agent portal, and the task board summary. A hidden field keeps whatever was entered in it, so it comes back if the deal matches the rule again.
+
+Edit the field and tick **Show on agent portal** to let agents see its value on the deal summary and property card. Only an owner or admin can change that setting.
+
 ### Custom fields are for transactions, not contacts
 
 Custom fields belong to **transactions** only. Each value is saved on a deal, so there's no way to add a custom field to a **contact** (a client, agent, or vendor). A smart field used as a contact detail would have to be re-entered on every deal.

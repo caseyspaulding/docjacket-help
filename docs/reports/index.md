@@ -8,7 +8,7 @@ description: Review transaction analytics, export performance data, and generate
 
 DocJacket has two report surfaces:
 
-- **Reports** in the sidebar shows organization-wide analytics, performance metrics, pipeline totals, and CSV export.
+- **Reports** in the sidebar (under **More**) shows organization-wide analytics across five tabs - Overview, Agents, Workflow, Payouts, and CMA - with a period picker, per-tab PDFs, and a CSV export of your deals.
 - **Reports** inside a transaction creates client-ready transaction summaries, checklists, commission statements, and scheduled report deliveries.
 
 Use the sidebar Reports page when you are reviewing the business. Use a transaction's Reports tab when you need to send or download a report for one deal.
@@ -17,5 +17,6 @@ The **Pipeline** page is a separate sidebar page. It is documented here because 
 
 ## In this section
 
+- [The Reports page](./reports-page.md) — What the Overview, Agents, Workflow, Payouts, and CMA tabs show, and how to export deals to CSV
 - [Transaction Reports](./transaction-reports.mdx) — Generate, send, and schedule transaction-level reports
 - [Pipeline View](./pipeline-view.mdx) — Use the Pipeline page for transaction, task, and buyer-offer boards
