@@ -20,6 +20,7 @@ Transaction contacts are grouped by role category on the transaction **Contacts*
 
 **Professional (Agents)**
 - Listing Agent, Buyer Agent, cooperating agent roles
+- Transaction Coordinator, and Coop TC (the co-op transaction coordinator on the other side)
 
 **Legal & Title**
 - Title Company, Closing Attorney, Escrow Officer
@@ -32,6 +33,18 @@ Transaction contacts are grouped by role category on the transaction **Contacts*
 
 **Other**
 - Property Manager, HOA Contact, and custom roles
+
+## Show yourself as the TC on a deal
+
+**Transaction Coordinator** and **Coop TC** are built-in roles, so you don't need to create them.
+
+1. Open the deal and go to the **Contacts** tab.
+2. Add yourself (or your coordinator) as a contact and give them the **Transaction Coordinator** role.
+3. Use **Coop TC** for the other side's coordinator.
+
+To label a buyer-side or listing-side coordinator separately, add custom roles in **Settings > Transactions > Roles**. A custom role has a **Party group** (**Buyer side** or **Listing side**, among others) that sets where the role appears in the Assign Contacts dropdown. The built-in roles are marked **System** and can't be edited, so their party group stays as it is.
+
+Your team role (Owner, Admin, and so on) is separate from deal roles and doesn't appear on deals.
 
 ## Why roles matter
 

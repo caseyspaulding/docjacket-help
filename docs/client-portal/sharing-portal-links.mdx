@@ -53,6 +53,17 @@ You can send the portal link by:
 
 Texts use your organization's SMS setup and safeguards. You don't need to create a link first. For each contact you text, DocJacket sends that contact's client portal link and creates one if they don't have it yet. Agent contacts get the deal's general client link. If a contact's link has been revoked or has expired, or the contact is set to Notify only, DocJacket skips that text and tells you why. To text a contact whose link is turned off, create a new link from their row on the **Contacts** tab, then send again.
 
+## Can portal links go out automatically?
+
+DocJacket does not send portal links when a deal is created. You send them yourself with **Send Portal Links** on the Portal or Contacts tab, or you put the **Client Portal Link** smart field, `{{portal_link}}`, in the email of a Playbook task.
+
+- `{{portal_link}}` is the deal's shared Buyer/Seller link. DocJacket creates that link the first time the smart field is used, so you don't have to create it first.
+- A task email that uses it follows the normal delivery rules. With **Require review before sending** on (the default), the email waits in your Review queue until you approve it. See [Email Automation](../tasks/email-automation.mdx#review-before-sending).
+- There is no smart field for the Agent portal link, and `{{portal_link}}` is never the Agent link, because the Agent view shows commissions, the TC fee, and lockbox details. Create the Agent link on the **Portal** tab (**Create Link**, then choose **Agent**) and send it from the link.
+- To see whether the recipient opened it, check the Portal tab: each link shows its visit count and last access. Creating a general link also writes "Portal link created" to the Activity Log.
+
+If you have a task such as "Send portal links", keep it as your reminder, or attach an email that uses `{{portal_link}}` to it.
+
 ## Managing links
 
 From the transaction **Portal** tab, you can see active and inactive links for that transaction and:

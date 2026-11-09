@@ -2666,6 +2666,16 @@ AI looks through all your uploaded documents and pulls out:
 
 If a field is already filled in, review the suggested value before saving the update.
 
+## Warnings on the review screen
+
+The review screens can show warnings about the document you uploaded. These are the ones you may see:
+
+- **Address mismatch notice.** When the document's address doesn't match this deal, the review screen says: "This document's address (...) doesn't match this deal (...). The deal's address will be kept." A checkbox, **Use the document's address instead**, is unticked by default, so the deal's address stays unless you tick it.
+- **Key-field citations.** A line reads "N of M key fields link back to a page in the document". Click **Check the other N** to filter the list to the fields that don't link back to a page, so you can verify them yourself.
+- **Smart Split.** When you upload a multi-document file, Smart Split shows "N document(s) flagged for review" and puts a red **Review** badge on page boundaries it is unsure about.
+
+None of these warnings saves a note to the deal or contacts anyone, and there is no "flag" button on the upload screens that does. To record that a document is wrong (for example a wrong address or missing signatures) and request a corrected copy, see Documents Needed, [When a received document is wrong](./audit-mode.mdx#when-a-received-document-is-wrong).
+
 ## Review and apply changes
 
 For existing transactions, DocJacket compares extracted values with the current transaction data. The review screen shows:
@@ -2734,6 +2744,52 @@ For each required document, you can:
 - Remove the requirement if it no longer applies
 
 Uploading from the checklist is best when a file satisfies a specific placeholder, because DocJacket links the new file to that requirement immediately. If the transaction has a linked Google Drive folder, linked uploads can also show an **Open in Drive** shortcut.
+
+## Row details
+
+Click the chevron at the end of a required-document row (its tooltip reads "Details - received file, request, due date, note") to open the row's details panel. It has these parts:
+
+- **Received file** - the linked file, with **Change...** to link a different one. When no file is linked it shows **Upload** and **Mark received**.
+- **Request from party** - shows **Not yet requested**, or **Last requested** with a date once you have recorded one (see below).
+- **Due date & side** - when the document is due and which side it belongs to.
+- **Fully executed** - whether the received copy has been confirmed as fully signed.
+- **Internal note** - a note for your team that is never shown to clients. For example: "Sent to escrow 6/28 - waiting on buyer signature".
+
+## Request a document so it tracks
+
+DocJacket tracks a request by the date you record, not by the email itself. To request a document from the other side and have it show on the checklist:
+
+1. Send the request. Email it from the deal's **Email** tab or use an email template.
+2. On the requirement's row, click **+ sent** and pick the date you sent it.
+3. The row now reads **Sent** with that date. Click it any time to change the date.
+4. Open the row's details panel. **Request from party** now shows **Last requested** with the same date.
+
+Sending an email does not fill this in on its own. **Request from party** stays at **Not yet requested** until you record the date with **+ sent**.
+
+Two more tracking tools sit on the same row and header:
+
+- A revision counter (shown as `#` and a number, with minus and plus buttons) for documents that get amended, such as an addendum or counter offer. Use the minus button at #1 to stop tracking revisions.
+- A copy button in the checklist header that copies a "still waiting on" list, with the dates sent, so you can paste it into a message to the other side.
+
+## When a received document is wrong
+
+A document can arrive with missing signatures, a wrong address, or the wrong version. To record the problem and ask for a corrected copy:
+
+1. On **Documents Received**, set the file's status to **Rejected** or **Revision Requested**. See [Document Settings](../settings/document-settings.md#set-a-status-on-a-document).
+2. On the requirement's row in Documents Needed, untick **Received**. This unlinks the file and moves the requirement back to Not Started. The file itself stays in Documents Received.
+3. Write what is wrong in the requirement's **Internal note**, for example "Lead-based paint disclosure missing buyer signatures".
+4. Email the other side to request a corrected copy, then click **+ sent** and record the date.
+5. When the corrected copy arrives, upload it into the same row. Linked upload history keeps the earlier versions.
+
+DocJacket does not have a "flag" button that writes a note to the deal. Setting a status to Rejected does not note the deal, email the other party, or reopen the requirement either, so the **Internal note** is where you record what is wrong. The review screens that show warnings about an uploaded document are described in [AI Data Extraction](./ai-data-extraction.mdx#warnings-on-the-review-screen).
+
+## Does uploading check items off automatically?
+
+A required document counts as received when a file is uploaded into its row, when a file is linked to it, or when you click **Mark received**.
+
+A file you add with the general upload button is not linked to a row automatically. When DocJacket classifies the uploads and some look like they belong to open checklist rows, a banner appears above the checklist: it says how many uploaded documents look like they belong to this checklist, with **Review & file** and **Skip for now** buttons. Nothing is filed until you confirm in the dialog.
+
+There is no setting that marks a document check or a task complete when a file is uploaded. To complete a task, complete it on the task.
 
 ## Why this matters
 
@@ -2809,6 +2865,15 @@ Use portal visibility when someone should have ongoing access to a document from
 5. Use the eye icon in the row actions
 
 The eye icon toggles whether the document appears on Agent and Client Portals. When you turn visibility on, DocJacket opens the **Portal Visibility** dialog so you can choose who can see it and whether downloads are allowed.
+
+## Are there visibility triggers?
+
+No. There is no automatic or scheduled visibility trigger that shows a document, task, or field on a portal at a set time or when something happens. Visibility is something you set:
+
+- **Documents**: per document with the eye icon, as described above.
+- **Tasks**: per task with **Show on Portal**. See [Task options](../tasks/task-options.md).
+- **Custom fields**: a **Show when** rule can show or hide a custom field depending on the deal. See [Transaction Configuration](../settings/transaction-configuration.md#show-a-field-only-on-some-deals-show-when-rules).
+- **Playbook tasks**: tasks in a Playbook can be conditional, so they only appear on deals that match. See [Conditional tasks](../templates/timeline-templates.md#conditional-tasks).
 
 ## Visibility choices
 
@@ -3415,6 +3480,7 @@ Transaction contacts are grouped by role category on the transaction **Contacts*
 
 **Professional (Agents)**
 - Listing Agent, Buyer Agent, cooperating agent roles
+- Transaction Coordinator, and Coop TC (the co-op transaction coordinator on the other side)
 
 **Legal & Title**
 - Title Company, Closing Attorney, Escrow Officer
@@ -3427,6 +3493,18 @@ Transaction contacts are grouped by role category on the transaction **Contacts*
 
 **Other**
 - Property Manager, HOA Contact, and custom roles
+
+## Show yourself as the TC on a deal
+
+**Transaction Coordinator** and **Coop TC** are built-in roles, so you don't need to create them.
+
+1. Open the deal and go to the **Contacts** tab.
+2. Add yourself (or your coordinator) as a contact and give them the **Transaction Coordinator** role.
+3. Use **Coop TC** for the other side's coordinator.
+
+To label a buyer-side or listing-side coordinator separately, add custom roles in **Settings > Transactions > Roles**. A custom role has a **Party group** (**Buyer side** or **Listing side**, among others) that sets where the role appears in the Assign Contacts dropdown. The built-in roles are marked **System** and can't be edited, so their party group stays as it is.
+
+Your team role (Owner, Admin, and so on) is separate from deal roles and doesn't appear on deals.
 
 ## Why roles matter
 
@@ -4451,6 +4529,15 @@ An email linked to a task has **two** moments where it can fire. Understanding t
 | **You complete the task** | You check the task off | Prepares the email for your **Review queue** |
 
 The same linked email carries both. You don't choose one or the other — you configure the email once, and set its date and its delivery mode.
+
+### Can an email fire when a document arrives?
+
+No. A task email fires on its date or when you complete the task, and Automation Rules fire on a status change or a completed task. A document being received or uploaded - for example when a "Closing Confirmation" arrives - is not a trigger, and no setting completes a task when a file arrives. DocJacket won't prepare an email for review the moment a document is uploaded without a task being completed.
+
+Two things you can do instead:
+
+- Complete the task when you file the document. Completing it prepares the linked email; with **Require review before sending** on, the email is drafted into your Review queue and nothing is sent until you approve it.
+- Time the email to a date, such as the task's due date or a Key Date.
 
 For each linked email you can configure:
 
@@ -7449,6 +7536,8 @@ A map link builds from the **address on file** (street, city, state, ZIP) for th
 | MLS Number | `{{mls_number}}` |
 | Transaction Type | `{{transaction_type}}` |
 | Transaction Status | `{{transaction_status}}` |
+| Client Portal Link | `{{portal_link}}` |
+| Open in DocJacket (transaction link) | `{{transaction_link}}` |
 | Closing Location | `{{closing_location}}` |
 | Closing Location Map Link | `{{closing_location_map_link}}` |
 | Alt. Earnest Money Location | `{{alt_em_location}}` |
@@ -11695,6 +11784,17 @@ You can send the portal link by:
 
 Texts use your organization's SMS setup and safeguards. You don't need to create a link first. For each contact you text, DocJacket sends that contact's client portal link and creates one if they don't have it yet. Agent contacts get the deal's general client link. If a contact's link has been revoked or has expired, or the contact is set to Notify only, DocJacket skips that text and tells you why. To text a contact whose link is turned off, create a new link from their row on the **Contacts** tab, then send again.
 
+## Can portal links go out automatically?
+
+DocJacket does not send portal links when a deal is created. You send them yourself with **Send Portal Links** on the Portal or Contacts tab, or you put the **Client Portal Link** smart field, `{{portal_link}}`, in the email of a Playbook task.
+
+- `{{portal_link}}` is the deal's shared Buyer/Seller link. DocJacket creates that link the first time the smart field is used, so you don't have to create it first.
+- A task email that uses it follows the normal delivery rules. With **Require review before sending** on (the default), the email waits in your Review queue until you approve it. See [Email Automation](../tasks/email-automation.mdx#review-before-sending).
+- There is no smart field for the Agent portal link, and `{{portal_link}}` is never the Agent link, because the Agent view shows commissions, the TC fee, and lockbox details. Create the Agent link on the **Portal** tab (**Create Link**, then choose **Agent**) and send it from the link.
+- To see whether the recipient opened it, check the Portal tab: each link shows its visit count and last access. Creating a general link also writes "Portal link created" to the Activity Log.
+
+If you have a task such as "Send portal links", keep it as your reminder, or attach an email that uses `{{portal_link}}` to it.
+
 ## Managing links
 
 From the transaction **Portal** tab, you can see active and inactive links for that transaction and:
@@ -12181,7 +12281,7 @@ You can't choose, remove or reorder the columns. The layout above is fixed. The 
 
 DocJacket has two report surfaces:
 
-- **Reports** in the sidebar shows organization-wide analytics, performance metrics, pipeline totals, and CSV export.
+- **Reports** in the sidebar (under **More**) shows organization-wide analytics across five tabs - Overview, Agents, Workflow, Payouts, and CMA - with a period picker, per-tab PDFs, and a CSV export of your deals.
 - **Reports** inside a transaction creates client-ready transaction summaries, checklists, commission statements, and scheduled report deliveries.
 
 Use the sidebar Reports page when you are reviewing the business. Use a transaction's Reports tab when you need to send or download a report for one deal.
@@ -12190,6 +12290,7 @@ The **Pipeline** page is a separate sidebar page. It is documented here because 
 
 ## In this section
 
+- [The Reports page](./reports-page.md) — What the Overview, Agents, Workflow, Payouts, and CMA tabs show, and how to export deals to CSV
 - [Transaction Reports](./transaction-reports.mdx) — Generate, send, and schedule transaction-level reports
 - [Pipeline View](./pipeline-view.mdx) — Use the Pipeline page for transaction, task, and buyer-offer boards
 
@@ -12234,13 +12335,26 @@ The transaction Reports tab includes these file actions:
 - **Export file record** — exports the transaction's communication log and documents as one archive for your compliance file. See [File Record & Communication Log](/docs/reports/file-record).
 - **Generate PDF** — downloads the Transaction Summary PDF with the selected sections (file name `Transaction-Summary-yyyy-MM-dd.pdf`)
 - **Print Checklist** (under **More**) — prints the transaction's task list as a checklist PDF, with due dates and completed tasks checked off. The **Print** button on the transaction's **Tasks** tab opens the same PDF. See [Print a task list](/docs/tasks#print-a-task-list).
-- **Commission Statement** — generates a commission statement for the transaction
+- **Commission Statement** (under **More**) — downloads a commission statement PDF for the transaction. See [Commission statement](#commission-statement).
 
 PDF branding uses your organization's report colors and footer text from organization settings.
 
 :::note
 The Reports tab holds two different things. The **status report** is what you send to a client — property details, key dates, task progress. The **file record** is the compliance archive you keep: the full email and text history plus every document. If you already use CTM, SkySlope, or Dotloop for broker review, the file record is what you export at closing to file alongside it.
 :::
+
+### Commission statement
+
+DocJacket can generate a realtor commission statement as a PDF for a deal. On the deal's **Reports** tab, click **More**, then **Commission Statement**. The file downloads as `CommissionStatement-` followed by the date, for example `CommissionStatement-2026-01-15.pdf`.
+
+The PDF has these sections:
+
+- **Transaction Summary** - Purchase Price, Earnest Money, Closing date, and the buyers and sellers.
+- **Commission Details** - the Listing side and Buyer side, each with rate and amount; any Seller credit; Total commission; and the Referral fee (shown for information only).
+- **Agents and brokerage** - the Listing Agent and Buyer's Agent, each with license, brokerage, phone, and email, plus the Brokerage of Record.
+- **Closing Parties** - Title Company / Attorney, Escrow, and Lender.
+
+The statement has no admin or TC fee line. It downloads to your computer and is not saved to the deal's Documents. To send it to the title company or anyone else, download it, then attach it in the deal's email composer with **Attach > Upload from computer**.
 
 ## Send to clients
 
@@ -12407,6 +12521,74 @@ That last one matters. If you send an email from your own inbox or from CTM and 
 - [Transaction Reports](/docs/reports/transaction-reports) — client-facing status reports, which are a different thing: reports you *send*, versus the record you *keep*
 - [Importing Deals from SkySlope](/docs/getting-started/importing-deals-from-skyslope) — moving existing deals in from another platform
 - [Uploading Documents](/docs/documents/uploading-documents)
+
+---
+
+# The Reports page: what's included
+
+The **Reports** page is DocJacket's organization-wide analytics: closed volume, agent leaderboard, task performance, TC income and payouts, and a CMA builder. It is separate from a single deal's **Reports** tab, which creates a report for one transaction (see [Transaction Reports](./transaction-reports.mdx)).
+
+## Where to find it
+
+In the left sidebar, open **More** and click **Reports**. The page is titled "Reports" with the subtitle "Transaction analytics and performance metrics".
+
+## Period picker, PDF, and Export
+
+On every tab except CMA, the page header has:
+
+- A **period picker**: This Month, Last Month, This Quarter, Last Quarter, This Year, Last Year, or Custom Range (pick a From and To date).
+- **Export**, which opens the Export deals dialog (hidden on the Payouts tab). See [Export deals to CSV](#export-deals-to-csv).
+- A PDF button that downloads the current tab as a PDF. Its label changes with the tab: **Overview PDF**, **Agents PDF**, **Workflow PDF**, or **Payouts PDF**.
+
+## The five tabs
+
+### Overview
+
+- A summary bar with **Closed Volume**, **Transactions Closed**, **Active Pipeline**, and **Total Commission** (shown when it is above zero).
+- **Transaction Performance**: **Avg Days to Close** and **Transactions Closed**, each compared with the prior period, plus **Active Volume** and **On-Time Close Rate**.
+- **Business Summary**: **New Transactions**, closed deals, **Active Volume**, and **Documents Processed**, plus a **Monthly Closings (Last 6 Months)** chart with a year-to-date badge.
+
+### Agents
+
+The **Agent Leaderboard** has one row per agent with these columns: Agent, Deals, Closed, Cancelled, Fees Paid, Pipeline, Closed Vol, Avg Closed, and Assists. Use **Columns** to show or hide columns. A definitions line under the table explains each one, for example that Closed means a closed status with a closing date in the period and Pipeline means all currently active or under-contract deals.
+
+Click an agent to see their deals: Address, Role, Status, Price, and Closing Date.
+
+### Workflow
+
+**Workflow Efficiency** shows a **Task On-Time Rate** gauge, **Avg Days Overdue** (late tasks only), and **Tasks Completed**. The **Top Bottlenecks** table lists the tasks that run late most often, with columns Task, Avg Late, and # (how many times).
+
+### Payouts
+
+- **Collected TC Income**: TC fee payments received. This is the only Payouts section the period picker changes.
+- **Expected TC Income**: TC fees still owed.
+- **Projected Payouts**: what is expected to pay out over the next several months.
+- **Outstanding TC Fees**: unpaid TC fees across the organization.
+
+Expected TC Income, Projected Payouts, and Outstanding TC Fees keep their own fixed time horizons and do not follow the period picker.
+
+### CMA
+
+The Create CMA wizard, built into the page. It is also available directly at `/reports/cma`. The period picker, Export, and PDF buttons are hidden on this tab.
+
+## Export deals to CSV
+
+Click **Export** to open the **Export deals** dialog. It has its own settings, so changing them never moves the page's period:
+
+- **Period**: the same presets as the page, or a custom range.
+- **Date basis**: **Closing date** or **Created date**.
+- **Deals**: **Closed only** or **All statuses**.
+- **Include archived deals**.
+
+Click **Download CSV**. The file has one row per deal with these columns: Address, Status, Type, Side, Listing Agent, Buyer's Agent, Buyer, Seller, Sales Price, Commission, TC Fee, TC Fee Paid (capped at fee amount), TC Fee Balance, Last TC Payment Date, Listing Date, Closing Date, Created Date, and Archived.
+
+The TC fee columns depend on who exports. Owners and admins get the TC fee columns for every deal. Other team members get them only for fees billed to themselves. Everyone else gets blank TC fee cells. The deal rows themselves are the same for everyone.
+
+**TC Fee Paid** is capped at each fee's amount, so it can read lower than **Collected TC Income** on the Payouts tab, which counts all cash received.
+
+## One deal's reports
+
+For a single deal's Transaction Summary, Commission Statement, Print Checklist, or file record, use the deal's own **Reports** tab. See [Transaction Reports](./transaction-reports.mdx).
 
 ---
 
@@ -13131,6 +13313,18 @@ To assign a field's section, you have two options:
 New custom fields start out unsorted. Assign their sections once — the bulk tool makes quick work of it — and every transaction form stays organized from then on.
 :::
 
+### Show a field only on some deals ("Show when" rules)
+
+By default a custom field shows on every deal. A **Show when** rule limits a field to deals that match a condition, such as a particular state or the answer to another custom field.
+
+- **One field.** Edit the field and tick **Only show on deals that match a rule**. Build the rule with the condition builder: each line is a condition, an operator (is, is not, is blank, is not blank), and a value, and **And any of...** adds a group where any one line can match. Leave the box off to show the field on every deal.
+- **Several fields at once.** On the **Smart Fields** tab, tick the fields, click **Set show-when rule**, build the rule, then click **Apply rule**. Click **Always show** to remove the rule from all the selected fields.
+- A field with a rule shows a **Shown when:** badge on its card.
+
+A field that doesn't match a deal is hidden on that deal: it is left off the transaction Overview, the edit form, the agent portal, and the task board summary. A hidden field keeps whatever was entered in it, so it comes back if the deal matches the rule again.
+
+Edit the field and tick **Show on agent portal** to let agents see its value on the deal summary and property card. Only an owner or admin can change that setting.
+
 ### Custom fields are for transactions, not contacts
 
 Custom fields belong to **transactions** only. Each value is saved on a deal, so there's no way to add a custom field to a **contact** (a client, agent, or vendor). A smart field used as a contact detail would have to be re-entered on every deal.
@@ -13176,7 +13370,7 @@ Archived statuses are hidden from the Key Date status dropdown, but existing key
 
 # Document Settings
 
-Use **Settings > Documents** to control how transaction files are categorized, reviewed, and named.
+Use **Settings > Transactions > Documents** to control how transaction files are categorized, reviewed, and named.
 
 The page has three tabs:
 
@@ -13216,6 +13410,29 @@ Use the **Document Statuses** tab to create statuses such as Pending, Reviewed, 
 Each status card shows the status color, active/inactive state, and usage count. Inactive statuses no longer appear for new selection, but existing documents keep the status they already had.
 
 Document statuses with existing usage cannot be deleted. Change the affected documents to another status first, then delete the unused status.
+
+### Set a status on a document
+
+Statuses you create here appear on a transaction's **Documents** tab, **Files** subtab (Documents Received). Only active statuses are offered. There are three ways to set one:
+
+- Click the status badge on a file's row (its tooltip reads "Click to change status") and pick a status.
+- Open the row's **...** menu, or right-click the row, and choose **Set status**.
+- Tick several rows and click **Set status** in the bar above the list to change them all at once.
+
+Team members on a read-only seat cannot change a status.
+
+### What Rejected does
+
+Setting a file to **Rejected** from the Documents tab:
+
+- saves the status and writes "Document rejected" to the organization's Activity log;
+- sends a notification and an email to the team member who uploaded the file. Nothing is sent when you reject your own upload. The email follows that person's **Settings > Notifications > Document activity** preference;
+- shows a warning chip on the file's row (the same chip appears for **Revision Requested**);
+- does **not** email the other party, send a correction request, add a note to the deal, or reopen the matching Documents Needed item.
+
+The Documents tab does not ask for a reason when you reject a file.
+
+To record the problem and request a corrected copy, follow [When a received document is wrong](../documents/audit-mode.mdx#when-a-received-document-is-wrong).
 
 ## Naming Rules
 

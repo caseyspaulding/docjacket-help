@@ -20,6 +20,15 @@ Use portal visibility when someone should have ongoing access to a document from
 
 The eye icon toggles whether the document appears on Agent and Client Portals. When you turn visibility on, DocJacket opens the **Portal Visibility** dialog so you can choose who can see it and whether downloads are allowed.
 
+## Are there visibility triggers?
+
+No. There is no automatic or scheduled visibility trigger that shows a document, task, or field on a portal at a set time or when something happens. Visibility is something you set:
+
+- **Documents**: per document with the eye icon, as described above.
+- **Tasks**: per task with **Show on Portal**. See [Task options](../tasks/task-options.md).
+- **Custom fields**: a **Show when** rule can show or hide a custom field depending on the deal. See [Transaction Configuration](../settings/transaction-configuration.md#show-a-field-only-on-some-deals-show-when-rules).
+- **Playbook tasks**: tasks in a Playbook can be conditional, so they only appear on deals that match. See [Conditional tasks](../templates/timeline-templates.md#conditional-tasks).
+
 ## Visibility choices
 
 The **Portal Visibility** panel lists the transaction's portal contacts, each with a checkbox:
