@@ -52,8 +52,8 @@ The export sends much more than the address. Each row has 26 columns, A through 
 | F | Closing date |
 | G | The deal's status at the time of the export |
 | H | Contract price |
-| I | Gross commission. Blank unless DocJacket has set up commission splits for your account |
-| J | Team split. Blank unless DocJacket has set up commission splits for your account |
+| I | Gross commission for the deal's side: the commission dollar amount on the deal if one is entered, otherwise the contract price times the commission rate, rounded to the cent. Blank if the deal has neither an amount nor both a price and a rate |
+| J | Team split. Blank unless DocJacket has set up commission splits for your account. Splits are not self-serve yet |
 | K | Admin / TC fee: the deal's TC fee, or the total of its TC fee entries. Shows `TC fee missing` if the deal has neither |
 | L | Lead source: the deal's Listing Source if it has one, otherwise its Lead Source |
 | M | Always blank |
