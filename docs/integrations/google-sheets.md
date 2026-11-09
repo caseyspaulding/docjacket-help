@@ -32,12 +32,12 @@ A row is sent when a deal's status changes to one of your trigger statuses. That
 
 - Creating a deal does not send a row by itself.
 - The first time a deal reaches a trigger status, DocJacket adds a new row to the bottom of the tab.
-- If the same deal reaches a trigger status again later, DocJacket updates that deal's existing row with the current values and a new timestamp. It does not add a second row.
+- If the same deal reaches a trigger status again later, DocJacket updates that deal's existing row with the current values and a new timestamp. It does not add a second row. DocJacket finds the row by the deal ID in column Z, so it doesn't matter where the row is now.
 - There is no button to send a single deal on demand.
 
 ## What each row contains
 
-The export sends much more than the address. Each row has 25 columns, A through Y, in this order:
+The export sends much more than the address. Each row has 26 columns, A through Z, in this order:
 
 | Column | What it holds |
 |---|---|
@@ -65,6 +65,7 @@ The export sends much more than the address. Each row has 25 columns, A through 
 | W | Buy/Sell: `Buy`, `Sell` or `Dual` |
 | X | Always blank |
 | Y | The deal's **Additional Notes** field |
+| Z | The deal's DocJacket ID. DocJacket uses it to find the deal's row again. Don't edit or clear it. |
 
 Dates are written as text, so Google Sheets won't reformat them.
 
@@ -72,13 +73,13 @@ Dates are written as text, so Google Sheets won't reformat them.
 
 You can change the sheet, the tab, the trigger statuses, and turn the export on or off.
 
-You can't choose, remove or reorder the columns. The layout above is fixed. The export writes data rows only and never writes column headings, so type your own headings into row 1 of the tab to match the columns.
+You can't choose, remove or reorder the columns. The layout above is fixed. The export writes data rows only and never writes column headings, so type your own headings into row 1 of the tab to match the columns (for column Z, something like `DocJacket ID`).
 
 ## Troubleshooting
 
 - **Status shows Degraded.** The card shows the last error. DocJacket marks the export Degraded after 5 failed attempts in a row.
 - **"Sheet is accessible" doesn't appear, or exports fail.** Check that the sheet is shared with the service-account email as **Editor**, and that the Tab name matches your tab exactly.
 - **No row appears when a deal changes status.** Check that **Enable automatic export** is on, that the new status is spelled exactly like one of your Trigger statuses, and that the sheet is saved in the settings.
-- **A row updated in the wrong place.** DocJacket remembers the row it wrote for each deal and updates that same spot later. If you sort the tab or delete rows above exported rows, a later update can land on a different row than you expect. Avoid sorting or deleting rows above exported rows.
-- **Column I is empty.** The deal has no commission dollar amount, and is missing its contract price or its commission rate. Add either one on the deal and the next export fills it.
-- **Column J is empty.** That is expected unless commission splits have been set up for your account.
+- **Sorting and moving rows is fine.** DocJacket finds each deal's row by the ID in column Z, so you can sort, filter, and insert or delete rows. If you delete a deal's row, or clear its ID, the next export adds a new row for that deal at the bottom.
+- **You switched to a different sheet or tab.** Each deal gets a new row in the new sheet or tab the next time it reaches a trigger status. Rows in the old sheet are left as they are.
+- **Columns I and J are empty.** That is expected unless commission splits have been set up for your account.
