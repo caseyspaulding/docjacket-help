@@ -52,8 +52,8 @@ The export sends much more than the address. Each row has 25 columns, A through 
 | F | Closing date |
 | G | The deal's status at the time of the export |
 | H | Contract price |
-| I | Gross commission. Blank unless DocJacket has set up commission splits for your account |
-| J | Team split. Blank unless DocJacket has set up commission splits for your account |
+| I | Gross commission for the deal's side: the commission dollar amount on the deal if one is entered, otherwise the contract price times the commission rate, rounded to the cent. Blank if the deal has neither an amount nor both a price and a rate |
+| J | Team split. Blank unless DocJacket has set up commission splits for your account. Splits are not self-serve yet |
 | K | Admin / TC fee: the deal's TC fee, or the total of its TC fee entries. Shows `TC fee missing` if the deal has neither |
 | L | Lead source: the deal's Listing Source if it has one, otherwise its Lead Source |
 | M | Always blank |
@@ -83,4 +83,5 @@ You can't choose, remove or reorder the columns. The layout above is fixed. The 
 - **"Sheet is accessible" doesn't appear, or exports fail.** Check that the sheet is shared with the service-account email as **Editor**, and that the Tab name matches your tab exactly.
 - **No row appears when a deal changes status.** Check that **Enable automatic export** is on, that the new status is spelled exactly like one of your Trigger statuses, and that the sheet is saved in the settings.
 - **A row updated in the wrong place.** DocJacket remembers the row it wrote for each deal and updates that same spot later. If you sort the tab or delete rows above exported rows, a later update can land on a different row than you expect. Avoid sorting or deleting rows above exported rows.
-- **Columns I and J are empty.** That is expected unless commission splits have been set up for your account.
+- **Column I is empty.** The deal has no commission dollar amount, and is missing its contract price or its commission rate. Add either one on the deal and the next export fills it.
+- **Column J is empty.** That is expected unless commission splits have been set up for your account.
