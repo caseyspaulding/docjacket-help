@@ -21,7 +21,7 @@ Either way, a reply only reaches the deal if it is also sent or forwarded to a D
 
 ## Option 1: CC the deal's DocDrop address
 
-Every transaction can have its own email address, called its **DocDrop** address (also shown as the **deal email address**). Anything emailed to it is filed on that deal: the message appears on the deal's **Email** tab, and any attachments are added to the deal's **Documents**.
+Every transaction can have its own email address, called its **DocDrop** address (also shown as the **deal email address**). Anything emailed to it is filed on that deal: the message always appears on the deal's **Email** tab. Attachments are added to the deal's **Documents** automatically only when DocJacket can verify the sender: a member of your team or a contact on the deal whose email passes sender authentication, or a reply to an email you sent from DocJacket. Anyone else's attachments are held for you on the **Email** tab (see [Where attachments go](#where-attachments-go)).
 
 To copy it:
 
@@ -31,13 +31,13 @@ To copy it:
 Then:
 
 - **CC the DocDrop address** when you email the title company, lender, agent, or client. When they **Reply All**, their reply — and anything they attach — goes to the deal too. (A plain **Reply** only goes to you, so ask regular correspondents to reply all, or forward their reply as described next.)
-- **Give the address to people who send you documents**, so their files go straight to the deal.
+- **Give the address to people who send you documents.** If they are contacts on the deal, their files go straight to Documents. If they aren't (a lender or inspector you haven't added, for example), their files are held until you click **Save to Documents**. Adding them as a contact on the deal lets their future attachments file on their own.
 
 See [DocDrop](../documents/docdrop.mdx) for more.
 
 ## Option 2: Forward a single email to the deal
 
-If a reply or document landed only in your Gmail, **forward that one email to the deal's DocDrop address**. The message and its attachments are filed on that transaction. This is the quickest fix for an email you can already see belongs to a specific deal.
+If a reply or document landed only in your Gmail, **forward that one email to the deal's DocDrop address**. Because you are the sender, the message is filed on that transaction and its attachments normally go straight to Documents. If your email provider doesn't pass sender authentication, the files are held like any other (see [Where attachments go](#where-attachments-go)). This is the quickest fix for an email you can already see belongs to a specific deal.
 
 ## Option 3: Auto-forward your Gmail to your intake address
 
@@ -70,12 +70,20 @@ To **start a deal**, don't use the intake address: forward the signed contract t
 
 ## Where attachments go
 
-However an email reaches a deal — sent to its DocDrop address, filed automatically from the intake address, or assigned from the Inbox — **its attachments are added to that transaction's Documents tab**, and the email itself appears on the deal's **Email** tab.
+The email itself always appears on the deal's **Email** tab. What happens to its attachments depends on who sent it:
 
-If attachments aren't showing on a deal, check that the email actually reached DocJacket:
+- **Verified senders go straight to Documents.** That means a reply to an email you sent from DocJacket, or an email from a member of your team or a contact on that deal whose email passes sender authentication.
+- **Everyone else is held.** A lender, title officer, or inspector who isn't a contact on the deal, or a contact whose email fails sender authentication, has their email filed but their attachments **not** added to Documents. Each file shows **Not filed — sender not verified** with a **Save to Documents** button. You'll find it on the deal's **Email** tab (open the message) and in **More → Inbox**. After you save a file, the badge reads **Saved to Documents**.
+- **Saving is one file at a time on purpose**, so you look at each file before it lands on the deal. View-only seats can see the list but not save.
+- **Assign transaction** in **More → Inbox** brings the attachments along as it files the email.
+- **Moving a held email to another deal** keeps its files held there until you save them.
+- A DocDrop notification that says "attachment(s) not filed: sender not verified" means exactly this.
 
-- An email that only went to your Gmail (a plain reply) never reaches DocJacket — forward it to the deal's DocDrop address.
-- An email forwarded to the intake address that DocJacket couldn't match is waiting in **More → Inbox** — assign it to the deal and its attachments come along.
+If attachments aren't showing on a deal, check:
+
+- The email is on the deal's **Email** tab but the file is missing from Documents: the file is held. Open the message and click **Save to Documents**.
+- An email that only went to your Gmail (a plain reply) never reaches DocJacket. Forward it to the deal's DocDrop address.
+- An email forwarded to the intake address that DocJacket couldn't match is waiting in **More → Inbox**. Assign it to the deal and its attachments come along.
 
 DocJacket does **not** automatically run extraction on these files; you choose when to start extraction from the deal's documents.
 

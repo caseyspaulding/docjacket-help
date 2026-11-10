@@ -6,7 +6,7 @@ description: Give a transaction its own DocDrop email address so emailed attachm
 
 # DocDrop
 
-DocDrop gives a transaction its own email address. When someone emails documents to that address, the attachments are saved to the right transaction automatically.
+DocDrop gives a transaction its own email address. When someone emails documents to that address, the email is filed on the right transaction. Attachments from verified senders are saved to its Documents automatically, and attachments from anyone else wait for you to save them.
 
 ## How it works
 
@@ -17,19 +17,23 @@ Each transaction can have its own DocDrop email address. When the address is act
 1. Copy the DocDrop email address
 2. Share it with your contacts, such as agents, lenders, title companies, and inspectors
 3. Ask them to email documents to that address
-4. Review the received files in the transaction's **Documents** tab
+4. Review the received files in the transaction's **Documents** tab, and save any held files from the **Email** tab
 
 DocDrop is transaction-specific, so documents sent to one transaction's address are filed on that transaction.
 
 ## Where files appear
 
-Incoming attachments are added to the transaction's documents. Open the transaction and go to **Documents** to review, rename, categorize, share, or run document tools on the files.
+Attachments from verified senders are added to the transaction's documents. Open the transaction and go to **Documents** to review, rename, categorize, share, or run document tools on the files.
 
 ![DocDrop files appear in the transaction documents tab](/img/docdrop/docdrop-documents-files.png)
 
+## Who gets filed automatically
+
+Attachments go straight to Documents when the email is from a member of your team or a contact on the deal, and the email passes sender authentication, or when it is a reply to an email you sent from DocJacket. Attachments from anyone else, such as a lender or inspector who isn't a contact on the deal, are held. The email still appears on the deal's **Email** tab, and each held file shows **Not filed — sender not verified** with a **Save to Documents** button. Adding the sender as a contact on the deal lets their future attachments file on their own. See [Where attachments go](../messages/getting-email-into-docjacket.mdx#where-attachments-go) for the full rules.
+
 ## Why this is useful
 
-Instead of asking contacts to upload to a portal or send files to your personal inbox, give them the DocDrop address. Documents arrive exactly where they need to be, organized in the right transaction.
+Instead of asking contacts to upload to a portal or send files to your personal inbox, give them the DocDrop address. Emails arrive on the right transaction, and files from verified senders land in its Documents.
 
 This is especially handy for:
 
@@ -40,11 +44,23 @@ This is especially handy for:
 
 ## Tracking activity
 
-Use the transaction documents list to confirm that the file arrived. If an expected file is missing, check that the sender used the correct transaction's DocDrop address and that the email included an attachment.
+Use the transaction documents list to confirm that the file arrived. If an expected file is missing, open the deal's **Email** tab: if the email is there, the file is probably held, so click **Save to Documents** on it. If the email isn't there, check that the sender used the correct transaction's DocDrop address and that the email included an attachment.
 
 ## Tips
 
 - The DocDrop email address is unique per transaction, so documents always land in the right place
-- Multiple attachments in a single email are each saved as separate documents
+- Multiple attachments in a single email are each saved as separate documents (held files are saved one at a time)
 - Forward emails with attachments directly to the DocDrop address when a document was sent to your personal inbox first
 - Use the document tools after the file lands to rename it, assign a document type, share it, or extract data
+
+## Replace a deal's email address
+
+If a deal's DocDrop address has leaked or is getting junk mail, replace it:
+
+1. Open the transaction, go to **Email**, then **Timeline**.
+2. Next to **Copy** in the deal email address header, click **New address**.
+3. Read the confirmation, **Replace this deal's email address?**, then click **Replace address**.
+
+**The old address stops working as soon as you confirm.** Email sent to it afterwards will not reach the deal, and the sender does not get a bounce, so tell anyone who saved the old address or forwards mail to it to use the new one. Agent portals show the new address automatically.
+
+**New address** isn't shown to view-only seats or to members who are limited to their own deals.
