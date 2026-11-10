@@ -96,7 +96,39 @@ To change what shows on the page below the header, open the Overview tab and cli
 - **Scope.** Choose whether your changes apply to **All my transactions**, to all deals of this type (for example, Purchase deals), or to **This transaction** only.
 - **Tabs and Default tab.** Under **All my transactions**, you can also show or hide whole tabs (the Overview tab always shows) and choose which tab opens first when you open a transaction.
 
-Customize View settings belong to you. Each person on your team sets up their own layout, and yours doesn't change what anyone else sees.
+Your own Customize View settings are yours. When you save a layout, it doesn't change what anyone else sees, unless an owner or admin also makes it the team default (see below).
+
+**Which layout you see.** DocJacket uses the first of these that applies:
+
+1. Your own saved layout: **This transaction**, then the deal type, then **All my transactions**.
+2. The team default, if an owner or admin has set one.
+3. The standard DocJacket layout.
+
+Pinned sections show full width at the top of the Overview.
+
+#### Set a team default layout
+
+Owners and admins can publish their layout as the starting layout for everyone in the organization. A team default covers **All my transactions** only. You can't set one for a single deal type.
+
+1. Open any transaction, go to the **Overview** tab, and click **Customize View**.
+2. Choose **All my transactions**.
+3. Set up the tabs, the default tab, and the Overview sections (Show, Pin, Start collapsed) the way you want the team to see them.
+4. Tick **Also make this the default for everyone at** your organization's name.
+5. Click **Save**.
+
+The drawer says "Saving also makes this the team default" for your organization. Teammates who haven't customized their own view see this layout, including people you add later. Anyone who already saved their own layout keeps it. Saving a team default never changes or deletes anyone's personal layout.
+
+To change the team default later, repeat the steps above. To stop using one, open **Customize View** under **All my transactions** and click **Remove team default**. Teammates who haven't customized their own view go back to the standard layout, and nobody's own saved layout changes.
+
+#### Pick up a changed team layout (Reset to team default)
+
+When a team default exists, anyone can switch from their own layout to it.
+
+1. Open **Customize View** on the Overview tab and choose **All my transactions**.
+2. Click **Reset to team default**.
+3. Confirm with **Use team default**.
+
+This removes your own tab and section choices, so you follow the team default from then on, including later changes an admin makes. **Reset to Default** is different: it returns you to the standard DocJacket layout, ignoring the team default.
 
 ### Field Display (for your whole organization)
 
