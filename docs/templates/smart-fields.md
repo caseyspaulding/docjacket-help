@@ -171,7 +171,7 @@ A map link builds from the **address on file** (street, city, state, ZIP) for th
 | MLS Number | `{{mls_number}}` |
 | Transaction Type | `{{transaction_type}}` |
 | Transaction Status | `{{transaction_status}}` |
-| Client Portal Link | `{{portal_link}}` |
+| Client Portal Link | `{{portal_link}}` (for the agent, use Deal Agent Portal Link under Agents) |
 | Open in DocJacket (transaction link) | `{{transaction_link}}` |
 | Closing Location | `{{closing_location}}` |
 | Closing Location Map Link | `{{closing_location_map_link}}` |
@@ -266,6 +266,7 @@ A map link builds from the **address on file** (street, city, state, ZIP) for th
 | Deal Agent Phone | `{{deal_agent_phone}}` |
 | Deal Agent Brokerage | `{{deal_agent_brokerage}}` |
 | Deal Agent First Name | `{{deal_agent_first_name}}` |
+| Deal Agent Portal Link | `{{deal_agent_portal_link}}` |
 | Listing Agent Name | `{{listing_agent_name}}` |
 | Listing Agent Email | `{{listing_agent_email}}` |
 | Listing Agent Phone | `{{listing_agent_phone}}` |

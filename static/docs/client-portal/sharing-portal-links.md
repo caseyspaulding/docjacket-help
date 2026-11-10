@@ -62,7 +62,7 @@ DocJacket does not send portal links when a deal is created. You send them yours
 
 - `{{portal_link}}` is the deal's shared Buyer/Seller link. DocJacket creates that link the first time the smart field is used, so you don't have to create it first.
 - A task email that uses it follows the normal delivery rules. With **Require review before sending** on (the default), the email waits in your Review queue until you approve it. See [Email Automation](../tasks/email-automation.mdx#review-before-sending).
-- There is no smart field for the Agent portal link, and `{{portal_link}}` is never the Agent link, because the Agent view shows commissions, the TC fee, and lockbox details. Create the Agent link on the **Portal** tab (**Create Link**, then choose **Agent**) and send it from the link.
+- `{{deal_agent_portal_link}}` sends your side's agent their own agent portal, where they follow all their deals with you. It is created the first time the smart field is used. It only goes to that agent: an email that also goes to a client or anyone else is stopped. It is empty on a deal with no side set or no agent with an email, and it stays empty if you revoked that agent's link. `{{portal_link}}` is never the Agent view, because the Agent view shows commissions, the TC fee, and lockbox details.
 - To see whether the recipient opened it, check the Portal tab: each link shows its visit count and last access. Creating a general link also writes "Portal link created" to the Activity Log.
 
 If you have a task such as "Send portal links", keep it as your reminder, or attach an email that uses `{{portal_link}}` to it.
