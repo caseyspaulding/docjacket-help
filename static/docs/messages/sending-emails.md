@@ -28,7 +28,7 @@ In the composer you can:
 - Set **To**, **Cc**, or **Bcc** on each recipient chip
 - Insert an [email template](./email-templates.md) from the toolbar
 - Generate an **AI Draft** from a short prompt
-- Attach transaction documents or upload files from your computer
+- Attach transaction documents, upload files from your computer, or drag files onto the composer
 - Pick an email signature
 - Save a draft, send now, or use **Schedule** to send later
 
@@ -91,11 +91,17 @@ You can schedule by:
 
 Scheduled one-off emails appear in **Email > Scheduled** with a **One-off** badge. You can cancel them there. Editing one opens the composer with the message prefilled; saving cancels the original scheduled send and creates a new one.
 
+You can't schedule a reply. **Schedule** is unavailable while you **Reply** or **Reply all**, so send the reply now, or compose a new message and schedule that.
+
 ## Attachments
 
-Use **Attach** to choose files already stored on the transaction or upload new files from your computer. Local uploads support files up to 25 MB.
+Use **Attach** to choose files already stored on the transaction, or choose **Upload from computer** to add new files. You can also drag files from your computer onto the composer: while you drag, it shows **Drop files to attach**. An image dropped into the message body stays inline in the body, and other files attach.
+
+Files you upload or drop are **saved to the deal's Documents** and attached to the message, and a confirmation says so. Uploads support files up to 25 MB each. View-only seats can't upload documents to a deal.
 
 If you attach transaction documents, DocJacket sends the selected files with the message and keeps the email linked to the transaction.
+
+**Reply** and **Reply all** send the attachments you add, the same as a new message or Forward.
 
 ## Reviewing messages
 
