@@ -8,6 +8,10 @@ description: Share your DocJacket referral link, track referred signups, and see
 
 Use **Settings > Referrals** to share DocJacket with other transaction coordinators or agents and track referral credit. The referral program lets you refer a colleague with your referral link and earn referral credit toward your subscription when they sign up — this page is how referrals work and where you find your referral link.
 
+:::note Can't find **Referrals**?
+**Referrals** is in the **Advanced** group of the Settings menu. Click **Advanced** to open it; the group starts collapsed. Anyone who is not an Owner or Admin sees the Advanced group only when an owner or admin has turned on **Advanced settings** for their role in **Settings > Roles**.
+:::
+
 ## Your referral link
 
 The Referrals page shows:

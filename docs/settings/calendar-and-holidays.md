@@ -8,6 +8,10 @@ description: Configure Google Calendar task syncing and organization holidays us
 
 Use **Settings > Calendar** and **Settings > Holidays** to control how dates sync and how business-day rules skip closed days.
 
+:::note Can't find **Holidays**?
+**Holidays** is in the **Advanced** group of the Settings menu. Click **Advanced** to open it; the group starts collapsed. Anyone who is not an Owner or Admin sees the Advanced group only when an owner or admin has turned on **Advanced settings** for their role in **Settings > Roles**. **Calendar** is in the **General** group.
+:::
+
 ## Calendar sync
 
 DocJacket can sync closings and key dates to your connected Google Calendar when calendar sync is enabled for the transaction.
