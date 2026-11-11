@@ -1,7 +1,7 @@
 ---
 sidebar_label: Email and Automation
 sidebar_position: 12
-description: Configure email template categories, working hours, notification preferences, and rule-based email or SMS automation.
+description: Configure email template categories, working hours, notification preferences, and rule-based email automation.
 ---
 
 # Email and Automation Settings
@@ -80,7 +80,7 @@ Notification preferences are personal. Changing your notifications does not chan
 
 Use **Settings > Automation Rules** to create and manage rule-based notifications and messages.
 
-Automation rules can send email, SMS, or both when a transaction enters a status or when a configured Playbook task is completed. A third kind prepares an email for your review when a document is filed under a category. Rules use active email templates, recipient logic, and delivery-channel settings.
+Automation rules send an email when a transaction enters a status or when a configured Playbook task is completed. They do not send text messages. A third kind prepares an email for your review when a document is filed under a category. Rules use active email templates and recipient logic.
 
 Current rule triggers include:
 
@@ -90,13 +90,9 @@ Current rule triggers include:
 
 Rules can send to transaction contact roles, direct email addresses, or both. Direct email entries are checked before the rule is saved, and duplicate direct addresses are collapsed case-insensitively.
 
-Delivery options are:
+### Can an Automation Rule send a text message?
 
-- **Email**
-- **SMS**
-- **Email + SMS**
-
-SMS automation requires SMS access on your plan and a provisioned SMS number in **Settings > SMS**. Recipient phone number and SMS-consent checks happen when the rule fires for a specific transaction.
+No. Automation Rules send email only. The rule editor shows a **Delivery** choice with **SMS** and **Email + SMS**, but neither sends a text yet: a rule set to **Email + SMS** sends only the email, and a rule set to **SMS** sends nothing at all. Leave **Delivery** on **Email**. <!-- until: docjacket-v3#7019 -->
 
 You can enable or disable a rule without deleting it. Deleting a rule stops future triggers; it does not undo messages that were already drafted, scheduled, or sent.
 
