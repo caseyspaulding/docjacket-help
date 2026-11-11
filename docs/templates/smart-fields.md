@@ -202,6 +202,12 @@ A map link builds from the **address on file** (street, city, state, ZIP) for th
 | Title Company Map Link | `{{title_company_map_link}}` |
 | Title Company Phone | `{{title_company_phone}}` |
 | Title Company Email | `{{title_company_email}}` |
+| Seller Title Company | `{{seller_title_company}}` |
+| Seller Title Officer | `{{seller_title_company_contact}}` |
+| Seller Title Company Phone | `{{seller_title_company_phone}}` |
+| Seller Title Company Email | `{{seller_title_company_email}}` |
+| Seller Title Company Address | `{{seller_title_company_address}}` |
+| Seller Title Company Map Link | `{{seller_title_company_map_link}}` |
 | Lender Name | `{{lender_name}}` |
 | Loan Officer | `{{loan_officer}}` |
 | Lender Phone | `{{lender_phone}}` |
@@ -339,36 +345,47 @@ A map link builds from the **address on file** (street, city, state, ZIP) for th
 
 ### Contact blocks
 
-Contact blocks render a formatted contact card — name, email, phone, and company — and only show the fields that are filled in, so they're safe to include in reusable templates. Insert them from the smart-field picker.
+A contact block drops in one party's contact details as a few labelled lines. Each block has a fixed set of lines (see the table), and only the lines that are filled in on the deal appear, so blocks are safe in reusable templates. Insert them from the smart-field picker.
 
-| Field | Token |
-| --- | --- |
-| Assistant Contact Block | `{{contact_block:assistant}}` |
-| Brokerage Contact Block | `{{contact_block:brokerage}}` |
-| Buyer Agent Contact Block | `{{contact_block:buyer_agent}}` |
-| Buyer Contact Block | `{{contact_block:buyer}}` |
-| Buyer's Attorney Block | `{{contact_block:buyers_attorney}}` |
-| Buyer's Paralegal Block | `{{contact_block:buyer_paralegal}}` |
-| Deal Agent Contact Block | `{{contact_block:deal_agent}}` |
-| Escrow Assistant Block | `{{contact_block:escrow_assistant}}` |
-| Escrow Officer Block | `{{contact_block:escrow_officer}}` |
-| HOA Contact Block | `{{contact_block:hoa_contact}}` |
-| Home Inspector Block | `{{contact_block:home_inspector}}` |
-| Landlord Block | `{{contact_block:landlord}}` |
-| Lender Contact Block | `{{contact_block:lender}}` |
-| Listing Agent Contact Block | `{{contact_block:listing_agent}}` |
-| Loan Officer Block | `{{contact_block:loan_officer}}` |
-| Loan Processor Block | `{{contact_block:loan_processor}}` |
-| Maintenance Contact Block | `{{contact_block:maintenance_contact}}` |
-| Opposing Agent Contact Block | `{{contact_block:co_agent}}` |
-| Opposing TC Block | `{{contact_block:coop_tc}}` |
-| Seller Contact Block | `{{contact_block:seller}}` |
-| Seller's Attorney Block | `{{contact_block:sellers_attorney}}` |
-| Seller's Paralegal Block | `{{contact_block:seller_paralegal}}` |
-| Tenant Block | `{{contact_block:tenant}}` |
-| Title Company Contact Block | `{{contact_block:title_company}}` |
-| Title Processor Block | `{{contact_block:title_processor}}` |
-| Your Agent Contact Block | `{{contact_block:agent}}` |
+:::note Does the Title Company block include the address?
+Yes. `{{contact_block:title_company}}` shows the company name, title officer, phone, email and address. `{{contact_block:seller_title_company}}` and `{{contact_block:brokerage}}` include the address too. You can't remove a line from a block. To leave the address out, type the individual fields instead, for example `{{title_company}}`, `{{title_officer}}`, `{{title_company_phone}}` and `{{title_company_email}}`.
+
+On some deals the Title Company block's heading reads "Escrow" instead of "Title Company".
+:::
+
+A name followed by a slash and a company (for example "name / brokerage") means the company is shown on the same line as the name.
+
+| Block | Token | What it shows |
+| --- | --- | --- |
+| Assistant Contact Block | `{{contact_block:assistant}}` | email only |
+| Brokerage Contact Block | `{{contact_block:brokerage}}` | name, address, phone |
+| Buyer Agent Contact Block | `{{contact_block:buyer_agent}}` | name / brokerage, phone, email |
+| Buyer Contact Block | `{{contact_block:buyer}}` | name, phone, email |
+| Buyer's Attorney Block | `{{contact_block:buyers_attorney}}` | name / company, phone, email |
+| Buyer's Paralegal Block | `{{contact_block:buyer_paralegal}}` | name / company, phone, email |
+| Co-Buyer Contact Block | `{{contact_block:buyer2}}` | name, phone, email (renders nothing when there is no co-buyer) |
+| Co-Seller Contact Block | `{{contact_block:seller2}}` | name, phone, email (renders nothing when there is no co-seller) |
+| Deal Agent Contact Block | `{{contact_block:deal_agent}}` | name / brokerage, phone, email |
+| Escrow Assistant Block | `{{contact_block:escrow_assistant}}` | name, phone, email |
+| Escrow Officer Block | `{{contact_block:escrow_officer}}` | name, phone, email |
+| HOA Contact Block | `{{contact_block:hoa_contact}}` | name / company, phone, email |
+| Home Inspector Block | `{{contact_block:home_inspector}}` | name / company, phone, email |
+| Landlord Block | `{{contact_block:landlord}}` | name / company, phone, email |
+| Lender Contact Block | `{{contact_block:lender}}` | lender name, loan officer, phone, email |
+| Listing Agent Contact Block | `{{contact_block:listing_agent}}` | name / brokerage, phone, email |
+| Loan Officer Block | `{{contact_block:loan_officer}}` | name, phone, email |
+| Loan Processor Block | `{{contact_block:loan_processor}}` | name, phone, email |
+| Maintenance Contact Block | `{{contact_block:maintenance_contact}}` | name / company, phone, email |
+| Opposing Agent Contact Block | `{{contact_block:co_agent}}` | name / brokerage, phone, email |
+| Opposing TC Block | `{{contact_block:coop_tc}}` | name / company, phone, email |
+| Seller Contact Block | `{{contact_block:seller}}` | name, phone, email |
+| Seller's Attorney Block | `{{contact_block:sellers_attorney}}` | name / company, phone, email |
+| Seller's Paralegal Block | `{{contact_block:seller_paralegal}}` | name / company, phone, email |
+| Seller Title Company Contact Block | `{{contact_block:seller_title_company}}` | company name, title officer, phone, email, **address** (split closings, for example Tennessee; renders nothing when there is no seller title company) |
+| Tenant Block | `{{contact_block:tenant}}` | name, phone, email |
+| Title Company Contact Block | `{{contact_block:title_company}}` | company name, title officer, phone, email, **address** |
+| Title Processor Block | `{{contact_block:title_processor}}` | name, phone, email |
+| Your Agent Contact Block | `{{contact_block:agent}}` | name, phone, email, license # |
 
 ## Custom smart fields
 

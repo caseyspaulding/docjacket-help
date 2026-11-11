@@ -50,6 +50,17 @@ The builder is split into three working areas:
 - **Content editor** - AI Email Generator, subject, rich body editor, HTML mode, conditional snippets, and the Edit/Preview tabs.
 - **Smart fields and attachments** - Quick smart-field buttons, the full smart-field picker, and auto-attach document categories.
 
+## Images and links
+
+The template body editor supports links and images.
+
+- **Add a link:** select the text, click the link button in the editor toolbar, and paste the address. Web, email (`mailto:`) and phone (`tel:`) links all work. An address typed without `https://` or `mailto:` gets one added.
+- **Add an image:** click the image button next to the link button and pick a JPG, PNG, GIF, WebP or TIFF file under 20 MB. DocJacket resizes it, hosts it, and puts it in the body at 600 px wide.
+- **Images must be hosted on https.** An image pasted from an `http://` address, or pasted in as embedded data, is removed when the template is saved and again when it is sent. Upload it with the image button instead.
+- **HTML mode:** switch the editor from **Visual** to **HTML** to write `<a>` and `<img>` tags yourself. The same rules apply: images need an `https://` source.
+
+For images in your email signature, see [Email Signatures](email-signatures.md).
+
 ## Organizing templates
 
 Use the filters on the Email Templates page to find the right template quickly:

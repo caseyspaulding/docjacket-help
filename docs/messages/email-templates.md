@@ -64,14 +64,14 @@ Smart fields work in both the subject and body. See [Smart Fields](../templates/
 
 ### Contact blocks
 
-A **contact block** is a special smart field that drops in a formatted contact card — name, email, phone, and company — for one party on the deal. It only shows the fields that are filled in, so you never get blank lines. Insert one from the smart-field picker rather than typing it by hand.
+A **contact block** is a special smart field that drops in one party's contact details as a few labelled lines. What each block shows is fixed (the Title Company block, for example, includes the address). See the [contact block table](../templates/smart-fields.md#contact-blocks) for every block's lines. Insert one from the smart-field picker rather than typing it by hand.
 
 Contact blocks are available for the common parties on a transaction, including:
 
-- **Buyer** and **Seller**
-- **Listing Agent**, **Buyer Agent**, **Deal Agent**, and **Co-Agent**
+- **Buyer**, **Seller**, **Co-Buyer**, and **Co-Seller**
+- **Listing Agent**, **Buyer Agent**, **Deal Agent**, and **Opposing Agent**
 - **Lender**, **Loan Officer**, and **Loan Processor**
-- **Title Company**, **Title Processor**, **Escrow Officer**, and **Escrow Assistant**
+- **Title Company**, **Seller Title Company**, **Title Processor**, **Escrow Officer**, and **Escrow Assistant**
 - **Buyer's Attorney** and **Seller's Attorney**
 - **Home Inspector**, **HOA Contact**, **Co-op TC**, and others
 
