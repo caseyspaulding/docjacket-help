@@ -28,18 +28,87 @@ and automated email falls back to DocJacket's own email service (a
 `@docjacket.com` address) unless your organization requires a connected mailbox
 (see below).
 
-## Which account an email sends from
+## Which mailbox an email sends from
 
 Every transaction email sends from a specific person's connected mailbox,
 depending on how it was sent:
 
 | Email | Sends from |
 |---|---|
-| You compose, reply, or forward from a deal | **You** (the signed-in user) |
-| Task emails, reminders, and automation-rule emails | The deal's **assigned coordinator** — or the **account owner** if the deal is unassigned |
+| You compose, reply, or forward from a deal; approve a draft in the Review queue; or use **Review & send** | The mailbox chosen in the **From** field (see [Email you send by hand](#email-you-send-by-hand)) |
+| Task emails, reminders, scheduled emails, portal link emails, and automation-rule emails | The deal's **assignee's default mailbox** — or the **account owner's** if the deal is unassigned |
 | Transaction Summaries and other scheduled reports | The person who **created the schedule** |
 
 If that person hasn't connected a mailbox, see the fallback behavior below.
+
+### Your default mailbox
+
+Each login has **one default mailbox for sending**, shared across Gmail and
+Outlook. It is marked **Default for sending** under **Settings > Integrations**
+(open **Manage accounts** on the Gmail card, or look under the Outlook Mail
+card), and you change it by selecting the radio button on a different mailbox.
+
+- **Connecting another mailbox never changes your default.** Only choosing one does.
+- **If your default needs reconnecting,** it stays your default. Your
+  earliest-connected other mailbox sends in the meantime, and sending returns to
+  your default as soon as you reconnect it.
+- **If you remove your default mailbox,** the earliest-connected remaining
+  mailbox becomes the default.
+
+Automated email leaves from the **deal assignee's** default mailbox, so each
+team member's own default decides how their deals' automated email looks to clients.
+
+### Email you send by hand
+
+On **Review & send**, the deal's **Email** tab (compose and reply), approving a
+draft in the Review queue (including one-click approve), and the draft composer,
+DocJacket picks the **From** mailbox in this order:
+
+1. The mailbox you picked in the **From** field on this email
+2. A mailbox you pinned to this deal (see below)
+3. One of **your own** connected mailboxes whose address matches the deal assignee's mailbox
+4. Your default mailbox
+
+DocJacket only ever uses mailboxes connected to the login you are signed in
+with, never a teammate's. If you change the **From** by hand, DocJacket keeps
+your choice.
+
+### Pinning a mailbox to a deal
+
+When you have more than one mailbox connected, the composer shows a **Use this
+mailbox for all email on this file** checkbox next to **From**. Checking it pins
+the selected mailbox to that deal for your login, and the pin wins over the
+automatic choice above. If you later move the dropdown to another mailbox, the
+checkbox clears but the pin stays until you check it again on the mailbox you want.
+
+### When the From doesn't match the assignee
+
+If the **From** isn't the deal assignee's mailbox, a note under it says who the
+deal is assigned to and which address the email will go from, for example "This
+deal is assigned to Sam (sam@example.com). This email will go from
+pat@example.com." If the assignee's address is one of your own connected
+mailboxes, the note also offers **Switch to** that address. One click and the
+**From** changes. It never offers another member's mailbox.
+
+## One person working deals under two logins
+
+Some people work under two logins, for example a transaction coordinator login
+and a personal agent login, each with its own mailbox. To make email go from the
+right address on every deal:
+
+1. On **each** login, go to **Settings > Integrations** and connect **both**
+   mailboxes.
+2. On each login, choose that login's **Default for sending**. Each login keeps
+   its own default, and that default is what automated email from that login's
+   deals uses.
+3. Assign each deal to the login whose address should send its automated email.
+4. When you send by hand on a deal, DocJacket starts on your connected copy of
+   the assignee's mailbox, so the email goes out from the assignee's address.
+   If you want a different address on one deal, change the **From**, or pin
+   a mailbox to that deal.
+
+If a deal is assigned to a login whose mailbox you haven't connected on the
+login you're using, you'll see the note described above and your own default is used.
 
 ## Where replies go
 

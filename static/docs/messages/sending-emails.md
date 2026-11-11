@@ -23,7 +23,7 @@ Open a transaction, go to **Email > Inbox**, and click **Compose**. The composer
 
 In the composer you can:
 
-- Choose the connected Gmail or Outlook account to send from
+- Choose the connected Gmail or Outlook account to send from. It starts on the deal assignee's mailbox if you have connected your own copy of it, otherwise your default; see [Which mailbox an email sends from](./how-email-sending-works.mdx#which-mailbox-an-email-sends-from)
 - Type an email address or search roles, contacts, all contacts, groups, or companies
 - Set **To**, **Cc**, or **Bcc** on each recipient chip
 - Insert an [email template](./email-templates.md) from the toolbar
