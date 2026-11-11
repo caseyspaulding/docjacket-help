@@ -6846,7 +6846,7 @@ The list groups templates by stage and shows each template's active/draft status
 10. Preview or send a test email
 11. Save the template
 
-Templates can be **Active** or **Draft**. Keep a template in draft while you are testing it, then activate it when it is ready for your team.
+Templates can be **Active** or **Draft**. A new template is saved as **Active**. After the first save, an Active/Draft switch appears at the top of the editor: switch it to Draft while you are still testing the template, then back to Active when it is ready for your team. A template sends nothing by itself; it only goes out when someone picks it, or when a task or an automation rule uses it.
 
 The builder is split into three working areas:
 
@@ -6948,7 +6948,7 @@ If the template uses conditional content, the preview tools let you test sample 
 Use **Send Test** to send a test email before activating a new or heavily edited template.
 
 :::tip Test before you automate
-Keep a template in **Draft** while you build it, and send yourself a test send once conditions or auto-attached documents are involved. A template linked to a task sends on its own when the task comes due — so it's worth confirming it renders correctly before it goes out unattended.
+A new template is Active as soon as you save it, so switch it to **Draft** (the switch appears after the first save) while you are still building it, and send yourself a test send once conditions or auto-attached documents are involved. A template linked to a task sends on its own when the task comes due — so it's worth confirming it renders correctly before it goes out unattended.
 :::
 
 If a smart field is valid but the transaction does not have the data yet, the preview can show a missing-variable warning. If a field name is not recognized, fix the placeholder in the template.
@@ -6979,7 +6979,7 @@ To use a template while composing in a transaction, click the **Template** butto
 ## Tips
 
 - Keep subject lines short and specific.
-- Use Draft status while testing smart fields, conditions, and attachments.
+- After the first save, switch the template to Draft while testing smart fields, conditions, and attachments.
 - Copy shared templates before customizing them.
 - Use recipient roles for normal routing and recipient rules for conditional routing.
 - Send yourself a test email after changing conditions or auto-attached document categories.
