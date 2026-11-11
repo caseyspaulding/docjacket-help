@@ -51,10 +51,12 @@ The builder is split into three working areas:
 
 The template body editor supports links and images.
 
-- **Add a link:** select the text, click the link button in the editor toolbar, and paste the address. Web, email (`mailto:`) and phone (`tel:`) links all work. An address typed without `https://` or `mailto:` gets one added.
+- **Add a link:** select the text, click the link button in the editor toolbar, and paste the address. Web, email (`mailto:`) and phone (`tel:`) links all work. An email address or a `www.` address typed without `mailto:` or `https://` gets one added. Paste any other web address with its `https://`.
 - **Add an image:** click the image button next to the link button and pick a JPG, PNG, GIF, WebP or TIFF file under 20 MB. DocJacket resizes it, hosts it, and puts it in the body at 600 px wide.
-- **Images must be hosted on https.** An image pasted from an `http://` address, or pasted in as embedded data, is removed when the template is saved and again when it is sent. Upload it with the image button instead.
+- **Resize or link an image:** click the image to choose Small, Medium, Large or Full size, or click **Link…** to make the image a link.
+- **Images must be hosted on https.** An image from an `http://` address is removed when the template is saved and again when it is sent. In the Visual editor, an image you paste or drag in is uploaded and hosted for you; if the upload fails, it is taken out and the editor tells you. In HTML mode, an embedded (`data:`) image is removed when you save, so upload it in the Visual editor first.
 - **HTML mode:** switch the editor from **Visual** to **HTML** to write `<a>` and `<img>` tags yourself. The same rules apply: images need an `https://` source.
+- **Files are attachments, not part of the body.** To send documents with a template, use [Auto-attach documents](#auto-attach-documents).
 
 For images in your email signature, see [Email Signatures](email-signatures.md).
 

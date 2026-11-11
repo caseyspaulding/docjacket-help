@@ -355,6 +355,8 @@ On some deals the Title Company block's heading reads "Escrow" instead of "Title
 
 A name followed by a slash and a company (for example "name / brokerage") means the company is shown on the same line as the name.
 
+The **Smart Fields** page in the app (Templates › Smart Fields) lists the same lines for every block.
+
 | Block | Token | What it shows |
 | --- | --- | --- |
 | Assistant Contact Block | `{{contact_block:assistant}}` | email only |
