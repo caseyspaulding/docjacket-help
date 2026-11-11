@@ -5584,10 +5584,13 @@ depending on how it was sent:
 | Email | Sends from |
 |---|---|
 | You compose, reply, or forward from a deal; approve a draft in the Review queue; or use **Review & send** | The mailbox chosen in the **From** field (see [Email you send by hand](#email-you-send-by-hand)) |
-| Task emails, reminders, scheduled emails, portal link emails, and automation-rule emails | The deal's **assignee's default mailbox** — or the **account owner's** if the deal is unassigned |
+| Task emails, reminders, scheduled emails, portal link emails, and automation-rule emails | The deal's **assignee's default mailbox**. If the deal is unassigned, or the assignee has no connected mailbox, see [Requiring a connected mailbox](#requiring-a-connected-mailbox) |
 | Transaction Summaries and other scheduled reports | The person who **created the schedule** |
 
-If that person hasn't connected a mailbox, see the fallback behavior below.
+If that person hasn't connected a mailbox, what happens depends on one organization setting:
+
+- **Setting off (the default):** automated email goes out through DocJacket's email service from a `@docjacket.com` address instead.
+- **Setting on** (**Only send transaction email from a connected mailbox**): it goes from the **account owner's** connected mailbox. If nobody has a connected mailbox, the email waits and the owner is nudged to connect one.
 
 ### Your default mailbox
 
@@ -5613,7 +5616,7 @@ draft in the Review queue (including one-click approve), and the draft composer,
 DocJacket picks the **From** mailbox in this order:
 
 1. The mailbox you picked in the **From** field on this email
-2. A mailbox you pinned to this deal (see below)
+2. The deal's pin, if the pinned mailbox is yours (see below)
 3. One of **your own** connected mailboxes whose address matches the deal assignee's mailbox
 4. Your default mailbox
 
@@ -5624,10 +5627,15 @@ your choice.
 ### Pinning a mailbox to a deal
 
 When you have more than one mailbox connected, the composer shows a **Use this
-mailbox for all email on this file** checkbox next to **From**. Checking it pins
-the selected mailbox to that deal for your login, and the pin wins over the
-automatic choice above. If you later move the dropdown to another mailbox, the
-checkbox clears but the pin stays until you check it again on the mailbox you want.
+mailbox for all email on this file** checkbox next to **From**. A deal has one
+pin. Checking the box sets the deal's pin to the mailbox you selected, replacing
+any earlier pin on that deal, including one a teammate set.
+
+The pin only applies to the person who owns the pinned mailbox: automated email
+for a deal assigned to them, and email they send by hand. For anyone else the
+pin is ignored and the usual order applies. If you later move the dropdown to
+another mailbox, the checkbox clears but the pin stays until you check it again
+on the mailbox you want.
 
 ### When the From doesn't match the assignee
 
@@ -5675,8 +5683,8 @@ connected mailbox** in **Settings > Organization**.
 
 When this is on:
 
-- Email sends from the sender's connected mailbox, or the account owner's if the
-  sender hasn't connected one.
+- Email sends from the sender's connected mailbox. If the sender hasn't
+  connected one, automated email goes from the account owner's instead.
 - If no mailbox is connected, a send you trigger yourself is **blocked** with a
   prompt to connect one, and an automated send is **held** until a mailbox is
   connected (the account owner is notified).
