@@ -104,10 +104,36 @@ From this tab you can:
 
 The same person can appear on multiple transactions with different roles. The transaction role and merge display name live on the transaction relationship, not on the global contact record.
 
+## Removing someone from a transaction, and putting them back
+
+To take a person off a transaction, expand their card on the **Contacts** tab and click the trash icon. DocJacket asks you to confirm, then:
+
+- They stop getting that transaction's emails and texts.
+- Their own portal link for that transaction stops working.
+- Their contact record stays in your directory, and nothing is deleted.
+
+### Can I undo removing a contact?
+
+Yes, for 7 days. Right after you remove someone, the confirmation message has an **Undo** link. If you miss it, scroll to the bottom of the **Contacts** tab, open **Removed in the last 7 days**, and click **Restore** next to their name. The list shows who removed them and when.
+
+When you put someone back:
+
+- They return in the same role, and their own portal link for that transaction works again.
+- If another contact in that role was marked Primary in the meantime, they come back as not primary. The message says so.
+- If someone else was added to a role that only holds a set number of people, DocJacket tells you the role is full instead of adding one too many. Remove the other person or change their role first.
+
+After 7 days, add the person to the transaction again with **Add Contact**.
+
+Removing an agent does not change the Buyer Agent or Listing Agent field on the transaction itself. If that field still names them, change it with **Edit** on the transaction.
+
+### Can the assistant remove or move someone for me?
+
+Yes. In **Ask DocJacket**, on the transaction, say who should come off the deal, which role they should hold, or who the primary contact is. The assistant shows a card describing the change. Nothing happens until you click **Approve**. After it is done, the same card has an **Undo** button for 7 days. The assistant will not remove anyone you did not name.
+
 ## Custom roles
 
 If the built-in roles do not cover your workflow, create or edit roles in **Settings > Transaction Roles**. Roles can be grouped by party so the Add Contact drawer stays organized.
 
 ## Primary contacts
 
-A transaction contact can also be marked **Primary**. Use this when one buyer, seller, agent, or service contact should be treated as the main contact for that role.
+A transaction contact can also be marked **Primary**. Use this when one buyer, seller, agent, or service contact should be treated as the main contact for that role. Marking one contact Primary un-marks any other primary contact in the same role on that transaction.
