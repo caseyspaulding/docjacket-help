@@ -11,6 +11,10 @@ description: Manage DocJacket contact types, service-provider grouping, and the 
 
 Use **Settings > Contacts** to control how contacts are categorized and filtered across DocJacket.
 
+:::note Can't find **Contacts**?
+**Contacts** is in the **Advanced** group of the Settings menu. Click **Advanced** to open it; the group starts collapsed. Anyone who is not an Owner or Admin sees the Advanced group only when an owner or admin has turned on **Advanced settings** for their role in **Settings > Roles**.
+:::
+
 ## Contact types
 
 Contact types define the labels available when adding people and companies to your contact list.

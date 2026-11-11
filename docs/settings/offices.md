@@ -8,6 +8,10 @@ description: Manage DocJacket office locations, states, members, approved forms,
 
 Offices let brokerages and teams manage location-specific configuration. Set up an office for each brokerage location, then give each office its own states, members, branding, approved forms, and signing defaults. This is where you add an office, manage office members, and set per-office defaults.
 
+:::note Can't find **Offices**?
+**Offices** is in the **Advanced** group of the Settings menu. Click **Advanced** to open it; the group starts collapsed. Anyone who is not an Owner or Admin sees the Advanced group only when an owner or admin has turned on **Advanced settings** for their role in **Settings > Roles**.
+:::
+
 ## Creating an office
 
 1. Open **Offices** from the sidebar or from **Settings > Offices**

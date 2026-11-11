@@ -83,12 +83,13 @@ Notification preferences are personal. Changing your notifications does not chan
 
 Use **Settings > Automation Rules** to create and manage rule-based notifications and messages.
 
-Automation rules can send email, SMS, or both when a transaction enters a status or when a configured Playbook task is completed. Rules use active email templates, recipient logic, and delivery-channel settings.
+Automation rules can send email, SMS, or both when a transaction enters a status or when a configured Playbook task is completed. A third kind prepares an email for your review when a document is filed under a category. Rules use active email templates, recipient logic, and delivery-channel settings.
 
 Current rule triggers include:
 
 - **When a transaction enters a status** — Fires on future status changes only. Existing transactions already in that status are not triggered retroactively.
 - **When a Playbook task is completed** — Fires when a transaction task created from the selected Playbook task template is marked complete.
+- **When a document is filed** — Fires each time a document is filed to a deal under the **Document category** you pick. It prepares the email and holds it in your Review queue for you to send; it never sends on its own, even if your organization sends other automated emails without review. It applies to documents filed after the rule is created, uses only your own email templates, and does not use SMS. A document that arrives by email or import triggers nothing until someone files it under a category.
 
 Rules can send to transaction contact roles, direct email addresses, or both. Direct email entries are checked before the rule is saved, and duplicate direct addresses are collapsed case-insensitively.
 

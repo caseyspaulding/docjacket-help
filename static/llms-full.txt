@@ -928,6 +928,21 @@ Depending on the extraction, merged review can:
 
 The final button still does the real save: **Create Transaction**, **Create Listing**, or **Update Transaction**.
 
+## Is there a flag button on the review screen?
+
+No. The upload and extraction review screens have no flag button that saves a note to the deal's jacket or asks anyone for a corrected copy. A few things on those screens are described as "flagged" or "needs attention", and they only point out where to look; they save nothing and contact no one:
+
+- **Merged review:** a section heading can show an amber badge such as **1 needs attention** or **2 need attention** when the uploaded documents disagree about a field in that section, or a check warned about one of its fields.
+- **Smart Split:** a banner reads "N document(s) flagged for review" and a card shows a red **Review** badge where DocJacket is unsure of the page boundaries. Click **Edit** on that card to check them.
+
+To note that an uploaded document is wrong and ask for a corrected copy (wrong disclosure, missing signatures, wrong address):
+
+1. Open the deal's **Documents** tab. In **Documents Needed**, click **Add required document**, type a name such as "Corrected seller disclosure", pick a due date, and click **Add**.
+2. Open the deal's **Email** tab, start a new email, and click **Template** to insert your request email. Send it, then click **+ sent** on the new row to record the date.
+3. When the corrected file arrives, upload it into that row.
+
+For the other ways to record a bad document (document status, the row's **Internal note**), see [Documents Needed](../documents/audit-mode.mdx#when-a-received-document-is-wrong).
+
 ## Review history
 
 Saved extractions can still be opened with **Review**. Use review history when you need to confirm what the AI extracted, inspect confidence, or understand what was applied.
@@ -2335,7 +2350,7 @@ Nothing expires. An archived deal stays exactly as you left it until you restore
 
 # Restoring or Deleting an Archived Transaction
 
-An archived deal isn't stuck there. You can pull it back into your active list at any time, or — if you're certain — remove it for good.
+A permanently deleted transaction cannot be restored: there is no undelete in the app. An archived deal is different. You can pull it back into your active list at any time, or — if you're certain — remove it for good.
 
 ## Viewing your archived deals
 
@@ -2595,6 +2610,15 @@ Admins can manage document types, document statuses, and naming rules in **Setti
 If the file satisfies a required document, upload it from the **Documents Needed** checklist instead. That path links the uploaded file directly to the placeholder, updates the received count, and keeps the requirement history together.
 
 Required-document uploads can also provide the placeholder name to document naming rules. This is what lets a naming pattern use `{PlaceholderName}` for files uploaded from a specific requirement.
+
+## Does uploading a document check off Documents Needed?
+
+No. There is no setting that marks a Documents Needed row complete just because a file was uploaded. What happens depends on where you upload:
+
+- **Upload from the row itself** (in **Documents Needed**): the file is linked to that row immediately and counted as received.
+- **Upload from the Documents tab's general upload button**: the file is not linked to a row. When DocJacket thinks it matches open rows, a banner above the checklist offers **Review & file** and **Skip for now**. These are suggested matches. Nothing is filed until you confirm.
+
+One thing does file without a click: a document emailed in from certain transactional platforms (e-signature, title and escrow, and transaction-management senders) can be filed onto the matching deal automatically. When that happens, the document's row on the Documents tab shows an undo button (hover text: **Auto-filed from an email — not this deal? Remove & unfile**). There is no setting in the app to turn this off yet.<!-- until: docjacket-v3#6871 --> See [Documents Needed](./audit-mode.mdx#does-uploading-check-items-off-automatically) for the checklist side.
 
 ## Other ways documents get into DocJacket
 
@@ -3032,8 +3056,8 @@ This page covers sending an existing uploaded document. To send reusable office-
 1. Open a transaction
 2. Go to the **Documents** tab
 3. Find the document that needs signatures
-4. Open the document's row actions
-5. Click **Send for Signature**
+4. On the document's row, click the pen icon (hover text: **Send for Signature**). It only shows on a document that has no signature request yet.
+5. The **Send for Signature** drawer opens
 6. Add signer name, email, and role
 7. Add more signers if needed
 8. Turn on ordered signing if signers must sign one at a time
@@ -3043,11 +3067,27 @@ When a document has transaction contacts available, DocJacket can suggest signer
 
 For a document-level request, signer roles are simple labels. They do not need to match approved-form template roles.
 
+## Can I send a signature request for a contact instead of a deal?
+
+No. A signature request is always sent from a document on a deal or listing, so it can't be started from a contact or tracked against one. Open the deal, go to its **Documents** tab, and send the document from there. The signers you add are just names and emails, so the person does not have to be a contact on the deal.
+
 ## Tracking status
 
 After a Signature Request is sent, the Documents tab shows signature status on the related document. Open the status view to see signer progress, viewed dates, signed dates, declined dates, and pending recipients.
 
 From the status view, you can resend a reminder or cancel a pending signer request when allowed.
+
+## What happens when a signer signs
+
+For a request sent from a document row, when a signer finishes DocJacket emails the person who sent the request. If that person is no longer an active user, the email goes to the deal's assigned user, then an Owner, then the oldest active user in your organization. There is one email each time a signer completes and one more when everyone has signed.
+
+When the last signer finishes:
+
+- The document's row on the **Documents** tab changes from an `N/M signed` chip to a **Signed** chip.
+- A **Download Signed PDF** button (a green check icon) appears on that row.
+- The signed PDF replaces the file on the same row, saved as a new version labelled **Signed copy**. The unsigned original stays in the document's version history.
+
+Signing does not check anything off by itself. It does not mark a **Documents Needed** row as received and it does not set **Fully executed**. If the document is already linked to a Documents Needed row, it stays linked and that row now holds the signed copy. If it was not linked, link it yourself from the row, or click **Mark received**.
 
 ## Tips
 
@@ -4580,12 +4620,25 @@ The same linked email carries both. You don't choose one or the other — you co
 
 ### Can an email fire when a document arrives?
 
-No. A task email fires on its date or when you complete the task, and Automation Rules fire on a status change or a completed task. A document being received or uploaded - for example when a "Closing Confirmation" arrives - is not a trigger, and no setting completes a task when a file arrives. DocJacket won't prepare an email for review the moment a document is uploaded without a task being completed.
+Yes, with an Automation Rule, but only when a document is filed under a document category, and the email is only ever prepared and held for your review. It never sends on its own.
 
-Two things you can do instead:
+A task email does not fire when a document arrives. It fires on its date or when you complete the task, and no setting completes a task when a file arrives. The document trigger belongs to **Automation Rules**:
 
-- Complete the task when you file the document. Completing it prepares the linked email; with **Require review before sending** on, the email is drafted into your Review queue and nothing is sent until you approve it.
-- Time the email to a date, such as the task's due date or a Key Date.
+1. Go to **Settings > Automation Rules** (in the **Emails & Alerts** group of the Settings menu) and click **New Rule**.
+2. Under **Trigger**, choose **When a document is filed**, then pick the **Document category**, for example your closing or title category. Categories come from **Settings > Transactions > Documents**.
+3. Add the recipients (contact roles, direct email addresses, or both) and pick one of your own email templates. DocJacket starter templates must be copied into your templates first.
+4. Save the rule.
+
+From then on, each time a document is filed under that category on a deal, DocJacket prepares the email for that deal and holds it in your **Review queue**. This rule is always held for review, even if your organization lets other automated emails send without review. You check it, edit it if needed, and send it yourself.
+
+Good to know:
+
+- The rule fires for documents filed after you create it. It does not go back over documents already on deals.
+- It fires once per document filed under that category: a document uploaded with the category, or one given the category later.
+- A document that arrives by email or import has no category until someone files it under one. Until then the rule does nothing for it.
+- A document with no category, or filed under a different category, does not fire the rule.
+
+If you would rather not use a rule, you can complete the task when you file the document (completing it prepares the linked email for your Review queue), or time the email to a date such as the task's due date or a key date.
 
 For each linked email you can configure:
 
@@ -4673,6 +4726,24 @@ Completing a task with review-required email automation prepares the email for t
 
 Changes made here apply to **this deal only**. To change how future deals behave, edit the Playbook template instead.
 
+## The email in Review & send shows old wording
+
+Editing an email template changes the emails on deals you set up afterward. It does not change a deal that already has that email on a task. When a Playbook is applied, or you link an email template to a task, the deal gets its own copy of the template, so a later edit in **Templates > Email Templates** does not reach it. That is why a Review & send window can still show an old greeting after you fixed the template.
+
+There are three places to edit, and each reaches a different set of emails:
+
+| Where you edit | What changes |
+| --- | --- |
+| **Templates > Email Templates** (or the Playbook) | Deals you set up from now on |
+| **Edit wording** on the task: open the deal, go to the **Tasks** tab, click the task, and find the email under **Task emails** | The remaining emails of that template on this deal only, including later reminders in a chase |
+| The subject and body inside the **Review & send** window | That one email only |
+
+**Edit wording** opens a window titled **Edit this deal's wording**. It says it changes this deal only and leaves your saved template and every other deal untouched.
+
+The Review & send window builds the email when you open it, from the deal's copy of the template and the deal's current data. If the deal changed or you used **Edit wording** while the window was open, click **Refresh** (above the Subject line; hover text: "Refresh the transaction data in this email draft"), or close the window and open **Review & send** again. **Refresh** rebuilds the subject and body, so anything you typed into the window is replaced. The Review & send window opened from the main **Tasks** list does not have a **Refresh** button; close it and click **Review & send** again.
+
+An email drafted from a template in the deal's **Email** tab has its own **Refresh** button too, which rebuilds the draft from the template as it is saved now. Older drafts whose signature is stored inside the message cannot refresh; start a new email from the template instead.
+
 ## Recipients and documents
 
 Task email automation can use:
@@ -4711,6 +4782,14 @@ You control whether an automated email waits for your approval or sends on its o
 - **Organization-wide (the safety net).** In **Settings > Organization**, turn on **Review auto-emails before sending** to force *every* automated email across your account to wait in the Review queue for one-click approve, edit, or skip — regardless of the per-email setting. This is the recommended setting if you're new to automation or simply never want an email leaving without a final human look. Drafts auto-expire after your retention window if you don't act on them.
 
 Either way, the promise is the same: **nothing reaches a client or agent until you approve it.** Automation does the tedious part — picking the template, resolving recipients by role, filling smart fields, attaching documents — and leaves the send button to you.
+
+## Can I track a status like Ready to Draft, Draft Prepared, Sent for Review, Sent?
+
+No. A task email has no workflow status of your own to move through, and there is no rule that flags an email as overdue the next business day. The closest things are:
+
+- The **Task emails** section of Task Details, which shows what has happened to each email: **Sent** with a date, or **Notified in-app** with a date for notify-mode emails.
+- The delivery mode **When this fires**: *Draft email for review* puts the email in your Review queue, *Just notify me in-app* only tells you.
+- The Review queue: prepared emails wait under **Ready for Review**, and upcoming or held date-based emails sit under **Scheduled**.
 
 ## Runtime review
 
@@ -4787,6 +4866,10 @@ The task simply has nothing attached — completing it was never going to produc
 If **Require review before sending** is off for that email, and your organization-wide review setting is also off, the email sends immediately on completion rather than waiting for approval.
 
 **What to do:** if you want a review step, turn on **Require review before sending** for that email — or turn on **Review auto-emails before sending** in **Settings > Organization** to force every automated email to wait. See [Review before sending](./email-automation.mdx#review-before-sending).
+
+## The email appeared, but it shows old wording
+
+If the email is in Review & send but still has the greeting or text you already fixed in the template, the deal is using its own copy of the template. See [The email in Review & send shows old wording](./email-automation.mdx#the-email-in-review--send-shows-old-wording) for **Edit wording** and **Refresh**.
 
 ## Still not sure?
 
@@ -6555,12 +6638,18 @@ DocJacket key dates are read-only. Use **Copy to My Key Dates**, **Duplicate**, 
 
 Use the filters to narrow the list by:
 
-- **State**
-- **Side**
+- **State** — the first dropdown, which starts as **All States**. **General** is one of its choices, for key dates that are not tied to a state. Picking **General** (or any state) hides every key date filed under a different state, so a search can show 0 results.
+- **Side** — Buyer, Seller, or Both
 - **Status** — Active or Inactive
 - **Search** — key date name or description
 
+If a search for a key date shows 0 results, set the first dropdown back to **All States**, then check **Side** and **Status**. When any filter is on, a **Clear filters** button appears beside the search box; it resets them all. While you type in the search box, the list searches both tabs at once, so a result can be a DocJacket key date even when you are on **My Key Dates**.
+
 On **My Key Dates**, use **Import CSV** when you need to add multiple key dates at once.
+
+### Key dates you create inside a Playbook
+
+A key date you make with **Create New** in a Playbook's **Add Key Date** drawer is also saved to **My Key Dates**, so it appears on this page and can be added to other Playbooks. The Playbook's own drawer has the same two tabs (**My Key Dates** and **DocJacket Key Dates**), a search box, and a state dropdown that starts as **All states**. Its link **Manage the Key Date Library** opens this page.
 
 ## Creating a key date rule
 
@@ -7361,6 +7450,10 @@ Conditions are evaluated **when the list is applied** to a transaction. If you l
 learn the property has an HOA, update the deal and re-apply the list — or add the
 document by hand — rather than expecting an already-applied list to change on its own.
 :::
+
+## Does a required document list mark items complete when a file is uploaded?
+
+No. A list only decides which rows appear in **Documents Needed**; it never marks a row complete on its own, and there is no setting that does. A row counts as received when a file is uploaded into that row, when a file is linked to it, or when you click **Mark received**. A file added with the general upload button is only suggested for a matching row, and nothing is filed until you confirm. See [Does uploading a document check off Documents Needed?](../documents/uploading-documents.mdx#does-uploading-a-document-check-off-documents-needed).
 
 ## Default, active, and inactive lists
 
@@ -12798,6 +12891,12 @@ Use **Settings > Brand** for organization-wide presentation and **Settings > Pro
 
 Brand settings control the look of DocJacket surfaces that clients, agents, and your team see.
 
+### Can't find Brand, or where do I change the font?
+
+**Brand** is in the **Advanced** group of the Settings menu, not under General. Click **Advanced** to open the group; it starts collapsed, as do **Transactions** and **Emails & Alerts**. The fonts and colors you can change are on the Brand page itself: pick a preset or customize individual colors and fonts, then click **Save Brand**.
+
+If you do not see an **Advanced** group at all, your role does not have access to it. Anyone who is not an Owner or Admin sees the Advanced group only when an owner or admin has turned on **Advanced settings** for their role in **Settings > Roles**. That also hides the other Advanced pages, such as Offices, Client Portal, Dashboard, Contacts, Referrals, Holidays, SMS, and Google Sheets.
+
 From **Settings > Brand**, you can:
 
 - Choose a brand preset or customize individual colors and fonts
@@ -12956,6 +13055,10 @@ Changing your sign-in email changes **only how you log in**. In particular:
 # Offices
 
 Offices let brokerages and teams manage location-specific configuration. Set up an office for each brokerage location, then give each office its own states, members, branding, approved forms, and signing defaults. This is where you add an office, manage office members, and set per-office defaults.
+
+:::note Can't find **Offices**?
+**Offices** is in the **Advanced** group of the Settings menu. Click **Advanced** to open it; the group starts collapsed. Anyone who is not an Owner or Admin sees the Advanced group only when an owner or admin has turned on **Advanced settings** for their role in **Settings > Roles**.
+:::
 
 ## Creating an office
 
@@ -13121,6 +13224,10 @@ From **Settings > Team Members**, you can:
 
 Use **Settings > Referrals** to share DocJacket with other transaction coordinators or agents and track referral credit. The referral program lets you refer a colleague with your referral link and earn referral credit toward your subscription when they sign up — this page is how referrals work and where you find your referral link.
 
+:::note Can't find **Referrals**?
+**Referrals** is in the **Advanced** group of the Settings menu. Click **Advanced** to open it; the group starts collapsed. Anyone who is not an Owner or Admin sees the Advanced group only when an owner or admin has turned on **Advanced settings** for their role in **Settings > Roles**.
+:::
+
 ## Your referral link
 
 The Referrals page shows:
@@ -13166,6 +13273,10 @@ Recent referrals show first name, signup month, and status.
 
 Use **Settings > Contacts** to control how contacts are categorized and filtered across DocJacket.
 
+:::note Can't find **Contacts**?
+**Contacts** is in the **Advanced** group of the Settings menu. Click **Advanced** to open it; the group starts collapsed. Anyone who is not an Owner or Admin sees the Advanced group only when an owner or admin has turned on **Advanced settings** for their role in **Settings > Roles**.
+:::
+
 ## Contact types
 
 Contact types define the labels available when adding people and companies to your contact list.
@@ -13205,6 +13316,10 @@ Keep tags short and operational. They work best for repeatable filters such as V
 # Calendar and Holidays
 
 Use **Settings > Calendar** and **Settings > Holidays** to control how dates sync and how business-day rules skip closed days.
+
+:::note Can't find **Holidays**?
+**Holidays** is in the **Advanced** group of the Settings menu. Click **Advanced** to open it; the group starts collapsed. Anyone who is not an Owner or Admin sees the Advanced group only when an owner or admin has turned on **Advanced settings** for their role in **Settings > Roles**. **Calendar** is in the **General** group.
+:::
 
 ## Calendar sync
 
@@ -13383,7 +13498,7 @@ AI Extraction fields use the same custom field system, but they also require an 
 
 By default, custom fields show together in one block. You can group them into labeled sections instead — so all your date fields sit together, all your client-info fields together, and so on — and that grouping shows up both when you edit a transaction and on the transaction Overview.
 
-The available sections are **Client Information**, **Dates**, **Financial Summary**, **Title Company**, **Lender**, **Agents**, and **Additional Details**. Any field you haven't sorted stays in a **Custom Fields** group at the bottom.
+You cannot create your own sections. The list is fixed: **Client Information**, **Dates**, **Financial Summary**, **Title Company**, **Lender**, **Agents**, **Additional Details**, **Title & Survey Terms**, **Contingencies**, and **Property**. Pick the closest one for each field. Any field you haven't sorted stays in a **Custom Fields** group at the bottom.
 
 To assign a field's section, you have two options:
 
@@ -13649,12 +13764,13 @@ Notification preferences are personal. Changing your notifications does not chan
 
 Use **Settings > Automation Rules** to create and manage rule-based notifications and messages.
 
-Automation rules can send email, SMS, or both when a transaction enters a status or when a configured Playbook task is completed. Rules use active email templates, recipient logic, and delivery-channel settings.
+Automation rules can send email, SMS, or both when a transaction enters a status or when a configured Playbook task is completed. A third kind prepares an email for your review when a document is filed under a category. Rules use active email templates, recipient logic, and delivery-channel settings.
 
 Current rule triggers include:
 
 - **When a transaction enters a status** — Fires on future status changes only. Existing transactions already in that status are not triggered retroactively.
 - **When a Playbook task is completed** — Fires when a transaction task created from the selected Playbook task template is marked complete.
+- **When a document is filed** — Fires each time a document is filed to a deal under the **Document category** you pick. It prepares the email and holds it in your Review queue for you to send; it never sends on its own, even if your organization sends other automated emails without review. It applies to documents filed after the rule is created, uses only your own email templates, and does not use SMS. A document that arrives by email or import triggers nothing until someone files it under a category.
 
 Rules can send to transaction contact roles, direct email addresses, or both. Direct email entries are checked before the rule is saved, and duplicate direct addresses are collapsed case-insensitively.
 
@@ -13685,6 +13801,10 @@ Scheduled reminders and manually configured scheduled emails stay schedule-drive
 # SMS Settings
 
 Use **Settings > SMS** to manage your organization's texting setup, usage, SMS credits, and dedicated sending number.
+
+:::note Can't find **SMS**?
+**SMS** is in the **Advanced** group of the Settings menu. Click **Advanced** to open it; the group starts collapsed. Anyone who is not an Owner or Admin sees the Advanced group only when an owner or admin has turned on **Advanced settings** for their role in **Settings > Roles**.
+:::
 
 SMS settings control the account-level setup. The transaction **Messages > SMS** tab is where users send messages, reply to conversations, use SMS templates, attach files, and send to multiple contacts.
 

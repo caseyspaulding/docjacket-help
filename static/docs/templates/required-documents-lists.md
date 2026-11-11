@@ -109,6 +109,10 @@ learn the property has an HOA, update the deal and re-apply the list — or add 
 document by hand — rather than expecting an already-applied list to change on its own.
 :::
 
+## Does a required document list mark items complete when a file is uploaded?
+
+No. A list only decides which rows appear in **Documents Needed**; it never marks a row complete on its own, and there is no setting that does. A row counts as received when a file is uploaded into that row, when a file is linked to it, or when you click **Mark received**. A file added with the general upload button is only suggested for a matching row, and nothing is filed until you confirm. See [Does uploading a document check off Documents Needed?](../documents/uploading-documents.mdx#does-uploading-a-document-check-off-documents-needed).
+
 ## Default, active, and inactive lists
 
 Only active lists are available when applying a template on a transaction.

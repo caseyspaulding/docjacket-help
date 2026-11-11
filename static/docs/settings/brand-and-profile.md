@@ -15,6 +15,12 @@ Use **Settings > Brand** for organization-wide presentation and **Settings > Pro
 
 Brand settings control the look of DocJacket surfaces that clients, agents, and your team see.
 
+### Can't find Brand, or where do I change the font?
+
+**Brand** is in the **Advanced** group of the Settings menu, not under General. Click **Advanced** to open the group; it starts collapsed, as do **Transactions** and **Emails & Alerts**. The fonts and colors you can change are on the Brand page itself: pick a preset or customize individual colors and fonts, then click **Save Brand**.
+
+If you do not see an **Advanced** group at all, your role does not have access to it. Anyone who is not an Owner or Admin sees the Advanced group only when an owner or admin has turned on **Advanced settings** for their role in **Settings > Roles**. That also hides the other Advanced pages, such as Offices, Client Portal, Dashboard, Contacts, Referrals, Holidays, SMS, and Google Sheets.
+
 From **Settings > Brand**, you can:
 
 - Choose a brand preset or customize individual colors and fonts
