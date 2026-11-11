@@ -92,7 +92,13 @@ Rules can send to transaction contact roles, direct email addresses, or both. Di
 
 ### Can an Automation Rule send a text message?
 
-No. Automation Rules send email only. The rule editor shows a **Delivery** choice with **SMS** and **Email + SMS**, but neither sends a text yet: a rule set to **Email + SMS** sends only the email, and a rule set to **SMS** sends nothing at all. Leave **Delivery** on **Email**. <!-- until: docjacket-v3#7019 -->
+No. Automation Rules send email only, and the rule editor has no text-message option.
+
+If you open a rule that was saved earlier with a text option, a note in the editor says what the rule actually did: a rule set to send a text as well as the email sent only the email, and a rule set to send a text only sent nothing. Saving the rule makes it an email rule.
+
+### Which email templates can a rule use?
+
+Only your own templates. DocJacket's starter templates are not offered in a rule's template list. To use one, copy it into your templates first, then pick your copy in the rule.
 
 You can enable or disable a rule without deleting it. Deleting a rule stops future triggers; it does not undo messages that were already drafted, scheduled, or sent.
 
