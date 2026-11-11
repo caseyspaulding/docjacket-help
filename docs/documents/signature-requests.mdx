@@ -15,8 +15,8 @@ This page covers sending an existing uploaded document. To send reusable office-
 1. Open a transaction
 2. Go to the **Documents** tab
 3. Find the document that needs signatures
-4. Open the document's row actions
-5. Click **Send for Signature**
+4. On the document's row, click the pen icon (hover text: **Send for Signature**). It only shows on a document that has no signature request yet.
+5. The **Send for Signature** drawer opens
 6. Add signer name, email, and role
 7. Add more signers if needed
 8. Turn on ordered signing if signers must sign one at a time
@@ -26,11 +26,27 @@ When a document has transaction contacts available, DocJacket can suggest signer
 
 For a document-level request, signer roles are simple labels. They do not need to match approved-form template roles.
 
+## Can I send a signature request for a contact instead of a deal?
+
+No. A signature request is always sent from a document on a deal or listing, so it can't be started from a contact or tracked against one. Open the deal, go to its **Documents** tab, and send the document from there. The signers you add are just names and emails, so the person does not have to be a contact on the deal.
+
 ## Tracking status
 
 After a Signature Request is sent, the Documents tab shows signature status on the related document. Open the status view to see signer progress, viewed dates, signed dates, declined dates, and pending recipients.
 
 From the status view, you can resend a reminder or cancel a pending signer request when allowed.
+
+## What happens when a signer signs
+
+For a request sent from a document row, when a signer finishes DocJacket emails the person who sent the request. If that person is no longer an active user, the email goes to the deal's assigned user, then an Owner, then the oldest active user in your organization. There is one email each time a signer completes and one more when everyone has signed.
+
+When the last signer finishes:
+
+- The document's row on the **Documents** tab changes from an `N/M signed` chip to a **Signed** chip.
+- A **Download Signed PDF** button (a green check icon) appears on that row.
+- The signed PDF replaces the file on the same row, saved as a new version labelled **Signed copy**. The unsigned original stays in the document's version history.
+
+Signing does not check anything off by itself. It does not mark a **Documents Needed** row as received and it does not set **Fully executed**. If the document is already linked to a Documents Needed row, it stays linked and that row now holds the signed copy. If it was not linked, link it yourself from the row, or click **Mark received**.
 
 ## Tips
 

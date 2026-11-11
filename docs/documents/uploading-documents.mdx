@@ -79,6 +79,15 @@ If the file satisfies a required document, upload it from the **Documents Needed
 
 Required-document uploads can also provide the placeholder name to document naming rules. This is what lets a naming pattern use `{PlaceholderName}` for files uploaded from a specific requirement.
 
+## Does uploading a document check off Documents Needed?
+
+No. There is no setting that marks a Documents Needed row complete just because a file was uploaded. What happens depends on where you upload:
+
+- **Upload from the row itself** (in **Documents Needed**): the file is linked to that row immediately and counted as received.
+- **Upload from the Documents tab's general upload button**: the file is not linked to a row. When DocJacket thinks it matches open rows, a banner above the checklist offers **Review & file** and **Skip for now**. These are suggested matches. Nothing is filed until you confirm.
+
+One thing does file without a click: a document emailed in from certain transactional platforms (e-signature, title and escrow, and transaction-management senders) can be filed onto the matching deal automatically. When that happens, the document's row on the Documents tab shows an undo button (hover text: **Auto-filed from an email — not this deal? Remove & unfile**). There is no setting in the app to turn this off yet.<!-- until: docjacket-v3#6871 --> See [Documents Needed](./audit-mode.mdx#does-uploading-check-items-off-automatically) for the checklist side.
+
 ## Other ways documents get into DocJacket
 
 Documents don't only come from manual uploads:

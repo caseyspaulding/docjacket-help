@@ -1,7 +1,7 @@
 ---
 sidebar_label: Email and Automation
 sidebar_position: 12
-description: Configure email template categories, working hours, notification preferences, and rule-based email or SMS automation.
+description: Configure email template categories, working hours, notification preferences, and rule-based email automation.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/settings/email-and-automation -->
@@ -83,22 +83,19 @@ Notification preferences are personal. Changing your notifications does not chan
 
 Use **Settings > Automation Rules** to create and manage rule-based notifications and messages.
 
-Automation rules can send email, SMS, or both when a transaction enters a status or when a configured Playbook task is completed. Rules use active email templates, recipient logic, and delivery-channel settings.
+Automation rules send an email when a transaction enters a status or when a configured Playbook task is completed. They do not send text messages. A third kind prepares an email for your review when a document is filed under a category. Rules use active email templates and recipient logic.
 
 Current rule triggers include:
 
 - **When a transaction enters a status** — Fires on future status changes only. Existing transactions already in that status are not triggered retroactively.
 - **When a Playbook task is completed** — Fires when a transaction task created from the selected Playbook task template is marked complete.
+- **When a document is filed** — Fires each time a document is filed to a deal under the **Document category** you pick. It prepares the email and holds it in your Review queue for you to send; it never sends on its own, even if your organization sends other automated emails without review. It applies to documents filed after the rule is created, uses only your own email templates, and does not use SMS. A document that arrives by email or import triggers nothing until someone files it under a category.
 
 Rules can send to transaction contact roles, direct email addresses, or both. Direct email entries are checked before the rule is saved, and duplicate direct addresses are collapsed case-insensitively.
 
-Delivery options are:
+### Can an Automation Rule send a text message?
 
-- **Email**
-- **SMS**
-- **Email + SMS**
-
-SMS automation requires SMS access on your plan and a provisioned SMS number in **Settings > SMS**. Recipient phone number and SMS-consent checks happen when the rule fires for a specific transaction.
+No. Automation Rules send email only. The rule editor shows a **Delivery** choice with **SMS** and **Email + SMS**, but neither sends a text yet: a rule set to **Email + SMS** sends only the email, and a rule set to **SMS** sends nothing at all. Leave **Delivery** on **Email**. <!-- until: docjacket-v3#7019 -->
 
 You can enable or disable a rule without deleting it. Deleting a rule stops future triggers; it does not undo messages that were already drafted, scheduled, or sent.
 

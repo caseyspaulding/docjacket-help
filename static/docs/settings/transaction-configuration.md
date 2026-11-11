@@ -120,7 +120,7 @@ AI Extraction fields use the same custom field system, but they also require an 
 
 By default, custom fields show together in one block. You can group them into labeled sections instead — so all your date fields sit together, all your client-info fields together, and so on — and that grouping shows up both when you edit a transaction and on the transaction Overview.
 
-The available sections are **Client Information**, **Dates**, **Financial Summary**, **Title Company**, **Lender**, **Agents**, and **Additional Details**. Any field you haven't sorted stays in a **Custom Fields** group at the bottom.
+You cannot create your own sections. The list is fixed: **Client Information**, **Dates**, **Financial Summary**, **Title Company**, **Lender**, **Agents**, **Additional Details**, **Title & Survey Terms**, **Contingencies**, and **Property**. Pick the closest one for each field. Any field you haven't sorted stays in a **Custom Fields** group at the bottom.
 
 To assign a field's section, you have two options:
 

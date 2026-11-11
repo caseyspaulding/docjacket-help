@@ -130,6 +130,21 @@ Depending on the extraction, merged review can:
 
 The final button still does the real save: **Create Transaction**, **Create Listing**, or **Update Transaction**.
 
+## Is there a flag button on the review screen?
+
+No. The upload and extraction review screens have no flag button that saves a note to the deal's jacket or asks anyone for a corrected copy. A few things on those screens are described as "flagged" or "needs attention", and they only point out where to look; they save nothing and contact no one:
+
+- **Merged review:** a section heading can show an amber badge such as **1 needs attention** or **2 need attention** when the uploaded documents disagree about a field in that section, or a check warned about one of its fields.
+- **Smart Split:** a banner reads "N document(s) flagged for review" and a card shows a red **Review** badge where DocJacket is unsure of the page boundaries. Click **Edit** on that card to check them.
+
+To note that an uploaded document is wrong and ask for a corrected copy (wrong disclosure, missing signatures, wrong address):
+
+1. Open the deal's **Documents** tab. In **Documents Needed**, click **Add required document**, type a name such as "Corrected seller disclosure", pick a due date, and click **Add**.
+2. Open the deal's **Email** tab, start a new email, and click **Template** to insert your request email. Send it, then click **+ sent** on the new row to record the date.
+3. When the corrected file arrives, upload it into that row.
+
+For the other ways to record a bad document (document status, the row's **Internal note**), see [Documents Needed](../documents/audit-mode.mdx#when-a-received-document-is-wrong).
+
 ## Review history
 
 Saved extractions can still be opened with **Review**. Use review history when you need to confirm what the AI extracted, inspect confidence, or understand what was applied.

@@ -9,7 +9,7 @@ description: Bring an archived DocJacket deal back to your active list, what res
 
 # Restoring or Deleting an Archived Transaction
 
-An archived deal isn't stuck there. You can pull it back into your active list at any time, or — if you're certain — remove it for good.
+A permanently deleted transaction cannot be restored: there is no undelete in the app. An archived deal is different. You can pull it back into your active list at any time, or — if you're certain — remove it for good.
 
 ## Viewing your archived deals
 

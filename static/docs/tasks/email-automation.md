@@ -32,12 +32,25 @@ The same linked email carries both. You don't choose one or the other — you co
 
 ### Can an email fire when a document arrives?
 
-No. A task email fires on its date or when you complete the task, and Automation Rules fire on a status change or a completed task. A document being received or uploaded - for example when a "Closing Confirmation" arrives - is not a trigger, and no setting completes a task when a file arrives. DocJacket won't prepare an email for review the moment a document is uploaded without a task being completed.
+Yes, with an Automation Rule, but only when a document is filed under a document category, and the email is only ever prepared and held for your review. It never sends on its own.
 
-Two things you can do instead:
+A task email does not fire when a document arrives. It fires on its date or when you complete the task, and no setting completes a task when a file arrives. The document trigger belongs to **Automation Rules**:
 
-- Complete the task when you file the document. Completing it prepares the linked email; with **Require review before sending** on, the email is drafted into your Review queue and nothing is sent until you approve it.
-- Time the email to a date, such as the task's due date or a Key Date.
+1. Go to **Settings > Automation Rules** (in the **Emails & Alerts** group of the Settings menu) and click **New Rule**.
+2. Under **Trigger**, choose **When a document is filed**, then pick the **Document category**, for example your closing or title category. Categories come from **Settings > Transactions > Documents**.
+3. Add the recipients (contact roles, direct email addresses, or both) and pick one of your own email templates. DocJacket starter templates must be copied into your templates first.
+4. Save the rule.
+
+From then on, each time a document is filed under that category on a deal, DocJacket prepares the email for that deal and holds it in your **Review queue**. This rule is always held for review, even if your organization lets other automated emails send without review. You check it, edit it if needed, and send it yourself.
+
+Good to know:
+
+- The rule fires for documents filed after you create it. It does not go back over documents already on deals.
+- It fires once per document filed under that category: a document uploaded with the category, or one given the category later.
+- A document that arrives by email or import has no category until someone files it under one. Until then the rule does nothing for it.
+- A document with no category, or filed under a different category, does not fire the rule.
+
+If you would rather not use a rule, you can complete the task when you file the document (completing it prepares the linked email for your Review queue), or time the email to a date such as the task's due date or a key date.
 
 For each linked email you can configure:
 
@@ -125,6 +138,24 @@ Completing a task with review-required email automation prepares the email for t
 
 Changes made here apply to **this deal only**. To change how future deals behave, edit the Playbook template instead.
 
+## The email in Review & send shows old wording
+
+Editing an email template changes the emails on deals you set up afterward. It does not change a deal that already has that email on a task. When a Playbook is applied, or you link an email template to a task, the deal gets its own copy of the template, so a later edit in **Templates > Email Templates** does not reach it. That is why a Review & send window can still show an old greeting after you fixed the template.
+
+There are three places to edit, and each reaches a different set of emails:
+
+| Where you edit | What changes |
+| --- | --- |
+| **Templates > Email Templates** (or the Playbook) | Deals you set up from now on |
+| **Edit wording** on the task: open the deal, go to the **Tasks** tab, click the task, and find the email under **Task emails** | The remaining emails of that template on this deal only, including later reminders in a chase |
+| The subject and body inside the **Review & send** window | That one email only |
+
+**Edit wording** opens a window titled **Edit this deal's wording**. It says it changes this deal only and leaves your saved template and every other deal untouched.
+
+The Review & send window builds the email when you open it, from the deal's copy of the template and the deal's current data. If the deal changed or you used **Edit wording** while the window was open, click **Refresh** (above the Subject line; hover text: "Refresh the transaction data in this email draft"), or close the window and open **Review & send** again. **Refresh** rebuilds the subject and body, so anything you typed into the window is replaced. The Review & send window opened from the main **Tasks** list does not have a **Refresh** button; close it and click **Review & send** again.
+
+An email drafted from a template in the deal's **Email** tab has its own **Refresh** button too, which rebuilds the draft from the template as it is saved now. Older drafts whose signature is stored inside the message cannot refresh; start a new email from the template instead.
+
 ## Recipients and documents
 
 Task email automation can use:
@@ -163,6 +194,14 @@ You control whether an automated email waits for your approval or sends on its o
 - **Organization-wide (the safety net).** In **Settings > Organization**, turn on **Review auto-emails before sending** to force *every* automated email across your account to wait in the Review queue for one-click approve, edit, or skip — regardless of the per-email setting. This is the recommended setting if you're new to automation or simply never want an email leaving without a final human look. Drafts auto-expire after your retention window if you don't act on them.
 
 Either way, the promise is the same: **nothing reaches a client or agent until you approve it.** Automation does the tedious part — picking the template, resolving recipients by role, filling smart fields, attaching documents — and leaves the send button to you.
+
+## Can I track a status like Ready to Draft, Draft Prepared, Sent for Review, Sent?
+
+No. A task email has no workflow status of your own to move through, and there is no rule that flags an email as overdue the next business day. The closest things are:
+
+- The **Task emails** section of Task Details, which shows what has happened to each email: **Sent** with a date, or **Notified in-app** with a date for notify-mode emails.
+- The delivery mode **When this fires**: *Draft email for review* puts the email in your Review queue, *Just notify me in-app* only tells you.
+- The Review queue: prepared emails wait under **Ready for Review**, and upcoming or held date-based emails sit under **Scheduled**.
 
 ## Runtime review
 

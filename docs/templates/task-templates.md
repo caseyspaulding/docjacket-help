@@ -31,12 +31,18 @@ DocJacket key dates are read-only. Use **Copy to My Key Dates**, **Duplicate**, 
 
 Use the filters to narrow the list by:
 
-- **State**
-- **Side**
+- **State** — the first dropdown, which starts as **All States**. **General** is one of its choices, for key dates that are not tied to a state. Picking **General** (or any state) hides every key date filed under a different state, so a search can show 0 results.
+- **Side** — Buyer, Seller, or Both
 - **Status** — Active or Inactive
 - **Search** — key date name or description
 
+If a search for a key date shows 0 results, set the first dropdown back to **All States**, then check **Side** and **Status**. When any filter is on, a **Clear filters** button appears beside the search box; it resets them all. While you type in the search box, the list searches both tabs at once, so a result can be a DocJacket key date even when you are on **My Key Dates**.
+
 On **My Key Dates**, use **Import CSV** when you need to add multiple key dates at once.
+
+### Key dates you create inside a Playbook
+
+A key date you make with **Create New** in a Playbook's **Add Key Date** drawer is also saved to **My Key Dates**, so it appears on this page and can be added to other Playbooks. The Playbook's own drawer has the same two tabs (**My Key Dates** and **DocJacket Key Dates**), a search box, and a state dropdown that starts as **All states**. Its link **Manage the Key Date Library** opens this page.
 
 ## Creating a key date rule
 

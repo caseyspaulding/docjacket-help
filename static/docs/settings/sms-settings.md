@@ -11,6 +11,10 @@ description: Manage your dedicated business SMS number, shared-number fallback, 
 
 Use **Settings > SMS** to manage your organization's texting setup, usage, SMS credits, and dedicated sending number.
 
+:::note Can't find **SMS**?
+**SMS** is in the **Advanced** group of the Settings menu. Click **Advanced** to open it; the group starts collapsed. Anyone who is not an Owner or Admin sees the Advanced group only when an owner or admin has turned on **Advanced settings** for their role in **Settings > Roles**.
+:::
+
 SMS settings control the account-level setup. The transaction **Messages > SMS** tab is where users send messages, reply to conversations, use SMS templates, attach files, and send to multiple contacts.
 
 ## Business number
