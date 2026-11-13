@@ -112,7 +112,7 @@ If the date already has an invite on people's calendars and is still ahead, choo
 - **Keep the invite** — marks the date Waived or N/A and leaves the invite exactly as it is. It is not updated or cancelled later when the date changes.
 - **Back** — changes nothing.
 
-When nobody besides you (the organizer) was invited, the question reads "{date} is on your calendar. Cancelling removes it. No one else was invited, so no email is sent." Otherwise it reads "The people invited to {date} have it on their calendars. Cancelling emails each of them a cancellation."
+When nobody besides you (the organizer) was invited, the question names the date and reads, for example, "Closing is on your calendar. Cancelling removes it. No one else was invited, so no email is sent." Otherwise it reads "The people invited to Closing have it on their calendars. Cancelling emails each of them a cancellation."
 
 ### When a deal is cancelled or archived
 
