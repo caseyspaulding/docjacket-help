@@ -131,6 +131,13 @@ Use **Add Key Date** in the builder. The drawer has two modes:
 
 If a shared key date needs customization, duplicate it first and use the copy in your Playbook.
 
+### One key date per Key Date Type
+
+A Playbook holds one key date for each Key Date Type, because a deal keeps one of each. If you try to add a second date with a type the Playbook already has, DocJacket doesn't add it and the message names the date that already holds the type.
+
+- **Create New** — the message offers **Add without a key date type**, which adds the date as a custom one. You can also rename it or give it a different Key Date Type. If the name alone makes DocJacket treat it as a governed type, a blue hint says "This Playbook already has a {type} ("{name}"). Rename this one to keep it custom."
+- **From Library** — use the key date that is already in the Playbook, or change the library key date's Key Date Type in **My Key Dates** and add it again.
+
 ## Adding tasks
 
 Playbook tasks are the work your team completes during the transaction. Tasks can include:
@@ -287,6 +294,10 @@ Use either approach:
 - Leave financing work unconditional and mark the cash-only tasks conditional on
   **Cash deal**.
 
+:::warning Don't put the Cash deal condition on a financing task
+A task with the **Cash deal** condition is added *only* on cash deals, and the **When to create it** setting is ignored for it. Putting that condition on an appraisal or lender task removes the task from every financed deal, and the Playbook editor doesn't warn you. To skip a task on cash deals, use **Deal flag › Buyer is financing is true** instead, or nest the task under a key date that only financed deals get.
+:::
+
 ### The "If label" box is cosmetic
 
 Under the condition there's an **If label** box (for example, `If HOA`). This is
@@ -296,9 +307,9 @@ task is created on every deal and the builder warns you it is **not enforced**.
 
 :::note Conditional in the Playbook builder vs. on a task
 The **Conditional Task** checkbox in the *Playbook builder* controls whether a task
-gets created at all. There is also a conditional marker on an individual task inside a
-transaction ([Task Options](../tasks/task-options.md)) — that one is a **label** on
-work that already exists, and it doesn't create or remove anything.
+gets created at all. On an individual task inside a transaction the matching toggle is
+called **Condition note** ([Task Options](../tasks/task-options.md)) — that one is a
+note on work that already exists, and it doesn't create, hide, or remove anything.
 :::
 
 ## Only add a key date when…
@@ -344,7 +355,7 @@ switches to a loan; you update the deal. Open **Optional tasks**, and **Loan App
 back. Open the deal's **Overview**, set the field in the **Custom Fields** card, and
 return to the **Tasks** tab: the task is now under **Now applicable**.
 
-A task you deleted by hand after it was created is not offered back.
+A task you deleted by hand after it was created is not offered back in **Optional tasks**. It can come back if you apply the Playbook to the deal again; see [Applying a Playbook to a transaction](#applying-a-playbook-to-a-transaction).
 
 ## Brokerage add-on Playbooks
 
@@ -429,7 +440,13 @@ The preview is for template review. It is computed client-side and does not incl
 
 ## Applying a Playbook to a transaction
 
-From the transaction Overview's closing timeline, click **Generate Timeline** and pick a Playbook.
+In the Overview header, the Playbook controls depend on the deal:
+
+- A deal with no Playbook shows **Apply Playbook**, or **Apply** followed by the name of a Playbook DocJacket suggests for the deal.
+- A deal that was set up from a Playbook shows a chip with that Playbook's name and an **Add another Playbook** button.
+- An archived deal can't take a Playbook: the buttons are disabled and the hover text reads "Archived deals can't take a Playbook. Restore the deal first."
+
+You can also click **Generate Timeline** on the Overview's closing timeline and pick a Playbook.
 
 DocJacket can:
 
@@ -443,6 +460,41 @@ DocJacket can:
 - Preserve manually added items and contract-extracted dates when replacing template-generated items
 
 After applying, the transaction has real key dates and real tasks. Moving key dates can update linked task due dates according to their rules.
+
+### "N to sync": when a deal is behind its Playbook
+
+The Overview header shows a chip with the name of the Playbook the deal was set up from. When the chip turns amber and reads **· 10 to sync** (hover: "This deal is 10 item(s) behind the … playbook"), the Playbook has items the deal doesn't, or now says something differently. Nothing is broken, and nothing changes on the deal until you sync.
+
+The number counts:
+
+- **Key dates and tasks in the Playbook that are not on the deal.** Tasks you deleted from the deal yourself are not counted; hover the chip to see how many were left out.
+- **Items the Playbook now says differently.** A deadline rule changed in the Playbook on a date nobody changed by hand, or a task renamed in the Playbook.
+
+Not counted: Playbook documents, dates you changed by hand or marked Completed, Waived or N/A, Optional tasks, and items the Playbook leaves out on this deal (a condition that isn't met, the other side's key dates, financing items on a cash deal).
+
+The number is the same one the Apply Playbook dialog shows on its last button. A chip that reads **2 to sync** opens a dialog whose button reads **Create 2 items**.
+
+**To sync (re-sync) the deal with its Playbook:**
+
+1. Click the chip. The **Apply Playbook** dialog opens with that Playbook picked.
+2. Read the rows. **Already on this deal · keeps your date** means a date you changed or closed; it is not touched. **Already on this deal · recalculates to …** means a Playbook date nobody changed; it moves to the Playbook's current rule. **Keeps your existing date** means a date you entered or that came from the contract; it keeps its date.
+3. If you deleted tasks from the deal, they read **Removed from this deal on** a date and an amber note says they will be added back. If you deleted them on purpose, click **Leave out the N you removed**.
+4. Click **Create N items** (or **Apply** when nothing new is left). Leave **Replace previously-applied template items** unticked.
+
+You don't have to sync. The deal is fine as it is.
+
+On an archived deal the chip is display-only, because an archived deal can't take a Playbook.
+
+### Applying the same Playbook again
+
+You can re-apply a Playbook that is already on the deal, whether or not the chip says **to sync**. Without **Replace previously-applied template items**, re-applying adds what's missing and leaves the rest alone.
+
+- Rows that are already on the deal read **Already on this deal**. They are locked, and they are left out of the sentence at the top and the count on the button.
+- When everything is already there, the dialog says "Everything in this Playbook is already on this deal.", the button reads **Apply**, and the receipt headline is **Deal already set up**.
+- **Deleted tasks come back by default.** Click **Leave out the N you removed** to skip them for that one apply. DocJacket doesn't remember the choice for next time.
+- **Playbook for the other side.** If the Playbook is for Seller deals and the deal is Buyer (or the reverse), an amber note says so: "This Playbook is for Seller deals · this deal is Buyer. Its 2 seller-side key dates won't be added; its tasks will." It doesn't stop you. The receipt repeats it with "N key date(s) for the other side, not added".
+- **Dates that can't be calculated yet.** If a key date counts from a date the deal doesn't have, the receipt says "Some dates are waiting on a date this deal doesn't have yet:" and lists the missing dates by name, for example Effective Date.
+- **Send your client their portal.** See [Sharing Portal Links](../client-portal/sharing-portal-links.mdx#after-you-apply-a-playbook).
 
 ### Applying a second Playbook to the same transaction
 
@@ -466,7 +518,7 @@ list, and one document set — and the listing history stays attached.
 
 The apply dialog shows any Playbooks already applied, so you can see what's there
 before adding another. If you *do* want the new Playbook to take over, tick **Replace
-existing key dates and tasks** — that removes the previously applied *template-generated*
+previously-applied template items** — that removes the previously applied *template-generated*
 items on both the key-date and task side. Items you added by hand, and dates extracted
 from the contract, are preserved either way.
 

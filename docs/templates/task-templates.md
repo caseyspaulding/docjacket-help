@@ -112,6 +112,8 @@ The name can still match your team's language. If the name looks like a known ke
 
 Leave **Key Date Type** blank for organization-specific dates that do not map to a standard concept.
 
+A Playbook holds one key date for each Key Date Type, because a deal keeps one of each. Adding a second date with a type the Playbook already has is refused, and the message names the date that already holds the type. When you use **Create New** in the Playbook builder, the message offers **Add without a key date type**. When you use **From Library**, use the date that is already there or change the library key date's type in **My Key Dates**. See [Adding key dates](./timeline-templates.md#one-key-date-per-key-date-type).
+
 :::tip Set a governed type whenever you can
 A governed **Key Date Type** is what connects the same date across Playbooks, the calendar, reports, smart fields, and integrations. The name can still match your team's language — the type is what makes automation reliable. Only leave it blank for truly organization-specific dates.
 :::

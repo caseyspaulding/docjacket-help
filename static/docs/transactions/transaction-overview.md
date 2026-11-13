@@ -22,6 +22,8 @@ The closing timeline appears near the top of the Overview when the section is vi
 
 Use **Generate Timeline** to calculate key dates and linked tasks from one Playbook template. The confirmation step shows the transaction anchor dates, key-date count, task count, owner assignments, phases, and the replacement option before anything is created.
 
+If the Playbook chip in the header reads **N to sync**, the deal and its Playbook no longer match: see [When a deal is behind its Playbook](../templates/timeline-templates.md#n-to-sync-when-a-deal-is-behind-its-playbook).
+
 The timeline has two views:
 
 - **Vertical checklist view** — A list of key dates with status, phase, governed Key Date Type, linked tasks, reminders, and drag handles for visual order.
