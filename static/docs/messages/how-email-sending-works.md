@@ -118,6 +118,17 @@ right address on every deal:
 If a deal is assigned to a login whose mailbox you haven't connected on the
 login you're using, you'll see the note described above and your own default is used.
 
+## When the sender has left your organization
+
+Automated deal email never sends from someone who is no longer an active member of your organization, whether they were removed, deactivated, or moved to another organization. DocJacket treats them as having no connected mailbox, and their mailbox is left alone. Reassign their deals to an active member so automated email goes out from that person's mailbox.
+
+What happens to an email for such a deal depends on the **Only send transaction email from a connected mailbox** setting (see [Requiring a connected mailbox](#requiring-a-connected-mailbox)):
+
+- **Setting on:** the email goes from the account owner's connected mailbox. If the owner has none, the email is held and the owner is nudged to connect one.
+- **Setting off (the default):** the email goes through DocJacket's email service, with the account owner as the Reply-To address, so replies reach the owner.
+
+A one-off email that a departed member scheduled is not sent. It is marked failed with this message: "The person who scheduled this email is no longer an active member of this organization. Open the scheduled message and send it from your own mailbox."
+
 ## Where replies go
 
 Because the email is sent from your real mailbox, replies go straight back to

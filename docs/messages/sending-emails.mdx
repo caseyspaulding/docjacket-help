@@ -88,6 +88,14 @@ You can schedule by:
 
 Scheduled one-off emails appear in **Email > Scheduled** with a **One-off** badge. You can cancel them there. Editing one opens the composer with the message prefilled; saving cancels the original scheduled send and creates a new one.
 
+### Scheduling for a time that has already passed
+
+When you schedule from **Add scheduled email** on the deal's **Email > Scheduled** tab, the **Schedule Email** window checks the send time as you pick it. If the time is already behind you, a note appears under the date:
+
+- **This time has passed — it will send right away.** The button reads **Send now** (**Save and send now** when you are editing a scheduled email).
+- **This time has passed — it will go to review right away.** This appears instead when the email is held for review, either because it is set to require review or because your organization reviews automated email. The button keeps its usual **Schedule email** (or **Save changes**) label.
+- **This time is more than 2 days ago, so it can't be scheduled. Pick a later date or offset.** The email can't be saved until you choose a later time.
+
 You can't schedule a reply. **Schedule** is unavailable while you **Reply** or **Reply all**, so send the reply now, or compose a new message and schedule that.
 
 ## Attachments
@@ -99,6 +107,14 @@ Files you upload or drop are **saved to the deal's Documents** and attached to t
 If you attach transaction documents, DocJacket sends the selected files with the message and keeps the email linked to the transaction.
 
 **Reply** and **Reply all** send the attachments you add, the same as a new message or Forward.
+
+### Attachments stay with the deal
+
+You can only attach documents that are on the deal you are sending from. A document from another deal can't be attached. If a document was deleted or moved off the deal after you attached it:
+
+- **Sending now:** the email is not sent. You see "Couldn't attach: ... Nothing was sent — remove the file or re-add it, then try again."
+- **Scheduled email:** when the time comes the email is marked failed with "Couldn't attach: ... The email was not sent — re-attach and reschedule."
+- **Approving a draft in the Review queue:** if an attached document is from another deal, approving is refused with "One of the attached documents is not on this deal. Remove it from the draft and approve again."
 
 ## Reviewing messages
 
