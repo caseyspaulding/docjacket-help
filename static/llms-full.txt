@@ -1688,7 +1688,13 @@ is stale.
 
 Use the transaction edit page for governed transaction dates. On the timeline, a governed row may show **Edit on Transaction Details** instead of Delete. That means the date belongs to the transaction's canonical date fields; edit or clear it from the transaction details so DocJacket keeps the transaction record and timeline row aligned.
 
-Use the key-date drawer for custom or Playbook-generated timeline dates. You can update the due date, the time, status, notes, reminders, linked tasks, and portal note visibility. Reminders here can go by email, text message, or both — and when you save the deal as a Playbook, these reminders are captured (texts included) and re-created on future deals you apply it to. If a key date is missing its anchor, it appears as **Needs date** until the upstream transaction date is filled in.
+Use the key-date drawer for custom or Playbook-generated timeline dates. You can update the due date, the time, status, notes, reminders, linked tasks, and portal note visibility. Reminders here can go by email, text message, or both — and when you save the deal as a Playbook, these reminders are captured (texts included) and re-created on future deals you apply it to. A row with no date shows a **Needs date** chip. Expand the row in the Key Dates list, or open the key date, to see why:
+
+- **Missing anchor** — the date this one is calculated from isn't set yet. The list shows "Missing anchor — Waiting on: *date name*". Fill in that date and this one follows.
+- **Not calculated** — the date it depends on is set, but this one hasn't been calculated from it yet. Click **Recalculate** (read-only seats don't see the button).
+- **Needs a date** — there is nothing to calculate it from, or you typed a date and then cleared it. Open the key date and enter a date. If you had typed it and then cleared it, you can also choose **Overridden — reset** to calculate it again.
+
+Effective Date and Acceptance Date never show **Missing anchor**, because nothing sits behind them. Rows that are **Completed**, **Waived** or **N/A** show none of these.
 
 ### Adding the appointment time
 
@@ -1708,6 +1714,20 @@ A few things worth knowing:
 - **It doesn't move the date.** A 2:00 PM time on an August 30 date is still an August 30 deadline everywhere else in DocJacket — the timeline, the calendar, and the day-before appointment text all still work off the date.
 - **It survives your other edits.** Re-applying a Playbook, moving the date, or a new contract coming in through extraction all leave a time you typed alone.
 - **Appointment confirmation texts don't include it automatically.** Those use your own wording, so add `{{appointment_time}}` to them in **Settings > SMS** if you want it there too.
+
+### What closing a key date stops
+
+Marking a key date **Completed**, **Waived** or **N/A**, or deleting it, cancels the reminders and scheduled emails for that date that haven't gone out yet. Reopening the key date doesn't start them again; add a new reminder if you still want one. Once a date is closed, an email for it that was dismissed or is being held for approval can't be restored or approved.
+
+Calendar invites that have already gone out aren't cancelled when you complete a date. **Waived** and **N/A** ask whether to cancel the invite. See [Calendar Invites](../calendar/calendar-invites.md).
+
+### Financing dates on cash deals
+
+DocJacket treats a deal as Cash when it is marked cash or its **Financing type** contains "Cash". A blank financing type never counts as Cash.
+
+On a Cash deal, DocJacket won't add **Appraisal Deadline**, **Financing Deadline**, **New Loan Terms Deadline** or **Loan Application Deadline** on its own: not from a contract upload, not from contract date rules, and not from a monday.com import. The extraction review lists each one as "Not added: this deal is recorded as Cash." If you fill in a loan or appraisal period yourself on the deal, the deadline it produces is still added.
+
+If you add one of these dates by hand (**Add Key Date**, or the deal edit page), you'll see "This deal is recorded as Cash." and the date saves normally. Dates already on the deal are never removed.
 
 When you move a key date, DocJacket may show a cascade preview before saving. Review the affected tasks, downstream key dates, manually overridden dates, completed dates, and missing-rule items before applying the change. For why some dates recalculate automatically and others don't, see [Recalculating Deadlines](./recalculating-deadlines.mdx).
 
@@ -2158,13 +2178,15 @@ A common surprise: you update the **Contract Date** or **Closing Date**, but the
 
 ## What happens when you change an anchor date
 
-When you edit a key date — say you push Closing back a week — DocJacket automatically recalculates everything built to depend on it:
+When a key date's value changes — say you push Closing back a week — DocJacket automatically recalculates everything built to depend on it. This happens however the date was set: typing it, the deal edit page, a contract uploaded onto the deal, a form submission, an e-signature confirmation, Follow Up Boss, the public API, Ask AI or a connected assistant, and Undo.
+
+What follows the change:
 
 - **Computed key dates** anchored to it shift by their rule
 - **Task due dates** that were anchored to it (from a Playbook) move too
 - DocJacket may show a **cascade preview** first, so you can review the affected dates and tasks before saving
 
-Dates and tasks with a plain fixed date — and any date you've manually overridden — are left alone.
+Dates and tasks with a plain fixed date are left alone. So are dates that are **Completed** or **N/A**, and any date you've manually overridden.
 
 ## Getting every deadline right
 
@@ -2174,6 +2196,12 @@ If you changed the contract or closing date and the other deadlines didn't follo
 2. Or **edit each deadline by hand** — manual dates won't move on their own.
 
 If a key date *is* computed but shows a stale value because it was manually overridden, open its drawer and use **Overridden — reset** to recompute it from its anchor.
+
+**Overridden — reset** only appears on a date that has a rule (an anchor plus an offset). A date with no rule never shows it.
+
+### A date shows "Not calculated"
+
+The date it depends on is set, but this date hasn't been filled in from it yet. Click **Recalculate** next to the **Not calculated** label (on the key date or in the expanded row). If you don't see the button, your seat is read-only. See [Key Dates & Financials](./key-dates-and-financials.mdx) for what **Missing anchor** and **Needs a date** mean.
 
 ## Why aren't my key dates in chronological order?
 
@@ -4185,7 +4213,7 @@ Task due dates sync only when task calendar sync is enabled in **Settings > Cale
 
 # Calendar Invites
 
-Calendar invites let you send a real calendar invitation for a transaction's key dates to the people on the deal. They get an email invitation they can **Accept** or **Decline**, the event lands on their calendar, and it stays in sync: when a date moves the invite updates automatically, and when a date is completed or removed the invite is cancelled.
+Calendar invites let you send a real calendar invitation for a transaction's key dates to the people on the deal. They get an email invitation they can **Accept** or **Decline**, the event lands on their calendar, and it stays in sync: when a date moves the invite updates automatically. Completing a date does **not** cancel its invite. Marking it **Waived** or **N/A** asks whether to cancel it. Clearing the date or deleting the key date cancels it (see [Updates and cancellations](#updates-and-cancellations)).
 
 **You choose the recipients for each date separately.** Invites are not sent to everyone on the deal — you tick the people you want on that particular date. The closing invite can go to your agent and the opposing agent, while the inspection invite goes to a different group entirely. Nobody is invited to anything until you pick them.
 
@@ -4197,16 +4225,33 @@ There is no "Calendar invites" button on the Key Dates list or at the top of a d
 
 1. Open the transaction and click a **key date** (for example, the closing date) to open its details panel.
 2. Expand the **Calendar invite** section.
-3. Tick the people to invite. You'll see everyone on the deal with their role, plus an **Also add me** row so you can put the date on your own calendar at the same time.
-4. Click **Send invite** and confirm.
+3. Tick the people to invite. You'll see everyone on the deal with their role, plus an **Also add me** row so you can put the date on your own calendar at the same time. If you are the deal's organizer, that row reads **Add to my calendar** instead. It is sent from your own Google Calendar, so it goes straight onto it. Google doesn't email you an invitation to your own event.
+4. Click **Send invite** and confirm. If you ticked only yourself, the toast says **Added to your Google Calendar.**
 
 Repeat on the next date and pick a different set of people. Each key date keeps its own invitation and its own list — changing one never touches another.
 
 If the date already has invites, the section opens automatically, shows who was invited and how they responded, and the button becomes **Update invite**.
 
+You can send an invite for a date that is already **Completed** (or Approved, Clear to Close, or any other status). Only **Waived** and **N/A** dates can't be invited. See [Waived and N/A dates](#waived-and-na-dates).
+
 :::note
 A key date needs a date on it before it can be invited. If it doesn't have one yet, the section says *"Set a due date to send a calendar invite."*
 :::
+
+## If an invite isn't sent
+
+When an invite doesn't go out, DocJacket says why instead of "Calendar invite sent." The reason appears in a message when you click the button and as a line under it:
+
+- **Not sent: this date is marked Waived.** (or **marked N/A**)
+- **Not sent: this date has no due date.**
+- **Not sent: calendar invites are turned off for this deal.**
+- **Not sent: nobody with an email address was selected.**
+- **Not sent: Google Calendar did not create the event.**
+- **Not sent: this date was not found on this deal.**
+
+If the organizer's Google Calendar has been disconnected, the message reads **Saved — the invite will send once Google Calendar reconnects.** Reconnect it under **Settings → Integrations** and the invite goes out.
+
+The deal's Activity also records each one as "Calendar invite not sent for *date name*: *reason*."
 
 ## Who you can invite
 
@@ -4244,6 +4289,7 @@ After you send, each invited person shows a response status:
 
 - **Accepted** — they're coming / have it on their calendar.
 - **Declined** — they've declined.
+- **Maybe** — they replied tentatively.
 - **No response yet** — the invite was sent but they haven't responded.
 
 Responses update over time, so check back to see who has confirmed.
@@ -4253,9 +4299,30 @@ Responses update over time, so check back to see who has confirmed.
 You don't have to resend invites when things change:
 
 - **A date moves** — everyone invited to that date gets an updated invitation and the event shifts on their calendar.
-- **A date is completed or removed** — the invite is cancelled and the event drops off their calendar.
+- **A date is completed** — nothing happens to the invite. It stays on everyone's calendar, and it still updates if the date later moves.
+- **A date is cleared or the key date is deleted** — the invite is cancelled, everyone invited is emailed a cancellation, and the event drops off their calendar.
 - **Change who's invited** — reopen the **Calendar invite** section on that date, tick or untick people, and click **Update invite**.
-- **Cancel manually** — click **Cancel invite** on the key date to withdraw the invitation and notify everyone on it.
+- **Cancel manually** — click **Cancel invite** on the key date. If the date is still ahead, everyone on it gets a cancellation.
+
+### Waived and N/A dates
+
+A date marked **Waived** or **N/A** can't be invited: **Send invite** is greyed out and the panel says **Not sent: this date is marked Waived.** (or **marked N/A.**).
+
+If the date already has an invite on people's calendars and is still ahead, choosing **Waived** or **N/A** asks first. You'll see this whether you change the date's status in its panel or click **Mark N/A** on its row in the Key Dates list. The question is **Also cancel the calendar invite?**, with three buttons:
+
+- **Cancel the invite** — emails each invited person a cancellation and removes the event.
+- **Keep the invite** — marks the date Waived or N/A and leaves the invite exactly as it is. It is not updated or cancelled later when the date changes.
+- **Back** — changes nothing.
+
+### Dates that have already passed
+
+Clicking **Cancel invite** on a date that has already passed doesn't email anyone. A date counts as past when its day is before today, or, for a date with a time, when that time has already gone by. The confirmation reads "This date has passed, so nobody is emailed a cancellation. The event stays on guests' calendars." The invite shows as cancelled in DocJacket, but the event stays on guests' calendars.
+
+Marking a past date **Waived** or **N/A** doesn't ask about the invite at all, and leaves it as it is.
+
+### Closing out dates from Ask AI
+
+When you mark a date done, waived or N/A through Ask AI or a connected assistant, the invite is never cancelled. The approval card says the calendar invite stays on guests' calendars. To cancel one from there, ask the assistant to cancel the invites for that date.
 
 ## Turning it on
 
@@ -4263,6 +4330,8 @@ Calendar invites are on by default. The **Calendar invite** section always appea
 
 1. Go to **Settings → Organization**.
 2. Turn on **Send calendar invites for key dates**.
+
+If the setting is turned off while a date still has an invite out, the panel says **Sending new invites is turned off in Settings → Organization.** and still offers **Cancel invite**.
 
 If you turned the setting on and still can't send, check the other items under [What has to be in place](#what-has-to-be-in-place): the date needs a due date, someone needs to be ticked, and the deal's organizer needs a connected Google Calendar.
 
@@ -4310,7 +4379,7 @@ The key date and every listed task are completed together.
 
 Want the key date done but the tasks left open? Uncheck that box before clicking **Complete** — only the key date is completed.
 
-The same dialog appears if you change the key date's **status** in the drawer to one that counts as complete (such as **Completed**). **Waived** and **N/A** close the key date without asking about its tasks.
+The same dialog appears if you change the key date's **status** in the drawer to one that counts as complete (such as **Completed**). **Waived** and **N/A** close the key date without asking about its tasks. If the date has a calendar invite out and is still ahead, they ask **Also cancel the calendar invite?** instead; see [Calendar Invites](./calendar-invites.md#waived-and-na-dates).
 
 ## Option 3: Unlink a task that doesn't belong
 
@@ -4325,6 +4394,8 @@ To finish it: complete the task again, or unlink it from the key date (Option 3)
 ## Reopening a key date
 
 To undo a completed key date, open its drawer and click **Reopen**. (For a key date marked **Waived** or **N/A**, the button says **Restore**.)
+
+Closing a key date (**Completed**, **Waived** or **N/A**, or deleting it) cancels its reminders and scheduled emails that haven't gone out yet, and **Reopen** or **Restore** doesn't start them again. Add a new reminder if you still want one. An email for that date that was dismissed or is being held for approval can't be restored or approved once the date is closed. Calendar invites are different: completing a date doesn't cancel an invite that has already gone out, and **Waived** or **N/A** ask first.
 
 :::note Read-only seats
 The **Complete**, **Reopen**, and **Restore** buttons are hidden for team members with a read-only seat. Ask an Owner or Admin, or someone with edit access, to complete the key date.
