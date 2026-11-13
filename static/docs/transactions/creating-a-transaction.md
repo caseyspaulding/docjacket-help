@@ -43,6 +43,15 @@ Always review the extracted data before saving. Nothing is final until you click
 Got a contract with multiple documents bundled into one PDF? DocJacket's AI can detect and split them automatically. See [Smart Document Splitting](/docs/ai-features/smart-document-splitting) for details.
 :::
 
+### If the document isn't a purchase contract
+
+If you upload a document that DocJacket reads as something other than a purchase contract, listing agreement or offer, such as an addendum or other supporting document, and it doesn't belong to an existing deal, the review screen says "We read this as an addendum, not a purchase contract". The screen offers one of two ways forward:
+
+- **A property address was found:** click **Create deal** to start the deal from what was read, and add the purchase contract to it later. Or click **Upload the purchase contract instead**.
+- **No property address was found:** there is nothing to name a deal by yet. Click **Upload the purchase contract**, or **Enter the deal by hand**.
+
+The Dates card names the document it read, for example "We found 3 dates in this addendum".
+
 ## Create manually
 
 If you don't have a contract yet or prefer to enter details yourself:

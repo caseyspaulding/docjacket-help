@@ -40,6 +40,8 @@ This is the fastest way. Upload contract documents and DocJacket will read throu
 
 ![Upload Documents screen with Create New Transaction selected and a document drop zone](/img/getting-started/new-transaction-upload.png)
 
+If you drop in something that isn't a purchase contract, such as an addendum, the review screen tells you and offers a way forward. See [If the document isn't a purchase contract](../transactions/creating-a-transaction.mdx#if-the-document-isnt-a-purchase-contract).
+
 ### Option B: Create manually
 
 If you don't have a contract handy or prefer to enter details yourself:

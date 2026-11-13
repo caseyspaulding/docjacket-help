@@ -54,7 +54,7 @@ If you would rather not use a rule, you can complete the task when you file the 
 
 For each linked email you can configure:
 
-- Email template
+- Email template. Templates in the **Reports** category can't be used here, because they only work when DocJacket sends a generated report. DocJacket refuses with "Report templates only work when DocJacket sends a generated report. Pick a different email for this task."
 - Offset and anchor — such as 3 days before the task due date, or on a Key Date like Closing
 - Send time
 - Weekend or holiday fallback rule
@@ -69,7 +69,7 @@ Example:
 - Due: Closing Date - 3 days
 - Linked email: Send closing reminder 1 day before the task due date at 8:00 AM
 
-Emails prepared this way send from your connected Gmail or Outlook account when one is available. Upcoming or held date-based emails appear in the Review queue's **Scheduled** tab, where they can be edited, sent now, or cancelled when supported.
+Emails prepared this way send from the deal assignee's default connected Gmail or Outlook mailbox. See [which mailbox an email sends from](../messages/how-email-sending-works.mdx#which-mailbox-an-email-sends-from) for what happens when the deal has no assignee or the assignee has no connected mailbox. Upcoming or held date-based emails appear in the Review queue's **Scheduled** tab, where they can be edited, sent now, or cancelled when supported.
 
 ## Delivery mode
 
@@ -99,6 +99,18 @@ In the **Task emails** section, each linked email shows what has already happene
 
 - **Sent {'{date}'}** — the email was prepared and sent.
 - **Notified in-app {'{date}'} — not sent** — this was a notify-mode email. You got the in-app heads-up on its date; **no email was sent**. You can still send it yourself with **Review & send**, and completing the task will prepare it too.
+- **Drafted {'{date}'} — waiting for your review, not sent** — the draft is in your Review queue. Use **Open review queue** to go to it.
+- **Skipped — its send date had already passed when this task was added. Not sent.** — the email's date was already behind you when the task was created, for example when a Playbook is applied to a deal that is already under way.
+- **Skipped — its send date had already passed when the key date it counts from was calculated. Not sent.** — see below.
+- **Skipped when the task was completed — not sent** — you chose **Skip these** when you completed the task.
+
+The two "send date had already passed" skips keep the **Review & send** button, so you can still send the email yourself.
+
+#### When a key date is filled in late
+
+Say a task email counts from a key date, and that key date was blank. When you recalculate the deal's dates and DocJacket fills in that key date for the first time, the email's send date can land in the past. DocJacket skips the email rather than sending it late.
+
+This only applies to dates that DocJacket itself fills in during a recalculation. A key date that someone types in, or that arrives from a contract, Follow Up Boss, or the API, counts as entered, and a task email counting from it is not skipped.
 
 If an email has already been sent, its **Review & send** button goes away — there is nothing left to send. Notify-mode emails keep the button, because a notification isn't an email.
 
