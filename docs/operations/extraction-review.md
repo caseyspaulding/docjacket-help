@@ -76,7 +76,7 @@ Nothing is final until you complete the review and save step.
 
 ![Extraction review screen showing notes, confidence, review-required status, apply options, and the final create or update action](/img/ai-extraction/extraction-review-controls.png)
 
-Pending uploads can also appear in the Review queue drawer and on the dashboard. Those cards take you back to the same review-and-save workflow. Use **Discard** only when the upload should stop appearing as unfinished work; it soft-dismisses the pending-upload card without deleting extraction history.
+Pending uploads can also appear in the Review queue drawer and on the dashboard. Those cards take you back to the same review-and-save workflow. Use **Discard** only when the upload should stop appearing as unfinished work. The "Pending upload discarded" message that appears has an **Undo** button, which puts the card back. Discard soft-dismisses the pending-upload card without deleting extraction history.
 
 ## Single-document progress
 

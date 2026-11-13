@@ -30,7 +30,7 @@ If the drawer shows **Pending Uploads**, those uploads were scanned but never sa
 
 Pending upload rows can show the extracted address or file name, document count, age, and file list. Use **Review** to return to the extraction review flow.
 
-Use **Discard** only when the upload should stop appearing as unfinished work. Discard takes effect immediately: there is no confirmation step, and a "Pending upload discarded" message appears. It soft-dismisses the pending-upload card; it does not erase the underlying extraction history.
+Use **Discard** only when the upload should stop appearing as unfinished work. Discard takes effect immediately: there is no confirmation step, and a "Pending upload discarded" message appears. That message has an **Undo** button. Click **Undo** and the upload goes back into the list where it was, with a "Pending upload restored" message. If it can't be put back, you see "Couldn't restore it." The Undo button is only on the message that appears, so click it right away if you discarded the wrong one. **Undo** reverses only that one discard. Discard soft-dismisses the pending-upload card; it does not erase the underlying extraction history.
 
 ## Ready for Review
 
