@@ -132,7 +132,7 @@ If a shared key date needs customization, duplicate it first and use the copy in
 
 A Playbook holds one key date for each Key Date Type, because a deal keeps one of each. If you try to add a second date with a type the Playbook already has, DocJacket doesn't add it and the message names the date that already holds the type.
 
-- **Create New** — the message offers **Add without a key date type**, which adds the date as a custom one. You can also rename it or give it a different Key Date Type. If the name alone makes DocJacket treat it as a governed type, a blue hint says "This Playbook already has a {type} ("{name}"). Rename this one to keep it custom."
+- **Create New** — the message offers **Add without a key date type**, which adds the date as a custom one. You can also rename it or give it a different Key Date Type. If the name alone makes DocJacket treat it as a governed type, a blue hint says, for example, "This Playbook already has a Closing Date ("Close of Escrow"). Rename this one to keep it custom."
 - **From Library** — use the key date that is already in the Playbook, or change the library key date's Key Date Type in **My Key Dates** and add it again.
 
 ## Adding tasks
