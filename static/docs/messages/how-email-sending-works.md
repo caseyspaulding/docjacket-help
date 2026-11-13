@@ -23,6 +23,8 @@ Outlook from **Settings > Integrations**. See
 [Google Workspace](../integrations/google-workspace.mdx) or
 [Microsoft Outlook](../integrations/microsoft-outlook.mdx).
 
+If you start from a task email, the **Connect your email** button in its drawer or dialog takes you to **Settings > Integrations**. After you connect Gmail or Outlook, DocJacket returns you to the deal and tab you started from. The Gmail and Outlook connect buttons on a deal's **Email** tab do the same. If you refuse consent or the connection fails, you stay on **Settings > Integrations** so the error shows.
+
 Until a mailbox is connected, manual sends from a deal prompt you to connect one,
 and automated email falls back to DocJacket's own email service (a
 `@docjacket.com` address) unless your organization requires a connected mailbox

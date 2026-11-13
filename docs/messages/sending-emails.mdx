@@ -116,6 +116,10 @@ You can only attach documents that are on the deal you are sending from. A docum
 - **Scheduled email:** when the time comes the email is marked failed with "Couldn't attach: ... The email was not sent — re-attach and reschedule."
 - **Approving a draft in the Review queue:** if an attached document is from another deal, approving is refused with "One of the attached documents is not on this deal. Remove it from the draft and approve again."
 
+The same rule applies when you save. A reminder, a scheduled email or a deal's own reminder rule that names a specific document from another deal can't be saved. You see "A specific document can only be attached on its own deal. Pick a document from this deal, or attach by category." Choose a document that is on this deal, or attach by document category.
+
+Playbook emails and organization-wide rules aren't tied to one deal, so they attach documents by category only. Saving a specific document there is refused with "Org-wide rules and Playbooks attach documents by category only. Pick a document category instead of a specific document." Pick a document category and DocJacket attaches the matching document from each deal when the email goes out.
+
 ## Reviewing messages
 
 The Inbox tab includes filters for **Inbox**, **Unread**, **Sent**, **Drafts**, **Auto**, and **Archived**. Open a message to reply, reply all, forward, star, mark read or unread, archive, or delete it.

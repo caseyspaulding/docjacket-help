@@ -87,9 +87,11 @@ Automation rules send an email when a transaction enters a status or when a conf
 
 Current rule triggers include:
 
-- **When a transaction enters a status** — Fires on future status changes only. Existing transactions already in that status are not triggered retroactively.
+- **When a transaction enters a status** — Fires on future status changes only, however the status changes in the app: the status chip on the deal, the Deals list, the Pipeline, or the deal's **Edit** form. Existing transactions already in that status are not triggered retroactively.
 - **When a Playbook task is completed** — Fires when a transaction task created from the selected Playbook task template is marked complete.
 - **When a document is filed** — Fires each time a document is filed to a deal under the **Document category** you pick. It prepares the email and holds it in your Review queue for you to send; it never sends on its own, even if your organization sends other automated emails without review. It applies to documents filed after the rule is created, uses only your own email templates, and does not use SMS. A document that arrives by email or import triggers nothing until someone files it under a category.
+
+Members limited to their own deals see this page read-only, because the rules apply to every deal. See [Understanding Roles](../getting-started/understanding-roles.mdx#what-a-limited-member-can-do).
 
 Rules can send to transaction contact roles, direct email addresses, or both. Direct email entries are checked before the rule is saved, and duplicate direct addresses are collapsed case-insensitively.
 
