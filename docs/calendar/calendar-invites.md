@@ -91,11 +91,13 @@ Responses update over time, so check back to see who has confirmed.
 
 You don't have to resend invites when things change:
 
-- **A date moves** — everyone invited to that date gets an updated invitation and the event shifts on their calendar.
+- **A date moves** — everyone invited to that date gets one updated invitation and the event shifts on their calendar.
+- **Other changes on the deal** — guests are only emailed an updated invitation when something they can see changes: the event's title, description, location, date or time, all-day setting, or who is invited. Edits elsewhere on the deal don't re-send an invite that hasn't changed.
 - **A date is completed** — nothing happens to the invite. It stays on everyone's calendar, and it still updates if the date later moves.
 - **A date is cleared or the key date is deleted** — the invite is cancelled, everyone invited is emailed a cancellation, and the event drops off their calendar.
 - **Change who's invited** — reopen the **Calendar invite** section on that date, tick or untick people, and click **Update invite**.
 - **Cancel manually** — click **Cancel invite** on the key date. If the date is still ahead, everyone on it gets a cancellation.
+- **Cancel or archive the deal** — DocJacket asks whether to cancel the invites too. See [When a deal is cancelled or archived](#when-a-deal-is-cancelled-or-archived).
 
 ### Waived and N/A dates
 
@@ -107,6 +109,31 @@ If the date already has an invite on people's calendars and is still ahead, choo
 - **Keep the invite** — marks the date Waived or N/A and leaves the invite exactly as it is. It is not updated or cancelled later when the date changes.
 - **Back** — changes nothing.
 
+When nobody besides you (the organizer) was invited, the question reads "{date} is on your calendar. Cancelling removes it. No one else was invited, so no email is sent." Otherwise it reads "The people invited to {date} have it on their calendars. Cancelling emails each of them a cancellation."
+
+### When a deal is cancelled or archived
+
+Cancelling or archiving a deal that has calendar invites still ahead asks about those invites too, the same way marking a date Waived or N/A does.
+
+**When it asks**
+
+- Moving the deal to a **Cancelled**-type status asks. That covers the status chip on the deal, the status cell and the bulk **Status** menu on the Transactions list, dragging the card into a Cancelled column on the Pipeline, and the **Status** field on the deal's Edit form. Moving a deal from Closed to a Cancelled-type status asks too. A deal that is already in a Cancelled-type status doesn't ask again.
+- Archiving asks, after the usual archive confirmation, from the row's ⋮ menu and from **Archive Transaction** on the Edit form. The bulk **Archive** button on the Transactions list asks once for the whole selection.
+- It only asks when a key date on the deal has a live invite and the date hasn't passed yet. Otherwise the deal is cancelled or archived without the extra question.
+- **Closing a deal never asks.** A closed deal's invites stay on guests' calendars as they are.
+
+**The question**
+
+For one key date it reads **Also cancel the calendar invite?** with three buttons: **Cancel the invite**, **Keep the invite** and **Back**. For two or more key dates the title and buttons are plural (**Also cancel the calendar invites?**, **Cancel the invites**, **Keep the invites**). The message says how many key dates are affected, and for a bulk archive or bulk status change, how many deals. As with Waived and N/A, it says each invited person will be emailed a cancellation, or, when no one besides you was invited, that no email is sent.
+
+- **Keep the invite** is the default. The deal is cancelled or archived and every invite stays on guests' calendars.
+- **Cancel the invite** cancels or archives the deal and then cancels every live invite on it. Each invited person is emailed a cancellation, except for dates that have already passed, which nobody is emailed about. Cancelling also turns off calendar invites for that deal, and its Activity shows **Cancelled all calendar invites**.
+- **Back** changes nothing: the deal isn't cancelled or archived. On the Edit form, Back doesn't save anything, including your other edits.
+
+If the invites can't be cancelled, the deal is still cancelled or archived and a message reads "The deal was updated, but its calendar invites could not be cancelled." Open each key date and click **Cancel invite** to cancel them one at a time.
+
+Archiving doesn't cancel invites by itself, and restoring an archived deal doesn't bring cancelled invites back. See [Cancelling or Closing a Transaction](../transactions/canceling-a-transaction.mdx) and [Archiving a Transaction](../transactions/archiving-a-transaction.mdx).
+
 ### Dates that have already passed
 
 Clicking **Cancel invite** on a date that has already passed doesn't email anyone. A date counts as past when its day is before today, or, for a date with a time, when that time has already gone by. The confirmation reads "This date has passed, so nobody is emailed a cancellation. The event stays on guests' calendars." The invite shows as cancelled in DocJacket, but the event stays on guests' calendars.
@@ -116,6 +143,8 @@ Marking a past date **Waived** or **N/A** doesn't ask about the invite at all, a
 ### Closing out dates from Ask AI
 
 When you mark a date done, waived or N/A through Ask AI or a connected assistant, the invite is never cancelled. The approval card says the calendar invite stays on guests' calendars. To cancel one from there, ask the assistant to cancel the invites for that date.
+
+The same is true when a deal is cancelled or archived through the public API, Ask AI or a connected assistant: those never cancel invites, and there is no question to answer. Only the app's own screens ask. To cancel the invites afterward, use **Cancel invite** on each key date, or ask the assistant to cancel them.
 
 ## Turning it on
 

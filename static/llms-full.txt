@@ -2087,7 +2087,7 @@ Cancelling is a status change. Move the transaction into any status whose type i
 3. **From the Transactions list** — use the inline status control
 4. **From the transaction's Edit form** — change the **Status** field and save
 
-All four do the same thing. Closing a completed deal works the same way, using a **Closed**-type status. See [Transaction Statuses](./transaction-statuses.mdx) for how status types work and how to add your own.
+All four do the same thing. On the Edit form, picking a status that ends the deal shows the same line under **Status** as the status chip does (*"Ends the deal: cancels unsent reminders and scheduled emails, skips open tasks, marks key dates not applicable."*). Saving then does what the status chip does: the change is recorded as **Changed Status** in the deal's activity, your Notification Rules for that status run, and a cancel asks the calendar-invite question described below. Closing a completed deal works the same way, using a **Closed**-type status. See [Transaction Statuses](./transaction-statuses.mdx) for how status types work and how to add your own.
 
 ## Closing out a file
 
@@ -2116,7 +2116,17 @@ Moving a transaction from an open status into a **Closed** or **Cancelled** stat
 - Pending **scheduled messages** are cancelled
 - Unsent **reminders** are deleted
 - Pending **scheduled emails** are deleted (already-sent emails are kept, so your send history stays intact)
-- **Calendar events** for the transaction are removed
+- The deal's **events** are removed from your team's connected Google Calendars (calendar sync). This is separate from [calendar invites](../calendar/calendar-invites.md) sent to the people on the deal, which are covered below
+
+### Calendar invites when you cancel
+
+If the deal has live [calendar invites](../calendar/calendar-invites.md) on key dates that haven't passed yet, moving it to a **Cancelled**-type status (including from Closed) asks **Also cancel the calendar invite?** (plural when more than one key date is affected) with **Cancel the invite**, **Keep the invite** and **Back**.
+
+- **Keep the invite** is the default. The deal is cancelled and the invites stay on guests' calendars.
+- **Cancel the invite** cancels the deal, then cancels every live invite and emails each invited person a cancellation.
+- **Back** changes nothing. On the Edit form that means nothing is saved, including your other edits.
+
+A **Closed** status never asks, and closing leaves the invites as they are. Changes made through the API or by the assistant never cancel invites. For the full wording and what each answer does, see [When a deal is cancelled or archived](../calendar/calendar-invites.md#when-a-deal-is-cancelled-or-archived).
 
 **Closed vs. Cancelled:** both wind down pending work the same way. The difference is that a **Closed** status also fires your "closed" automation and pushes the closed stage to connected CRMs (like Follow Up Boss). A **Cancelled** status does not trigger closed-stage automation.
 
@@ -2405,13 +2415,23 @@ Reach for it when a deal is genuinely finished with — closed and reconciled, o
 
 ## How to archive a transaction
 
-Three ways, all the same action:
+Three ways, all the same action. If the deal has calendar invites still ahead, each one asks about them (see [Calendar invites when you archive](#calendar-invites-when-you-archive)):
 
 1. **From the Transactions list** — tick the checkbox on one or more rows, then click **Archive** in the bulk-action bar
-2. **From a row's ⋮ menu** — open the three-dot menu at the end of any row and choose **Archive**
-3. **From the transaction's Edit form** — open the deal, click **Edit**, and use **Archive Transaction** in the footer
+2. **From a row's ⋮ menu** — open the three-dot menu at the end of any row and choose **Archive**, then confirm
+3. **From the transaction's Edit form** — open the deal, click **Edit**, use **Archive Transaction** in the footer, then confirm
 
 ![Transactions list with one row selected and the Archive bulk action showing](/img/transactions/archiving-a-transaction.png)
+
+## Calendar invites when you archive
+
+When the deal has live [calendar invites](../calendar/calendar-invites.md) on key dates that haven't passed yet, archiving asks **Also cancel the calendar invite?** (plural when more than one key date is affected). From the row's ⋮ menu and the Edit form it appears right after the archive confirmation. A bulk archive from the list asks once for the whole selection.
+
+- **Keep the invite** is the default. The deal is archived and the invites stay on guests' calendars.
+- **Cancel the invite** archives the deal and cancels every live invite on it, emailing each invited person a cancellation.
+- **Back** stops the archive and changes nothing.
+
+Archiving doesn't cancel invites by itself, and restoring the deal doesn't bring cancelled invites back. Archiving through the API or the assistant never cancels invites. See [When a deal is cancelled or archived](../calendar/calendar-invites.md#when-a-deal-is-cancelled-or-archived) for the details.
 
 ## What happens when you archive
 
@@ -2440,7 +2460,7 @@ These are three different tools, and they answer three different questions.
 | --- | --- | --- |
 | **Cancel or Close** (a status change) | Marks *what happened* to the deal. Winds pending work down, and a Closed status also fires your closed-stage automation and CRM push. The deal stays in your list | Yes — move it back to an open status |
 | **Archive** | Decides *whether you want to look at it*. Winds pending work down and hides the deal from the active list. Everything is kept | Yes — **Restore** |
-| **Delete** | Removes the deal from every list, including the Archived view | No — not from the app |
+| **Delete** | Removes the deal from every list, including the Archived view. Owner or Admin only | No — not from the app |
 
 Cancelling and archiving are not alternatives; most coordinators use both. Cancel or close the deal when it ends, then archive it later — at month end, or whenever the list gets long — once you're sure you're done referring back to it.
 
@@ -2506,13 +2526,15 @@ If you're restoring a deal only to look something up — far and away the most c
 
 ## Deleting a transaction permanently
 
-Deletion is a separate, heavier action, and it lives away from the list on purpose:
+Deletion is a separate, heavier action, and it lives away from the list on purpose. Only an Owner or Admin can permanently delete a deal. Anyone else who can edit deals can archive and restore them, and doesn't see **Delete Transaction**.
 
 1. Open the transaction and click **Edit**
 2. In the footer, click **Delete Transaction**
 3. Confirm with **Delete Permanently**
 
-The confirmation spells out what you're agreeing to: the transaction is permanently deleted, its milestones, tasks, scheduled messages, and portal links are cancelled, and it stops appearing in **every** list — including the Archived view. It cannot be undone from the app.
+The confirmation reads: *"This permanently deletes the transaction. It will no longer appear in any list, including the Archived view, and its key dates, tasks, documents and emails go with it. Unsent scheduled emails, reminders and messages are cancelled, and its client portal links stop working. This cannot be undone."* Underneath: *"If you might want to recover it later, use Archive instead."* Its client portal and agent portal links stop working everywhere, including the portal message board.
+
+If someone who isn't an Owner or Admin reaches the delete anyway, it is refused with *"Only an Owner or Admin can permanently delete a transaction. You can archive it instead."*
 
 :::danger Archive is almost always the right choice
 There is no undelete. If there is any chance you'll want the record — for a commission dispute, an audit, a broker file review, or just to remember what happened — **archive it instead**. Archiving costs you nothing: archived deals don't count against your active deals and don't appear in your working list.
@@ -4365,11 +4387,13 @@ Responses update over time, so check back to see who has confirmed.
 
 You don't have to resend invites when things change:
 
-- **A date moves** — everyone invited to that date gets an updated invitation and the event shifts on their calendar.
+- **A date moves** — everyone invited to that date gets one updated invitation and the event shifts on their calendar.
+- **Other changes on the deal** — guests are only emailed an updated invitation when something they can see changes: the event's title, description, location, date or time, all-day setting, or who is invited. Edits elsewhere on the deal don't re-send an invite that hasn't changed.
 - **A date is completed** — nothing happens to the invite. It stays on everyone's calendar, and it still updates if the date later moves.
 - **A date is cleared or the key date is deleted** — the invite is cancelled, everyone invited is emailed a cancellation, and the event drops off their calendar.
 - **Change who's invited** — reopen the **Calendar invite** section on that date, tick or untick people, and click **Update invite**.
 - **Cancel manually** — click **Cancel invite** on the key date. If the date is still ahead, everyone on it gets a cancellation.
+- **Cancel or archive the deal** — DocJacket asks whether to cancel the invites too. See [When a deal is cancelled or archived](#when-a-deal-is-cancelled-or-archived).
 
 ### Waived and N/A dates
 
@@ -4381,6 +4405,31 @@ If the date already has an invite on people's calendars and is still ahead, choo
 - **Keep the invite** — marks the date Waived or N/A and leaves the invite exactly as it is. It is not updated or cancelled later when the date changes.
 - **Back** — changes nothing.
 
+When nobody besides you (the organizer) was invited, the question reads "{date} is on your calendar. Cancelling removes it. No one else was invited, so no email is sent." Otherwise it reads "The people invited to {date} have it on their calendars. Cancelling emails each of them a cancellation."
+
+### When a deal is cancelled or archived
+
+Cancelling or archiving a deal that has calendar invites still ahead asks about those invites too, the same way marking a date Waived or N/A does.
+
+**When it asks**
+
+- Moving the deal to a **Cancelled**-type status asks. That covers the status chip on the deal, the status cell and the bulk **Status** menu on the Transactions list, dragging the card into a Cancelled column on the Pipeline, and the **Status** field on the deal's Edit form. Moving a deal from Closed to a Cancelled-type status asks too. A deal that is already in a Cancelled-type status doesn't ask again.
+- Archiving asks, after the usual archive confirmation, from the row's ⋮ menu and from **Archive Transaction** on the Edit form. The bulk **Archive** button on the Transactions list asks once for the whole selection.
+- It only asks when a key date on the deal has a live invite and the date hasn't passed yet. Otherwise the deal is cancelled or archived without the extra question.
+- **Closing a deal never asks.** A closed deal's invites stay on guests' calendars as they are.
+
+**The question**
+
+For one key date it reads **Also cancel the calendar invite?** with three buttons: **Cancel the invite**, **Keep the invite** and **Back**. For two or more key dates the title and buttons are plural (**Also cancel the calendar invites?**, **Cancel the invites**, **Keep the invites**). The message says how many key dates are affected, and for a bulk archive or bulk status change, how many deals. As with Waived and N/A, it says each invited person will be emailed a cancellation, or, when no one besides you was invited, that no email is sent.
+
+- **Keep the invite** is the default. The deal is cancelled or archived and every invite stays on guests' calendars.
+- **Cancel the invite** cancels or archives the deal and then cancels every live invite on it. Each invited person is emailed a cancellation, except for dates that have already passed, which nobody is emailed about. Cancelling also turns off calendar invites for that deal, and its Activity shows **Cancelled all calendar invites**.
+- **Back** changes nothing: the deal isn't cancelled or archived. On the Edit form, Back doesn't save anything, including your other edits.
+
+If the invites can't be cancelled, the deal is still cancelled or archived and a message reads "The deal was updated, but its calendar invites could not be cancelled." Open each key date and click **Cancel invite** to cancel them one at a time.
+
+Archiving doesn't cancel invites by itself, and restoring an archived deal doesn't bring cancelled invites back. See [Cancelling or Closing a Transaction](../transactions/canceling-a-transaction.mdx) and [Archiving a Transaction](../transactions/archiving-a-transaction.mdx).
+
 ### Dates that have already passed
 
 Clicking **Cancel invite** on a date that has already passed doesn't email anyone. A date counts as past when its day is before today, or, for a date with a time, when that time has already gone by. The confirmation reads "This date has passed, so nobody is emailed a cancellation. The event stays on guests' calendars." The invite shows as cancelled in DocJacket, but the event stays on guests' calendars.
@@ -4390,6 +4439,8 @@ Marking a past date **Waived** or **N/A** doesn't ask about the invite at all, a
 ### Closing out dates from Ask AI
 
 When you mark a date done, waived or N/A through Ask AI or a connected assistant, the invite is never cancelled. The approval card says the calendar invite stays on guests' calendars. To cancel one from there, ask the assistant to cancel the invites for that date.
+
+The same is true when a deal is cancelled or archived through the public API, Ask AI or a connected assistant: those never cancel invites, and there is no question to answer. Only the app's own screens ask. To cancel the invites afterward, use **Cancel invite** on each key date, or ask the assistant to cancel them.
 
 ## Turning it on
 

@@ -15,13 +15,23 @@ Reach for it when a deal is genuinely finished with — closed and reconciled, o
 
 ## How to archive a transaction
 
-Three ways, all the same action:
+Three ways, all the same action. If the deal has calendar invites still ahead, each one asks about them (see [Calendar invites when you archive](#calendar-invites-when-you-archive)):
 
 1. **From the Transactions list** — tick the checkbox on one or more rows, then click **Archive** in the bulk-action bar
-2. **From a row's ⋮ menu** — open the three-dot menu at the end of any row and choose **Archive**
-3. **From the transaction's Edit form** — open the deal, click **Edit**, and use **Archive Transaction** in the footer
+2. **From a row's ⋮ menu** — open the three-dot menu at the end of any row and choose **Archive**, then confirm
+3. **From the transaction's Edit form** — open the deal, click **Edit**, use **Archive Transaction** in the footer, then confirm
 
 ![Transactions list with one row selected and the Archive bulk action showing](/img/transactions/archiving-a-transaction.png)
+
+## Calendar invites when you archive
+
+When the deal has live [calendar invites](../calendar/calendar-invites.md) on key dates that haven't passed yet, archiving asks **Also cancel the calendar invite?** (plural when more than one key date is affected). From the row's ⋮ menu and the Edit form it appears right after the archive confirmation. A bulk archive from the list asks once for the whole selection.
+
+- **Keep the invite** is the default. The deal is archived and the invites stay on guests' calendars.
+- **Cancel the invite** archives the deal and cancels every live invite on it, emailing each invited person a cancellation.
+- **Back** stops the archive and changes nothing.
+
+Archiving doesn't cancel invites by itself, and restoring the deal doesn't bring cancelled invites back. Archiving through the API or the assistant never cancels invites. See [When a deal is cancelled or archived](../calendar/calendar-invites.md#when-a-deal-is-cancelled-or-archived) for the details.
 
 ## What happens when you archive
 
@@ -50,7 +60,7 @@ These are three different tools, and they answer three different questions.
 | --- | --- | --- |
 | **Cancel or Close** (a status change) | Marks *what happened* to the deal. Winds pending work down, and a Closed status also fires your closed-stage automation and CRM push. The deal stays in your list | Yes — move it back to an open status |
 | **Archive** | Decides *whether you want to look at it*. Winds pending work down and hides the deal from the active list. Everything is kept | Yes — **Restore** |
-| **Delete** | Removes the deal from every list, including the Archived view | No — not from the app |
+| **Delete** | Removes the deal from every list, including the Archived view. Owner or Admin only | No — not from the app |
 
 Cancelling and archiving are not alternatives; most coordinators use both. Cancel or close the deal when it ends, then archive it later — at month end, or whenever the list gets long — once you're sure you're done referring back to it.
 
