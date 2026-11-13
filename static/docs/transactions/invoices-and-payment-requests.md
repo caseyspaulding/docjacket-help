@@ -13,9 +13,9 @@ DocJacket lets a transaction coordinator (or org admin) bill their **transaction
 
 ## Can I send an invoice without a transaction?
 
-**No.** Every invoice in DocJacket lives on a transaction. You create invoices from a deal's **Payments tab**, so there's no standalone invoice or "invoice a contact" that isn't attached to a transaction. If you want to bill for a file, open (or create) the transaction first, then add the invoice there.
+**Yes, to a contact.** Most invoices are created from a deal's **Payments tab**, which puts the property, agent, and deal details on the invoice automatically and lets you see who has paid right on the deal.
 
-This keeps the property, agent, and deal details on the invoice automatically, and lets you see who has paid right on the deal.
+To bill someone outside any deal, open the contact, go to the **Invoices** tab, and click **Send invoice**. That invoice is billed straight to the contact and isn't attached to a transaction. Team members who are limited to their own deals don't see the contact's Invoices tab.
 
 ## What invoices are — and aren't
 
