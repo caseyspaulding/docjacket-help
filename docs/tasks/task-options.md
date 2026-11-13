@@ -107,7 +107,9 @@ See [Email Automation](./email-automation.mdx) for the full workflow.
 
 Use **Scheduled emails** when the message should send from the task due date, instead of waiting for the task to be completed.
 
-From the drawer, you can schedule a new email, edit pending or held scheduled emails, send one now, or cancel it. Scheduled emails send from the TC's connected Gmail or Outlook account when available. Upcoming and held scheduled emails also appear in the Review queue's **Scheduled** tab. A scheduled email with no **To** recipient is held rather than sent; see [When a scheduled email has no recipient](../messages/inbox.mdx#when-a-scheduled-email-has-no-recipient).
+From the drawer, you can schedule a new email, edit pending or held scheduled emails, send one now, or cancel it. Scheduled emails send from the TC's connected Gmail or Outlook account when available. Upcoming and held scheduled emails also appear in the Review queue's **Scheduled** tab.
+
+A scheduled email needs a **To** recipient before you can save it, whether you are adding it or editing it. The email template's To recipients count. If you save without one, DocJacket asks you to add a To recipient and the email is not saved. A scheduled email with no **To** recipient is held rather than sent; see [When a scheduled email has no recipient](../messages/inbox.mdx#when-a-scheduled-email-has-no-recipient).
 
 ## Options
 

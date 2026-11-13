@@ -70,11 +70,15 @@ Gmail and Outlook will not send an email that has no **To** recipient, so DocJac
 - **No recipient set** — nothing on the email names a To recipient, and its email template's **Recipients by Role** names no To either. Hover the label to see *"This email has no recipient, so it will not send. Use Edit to add one, or Cancel."*
 - **No recipients** — the email names a To role, but no contact on the deal holds that role, so only Cc recipients (or nobody) would be left.
 
+DocJacket holds a scheduled email that has nobody in **To** (and whose email template names no To either) as soon as it sees it, weeks before the send date, so you have time to fix it. You get one notification in the bell for each deal, such as *"2 scheduled emails on 12 Main St have no recipient and will not send."*, and it links to the deal. Only emails with nobody set are held early. An email that names a To role nobody holds on the deal yet stays scheduled until its send day, and is held then if the role is still empty.
+
+If the email template later gains a **To** recipient, the held email is released and goes back to scheduled on its own. You get no notification for that.
+
 Either way, DocJacket sends you one notification in the bell that links to the deal. To fix the row, use **Edit** to add a recipient, then **Send now**, or **Cancel** it. If the role was missing a contact, add the contact to the deal first.
 
 Your organization's **Always CC on Reminders** addresses go on the Cc line, so they never make an email without a To sendable on their own.
 
-To stop this happening on future deals, add a **To** recipient to the scheduled email in the Playbook, or set **Recipients by Role** on its [email template](../templates/email-templates.md#recipient-targeting).
+To stop this happening on future deals, add a **To** recipient to the scheduled email in the Playbook (DocJacket no longer lets you save a scheduled email without one, see [Playbooks](../templates/timeline-templates.md)), or set **Recipients by Role** on its [email template](../templates/email-templates.md#recipient-targeting).
 
 ## Notes
 
