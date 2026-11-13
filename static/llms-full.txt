@@ -274,6 +274,8 @@ DocJacket includes these built-in roles:
 - **Assistant** — Works deals: documents, dates, tasks, and email
 - **Viewer** — Read-only: can open deals and their documents, but can't change anything
 
+Only Owners and Admins can permanently delete a deal. Every other role that can edit deals can archive and restore them. **Settings > Roles** shows this as **Permanently delete deals**.
+
 **By default, every team member sees every deal.** A role decides what a person can change — settings, the team, billing, saved passwords — and Viewer is read-only. To focus on your own work, use the **Mine** view on Transactions or **Assigned to me** on Tasks; these filter your own view and don't hide anything from anyone else. To actually keep a role to its own deals, use the **Deal visibility** setting below.
 
 ### Limit a role to the deals its members are on
@@ -314,7 +316,7 @@ On the Transactions list they can tag and untag their own deals, create a tag, a
 
 On a deal they are on, they can also edit and delete the deal's TC fees, record and delete fee payments, and download a fee's PDF. They can edit, resolve, and reopen waiting-on items, rename a checklist item, see its upload history, and decide whether a conditional item applies. They can open a key date's history and change the deal email address settings, including **New address**.
 
-If your organization has **Allow team members to edit Playbooks and settings** turned on, limited members can also save Playbooks, checklists, task-list templates, the Key Date Library, and document lists. They can link checklist emails. The reminder rules on **Settings > Automation Rules** apply to every deal in the organization, so limited members can't create, edit, switch on or off, or delete them. They also can't save email templates or use the setup assistant.
+If your organization has **Allow team members to edit Playbooks and settings** turned on, limited members can also save Playbooks, checklists, task-list templates, the Key Date Library, and document lists. They can link checklist emails. The reminder rules on **Settings > Automation Rules** apply to every deal in the organization, so limited members can't create, edit, switch on or off, or delete them. They still see the page, with the line "These rules apply to every deal in your organization and are managed by an owner or admin." **New Rule**, **Edit** and **Delete** are hidden, each rule has a **View** button that opens it read-only, and the on/off switch shows the rule's state but can't be changed. They also can't save email templates or use the setup assistant.
 
 ### Email about deals they aren't on
 
@@ -5132,6 +5134,8 @@ DocJacket doesn't send an email late. If the date it was due had already passed 
 
 **What to do:** the email still has its **Review & send** button. Open it, check the wording, and send it yourself if it is still wanted. A key date that someone types in, or that arrives from a contract, Follow Up Boss, or the API, is treated as entered and isn't skipped this way. See [Reading the status on a task](./email-automation.mdx#reading-the-status-on-a-task).
 
+**Playbook scheduled emails work the same way, but quietly.** If a Playbook's scheduled email would send more than 48 hours in the past when you apply the Playbook, or when its task is re-dated or recalculated, DocJacket doesn't create it. Nothing is held, and nothing appears on the **Scheduled** tab. If you later move the task's date so the send time falls in the future, the email is created then. An email that is 48 hours late or less is still created and sent.
+
 ## The email appeared, but it shows old wording
 
 If the email is in Review & send but still has the greeting or text you already fixed in the template, the deal is using its own copy of the template. See [The email in Review & send shows old wording](./email-automation.mdx#the-email-in-review--send-shows-old-wording) for **Edit wording** and **Refresh**.
@@ -5818,6 +5822,8 @@ Outlook from **Settings > Integrations**. See
 [Google Workspace](../integrations/google-workspace.mdx) or
 [Microsoft Outlook](../integrations/microsoft-outlook.mdx).
 
+If you start from a task email, the **Connect your email** button in its drawer or dialog takes you to **Settings > Integrations**. After you connect Gmail or Outlook, DocJacket returns you to the deal and tab you started from. The Gmail and Outlook connect buttons on a deal's **Email** tab do the same. If you refuse consent or the connection fails, you stay on **Settings > Integrations** so the error shows.
+
 Until a mailbox is connected, manual sends from a deal prompt you to connect one,
 and automated email falls back to DocJacket's own email service (a
 `@docjacket.com` address) unless your organization requires a connected mailbox
@@ -6184,6 +6190,10 @@ You can only attach documents that are on the deal you are sending from. A docum
 - **Sending now:** the email is not sent. You see "Couldn't attach: ... Nothing was sent — remove the file or re-add it, then try again."
 - **Scheduled email:** when the time comes the email is marked failed with "Couldn't attach: ... The email was not sent — re-attach and reschedule."
 - **Approving a draft in the Review queue:** if an attached document is from another deal, approving is refused with "One of the attached documents is not on this deal. Remove it from the draft and approve again."
+
+The same rule applies when you save. A reminder, a scheduled email or a deal's own reminder rule that names a specific document from another deal can't be saved. You see "A specific document can only be attached on its own deal. Pick a document from this deal, or attach by category." Choose a document that is on this deal, or attach by document category.
+
+Playbook emails and organization-wide rules aren't tied to one deal, so they attach documents by category only. Saving a specific document there is refused with "Org-wide rules and Playbooks attach documents by category only. Pick a document category instead of a specific document." Pick a document category and DocJacket attaches the matching document from each deal when the email goes out.
 
 ## Reviewing messages
 
@@ -12670,7 +12680,7 @@ Go to **Settings → Organization → Client portal** and turn on **Let agents m
 With it on, an agent can:
 
 - **Check off the tasks you gave them**, and reopen one they ticked by mistake
-- **Keep their own to-do list on the deal** — add, edit, and delete tasks they created themselves
+- **Keep their own to-do list on the deal** — add, edit, and delete tasks they created themselves. A task an agent deletes is deleted for good: its unsent reminders and scheduled emails are cancelled, and it doesn't come back if the deal is later archived and restored. An agent can edit or delete their own tasks only while the deal is active and they are still on it
 
 An agent can never:
 
@@ -14637,9 +14647,11 @@ Automation rules send an email when a transaction enters a status or when a conf
 
 Current rule triggers include:
 
-- **When a transaction enters a status** — Fires on future status changes only. Existing transactions already in that status are not triggered retroactively.
+- **When a transaction enters a status** — Fires on future status changes only, however the status changes in the app: the status chip on the deal, the Deals list, the Pipeline, or the deal's **Edit** form. Existing transactions already in that status are not triggered retroactively.
 - **When a Playbook task is completed** — Fires when a transaction task created from the selected Playbook task template is marked complete.
 - **When a document is filed** — Fires each time a document is filed to a deal under the **Document category** you pick. It prepares the email and holds it in your Review queue for you to send; it never sends on its own, even if your organization sends other automated emails without review. It applies to documents filed after the rule is created, uses only your own email templates, and does not use SMS. A document that arrives by email or import triggers nothing until someone files it under a category.
+
+Members limited to their own deals see this page read-only, because the rules apply to every deal. See [Understanding Roles](../getting-started/understanding-roles.mdx#what-a-limited-member-can-do).
 
 Rules can send to transaction contact roles, direct email addresses, or both. Direct email entries are checked before the rule is saved, and duplicate direct addresses are collapsed case-insensitively.
 
