@@ -1490,6 +1490,8 @@ The closing timeline appears near the top of the Overview when the section is vi
 
 Use **Generate Timeline** to calculate key dates and linked tasks from one Playbook template. The confirmation step shows the transaction anchor dates, key-date count, task count, owner assignments, phases, and the replacement option before anything is created.
 
+If the Playbook chip in the header reads **N to sync**, the deal and its Playbook no longer match: see [When a deal is behind its Playbook](../templates/timeline-templates.md#n-to-sync-when-a-deal-is-behind-its-playbook).
+
 The timeline has two views:
 
 - **Vertical checklist view** — A list of key dates with status, phase, governed Key Date Type, linked tasks, reminders, and drag handles for visual order.
@@ -4679,7 +4681,7 @@ If the parent task already has subtasks, the section opens with the progress cou
 
 ## Subtasks and Playbooks
 
-Playbook (checklist) task templates do not have subtasks. The Playbook task editor has no "add subtask" control, and a Playbook cannot generate subtasks on a new deal. Subtasks are added by hand on a deal task (task drawer > **Subtasks** > **Add**).
+Playbook (checklist) task templates do not have subtasks. The Playbook task editor has no "add subtask" control, and a Playbook cannot generate subtasks on a new deal. <!-- until: docjacket-v3#7134 --> Subtasks are added by hand on a deal task (task drawer > **Subtasks** > **Add**).
 
 To get step-by-step work from a Playbook, add each step as its own task. Set a task's **Due date is based on** to another task so it comes after that one, and use the **Lives under** picker to keep related steps together.
 
@@ -5103,14 +5105,20 @@ The drawer's **Options** section includes settings for how the task behaves:
 - **Key Date** — highlights the task as an important date-style item in task and calendar views. This is not a replacement for the transaction's canonical key dates.
 - **Notify on Complete** — sends linked emails when the task is marked complete
 - **Notify Contact** — chooses the contact for completion notification when enabled
-- **Conditional Task** — the task applies only when a condition on the deal is true, and is held back automatically at Playbook apply when it isn't (see below)
+- **Condition note** — a note on the task row saying when the task applies. It does not hide or remove the task. The checkbox that decides whether a Playbook creates a task at all is **Conditional Task**, in the Playbook editor (see below).
 - **Est. Hours** and **Actual Hours** — track estimated and actual work time
 
-## Conditional Task
+## Condition note on a deal's task
 
-Mark a task **Conditional** in the Playbook builder when it only applies to some deals. The deal's own details then decide, when the Playbook is applied, whether the task is created — you don't need a different Playbook for each variation like warranty, financing, or cash deals.
+On a task inside a deal, the **Condition note** toggle (under **Options**) adds a note to the task row saying when it applies. The hint under the toggle reads "A note on the task row saying when it applies. It does not hide or remove the task." Hover the note on the task list and it reads "Note:" followed by the note's text and "(a note from the Playbook; it does not hide or remove the task)".
 
-Open the task, tick **Conditional Task**, and choose the condition one of two ways:
+Turning it on or off on a deal doesn't add or remove anything. Whether a task is created at all is decided in the Playbook editor, below.
+
+## Conditional Task (in the Playbook editor)
+
+Tick **Conditional Task** on a task in the Playbook builder when it only applies to some deals. The deal's own details then decide, when the Playbook is applied, whether the task is created — you don't need a different Playbook for each variation like warranty, financing, or cash deals.
+
+Open the task in the Playbook editor, tick **Conditional Task**, and choose the condition one of two ways:
 
 - **Transaction field** — pick one field from a fixed list: **Cash deal** and **Sellers only** (created only when true), or a contingency such as HOA, septic, or sale of home (created unless the deal marks it N/A).
 - **Build a rule with AND / OR instead** — under **Add this task when**, combine several conditions, including **Deal flag** (such as **Buyer is financing**) and your own **Custom field** values (**is**, **is not**, **is blank**, **is not blank**). Use **And** for conditions that must all be true and **And any of…** when any one will do.
@@ -6374,6 +6382,13 @@ Use **Add Key Date** in the builder. The drawer has two modes:
 
 If a shared key date needs customization, duplicate it first and use the copy in your Playbook.
 
+### One key date per Key Date Type
+
+A Playbook holds one key date for each Key Date Type, because a deal keeps one of each. If you try to add a second date with a type the Playbook already has, DocJacket doesn't add it and the message names the date that already holds the type.
+
+- **Create New** — the message offers **Add without a key date type**, which adds the date as a custom one. You can also rename it or give it a different Key Date Type. If the name alone makes DocJacket treat it as a governed type, a blue hint says, for example, "This Playbook already has a Closing Date ("Close of Escrow"). Rename this one to keep it custom."
+- **From Library** — use the key date that is already in the Playbook, or change the library key date's Key Date Type in **My Key Dates** and add it again.
+
 ## Adding tasks
 
 Playbook tasks are the work your team completes during the transaction. Tasks can include:
@@ -6530,6 +6545,10 @@ Use either approach:
 - Leave financing work unconditional and mark the cash-only tasks conditional on
   **Cash deal**.
 
+:::warning Don't put the Cash deal condition on a financing task
+A task with the **Cash deal** condition is added *only* on cash deals, and the **When to create it** setting is ignored for it. Putting that condition on an appraisal or lender task removes the task from every financed deal, and the Playbook editor doesn't warn you. To skip a task on cash deals, use **Deal flag › Buyer is financing is true** instead, or nest the task under a key date that only financed deals get.
+:::
+
 ### The "If label" box is cosmetic
 
 Under the condition there's an **If label** box (for example, `If HOA`). This is
@@ -6539,9 +6558,9 @@ task is created on every deal and the builder warns you it is **not enforced**.
 
 :::note Conditional in the Playbook builder vs. on a task
 The **Conditional Task** checkbox in the *Playbook builder* controls whether a task
-gets created at all. There is also a conditional marker on an individual task inside a
-transaction ([Task Options](../tasks/task-options.md)) — that one is a **label** on
-work that already exists, and it doesn't create or remove anything.
+gets created at all. On an individual task inside a transaction the matching toggle is
+called **Condition note** ([Task Options](../tasks/task-options.md)) — that one is a
+note on work that already exists, and it doesn't create, hide, or remove anything.
 :::
 
 ## Only add a key date when…
@@ -6587,7 +6606,7 @@ switches to a loan; you update the deal. Open **Optional tasks**, and **Loan App
 back. Open the deal's **Overview**, set the field in the **Custom Fields** card, and
 return to the **Tasks** tab: the task is now under **Now applicable**.
 
-A task you deleted by hand after it was created is not offered back.
+A task you deleted by hand after it was created is not offered back in **Optional tasks**. It can come back if you apply the Playbook to the deal again; see [Applying a Playbook to a transaction](#applying-a-playbook-to-a-transaction).
 
 ## Brokerage add-on Playbooks
 
@@ -6672,7 +6691,13 @@ The preview is for template review. It is computed client-side and does not incl
 
 ## Applying a Playbook to a transaction
 
-From the transaction Overview's closing timeline, click **Generate Timeline** and pick a Playbook.
+In the Overview header, the Playbook controls depend on the deal:
+
+- A deal with no Playbook shows **Apply Playbook**, or **Apply** followed by the name of a Playbook DocJacket suggests for the deal.
+- A deal that was set up from a Playbook shows a chip with that Playbook's name and an **Add another Playbook** button.
+- An archived deal can't take a Playbook: the buttons are disabled and the hover text reads "Archived deals can't take a Playbook. Restore the deal first."
+
+You can also click **Generate Timeline** on the Overview's closing timeline and pick a Playbook.
 
 DocJacket can:
 
@@ -6686,6 +6711,41 @@ DocJacket can:
 - Preserve manually added items and contract-extracted dates when replacing template-generated items
 
 After applying, the transaction has real key dates and real tasks. Moving key dates can update linked task due dates according to their rules.
+
+### "N to sync": when a deal is behind its Playbook
+
+The Overview header shows a chip with the name of the Playbook the deal was set up from. When the chip turns amber and reads **· 10 to sync** (hover: "This deal is 10 item(s) behind the … playbook"), the Playbook has items the deal doesn't, or now says something differently. Nothing is broken, and nothing changes on the deal until you sync.
+
+The number counts:
+
+- **Key dates and tasks in the Playbook that are not on the deal.** Tasks you deleted from the deal yourself are not counted; hover the chip to see how many were left out.
+- **Items the Playbook now says differently.** A deadline rule changed in the Playbook on a date nobody changed by hand, or a task renamed in the Playbook.
+
+Not counted: Playbook documents, dates you changed by hand or marked Completed, Waived or N/A, Optional tasks, and items the Playbook leaves out on this deal (a condition that isn't met, the other side's key dates, financing items on a cash deal).
+
+The number is the same one the Apply Playbook dialog shows on its last button. A chip that reads **2 to sync** opens a dialog whose button reads **Create 2 items**.
+
+**To sync (re-sync) the deal with its Playbook:**
+
+1. Click the chip. The **Apply Playbook** dialog opens with that Playbook picked.
+2. Read the rows. **Already on this deal · keeps your date** means a date you changed or closed; it is not touched. **Already on this deal · recalculates to …** means a Playbook date nobody changed; it moves to the Playbook's current rule. **Keeps your existing date** means a date you entered or that came from the contract; it keeps its date.
+3. If you deleted tasks from the deal, they read **Removed from this deal on** a date and an amber note says they will be added back. If you deleted them on purpose, click **Leave out the N you removed**.
+4. Click **Create N items** (or **Apply** when nothing new is left). Leave **Replace previously-applied template items** unticked.
+
+You don't have to sync. The deal is fine as it is.
+
+On an archived deal the chip is display-only, because an archived deal can't take a Playbook.
+
+### Applying the same Playbook again
+
+You can re-apply a Playbook that is already on the deal, whether or not the chip says **to sync**. Without **Replace previously-applied template items**, re-applying adds what's missing and leaves the rest alone.
+
+- Rows that are already on the deal read **Already on this deal**. They are locked, and they are left out of the sentence at the top and the count on the button.
+- When everything is already there, the dialog says "Everything in this Playbook is already on this deal.", the button reads **Apply**, and the receipt headline is **Deal already set up**.
+- **Deleted tasks come back by default.** Click **Leave out the N you removed** to skip them for that one apply. DocJacket doesn't remember the choice for next time.
+- **Playbook for the other side.** If the Playbook is for Seller deals and the deal is Buyer (or the reverse), an amber note says so: "This Playbook is for Seller deals · this deal is Buyer. Its 2 seller-side key dates won't be added; its tasks will." It doesn't stop you. The receipt repeats it with "N key date(s) for the other side, not added".
+- **Dates that can't be calculated yet.** If a key date counts from a date the deal doesn't have, the receipt says "Some dates are waiting on a date this deal doesn't have yet:" and lists the missing dates by name, for example Effective Date.
+- **Send your client their portal.** See [Sharing Portal Links](../client-portal/sharing-portal-links.mdx#after-you-apply-a-playbook).
 
 ### Applying a second Playbook to the same transaction
 
@@ -6709,7 +6769,7 @@ list, and one document set — and the listing history stays attached.
 
 The apply dialog shows any Playbooks already applied, so you can see what's there
 before adding another. If you *do* want the new Playbook to take over, tick **Replace
-existing key dates and tasks** — that removes the previously applied *template-generated*
+previously-applied template items** — that removes the previously applied *template-generated*
 items on both the key-date and task side. Items you added by hand, and dates extracted
 from the contract, are preserved either way.
 
@@ -6917,6 +6977,8 @@ Governed types help DocJacket connect the same concept across:
 The name can still match your team's language. If the name looks like a known key date type, DocJacket can suggest the governed type for you.
 
 Leave **Key Date Type** blank for organization-specific dates that do not map to a standard concept.
+
+A Playbook holds one key date for each Key Date Type, because a deal keeps one of each. Adding a second date with a type the Playbook already has is refused, and the message names the date that already holds the type. When you use **Create New** in the Playbook builder, the message offers **Add without a key date type**. When you use **From Library**, use the date that is already there or change the library key date's type in **My Key Dates**. See [Adding key dates](./timeline-templates.md#one-key-date-per-key-date-type).
 
 :::tip Set a governed type whenever you can
 A governed **Key Date Type** is what connects the same date across Playbooks, the calendar, reports, smart fields, and integrations. The name can still match your team's language — the type is what makes automation reliable. Only leave it blank for truly organization-specific dates.
@@ -7633,18 +7695,27 @@ an **individual document** as conditional, so it only shows up on deals where it
 actually needed — an HOA addendum on HOA properties, a septic inspection where there's
 a septic system, a lead-paint disclosure on older homes.
 
-When you add a document to a list, mark it **If Applicable** and pick the condition
-that decides when it's needed. The conditions you can choose from are:
+When you add a document to a list, click the settings icon on its row (**Edit details**). Under **Requirement**, choose one of:
+
+- **Always required** — the document is added to every matching deal.
+- **Required if…** — then pick the condition under **Choose a condition…**. The document is added only when the condition is true.
+- **Optional (only when applicable)** — the document is offered as a suggestion and is not added automatically.
+
+The conditions you can choose from are:
 
 | Category | Conditions |
 |---|---|
 | Property features | Property has an HOA · has solar · has septic · has a well · has a pool · radon contingency present · lead-paint concern |
 | Property | Built before a year (you set the year) |
-| Representation | Representing the buyer · representing the seller |
-| Financing | Buyer is financing (loan) · cash deal (no loan) |
+| Representation | Representing the buyer (includes dual) · representing the seller (includes dual) · **Representing both sides (dual)** |
+| Financing | Buyer is financing (loan) · cash deal (no loan) · **Loan type is…** (Cash, Conventional, FHA, VA, USDA) |
 | Occupancy | Tenant occupied |
 | Location | County is… (you set the county) |
 | Other | Home warranty included |
+
+**Representing both sides (dual)** and **Loan type is…** are available on single documents only. Some conditions need a value: **Built before a year** needs the year, **County is…** needs the county, and **Loan type is…** needs a loan type. A rule that is missing its value can't be saved. The **Save Changes** (or **Create List**) button is disabled and the page says "Finish the rule on" followed by the document's name.
+
+Each document's row shows a short label for its rule, such as "If loan type is FHA", "If built before 1978", "If county is King", or "If dual (both sides)".
 
 ### What happens when the list is applied
 
@@ -7660,6 +7731,8 @@ details read off the contract during extraction — and does one of three things
   condition in plain language (for example, "the HOA contingency") so you can confirm it
   applies or remove it. This is the safe default: an unanswered question never silently
   drops a document you might need.
+
+A loan-type rule works this way too: if the deal's loan type isn't known yet, the document is added and flagged.
 
 That last case is the common one early in a deal, before the contract has been read or
 the contingency fields are filled in. It's why you may see a document flagged for
@@ -12463,6 +12536,10 @@ DocJacket does not send portal links when a deal is created. You send them yours
 - To see whether the recipient opened it, check the Portal tab: each link shows its visit count and last access. Creating a general link also writes "Portal link created" to the Activity Log.
 
 If you have a task such as "Send portal links", keep it as your reminder, or attach an email that uses `{{portal_link}}` to it.
+
+## After you apply a Playbook
+
+When you apply a Playbook to a deal that has no shared portal link and has a Client contact with an email address, the receipt offers **Send your client their portal**. It opens the Portal tab's send screen with only the Client contacts ticked, and it sends nothing by itself. You still choose who gets it and click send. The offer isn't shown to read-only seats or while you are impersonating another user.
 
 ## Managing links
 

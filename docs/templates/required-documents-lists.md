@@ -68,18 +68,27 @@ an **individual document** as conditional, so it only shows up on deals where it
 actually needed — an HOA addendum on HOA properties, a septic inspection where there's
 a septic system, a lead-paint disclosure on older homes.
 
-When you add a document to a list, mark it **If Applicable** and pick the condition
-that decides when it's needed. The conditions you can choose from are:
+When you add a document to a list, click the settings icon on its row (**Edit details**). Under **Requirement**, choose one of:
+
+- **Always required** — the document is added to every matching deal.
+- **Required if…** — then pick the condition under **Choose a condition…**. The document is added only when the condition is true.
+- **Optional (only when applicable)** — the document is offered as a suggestion and is not added automatically.
+
+The conditions you can choose from are:
 
 | Category | Conditions |
 |---|---|
 | Property features | Property has an HOA · has solar · has septic · has a well · has a pool · radon contingency present · lead-paint concern |
 | Property | Built before a year (you set the year) |
-| Representation | Representing the buyer · representing the seller |
-| Financing | Buyer is financing (loan) · cash deal (no loan) |
+| Representation | Representing the buyer (includes dual) · representing the seller (includes dual) · **Representing both sides (dual)** |
+| Financing | Buyer is financing (loan) · cash deal (no loan) · **Loan type is…** (Cash, Conventional, FHA, VA, USDA) |
 | Occupancy | Tenant occupied |
 | Location | County is… (you set the county) |
 | Other | Home warranty included |
+
+**Representing both sides (dual)** and **Loan type is…** are available on single documents only. Some conditions need a value: **Built before a year** needs the year, **County is…** needs the county, and **Loan type is…** needs a loan type. A rule that is missing its value can't be saved. The **Save Changes** (or **Create List**) button is disabled and the page says "Finish the rule on" followed by the document's name.
+
+Each document's row shows a short label for its rule, such as "If loan type is FHA", "If built before 1978", "If county is King", or "If dual (both sides)".
 
 ### What happens when the list is applied
 
@@ -95,6 +104,8 @@ details read off the contract during extraction — and does one of three things
   condition in plain language (for example, "the HOA contingency") so you can confirm it
   applies or remove it. This is the safe default: an unanswered question never silently
   drops a document you might need.
+
+A loan-type rule works this way too: if the deal's loan type isn't known yet, the document is added and flagged.
 
 That last case is the common one early in a deal, before the contract has been read or
 the contingency fields are filled in. It's why you may see a document flagged for
