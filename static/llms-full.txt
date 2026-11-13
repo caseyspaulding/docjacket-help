@@ -4775,6 +4775,8 @@ A Playbook task can carry a list of subtasks. When the Playbook is applied, each
 
 Each subtask in the list shows its due date rule, the role it is assigned to, and an **If:** badge when it has a condition. Click a subtask to open it in the same editor. Use the trash button on its row to delete it.
 
+![Playbook editor with the task "Gather deed, survey, and title information" open: the Subtasks section lists three subtasks with an Add box below them, and the task list shows the same three subtasks indented under the task with a "3 subtasks" chip](/img/templates/playbook-subtasks-editor.png)
+
 ### What a Playbook subtask can have
 
 A subtask can have:
@@ -4789,6 +4791,8 @@ A subtask can have:
 A subtask follows its main task for everything else. It does not have a phase, **Repeat**, **Add to every deal**, a link to a key date, a "due after another task" setting, **Show on portal**, emails, or Automations. It is always added to a deal together with its main task. Put emails and automations on the main task.
 
 When a subtask is open, a **Subtask of** line at the top names its main task. Click the name to go back to the main task.
+
+![A Playbook subtask open in the editor: a "Subtask of" line at the top links back to its main task, and the form shows Name, Priority, Description, Conditional Task and Assign to role](/img/templates/playbook-subtask-open.png)
 
 Subtasks go one level deep: a subtask can't have subtasks of its own. You also can't move a subtask to a different main task. To do that, delete it and add it under the other task.
 
@@ -6605,6 +6609,8 @@ To add a task, click **Add Task**, fill in the panel that opens on the right, an
 ### Subtasks
 
 A saved task can carry a list of subtasks: small checks that appear under the task on every deal it is added to. Open the task, find the **Subtasks** section, click **Add subtask**, type a name and press **Enter**. A subtask can have a due date rule, **Assign to role**, a condition, a priority and a description, but no phase, repeat, key date link, portal setting or emails. If the main task isn't added to a deal, its subtasks aren't either.
+
+![Playbook editor with the task "Gather deed, survey, and title information" open: the Subtasks section lists three subtasks with an Add box below them, and the task list shows the same three subtasks indented under the task with a "3 subtasks" chip](/img/templates/playbook-subtasks-editor.png)
 
 In the task lists, subtasks are indented under their main task, and the main task shows an **N subtasks** chip. Deleting a main task also deletes its subtasks, and DocJacket says so before you confirm. The full steps, and what a subtask can and can't have, are in [Subtasks](../tasks/subtasks.mdx#adding-subtasks-to-a-task-in-a-playbook).
 
@@ -8664,6 +8670,8 @@ If a task has a group of small checks under it, ask for them as subtasks. For ex
 - **Review step:** the totals count tasks and subtasks separately, for example "38 tasks, 4 subtasks", and each subtask line reads like "Request HOA Verification (subtask of Due Diligence Research)".
 - **Copying from another Playbook:** when you ask the assistant to copy tasks from one of your Playbooks, each copied task brings its subtasks with it. A subtask can't be copied on its own.
 - **What a subtask can't have:** subtasks are one level deep, and emails go on the main task. A task can't wait on a subtask.
+
+![Build a Playbook, step 3 Tasks: the task "Due Diligence Research" with its three subtasks indented beneath it, and "Order Survey" as a separate task](/img/templates/builder-subtasks-tasks-step.png)
 
 After the Playbook is created, the subtasks work like any others. See [Subtasks](../tasks/subtasks.mdx#adding-subtasks-to-a-task-in-a-playbook).
 
