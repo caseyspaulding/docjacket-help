@@ -8923,7 +8923,7 @@ When the form opens:
 
 - **A note at the top** says how many fields the assistant filled in and which button to press. For example: *"The assistant filled in 4 fields (marked). Check them, then press Send Invite."*
 - **Each field it filled is marked** with the words *Filled in by the assistant*. The mark goes away when you change that field.
-- **The note says when values may have come from outside your team.** If the assistant had just read something like an email or an uploaded document, the note names it and asks you to check. For example: *"Some values may have come from an email received Nov 9, so check them against the original."*
+- **The note says when values may have come from outside your team.** If the assistant had just read something like an email or an uploaded document, the note names it and asks you to check. For example: *"Some values may have come from an email received Nov 9, so check them against the original."* If it read more than three, the note names the first three and adds how many more, such as *"…from a, b, c and 2 more, so check them against the original."*
 - **Nothing is saved, sent or invited until you press the form's button.** Change any field first, or close the form to drop it.
 
 ### It won't overwrite what you're typing
@@ -9025,9 +9025,13 @@ While it is running, the Ask AI panel's header shows **Setup assistant**.
 
 ### What it does
 
-- **It starts with your Primary State.** If your organization doesn't have one yet, the setup assistant asks which state you mainly work in. It never guesses your state from an address, a contract or a deal.
+- **It starts with your Primary State.** If your organization doesn't have one yet, the setup assistant asks which state you mainly work in.
+  - **When most of your deals are in one state**, it offers that state as a button with the number of deals, such as **Florida (431 deals)**, beside **Another state**. It does this when at least 80% of your deals that have a state are in that one state. Pick the state and the change appears on a card marked "nothing happens until you approve". Approve it, and use **Undo** on the card if you change your mind.
+  - **Another state, or no state with a clear majority**, takes you to **Settings > Organization** with the **Primary State** dropdown highlighted. Choose your state there and click **Save Primary State**.
+  - It never offers a state taken from a single address, contract, Playbook or client agent.
 - **With no deals yet, it focuses on your first contract.** You can upload it, or email it to your new-deal intake address.
 - **It can prepare these changes:** your Primary State, your default TC fee, a client agent's fee or coordinator, your contact roles and document categories, and your email templates. It never makes up a fee: it proposes your default TC fee only when you state the amount, and a client agent's fee only when you state it or your deals suggest one.
+- **It doesn't ask whether someone is your client agent.** Once you have a real deal, its first card proposes you as coordinator for the client agent with the most deals, plus a fee only when your deals suggest one. Approve it to say yes, or Dismiss it if that person isn't one of your agents.
 - **Archiving a contact role or document category hides it; it never deletes it.** Deals that already use it keep it. DocJacket's own roles can't be changed; the assistant offers your own copy instead.
 - **For things it can't change itself**, such as connecting your email account or your email safety settings, it takes you to the right page and points at the control.
 
@@ -10879,6 +10883,14 @@ This is the magic that makes paste-URL-and-go work: the assistant **registers it
 
 Every assistant gets its own `client_id` — your Claude.ai connector and your Codex CLI have different ones.
 
+**Redirect URIs.** The redirect URIs an assistant registers must follow these rules:
+
+- They must use `https`. Plain `http` is accepted only for `localhost`, `127.0.0.1` and `[::1]`.
+- They can't contain a `#` fragment.
+- The schemes `javascript:`, `data:` and `file:` are refused. Other app schemes, such as one a mobile or desktop app registers for itself, are allowed.
+- For a loopback address (`localhost`, `127.0.0.1`, `[::1]`), the port can change between runs: a desktop assistant that listens on a new port each time still matches its registered redirect.
+- The redirect back to the assistant can carry an `iss` parameter naming DocJacket as the issuer, so the assistant can confirm the response came from the server it started with.
+
 ## 3. Authorize
 
 The assistant redirects you to:
@@ -10901,14 +10913,18 @@ If you're not already logged into DocJacket in that browser session, you'll be s
 
 You see DocJacket's consent screen:
 
-> **Connect [Claude] to DocJacket?**
+> **Connect Claude to DocJacket**
 >
-> This will let the app act on data in your organization.
+> Review the access this app is requesting.
 >
-> It will be able to:
+> After you allow, you'll go back to claude.ai.
+>
+> **What it can do**
 > - **Read your data** — Transactions, tasks, key dates, and contacts.
 > - **Update your data** — Tasks, key dates, Playbooks, and status. Internal changes only — no emails are sent.
-> - **Act on your behalf** — Send emails to your clients and agents, and make changes. Your assistant's own settings decide whether it asks you first.
+> - **Act on your behalf** — Send emails to your clients and agents, and make changes. Emails are shown to you for a yes before they go out, or wait for approval in DocJacket if your organization reviews them.
+
+The "go back to" line names the site you will return to. An app that opens on your device instead of a website gets a line saying you'll go back to that app on this device. When an app runs only on your own computer, the screen also warns: "This app runs on your own computer. Only allow it if you started this connection yourself." Allow only connections you started.
 
 Clicking **Allow** redirects you back to the assistant with a one-time authorization code.
 
@@ -11015,7 +11031,17 @@ For both write tiers, supported MCP clients use a **confirm-then-execute** UX:
 3. You confirm or redirect.
 4. The assistant fires the tool only after you say yes.
 
-For external AI Access writes, DocJacket's server does not run a second approval queue. We retired the old sidebar "Pending Review" page in May 2026 — the scope you grant and the assistant's own per-tool approval settings gate those writes. Outbound email can still be held by your organization's review settings. This is separate from the in-app **Review queue**, which still handles DocJacket automation drafts, scheduled sends, recent activity, and pending uploads.
+For most external AI Access writes, DocJacket's server does not run a second approval queue. We retired the old sidebar "Pending Review" page in May 2026 — the scope you grant and the assistant's own per-tool approval settings gate those writes. Email is the exception, and works as follows. This is separate from the in-app **Review queue**, which still handles DocJacket automation drafts, scheduled sends, recent activity, and pending uploads.
+
+### Email an assistant writes
+
+Every email an assistant writes is first placed in your **Review queue**. What happens next depends on your organization's review setting:
+
+- **If your organization reviews outgoing email, or something about the email requires a review**, it stays in the Review queue until a team member approves it in DocJacket.
+- **If review is off and nothing requires it**, the assistant gets a preview of the exact email and a one-time confirm code that is good for 30 minutes. It shows you the preview, and the email goes out only after you say yes.
+- **After you say yes, the email is queued, not yet sent.** Whether it went out arrives afterwards as an `email.sent` or `email.failed` [webhook event](/docs/api/webhooks) for anyone listening.
+- **Who it can email.** An assistant can email the contacts on the deal and the active members of your own organization. An email to anyone else stays in the Review queue.
+- **Held emails.** An assistant can list and read the emails held in your Review queue, and discard one. It can approve and release a held email only in an organization that has that turned on; elsewhere, a team member approves it in DocJacket.
 
 Read the [retirement spec](https://github.com/caseyspaulding/docjacket-v3/blob/main/docs/specs/REMOVE-PREPARED-WORK.md) for the full rationale.
 
@@ -11061,12 +11087,16 @@ Click **Revoke** on any row. The next tool call from that client returns HTTP 40
 
 There's no propagation delay. Revocation lands on the next request.
 
+## What an assistant can set up
+
+When the setup assistant is turned on for your organization and the person who connected it is allowed to edit organization settings, a connected assistant can change some of your organization's setup: your Primary State, your default TC fee, a client agent's fee or coordinator, your contact roles, your document categories, and your email templates. A Primary State or fee change made this way takes effect right away and can be undone for 7 days. Archiving a role or category hides it and never deletes it; deals that already use it keep it.
+
 ## What an assistant cannot do
 
 Even with `actions` scope granted and a tool toggled on, an assistant cannot:
 
 - See data from a different organization than the one you consented for
-- Change your DocJacket account settings, billing plan, or user permissions
+- Change your billing plan, seats or user permissions, or organization settings other than the setup items listed above
 - Read other Connectors you've enabled on the assistant (e.g., your Gmail content)
 - Bypass DocJacket's role-based access (e.g., if you're an org member without Admin rights, the AI inherits your access — not your owner's)
 
@@ -11422,6 +11452,12 @@ Subscribe to `"*"` to receive every event type.
 | `disclosure.recipient_viewed` | When a disclosure package recipient opens the disclosure |
 | `document.deleted` | When a document is deleted |
 | `document.uploaded` | When a document is uploaded to a transaction |
+| `email.approved` | When a held email is approved and queued to send (an undo can return it to held) |
+| `email.discarded` | When a held email is discarded and nothing is sent, unless an undo returns it to held |
+| `email.failed` | When an approved or automatic email could not be sent; this is the final outcome |
+| `email.held` | When an email is held in the review queue for a person to approve, including again after a discard or an approval is undone or an expired email is restored (includes hold reason codes) |
+| `email.scheduled` | When a held email is approved for a later send time |
+| `email.sent` | When an email has been sent (accepted by Gmail, Outlook or DocJacket's mail service): an approved email, or a Playbook task email, completion email, reminder or scheduled email that sent with no approval (approval "none", actionId null) |
 | `extraction.completed` | When a document extraction job finishes (includes jobId + status) |
 | `form.submission_received` | When a public form submission is received |
 | `key_date.completed` | When a key date is marked complete |
@@ -11440,6 +11476,8 @@ Subscribe to `"*"` to receive every event type.
 The same list is available at runtime from `GET /api/v1/webhook-events`, and in the [OpenAPI specification](https://api.docjacket.com/openapi.json) under `webhooks` — where each event also carries its payload schema and an example.
 
 `extraction.completed` turns a document upload into a round-trip: subscribe, upload via the API, and receive the signed callback with the `jobId` and confidence when extraction finishes — no polling.
+
+`email.sent` fires for every email that goes out, not only ones a person approved. A Playbook task email, a completion email, a reminder or a scheduled email that sends with no approval step also fires `email.sent`, with `approval` set to `"none"` and `actionId` set to `null`. These events carry `source` (what kind of email it was), `sourceId` (the task, reminder or scheduled email behind it) and `via` (the mail service that sent it) in place of an `actionId`. Use `actionId` to match an event to a held email, and `source` with `sourceId` for the rest. `email.failed` is sent only when a failure is final, so an email that fails and then succeeds on a retry reports only `email.sent`.
 
 ## Payload
 
@@ -11679,7 +11717,7 @@ See the [reference](https://api.docjacket.com/reference) for full request/respon
 
 # API reference — all operations
 
-The DocJacket REST API lets your own systems read and act on transactions, contacts, tasks, key dates, documents, extractions, disclosures, and templates. This page lists **all 120 operations** in one place, grouped by resource, so the whole surface is readable without running JavaScript or parsing the raw specification.
+The DocJacket REST API lets your own systems read and act on transactions, contacts, tasks, key dates, documents, extractions, disclosures, and templates. This page lists **all 124 operations** in one place, grouped by resource, so the whole surface is readable without running JavaScript or parsing the raw specification.
 
 - **Base URL:** `https://api.docjacket.com`
 - **Interactive reference** (try-it console, client snippets): [api.docjacket.com/reference](https://api.docjacket.com/reference)
@@ -11746,7 +11784,7 @@ See [Making requests](./making-requests.mdx) for the full conventions and [Versi
 
 ## Operations
 
-120 operations across 14 sections.
+124 operations across 14 sections.
 
 ### Meta
 
@@ -11801,14 +11839,18 @@ Email and messaging on a deal — send client updates and document requests, dra
 | POST | `/api/v1/conversations/{threadId}/documents` | Share a document into an existing conversation via secure SMS link | `actions` |
 | GET | `/api/v1/conversations/{threadId}/messages` | List messages in a conversation thread | `read` |
 | POST | `/api/v1/conversations/{threadId}/messages` | Reply with an SMS in an existing conversation thread | `actions` |
+| POST | `/api/v1/emails/confirm` | Send or discard a previewed email with its confirm code | `actions` |
+| GET | `/api/v1/emails/held` | List the emails held in the review queue | `read` |
+| GET | `/api/v1/emails/held/{actionId}` | Get one review-queue email in full, with its state | `read` |
+| POST | `/api/v1/emails/held/{actionId}/prepare-approval` | Prepare the approval of a held email: preview and a one-time confirm code | `actions` |
 | DELETE | `/api/v1/scheduled-messages/{messageId}` | Cancel a pending scheduled message | `actions` |
 | GET | `/api/v1/transactions/{transactionId}/communications` | List every message for a transaction across channels (SMS + email + in-app) | `read` |
 | POST | `/api/v1/transactions/{transactionId}/conversations` | Start a conversation by sending the first SMS on a deal | `actions` |
 | POST | `/api/v1/transactions/{transactionId}/draft-message` | Generate an AI message draft (never sends) | `draft` |
-| POST | `/api/v1/transactions/{transactionId}/emails/agent` | Queue an email to an agent on the deal for approval | `actions` |
-| POST | `/api/v1/transactions/{transactionId}/emails/agent-followup` | Queue a follow-up email to an agent or vendor for approval | `actions` |
-| POST | `/api/v1/transactions/{transactionId}/emails/client-update` | Queue a status-update email to a deal party for approval | `actions` |
-| POST | `/api/v1/transactions/{transactionId}/emails/document-request` | Queue a document-request email to a deal party for approval | `actions` |
+| POST | `/api/v1/transactions/{transactionId}/emails/agent` | Prepare an email to an agent on the deal: review queue, or preview then confirm | `actions` |
+| POST | `/api/v1/transactions/{transactionId}/emails/agent-followup` | Prepare a follow-up email to an agent or vendor: review queue, or preview then confirm | `actions` |
+| POST | `/api/v1/transactions/{transactionId}/emails/client-update` | Prepare a status-update email to a deal party: review queue, or preview then confirm | `actions` |
+| POST | `/api/v1/transactions/{transactionId}/emails/document-request` | Prepare a document-request email to a deal party: review queue, or preview then confirm | `actions` |
 | POST | `/api/v1/transactions/{transactionId}/messages` | Send an email on a deal (appears in the merged thread as channel=email) | `actions` |
 | GET | `/api/v1/transactions/{transactionId}/recipients` | List a deal's participants with role and per-channel availability | `read` |
 | GET | `/api/v1/transactions/{transactionId}/reports/communication-log` | Export a transaction's communication log (email + SMS) as a PDF, ZIP (with documents), or JSON | `read` |

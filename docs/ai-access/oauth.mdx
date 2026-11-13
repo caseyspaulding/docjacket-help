@@ -124,6 +124,14 @@ This is the magic that makes paste-URL-and-go work: the assistant **registers it
 
 Every assistant gets its own `client_id` — your Claude.ai connector and your Codex CLI have different ones.
 
+**Redirect URIs.** The redirect URIs an assistant registers must follow these rules:
+
+- They must use `https`. Plain `http` is accepted only for `localhost`, `127.0.0.1` and `[::1]`.
+- They can't contain a `#` fragment.
+- The schemes `javascript:`, `data:` and `file:` are refused. Other app schemes, such as one a mobile or desktop app registers for itself, are allowed.
+- For a loopback address (`localhost`, `127.0.0.1`, `[::1]`), the port can change between runs: a desktop assistant that listens on a new port each time still matches its registered redirect.
+- The redirect back to the assistant can carry an `iss` parameter naming DocJacket as the issuer, so the assistant can confirm the response came from the server it started with.
+
 ## 3. Authorize
 
 The assistant redirects you to:
@@ -146,14 +154,18 @@ If you're not already logged into DocJacket in that browser session, you'll be s
 
 You see DocJacket's consent screen:
 
-> **Connect [Claude] to DocJacket?**
+> **Connect Claude to DocJacket**
 >
-> This will let the app act on data in your organization.
+> Review the access this app is requesting.
 >
-> It will be able to:
+> After you allow, you'll go back to claude.ai.
+>
+> **What it can do**
 > - **Read your data** — Transactions, tasks, key dates, and contacts.
 > - **Update your data** — Tasks, key dates, Playbooks, and status. Internal changes only — no emails are sent.
-> - **Act on your behalf** — Send emails to your clients and agents, and make changes. Your assistant's own settings decide whether it asks you first.
+> - **Act on your behalf** — Send emails to your clients and agents, and make changes. Emails are shown to you for a yes before they go out, or wait for approval in DocJacket if your organization reviews them.
+
+The "go back to" line names the site you will return to. An app that opens on your device instead of a website gets a line saying you'll go back to that app on this device. When an app runs only on your own computer, the screen also warns: "This app runs on your own computer. Only allow it if you started this connection yourself." Allow only connections you started.
 
 Clicking **Allow** redirects you back to the assistant with a one-time authorization code.
 
