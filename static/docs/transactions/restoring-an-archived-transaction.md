@@ -59,6 +59,8 @@ Deletion is a separate, heavier action, and it lives away from the list on purpo
 2. In the footer, click **Delete Transaction**
 3. Confirm with **Delete Permanently**
 
+![Delete Transaction dialog explaining that the deal is permanently deleted and suggesting Archive instead, with Cancel and Delete Permanently buttons](/img/transactions/delete-transaction-dialog.png)
+
 The confirmation reads: *"This permanently deletes the transaction. It will no longer appear in any list, including the Archived view, and its key dates, tasks, documents and emails go with it. Unsent scheduled emails, reminders and messages are cancelled, and its client portal links stop working. This cannot be undone."* Underneath: *"If you might want to recover it later, use Archive instead."* Its client portal and agent portal links stop working everywhere, including the portal message board.
 
 If someone who isn't an Owner or Admin reaches the delete anyway, it is refused with *"Only an Owner or Admin can permanently delete a transaction. You can archive it instead."*

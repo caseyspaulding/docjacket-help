@@ -129,6 +129,10 @@ Cancelling or archiving a deal that has calendar invites still ahead asks about 
 
 For one key date it reads **Also cancel the calendar invite?** with three buttons: **Cancel the invite**, **Keep the invite** and **Back**. For two or more key dates the title and buttons are plural (**Also cancel the calendar invites?**, **Cancel the invites**, **Keep the invites**). The message says how many key dates are affected, and for a bulk archive or bulk status change, how many deals. As with Waived and N/A, it says each invited person will be emailed a cancellation, or, when no one besides you was invited, that no email is sent.
 
+![Also cancel the calendar invite? dialog for a deal with one invited key date and guests, with Back, Cancel the invite and Keep the invite buttons](/img/calendar/cancel-invite-question-guests.png)
+
+![The same question when no one besides the organizer was invited: "1 key date is on your calendar. Cancelling removes it. No one else was invited, so no email is sent."](/img/calendar/cancel-invite-question-no-guests.png)
+
 - **Keep the invite** is the default. The deal is cancelled or archived and every invite stays on guests' calendars.
 - **Cancel the invite** cancels or archives the deal and then cancels every live invite on it. Each invited person is emailed a cancellation, except for dates that have already passed, which nobody is emailed about. Cancelling also turns off calendar invites for that deal, and its Activity shows **Cancelled all calendar invites**.
 - **Back** changes nothing: the deal isn't cancelled or archived. On the Edit form, Back doesn't save anything, including your other edits.

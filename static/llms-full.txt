@@ -2089,6 +2089,8 @@ Cancelling is a status change. Move the transaction into any status whose type i
 
 All four do the same thing. On the Edit form, picking a status that ends the deal shows the same line under **Status** as the status chip does (*"Ends the deal: cancels unsent reminders and scheduled emails, skips open tasks, marks key dates not applicable."*). Saving then does what the status chip does: the change is recorded as **Changed Status** in the deal's activity, your Automation Rules for that status run, and a cancel asks the calendar-invite question described below. Closing a completed deal works the same way, using a **Closed**-type status. See [Transaction Statuses](./transaction-statuses.mdx) for how status types work and how to add your own.
 
+![Edit form with Status set to a status that ends the deal, showing the line "Ends the deal: cancels unsent reminders and scheduled emails, skips open tasks, marks key dates not applicable." under the Status field](/img/transactions/edit-form-status-ends-the-deal.png)
+
 ## Closing out a file
 
 When a deal has closed and you want to close out the file — mark it as closed — change its status to a **Closed**-type status:
@@ -2531,6 +2533,8 @@ Deletion is a separate, heavier action, and it lives away from the list on purpo
 1. Open the transaction and click **Edit**
 2. In the footer, click **Delete Transaction**
 3. Confirm with **Delete Permanently**
+
+![Delete Transaction dialog explaining that the deal is permanently deleted and suggesting Archive instead, with Cancel and Delete Permanently buttons](/img/transactions/delete-transaction-dialog.png)
 
 The confirmation reads: *"This permanently deletes the transaction. It will no longer appear in any list, including the Archived view, and its key dates, tasks, documents and emails go with it. Unsent scheduled emails, reminders and messages are cancelled, and its client portal links stop working. This cannot be undone."* Underneath: *"If you might want to recover it later, use Archive instead."* Its client portal and agent portal links stop working everywhere, including the portal message board.
 
@@ -4421,6 +4425,10 @@ Cancelling or archiving a deal that has calendar invites still ahead asks about 
 **The question**
 
 For one key date it reads **Also cancel the calendar invite?** with three buttons: **Cancel the invite**, **Keep the invite** and **Back**. For two or more key dates the title and buttons are plural (**Also cancel the calendar invites?**, **Cancel the invites**, **Keep the invites**). The message says how many key dates are affected, and for a bulk archive or bulk status change, how many deals. As with Waived and N/A, it says each invited person will be emailed a cancellation, or, when no one besides you was invited, that no email is sent.
+
+![Also cancel the calendar invite? dialog for a deal with one invited key date and guests, with Back, Cancel the invite and Keep the invite buttons](/img/calendar/cancel-invite-question-guests.png)
+
+![The same question when no one besides the organizer was invited: "1 key date is on your calendar. Cancelling removes it. No one else was invited, so no email is sent."](/img/calendar/cancel-invite-question-no-guests.png)
 
 - **Keep the invite** is the default. The deal is cancelled or archived and every invite stays on guests' calendars.
 - **Cancel the invite** cancels or archives the deal and then cancels every live invite on it. Each invited person is emailed a cancellation, except for dates that have already passed, which nobody is emailed about. Cancelling also turns off calendar invites for that deal, and its Activity shows **Cancelled all calendar invites**.
