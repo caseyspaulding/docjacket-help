@@ -66,4 +66,4 @@ If a deal's DocDrop address has leaked or is getting junk mail, replace it:
 
 **The old address stops working as soon as you confirm.** Email sent to it afterwards will not reach the deal, and the sender does not get a bounce, so tell anyone who saved the old address or forwards mail to it to use the new one. Agent portals show the new address automatically.
 
-**New address** isn't shown to view-only seats or to members who are limited to their own deals.
+**New address** isn't shown to view-only seats. A member who is limited to their own deals sees it on the deals they are on.
