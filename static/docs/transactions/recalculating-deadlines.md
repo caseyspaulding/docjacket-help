@@ -20,13 +20,15 @@ A common surprise: you update the **Contract Date** or **Closing Date**, but the
 
 ## What happens when you change an anchor date
 
-When you edit a key date — say you push Closing back a week — DocJacket automatically recalculates everything built to depend on it:
+When a key date's value changes — say you push Closing back a week — DocJacket automatically recalculates everything built to depend on it. This happens however the date was set: typing it, the deal edit page, a contract uploaded onto the deal, a form submission, an e-signature confirmation, Follow Up Boss, the public API, Ask AI or a connected assistant, and Undo.
+
+What follows the change:
 
 - **Computed key dates** anchored to it shift by their rule
 - **Task due dates** that were anchored to it (from a Playbook) move too
 - DocJacket may show a **cascade preview** first, so you can review the affected dates and tasks before saving
 
-Dates and tasks with a plain fixed date — and any date you've manually overridden — are left alone.
+Dates and tasks with a plain fixed date are left alone. So are dates that are **Completed** or **N/A**, and any date you've manually overridden.
 
 ## Getting every deadline right
 
@@ -36,6 +38,12 @@ If you changed the contract or closing date and the other deadlines didn't follo
 2. Or **edit each deadline by hand** — manual dates won't move on their own.
 
 If a key date *is* computed but shows a stale value because it was manually overridden, open its drawer and use **Overridden — reset** to recompute it from its anchor.
+
+**Overridden — reset** only appears on a date that has a rule (an anchor plus an offset). A date with no rule never shows it.
+
+### A date shows "Not calculated"
+
+The date it depends on is set, but this date hasn't been filled in from it yet. Click **Recalculate** next to the **Not calculated** label (on the key date or in the expanded row). If you don't see the button, your seat is read-only. See [Key Dates & Financials](./key-dates-and-financials.mdx) for what **Missing anchor** and **Needs a date** mean.
 
 ## Why aren't my key dates in chronological order?
 
