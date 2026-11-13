@@ -114,7 +114,12 @@ async function main() {
   }
 
   entries.sort((a, b) => a.path.localeCompare(b.path));
-  await writeFile(OUT_FILE, JSON.stringify(entries), 'utf8');
+  // One page per line with a blank line between pages. Git merges line by line, so a
+  // single-line file conflicted between any two PRs that each changed an article; this
+  // way two PRs conflict only when they change the same page. The blank line keeps
+  // changes to neighbouring pages from touching. Still plain JSON to every reader.
+  const body = entries.map((e) => JSON.stringify(e)).join(',\n\n');
+  await writeFile(OUT_FILE, `[\n${body}\n]\n`, 'utf8');
 
   const tokens = Math.round(entries.reduce((n, e) => n + e.markdown.length, 0) / 4);
   console.log(`[build-help-corpus] wrote ${entries.length} pages (~${tokens} tokens) to ${relative(REPO_ROOT, OUT_FILE)}`);
