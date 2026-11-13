@@ -120,6 +120,8 @@ This is the fastest way. Upload contract documents and DocJacket will read throu
 
 ![Upload Documents screen with Create New Transaction selected and a document drop zone](/img/getting-started/new-transaction-upload.png)
 
+If you drop in something that isn't a purchase contract, such as an addendum, the review screen tells you and offers a way forward. See [If the document isn't a purchase contract](../transactions/creating-a-transaction.mdx#if-the-document-isnt-a-purchase-contract).
+
 ### Option B: Create manually
 
 If you don't have a contract handy or prefer to enter details yourself:
@@ -747,7 +749,7 @@ If the drawer shows **Pending Uploads**, those uploads were scanned but never sa
 
 Pending upload rows can show the extracted address or file name, document count, age, and file list. Use **Review** to return to the extraction review flow.
 
-Use **Discard** only when the upload should stop appearing as unfinished work. Discard soft-dismisses the pending-upload card; it does not erase the underlying extraction history.
+Use **Discard** only when the upload should stop appearing as unfinished work. Discard takes effect immediately: there is no confirmation step, and a "Pending upload discarded" message appears. It soft-dismisses the pending-upload card; it does not erase the underlying extraction history.
 
 ## Ready for Review
 
@@ -763,6 +765,14 @@ Depending on the draft, you may be able to:
 - Use **Approve All** when every ready item should proceed
 
 This tab is the review-first safety step for automation output. Click a card to open the detail view. Nothing sends from here until you approve, send, skip, or dismiss the item.
+
+### Emails from Automation Rules
+
+A rule that sends when a deal enters a status, or when a Playbook task is completed, can land here even if your organization lets other automated emails send without review. DocJacket holds it when a smart field has no value on the deal, a merge field in the template can't be filled in, or the template was deleted, is inactive, or has no wording. The card says what the problem is, and you can't approve it until the blanks are filled in. Open the draft, fill them in, save, then send. See [Automation Rules](../settings/email-and-automation.md#what-does-a-status-or-task-rule-send).
+
+### Attachments from another deal
+
+Every document attached to a draft must be on that draft's deal. If one is not, approving the draft is refused with "One of the attached documents is not on this deal. Remove it from the draft and approve again." Remove the document from the draft and approve again.
 
 ### New deals from email
 
@@ -1451,6 +1461,15 @@ Always review the extracted data before saving. Nothing is final until you click
 :::tip
 Got a contract with multiple documents bundled into one PDF? DocJacket's AI can detect and split them automatically. See [Smart Document Splitting](/docs/ai-features/smart-document-splitting) for details.
 :::
+
+### If the document isn't a purchase contract
+
+If you upload a document that DocJacket reads as something other than a purchase contract, listing agreement or offer, such as an addendum or other supporting document, and it doesn't belong to an existing deal, the review screen says "We read this as an addendum, not a purchase contract". The screen offers one of two ways forward:
+
+- **A property address was found:** click **Create deal** to start the deal from what was read, and add the purchase contract to it later. Or click **Upload the purchase contract instead**.
+- **No property address was found:** there is nothing to name a deal by yet. Click **Upload the purchase contract**, or **Enter the deal by hand**.
+
+The Dates card names the document it read, for example "We found 3 dates in this addendum".
 
 ## Create manually
 
@@ -4747,7 +4766,7 @@ If you would rather not use a rule, you can complete the task when you file the 
 
 For each linked email you can configure:
 
-- Email template
+- Email template. Templates in the **Reports** category can't be used here, because they only work when DocJacket sends a generated report. DocJacket refuses with "Report templates only work when DocJacket sends a generated report. Pick a different email for this task."
 - Offset and anchor — such as 3 days before the task due date, or on a Key Date like Closing
 - Send time
 - Weekend or holiday fallback rule
@@ -4762,7 +4781,7 @@ Example:
 - Due: Closing Date - 3 days
 - Linked email: Send closing reminder 1 day before the task due date at 8:00 AM
 
-Emails prepared this way send from your connected Gmail or Outlook account when one is available. Upcoming or held date-based emails appear in the Review queue's **Scheduled** tab, where they can be edited, sent now, or cancelled when supported.
+Emails prepared this way send from the deal assignee's default connected Gmail or Outlook mailbox. See [which mailbox an email sends from](../messages/how-email-sending-works.mdx#which-mailbox-an-email-sends-from) for what happens when the deal has no assignee or the assignee has no connected mailbox. Upcoming or held date-based emails appear in the Review queue's **Scheduled** tab, where they can be edited, sent now, or cancelled when supported.
 
 ## Delivery mode
 
@@ -4792,6 +4811,18 @@ In the **Task emails** section, each linked email shows what has already happene
 
 - **Sent {'{date}'}** — the email was prepared and sent.
 - **Notified in-app {'{date}'} — not sent** — this was a notify-mode email. You got the in-app heads-up on its date; **no email was sent**. You can still send it yourself with **Review & send**, and completing the task will prepare it too.
+- **Drafted {'{date}'} — waiting for your review, not sent** — the draft is in your Review queue. Use **Open review queue** to go to it.
+- **Skipped — its send date had already passed when this task was added. Not sent.** — the email's date was already behind you when the task was created, for example when a Playbook is applied to a deal that is already under way.
+- **Skipped — its send date had already passed when the key date it counts from was calculated. Not sent.** — see below.
+- **Skipped when the task was completed — not sent** — you chose **Skip these** when you completed the task.
+
+The two "send date had already passed" skips keep the **Review & send** button, so you can still send the email yourself.
+
+#### When a key date is filled in late
+
+Say a task email counts from a key date, and that key date was blank. When you recalculate the deal's dates and DocJacket fills in that key date for the first time, the email's send date can land in the past. DocJacket skips the email rather than sending it late.
+
+This only applies to dates that DocJacket itself fills in during a recalculation. A key date that someone types in, or that arrives from a contract, Follow Up Boss, or the API, counts as entered, and a task email counting from it is not skipped.
 
 If an email has already been sent, its **Review & send** button goes away — there is nothing left to send. Notify-mode emails keep the button, because a notification isn't an email.
 
@@ -4926,7 +4957,7 @@ If you completed a task and no email showed up in your Review queue, see [Why di
 
 # Why didn't my task email appear?
 
-You checked a task off, expected the email in your **Review queue**, and nothing showed up. Almost always it's one of the five causes below.
+You checked a task off, expected the email in your **Review queue**, and nothing showed up. Almost always it's one of the six causes below.
 
 **Quickest way to find out:** open the transaction, click the task, and look at the **Task emails** section. Each linked email shows its current status right there, which usually identifies the cause immediately.
 
@@ -4975,6 +5006,17 @@ The task simply has nothing attached — completing it was never going to produc
 If **Require review before sending** is off for that email, and your organization-wide review setting is also off, the email sends immediately on completion rather than waiting for approval.
 
 **What to do:** if you want a review step, turn on **Require review before sending** for that email — or turn on **Review auto-emails before sending** in **Settings > Organization** to force every automated email to wait. See [Review before sending](./email-automation.mdx#review-before-sending).
+
+## 6. The email's send date had already passed
+
+**What you'd see:** one of these lines under **Task emails**:
+
+- **Skipped — its send date had already passed when this task was added. Not sent.**
+- **Skipped — its send date had already passed when the key date it counts from was calculated. Not sent.**
+
+DocJacket doesn't send an email late. If the date it was due had already passed when the task was added to the deal, it is skipped. The same is true when the email counts from a key date that was blank and a recalculation filled in a date that was already in the past.
+
+**What to do:** the email still has its **Review & send** button. Open it, check the wording, and send it yourself if it is still wanted. A key date that someone types in, or that arrives from a contract, Follow Up Boss, or the API, is treated as entered and isn't skipped this way. See [Reading the status on a task](./email-automation.mdx#reading-the-status-on-a-task).
 
 ## The email appeared, but it shows old wording
 
@@ -5755,6 +5797,17 @@ right address on every deal:
 If a deal is assigned to a login whose mailbox you haven't connected on the
 login you're using, you'll see the note described above and your own default is used.
 
+## When the sender has left your organization
+
+Automated deal email never sends from someone who is no longer an active member of your organization, whether they were removed, deactivated, or moved to another organization. DocJacket treats them as having no connected mailbox, and their mailbox is left alone. Reassign their deals to an active member so automated email goes out from that person's mailbox.
+
+What happens to an email for such a deal depends on the **Only send transaction email from a connected mailbox** setting (see [Requiring a connected mailbox](#requiring-a-connected-mailbox)):
+
+- **Setting on:** the email goes from the account owner's connected mailbox. If the owner has none, the email is held and the owner is nudged to connect one.
+- **Setting off (the default):** the email goes through DocJacket's email service, with the account owner as the Reply-To address, so replies reach the owner.
+
+A one-off email that a departed member scheduled is not sent. It is marked failed with this message: "The person who scheduled this email is no longer an active member of this organization. Open the scheduled message and send it from your own mailbox."
+
 ## Where replies go
 
 Because the email is sent from your real mailbox, replies go straight back to
@@ -5984,6 +6037,14 @@ You can schedule by:
 
 Scheduled one-off emails appear in **Email > Scheduled** with a **One-off** badge. You can cancel them there. Editing one opens the composer with the message prefilled; saving cancels the original scheduled send and creates a new one.
 
+### Scheduling for a time that has already passed
+
+When you schedule from **Add scheduled email** on the deal's **Email > Scheduled** tab, the **Schedule Email** window checks the send time as you pick it. If the time is already behind you, a note appears under the date:
+
+- **This time has passed — it will send right away.** The button reads **Send now** (**Save and send now** when you are editing a scheduled email).
+- **This time has passed — it will go to review right away.** This appears instead when the email is held for review, either because it is set to require review or because your organization reviews automated email. The button keeps its usual **Schedule email** (or **Save changes**) label.
+- **This time is more than 2 days ago, so it can't be scheduled. Pick a later date or offset.** The email can't be saved until you choose a later time.
+
 You can't schedule a reply. **Schedule** is unavailable while you **Reply** or **Reply all**, so send the reply now, or compose a new message and schedule that.
 
 ## Attachments
@@ -5995,6 +6056,14 @@ Files you upload or drop are **saved to the deal's Documents** and attached to t
 If you attach transaction documents, DocJacket sends the selected files with the message and keeps the email linked to the transaction.
 
 **Reply** and **Reply all** send the attachments you add, the same as a new message or Forward.
+
+### Attachments stay with the deal
+
+You can only attach documents that are on the deal you are sending from. A document from another deal can't be attached. If a document was deleted or moved off the deal after you attached it:
+
+- **Sending now:** the email is not sent. You see "Couldn't attach: ... Nothing was sent — remove the file or re-add it, then try again."
+- **Scheduled email:** when the time comes the email is marked failed with "Couldn't attach: ... The email was not sent — re-attach and reschedule."
+- **Approving a draft in the Review queue:** if an attached document is from another deal, approving is refused with "One of the attached documents is not on this deal. Remove it from the draft and approve again."
 
 ## Reviewing messages
 
@@ -14212,7 +14281,7 @@ The default categories are:
 | Update | Status updates and post-closing thank-yous |
 | Notification | Automated notices |
 
-Categories only organize and filter your templates. They do not change who receives an email or when it sends. If a template does not fit a default, add your own category.
+Categories organize and filter your templates. They do not change who receives an email or when it sends, with one exception: the **Reports** category. A template in the Reports category only works when DocJacket sends a generated report, so you can't choose it for a task email, a Playbook email, an Automation Rule, or a scheduled email. If you try, DocJacket refuses with "Report templates only work when DocJacket sends a generated report. Pick a different email for this task." Pick a template from another category instead. If a template does not fit a default, add your own category.
 
 From this page, you can:
 
@@ -14286,6 +14355,18 @@ If you open a rule that was saved earlier with a text option, a note in the edit
 ### Which email templates can a rule use?
 
 Only your own templates. DocJacket's starter templates are not offered in a rule's template list. To use one, copy it into your templates first, then pick your copy in the rule.
+
+### What does a status or task rule send?
+
+A rule that fires when a transaction enters a status, or when a Playbook task is completed, sends the subject and wording of the template you chose, filled in from the deal. It also adds the deal owner's email signature. A rule with no template, or one set to a DocJacket starter template, sends DocJacket's short notice instead.
+
+DocJacket holds the email in your **Review queue** instead of sending it when it can't be sent cleanly. The review card says what the problem is. This happens when:
+
+- A smart field in the template has no value on the deal yet
+- A merge field in the template can't be filled in
+- The template was deleted, is inactive, or has no wording
+
+When that happens the email is held even if your organization lets other automated emails send without review. You can't approve it until the blanks are filled in: the card says "This draft still has blanks where these fields had no value", with the field names, and asks you to open the draft, fill them in and save before sending. See [Review Queue](../operations/pending-review.md).
 
 You can enable or disable a rule without deleting it. Deleting a rule stops future triggers; it does not undo messages that were already drafted, scheduled, or sent.
 
