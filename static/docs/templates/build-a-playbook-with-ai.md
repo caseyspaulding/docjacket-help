@@ -69,6 +69,8 @@ After the Playbook is created, click **Open** and the Playbook's name to go to i
 
 **Improve with the assistant** opens the same steps, titled **Improve** and your Playbook's name. Every change is listed on **Review**, and nothing changes until you press **Save changes**. If deals already use the Playbook, Review tells you how many. Those deals keep the tasks, dates and emails they already have.
 
+When a task's condition changes, Review lists it as **Condition: before → after**, for example **Condition: none → Cash deal**. A task with no condition shows as `none`.
+
 ## Drafts
 
 You have one open draft at a time. Leaving the builder keeps it, and **Create with AI** opens that draft again instead of starting a new one.
@@ -89,6 +91,8 @@ A Playbook task can carry a condition, so it is added only to the deals it fits.
 - To **skip** a task on cash deals, don't use **Cash deal**. Use an **Add when** rule of **Buyer is financing**, or put the task under a key date that only financed deals get.
 
 For example, **Confirm Cash Deal Proof of Funds** is a correct use of the **Cash deal** condition: only cash deals need it. **Order Appraisal** with the **Cash deal** condition would do the opposite of what you want: it would be added only on cash deals and left off every financed deal. Give it a **Buyer is financing** rule instead.
+
+On the **Tasks** step, a task that has a condition shows an **If: …** chip beside its name, worded the same as in the Playbook editor, for example **If: Cash deal** or **If: Buyer is financing**. When you edit that task there, a line reads "Only on some deals: [the condition]. Change it in the Playbook editor after Create, or ask the assistant." The condition itself can't be changed in the builder form.
 
 When a task that sounds like financing, such as an appraisal or lender task, is set to cash deals only, the builder warns you on that task: financed deals will not get it.
 

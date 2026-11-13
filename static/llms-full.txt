@@ -8679,6 +8679,8 @@ After the Playbook is created, click **Open** and the Playbook's name to go to i
 
 **Improve with the assistant** opens the same steps, titled **Improve** and your Playbook's name. Every change is listed on **Review**, and nothing changes until you press **Save changes**. If deals already use the Playbook, Review tells you how many. Those deals keep the tasks, dates and emails they already have.
 
+When a task's condition changes, Review lists it as **Condition: before → after**, for example **Condition: none → Cash deal**. A task with no condition shows as `none`.
+
 ## Drafts
 
 You have one open draft at a time. Leaving the builder keeps it, and **Create with AI** opens that draft again instead of starting a new one.
@@ -8699,6 +8701,8 @@ A Playbook task can carry a condition, so it is added only to the deals it fits.
 - To **skip** a task on cash deals, don't use **Cash deal**. Use an **Add when** rule of **Buyer is financing**, or put the task under a key date that only financed deals get.
 
 For example, **Confirm Cash Deal Proof of Funds** is a correct use of the **Cash deal** condition: only cash deals need it. **Order Appraisal** with the **Cash deal** condition would do the opposite of what you want: it would be added only on cash deals and left off every financed deal. Give it a **Buyer is financing** rule instead.
+
+On the **Tasks** step, a task that has a condition shows an **If: …** chip beside its name, worded the same as in the Playbook editor, for example **If: Cash deal** or **If: Buyer is financing**. When you edit that task there, a line reads "Only on some deals: [the condition]. Change it in the Playbook editor after Create, or ask the assistant." The condition itself can't be changed in the builder form.
 
 When a task that sounds like financing, such as an appraisal or lender task, is set to cash deals only, the builder warns you on that task: financed deals will not get it.
 
@@ -9113,6 +9117,7 @@ If the form already has something typed in it, or is still saving, the assistant
 
 - **Inviting a teammate** is for owners and admins. The assistant never fills in the Owner role. If your organization has no free seat, it does not open the form; it takes you to **Settings > Team Members**, where you can see and manage seats.
 - **A view-only seat** can't open a filled-in form. The assistant tells you so.
+- **A form that can't open at all.** If the form never appears, the line under the answer reads "The form did not open, so nothing was filled in." Nothing was changed, so ask again.
 
 ## It prepares changes for you to approve {#approve-changes}
 
@@ -9122,6 +9127,7 @@ When you ask for a change, the assistant puts it on a card under its answer. For
 - Moving a key date, or marking it done, waived or not applicable
 - Adding someone to a deal, taking them off, or moving them to another role
 - Restoring an archived deal (see [below](#restore-archived-deal))
+- Deleting tasks. Their subtasks go with them, and their unsent reminders, scheduled follow-up emails and review drafts are cancelled. See [Deleting tasks](#deleting-tasks).
 
 The card's heading reads **Ready to do — nothing happens until you approve**. On the card:
 
@@ -9132,6 +9138,22 @@ The card's heading reads **Ready to do — nothing happens until you approve**. 
 - When a change can be undone, its row shows **Undo** after you approve it. For example, taking someone off a deal can be undone for 7 days.
 
 If your seat is view-only, the card says *"Your seat is view-only, so this can't be applied."*
+
+### Deleting tasks {#deleting-tasks}
+
+When the assistant prepares a task deletion, the subtasks of those tasks are deleted with them. Their unsent reminders, scheduled follow-up emails and review drafts are cancelled.
+
+**Undo** on the card works for 7 days. The tasks come back with their subtasks, notes, comments and follow-up email setup, and the card then reads "Brought back N task(s)…". Emails and reminders that were cancelled stay cancelled, and undo sends nothing.
+
+Undo is only on the card. The **Delete** button on a deal's **Tasks** tab has no undo.
+
+### Asking about a task {#ask-about-a-task}
+
+Open a task on a deal's **Tasks** tab and click **Ask the assistant** in the task's drawer. Hover text on the button reads "Open Ask AI about this task. Nothing changes until you approve it." Ask AI opens with this in the message box: *Help me get this task done: "[the task name]". Tell me what it needs, and propose anything you can do for me to approve.* Nothing is sent until you press **Send**. View-only seats see the button too, because asking changes nothing.
+
+### Questions about a deal's notes, email and texts {#deal-reads}
+
+On a deal, Ask AI can look up the deal's notes, email, text messages, scheduled sends, checks, change history, key-date history, agreements and fees. Use it for questions like *"What did the lender say in the last email?"* It only reads. It doesn't mark an email as read or change anything on the deal. It reads the deals you can see; if your role is limited to your own deals, that means the deals you are on.
 
 ## "Is anything wrong with this deal?" {#deal-check}
 
@@ -9220,7 +9242,7 @@ Setup is for an owner or admin, or a teammate the owner has allowed to edit Play
 
 If you ask for setup and can't use it, the answer says why and who can, naming up to three of your organization's owners and admins.
 
-The setup assistant is part of paid plans. On the Free plan, it is included in an organization's first 30 days while its required setup steps are still open, up to the included usage.
+The setup assistant works for an organization on a paid plan, including while the paid plan is in its free trial, and on a complimentary plan. On the Free plan, it is included in an organization's first 30 days while its required setup steps are still open, up to the included usage.
 
 ### Leaving setup
 
@@ -11195,7 +11217,7 @@ DocJacket's MCP server exposes **67 tools** across three **scope tiers**, and su
 
 | Scope | What it covers | Approval flow |
 |---|---|---|
-| **`read`** (40 tools) | Search, lookup, list — e.g. `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions`, `mcp_health_check`. Nothing here changes a record or contacts anyone. | Auto-approved per conversation in most clients |
+| **`read`** (40 tools) | Search, lookup, list — e.g. `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions`, `mcp_health_check`. With `read`, an assistant can also read a deal's internal notes, its email including message bodies, its text-message threads, scheduled sends, consistency checks, change log, key-date history, agreements, and TC fees and invoices (no payment links). Nothing here changes a record or contacts anyone. | Auto-approved per conversation in most clients |
 | **`draft`** (7 tools) | Low-risk writes to your own records — `create_tasks`, `complete_task`, `update_key_date`, `add_key_dates_batch`, `apply_checklist`, `log_activity`, `save_status_summary`. **Nothing in this tier sends anything to anyone.** | DocJacket marks these as write tools; the assistant asks first if its approval setting for the tool is on |
 | **`actions`** (20 tools) | Side-effecting work — sending email (`send_client_update`, `send_document_request`, `send_agent_followup`, `send_email_to_agent`), creating and deleting records, and disclosure packages that expose documents outside the org. | DocJacket marks these as write tools; the assistant asks first if its approval setting for the tool is on |
 
@@ -11237,6 +11259,8 @@ DocJacket enforces the scope tier at the server. The per-tool toggle is enforced
 ## Read-only by default
 
 The safest pattern — and what we recommend for first-time users — is to consent to `read` only at the DocJacket consent screen. Your assistant can search, look up, and summarize without ever being able to send an email or create a task.
+
+`read` is not limited to lookups. It lets the assistant read a deal's internal notes, the full text of its emails, and its text-message threads, so grant it only to an assistant you are comfortable seeing that content. It can't change any of it. A member whose role is limited to their own deals can't connect an assistant at all (see [Understanding Roles](../getting-started/understanding-roles.mdx)).
 
 If your account has draft or action scopes enabled later, you can re-consent or mint a new token with those scopes. You can revoke access any time.
 
