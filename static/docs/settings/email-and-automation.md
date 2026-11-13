@@ -28,7 +28,7 @@ The default categories are:
 | Update | Status updates and post-closing thank-yous |
 | Notification | Automated notices |
 
-Categories only organize and filter your templates. They do not change who receives an email or when it sends. If a template does not fit a default, add your own category.
+Categories organize and filter your templates. They do not change who receives an email or when it sends, with one exception: the **Reports** category. A template in the Reports category only works when DocJacket sends a generated report, so you can't choose it for a task email, a Playbook email, an Automation Rule, or a scheduled email. If you try, DocJacket refuses with "Report templates only work when DocJacket sends a generated report. Pick a different email for this task." Pick a template from another category instead. If a template does not fit a default, add your own category.
 
 From this page, you can:
 
@@ -102,6 +102,18 @@ If you open a rule that was saved earlier with a text option, a note in the edit
 ### Which email templates can a rule use?
 
 Only your own templates. DocJacket's starter templates are not offered in a rule's template list. To use one, copy it into your templates first, then pick your copy in the rule.
+
+### What does a status or task rule send?
+
+A rule that fires when a transaction enters a status, or when a Playbook task is completed, sends the subject and wording of the template you chose, filled in from the deal. It also adds the deal owner's email signature. A rule with no template, or one set to a DocJacket starter template, sends DocJacket's short notice instead.
+
+DocJacket holds the email in your **Review queue** instead of sending it when it can't be sent cleanly. The review card says what the problem is. This happens when:
+
+- A smart field in the template has no value on the deal yet
+- A merge field in the template can't be filled in
+- The template was deleted, is inactive, or has no wording
+
+When that happens the email is held even if your organization lets other automated emails send without review. You can't approve it until the blanks are filled in: the card says "This draft still has blanks where these fields had no value", with the field names, and asks you to open the draft, fill them in and save before sending. See [Review Queue](../operations/pending-review.md).
 
 You can enable or disable a rule without deleting it. Deleting a rule stops future triggers; it does not undo messages that were already drafted, scheduled, or sent.
 

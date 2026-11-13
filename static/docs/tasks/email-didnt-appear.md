@@ -9,7 +9,7 @@ description: You completed a task and no email showed up in the Review queue. He
 
 # Why didn't my task email appear?
 
-You checked a task off, expected the email in your **Review queue**, and nothing showed up. Almost always it's one of the five causes below.
+You checked a task off, expected the email in your **Review queue**, and nothing showed up. Almost always it's one of the six causes below.
 
 **Quickest way to find out:** open the transaction, click the task, and look at the **Task emails** section. Each linked email shows its current status right there, which usually identifies the cause immediately.
 
@@ -58,6 +58,17 @@ The task simply has nothing attached — completing it was never going to produc
 If **Require review before sending** is off for that email, and your organization-wide review setting is also off, the email sends immediately on completion rather than waiting for approval.
 
 **What to do:** if you want a review step, turn on **Require review before sending** for that email — or turn on **Review auto-emails before sending** in **Settings > Organization** to force every automated email to wait. See [Review before sending](./email-automation.mdx#review-before-sending).
+
+## 6. The email's send date had already passed
+
+**What you'd see:** one of these lines under **Task emails**:
+
+- **Skipped — its send date had already passed when this task was added. Not sent.**
+- **Skipped — its send date had already passed when the key date it counts from was calculated. Not sent.**
+
+DocJacket doesn't send an email late. If the date it was due had already passed when the task was added to the deal, it is skipped. The same is true when the email counts from a key date that was blank and a recalculation filled in a date that was already in the past.
+
+**What to do:** the email still has its **Review & send** button. Open it, check the wording, and send it yourself if it is still wanted. A key date that someone types in, or that arrives from a contract, Follow Up Boss, or the API, is treated as entered and isn't skipped this way. See [Reading the status on a task](./email-automation.mdx#reading-the-status-on-a-task).
 
 ## The email appeared, but it shows old wording
 
