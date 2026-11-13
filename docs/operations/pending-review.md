@@ -27,7 +27,7 @@ If the drawer shows **Pending Uploads**, those uploads were scanned but never sa
 
 Pending upload rows can show the extracted address or file name, document count, age, and file list. Use **Review** to return to the extraction review flow.
 
-Use **Discard** only when the upload should stop appearing as unfinished work. Discard soft-dismisses the pending-upload card; it does not erase the underlying extraction history.
+Use **Discard** only when the upload should stop appearing as unfinished work. Discard takes effect immediately: there is no confirmation step, and a "Pending upload discarded" message appears. It soft-dismisses the pending-upload card; it does not erase the underlying extraction history.
 
 ## Ready for Review
 
@@ -43,6 +43,14 @@ Depending on the draft, you may be able to:
 - Use **Approve All** when every ready item should proceed
 
 This tab is the review-first safety step for automation output. Click a card to open the detail view. Nothing sends from here until you approve, send, skip, or dismiss the item.
+
+### Emails from Automation Rules
+
+A rule that sends when a deal enters a status, or when a Playbook task is completed, can land here even if your organization lets other automated emails send without review. DocJacket holds it when a smart field has no value on the deal, a merge field in the template can't be filled in, or the template was deleted, is inactive, or has no wording. The card says what the problem is, and you can't approve it until the blanks are filled in. Open the draft, fill them in, save, then send. See [Automation Rules](../settings/email-and-automation.md#what-does-a-status-or-task-rule-send).
+
+### Attachments from another deal
+
+Every document attached to a draft must be on that draft's deal. If one is not, approving the draft is refused with "One of the attached documents is not on this deal. Remove it from the draft and approve again." Remove the document from the draft and approve again.
 
 ### New deals from email
 
