@@ -43,6 +43,17 @@ Type into **Message the assistant** and click **Send**, or click **Draft everyth
 - **It tells you what a Playbook can't hold.** If you ask for something a Playbook doesn't store, such as a PDF or a flyer, the assistant says so first and carries on with the rest of the step.
 - **Report templates aren't used for task emails.** Templates in your **Reports** category are left out when the assistant picks an email for a task.
 
+## Subtasks in the builder
+
+If a task has a group of small checks under it, ask for them as subtasks. For example: "Add a task called Due Diligence Research with these checks under it as subtasks: Request HOA Verification, Research Septic Details, Research Well Details." The assistant adds each check as a subtask of the task, not as a list in the task's description.
+
+- **Tasks step:** each subtask is indented right under its task. You can edit one there, and it has no **Phase** field because it follows its task's phase. Removing a task that has subtasks says "This also removes its N subtasks."
+- **Review step:** the totals count tasks and subtasks separately, for example "38 tasks, 4 subtasks", and each subtask line reads like "Request HOA Verification (subtask of Due Diligence Research)".
+- **Copying from another Playbook:** when you ask the assistant to copy tasks from one of your Playbooks, each copied task brings its subtasks with it. A subtask can't be copied on its own.
+- **What a subtask can't have:** subtasks are one level deep, and emails go on the main task. A task can't wait on a subtask.
+
+After the Playbook is created, the subtasks work like any others. See [Subtasks](../tasks/subtasks.mdx#adding-subtasks-to-a-task-in-a-playbook).
+
 ## Review and create
 
 The **Review** step lists everything the draft will add. Untick any line you don't want. **Test it** shows the key dates worked out against a sample date so you can check the timing.
