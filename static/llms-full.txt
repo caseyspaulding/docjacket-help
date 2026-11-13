@@ -654,7 +654,7 @@ Each pending upload card can show:
 - How long ago the upload was created
 - Additional file names when the group has multiple documents
 
-Use **Review** to return to the extraction review flow and finish saving. Use **Discard** only when the upload should stop appearing as unfinished work. Discarding a pending upload soft-dismisses the card; it does not delete the underlying extraction jobs or history.
+Use **Review** to return to the extraction review flow and finish saving. Use **Discard** only when the upload should stop appearing as unfinished work. Discard happens right away, with no confirmation step. The "Pending upload discarded" message has an **Undo** button, which puts the card back where it was and shows "Pending upload restored". Undo only reverses that one discard, and only the message that appears has it. Discarding a pending upload soft-dismisses the card; it does not delete the underlying extraction jobs or history.
 
 Pending Uploads only appears when there is something unfinished. If there are no unfinished extraction groups, the section stays hidden.
 
@@ -791,7 +791,7 @@ If the drawer shows **Pending Uploads**, those uploads were scanned but never sa
 
 Pending upload rows can show the extracted address or file name, document count, age, and file list. Use **Review** to return to the extraction review flow.
 
-Use **Discard** only when the upload should stop appearing as unfinished work. Discard takes effect immediately: there is no confirmation step, and a "Pending upload discarded" message appears. It soft-dismisses the pending-upload card; it does not erase the underlying extraction history.
+Use **Discard** only when the upload should stop appearing as unfinished work. Discard takes effect immediately: there is no confirmation step, and a "Pending upload discarded" message appears. That message has an **Undo** button. Click **Undo** and the upload goes back into the list where it was, with a "Pending upload restored" message. If it can't be put back, you see "Couldn't restore it." The Undo button is only on the message that appears, so click it right away if you discarded the wrong one. **Undo** reverses only that one discard. Discard soft-dismisses the pending-upload card; it does not erase the underlying extraction history.
 
 ## Ready for Review
 
@@ -933,7 +933,7 @@ Nothing is final until you complete the review and save step.
 
 ![Extraction review screen showing notes, confidence, review-required status, apply options, and the final create or update action](/img/ai-extraction/extraction-review-controls.png)
 
-Pending uploads can also appear in the Review queue drawer and on the dashboard. Those cards take you back to the same review-and-save workflow. Use **Discard** only when the upload should stop appearing as unfinished work; it soft-dismisses the pending-upload card without deleting extraction history.
+Pending uploads can also appear in the Review queue drawer and on the dashboard. Those cards take you back to the same review-and-save workflow. Use **Discard** only when the upload should stop appearing as unfinished work. The "Pending upload discarded" message that appears has an **Undo** button, which puts the card back. Discard soft-dismisses the pending-upload card without deleting extraction history.
 
 ## Single-document progress
 
@@ -2229,6 +2229,8 @@ What follows the change:
 - **Computed key dates** anchored to it shift by their rule
 - **Task due dates** that were anchored to it (from a Playbook) move too
 - DocJacket may show a **cascade preview** first, so you can review the affected dates and tasks before saving
+
+Dates can chain: Final Walkthrough counts from Closing, and Closing counts from the Effective Date. One recalculation updates a chain in order, starting with the date it counts from, so you don't need to recalculate again. It doesn't matter where each row sits in the timeline.
 
 Dates and tasks with a plain fixed date are left alone. So are dates that are **Completed** or **N/A**, and any date you've manually overridden.
 
