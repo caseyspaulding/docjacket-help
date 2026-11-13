@@ -17,7 +17,9 @@ Cancelling is a status change. Move the transaction into any status whose type i
 3. **From the Transactions list** — use the inline status control
 4. **From the transaction's Edit form** — change the **Status** field and save
 
-All four do the same thing. Closing a completed deal works the same way, using a **Closed**-type status. See [Transaction Statuses](./transaction-statuses.mdx) for how status types work and how to add your own.
+All four do the same thing. On the Edit form, picking a status that ends the deal shows the same line under **Status** as the status chip does (*"Ends the deal: cancels unsent reminders and scheduled emails, skips open tasks, marks key dates not applicable."*). Saving then does what the status chip does: the change is recorded as **Changed Status** in the deal's activity, your Automation Rules for that status run, and a cancel asks the calendar-invite question described below. Closing a completed deal works the same way, using a **Closed**-type status. See [Transaction Statuses](./transaction-statuses.mdx) for how status types work and how to add your own.
+
+![Edit form with Status set to a status that ends the deal, showing the line "Ends the deal: cancels unsent reminders and scheduled emails, skips open tasks, marks key dates not applicable." under the Status field](/img/transactions/edit-form-status-ends-the-deal.png)
 
 ## Closing out a file
 
@@ -46,7 +48,17 @@ Moving a transaction from an open status into a **Closed** or **Cancelled** stat
 - Pending **scheduled messages** are cancelled
 - Unsent **reminders** are deleted
 - Pending **scheduled emails** are deleted (already-sent emails are kept, so your send history stays intact)
-- **Calendar events** for the transaction are removed
+- The deal's **events** are removed from your team's connected Google Calendars (calendar sync). This is separate from [calendar invites](../calendar/calendar-invites.md) sent to the people on the deal, which are covered below
+
+### Calendar invites when you cancel
+
+If the deal has live [calendar invites](../calendar/calendar-invites.md) on key dates that haven't passed yet, moving it to a **Cancelled**-type status (including from Closed) asks **Also cancel the calendar invite?** (plural when more than one key date is affected) with **Cancel the invite**, **Keep the invite** and **Back**.
+
+- **Keep the invite** is the default. The deal is cancelled and the invites stay on guests' calendars.
+- **Cancel the invite** cancels the deal, then cancels every live invite and emails each invited person a cancellation.
+- **Back** changes nothing. On the Edit form that means nothing is saved, including your other edits.
+
+A **Closed** status never asks, and closing leaves the invites as they are. Changes made through the API or by the assistant never cancel invites. For the full wording and what each answer does, see [When a deal is cancelled or archived](../calendar/calendar-invites.md#when-a-deal-is-cancelled-or-archived).
 
 **Closed vs. Cancelled:** both wind down pending work the same way. The difference is that a **Closed** status also fires your "closed" automation and pushes the closed stage to connected CRMs (like Follow Up Boss). A **Cancelled** status does not trigger closed-stage automation.
 
