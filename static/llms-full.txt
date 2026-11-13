@@ -6718,6 +6718,8 @@ live. Your existing ones are all under the **My Playbooks** tab. Full guide:
 
 See [Playbooks](./timeline-templates.md) for the full builder walkthrough.
 
+To have the Playbook assistant draft one for you from a description or your existing checklist, choose **New Playbook → ✦ Create with AI**. See [Build a Playbook with AI](./build-a-playbook-with-ai.md).
+
 ## Applying a Playbook to a deal
 
 Apply a Playbook to a transaction and DocJacket sets up the whole deal at once — its tasks, key dates, and required documents — in a **single click**. Two conveniences:
@@ -8249,6 +8251,84 @@ Set the field in the deal's **Overview**, in the **Custom Fields** card. It save
 If your Open To Close setup separated *submitting* a field value from *approving* the tasks it triggers, that maps to the **Now applicable** list. Setting the field on the deal is the submit; your click on **Add N tasks** is the approve. DocJacket never adds a held-back task on its own.
 
 See also [Held-back tasks and key dates](./timeline-templates.md#held-back-tasks-and-key-dates).
+
+---
+
+# Build a Playbook with AI
+
+The Playbook builder walks you through a new [Playbook](./timeline-templates.md) one step at a time, with the **Playbook assistant** beside you. Describe the deal type or paste the checklist you already use, and the assistant drafts the key dates, tasks, emails and documents for you to check. **Nothing is created in your account until you press Create Playbook** on the last step.
+
+## Where to find it
+
+- Go to **Templates → Playbooks**, stay on the **My Playbooks** tab, click **New Playbook**, and choose **✦ Create with AI**. (**Start blank** opens the regular Playbook editor instead.)
+- If you have no Playbooks of your own yet, the empty list shows a **Build your own with AI** button.
+- Inside one of your own Playbooks, click **Improve with the assistant** to change it with the builder. On a DocJacket Playbook the button reads **Copy and improve with the assistant**: you build a new Playbook of your own from it, and the DocJacket one is left as it is.
+
+The builder is open to people who can edit your organization's Playbooks and settings. If you don't see **Create with AI**, the builder may not be available on your account; **New Playbook** then opens the regular editor.
+
+## The steps
+
+The page is titled **Build a Playbook**: "Answer a few questions and review the draft as it takes shape. Nothing is created until you say so." There are seven steps, shown across the top. You can click any step, or use **Back** and **Next**.
+
+1. **About**: what the Playbook is for.
+2. **Key dates**: which key dates it tracks.
+3. **Tasks**: what needs to get done.
+4. **Emails**: which emails go out.
+5. **Documents**: which documents you need.
+6. **Finish**: signature, agents and default.
+7. **Review**: check everything and create it.
+
+The buttons at the top of the page:
+
+- **Leave** goes back to Playbooks. Your draft is kept, and you can pick it up later.
+- **Start from…** replaces your draft with one based on another Playbook, either one of yours or a DocJacket starter.
+- **Start over** throws the current draft away and opens a blank one. DocJacket asks first: "Your current draft is thrown away and a blank one opens. Nothing has been created in your account yet."
+
+## Working with the Playbook assistant
+
+Type into **Message the assistant** and click **Send**, or click **Draft everything** to have the assistant fill in every step for you to review.
+
+- **Paste your existing checklist.** You can paste up to 4,000 characters at once. Task names are kept exactly as you wrote them. If your list is longer, paste the first part, then paste the rest on the **Tasks** step.
+- **Copy from your own Playbooks.** Ask the assistant to copy tasks or documents from another of your Playbooks into this draft. It tells you what it copied and what it skipped.
+- **It tells you what a Playbook can't hold.** If you ask for something a Playbook doesn't store, such as a PDF or a flyer, the assistant says so first and carries on with the rest of the step.
+- **Report templates aren't used for task emails.** Templates in your **Reports** category are left out when the assistant picks an email for a task.
+
+## Review and create
+
+The **Review** step lists everything the draft will add. Untick any line you don't want. **Test it** shows the key dates worked out against a sample date so you can check the timing.
+
+When you're happy, click **Create Playbook**. If the button is greyed out, the reason is shown beside it. For example, "Fix the highlighted lines first." means a line needs a change before the Playbook can be created.
+
+After the Playbook is created, click **Open** and the Playbook's name to go to it. The page also shows an **Undo** button with the date it is available until. Undo removes the new Playbook and what it added. Anything a deal already uses is archived instead, and anything you changed since stays as it is.
+
+## Improving a Playbook you already have
+
+**Improve with the assistant** opens the same steps, titled **Improve** and your Playbook's name. Every change is listed on **Review**, and nothing changes until you press **Save changes**. If deals already use the Playbook, Review tells you how many. Those deals keep the tasks, dates and emails they already have.
+
+## Drafts
+
+You have one open draft at a time. Leaving the builder keeps it, and **Create with AI** opens that draft again instead of starting a new one.
+
+While a draft is open, the Playbooks page shows "You have a Playbook draft in progress. Nothing in it has been created yet." with three buttons:
+
+- **Continue your draft** reopens it.
+- **Dismiss** hides the notice. The draft is kept.
+- **Discard draft** throws the draft away for good. Nothing it held had been created yet.
+
+If you come back to a draft you haven't worked on in more than 7 days, the builder names the dates, for example "You're continuing the draft you started on Nov 2 (last worked on Nov 3)." Click **Keep working on it** to carry on, or **Start a new one** to throw it away and begin again.
+
+## Cash deals and financed deals
+
+A Playbook task can carry a condition, so it is added only to the deals it fits. The **Cash deal** condition is easy to get backwards:
+
+- A task with the **Cash deal** condition is added **only on cash deals**.
+- To **skip** a task on cash deals, don't use **Cash deal**. Use an **Add when** rule of **Buyer is financing**, or put the task under a key date that only financed deals get.
+
+For example, **Confirm Cash Deal Proof of Funds** is a correct use of the **Cash deal** condition: only cash deals need it. **Order Appraisal** with the **Cash deal** condition would do the opposite of what you want: it would be added only on cash deals and left off every financed deal. Give it a **Buyer is financing** rule instead.
+
+When a task that sounds like financing, such as an appraisal or lender task, is set to cash deals only, the builder warns you on that task: financed deals will not get it.
+
+The builder also warns when a task that checks whether a deal has something, such as a "Verify…" or "Research…" task, is set to appear only on deals that already record it. That task would be skipped on deals where the item is still blank. The warning suggests "Create unless marked N/A" instead.
 
 ---
 
