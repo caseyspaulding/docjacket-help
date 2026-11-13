@@ -81,7 +81,7 @@ Each pending upload card can show:
 - How long ago the upload was created
 - Additional file names when the group has multiple documents
 
-Use **Review** to return to the extraction review flow and finish saving. Use **Discard** only when the upload should stop appearing as unfinished work. Discarding a pending upload soft-dismisses the card; it does not delete the underlying extraction jobs or history.
+Use **Review** to return to the extraction review flow and finish saving. Use **Discard** only when the upload should stop appearing as unfinished work. Discard happens right away, with no confirmation step. The "Pending upload discarded" message has an **Undo** button, which puts the card back where it was and shows "Pending upload restored". Undo only reverses that one discard, and only the message that appears has it. Discarding a pending upload soft-dismisses the card; it does not delete the underlying extraction jobs or history.
 
 Pending Uploads only appears when there is something unfinished. If there are no unfinished extraction groups, the section stays hidden.
 

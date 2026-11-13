@@ -166,6 +166,8 @@ To add a task, click **Add Task**, fill in the panel that opens on the right, an
 
 A saved task can carry a list of subtasks: small checks that appear under the task on every deal it is added to. Open the task, find the **Subtasks** section, click **Add subtask**, type a name and press **Enter**. A subtask can have a due date rule, **Assign to role**, a condition, a priority and a description, but no phase, repeat, key date link, portal setting or emails. If the main task isn't added to a deal, its subtasks aren't either.
 
+![Playbook editor with the task "Gather deed, survey, and title information" open: the Subtasks section lists three subtasks with an Add box below them, and the task list shows the same three subtasks indented under the task with a "3 subtasks" chip](/img/templates/playbook-subtasks-editor.png)
+
 In the task lists, subtasks are indented under their main task, and the main task shows an **N subtasks** chip. Deleting a main task also deletes its subtasks, and DocJacket says so before you confirm. The full steps, and what a subtask can and can't have, are in [Subtasks](../tasks/subtasks.mdx#adding-subtasks-to-a-task-in-a-playbook).
 
 ### Scheduled emails need a To recipient

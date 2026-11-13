@@ -70,6 +70,8 @@ DocJacket doesn't send an email late. If the date it was due had already passed 
 
 **What to do:** the email still has its **Review & send** button. Open it, check the wording, and send it yourself if it is still wanted. A key date that someone types in, or that arrives from a contract, Follow Up Boss, or the API, is treated as entered and isn't skipped this way. See [Reading the status on a task](./email-automation.mdx#reading-the-status-on-a-task).
 
+**Playbook scheduled emails work the same way, but quietly.** If a Playbook's scheduled email would send more than 48 hours in the past when you apply the Playbook, or when its task is re-dated or recalculated, DocJacket doesn't create it. Nothing is held, and nothing appears on the **Scheduled** tab. If you later move the task's date so the send time falls in the future, the email is created then. An email that is 48 hours late or less is still created and sent.
+
 ## The email appeared, but it shows old wording
 
 If the email is in Review & send but still has the greeting or text you already fixed in the template, the deal is using its own copy of the template. See [The email in Review & send shows old wording](./email-automation.mdx#the-email-in-review--send-shows-old-wording) for **Edit wording** and **Refresh**.

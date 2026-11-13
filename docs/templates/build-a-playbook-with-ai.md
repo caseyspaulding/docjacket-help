@@ -52,6 +52,8 @@ If a task has a group of small checks under it, ask for them as subtasks. For ex
 - **Copying from another Playbook:** when you ask the assistant to copy tasks from one of your Playbooks, each copied task brings its subtasks with it. A subtask can't be copied on its own.
 - **What a subtask can't have:** subtasks are one level deep, and emails go on the main task. A task can't wait on a subtask.
 
+![Build a Playbook, step 3 Tasks: the task "Due Diligence Research" with its three subtasks indented beneath it, and "Order Survey" as a separate task](/img/templates/builder-subtasks-tasks-step.png)
+
 After the Playbook is created, the subtasks work like any others. See [Subtasks](../tasks/subtasks.mdx#adding-subtasks-to-a-task-in-a-playbook).
 
 ## Review and create

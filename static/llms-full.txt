@@ -274,6 +274,8 @@ DocJacket includes these built-in roles:
 - **Assistant** — Works deals: documents, dates, tasks, and email
 - **Viewer** — Read-only: can open deals and their documents, but can't change anything
 
+Only Owners and Admins can permanently delete a deal. Every other role that can edit deals can archive and restore them. **Settings > Roles** shows this as **Permanently delete deals**.
+
 **By default, every team member sees every deal.** A role decides what a person can change — settings, the team, billing, saved passwords — and Viewer is read-only. To focus on your own work, use the **Mine** view on Transactions or **Assigned to me** on Tasks; these filter your own view and don't hide anything from anyone else. To actually keep a role to its own deals, use the **Deal visibility** setting below.
 
 ### Limit a role to the deals its members are on
@@ -314,7 +316,7 @@ On the Transactions list they can tag and untag their own deals, create a tag, a
 
 On a deal they are on, they can also edit and delete the deal's TC fees, record and delete fee payments, and download a fee's PDF. They can edit, resolve, and reopen waiting-on items, rename a checklist item, see its upload history, and decide whether a conditional item applies. They can open a key date's history and change the deal email address settings, including **New address**.
 
-If your organization has **Allow team members to edit Playbooks and settings** turned on, limited members can also save Playbooks, checklists, task-list templates, the Key Date Library, and document lists. They can link checklist emails. The reminder rules on **Settings > Automation Rules** apply to every deal in the organization, so limited members can't create, edit, switch on or off, or delete them. They also can't save email templates or use the setup assistant.
+If your organization has **Allow team members to edit Playbooks and settings** turned on, limited members can also save Playbooks, checklists, task-list templates, the Key Date Library, and document lists. They can link checklist emails. The reminder rules on **Settings > Automation Rules** apply to every deal in the organization, so limited members can't create, edit, switch on or off, or delete them. They still see the page, with the line "These rules apply to every deal in your organization and are managed by an owner or admin." **New Rule**, **Edit** and **Delete** are hidden, each rule has a **View** button that opens it read-only, and the on/off switch shows the rule's state but can't be changed. They also can't save email templates or use the setup assistant.
 
 ### Email about deals they aren't on
 
@@ -654,7 +656,7 @@ Each pending upload card can show:
 - How long ago the upload was created
 - Additional file names when the group has multiple documents
 
-Use **Review** to return to the extraction review flow and finish saving. Use **Discard** only when the upload should stop appearing as unfinished work. Discarding a pending upload soft-dismisses the card; it does not delete the underlying extraction jobs or history.
+Use **Review** to return to the extraction review flow and finish saving. Use **Discard** only when the upload should stop appearing as unfinished work. Discard happens right away, with no confirmation step. The "Pending upload discarded" message has an **Undo** button, which puts the card back where it was and shows "Pending upload restored". Undo only reverses that one discard, and only the message that appears has it. Discarding a pending upload soft-dismisses the card; it does not delete the underlying extraction jobs or history.
 
 Pending Uploads only appears when there is something unfinished. If there are no unfinished extraction groups, the section stays hidden.
 
@@ -791,7 +793,7 @@ If the drawer shows **Pending Uploads**, those uploads were scanned but never sa
 
 Pending upload rows can show the extracted address or file name, document count, age, and file list. Use **Review** to return to the extraction review flow.
 
-Use **Discard** only when the upload should stop appearing as unfinished work. Discard takes effect immediately: there is no confirmation step, and a "Pending upload discarded" message appears. It soft-dismisses the pending-upload card; it does not erase the underlying extraction history.
+Use **Discard** only when the upload should stop appearing as unfinished work. Discard takes effect immediately: there is no confirmation step, and a "Pending upload discarded" message appears. That message has an **Undo** button. Click **Undo** and the upload goes back into the list where it was, with a "Pending upload restored" message. If it can't be put back, you see "Couldn't restore it." The Undo button is only on the message that appears, so click it right away if you discarded the wrong one. **Undo** reverses only that one discard. Discard soft-dismisses the pending-upload card; it does not erase the underlying extraction history.
 
 ## Ready for Review
 
@@ -933,7 +935,7 @@ Nothing is final until you complete the review and save step.
 
 ![Extraction review screen showing notes, confidence, review-required status, apply options, and the final create or update action](/img/ai-extraction/extraction-review-controls.png)
 
-Pending uploads can also appear in the Review queue drawer and on the dashboard. Those cards take you back to the same review-and-save workflow. Use **Discard** only when the upload should stop appearing as unfinished work; it soft-dismisses the pending-upload card without deleting extraction history.
+Pending uploads can also appear in the Review queue drawer and on the dashboard. Those cards take you back to the same review-and-save workflow. Use **Discard** only when the upload should stop appearing as unfinished work. The "Pending upload discarded" message that appears has an **Undo** button, which puts the card back. Discard soft-dismisses the pending-upload card without deleting extraction history.
 
 ## Single-document progress
 
@@ -2087,7 +2089,9 @@ Cancelling is a status change. Move the transaction into any status whose type i
 3. **From the Transactions list** — use the inline status control
 4. **From the transaction's Edit form** — change the **Status** field and save
 
-All four do the same thing. Closing a completed deal works the same way, using a **Closed**-type status. See [Transaction Statuses](./transaction-statuses.mdx) for how status types work and how to add your own.
+All four do the same thing. On the Edit form, picking a status that ends the deal shows the same line under **Status** as the status chip does (*"Ends the deal: cancels unsent reminders and scheduled emails, skips open tasks, marks key dates not applicable."*). Saving then does what the status chip does: the change is recorded as **Changed Status** in the deal's activity, your Automation Rules for that status run, and a cancel asks the calendar-invite question described below. Closing a completed deal works the same way, using a **Closed**-type status. See [Transaction Statuses](./transaction-statuses.mdx) for how status types work and how to add your own.
+
+![Edit form with Status set to a status that ends the deal, showing the line "Ends the deal: cancels unsent reminders and scheduled emails, skips open tasks, marks key dates not applicable." under the Status field](/img/transactions/edit-form-status-ends-the-deal.png)
 
 ## Closing out a file
 
@@ -2116,7 +2120,17 @@ Moving a transaction from an open status into a **Closed** or **Cancelled** stat
 - Pending **scheduled messages** are cancelled
 - Unsent **reminders** are deleted
 - Pending **scheduled emails** are deleted (already-sent emails are kept, so your send history stays intact)
-- **Calendar events** for the transaction are removed
+- The deal's **events** are removed from your team's connected Google Calendars (calendar sync). This is separate from [calendar invites](../calendar/calendar-invites.md) sent to the people on the deal, which are covered below
+
+### Calendar invites when you cancel
+
+If the deal has live [calendar invites](../calendar/calendar-invites.md) on key dates that haven't passed yet, moving it to a **Cancelled**-type status (including from Closed) asks **Also cancel the calendar invite?** (plural when more than one key date is affected) with **Cancel the invite**, **Keep the invite** and **Back**.
+
+- **Keep the invite** is the default. The deal is cancelled and the invites stay on guests' calendars.
+- **Cancel the invite** cancels the deal, then cancels every live invite and emails each invited person a cancellation.
+- **Back** changes nothing. On the Edit form that means nothing is saved, including your other edits.
+
+A **Closed** status never asks, and closing leaves the invites as they are. Changes made through the API or by the assistant never cancel invites. For the full wording and what each answer does, see [When a deal is cancelled or archived](../calendar/calendar-invites.md#when-a-deal-is-cancelled-or-archived).
 
 **Closed vs. Cancelled:** both wind down pending work the same way. The difference is that a **Closed** status also fires your "closed" automation and pushes the closed stage to connected CRMs (like Follow Up Boss). A **Cancelled** status does not trigger closed-stage automation.
 
@@ -2229,6 +2243,8 @@ What follows the change:
 - **Computed key dates** anchored to it shift by their rule
 - **Task due dates** that were anchored to it (from a Playbook) move too
 - DocJacket may show a **cascade preview** first, so you can review the affected dates and tasks before saving
+
+Dates can chain: Final Walkthrough counts from Closing, and Closing counts from the Effective Date. One recalculation updates a chain in order, starting with the date it counts from, so you don't need to recalculate again. It doesn't matter where each row sits in the timeline.
 
 Dates and tasks with a plain fixed date are left alone. So are dates that are **Completed** or **N/A**, and any date you've manually overridden.
 
@@ -2405,13 +2421,23 @@ Reach for it when a deal is genuinely finished with — closed and reconciled, o
 
 ## How to archive a transaction
 
-Three ways, all the same action:
+Three ways, all the same action. If the deal has calendar invites still ahead, each one asks about them (see [Calendar invites when you archive](#calendar-invites-when-you-archive)):
 
 1. **From the Transactions list** — tick the checkbox on one or more rows, then click **Archive** in the bulk-action bar
-2. **From a row's ⋮ menu** — open the three-dot menu at the end of any row and choose **Archive**
-3. **From the transaction's Edit form** — open the deal, click **Edit**, and use **Archive Transaction** in the footer
+2. **From a row's ⋮ menu** — open the three-dot menu at the end of any row and choose **Archive**, then confirm
+3. **From the transaction's Edit form** — open the deal, click **Edit**, use **Archive Transaction** in the footer, then confirm
 
 ![Transactions list with one row selected and the Archive bulk action showing](/img/transactions/archiving-a-transaction.png)
+
+## Calendar invites when you archive
+
+When the deal has live [calendar invites](../calendar/calendar-invites.md) on key dates that haven't passed yet, archiving asks **Also cancel the calendar invite?** (plural when more than one key date is affected). From the row's ⋮ menu and the Edit form it appears right after the archive confirmation. A bulk archive from the list asks once for the whole selection.
+
+- **Keep the invite** is the default. The deal is archived and the invites stay on guests' calendars.
+- **Cancel the invite** archives the deal and cancels every live invite on it, emailing each invited person a cancellation.
+- **Back** stops the archive and changes nothing.
+
+Archiving doesn't cancel invites by itself, and restoring the deal doesn't bring cancelled invites back. Archiving through the API or the assistant never cancels invites. See [When a deal is cancelled or archived](../calendar/calendar-invites.md#when-a-deal-is-cancelled-or-archived) for the details.
 
 ## What happens when you archive
 
@@ -2440,7 +2466,7 @@ These are three different tools, and they answer three different questions.
 | --- | --- | --- |
 | **Cancel or Close** (a status change) | Marks *what happened* to the deal. Winds pending work down, and a Closed status also fires your closed-stage automation and CRM push. The deal stays in your list | Yes — move it back to an open status |
 | **Archive** | Decides *whether you want to look at it*. Winds pending work down and hides the deal from the active list. Everything is kept | Yes — **Restore** |
-| **Delete** | Removes the deal from every list, including the Archived view | No — not from the app |
+| **Delete** | Removes the deal from every list, including the Archived view. Owner or Admin only | No — not from the app |
 
 Cancelling and archiving are not alternatives; most coordinators use both. Cancel or close the deal when it ends, then archive it later — at month end, or whenever the list gets long — once you're sure you're done referring back to it.
 
@@ -2506,13 +2532,17 @@ If you're restoring a deal only to look something up — far and away the most c
 
 ## Deleting a transaction permanently
 
-Deletion is a separate, heavier action, and it lives away from the list on purpose:
+Deletion is a separate, heavier action, and it lives away from the list on purpose. Only an Owner or Admin can permanently delete a deal. Anyone else who can edit deals can archive and restore them, and doesn't see **Delete Transaction**.
 
 1. Open the transaction and click **Edit**
 2. In the footer, click **Delete Transaction**
 3. Confirm with **Delete Permanently**
 
-The confirmation spells out what you're agreeing to: the transaction is permanently deleted, its milestones, tasks, scheduled messages, and portal links are cancelled, and it stops appearing in **every** list — including the Archived view. It cannot be undone from the app.
+![Delete Transaction dialog explaining that the deal is permanently deleted and suggesting Archive instead, with Cancel and Delete Permanently buttons](/img/transactions/delete-transaction-dialog.png)
+
+The confirmation reads: *"This permanently deletes the transaction. It will no longer appear in any list, including the Archived view, and its key dates, tasks, documents and emails go with it. Unsent scheduled emails, reminders and messages are cancelled, and its client portal links stop working. This cannot be undone."* Underneath: *"If you might want to recover it later, use Archive instead."* Its client portal and agent portal links stop working everywhere, including the portal message board.
+
+If someone who isn't an Owner or Admin reaches the delete anyway, it is refused with *"Only an Owner or Admin can permanently delete a transaction. You can archive it instead."*
 
 :::danger Archive is almost always the right choice
 There is no undelete. If there is any chance you'll want the record — for a commission dispute, an audit, a broker file review, or just to remember what happened — **archive it instead**. Archiving costs you nothing: archived deals don't count against your active deals and don't appear in your working list.
@@ -4365,11 +4395,13 @@ Responses update over time, so check back to see who has confirmed.
 
 You don't have to resend invites when things change:
 
-- **A date moves** — everyone invited to that date gets an updated invitation and the event shifts on their calendar.
+- **A date moves** — everyone invited to that date gets one updated invitation and the event shifts on their calendar.
+- **Other changes on the deal** — guests are only emailed an updated invitation when something they can see changes: the event's title, description, location, date or time, all-day setting, or who is invited. Edits elsewhere on the deal don't re-send an invite that hasn't changed.
 - **A date is completed** — nothing happens to the invite. It stays on everyone's calendar, and it still updates if the date later moves.
 - **A date is cleared or the key date is deleted** — the invite is cancelled, everyone invited is emailed a cancellation, and the event drops off their calendar.
 - **Change who's invited** — reopen the **Calendar invite** section on that date, tick or untick people, and click **Update invite**.
 - **Cancel manually** — click **Cancel invite** on the key date. If the date is still ahead, everyone on it gets a cancellation.
+- **Cancel or archive the deal** — DocJacket asks whether to cancel the invites too. See [When a deal is cancelled or archived](#when-a-deal-is-cancelled-or-archived).
 
 ### Waived and N/A dates
 
@@ -4381,6 +4413,35 @@ If the date already has an invite on people's calendars and is still ahead, choo
 - **Keep the invite** — marks the date Waived or N/A and leaves the invite exactly as it is. It is not updated or cancelled later when the date changes.
 - **Back** — changes nothing.
 
+When nobody besides you (the organizer) was invited, the question names the date and reads, for example, "Closing is on your calendar. Cancelling removes it. No one else was invited, so no email is sent." Otherwise it reads "The people invited to Closing have it on their calendars. Cancelling emails each of them a cancellation."
+
+### When a deal is cancelled or archived
+
+Cancelling or archiving a deal that has calendar invites still ahead asks about those invites too, the same way marking a date Waived or N/A does.
+
+**When it asks**
+
+- Moving the deal to a **Cancelled**-type status asks. That covers the status chip on the deal, the status cell and the bulk **Status** menu on the Transactions list, dragging the card into a Cancelled column on the Pipeline, and the **Status** field on the deal's Edit form. Moving a deal from Closed to a Cancelled-type status asks too. A deal that is already in a Cancelled-type status doesn't ask again.
+- Archiving asks, after the usual archive confirmation, from the row's ⋮ menu and from **Archive Transaction** on the Edit form. The bulk **Archive** button on the Transactions list asks once for the whole selection.
+- It only asks when a key date on the deal has a live invite and the date hasn't passed yet. Otherwise the deal is cancelled or archived without the extra question.
+- **Closing a deal never asks.** A closed deal's invites stay on guests' calendars as they are.
+
+**The question**
+
+For one key date it reads **Also cancel the calendar invite?** with three buttons: **Cancel the invite**, **Keep the invite** and **Back**. For two or more key dates the title and buttons are plural (**Also cancel the calendar invites?**, **Cancel the invites**, **Keep the invites**). The message says how many key dates are affected, and for a bulk archive or bulk status change, how many deals. As with Waived and N/A, it says each invited person will be emailed a cancellation, or, when no one besides you was invited, that no email is sent.
+
+![Also cancel the calendar invite? dialog for a deal with one invited key date and guests, with Back, Cancel the invite and Keep the invite buttons](/img/calendar/cancel-invite-question-guests.png)
+
+![The same question when no one besides the organizer was invited: "1 key date is on your calendar. Cancelling removes it. No one else was invited, so no email is sent."](/img/calendar/cancel-invite-question-no-guests.png)
+
+- **Keep the invite** is the default. The deal is cancelled or archived and every invite stays on guests' calendars.
+- **Cancel the invite** cancels or archives the deal and then cancels every live invite on it. Each invited person is emailed a cancellation, except for dates that have already passed, which nobody is emailed about. Cancelling also turns off calendar invites for that deal, and its Activity shows **Cancelled all calendar invites**.
+- **Back** changes nothing: the deal isn't cancelled or archived. On the Edit form, Back doesn't save anything, including your other edits.
+
+If the invites can't be cancelled, the deal is still cancelled or archived and a message reads "The deal was updated, but its calendar invites could not be cancelled." Open each key date and click **Cancel invite** to cancel them one at a time.
+
+Archiving doesn't cancel invites by itself, and restoring an archived deal doesn't bring cancelled invites back. See [Cancelling or Closing a Transaction](../transactions/canceling-a-transaction.mdx) and [Archiving a Transaction](../transactions/archiving-a-transaction.mdx).
+
 ### Dates that have already passed
 
 Clicking **Cancel invite** on a date that has already passed doesn't email anyone. A date counts as past when its day is before today, or, for a date with a time, when that time has already gone by. The confirmation reads "This date has passed, so nobody is emailed a cancellation. The event stays on guests' calendars." The invite shows as cancelled in DocJacket, but the event stays on guests' calendars.
@@ -4390,6 +4451,8 @@ Marking a past date **Waived** or **N/A** doesn't ask about the invite at all, a
 ### Closing out dates from Ask AI
 
 When you mark a date done, waived or N/A through Ask AI or a connected assistant, the invite is never cancelled. The approval card says the calendar invite stays on guests' calendars. To cancel one from there, ask the assistant to cancel the invites for that date.
+
+The same is true when a deal is cancelled or archived through the public API, Ask AI or a connected assistant: those never cancel invites, and there is no question to answer. Only the app's own screens ask. To cancel the invites afterward, use **Cancel invite** on each key date, or ask the assistant to cancel them.
 
 ## Turning it on
 
@@ -4775,6 +4838,8 @@ A Playbook task can carry a list of subtasks. When the Playbook is applied, each
 
 Each subtask in the list shows its due date rule, the role it is assigned to, and an **If:** badge when it has a condition. Click a subtask to open it in the same editor. Use the trash button on its row to delete it.
 
+![Playbook editor with the task "Gather deed, survey, and title information" open: the Subtasks section lists three subtasks with an Add box below them, and the task list shows the same three subtasks indented under the task with a "3 subtasks" chip](/img/templates/playbook-subtasks-editor.png)
+
 ### What a Playbook subtask can have
 
 A subtask can have:
@@ -4789,6 +4854,8 @@ A subtask can have:
 A subtask follows its main task for everything else. It does not have a phase, **Repeat**, **Add to every deal**, a link to a key date, a "due after another task" setting, **Show on portal**, emails, or Automations. It is always added to a deal together with its main task. Put emails and automations on the main task.
 
 When a subtask is open, a **Subtask of** line at the top names its main task. Click the name to go back to the main task.
+
+![A Playbook subtask open in the editor: a "Subtask of" line at the top links back to its main task, and the form shows Name, Priority, Description, Conditional Task and Assign to role](/img/templates/playbook-subtask-open.png)
 
 Subtasks go one level deep: a subtask can't have subtasks of its own. You also can't move a subtask to a different main task. To do that, delete it and add it under the other task.
 
@@ -5131,6 +5198,8 @@ If **Require review before sending** is off for that email, and your organizatio
 DocJacket doesn't send an email late. If the date it was due had already passed when the task was added to the deal, it is skipped. The same is true when the email counts from a key date that was blank and a recalculation filled in a date that was already in the past.
 
 **What to do:** the email still has its **Review & send** button. Open it, check the wording, and send it yourself if it is still wanted. A key date that someone types in, or that arrives from a contract, Follow Up Boss, or the API, is treated as entered and isn't skipped this way. See [Reading the status on a task](./email-automation.mdx#reading-the-status-on-a-task).
+
+**Playbook scheduled emails work the same way, but quietly.** If a Playbook's scheduled email would send more than 48 hours in the past when you apply the Playbook, or when its task is re-dated or recalculated, DocJacket doesn't create it. Nothing is held, and nothing appears on the **Scheduled** tab. If you later move the task's date so the send time falls in the future, the email is created then. An email that is 48 hours late or less is still created and sent.
 
 ## The email appeared, but it shows old wording
 
@@ -5818,6 +5887,8 @@ Outlook from **Settings > Integrations**. See
 [Google Workspace](../integrations/google-workspace.mdx) or
 [Microsoft Outlook](../integrations/microsoft-outlook.mdx).
 
+If you start from a task email, the **Connect your email** button in its drawer or dialog takes you to **Settings > Integrations**. After you connect Gmail or Outlook, DocJacket returns you to the deal and tab you started from. The Gmail and Outlook connect buttons on a deal's **Email** tab do the same. If you refuse consent or the connection fails, you stay on **Settings > Integrations** so the error shows.
+
 Until a mailbox is connected, manual sends from a deal prompt you to connect one,
 and automated email falls back to DocJacket's own email service (a
 `@docjacket.com` address) unless your organization requires a connected mailbox
@@ -6184,6 +6255,10 @@ You can only attach documents that are on the deal you are sending from. A docum
 - **Sending now:** the email is not sent. You see "Couldn't attach: ... Nothing was sent — remove the file or re-add it, then try again."
 - **Scheduled email:** when the time comes the email is marked failed with "Couldn't attach: ... The email was not sent — re-attach and reschedule."
 - **Approving a draft in the Review queue:** if an attached document is from another deal, approving is refused with "One of the attached documents is not on this deal. Remove it from the draft and approve again."
+
+The same rule applies when you save. A reminder, a scheduled email or a deal's own reminder rule that names a specific document from another deal can't be saved. You see "A specific document can only be attached on its own deal. Pick a document from this deal, or attach by category." Choose a document that is on this deal, or attach by document category.
+
+Playbook emails and organization-wide rules aren't tied to one deal, so they attach documents by category only. Saving a specific document there is refused with "Org-wide rules and Playbooks attach documents by category only. Pick a document category instead of a specific document." Pick a document category and DocJacket attaches the matching document from each deal when the email goes out.
 
 ## Reviewing messages
 
@@ -6605,6 +6680,8 @@ To add a task, click **Add Task**, fill in the panel that opens on the right, an
 ### Subtasks
 
 A saved task can carry a list of subtasks: small checks that appear under the task on every deal it is added to. Open the task, find the **Subtasks** section, click **Add subtask**, type a name and press **Enter**. A subtask can have a due date rule, **Assign to role**, a condition, a priority and a description, but no phase, repeat, key date link, portal setting or emails. If the main task isn't added to a deal, its subtasks aren't either.
+
+![Playbook editor with the task "Gather deed, survey, and title information" open: the Subtasks section lists three subtasks with an Add box below them, and the task list shows the same three subtasks indented under the task with a "3 subtasks" chip](/img/templates/playbook-subtasks-editor.png)
 
 In the task lists, subtasks are indented under their main task, and the main task shows an **N subtasks** chip. Deleting a main task also deletes its subtasks, and DocJacket says so before you confirm. The full steps, and what a subtask can and can't have, are in [Subtasks](../tasks/subtasks.mdx#adding-subtasks-to-a-task-in-a-playbook).
 
@@ -8664,6 +8741,8 @@ If a task has a group of small checks under it, ask for them as subtasks. For ex
 - **Review step:** the totals count tasks and subtasks separately, for example "38 tasks, 4 subtasks", and each subtask line reads like "Request HOA Verification (subtask of Due Diligence Research)".
 - **Copying from another Playbook:** when you ask the assistant to copy tasks from one of your Playbooks, each copied task brings its subtasks with it. A subtask can't be copied on its own.
 - **What a subtask can't have:** subtasks are one level deep, and emails go on the main task. A task can't wait on a subtask.
+
+![Build a Playbook, step 3 Tasks: the task "Due Diligence Research" with its three subtasks indented beneath it, and "Order Survey" as a separate task](/img/templates/builder-subtasks-tasks-step.png)
 
 After the Playbook is created, the subtasks work like any others. See [Subtasks](../tasks/subtasks.mdx#adding-subtasks-to-a-task-in-a-playbook).
 
@@ -12698,7 +12777,7 @@ Go to **Settings → Organization → Client portal** and turn on **Let agents m
 With it on, an agent can:
 
 - **Check off the tasks you gave them**, and reopen one they ticked by mistake
-- **Keep their own to-do list on the deal** — add, edit, and delete tasks they created themselves
+- **Keep their own to-do list on the deal** — add, edit, and delete tasks they created themselves. A task an agent deletes is deleted for good: its unsent reminders and scheduled emails are cancelled, and it doesn't come back if the deal is later archived and restored. An agent can edit or delete their own tasks only while the deal is active and they are still on it
 
 An agent can never:
 
@@ -14665,9 +14744,11 @@ Automation rules send an email when a transaction enters a status or when a conf
 
 Current rule triggers include:
 
-- **When a transaction enters a status** — Fires on future status changes only. Existing transactions already in that status are not triggered retroactively.
+- **When a transaction enters a status** — Fires on future status changes only, however the status changes in the app: the status chip on the deal, the Deals list, the Pipeline, or the deal's **Edit** form. Existing transactions already in that status are not triggered retroactively.
 - **When a Playbook task is completed** — Fires when a transaction task created from the selected Playbook task template is marked complete.
 - **When a document is filed** — Fires each time a document is filed to a deal under the **Document category** you pick. It prepares the email and holds it in your Review queue for you to send; it never sends on its own, even if your organization sends other automated emails without review. It applies to documents filed after the rule is created, uses only your own email templates, and does not use SMS. A document that arrives by email or import triggers nothing until someone files it under a category.
+
+Members limited to their own deals see this page read-only, because the rules apply to every deal. See [Understanding Roles](../getting-started/understanding-roles.mdx#what-a-limited-member-can-do).
 
 Rules can send to transaction contact roles, direct email addresses, or both. Direct email entries are checked before the rule is saved, and duplicate direct addresses are collapsed case-insensitively.
 
