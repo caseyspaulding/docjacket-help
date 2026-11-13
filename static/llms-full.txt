@@ -8738,11 +8738,14 @@ Type into **Message the assistant** and click **Send**, or click **Draft everyth
 If a task has a group of small checks under it, ask for them as subtasks. For example: "Add a task called Due Diligence Research with these checks under it as subtasks: Request HOA Verification, Research Septic Details, Research Well Details." The assistant adds each check as a subtask of the task, not as a list in the task's description.
 
 - **Tasks step:** each subtask is indented right under its task. You can edit one there, and it has no **Phase** field because it follows its task's phase. Removing a task that has subtasks says "This also removes its N subtasks."
+- **The assistant's task checklist:** on the Tasks step the assistant lists the tasks in your draft as checkboxes. It lists main tasks only, and a task with subtasks reads like "Due Diligence Research (Effective Date) and its 3 subtasks". Unticking that task removes its subtasks with it.
 - **Review step:** the totals count tasks and subtasks separately, for example "38 tasks, 4 subtasks", and each subtask line reads like "Request HOA Verification (subtask of Due Diligence Research)".
 - **Copying from another Playbook:** when you ask the assistant to copy tasks from one of your Playbooks, each copied task brings its subtasks with it. A subtask can't be copied on its own.
 - **What a subtask can't have:** subtasks are one level deep, and emails go on the main task. A task can't wait on a subtask.
 
-![Build a Playbook, step 3 Tasks: the task "Due Diligence Research" with its three subtasks indented beneath it, and "Order Survey" as a separate task](/img/templates/builder-subtasks-tasks-step.png)
+![Build a Playbook, step 3 Tasks: the task "Due Diligence Research" with its three subtasks indented beneath it, and a separate task with an "If: If cash deal" chip and "Only on some deals." under its worked date](/img/templates/builder-subtasks-tasks-step.png)
+
+![The assistant's checklist of tasks in the draft, where one checkbox reads "Due Diligence Research (Effective Date) and its 3 subtasks"](/img/templates/builder-task-card-subtask-count.png)
 
 After the Playbook is created, the subtasks work like any others. See [Subtasks](../tasks/subtasks.mdx#adding-subtasks-to-a-task-in-a-playbook).
 
@@ -8781,7 +8784,7 @@ A Playbook task can carry a condition, so it is added only to the deals it fits.
 
 For example, **Confirm Cash Deal Proof of Funds** is a correct use of the **Cash deal** condition: only cash deals need it. **Order Appraisal** with the **Cash deal** condition would do the opposite of what you want: it would be added only on cash deals and left off every financed deal. Give it a **Buyer is financing** rule instead.
 
-On the **Tasks** step, a task that has a condition shows an **If: …** chip beside its name, worded the same as in the Playbook editor, for example **If: Cash deal** or **If: Buyer is financing**. When you edit that task there, a line reads "Only on some deals: [the condition]. Change it in the Playbook editor after Create, or ask the assistant." The condition itself can't be changed in the builder form.
+On the **Tasks** step, a task that has a condition shows an **If: …** chip beside its name, worded the same as in the Playbook editor, for example **If: Cash deal** or **If: Buyer is financing**. Under its worked date the task also reads "Only on some deals." When you edit that task there, a line reads "Only on some deals: [the condition]. Change it in the Playbook editor after Create, or ask the assistant." The condition itself can't be changed in the builder form.
 
 When a task that sounds like financing, such as an appraisal or lender task, is set to cash deals only, the builder warns you on that task: financed deals will not get it.
 
