@@ -87,6 +87,8 @@ An **Inactive** Playbook can't auto-apply and can't be set as the default. To br
 
 The builder title may say **Create Playbook** or **Edit Playbook**. The Templates hub and list page label this area **Playbooks**.
 
+These steps are for **Start blank**. To have the Playbook assistant draft one from a description or your existing checklist, choose **New Playbook → ✦ Create with AI** and see [Build a Playbook with AI](./build-a-playbook-with-ai.md).
+
 ## Template settings
 
 The builder shows a **Template Summary** card with the Playbook name, category, state, side, key-date count, task count, and automation count.
