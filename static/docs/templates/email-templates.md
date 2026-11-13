@@ -153,6 +153,12 @@ If a smart field is valid but the transaction does not have the data yet, the pr
 
 When creating or editing an organization-owned template, you can use the AI email generator to draft a starting point. Enter the email you need, choose a tone, generate a result, then apply it to the form and edit before saving.
 
+## Have Ask AI write a template
+
+Ask the assistant to write an email template and it opens the **New Email Template** page with the name, category, subject and body filled in. Nothing is saved until you press **Save**.
+
+The setup assistant can also write or change a template, or install DocJacket's starter email packs, and save it from a card you approve. The card previews the email on one of your deals, the next automatic email from a template it wrote or rewrote waits once in your Review Queue, and the change can be undone for 7 days. See [Email templates with Ask AI](../ai-features/ask-ai-assistant.mdx#email-templates).
+
 ## Common templates to create
 
 Here are some templates most TCs find useful:

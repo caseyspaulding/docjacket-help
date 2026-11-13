@@ -2364,6 +2364,8 @@ To unarchive a deal (bring it back from the archive), use any of these:
 2. **Use the row's ⋮ menu** and choose **Restore**, or
 3. **Open the archived deal** — it still opens, with an amber banner reading *"This transaction is archived"* and the date — and click **Restore transaction** in the banner
 
+You can also ask Ask AI to restore it. The assistant puts up a Restore card, nothing changes until you approve it, and **Undo** on the card archives the deal again for 7 days. Restoring this way does the same thing as the **Restore transaction** button. See [Restoring an archived deal with Ask AI](../ai-features/ask-ai-assistant.mdx#restore-archived-deal).
+
 An archived deal is not locked: you can open it and read every tab without restoring it. Restore only when you want it back in your active list.
 
 ![Archived Transactions view with a row selected and the Restore action showing](/img/transactions/archived-transactions.png)
@@ -7034,6 +7036,12 @@ If a smart field is valid but the transaction does not have the data yet, the pr
 
 When creating or editing an organization-owned template, you can use the AI email generator to draft a starting point. Enter the email you need, choose a tone, generate a result, then apply it to the form and edit before saving.
 
+## Have Ask AI write a template
+
+Ask the assistant to write an email template and it opens the **New Email Template** page with the name, category, subject and body filled in. Nothing is saved until you press **Save**.
+
+The setup assistant can also write or change a template, or install DocJacket's starter email packs, and save it from a card you approve. The card previews the email on one of your deals, the next automatic email from a template it wrote or rewrote waits once in your Review Queue, and the change can be undone for 7 days. See [Email templates with Ask AI](../ai-features/ask-ai-assistant.mdx#email-templates).
+
 ## Common templates to create
 
 Here are some templates most TCs find useful:
@@ -8300,6 +8308,7 @@ These are the AI features inside DocJacket. They are separate from **[AI Access]
 - **Risk Insights** — Review transaction-level risk assessments and document-level checks
 - **Smart Document Splitting** — Upload a multi-document PDF and AI detects the documents, page ranges, and primary contract
 - **Communication Drafting** — AI drafts emails and messages inside DocJacket composers or review queues before they send
+- **Ask AI Assistant** — Ask AI opens forms already filled in, prepares changes you approve on a card, checks a deal for problems, restores archived deals, and helps set up your organization
 
 ## In this section
 
@@ -8307,6 +8316,7 @@ These are the AI features inside DocJacket. They are separate from **[AI Access]
 - [AI Task Generation](./ai-task-generation.mdx) — Let AI build your task Playbook
 - [Risk Insights](./ai-insights.mdx) — Risk assessments and document checks
 - [Smart Document Splitting](./smart-document-splitting.mdx) — Automatically split bundled PDFs
+- [Ask AI Assistant](./ask-ai-assistant.mdx) — Filled-in forms, changes you approve, deal checks, and setup
 
 ---
 
@@ -8583,6 +8593,183 @@ Text **`weekly report`** (or *recap* / *summary*) any time for an instant rundow
 
 - **No reply?** Make sure you're texting the number shown on the **Text the assistant** card (not your business number), and that your mobile is still linked in **Settings → SMS**.
 - **"Not linked" reply?** Your number isn't linked yet — link it in **Settings → SMS**.
+
+---
+
+# What the Ask AI Assistant Can Do for You
+
+Ask AI is the assistant inside DocJacket. Open it with **Ask a question** in the left sidebar. It answers questions, and it can also do work for you: fill in a form, prepare changes on a deal, check a deal for problems, and help set up your organization.
+
+One rule holds for all of it: **the assistant prepares, you approve.** Nothing is saved until you press the form's own button or approve the change on a card.
+
+## It opens forms already filled in {#forms-filled-in}
+
+Ask for something you would normally type into a form, and the assistant opens that form with the details filled in. For example:
+
+- *"Add a key date for the home inspection on Nov 20 at 10 AM."*
+- *"Invite jane@example.com as a Transaction Coordinator."*
+- *"Create a contact for Sam Lee at Example Title, sam@example.com."*
+
+It can fill in these forms:
+
+| Form | Where it opens | The button you press |
+|---|---|---|
+| The task box | A deal's **Tasks** tab | **Add** |
+| **Create New Contact** | A deal's **Contacts** tab | **Create** |
+| **Add Key Date** | A deal's **Overview** tab | **Create** |
+| **New Contact** | Your contacts | **Create Contact** |
+| **Invite Team Member** | **Settings > Team Members** | **Send Invite** |
+| **New Email Template** | Your email templates | **Save** |
+
+When the form opens:
+
+- **A note at the top** says how many fields the assistant filled in and which button to press. For example: *"The assistant filled in 4 fields (marked). Check them, then press Send Invite."*
+- **Each field it filled is marked** with the words *Filled in by the assistant*. The mark goes away when you change that field.
+- **The note says when values may have come from outside your team.** If the assistant had just read something like an email or an uploaded document, the note names it and asks you to check. For example: *"Some values may have come from an email received Nov 9, so check them against the original."*
+- **Nothing is saved, sent or invited until you press the form's button.** Change any field first, or close the form to drop it.
+
+### It won't overwrite what you're typing
+
+If the form already has something typed in it, or is still saving, the assistant leaves it as it is. The line under its answer says why the form did not open and shows an **Open it filled in** button. Clear or close the form, or wait for it to save, then press **Open it filled in**.
+
+### A few limits
+
+- **Inviting a teammate** is for owners and admins. The assistant never fills in the Owner role. If your organization has no free seat, it does not open the form; it takes you to **Settings > Team Members**, where you can see and manage seats.
+- **A view-only seat** can't open a filled-in form. The assistant tells you so.
+
+## It prepares changes for you to approve {#approve-changes}
+
+When you ask for a change, the assistant puts it on a card under its answer. For example, it can prepare:
+
+- Adding, renaming, rescheduling or reassigning tasks
+- Moving a key date, or marking it done, waived or not applicable
+- Adding someone to a deal, taking them off, or moving them to another role
+- Restoring an archived deal (see [below](#restore-archived-deal))
+
+The card's heading reads **Ready to do — nothing happens until you approve**. On the card:
+
+- **Approve all** applies everything on the card.
+- **Dismiss** on a row leaves that change out. **Dismiss all** drops the whole card. Nothing changes either way.
+- **Edit** appears on a row you can adjust before you approve it.
+- After you approve, **Show me** takes you to where the change landed and points at it.
+- When a change can be undone, its row shows **Undo** after you approve it. For example, taking someone off a deal can be undone for 7 days.
+
+If your seat is view-only, the card says *"Your seat is view-only, so this can't be applied."*
+
+## "Is anything wrong with this deal?" {#deal-check}
+
+Open a deal and ask *"Is anything wrong with this deal?"*, or say what looks off (*"Why is the appraisal showing overdue?"*). The assistant checks the deal's key dates, its open tasks, its side and agents, and the people on it. Then it tells you what it found and shows you where. If it finds nothing wrong, it says so.
+
+Things it looks for include:
+
+- **An overdue key date.** It asks whether it was done, waived or doesn't apply, then puts that on a card for you to approve.
+- **A contract-start date**, such as the Effective Date. These record when something happened. They are never overdue, and nothing needs doing.
+- **Key dates that look like duplicates.** You decide which to keep.
+- **A key date waiting on open tasks.** It completes by itself once every task linked to it is completed or skipped.
+- **A deal with no side set, or no agent on your side.**
+- **Why a person is on the deal**, or why someone shows as the agent.
+
+**An archived deal is named first.** If the deal is archived, the answer starts by saying *"This deal is archived"* instead of reporting that nothing is wrong, and it offers a Restore card.
+
+## Restoring an archived deal {#restore-archived-deal}
+
+Ask the assistant to bring an archived deal back, and it puts up a Restore card for you to approve. Nothing on an archived deal can be changed until it is restored. So if you ask for another change on an archived deal, the assistant offers the Restore card first; approve it, then ask again.
+
+Restoring with the assistant does the same thing as the **Restore transaction** button. See [Restoring an Archived Transaction](../transactions/restoring-an-archived-transaction.mdx).
+
+**What comes back:**
+
+- The deal returns to your transaction list with its documents, text threads and Review queue drafts.
+- Client portal links that archiving turned off work again. The card reminds you: *"This gives people outside your team access to the deal again."*
+
+**What does not come back:**
+
+- **Tasks stay skipped.** Tasks that archiving skipped stay skipped until you reopen them.
+- **Key dates stay Not applicable.** Dates that archiving marked Not applicable stay that way until you change them.
+- **Scheduled emails stay cancelled.** Emails that were scheduled when the deal was archived were cancelled and are not sent. To send one, schedule it again on the deal's Email tab.
+
+**Undo:** after you approve, **Undo** on the card archives the deal again for 7 days, unless a task is reopened or an email is scheduled on the deal first.
+
+Restoring is not limited by your plan.
+
+## Email templates {#email-templates}
+
+**In any conversation**, ask the assistant to write an email template and it opens the **New Email Template** page with the name, category, subject and body filled in. Read every field, fix what you want, then press **Save**. This is for owners, admins, and teammates allowed to edit Playbooks and settings.
+
+**The setup assistant** (see [Set up with the assistant](#set-up-with-the-assistant)) can also write a new template, change one of yours, or install DocJacket's starter email packs, and save it from a card:
+
+- **You see the email before anything is saved.** The card shows it filled in on one of your deals (**Previewed on**), or with sample values. **Open in editor** opens it in the template editor.
+- **DocJacket's own emails are never changed.** Asking to change one gets you your own copy, and DocJacket's original stays as it is. If you already have a copy, the assistant changes your copy instead of making a second one.
+- **Starter packs skip what you already have.** A template you already have by the same name is skipped, never replaced.
+- **The next automatic email waits once in your Review Queue.** When the assistant creates a template, copies a DocJacket email, or rewrites a template's subject or body, that template's next automatic email waits in your Review Queue so you can check it. Installing a starter pack adds no such wait.
+- **A new template is Active as soon as it is saved.**
+- **Undo for 7 days.** A saved change can be undone from its card for 7 days, unless the template was edited since. Undo never changes emails already sent. Undoing a new or copied template turns it off (it then shows as Draft) instead of deleting it. Undoing a rewrite brings back the old text.
+
+### Draft templates are found, not duplicated
+
+The assistant searches your Draft (turned-off) templates as well as your Active ones. If a Draft template already has the name you want, the assistant tells you it's a Draft and offers to change its text or use another name. It won't make a second template with that name.
+
+Changing a Draft template's text keeps it a Draft. The assistant can't turn a template on; use the Active/Draft switch at the top of the template editor when you're ready.
+
+See [Email Templates](../templates/email-templates.md) for building templates by hand.
+
+## Set up with the assistant {#set-up-with-the-assistant}
+
+The setup assistant helps you get your organization set up, one step at a time, with each change shown on a card for you to approve.
+
+### Starting it
+
+- **From an answer.** Ask Ask AI for setup help, such as *"Help me get set up"* or *"Set my default TC fee to $350"*. The answer carries a **Set up with the assistant** button just above it. Press it and the setup assistant picks up your request in the same conversation.
+- **From Settings > Organization.** Click **Set up with the assistant** at the top of the page.
+- **From your dashboard.** While required setup steps are still open, your dashboard may show a card offering to set DocJacket up with the assistant. Click **Start**.
+
+While it is running, the Ask AI panel's header shows **Setup assistant**.
+
+### What it does
+
+- **It starts with your Primary State.** If your organization doesn't have one yet, the setup assistant asks which state you mainly work in. It never guesses your state from an address, a contract or a deal.
+- **With no deals yet, it focuses on your first contract.** You can upload it, or email it to your new-deal intake address.
+- **It can prepare these changes:** your Primary State, your default TC fee, a client agent's fee or coordinator, your contact roles and document categories, and your email templates. It never makes up a fee: it proposes your default TC fee only when you state the amount, and a client agent's fee only when you state it or your deals suggest one.
+- **Archiving a contact role or document category hides it; it never deletes it.** Deals that already use it keep it. DocJacket's own roles can't be changed; the assistant offers your own copy instead.
+- **For things it can't change itself**, such as connecting your email account or your email safety settings, it takes you to the right page and points at the control.
+
+### Who can use it
+
+Setup is for an owner or admin, or a teammate the owner has allowed to edit Playbooks and settings. A member whose account is limited to their own deals can't use it.
+
+If you ask for setup and can't use it, the answer says why and who can, naming up to three of your organization's owners and admins.
+
+The setup assistant is part of paid plans. On the Free plan, it is included in an organization's first 30 days while its required setup steps are still open, up to the included usage.
+
+### Leaving setup
+
+Press **Leave setup** at the top of the Ask AI panel. This clears the setup conversation, and Ask AI goes back to answering as usual. Leaving does not undo changes you already approved.
+
+## When a search finds nothing {#empty-results}
+
+When the assistant looks something up and finds nothing, it tells you that nothing matched that search, not that the thing doesn't exist. It also says when part of your account was left out:
+
+- **Team members:** a search of your team covers active members unless the assistant searches again to include inactive ones.
+- **Contacts:** deleted contacts are not searched.
+- **Email templates:** searches include both Active and Draft (turned-off) templates.
+
+## What the assistant won't do {#what-it-wont-do}
+
+Some things stay with you, even if you ask and would approve:
+
+- **Billing and seats.** It never buys a seat or changes your plan. If an invite needs a seat you don't have, it takes you to **Settings > Team Members**.
+- **Passwords and connections.** It doesn't connect your email account or handle sign-in details. It takes you to the page where you do it.
+- **Deleting your account.** It has no way to delete your account or organization.
+- **Permanently deleting deals, contacts or email templates.** Taking someone off a deal can be undone for 7 days, and their contact record is kept. Undoing a new template turns it off instead of deleting it.
+
+## Related
+
+- [AI Features overview](./index.mdx)
+- [Text the Assistant (SMS)](./text-the-assistant.mdx)
+- [Restoring an Archived Transaction](../transactions/restoring-an-archived-transaction.mdx)
+- [Email Templates](../templates/email-templates.md)
+- [User Management](../settings/user-management.mdx)
+- [Organization Settings](../settings/organization-settings.mdx)
 
 ---
 
@@ -12941,6 +13128,10 @@ Access Settings from the sidebar — it's at the bottom of the navigation.
 
 Use **Settings > Organization** for account-wide settings that affect your whole organization.
 
+## Set up with the assistant
+
+When the setup assistant is available to you, a **Set up with the assistant** button appears at the top of this page. It is for owners, admins, and teammates allowed to edit Playbooks and settings. It starts the setup assistant in Ask AI, which works through your setup one step at a time, starting with your Primary State if you haven't set one. Each change is shown on a card for you to approve. Press **Leave setup** at the top of the Ask AI panel to stop. See [Set up with the assistant](../ai-features/ask-ai-assistant.mdx#set-up-with-the-assistant).
+
 ## Organization identity
 
 The Organization page shows your organization's name, logo, ID, subdomain, creation date, and custom-domain verification status when a custom domain exists.
@@ -13293,6 +13484,8 @@ Add team members to your DocJacket organization and control what they can access
 5. Click **Send Invite**
 
 They'll receive an email with a link to join your organization.
+
+You can also ask Ask AI to invite someone, such as *"Invite jane@example.com as a Transaction Coordinator."* It opens the **Invite Team Member** drawer with the email and role filled in. Check both, then click **Send Invite** yourself; nothing is sent until you do. If no seat is free, the assistant takes you to this page instead of opening the form. See [Ask AI Assistant](../ai-features/ask-ai-assistant.mdx#forms-filled-in).
 
 The Team Members page also shows seat usage. If your plan is at capacity, DocJacket may prompt you to upgrade or add another seat before sending the invite.
 
