@@ -47,7 +47,7 @@ Use **Settings > Brand** for the broader brand preset, fonts, public-page attrib
 
 Organization settings also control email defaults used by reminders and scheduled messages:
 
-- **Always CC on Reminders** - Adds one or more addresses to the Cc line of every reminder sent from your organization
+- **Always CC on Reminders** - Adds one or more addresses to the Cc line of every reminder and scheduled email sent from your organization. Because they go on Cc, these addresses never make an email without a **To** recipient sendable; that email is held instead (see [When a scheduled email has no recipient](../messages/inbox.mdx#when-a-scheduled-email-has-no-recipient))
 - **Default send time for scheduled emails** - Sets the local send hour used when an individual scheduled email does not specify its own time
 
 ## Deal emails: always BCC an address or the assigned TC
@@ -75,7 +75,7 @@ A draft you saved, or a scheduled email you edit, keeps the Bcc it had when it w
 - **Internal-only emails.** A task email that only goes to people on your own DocJacket team (every To and Cc address belongs to an active team member) is not BCC'd, and neither is a task email marked internal-only.
 - **No duplicates.** If an address is already on the **To** or **Cc** line, it isn't added to **Bcc** again.
 
-This is separate from **Always CC on Reminders** (above), which only applies to reminder emails and uses the Cc line.
+This is separate from **Always CC on Reminders** (above), which applies to reminders and scheduled emails and uses the Cc line.
 
 ## Automation review
 

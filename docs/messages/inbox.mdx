@@ -63,6 +63,19 @@ Rows show the subject, recipients, send time, and whether the item is pending, h
 
 If there is no connected Gmail or Outlook account, the Scheduled tab shows a connect prompt because scheduled emails need a mailbox to send from.
 
+### When a scheduled email has no recipient
+
+Gmail and Outlook will not send an email that has no **To** recipient, so DocJacket holds it instead of trying. A held row shows one of two labels:
+
+- **No recipient set** — nothing on the email names a To recipient, and its email template's **Recipients by Role** names no To either. Hover the label to see *"This email has no recipient, so it will not send. Use Edit to add one, or Cancel."*
+- **No recipients** — the email names a To role, but no contact on the deal holds that role, so only Cc recipients (or nobody) would be left.
+
+Either way, DocJacket sends you one notification in the bell that links to the deal. To fix the row, use **Edit** to add a recipient, then **Send now**, or **Cancel** it. If the role was missing a contact, add the contact to the deal first.
+
+Your organization's **Always CC on Reminders** addresses go on the Cc line, so they never make an email without a To sendable on their own.
+
+To stop this happening on future deals, add a **To** recipient to the scheduled email in the Playbook, or set **Recipients by Role** on its [email template](../templates/email-templates.md#recipient-targeting).
+
 ## Notes
 
 The **Notes** tab is for internal transaction notes. Add rich-text notes, reply to notes, pin important notes, and edit or delete notes you created.

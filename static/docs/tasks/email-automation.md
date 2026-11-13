@@ -184,7 +184,11 @@ So if you set **Recipients by Role** on a template, every task using that templa
 An email template also has an **Audience** field. That one is for **search and filtering** — it helps you find templates on the Templates page. It does **not** decide who the email goes to. Use **Recipients by Role** (or the task's own recipients) to set actual recipients.
 :::
 
+Scheduled emails use the same fallback: a scheduled email with no **To** of its own uses the template's **Recipients by Role** (To, Cc, and Bcc). A scheduled email that names its own **To** keeps its own recipients.
+
 If no **To** recipient can be resolved — for example the role has no contact assigned on that deal — DocJacket does not send the email to the wrong person or drop it silently. It parks a card in your **Review queue** asking you to choose a recipient, and notifies you. Add the recipient on the card and it becomes sendable.
+
+A scheduled email with no **To** is held on the deal's **Scheduled** tab instead, and you get one notification in the bell. It is never sent with only Cc recipients. See [When a scheduled email has no recipient](../messages/inbox.mdx#when-a-scheduled-email-has-no-recipient).
 
 ## Review before sending
 
