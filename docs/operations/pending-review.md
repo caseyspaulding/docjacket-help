@@ -54,6 +54,8 @@ Some cards arrive flagged as needing a recipient. This happens when an automated
 
 DocJacket won't guess at a recipient or send to the wrong person, so it parks the email here and notifies you instead of dropping it. Open the card, add the recipient, and it becomes sendable.
 
+A scheduled email's review card must have a **To** recipient before you can approve it. Approving one without a To is refused with a message that starts *"Add a To recipient"*. Add a To recipient, then approve.
+
 ## What won't appear here
 
 Two things people expect in this queue that intentionally don't show up:
@@ -68,6 +70,8 @@ If you completed a task and expected an email that never appeared, see [Why didn
 Use the **Scheduled** tab to review upcoming reminders, scheduled emails, and one-off scheduled messages.
 
 Scheduled cards can show the related transaction, anchor label, schedule state, recipients, and attention labels for held or failed sends. Click the card to open the transaction. Scheduled emails can be edited, sent now, or cancelled. Scheduled one-off messages can be cancelled.
+
+A scheduled email held for **No recipient set** or **No recipients** has no To recipient. See [When a scheduled email has no recipient](../messages/inbox.mdx#when-a-scheduled-email-has-no-recipient).
 
 ## Done
 

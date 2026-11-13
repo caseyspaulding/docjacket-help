@@ -774,6 +774,8 @@ Some cards arrive flagged as needing a recipient. This happens when an automated
 
 DocJacket won't guess at a recipient or send to the wrong person, so it parks the email here and notifies you instead of dropping it. Open the card, add the recipient, and it becomes sendable.
 
+A scheduled email's review card must have a **To** recipient before you can approve it. Approving one without a To is refused with a message that starts *"Add a To recipient"*. Add a To recipient, then approve.
+
 ## What won't appear here
 
 Two things people expect in this queue that intentionally don't show up:
@@ -788,6 +790,8 @@ If you completed a task and expected an email that never appeared, see [Why didn
 Use the **Scheduled** tab to review upcoming reminders, scheduled emails, and one-off scheduled messages.
 
 Scheduled cards can show the related transaction, anchor label, schedule state, recipients, and attention labels for held or failed sends. Click the card to open the transaction. Scheduled emails can be edited, sent now, or cancelled. Scheduled one-off messages can be cancelled.
+
+A scheduled email held for **No recipient set** or **No recipients** has no To recipient. See [When a scheduled email has no recipient](../messages/inbox.mdx#when-a-scheduled-email-has-no-recipient).
 
 ## Done
 
@@ -4800,7 +4804,11 @@ So if you set **Recipients by Role** on a template, every task using that templa
 An email template also has an **Audience** field. That one is for **search and filtering** — it helps you find templates on the Templates page. It does **not** decide who the email goes to. Use **Recipients by Role** (or the task's own recipients) to set actual recipients.
 :::
 
+Scheduled emails use the same fallback: a scheduled email with no **To** of its own uses the template's **Recipients by Role** (To, Cc, and Bcc). A scheduled email that names its own **To** keeps its own recipients.
+
 If no **To** recipient can be resolved — for example the role has no contact assigned on that deal — DocJacket does not send the email to the wrong person or drop it silently. It parks a card in your **Review queue** asking you to choose a recipient, and notifies you. Add the recipient on the card and it becomes sendable.
+
+A scheduled email with no **To** is held on the deal's **Scheduled** tab instead, and you get one notification in the bell. It is never sent with only Cc recipients. See [When a scheduled email has no recipient](../messages/inbox.mdx#when-a-scheduled-email-has-no-recipient).
 
 ## Review before sending
 
@@ -5015,7 +5023,7 @@ See [Email Automation](./email-automation.mdx) for the full workflow.
 
 Use **Scheduled emails** when the message should send from the task due date, instead of waiting for the task to be completed.
 
-From the drawer, you can schedule a new email, edit pending or held scheduled emails, send one now, or cancel it. Scheduled emails send from the TC's connected Gmail or Outlook account when available. Upcoming and held scheduled emails also appear in the Review queue's **Scheduled** tab.
+From the drawer, you can schedule a new email, edit pending or held scheduled emails, send one now, or cancel it. Scheduled emails send from the TC's connected Gmail or Outlook account when available. Upcoming and held scheduled emails also appear in the Review queue's **Scheduled** tab. A scheduled email with no **To** recipient is held rather than sent; see [When a scheduled email has no recipient](../messages/inbox.mdx#when-a-scheduled-email-has-no-recipient).
 
 ## Options
 
@@ -5791,6 +5799,19 @@ The **Scheduled** tab shows emails queued for the transaction. It combines:
 Rows show the subject, recipients, send time, and whether the item is pending, held, or failed. Depending on the source, you can edit, cancel, or send now. Sent items move back into the **Inbox** tab.
 
 If there is no connected Gmail or Outlook account, the Scheduled tab shows a connect prompt because scheduled emails need a mailbox to send from.
+
+### When a scheduled email has no recipient
+
+Gmail and Outlook will not send an email that has no **To** recipient, so DocJacket holds it instead of trying. A held row shows one of two labels:
+
+- **No recipient set** — nothing on the email names a To recipient, and its email template's **Recipients by Role** names no To either. Hover the label to see *"This email has no recipient, so it will not send. Use Edit to add one, or Cancel."*
+- **No recipients** — the email names a To role, but no contact on the deal holds that role, so only Cc recipients (or nobody) would be left.
+
+Either way, DocJacket sends you one notification in the bell that links to the deal. To fix the row, use **Edit** to add a recipient, then **Send now**, or **Cancel** it. If the role was missing a contact, add the contact to the deal first.
+
+Your organization's **Always CC on Reminders** addresses go on the Cc line, so they never make an email without a To sendable on their own.
+
+To stop this happening on future deals, add a **To** recipient to the scheduled email in the Playbook, or set **Recipients by Role** on its [email template](../templates/email-templates.md#recipient-targeting).
 
 ## Notes
 
@@ -6998,11 +7019,13 @@ Leave recipient rules blank if the role checkboxes are enough.
 The **Audience** field is for **search and filtering** — it helps you find templates on this page. It has no effect on who receives the email. Set actual recipients with **Recipients by Role** or **Recipient rules** above.
 :::
 
-### How this works with task emails
+### How this works with task emails and scheduled emails
 
 When a template is attached to a task, the recipients you set here act as the **fallback**: the task's own recipients win if it has any, and otherwise the email uses this template's **Recipients by Role**.
 
 That means setting recipients once here covers every task using the template — you only need to set recipients on an individual task when that one task should reach someone different. See [Email Automation](../tasks/email-automation.mdx#where-recipients-come-from).
+
+Scheduled emails follow the same rule. When a scheduled email in a Playbook names no **To** recipient of its own, it uses this template's To, Cc, and Bcc roles, filled with the contacts on the deal who hold those roles. A scheduled email that names its own **To** keeps its own recipients and does not pick up the template's.
 
 ## Auto-attach documents
 
@@ -13167,7 +13190,7 @@ Use **Settings > Brand** for the broader brand preset, fonts, public-page attrib
 
 Organization settings also control email defaults used by reminders and scheduled messages:
 
-- **Always CC on Reminders** - Adds one or more addresses to the Cc line of every reminder sent from your organization
+- **Always CC on Reminders** - Adds one or more addresses to the Cc line of every reminder and scheduled email sent from your organization. Because they go on Cc, these addresses never make an email without a **To** recipient sendable; that email is held instead (see [When a scheduled email has no recipient](../messages/inbox.mdx#when-a-scheduled-email-has-no-recipient))
 - **Default send time for scheduled emails** - Sets the local send hour used when an individual scheduled email does not specify its own time
 
 ## Deal emails: always BCC an address or the assigned TC
@@ -13195,7 +13218,7 @@ A draft you saved, or a scheduled email you edit, keeps the Bcc it had when it w
 - **Internal-only emails.** A task email that only goes to people on your own DocJacket team (every To and Cc address belongs to an active team member) is not BCC'd, and neither is a task email marked internal-only.
 - **No duplicates.** If an address is already on the **To** or **Cc** line, it isn't added to **Bcc** again.
 
-This is separate from **Always CC on Reminders** (above), which only applies to reminder emails and uses the Cc line.
+This is separate from **Always CC on Reminders** (above), which applies to reminders and scheduled emails and uses the Cc line.
 
 ## Automation review
 

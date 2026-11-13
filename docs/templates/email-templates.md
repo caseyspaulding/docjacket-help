@@ -112,11 +112,13 @@ Leave recipient rules blank if the role checkboxes are enough.
 The **Audience** field is for **search and filtering** — it helps you find templates on this page. It has no effect on who receives the email. Set actual recipients with **Recipients by Role** or **Recipient rules** above.
 :::
 
-### How this works with task emails
+### How this works with task emails and scheduled emails
 
 When a template is attached to a task, the recipients you set here act as the **fallback**: the task's own recipients win if it has any, and otherwise the email uses this template's **Recipients by Role**.
 
 That means setting recipients once here covers every task using the template — you only need to set recipients on an individual task when that one task should reach someone different. See [Email Automation](../tasks/email-automation.mdx#where-recipients-come-from).
+
+Scheduled emails follow the same rule. When a scheduled email in a Playbook names no **To** recipient of its own, it uses this template's To, Cc, and Bcc roles, filled with the contacts on the deal who hold those roles. A scheduled email that names its own **To** keeps its own recipients and does not pick up the template's.
 
 ## Auto-attach documents
 
