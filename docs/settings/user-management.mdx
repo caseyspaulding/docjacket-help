@@ -52,7 +52,7 @@ By default, every team member sees every deal. Owners and Admins can limit the *
 
 A limited member doesn't see the deals they aren't on, or the tasks and key dates on those deals: they're left out of that member's **Tasks** page, **Calendar**, dashboard, and search. Assigning a member a task on a deal puts them on that deal, so they'll see it and its tasks.
 
-Owners and Admins always see every deal, and a custom role can't be limited. The setting belongs to the role, so everyone who holds it is covered, including people you invite later. For what counts as being "on" a deal and what a limited member can't see, see [Limit a role to the deals its members are on](../getting-started/understanding-roles.mdx#limit-a-role-to-the-deals-its-members-are-on).
+Owners and Admins always see every deal, and a custom role can't be limited. The setting belongs to the role, so everyone who holds it is covered, including people you invite later. For what counts as being "on" a deal, what a limited member can do, and what is closed to them, see [Limit a role to the deals its members are on](../getting-started/understanding-roles.mdx#limit-a-role-to-the-deals-its-members-are-on).
 
 ## Changing a member's role
 
@@ -81,4 +81,12 @@ From **Settings > Team Members**, you can:
 - **Reactivate a member** - Restore access when your seat limit allows it
 - **Remove a member** - Permanently remove them from your organization
 - **Resend an invitation** - Send a fresh invite email for a pending invitation
-- **Cancel an invitation** - Stop a pending invitation that should no longer be used
+- **Cancel an invitation** - Stop a pending invitation that should no longer be used. Click the **X** on the invitation row. See [Cancelling an invitation](#cancelling-an-invitation) for what happens to the seat
+
+### Cancelling an invitation
+
+If sending the invitation added a paid seat to your plan, cancelling it removes that seat again, and the charge is prorated. DocJacket confirms with a message such as "Invitation cancelled. The extra seat was removed; your plan is now $X/mo" (or **/yr** on an annual plan).
+
+If the seat can't be removed, you see "Invitation cancelled, but we couldn't remove the extra seat. Reduce seats in Settings → Billing." Open **Settings > Billing** and reduce the seats yourself; see [Managing Your Subscription](../billing/managing-your-subscription.md).
+
+The seat is kept when removing it would leave you with fewer seats than members and pending invitations in use. Organizations that aren't billed per seat, including those with unlimited seats, see no seat change.

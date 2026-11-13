@@ -27,7 +27,8 @@ After your first sign-in, DocJacket asks for a few organization details:
 - **Organization Name** — Your company, team, or personal TC business name
 - **Workspace URL** — The subdomain clients can use for portal access, such as `your-team.docjacket.com`
 - **First Name / Last Name** — Optional profile details
-- **Primary State** — Optional state context for your workspace
+- **Primary State** — The state you mainly close in. This is required, and you can't continue without it
+- **What best describes you?** — Optional. Choose **Transaction coordinator**, **Real-estate agent**, **Broker / team lead**, or **Something else / a mix**. Nothing is preselected, and it helps DocJacket tailor tips. Owners and admins can change it later in **Settings > Organization**
 
 DocJacket checks whether your workspace URL is available while you type. Workspace URLs must be 3-30 characters and use lowercase letters, numbers, and hyphens.
 
