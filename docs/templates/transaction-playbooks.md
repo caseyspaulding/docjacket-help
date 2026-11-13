@@ -40,6 +40,8 @@ live. Your existing ones are all under the **My Playbooks** tab. Full guide:
 
 See [Playbooks](./timeline-templates.md) for the full builder walkthrough.
 
+To have the Playbook assistant draft one for you from a description or your existing checklist, choose **New Playbook → ✦ Create with AI**. See [Build a Playbook with AI](./build-a-playbook-with-ai.md).
+
 ## Applying a Playbook to a deal
 
 Apply a Playbook to a transaction and DocJacket sets up the whole deal at once — its tasks, key dates, and required documents — in a **single click**. Two conveniences:
