@@ -1,12 +1,12 @@
 ---
 sidebar_label: Calendar Invites
 sidebar_position: 6
-description: Send a Google Calendar invitation for a key date to the people you choose on that date, with RSVP tracking and automatic updates and cancellations.
+description: Send a Google Calendar invitation for a key date to the people you choose on that date, with RSVP tracking, automatic updates, and what does and doesn't cancel an invite.
 ---
 
 # Calendar Invites
 
-Calendar invites let you send a real calendar invitation for a transaction's key dates to the people on the deal. They get an email invitation they can **Accept** or **Decline**, the event lands on their calendar, and it stays in sync: when a date moves the invite updates automatically, and when a date is completed or removed the invite is cancelled.
+Calendar invites let you send a real calendar invitation for a transaction's key dates to the people on the deal. They get an email invitation they can **Accept** or **Decline**, the event lands on their calendar, and it stays in sync: when a date moves the invite updates automatically. Completing a date does **not** cancel its invite. Marking it **Waived** or **N/A** asks whether to cancel it. Clearing the date or deleting the key date cancels it (see [Updates and cancellations](#updates-and-cancellations)).
 
 **You choose the recipients for each date separately.** Invites are not sent to everyone on the deal — you tick the people you want on that particular date. The closing invite can go to your agent and the opposing agent, while the inspection invite goes to a different group entirely. Nobody is invited to anything until you pick them.
 
@@ -18,16 +18,33 @@ There is no "Calendar invites" button on the Key Dates list or at the top of a d
 
 1. Open the transaction and click a **key date** (for example, the closing date) to open its details panel.
 2. Expand the **Calendar invite** section.
-3. Tick the people to invite. You'll see everyone on the deal with their role, plus an **Also add me** row so you can put the date on your own calendar at the same time.
-4. Click **Send invite** and confirm.
+3. Tick the people to invite. You'll see everyone on the deal with their role, plus an **Also add me** row so you can put the date on your own calendar at the same time. If you are the deal's organizer, that row reads **Add to my calendar** instead. It is sent from your own Google Calendar, so it goes straight onto it. Google doesn't email you an invitation to your own event.
+4. Click **Send invite** and confirm. If you ticked only yourself, the toast says **Added to your Google Calendar.**
 
 Repeat on the next date and pick a different set of people. Each key date keeps its own invitation and its own list — changing one never touches another.
 
 If the date already has invites, the section opens automatically, shows who was invited and how they responded, and the button becomes **Update invite**.
 
+You can send an invite for a date that is already **Completed** (or Approved, Clear to Close, or any other status). Only **Waived** and **N/A** dates can't be invited. See [Waived and N/A dates](#waived-and-na-dates).
+
 :::note
 A key date needs a date on it before it can be invited. If it doesn't have one yet, the section says *"Set a due date to send a calendar invite."*
 :::
+
+## If an invite isn't sent
+
+When an invite doesn't go out, DocJacket says why instead of "Calendar invite sent." The reason appears in a message when you click the button and as a line under it:
+
+- **Not sent: this date is marked Waived.** (or **marked N/A**)
+- **Not sent: this date has no due date.**
+- **Not sent: calendar invites are turned off for this deal.**
+- **Not sent: nobody with an email address was selected.**
+- **Not sent: Google Calendar did not create the event.**
+- **Not sent: this date was not found on this deal.**
+
+If the organizer's Google Calendar has been disconnected, the message reads **Saved — the invite will send once Google Calendar reconnects.** Reconnect it under **Settings → Integrations** and the invite goes out.
+
+The deal's Activity also records each one as "Calendar invite not sent for *date name*: *reason*."
 
 ## Who you can invite
 
@@ -65,6 +82,7 @@ After you send, each invited person shows a response status:
 
 - **Accepted** — they're coming / have it on their calendar.
 - **Declined** — they've declined.
+- **Maybe** — they replied tentatively.
 - **No response yet** — the invite was sent but they haven't responded.
 
 Responses update over time, so check back to see who has confirmed.
@@ -74,9 +92,30 @@ Responses update over time, so check back to see who has confirmed.
 You don't have to resend invites when things change:
 
 - **A date moves** — everyone invited to that date gets an updated invitation and the event shifts on their calendar.
-- **A date is completed or removed** — the invite is cancelled and the event drops off their calendar.
+- **A date is completed** — nothing happens to the invite. It stays on everyone's calendar, and it still updates if the date later moves.
+- **A date is cleared or the key date is deleted** — the invite is cancelled, everyone invited is emailed a cancellation, and the event drops off their calendar.
 - **Change who's invited** — reopen the **Calendar invite** section on that date, tick or untick people, and click **Update invite**.
-- **Cancel manually** — click **Cancel invite** on the key date to withdraw the invitation and notify everyone on it.
+- **Cancel manually** — click **Cancel invite** on the key date. If the date is still ahead, everyone on it gets a cancellation.
+
+### Waived and N/A dates
+
+A date marked **Waived** or **N/A** can't be invited: **Send invite** is greyed out and the panel says **Not sent: this date is marked Waived.** (or **marked N/A.**).
+
+If the date already has an invite on people's calendars and is still ahead, choosing **Waived** or **N/A** asks first. You'll see this whether you change the date's status in its panel or click **Mark N/A** on its row in the Key Dates list. The question is **Also cancel the calendar invite?**, with three buttons:
+
+- **Cancel the invite** — emails each invited person a cancellation and removes the event.
+- **Keep the invite** — marks the date Waived or N/A and leaves the invite exactly as it is. It is not updated or cancelled later when the date changes.
+- **Back** — changes nothing.
+
+### Dates that have already passed
+
+Clicking **Cancel invite** on a date that has already passed doesn't email anyone. A date counts as past when its day is before today, or, for a date with a time, when that time has already gone by. The confirmation reads "This date has passed, so nobody is emailed a cancellation. The event stays on guests' calendars." The invite shows as cancelled in DocJacket, but the event stays on guests' calendars.
+
+Marking a past date **Waived** or **N/A** doesn't ask about the invite at all, and leaves it as it is.
+
+### Closing out dates from Ask AI
+
+When you mark a date done, waived or N/A through Ask AI or a connected assistant, the invite is never cancelled. The approval card says the calendar invite stays on guests' calendars. To cancel one from there, ask the assistant to cancel the invites for that date.
 
 ## Turning it on
 
@@ -84,6 +123,8 @@ Calendar invites are on by default. The **Calendar invite** section always appea
 
 1. Go to **Settings → Organization**.
 2. Turn on **Send calendar invites for key dates**.
+
+If the setting is turned off while a date still has an invite out, the panel says **Sending new invites is turned off in Settings → Organization.** and still offers **Cancel invite**.
 
 If you turned the setting on and still can't send, check the other items under [What has to be in place](#what-has-to-be-in-place): the date needs a due date, someone needs to be ticked, and the deal's organizer needs a connected Google Calendar.
 
