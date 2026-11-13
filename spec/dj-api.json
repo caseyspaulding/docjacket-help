@@ -1008,7 +1008,7 @@
           "Tasks"
         ],
         "summary": "Mark a task complete",
-        "description": "**Requires the `draft` scope.**",
+        "description": "Completes the task with the same side effects as the web app: dependent tasks re-date, key dates whose tasks are all done complete, workflow rules run and `task.completed` is published. In an organization that lets a connected assistant release held email, the completion emails this call triggers are held, not sent, and `completionEmailsHeld` is true: `heldEmails` lists their action ids (when it is empty, they appear in `GET /api/v1/emails/held` shortly). Never send them yourself. Show each with `GET /api/v1/emails/held/{actionId}`, release it with `POST /api/v1/emails/held/{actionId}/prepare-approval` and `POST /api/v1/emails/confirm`, or discard it. Elsewhere `heldEmails` is empty and the emails follow the organization's own review setting.\n\n**Requires the `draft` scope.**",
         "operationId": "CompleteTask",
         "parameters": [
           {
@@ -2759,6 +2759,15 @@
               "type": "string",
               "format": "uuid"
             }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "description": "Optional. Send a unique value (max 200 characters — a UUID is ideal) to make this call safe to retry. The first request executes and its response is stored; an identical retry replays that stored response verbatim with an `Idempotency-Replayed: true` header instead of performing the side effect again. Reusing a key for a *different* operation is rejected with `422`.",
+            "schema": {
+              "maxLength": 200,
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -2798,6 +2807,9 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
           "422": {
             "$ref": "#/components/responses/ValidationError"
           },
@@ -2832,6 +2844,15 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "description": "Optional. Send a unique value (max 200 characters — a UUID is ideal) to make this call safe to retry. The first request executes and its response is stored; an identical retry replays that stored response verbatim with an `Idempotency-Replayed: true` header instead of performing the side effect again. Reusing a key for a *different* operation is rejected with `422`.",
+            "schema": {
+              "maxLength": 200,
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -2863,6 +2884,9 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
           "422": {
             "$ref": "#/components/responses/ValidationError"
           },
@@ -2888,6 +2912,15 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "description": "Optional. Send a unique value (max 200 characters — a UUID is ideal) to make this call safe to retry. The first request executes and its response is stored; an identical retry replays that stored response verbatim with an `Idempotency-Replayed: true` header instead of performing the side effect again. Reusing a key for a *different* operation is rejected with `422`.",
+            "schema": {
+              "maxLength": 200,
+              "type": "string"
             }
           }
         ],
@@ -2919,6 +2952,9 @@
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
           },
           "422": {
             "$ref": "#/components/responses/ValidationError"
@@ -3878,7 +3914,7 @@
         "tags": [
           "Messaging"
         ],
-        "summary": "Queue a status-update email to a deal party for approval",
+        "summary": "Prepare a status-update email to a deal party: review queue, or preview then confirm",
         "description": "**Requires the `actions` scope.**",
         "operationId": "SendClientUpdateEmail",
         "parameters": [
@@ -3947,7 +3983,7 @@
         "tags": [
           "Messaging"
         ],
-        "summary": "Queue a document-request email to a deal party for approval",
+        "summary": "Prepare a document-request email to a deal party: review queue, or preview then confirm",
         "description": "**Requires the `actions` scope.**",
         "operationId": "SendDocumentRequestEmail",
         "parameters": [
@@ -4016,7 +4052,7 @@
         "tags": [
           "Messaging"
         ],
-        "summary": "Queue a follow-up email to an agent or vendor for approval",
+        "summary": "Prepare a follow-up email to an agent or vendor: review queue, or preview then confirm",
         "description": "**Requires the `actions` scope.**",
         "operationId": "SendAgentFollowupEmail",
         "parameters": [
@@ -4085,7 +4121,7 @@
         "tags": [
           "Messaging"
         ],
-        "summary": "Queue an email to an agent on the deal for approval",
+        "summary": "Prepare an email to an agent on the deal: review queue, or preview then confirm",
         "description": "**Requires the `actions` scope.**",
         "operationId": "SendEmailToAgent",
         "parameters": [
@@ -4118,6 +4154,66 @@
                   },
                   {
                     "$ref": "#/components/schemas/AgentEmailRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
+          }
+        }
+      }
+    },
+    "/api/v1/emails/confirm": {
+      "post": {
+        "tags": [
+          "Messaging"
+        ],
+        "summary": "Send or discard a previewed email with its confirm code",
+        "description": "**Requires the `actions` scope.**",
+        "operationId": "ConfirmEmailSend",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "description": "Optional. Send a unique value (max 200 characters — a UUID is ideal) to make this call safe to retry. The first request executes and its response is stored; an identical retry replays that stored response verbatim with an `Idempotency-Replayed: true` header instead of performing the side effect again. Reusing a key for a *different* operation is rejected with `422`.",
+            "schema": {
+              "maxLength": 200,
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ConfirmEmailRequest"
                   }
                 ]
               }
@@ -5751,7 +5847,7 @@
           "Proposals"
         ],
         "summary": "List pending AI proposals for the organization",
-        "description": "**Requires the `read` scope.**",
+        "description": "The organization's AI proposals, newest first. Filter with `status`, `transactionId` and `type` (an exact proposal type, for example `email_draft`); page with `limit` (1 to 100) and `offset`. For held emails with their hold reasons, `GET /api/v1/emails/held` is the richer read.\n\n**Requires the `read` scope.**",
         "operationId": "ListProposals",
         "parameters": [
           {
@@ -5780,6 +5876,13 @@
             "in": "query",
             "schema": {
               "format": "int32"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -5846,7 +5949,7 @@
           "Proposals"
         ],
         "summary": "Approve an AI proposal",
-        "description": "**Requires the `actions` scope.**",
+        "description": "Approves one proposal. A create_transaction_from_email proposal creates a deal, so it requires a JSON body { side, createDuplicate?, fileAsHistorical? } where side is 'Buyer', 'Seller' or 'NotSure'. Without side it answers 409 side_required. If a live deal already exists at the address it answers 409 duplicate_deal with existingDeal { id, address, status }; repeat the call with createDuplicate: true only if a second deal is intended. An invalid side answers 422. Every other proposal type takes no body. Approving an email_draft or sms_consent_request proposal is available only to DocJacket's own apps; any other caller receives 403 client_not_allowed.\n\n**Requires the `actions` scope.**",
         "operationId": "ApproveProposal",
         "parameters": [
           {
@@ -5859,6 +5962,22 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ApproveProposalRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -5887,7 +6006,7 @@
           "Proposals"
         ],
         "summary": "Reject an AI proposal",
-        "description": "**Requires the `actions` scope.**",
+        "description": "Rejects one pending proposal so it never runs. For an `email_draft` (a held email, see `GET /api/v1/emails/held`) this discards the email exactly as dismissing it in DocJacket does: the email is never sent, and whatever was waiting behind it is stopped too (a Playbook task's automatic email is released, a scheduled email is cancelled, a reminder is suppressed). Rejecting never sends or approves anything. 422 when the proposal is no longer pending; 409 `conflict` when the scheduled email behind it is being sent at that moment, in which case nothing changed.\n\n**Requires the `actions` scope.**",
         "operationId": "RejectProposal",
         "parameters": [
           {
@@ -5973,6 +6092,135 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
+          }
+        }
+      }
+    },
+    "/api/v1/emails/held": {
+      "get": {
+        "tags": [
+          "Messaging"
+        ],
+        "summary": "List the emails held in the review queue",
+        "description": "Every email DocJacket is holding in the organization's review queue on a live deal, newest first: emails an assistant or API caller wrote, Playbook task emails, task-completion emails, reminders and scheduled emails that are waiting for a person instead of going out. Each item has `actionId`, `transactionId`, `source` (`agent`, `task_email`, `task_completion`, `reminder`, `scheduled` or `other`), `subject`, `to`, `cc`, `bcc`, `createdAt`, `expiresAt`, `requestedSendAt` and `holdReasons`: `{ code, message, blocking, fix }`, where `blocking: true` means the email cannot be approved until it is changed. Nothing listed here has been sent, and this call sends nothing. Filter with `transactionId`; page with `limit` (1 to 100, default 50) and `offset`. To discard one, call `POST /api/v1/proposals/{id}/reject` with its `actionId`.\n\n**Requires the `read` scope.**",
+        "operationId": "ListHeldEmails",
+        "parameters": [
+          {
+            "name": "transactionId",
+            "in": "query",
+            "schema": {
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "format": "int32"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
+          }
+        }
+      }
+    },
+    "/api/v1/emails/held/{actionId}": {
+      "get": {
+        "tags": [
+          "Messaging"
+        ],
+        "summary": "Get one review-queue email in full, with its state",
+        "description": "One email from the organization's review queue: the same fields as the list, plus `preview` (the email exactly as it would send: `to`, `cc` and `bcc` with names, `subject`, `bodyHtml` with the signature, `bodyText`, `attachments` and any send time) and `state`: `held`, `approved`, `scheduled`, `sent`, `failed`, `discarded` or `expired`. `sent` means DocJacket handed the email to the connected mailbox or its outbox, not that it was delivered. Works on any email in the queue, held or not, so it also answers what became of an email. This call sends and changes nothing. 404 when the id is not an email in your organization.\n\n**Requires the `read` scope.**",
+        "operationId": "GetHeldEmail",
+        "parameters": [
+          {
+            "name": "actionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
+          }
+        }
+      }
+    },
+    "/api/v1/emails/held/{actionId}/prepare-approval": {
+      "post": {
+        "tags": [
+          "Messaging"
+        ],
+        "summary": "Prepare the approval of a held email: preview and a one-time confirm code",
+        "description": "Only in an organization that lets its connected assistant release held emails (set by DocJacket for API-partner customer organizations; every other organization gets 403 `NOT_ENABLED` and no code). For one held email whose hold reasons are all approvable, returns `status: \"awaiting_confirmation\"` with `preview` (the email exactly as it would send), `expiresAt` and a single-use `confirmCode`. Show the user the whole preview; only if they say yes, call `POST /api/v1/emails/confirm` with the code (`\"decision\": \"discard\"` discards it instead). The code works once, for 30 minutes, for the same user and credential, and only for exactly the email previewed; confirm checks the organization's setting and every hold reason again (409 `REVIEW_REQUIRED` or `HOLD_NOT_CLEARED`). When a hold reason blocks approval, the answer is `status: \"cannot_release\"` with `holdReasons` and no code; that includes `requested_send_time_passed` for an email whose requested send time has passed, which only DocJacket's web app can reschedule or send now. This call prepares only: it never sends or approves an email. Errors: 403 `NOT_ENABLED`, `IMPERSONATED_SESSION` (an impersonating admin can never release an email) or `ROLE_CANNOT_APPROVE`; 404 when the id is not an email in your organization; 409 `NOT_HELD` when the email is no longer held.\n\n**Requires the `actions` scope.**",
+        "operationId": "PrepareHeldEmailApproval",
+        "parameters": [
+          {
+            "name": "actionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -6093,6 +6341,18 @@
               "null",
               "string"
             ]
+          },
+          "sendAt": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "sendAtTimezone": {
+            "type": [
+              "null",
+              "string"
+            ]
           }
         }
       },
@@ -6150,6 +6410,18 @@
             ]
           },
           "sourceContextSummary": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "sendAt": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "sendAtTimezone": {
             "type": [
               "null",
               "string"
@@ -6220,6 +6492,29 @@
             "type": [
               "null",
               "string"
+            ]
+          }
+        }
+      },
+      "ApproveProposalRequest": {
+        "type": "object",
+        "properties": {
+          "side": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "createDuplicate": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          },
+          "fileAsHistorical": {
+            "type": [
+              "null",
+              "boolean"
             ]
           }
         }
@@ -6325,6 +6620,18 @@
             "items": {
               "type": "string"
             }
+          },
+          "sendAt": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "sendAtTimezone": {
+            "type": [
+              "null",
+              "string"
+            ]
           }
         }
       },
@@ -6332,6 +6639,26 @@
         "type": "object",
         "properties": {
           "completionNotes": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "ConfirmEmailRequest": {
+        "required": [
+          "confirmCode"
+        ],
+        "type": "object",
+        "properties": {
+          "confirmCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "decision": {
             "type": [
               "null",
               "string"
@@ -6836,6 +7163,18 @@
             ]
           },
           "tone": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "sendAt": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "sendAtTimezone": {
             "type": [
               "null",
               "string"
@@ -7464,6 +7803,18 @@
               "null",
               "string"
             ]
+          },
+          "sendAt": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "sendAtTimezone": {
+            "type": [
+              "null",
+              "string"
+            ]
           }
         }
       },
@@ -7859,6 +8210,12 @@
               "contact.created",
               "disclosure.recipient_viewed",
               "form.submission_received",
+              "email.held",
+              "email.approved",
+              "email.scheduled",
+              "email.discarded",
+              "email.sent",
+              "email.failed",
               "webhook.test"
             ],
             "type": "string",
@@ -7913,7 +8270,7 @@
         }
       },
       "Forbidden": {
-        "description": "The key is valid but lacks the scope this operation requires, or it is the wrong credential tier — an organization key (`mcp_at_…`) on a partner route, or a partner key (`rsk_…`) anywhere else. (`code: \"insufficient_scope\"`) Sending an SMS, sharing a document by SMS, or scheduling an email from anything but DocJacket's own apps returns `code: \"client_not_allowed\"`.",
+        "description": "The key is valid but lacks the scope this operation requires, or it is the wrong credential tier — an organization key (`mcp_at_…`) on a partner route, or a partner key (`rsk_…`) anywhere else. (`code: \"insufficient_scope\"`) Sending an SMS, sharing a document by SMS, scheduling an email, or approving an email or text proposal from anything but DocJacket's own apps returns `code: \"client_not_allowed\"`.",
         "content": {
           "application/json": {
             "schema": {
@@ -8800,6 +9157,305 @@
                 "data": {
                   "submissionId": "7c1e5a93-4b28-4d06-9f35-8a0d2e6b1c47",
                   "formId": "5a9d3c71-2e46-4b80-91f5-6c8b0a4e7d23"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Any 2xx acknowledges receipt. Respond within your subscription's timeout; anything else is recorded as a failed delivery and retried, and repeated failures open the circuit breaker on the subscription."
+          }
+        },
+        "security": []
+      }
+    },
+    "email.held": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "When an email is held in the review queue for a person to approve, including again after a discard or an approval is undone or an expired email is restored (includes hold reason codes)",
+        "description": "Sent when: DocJacket holds an email for a person to approve instead of sending it. Sent once when the email is first held, and again for the same `actionId` whenever it returns to held: a team member undoes its discard or its approval (within 24 hours, before it has sent), restores it after it expired, or restores an archived deal. Treat a later `email.held` as replacing whatever you last recorded for that `actionId`. `holdReasons` lists each reason's `code` and whether it is `blocking` (the email cannot be approved until it is changed).\n\n`data` carries ids and recipient addresses only, never the subject or body. Read the email itself with `GET /api/v1/emails/held/{actionId}` (MCP `get_held_email`), which also shows its final state.\n\n**Delivery.** `POST` to your subscription URL with these headers:\n\n- `X-Webhook-Signature` — `sha256=<hex>`, an HMAC-SHA256 of the **raw request body** using your subscription's signing secret. Compute it over the bytes as received, before any JSON parsing or re-serialization, and compare in constant time.\n- `X-Webhook-Event-Type` — the event type, matching this entry.\n- `X-Webhook-Event-Id` — a per-delivery UUID. **Deduplicate on this**: retries reuse it.\n- `X-Webhook-Timestamp` — ISO-8601 UTC send time.\n\nSubscribe with `POST /api/v1/webhooks` (use `\"*\"` to receive every event). Rotate the secret with `POST /api/v1/webhooks/{id}/regenerate-secret`, and fire a sample with `POST /api/v1/webhooks/{id}/test`.\n\n`data` is the event-specific body and is **additive** — new fields may appear at any time, so ignore ones you do not recognise.",
+        "operationId": "webhook_email_held",
+        "requestBody": {
+          "description": "The `email.held` event envelope, POSTed to your subscription URL.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookEvent"
+              },
+              "example": {
+                "eventType": "email.held",
+                "eventId": "3f2a91c7-5d64-4e18-9b03-8c7d1e4a6f52",
+                "timestamp": "2026-08-04T15:42:07.1183940Z",
+                "organizationId": "org-9fc8a1d2e3b4",
+                "userId": "1c9e6b40-72af-4d35-8e21-5b0a3f7c9d16",
+                "userName": "Jordan Rivera",
+                "data": {
+                  "actionId": "5f3b8e21-7c04-4a96-b1d2-9e6a0c4f8d73",
+                  "transactionId": "8a4c2e10-9f5b-4713-b6d8-0e2a7c5f3149",
+                  "source": "agent",
+                  "to": [
+                    "buyer@example.com"
+                  ],
+                  "cc": [
+                    "alex@example.com"
+                  ],
+                  "bcc": [],
+                  "holdReasons": [
+                    {
+                      "code": "org_reviews_email",
+                      "blocking": false
+                    },
+                    {
+                      "code": "merge_fields_unfilled",
+                      "blocking": true
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Any 2xx acknowledges receipt. Respond within your subscription's timeout; anything else is recorded as a failed delivery and retried, and repeated failures open the circuit breaker on the subscription."
+          }
+        },
+        "security": []
+      }
+    },
+    "email.approved": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "When a held email is approved and queued to send (an undo can return it to held)",
+        "description": "Sent when: a held email is approved and queued to send. `approvedVia` is `web` (the DocJacket review queue), `mobile` (DocJacket's own app) or `confirm_code` (your agent's confirm call); the envelope's `userId`/`userName` is the approver. `email.sent` or `email.failed` follows, unless a team member undoes the approval first, which sends `email.held` again for the same `actionId`.\n\n`data` carries ids and recipient addresses only, never the subject or body. Read the email itself with `GET /api/v1/emails/held/{actionId}` (MCP `get_held_email`), which also shows its final state.\n\n**Delivery.** `POST` to your subscription URL with these headers:\n\n- `X-Webhook-Signature` — `sha256=<hex>`, an HMAC-SHA256 of the **raw request body** using your subscription's signing secret. Compute it over the bytes as received, before any JSON parsing or re-serialization, and compare in constant time.\n- `X-Webhook-Event-Type` — the event type, matching this entry.\n- `X-Webhook-Event-Id` — a per-delivery UUID. **Deduplicate on this**: retries reuse it.\n- `X-Webhook-Timestamp` — ISO-8601 UTC send time.\n\nSubscribe with `POST /api/v1/webhooks` (use `\"*\"` to receive every event). Rotate the secret with `POST /api/v1/webhooks/{id}/regenerate-secret`, and fire a sample with `POST /api/v1/webhooks/{id}/test`.\n\n`data` is the event-specific body and is **additive** — new fields may appear at any time, so ignore ones you do not recognise.",
+        "operationId": "webhook_email_approved",
+        "requestBody": {
+          "description": "The `email.approved` event envelope, POSTed to your subscription URL.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookEvent"
+              },
+              "example": {
+                "eventType": "email.approved",
+                "eventId": "3f2a91c7-5d64-4e18-9b03-8c7d1e4a6f52",
+                "timestamp": "2026-08-04T15:42:07.1183940Z",
+                "organizationId": "org-9fc8a1d2e3b4",
+                "userId": "1c9e6b40-72af-4d35-8e21-5b0a3f7c9d16",
+                "userName": "Jordan Rivera",
+                "data": {
+                  "actionId": "5f3b8e21-7c04-4a96-b1d2-9e6a0c4f8d73",
+                  "transactionId": "8a4c2e10-9f5b-4713-b6d8-0e2a7c5f3149",
+                  "source": "agent",
+                  "to": [
+                    "buyer@example.com"
+                  ],
+                  "cc": [
+                    "alex@example.com"
+                  ],
+                  "bcc": [],
+                  "approvedVia": "confirm_code"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Any 2xx acknowledges receipt. Respond within your subscription's timeout; anything else is recorded as a failed delivery and retried, and repeated failures open the circuit breaker on the subscription."
+          }
+        },
+        "security": []
+      }
+    },
+    "email.scheduled": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "When a held email is approved for a later send time",
+        "description": "Sent when: a held email is approved for a later send time. `sendAt` is the UTC send time and `scheduledMessageId` the scheduled send, which can still be cancelled in DocJacket before then.\n\n`data` carries ids and recipient addresses only, never the subject or body. Read the email itself with `GET /api/v1/emails/held/{actionId}` (MCP `get_held_email`), which also shows its final state.\n\n**Delivery.** `POST` to your subscription URL with these headers:\n\n- `X-Webhook-Signature` — `sha256=<hex>`, an HMAC-SHA256 of the **raw request body** using your subscription's signing secret. Compute it over the bytes as received, before any JSON parsing or re-serialization, and compare in constant time.\n- `X-Webhook-Event-Type` — the event type, matching this entry.\n- `X-Webhook-Event-Id` — a per-delivery UUID. **Deduplicate on this**: retries reuse it.\n- `X-Webhook-Timestamp` — ISO-8601 UTC send time.\n\nSubscribe with `POST /api/v1/webhooks` (use `\"*\"` to receive every event). Rotate the secret with `POST /api/v1/webhooks/{id}/regenerate-secret`, and fire a sample with `POST /api/v1/webhooks/{id}/test`.\n\n`data` is the event-specific body and is **additive** — new fields may appear at any time, so ignore ones you do not recognise.",
+        "operationId": "webhook_email_scheduled",
+        "requestBody": {
+          "description": "The `email.scheduled` event envelope, POSTed to your subscription URL.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookEvent"
+              },
+              "example": {
+                "eventType": "email.scheduled",
+                "eventId": "3f2a91c7-5d64-4e18-9b03-8c7d1e4a6f52",
+                "timestamp": "2026-08-04T15:42:07.1183940Z",
+                "organizationId": "org-9fc8a1d2e3b4",
+                "userId": "1c9e6b40-72af-4d35-8e21-5b0a3f7c9d16",
+                "userName": "Jordan Rivera",
+                "data": {
+                  "actionId": "5f3b8e21-7c04-4a96-b1d2-9e6a0c4f8d73",
+                  "transactionId": "8a4c2e10-9f5b-4713-b6d8-0e2a7c5f3149",
+                  "source": "agent",
+                  "to": [
+                    "buyer@example.com"
+                  ],
+                  "cc": [
+                    "alex@example.com"
+                  ],
+                  "bcc": [],
+                  "sendAt": "2026-09-14T13:00:00.0000000Z",
+                  "scheduledMessageId": "e2a7c5f3-1490-4b6d-8a4c-2e109f5b4713"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Any 2xx acknowledges receipt. Respond within your subscription's timeout; anything else is recorded as a failed delivery and retried, and repeated failures open the circuit breaker on the subscription."
+          }
+        },
+        "security": []
+      }
+    },
+    "email.discarded": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "When a held email is discarded and nothing is sent, unless an undo returns it to held",
+        "description": "Sent when: a held email is discarded. Nothing is sent unless a team member undoes the discard within 24 hours, which returns it to held and sends `email.held` again for the same `actionId`. `discardedVia` is `web`, `api`, `mcp` or `confirm_code`.\n\n`data` carries ids and recipient addresses only, never the subject or body. Read the email itself with `GET /api/v1/emails/held/{actionId}` (MCP `get_held_email`), which also shows its final state.\n\n**Delivery.** `POST` to your subscription URL with these headers:\n\n- `X-Webhook-Signature` — `sha256=<hex>`, an HMAC-SHA256 of the **raw request body** using your subscription's signing secret. Compute it over the bytes as received, before any JSON parsing or re-serialization, and compare in constant time.\n- `X-Webhook-Event-Type` — the event type, matching this entry.\n- `X-Webhook-Event-Id` — a per-delivery UUID. **Deduplicate on this**: retries reuse it.\n- `X-Webhook-Timestamp` — ISO-8601 UTC send time.\n\nSubscribe with `POST /api/v1/webhooks` (use `\"*\"` to receive every event). Rotate the secret with `POST /api/v1/webhooks/{id}/regenerate-secret`, and fire a sample with `POST /api/v1/webhooks/{id}/test`.\n\n`data` is the event-specific body and is **additive** — new fields may appear at any time, so ignore ones you do not recognise.",
+        "operationId": "webhook_email_discarded",
+        "requestBody": {
+          "description": "The `email.discarded` event envelope, POSTed to your subscription URL.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookEvent"
+              },
+              "example": {
+                "eventType": "email.discarded",
+                "eventId": "3f2a91c7-5d64-4e18-9b03-8c7d1e4a6f52",
+                "timestamp": "2026-08-04T15:42:07.1183940Z",
+                "organizationId": "org-9fc8a1d2e3b4",
+                "userId": "1c9e6b40-72af-4d35-8e21-5b0a3f7c9d16",
+                "userName": "Jordan Rivera",
+                "data": {
+                  "actionId": "5f3b8e21-7c04-4a96-b1d2-9e6a0c4f8d73",
+                  "transactionId": "8a4c2e10-9f5b-4713-b6d8-0e2a7c5f3149",
+                  "source": "agent",
+                  "to": [
+                    "buyer@example.com"
+                  ],
+                  "cc": [
+                    "alex@example.com"
+                  ],
+                  "bcc": [],
+                  "discardedVia": "mcp"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Any 2xx acknowledges receipt. Respond within your subscription's timeout; anything else is recorded as a failed delivery and retried, and repeated failures open the circuit breaker on the subscription."
+          }
+        },
+        "security": []
+      }
+    },
+    "email.sent": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "When an email has been sent (accepted by Gmail, Outlook or DocJacket's mail service): an approved email, or a Playbook task email, completion email, reminder or scheduled email that sent with no approval (approval \"none\", actionId null)",
+        "description": "Sent when: an email has been sent. `via` is `gmail` or `outlook` (the customer's connected mailbox) or `docjacket` (DocJacket's mail service, when no mailbox is connected). For a held email that was approved, `approval` is `approved`. A bounce that comes back later is not reported.\n\nAn email can also send automatically, with no approval: a Playbook task email on its date, a task's completion email, a reminder or a scheduled email, when the organization does not review automatic emails before they send (and a reminder or scheduled email a team member set up by hand, which never waits for review). Its `email.sent` has `approval` `none` and its `actionId` is null, because nothing was held; `source` is `task_email`, `task_completion`, `reminder` or `scheduled`, and `sourceId` is the id of that task, reminder or scheduled email. Its `email.failed` carries the same `actionId` (null), `source` and `sourceId`. No other `email.*` event is sent for it, and it cannot be read with the held-email endpoint. A scheduled email that was held and then approved reports as an approved email, with its `actionId`.\n\n`data` carries ids and recipient addresses only, never the subject or body. Read the email itself with `GET /api/v1/emails/held/{actionId}` (MCP `get_held_email`), which also shows its final state.\n\n**Delivery.** `POST` to your subscription URL with these headers:\n\n- `X-Webhook-Signature` — `sha256=<hex>`, an HMAC-SHA256 of the **raw request body** using your subscription's signing secret. Compute it over the bytes as received, before any JSON parsing or re-serialization, and compare in constant time.\n- `X-Webhook-Event-Type` — the event type, matching this entry.\n- `X-Webhook-Event-Id` — a per-delivery UUID. **Deduplicate on this**: retries reuse it.\n- `X-Webhook-Timestamp` — ISO-8601 UTC send time.\n\nSubscribe with `POST /api/v1/webhooks` (use `\"*\"` to receive every event). Rotate the secret with `POST /api/v1/webhooks/{id}/regenerate-secret`, and fire a sample with `POST /api/v1/webhooks/{id}/test`.\n\n`data` is the event-specific body and is **additive** — new fields may appear at any time, so ignore ones you do not recognise.",
+        "operationId": "webhook_email_sent",
+        "requestBody": {
+          "description": "The `email.sent` event envelope, POSTed to your subscription URL.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookEvent"
+              },
+              "example": {
+                "eventType": "email.sent",
+                "eventId": "3f2a91c7-5d64-4e18-9b03-8c7d1e4a6f52",
+                "timestamp": "2026-08-04T15:42:07.1183940Z",
+                "organizationId": "org-9fc8a1d2e3b4",
+                "userId": "1c9e6b40-72af-4d35-8e21-5b0a3f7c9d16",
+                "userName": "Jordan Rivera",
+                "data": {
+                  "actionId": "5f3b8e21-7c04-4a96-b1d2-9e6a0c4f8d73",
+                  "transactionId": "8a4c2e10-9f5b-4713-b6d8-0e2a7c5f3149",
+                  "source": "agent",
+                  "to": [
+                    "buyer@example.com"
+                  ],
+                  "cc": [
+                    "alex@example.com"
+                  ],
+                  "bcc": [],
+                  "via": "gmail",
+                  "approval": "approved"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Any 2xx acknowledges receipt. Respond within your subscription's timeout; anything else is recorded as a failed delivery and retried, and repeated failures open the circuit breaker on the subscription."
+          }
+        },
+        "security": []
+      }
+    },
+    "email.failed": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "When an approved or automatic email could not be sent; this is the final outcome",
+        "description": "Sent when: an approved or automatic email could not be sent. This is the final outcome: retries have finished, and an email that failed once and then sent on a retry reports only `email.sent`. A scheduled email is not retried automatically, so its first failed send is final; a person can still send it again from DocJacket with Send now, and that attempt sends its own `email.sent` or `email.failed` for the same `sourceId`. `error` says why.\n\nAn email can also send automatically, with no approval: a Playbook task email on its date, a task's completion email, a reminder or a scheduled email, when the organization does not review automatic emails before they send (and a reminder or scheduled email a team member set up by hand, which never waits for review). Its `email.sent` has `approval` `none` and its `actionId` is null, because nothing was held; `source` is `task_email`, `task_completion`, `reminder` or `scheduled`, and `sourceId` is the id of that task, reminder or scheduled email. Its `email.failed` carries the same `actionId` (null), `source` and `sourceId`. No other `email.*` event is sent for it, and it cannot be read with the held-email endpoint. A scheduled email that was held and then approved reports as an approved email, with its `actionId`.\n\n`data` carries ids and recipient addresses only, never the subject or body. Read the email itself with `GET /api/v1/emails/held/{actionId}` (MCP `get_held_email`), which also shows its final state.\n\n**Delivery.** `POST` to your subscription URL with these headers:\n\n- `X-Webhook-Signature` — `sha256=<hex>`, an HMAC-SHA256 of the **raw request body** using your subscription's signing secret. Compute it over the bytes as received, before any JSON parsing or re-serialization, and compare in constant time.\n- `X-Webhook-Event-Type` — the event type, matching this entry.\n- `X-Webhook-Event-Id` — a per-delivery UUID. **Deduplicate on this**: retries reuse it.\n- `X-Webhook-Timestamp` — ISO-8601 UTC send time.\n\nSubscribe with `POST /api/v1/webhooks` (use `\"*\"` to receive every event). Rotate the secret with `POST /api/v1/webhooks/{id}/regenerate-secret`, and fire a sample with `POST /api/v1/webhooks/{id}/test`.\n\n`data` is the event-specific body and is **additive** — new fields may appear at any time, so ignore ones you do not recognise.",
+        "operationId": "webhook_email_failed",
+        "requestBody": {
+          "description": "The `email.failed` event envelope, POSTed to your subscription URL.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookEvent"
+              },
+              "example": {
+                "eventType": "email.failed",
+                "eventId": "3f2a91c7-5d64-4e18-9b03-8c7d1e4a6f52",
+                "timestamp": "2026-08-04T15:42:07.1183940Z",
+                "organizationId": "org-9fc8a1d2e3b4",
+                "userId": "1c9e6b40-72af-4d35-8e21-5b0a3f7c9d16",
+                "userName": "Jordan Rivera",
+                "data": {
+                  "actionId": "5f3b8e21-7c04-4a96-b1d2-9e6a0c4f8d73",
+                  "transactionId": "8a4c2e10-9f5b-4713-b6d8-0e2a7c5f3149",
+                  "source": "agent",
+                  "to": [
+                    "buyer@example.com"
+                  ],
+                  "cc": [
+                    "alex@example.com"
+                  ],
+                  "bcc": [],
+                  "error": "No connected mailbox available and this org requires deal email to send from a connected mailbox."
                 }
               }
             }

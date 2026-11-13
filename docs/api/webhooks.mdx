@@ -60,6 +60,12 @@ Subscribe to `"*"` to receive every event type.
 | `disclosure.recipient_viewed` | When a disclosure package recipient opens the disclosure |
 | `document.deleted` | When a document is deleted |
 | `document.uploaded` | When a document is uploaded to a transaction |
+| `email.approved` | When a held email is approved and queued to send (an undo can return it to held) |
+| `email.discarded` | When a held email is discarded and nothing is sent, unless an undo returns it to held |
+| `email.failed` | When an approved or automatic email could not be sent; this is the final outcome |
+| `email.held` | When an email is held in the review queue for a person to approve, including again after a discard or an approval is undone or an expired email is restored (includes hold reason codes) |
+| `email.scheduled` | When a held email is approved for a later send time |
+| `email.sent` | When an email has been sent (accepted by Gmail, Outlook or DocJacket's mail service): an approved email, or a Playbook task email, completion email, reminder or scheduled email that sent with no approval (approval "none", actionId null) |
 | `extraction.completed` | When a document extraction job finishes (includes jobId + status) |
 | `form.submission_received` | When a public form submission is received |
 | `key_date.completed` | When a key date is marked complete |
