@@ -4395,11 +4395,11 @@ Responses update over time, so check back to see who has confirmed.
 
 You don't have to resend invites when things change:
 
-- **A date moves** — everyone invited to that date gets one updated invitation and the event shifts on their calendar.
+- **A date moves** — everyone invited to that date gets one updated invitation and the event shifts on their calendar. If both the old date and the new date have already passed, the event is corrected without emailing anyone.
 - **Other changes on the deal** — guests are only emailed an updated invitation when something they can see changes: the event's title, description, location, date or time, all-day setting, or who is invited. Edits elsewhere on the deal don't re-send an invite that hasn't changed.
 - **A date is completed** — nothing happens to the invite. It stays on everyone's calendar, and it still updates if the date later moves.
 - **A date is cleared or the key date is deleted** — the invite is cancelled, everyone invited is emailed a cancellation, and the event drops off their calendar.
-- **Change who's invited** — reopen the **Calendar invite** section on that date, tick or untick people, and click **Update invite**.
+- **Change who's invited** — reopen the **Calendar invite** section on that date, tick or untick people, and click **Update invite**. On a date that has already passed, people you add or remove aren't emailed.
 - **Cancel manually** — click **Cancel invite** on the key date. If the date is still ahead, everyone on it gets a cancellation.
 - **Cancel or archive the deal** — DocJacket asks whether to cancel the invites too. See [When a deal is cancelled or archived](#when-a-deal-is-cancelled-or-archived).
 
@@ -4447,6 +4447,8 @@ Archiving doesn't cancel invites by itself, and restoring an archived deal doesn
 Clicking **Cancel invite** on a date that has already passed doesn't email anyone. A date counts as past when its day is before today, or, for a date with a time, when that time has already gone by. The confirmation reads "This date has passed, so nobody is emailed a cancellation. The event stays on guests' calendars." The invite shows as cancelled in DocJacket, but the event stays on guests' calendars.
 
 Marking a past date **Waived** or **N/A** doesn't ask about the invite at all, and leaves it as it is.
+
+Editing a date that has already passed (moving it to another past date, renaming it, changing its place, or changing who's invited) updates the event without emailing anyone. Guests who use Google Calendar see the change on their calendar. Guests on Outlook or Apple keep the version they were sent. Moving a past date to a date that is still ahead emails everyone an updated invitation, and so does moving a date that is ahead to one that has passed. Sending a new invite for a date that has already passed still emails the people you invite.
 
 ### Closing out dates from Ask AI
 
