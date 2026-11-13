@@ -162,6 +162,14 @@ Tasks should reference the key date they depend on. For example, a task can be d
 
 To add a task, click **Add Task**, fill in the panel that opens on the right, and click **Add task** at the bottom of the panel — it is also in the panel's header strip. That button is what saves the task to the Playbook; while a new task is unsaved the panel shows a **Not added yet** badge. The page-level **Save** at the top also adds an open task before it saves the Playbook settings. Closing the panel with **×** or **Cancel** discards a new task (DocJacket asks first if you have typed anything).
 
+### Scheduled emails need a To recipient
+
+Gmail and Outlook will not send an email with nobody in **To**, and a Playbook's scheduled email is copied onto every deal built from it. So DocJacket will not save a scheduled email in a Playbook without a **To** recipient. If you try, you see "Add a To recipient first" and the form stays open. The email template's own To recipients count, so you only need to pick one on the scheduled email when its template names none.
+
+When you add a task with an email that sends before, on, or after the due date, the **Add task** panel has a **Send to** picker for that scheduled email. While the picker has no To and the chosen template names no recipients, both **Add task** buttons are disabled and the panel says "Add a To recipient for the scheduled email". Pick a recipient, or choose a template that names one. If the email still has no To when the task is added, the task is saved but the scheduled email is not, and DocJacket tells you to add it under **Scheduled emails**. Emails that send when the task is done are not affected.
+
+A scheduled email saved before this rule can still have no To. In the **Scheduled emails** section it shows an amber **No recipient, will not send** chip. The Playbook still opens normally. Click **Edit** on the email and add a To recipient. Emails whose template names a To do not show the chip.
+
 ![Playbook task editor showing task details, priority, phase, due-date context, and an automation count on the selected task](/img/templates/checklist-task-automation.png)
 
 ## A task due the same day as a key date

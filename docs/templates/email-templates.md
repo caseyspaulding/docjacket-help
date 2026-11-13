@@ -118,7 +118,9 @@ When a template is attached to a task, the recipients you set here act as the **
 
 That means setting recipients once here covers every task using the template — you only need to set recipients on an individual task when that one task should reach someone different. See [Email Automation](../tasks/email-automation.mdx#where-recipients-come-from).
 
-Scheduled emails follow the same rule. When a scheduled email in a Playbook names no **To** recipient of its own, it uses this template's To, Cc, and Bcc roles, filled with the contacts on the deal who hold those roles. A scheduled email that names its own **To** keeps its own recipients and does not pick up the template's.
+Scheduled emails follow the same rule. When a scheduled email in a Playbook names no **To** recipient of its own, it uses this template's To, Cc, and Bcc roles, filled with the contacts on the deal who hold those roles. A scheduled email that names its own **To** keeps its own To, and also takes the template's Cc and Bcc for whichever of those it left empty. If the scheduled email has its own Cc or Bcc, its own wins.
+
+A template's To roles also count when you save a scheduled email: if the template names a To, the scheduled email can be saved without one of its own.
 
 ## Auto-attach documents
 
