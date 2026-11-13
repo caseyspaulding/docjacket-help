@@ -34,7 +34,7 @@ When the form opens:
 
 - **A note at the top** says how many fields the assistant filled in and which button to press. For example: *"The assistant filled in 4 fields (marked). Check them, then press Send Invite."*
 - **Each field it filled is marked** with the words *Filled in by the assistant*. The mark goes away when you change that field.
-- **The note says when values may have come from outside your team.** If the assistant had just read something like an email or an uploaded document, the note names it and asks you to check. For example: *"Some values may have come from an email received Nov 9, so check them against the original."*
+- **The note says when values may have come from outside your team.** If the assistant had just read something like an email or an uploaded document, the note names it and asks you to check. For example: *"Some values may have come from an email received Nov 9, so check them against the original."* If it read more than three, the note names the first three and adds how many more, such as *"…from a, b, c and 2 more, so check them against the original."*
 - **Nothing is saved, sent or invited until you press the form's button.** Change any field first, or close the form to drop it.
 
 ### It won't overwrite what you're typing
@@ -136,9 +136,13 @@ While it is running, the Ask AI panel's header shows **Setup assistant**.
 
 ### What it does
 
-- **It starts with your Primary State.** If your organization doesn't have one yet, the setup assistant asks which state you mainly work in. It never guesses your state from an address, a contract or a deal.
+- **It starts with your Primary State.** If your organization doesn't have one yet, the setup assistant asks which state you mainly work in.
+  - **When most of your deals are in one state**, it offers that state as a button with the number of deals, such as **Florida (431 deals)**, beside **Another state**. It does this when at least 80% of your deals that have a state are in that one state. Pick the state and the change appears on a card marked "nothing happens until you approve". Approve it, and use **Undo** on the card if you change your mind.
+  - **Another state, or no state with a clear majority**, takes you to **Settings > Organization** with the **Primary State** dropdown highlighted. Choose your state there and click **Save Primary State**.
+  - It never offers a state taken from a single address, contract, Playbook or client agent.
 - **With no deals yet, it focuses on your first contract.** You can upload it, or email it to your new-deal intake address.
 - **It can prepare these changes:** your Primary State, your default TC fee, a client agent's fee or coordinator, your contact roles and document categories, and your email templates. It never makes up a fee: it proposes your default TC fee only when you state the amount, and a client agent's fee only when you state it or your deals suggest one.
+- **It doesn't ask whether someone is your client agent.** Once you have a real deal, its first card proposes you as coordinator for the client agent with the most deals, plus a fee only when your deals suggest one. Approve it to say yes, or Dismiss it if that person isn't one of your agents.
 - **Archiving a contact role or document category hides it; it never deletes it.** Deals that already use it keep it. DocJacket's own roles can't be changed; the assistant offers your own copy instead.
 - **For things it can't change itself**, such as connecting your email account or your email safety settings, it takes you to the right page and points at the control.
 

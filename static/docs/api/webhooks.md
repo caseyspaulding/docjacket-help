@@ -63,6 +63,12 @@ Subscribe to `"*"` to receive every event type.
 | `disclosure.recipient_viewed` | When a disclosure package recipient opens the disclosure |
 | `document.deleted` | When a document is deleted |
 | `document.uploaded` | When a document is uploaded to a transaction |
+| `email.approved` | When a held email is approved and queued to send (an undo can return it to held) |
+| `email.discarded` | When a held email is discarded and nothing is sent, unless an undo returns it to held |
+| `email.failed` | When an approved or automatic email could not be sent; this is the final outcome |
+| `email.held` | When an email is held in the review queue for a person to approve, including again after a discard or an approval is undone or an expired email is restored (includes hold reason codes) |
+| `email.scheduled` | When a held email is approved for a later send time |
+| `email.sent` | When an email has been sent (accepted by Gmail, Outlook or DocJacket's mail service): an approved email, or a Playbook task email, completion email, reminder or scheduled email that sent with no approval (approval "none", actionId null) |
 | `extraction.completed` | When a document extraction job finishes (includes jobId + status) |
 | `form.submission_received` | When a public form submission is received |
 | `key_date.completed` | When a key date is marked complete |
@@ -81,6 +87,8 @@ Subscribe to `"*"` to receive every event type.
 The same list is available at runtime from `GET /api/v1/webhook-events`, and in the [OpenAPI specification](https://api.docjacket.com/openapi.json) under `webhooks` — where each event also carries its payload schema and an example.
 
 `extraction.completed` turns a document upload into a round-trip: subscribe, upload via the API, and receive the signed callback with the `jobId` and confidence when extraction finishes — no polling.
+
+`email.sent` fires for every email that goes out, not only ones a person approved. A Playbook task email, a completion email, a reminder or a scheduled email that sends with no approval step also fires `email.sent`, with `approval` set to `"none"` and `actionId` set to `null`. These events carry `source` (what kind of email it was), `sourceId` (the task, reminder or scheduled email behind it) and `via` (the mail service that sent it) in place of an `actionId`. Use `actionId` to match an event to a held email, and `source` with `sourceId` for the rest. `email.failed` is sent only when a failure is final, so an email that fails and then succeeds on a retry reports only `email.sent`.
 
 ## Payload
 
