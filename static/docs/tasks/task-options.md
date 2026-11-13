@@ -119,14 +119,20 @@ The drawer's **Options** section includes settings for how the task behaves:
 - **Key Date** — highlights the task as an important date-style item in task and calendar views. This is not a replacement for the transaction's canonical key dates.
 - **Notify on Complete** — sends linked emails when the task is marked complete
 - **Notify Contact** — chooses the contact for completion notification when enabled
-- **Conditional Task** — the task applies only when a condition on the deal is true, and is held back automatically at Playbook apply when it isn't (see below)
+- **Condition note** — a note on the task row saying when the task applies. It does not hide or remove the task. The checkbox that decides whether a Playbook creates a task at all is **Conditional Task**, in the Playbook editor (see below).
 - **Est. Hours** and **Actual Hours** — track estimated and actual work time
 
-## Conditional Task
+## Condition note on a deal's task
 
-Mark a task **Conditional** in the Playbook builder when it only applies to some deals. The deal's own details then decide, when the Playbook is applied, whether the task is created — you don't need a different Playbook for each variation like warranty, financing, or cash deals.
+On a task inside a deal, the **Condition note** toggle (under **Options**) adds a note to the task row saying when it applies. The hint under the toggle reads "A note on the task row saying when it applies. It does not hide or remove the task." Hover the note on the task list and it reads "Note:" followed by the note's text and "(a note from the Playbook; it does not hide or remove the task)".
 
-Open the task, tick **Conditional Task**, and choose the condition one of two ways:
+Turning it on or off on a deal doesn't add or remove anything. Whether a task is created at all is decided in the Playbook editor, below.
+
+## Conditional Task (in the Playbook editor)
+
+Tick **Conditional Task** on a task in the Playbook builder when it only applies to some deals. The deal's own details then decide, when the Playbook is applied, whether the task is created — you don't need a different Playbook for each variation like warranty, financing, or cash deals.
+
+Open the task in the Playbook editor, tick **Conditional Task**, and choose the condition one of two ways:
 
 - **Transaction field** — pick one field from a fixed list: **Cash deal** and **Sellers only** (created only when true), or a contingency such as HOA, septic, or sale of home (created unless the deal marks it N/A).
 - **Build a rule with AND / OR instead** — under **Add this task when**, combine several conditions, including **Deal flag** (such as **Buyer is financing**) and your own **Custom field** values (**is**, **is not**, **is blank**, **is not blank**). Use **And** for conditions that must all be true and **And any of…** when any one will do.
