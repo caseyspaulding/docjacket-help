@@ -65,7 +65,9 @@ The **Outstanding Payments** card on their dashboard shows their own totals as p
 
 On the Transactions list they can tag and untag their own deals, create a tag, and apply a checklist to several of their own deals at once. If a selection includes a deal that isn't theirs, nothing in it is changed.
 
-If your organization has **Allow team members to edit Playbooks and settings** turned on, limited members can also save Playbooks, checklists, task-list templates, the Key Date Library, and document lists. On reminder rules they can switch rules on or off, delete them, apply cadences, and link checklist emails. They still can't create or edit a reminder rule, save email templates, or use the setup assistant.
+On a deal they are on, they can also edit and delete the deal's TC fees, record and delete fee payments, and download a fee's PDF. They can edit, resolve, and reopen waiting-on items, rename a checklist item, see its upload history, and decide whether a conditional item applies. They can open a key date's history and change the deal email address settings, including **New address**.
+
+If your organization has **Allow team members to edit Playbooks and settings** turned on, limited members can also save Playbooks, checklists, task-list templates, the Key Date Library, and document lists. They can link checklist emails. The reminder rules on **Settings > Automation Rules** apply to every deal in the organization, so limited members can't create, edit, switch on or off, or delete them. They also can't save email templates or use the setup assistant.
 
 ### Email about deals they aren't on
 
@@ -82,7 +84,6 @@ These are closed to them today:
 - Save changes to email templates. <!-- until: docjacket-v3#6969 -->
 - Edit deal roles, deal statuses or SMS settings. <!-- until: docjacket-v3#6969 -->
 - Open Reports.
-- Edit TC fees. <!-- until: docjacket-v3#6966 -->
 - Review online form submissions.
 - Import contacts.
 - Build or edit online forms.
