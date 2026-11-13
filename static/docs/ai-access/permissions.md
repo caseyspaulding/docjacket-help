@@ -15,7 +15,7 @@ DocJacket's MCP server exposes **67 tools** across three **scope tiers**, and su
 
 | Scope | What it covers | Approval flow |
 |---|---|---|
-| **`read`** (40 tools) | Search, lookup, list — e.g. `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions`, `mcp_health_check`. Nothing here changes a record or contacts anyone. | Auto-approved per conversation in most clients |
+| **`read`** (40 tools) | Search, lookup, list — e.g. `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions`, `mcp_health_check`. With `read`, an assistant can also read a deal's internal notes, its email including message bodies, its text-message threads, scheduled sends, consistency checks, change log, key-date history, agreements, and TC fees and invoices (no payment links). Nothing here changes a record or contacts anyone. | Auto-approved per conversation in most clients |
 | **`draft`** (7 tools) | Low-risk writes to your own records — `create_tasks`, `complete_task`, `update_key_date`, `add_key_dates_batch`, `apply_checklist`, `log_activity`, `save_status_summary`. **Nothing in this tier sends anything to anyone.** | DocJacket marks these as write tools; the assistant asks first if its approval setting for the tool is on |
 | **`actions`** (20 tools) | Side-effecting work — sending email (`send_client_update`, `send_document_request`, `send_agent_followup`, `send_email_to_agent`), creating and deleting records, and disclosure packages that expose documents outside the org. | DocJacket marks these as write tools; the assistant asks first if its approval setting for the tool is on |
 
@@ -57,6 +57,8 @@ DocJacket enforces the scope tier at the server. The per-tool toggle is enforced
 ## Read-only by default
 
 The safest pattern — and what we recommend for first-time users — is to consent to `read` only at the DocJacket consent screen. Your assistant can search, look up, and summarize without ever being able to send an email or create a task.
+
+`read` is not limited to lookups. It lets the assistant read a deal's internal notes, the full text of its emails, and its text-message threads, so grant it only to an assistant you are comfortable seeing that content. It can't change any of it. A member whose role is limited to their own deals can't connect an assistant at all (see [Understanding Roles](../getting-started/understanding-roles.mdx)).
 
 If your account has draft or action scopes enabled later, you can re-consent or mint a new token with those scopes. You can revoke access any time.
 

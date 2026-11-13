@@ -48,6 +48,7 @@ If the form already has something typed in it, or is still saving, the assistant
 
 - **Inviting a teammate** is for owners and admins. The assistant never fills in the Owner role. If your organization has no free seat, it does not open the form; it takes you to **Settings > Team Members**, where you can see and manage seats.
 - **A view-only seat** can't open a filled-in form. The assistant tells you so.
+- **A form that can't open at all.** If the form never appears, the line under the answer reads "The form did not open, so nothing was filled in." Nothing was changed, so ask again.
 
 ## It prepares changes for you to approve {#approve-changes}
 
@@ -57,6 +58,7 @@ When you ask for a change, the assistant puts it on a card under its answer. For
 - Moving a key date, or marking it done, waived or not applicable
 - Adding someone to a deal, taking them off, or moving them to another role
 - Restoring an archived deal (see [below](#restore-archived-deal))
+- Deleting tasks. Their subtasks go with them, and their unsent reminders, scheduled follow-up emails and review drafts are cancelled. See [Deleting tasks](#deleting-tasks).
 
 The card's heading reads **Ready to do — nothing happens until you approve**. On the card:
 
@@ -67,6 +69,26 @@ The card's heading reads **Ready to do — nothing happens until you approve**. 
 - When a change can be undone, its row shows **Undo** after you approve it. For example, taking someone off a deal can be undone for 7 days.
 
 If your seat is view-only, the card says *"Your seat is view-only, so this can't be applied."*
+
+### Deleting tasks {#deleting-tasks}
+
+When the assistant prepares a task deletion, the subtasks of those tasks are deleted with them. Their unsent reminders, scheduled follow-up emails and review drafts are cancelled.
+
+**Undo** on the card works for 7 days. The tasks come back with their subtasks, notes, comments and follow-up email setup, and the card then shows **Undone**. Emails and reminders that were cancelled stay cancelled, and undo sends nothing.
+
+![An approved task deletion card in Ask AI, marked Done, with Show me and Undo buttons](/img/ai-features/ask-ai-task-deletion-undo.png)
+
+Undo is only on the card. The **Delete** button on a deal's **Tasks** tab has no undo.
+
+### Asking about a task {#ask-about-a-task}
+
+Open a task on a deal's **Tasks** tab and click **Ask the assistant** in the task's drawer. Hover text on the button reads "Open Ask AI about this task. Nothing changes until you approve it." Ask AI opens with this in the message box: *Help me get this task done: "[the task name]". Tell me what it needs, and propose anything you can do for me to approve.* Nothing is sent until you press **Send**. View-only seats see the button too, because asking changes nothing.
+
+![A task drawer with the Ask the assistant button, and Ask AI open beside it with the message "Help me get this task done" filled in and not yet sent](/img/ai-features/ask-the-assistant-task-drawer.png)
+
+### Questions about a deal's notes, email and texts {#deal-reads}
+
+On a deal, Ask AI can look up the deal's notes, email, text messages, scheduled sends, checks, change history, key-date history, agreements and fees. Use it for questions like *"What did the lender say in the last email?"* It only reads. It doesn't mark an email as read or change anything on the deal. It reads the deals you can see; if your role is limited to your own deals, that means the deals you are on.
 
 ## "Is anything wrong with this deal?" {#deal-check}
 
@@ -155,7 +177,7 @@ Setup is for an owner or admin, or a teammate the owner has allowed to edit Play
 
 If you ask for setup and can't use it, the answer says why and who can, naming up to three of your organization's owners and admins.
 
-The setup assistant is part of paid plans. On the Free plan, it is included in an organization's first 30 days while its required setup steps are still open, up to the included usage.
+The setup assistant works for an organization on a paid plan, including while the paid plan is in its free trial, and on a complimentary plan. On the Free plan, it is included in an organization's first 30 days while its required setup steps are still open, up to the included usage.
 
 ### Leaving setup
 
