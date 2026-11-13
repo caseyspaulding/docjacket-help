@@ -63,6 +63,8 @@ On their own account, they can change their profile photo, phone link, and compe
 
 The **Outstanding Payments** card on their dashboard shows their own totals as plain text, without the links into Reports.
 
+On the Transactions list they can tag and untag their own deals, create a tag, and apply a checklist to several of their own deals at once. If a selection includes a deal that isn't theirs, nothing in it is changed.
+
 If your organization has **Allow team members to edit Playbooks and settings** turned on, limited members can also save Playbooks, checklists, task-list templates, the Key Date Library, and document lists. On reminder rules they can switch rules on or off, delete them, apply cadences, and link checklist emails. They still can't create or edit a reminder rule, save email templates, or use the setup assistant.
 
 ### Email about deals they aren't on
@@ -75,10 +77,10 @@ When a limited member tries something that is closed to them, they see an amber 
 
 These are closed to them today:
 
-- Upload a document to a deal or attach a file to an email. <!-- until: docjacket-v3#6963 -->
+- Attach a file to an email. <!-- until: docjacket-v3#6963 -->
 - Send documents for e-signature. <!-- until: docjacket-v3#6963 -->
-- Tag deals or use bulk actions on the Transactions list. <!-- until: docjacket-v3#6963 -->
-- Save email templates. <!-- until: docjacket-v3#6969 -->
+- Save changes to email templates. <!-- until: docjacket-v3#6969 -->
+- Edit deal roles, deal statuses or SMS settings. <!-- until: docjacket-v3#6969 -->
 - Open Reports.
 - Edit TC fees. <!-- until: docjacket-v3#6966 -->
 - Review online form submissions.
