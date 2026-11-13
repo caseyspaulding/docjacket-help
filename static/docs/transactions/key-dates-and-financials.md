@@ -53,7 +53,13 @@ is stale.
 
 Use the transaction edit page for governed transaction dates. On the timeline, a governed row may show **Edit on Transaction Details** instead of Delete. That means the date belongs to the transaction's canonical date fields; edit or clear it from the transaction details so DocJacket keeps the transaction record and timeline row aligned.
 
-Use the key-date drawer for custom or Playbook-generated timeline dates. You can update the due date, the time, status, notes, reminders, linked tasks, and portal note visibility. Reminders here can go by email, text message, or both — and when you save the deal as a Playbook, these reminders are captured (texts included) and re-created on future deals you apply it to. If a key date is missing its anchor, it appears as **Needs date** until the upstream transaction date is filled in.
+Use the key-date drawer for custom or Playbook-generated timeline dates. You can update the due date, the time, status, notes, reminders, linked tasks, and portal note visibility. Reminders here can go by email, text message, or both — and when you save the deal as a Playbook, these reminders are captured (texts included) and re-created on future deals you apply it to. A row with no date shows a **Needs date** chip. Expand the row in the Key Dates list, or open the key date, to see why:
+
+- **Missing anchor** — the date this one is calculated from isn't set yet. The list shows "Missing anchor — Waiting on: *date name*". Fill in that date and this one follows.
+- **Not calculated** — the date it depends on is set, but this one hasn't been calculated from it yet. Click **Recalculate** (read-only seats don't see the button).
+- **Needs a date** — there is nothing to calculate it from, or you typed a date and then cleared it. Open the key date and enter a date. If you had typed it and then cleared it, you can also choose **Overridden — reset** to calculate it again.
+
+Effective Date and Acceptance Date never show **Missing anchor**, because nothing sits behind them. Rows that are **Completed**, **Waived** or **N/A** show none of these.
 
 ### Adding the appointment time
 
@@ -73,6 +79,20 @@ A few things worth knowing:
 - **It doesn't move the date.** A 2:00 PM time on an August 30 date is still an August 30 deadline everywhere else in DocJacket — the timeline, the calendar, and the day-before appointment text all still work off the date.
 - **It survives your other edits.** Re-applying a Playbook, moving the date, or a new contract coming in through extraction all leave a time you typed alone.
 - **Appointment confirmation texts don't include it automatically.** Those use your own wording, so add `{{appointment_time}}` to them in **Settings > SMS** if you want it there too.
+
+### What closing a key date stops
+
+Marking a key date **Completed**, **Waived** or **N/A**, or deleting it, cancels the reminders and scheduled emails for that date that haven't gone out yet. Reopening the key date doesn't start them again; add a new reminder if you still want one. Once a date is closed, an email for it that was dismissed or is being held for approval can't be restored or approved.
+
+Calendar invites that have already gone out aren't cancelled when you complete a date. **Waived** and **N/A** ask whether to cancel the invite. See [Calendar Invites](../calendar/calendar-invites.md).
+
+### Financing dates on cash deals
+
+DocJacket treats a deal as Cash when it is marked cash or its **Financing type** contains "Cash". A blank financing type never counts as Cash.
+
+On a Cash deal, DocJacket won't add **Appraisal Deadline**, **Financing Deadline**, **New Loan Terms Deadline** or **Loan Application Deadline** on its own: not from a contract upload, not from contract date rules, and not from a monday.com import. The extraction review lists each one as "Not added: this deal is recorded as Cash." If you fill in a loan or appraisal period yourself on the deal, the deadline it produces is still added.
+
+If you add one of these dates by hand (**Add Key Date**, or the deal edit page), you'll see "This deal is recorded as Cash." and the date saves normally. Dates already on the deal are never removed.
 
 When you move a key date, DocJacket may show a cascade preview before saving. Review the affected tasks, downstream key dates, manually overridden dates, completed dates, and missing-rule items before applying the change. For why some dates recalculate automatically and others don't, see [Recalculating Deadlines](./recalculating-deadlines.mdx).
 
