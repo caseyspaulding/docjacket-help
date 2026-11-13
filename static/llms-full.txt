@@ -4751,9 +4751,9 @@ If a transaction has a useful set of key dates, tasks, and automation rules, sav
 
 # Subtasks
 
-Some tasks are better broken into smaller steps. Subtasks let you do that while keeping everything grouped under the parent task.
+Some tasks are better broken into smaller steps. Subtasks let you do that while keeping everything grouped under the main task. You can add subtasks to a task on one deal, or to a task in a Playbook so every deal that gets the task gets its subtasks too.
 
-## Adding subtasks
+## Adding subtasks to a task on a deal
 
 1. Click a task to open its detail drawer
 2. Open the **Subtasks** section
@@ -4761,26 +4761,73 @@ Some tasks are better broken into smaller steps. Subtasks let you do that while 
 4. Enter the subtask name
 5. Click **Add Subtask**
 
-If the parent task already has subtasks, the section opens with the progress count visible.
+If the main task already has subtasks, the section opens with the progress count visible.
 
-## Subtasks and Playbooks
+## Adding subtasks to a task in a Playbook
 
-Playbook (checklist) task templates do not have subtasks. The Playbook task editor has no "add subtask" control, and a Playbook cannot generate subtasks on a new deal. <!-- until: docjacket-v3#7134 --> Subtasks are added by hand on a deal task (task drawer > **Subtasks** > **Add**).
+A Playbook task can carry a list of subtasks. When the Playbook is applied, each subtask is added to the deal under its main task, in the same **Subtasks** section described above.
 
-To get step-by-step work from a Playbook, add each step as its own task. Set a task's **Due date is based on** to another task so it comes after that one, and use the **Lives under** picker to keep related steps together.
+1. Go to **Templates → Playbooks** and open one of your Playbooks (DocJacket Playbooks are read-only, so copy one to **My Playbooks** first)
+2. Click the task to open it in the task editor. The task has to be saved already: a task you are still creating has no **Subtasks** section until you add it
+3. In the **Subtasks** section, click **Add subtask**
+4. Type the subtask name and press **Enter**. The box stays open so you can type the next one
+5. Click **Cancel** when you are done adding
+
+Each subtask in the list shows its due date rule, the role it is assigned to, and an **If:** badge when it has a condition. Click a subtask to open it in the same editor. Use the trash button on its row to delete it.
+
+### What a Playbook subtask can have
+
+A subtask can have:
+
+- A name
+- A due date rule
+- **Assign to role**
+- **Conditional Task**, so it is only added to deals that match
+- A priority
+- A description
+
+A subtask follows its main task for everything else. It does not have a phase, **Repeat**, **Add to every deal**, a link to a key date, a "due after another task" setting, **Show on portal**, emails, or Automations. It is always added to a deal together with its main task. Put emails and automations on the main task.
+
+When a subtask is open, a **Subtask of** line at the top names its main task. Click the name to go back to the main task.
+
+Subtasks go one level deep: a subtask can't have subtasks of its own. You also can't move a subtask to a different main task. To do that, delete it and add it under the other task.
+
+A task can't wait on a subtask. When you set a task to come after another task, only main tasks are offered.
+
+### How subtasks show in the Playbook
+
+In the Tasks list (the structure view and the flat list), subtasks are indented under their main task, and the main task shows an **N subtasks** chip. A subtask is never a row of its own under a key date or in **Unlinked**, and the task counts at the top of the Playbook count main tasks only. Dragging a main task to a new place moves its subtasks with it.
+
+If you delete a main task that has subtasks, DocJacket asks first and says "This also deletes its N subtasks." Confirming deletes them along with the task.
+
+### What happens when the Playbook is applied
+
+- Each subtask is added under its main task's task on the deal.
+- A subtask with a condition is only added when the deal matches it.
+- If a main task isn't added to a deal, because its condition isn't met or it was left out, its subtasks aren't added either.
+- Subtasks aren't counted in the totals on the **Apply Playbook** dialog or in the **N to sync** chip. The apply summary reports them separately from tasks.
+
+Because of that, adding a subtask to a Playbook after a deal was set up from it doesn't make the chip show anything to sync. See [Applying the same Playbook again](../templates/timeline-templates.md#applying-the-same-playbook-again).
+
+### Subtasks in CSV files and the AI builder
+
+- **CSV:** the Playbook export has a **Subtask Of** column, and the import reads it. See [Print or export a Playbook's key dates and tasks](../templates/timeline-templates.md#print-or-export-a-playbooks-key-dates-and-tasks).
+- **Build a Playbook with AI:** ask for the checks as subtasks. See [Subtasks in the builder](../templates/build-a-playbook-with-ai.md#subtasks-in-the-builder).
 
 ## Tracking progress
 
 - Check off subtasks directly in the drawer as you complete them
-- The parent task tracks progress automatically with counts like "2/5"
+- The main task tracks progress automatically with counts like "2/5"
 - A checked subtask is shown with completed styling
-- Subtasks can have their own due dates when they are created from templates or automation
+- Subtasks can have their own due dates when they come from a Playbook or automation
 
 ## Tips
 
 - Use subtasks for multi-step processes like "Order title search" → "Review title commitment" → "Clear title exceptions"
+- Use Playbook subtasks for a group of short checks that belong to one task, such as the items in a due diligence review. Give a subtask a condition when a check only applies on some deals
 - Subtasks are great for tasks that multiple people contribute to
-- Completing all subtasks doesn't automatically complete the parent task — you still check off the parent when everything's done
+- Completing all subtasks doesn't automatically complete the main task. You still check off the main task when everything's done
+- To get steps that each have their own phase, key date or emails, add each step as its own task and set a task's **Due date is based on** to another task so it comes after that one
 
 ---
 
@@ -6546,7 +6593,7 @@ Playbook tasks are the work your team completes during the transaction. Tasks ca
 - Calendar-day or business-day calculation
 - Linked key dates
 - Document category
-- Subtasks
+- [Subtasks](#subtasks)
 - Scheduled emails
 - On-completion email actions
 - **Conditional Task** — only create this task when the deal matches a condition (see [Conditional tasks](#conditional-tasks))
@@ -6554,6 +6601,12 @@ Playbook tasks are the work your team completes during the transaction. Tasks ca
 Tasks should reference the key date they depend on. For example, a task can be due 3 days before **Final Walkthrough** instead of hardcoding the same rule from **Closing Date**.
 
 To add a task, click **Add Task**, fill in the panel that opens on the right, and click **Add task** at the bottom of the panel — it is also in the panel's header strip. That button is what saves the task to the Playbook; while a new task is unsaved the panel shows a **Not added yet** badge. The page-level **Save** at the top also adds an open task before it saves the Playbook settings. Closing the panel with **×** or **Cancel** discards a new task (DocJacket asks first if you have typed anything).
+
+### Subtasks
+
+A saved task can carry a list of subtasks: small checks that appear under the task on every deal it is added to. Open the task, find the **Subtasks** section, click **Add subtask**, type a name and press **Enter**. A subtask can have a due date rule, **Assign to role**, a condition, a priority and a description, but no phase, repeat, key date link, portal setting or emails. If the main task isn't added to a deal, its subtasks aren't either.
+
+In the task lists, subtasks are indented under their main task, and the main task shows an **N subtasks** chip. Deleting a main task also deletes its subtasks, and DocJacket says so before you confirm. The full steps, and what a subtask can and can't have, are in [Subtasks](../tasks/subtasks.mdx#adding-subtasks-to-a-task-in-a-playbook).
 
 ### Scheduled emails need a To recipient
 
@@ -6825,11 +6878,20 @@ The file downloads straight away, named after the Playbook (for example `Florida
 **What the CSV contains.** One file with **both key dates and tasks**, in two blocks:
 
 - **`# Key Dates`** — every key date in the Playbook: Order, Key Date, Side, Category, Priority, Date Rule, Anchor Field, Offset Days, Offset Direction, Day Calculation, Phase, and Required.
-- **`# Tasks`** — every task in the Playbook: Order, Task Name, Priority, Phase, Due Date Anchor, Offset Days, Direction, Conditional, Description, Template Group(s), Task Start Date Rule, and Predecessors.
+- **`# Tasks`** — every task in the Playbook: Order, Task Name, Priority, Phase, Due Date Anchor, Offset Days, Direction, Conditional, Condition, Condition Mode, Condition Rule, Description, Template Group(s), Task Start Date Rule, Predecessors, Day Mode, Weekend Roll, and Subtask Of.
 
 The export always includes every key date and every task, even if you typed something in **Filter key dates...** first. It lists the Playbook's date *rules* (for example "3 days after Effective Date") — a Playbook is a template, so there are no real calendar dates in it yet. Export works on DocJacket starter Playbooks too, even though they are read-only.
 
 The **Tasks** block uses the same column names as **Import CSV**, so you can edit the tasks in a spreadsheet and import them into another Playbook.
+
+**Subtasks in the CSV.** The last column, **Subtask Of**, holds the exact name of a subtask's main task, and it is empty for a main task. Each subtask is listed right after its main task.
+
+When you import a file with a **Subtask Of** column:
+
+- A row that names exactly one main task in the same file becomes a subtask of it. The main task can be further down the file.
+- If the name matches no main task, matches two, is the row's own name, or is itself a subtask, the row is imported as a main task and flagged.
+- A row that is set to wait on a subtask is imported without the wait and flagged: "A task can't wait on a subtask. Pick a main task, or give this task a due date."
+- A file without a **Subtask Of** column imports exactly as it did before.
 
 :::tip Printing a deal's task list instead
 If what you want on paper is the task list for **one transaction** — with real due dates and completed tasks checked off — open the transaction's **Tasks** tab and click **Print**. That opens a printable checklist PDF of the deal's tasks. See [Print a task list](/docs/tasks#print-a-task-list).
@@ -6873,6 +6935,8 @@ The number counts:
 - **Key dates and tasks in the Playbook that are not on the deal.** Tasks you deleted from the deal yourself are not counted; hover the chip to see how many were left out.
 - **Items the Playbook now says differently.** A deadline rule changed in the Playbook on a date nobody changed by hand, or a task renamed in the Playbook.
 
+Subtasks aren't counted. A subtask is added to a deal along with its main task, so it never makes the chip say **to sync** on its own.
+
 Not counted: Playbook documents, dates you changed by hand or marked Completed, Waived or N/A, Optional tasks, and items the Playbook leaves out on this deal (a condition that isn't met, the other side's key dates, financing items on a cash deal).
 
 The number is the same one the Apply Playbook dialog shows on its last button. A chip that reads **2 to sync** opens a dialog whose button reads **Create 2 items**.
@@ -6894,6 +6958,7 @@ You can re-apply a Playbook that is already on the deal, whether or not the chip
 
 - Rows that are already on the deal read **Already on this deal**. They are locked, and they are left out of the sentence at the top and the count on the button.
 - When everything is already there, the dialog says "Everything in this Playbook is already on this deal.", the button reads **Apply**, and the receipt headline is **Deal already set up**.
+- **Subtasks.** A subtask is added to a deal with its main task and is not counted in the dialog or on the button. When you re-apply the whole Playbook with nothing unticked, a subtask that is missing under a task already on the deal is added. If you untick any row, or the Playbook has optional tasks, a task that is already on the deal doesn't get new subtasks. The receipt reports subtasks separately from tasks.
 - **Deleted tasks come back by default.** Click **Leave out the N you removed** to skip them for that one apply. DocJacket doesn't remember the choice for next time.
 - **Playbook for the other side.** If the Playbook is for Seller deals and the deal is Buyer (or the reverse), an amber note says so: "This Playbook is for Seller deals · this deal is Buyer. Its 2 seller-side key dates won't be added; its tasks will." It doesn't stop you. The receipt repeats it with "N key date(s) for the other side, not added".
 - **Dates that can't be calculated yet.** If a key date counts from a date the deal doesn't have, the receipt says "Some dates are waiting on a date this deal doesn't have yet:" and lists the missing dates by name, for example Effective Date.
@@ -8590,6 +8655,17 @@ Type into **Message the assistant** and click **Send**, or click **Draft everyth
 - **Copy from your own Playbooks.** Ask the assistant to copy tasks or documents from another of your Playbooks into this draft. It tells you what it copied and what it skipped.
 - **It tells you what a Playbook can't hold.** If you ask for something a Playbook doesn't store, such as a PDF or a flyer, the assistant says so first and carries on with the rest of the step.
 - **Report templates aren't used for task emails.** Templates in your **Reports** category are left out when the assistant picks an email for a task.
+
+## Subtasks in the builder
+
+If a task has a group of small checks under it, ask for them as subtasks. For example: "Add a task called Due Diligence Research with these checks under it as subtasks: Request HOA Verification, Research Septic Details, Research Well Details." The assistant adds each check as a subtask of the task, not as a list in the task's description.
+
+- **Tasks step:** each subtask is indented right under its task. You can edit one there, and it has no **Phase** field because it follows its task's phase. Removing a task that has subtasks says "This also removes its N subtasks."
+- **Review step:** the totals count tasks and subtasks separately, for example "38 tasks, 4 subtasks", and each subtask line reads like "Request HOA Verification (subtask of Due Diligence Research)".
+- **Copying from another Playbook:** when you ask the assistant to copy tasks from one of your Playbooks, each copied task brings its subtasks with it. A subtask can't be copied on its own.
+- **What a subtask can't have:** subtasks are one level deep, and emails go on the main task. A task can't wait on a subtask.
+
+After the Playbook is created, the subtasks work like any others. See [Subtasks](../tasks/subtasks.mdx#adding-subtasks-to-a-task-in-a-playbook).
 
 ## Review and create
 

@@ -150,7 +150,7 @@ Playbook tasks are the work your team completes during the transaction. Tasks ca
 - Calendar-day or business-day calculation
 - Linked key dates
 - Document category
-- Subtasks
+- [Subtasks](#subtasks)
 - Scheduled emails
 - On-completion email actions
 - **Conditional Task** — only create this task when the deal matches a condition (see [Conditional tasks](#conditional-tasks))
@@ -158,6 +158,12 @@ Playbook tasks are the work your team completes during the transaction. Tasks ca
 Tasks should reference the key date they depend on. For example, a task can be due 3 days before **Final Walkthrough** instead of hardcoding the same rule from **Closing Date**.
 
 To add a task, click **Add Task**, fill in the panel that opens on the right, and click **Add task** at the bottom of the panel — it is also in the panel's header strip. That button is what saves the task to the Playbook; while a new task is unsaved the panel shows a **Not added yet** badge. The page-level **Save** at the top also adds an open task before it saves the Playbook settings. Closing the panel with **×** or **Cancel** discards a new task (DocJacket asks first if you have typed anything).
+
+### Subtasks
+
+A saved task can carry a list of subtasks: small checks that appear under the task on every deal it is added to. Open the task, find the **Subtasks** section, click **Add subtask**, type a name and press **Enter**. A subtask can have a due date rule, **Assign to role**, a condition, a priority and a description, but no phase, repeat, key date link, portal setting or emails. If the main task isn't added to a deal, its subtasks aren't either.
+
+In the task lists, subtasks are indented under their main task, and the main task shows an **N subtasks** chip. Deleting a main task also deletes its subtasks, and DocJacket says so before you confirm. The full steps, and what a subtask can and can't have, are in [Subtasks](../tasks/subtasks.mdx#adding-subtasks-to-a-task-in-a-playbook).
 
 ### Scheduled emails need a To recipient
 
@@ -429,11 +435,20 @@ The file downloads straight away, named after the Playbook (for example `Florida
 **What the CSV contains.** One file with **both key dates and tasks**, in two blocks:
 
 - **`# Key Dates`** — every key date in the Playbook: Order, Key Date, Side, Category, Priority, Date Rule, Anchor Field, Offset Days, Offset Direction, Day Calculation, Phase, and Required.
-- **`# Tasks`** — every task in the Playbook: Order, Task Name, Priority, Phase, Due Date Anchor, Offset Days, Direction, Conditional, Description, Template Group(s), Task Start Date Rule, and Predecessors.
+- **`# Tasks`** — every task in the Playbook: Order, Task Name, Priority, Phase, Due Date Anchor, Offset Days, Direction, Conditional, Condition, Condition Mode, Condition Rule, Description, Template Group(s), Task Start Date Rule, Predecessors, Day Mode, Weekend Roll, and Subtask Of.
 
 The export always includes every key date and every task, even if you typed something in **Filter key dates...** first. It lists the Playbook's date *rules* (for example "3 days after Effective Date") — a Playbook is a template, so there are no real calendar dates in it yet. Export works on DocJacket starter Playbooks too, even though they are read-only.
 
 The **Tasks** block uses the same column names as **Import CSV**, so you can edit the tasks in a spreadsheet and import them into another Playbook.
+
+**Subtasks in the CSV.** The last column, **Subtask Of**, holds the exact name of a subtask's main task, and it is empty for a main task. Each subtask is listed right after its main task.
+
+When you import a file with a **Subtask Of** column:
+
+- A row that names exactly one main task in the same file becomes a subtask of it. The main task can be further down the file.
+- If the name matches no main task, matches two, is the row's own name, or is itself a subtask, the row is imported as a main task and flagged.
+- A row that is set to wait on a subtask is imported without the wait and flagged: "A task can't wait on a subtask. Pick a main task, or give this task a due date."
+- A file without a **Subtask Of** column imports exactly as it did before.
 
 :::tip Printing a deal's task list instead
 If what you want on paper is the task list for **one transaction** — with real due dates and completed tasks checked off — open the transaction's **Tasks** tab and click **Print**. That opens a printable checklist PDF of the deal's tasks. See [Print a task list](/docs/tasks#print-a-task-list).
@@ -477,6 +492,8 @@ The number counts:
 - **Key dates and tasks in the Playbook that are not on the deal.** Tasks you deleted from the deal yourself are not counted; hover the chip to see how many were left out.
 - **Items the Playbook now says differently.** A deadline rule changed in the Playbook on a date nobody changed by hand, or a task renamed in the Playbook.
 
+Subtasks aren't counted. A subtask is added to a deal along with its main task, so it never makes the chip say **to sync** on its own.
+
 Not counted: Playbook documents, dates you changed by hand or marked Completed, Waived or N/A, Optional tasks, and items the Playbook leaves out on this deal (a condition that isn't met, the other side's key dates, financing items on a cash deal).
 
 The number is the same one the Apply Playbook dialog shows on its last button. A chip that reads **2 to sync** opens a dialog whose button reads **Create 2 items**.
@@ -498,6 +515,7 @@ You can re-apply a Playbook that is already on the deal, whether or not the chip
 
 - Rows that are already on the deal read **Already on this deal**. They are locked, and they are left out of the sentence at the top and the count on the button.
 - When everything is already there, the dialog says "Everything in this Playbook is already on this deal.", the button reads **Apply**, and the receipt headline is **Deal already set up**.
+- **Subtasks.** A subtask is added to a deal with its main task and is not counted in the dialog or on the button. When you re-apply the whole Playbook with nothing unticked, a subtask that is missing under a task already on the deal is added. If you untick any row, or the Playbook has optional tasks, a task that is already on the deal doesn't get new subtasks. The receipt reports subtasks separately from tasks.
 - **Deleted tasks come back by default.** Click **Leave out the N you removed** to skip them for that one apply. DocJacket doesn't remember the choice for next time.
 - **Playbook for the other side.** If the Playbook is for Seller deals and the deal is Buyer (or the reverse), an amber note says so: "This Playbook is for Seller deals · this deal is Buyer. Its 2 seller-side key dates won't be added; its tasks will." It doesn't stop you. The receipt repeats it with "N key date(s) for the other side, not added".
 - **Dates that can't be calculated yet.** If a key date counts from a date the deal doesn't have, the receipt says "Some dates are waiting on a date this deal doesn't have yet:" and lists the missing dates by name, for example Effective Date.
