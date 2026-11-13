@@ -57,7 +57,8 @@ After your first sign-in, DocJacket asks for a few organization details:
 - **Organization Name** — Your company, team, or personal TC business name
 - **Workspace URL** — The subdomain clients can use for portal access, such as `your-team.docjacket.com`
 - **First Name / Last Name** — Optional profile details
-- **Primary State** — Optional state context for your workspace
+- **Primary State** — The state you mainly close in. This is required, and you can't continue without it
+- **What best describes you?** — Optional. Choose **Transaction coordinator**, **Real-estate agent**, **Broker / team lead**, or **Something else / a mix**. Nothing is preselected, and it helps DocJacket tailor tips. Owners and admins can change it later in **Settings > Organization**
 
 DocJacket checks whether your workspace URL is available while you type. Workspace URLs must be 3-30 characters and use lowercase letters, numbers, and hyphens.
 
@@ -292,9 +293,47 @@ For a limited member, a deal they aren't on behaves as if it doesn't exist. It d
 
 A few things work differently for a limited member:
 
-- **Contacts stay shared.** The contact list is one address book for the whole organization, so they can still create, edit, and delete contacts. The deals and tasks shown on a contact's page are limited to the deals they are on.
-- **Org-wide pages aren't available.** Reports, exports, the organization Inbox, the review queue, and the notification bell cover every deal, so they are hidden for limited members.
+- **Contacts stay shared.** The contact list is one address book for the whole organization, so they can still create, edit, and delete contacts. The deals and tasks shown on a contact's page are limited to the deals they are on. They can't import contacts or see invoices billed to a contact.
+- **Org-wide pages aren't available.** Reports, exports, the organization Inbox, and the review queue cover every deal, so limited members don't see them. The notification bell is shown, and it lists only notifications about deals they are on.
 - **API keys and AI connections (MCP) don't work for them.** An API key or AI-assistant connection made by a limited member is refused until their role is no longer limited.
+
+### What a limited member can do
+
+On the deals they are on, a limited member can work the deal the way any other team member does:
+
+- Send a text or email from the deal's **Messages** tab.
+- Open, edit, cancel, replace, delete, and **send now** the deal's reminders and scheduled emails.
+- Approve, dismiss, restore, undo, schedule, and draft from the suggestion cards on the deal page. Cards that don't belong to a deal, such as new-deal proposals, contact merges, and form analysis, stay closed to them.
+- Add calendar events on their deals, or personal events, and use **Sync to Google** on the Calendar page when Google is connected.
+
+On their own account, they can change their profile photo, phone link, and compensation type, use **Report a problem** and see their own support tickets, change their sign-in email, connect their own Gmail or Outlook mailbox and calendar, and link their Google or Microsoft sign-in. They can't connect or disconnect other integrations.
+
+The **Outstanding Payments** card on their dashboard shows their own totals as plain text, without the links into Reports.
+
+If your organization has **Allow team members to edit Playbooks and settings** turned on, limited members can also save Playbooks, checklists, task-list templates, the Key Date Library, and document lists. On reminder rules they can switch rules on or off, delete them, apply cadences, and link checklist emails. They still can't create or edit a reminder rule, save email templates, or use the setup assistant.
+
+### Email about deals they aren't on
+
+A limited teammate who isn't on a deal is left off that deal's reminders, scheduled emails, task emails, and rule emails. They are also left off document approved and rejected notices, form-submission emails, and e-signature sender notices. When you send a task email, the **Review & send** dialog and drawer say "Not added because they are not on this deal:" followed by the names.
+
+### What a limited member can't do
+
+When a limited member tries something that is closed to them, they see an amber **Not available** message: "Your role is limited to your own deals, so this isn't available. Ask an Owner or Admin."
+
+These are closed to them today:
+
+- Upload a document to a deal or attach a file to an email. <!-- until: docjacket-v3#6963 -->
+- Send documents for e-signature. <!-- until: docjacket-v3#6963 -->
+- Tag deals or use bulk actions on the Transactions list. <!-- until: docjacket-v3#6963 -->
+- Save email templates. <!-- until: docjacket-v3#6969 -->
+- Open Reports.
+- Edit TC fees. <!-- until: docjacket-v3#6966 -->
+- Review online form submissions.
+- Import contacts.
+- Build or edit online forms.
+- See invoices billed to a contact.
+
+The **Deal visibility** card on **Settings > Team Members** lists what limited roles can't do, under **Not available yet for limited roles**. Its list shortens as more opens up, and a long list shows **Show N more**.
 
 ## The Roles page
 
@@ -2260,9 +2299,9 @@ DocJacket lets a transaction coordinator (or org admin) bill their **transaction
 
 ## Can I send an invoice without a transaction?
 
-**No.** Every invoice in DocJacket lives on a transaction. You create invoices from a deal's **Payments tab**, so there's no standalone invoice or "invoice a contact" that isn't attached to a transaction. If you want to bill for a file, open (or create) the transaction first, then add the invoice there.
+**Yes, to a contact.** Most invoices are created from a deal's **Payments tab**, which puts the property, agent, and deal details on the invoice automatically and lets you see who has paid right on the deal.
 
-This keeps the property, agent, and deal details on the invoice automatically, and lets you see who has paid right on the deal.
+To bill someone outside any deal, open the contact, go to the **Invoices** tab, and click **Send invoice**. That invoice is billed straight to the contact and isn't attached to a transaction. Team members who are limited to their own deals don't see the contact's Invoices tab.
 
 ## What invoices are — and aren't
 
@@ -2292,6 +2331,17 @@ You only have to do this once. After that, sending an invoice is a two-click flo
    - **Due date** — optional
 5. Save it. The invoice starts as a **Draft** so you can review it before it goes out.
 
+### If DocJacket won't create the invoice
+
+DocJacket needs a payer name and a valid payer email before it creates an invoice. If one is missing, it tells you what to fill in:
+
+- **"This deal has no agent to bill. Enter the payer's name."** The deal has no agent to pre-fill from, so type the payer's name.
+- **"Enter the payer's name."** The deal's agent has no name on file. Type the payer's name.
+- **"This deal's agent has no email address. Enter the payer's email."** Type the email to bill.
+- **"Enter a valid payer email."** The address you typed isn't a valid email address.
+
+When an invoice is billed to a contact, the messages are **"Enter the payer's name."** and **"This contact has no email address. Enter the payer's email."**
+
 ## Send the invoice
 
 Click **Send**. DocJacket:
@@ -2305,6 +2355,12 @@ The payer clicks **Pay Invoice**, pays by card or bank on a secure checkout page
 :::tip Copy a pay link instead of emailing
 If you'd rather send the pay link yourself (over text, in your own email, etc.), you can generate a payment link for the invoice instead of having DocJacket email it.
 :::
+
+## Public pay page
+
+**Settings > Get Paid** has a **Public pay page** card with an on/off switch. It is a permanent page that shows how you accept payment, so you can put it on a business card or in your email signature. When you're paying a specific fee, the agent still uses the link or QR code you send them, which carries the exact amount.
+
+With the switch on, the page's address shows with **Copy link** and **Show QR** buttons. With it off, the address is greyed out and reads "Turn this on to share the link. Until then the page shows "Page not found"." The two buttons are hidden until you turn it on.
 
 ## Can I modify the invoice design?
 
@@ -3740,6 +3796,12 @@ If the built-in roles do not cover your workflow, create or edit roles in **Sett
 ## Primary contacts
 
 A transaction contact can also be marked **Primary**. Use this when one buyer, seller, agent, or service contact should be treated as the main contact for that role. Marking one contact Primary un-marks any other primary contact in the same role on that transaction.
+
+### Changing someone's role on a deal
+
+On a contact's card on the **Contacts** tab, use the **Role** dropdown to move them to another role on that deal. If they were the primary contact and the new role already has a primary, the existing primary stays primary and the person you moved comes in as not primary. The confirmation says so, for example "Alex is now Seller, not primary. Seller already had a primary." Mark them **Primary** afterward if you want to switch.
+
+The deal's **Activity** feed records these changes as **Removed Contact**, **Restored Contact**, and **Changed Contact Role**, each naming the person and role (for a role change, "name: old role → new role").
 
 ---
 
@@ -13383,6 +13445,12 @@ From here, you can:
 - Review the DocJacket subdomain
 - Confirm whether a custom domain is verified
 
+## Primary State and "What best describes you?"
+
+**Primary State** is the state where your organization mainly works. Pick it from the dropdown and click **Save Primary State**.
+
+Below it, **What best describes you?** lets you choose **Transaction coordinator**, **Real-estate agent**, **Broker / team lead**, or **Something else / a mix**, then click **Save**. It helps DocJacket tailor tips, and you can change it any time. Owners and admins can change both.
+
 ## Can I change my DocJacket subdomain?
 
 No. The subdomain (the `your-name` part of `your-name.docjacket.com`) is chosen when the account is first set up. **Settings > Organization** shows it as read-only text, with no edit field, so it can't be changed from there, and changing your organization name later does not change it.
@@ -13759,7 +13827,7 @@ By default, every team member sees every deal. Owners and Admins can limit the *
 
 A limited member doesn't see the deals they aren't on, or the tasks and key dates on those deals: they're left out of that member's **Tasks** page, **Calendar**, dashboard, and search. Assigning a member a task on a deal puts them on that deal, so they'll see it and its tasks.
 
-Owners and Admins always see every deal, and a custom role can't be limited. The setting belongs to the role, so everyone who holds it is covered, including people you invite later. For what counts as being "on" a deal and what a limited member can't see, see [Limit a role to the deals its members are on](../getting-started/understanding-roles.mdx#limit-a-role-to-the-deals-its-members-are-on).
+Owners and Admins always see every deal, and a custom role can't be limited. The setting belongs to the role, so everyone who holds it is covered, including people you invite later. For what counts as being "on" a deal, what a limited member can do, and what is closed to them, see [Limit a role to the deals its members are on](../getting-started/understanding-roles.mdx#limit-a-role-to-the-deals-its-members-are-on).
 
 ## Changing a member's role
 
@@ -13788,7 +13856,15 @@ From **Settings > Team Members**, you can:
 - **Reactivate a member** - Restore access when your seat limit allows it
 - **Remove a member** - Permanently remove them from your organization
 - **Resend an invitation** - Send a fresh invite email for a pending invitation
-- **Cancel an invitation** - Stop a pending invitation that should no longer be used
+- **Cancel an invitation** - Stop a pending invitation that should no longer be used. Click the **X** on the invitation row. See [Cancelling an invitation](#cancelling-an-invitation) for what happens to the seat
+
+### Cancelling an invitation
+
+If sending the invitation added a paid seat to your plan, cancelling it removes that seat again, and the charge is prorated. DocJacket confirms with a message such as "Invitation cancelled. The extra seat was removed; your plan is now $X/mo" (or **/yr** on an annual plan).
+
+If the seat can't be removed, you see "Invitation cancelled, but we couldn't remove the extra seat. Reduce seats in Settings → Billing." Open **Settings > Billing** and reduce the seats yourself; see [Managing Your Subscription](../billing/managing-your-subscription.md).
+
+The seat is kept when removing it would leave you with fewer seats than members and pending invitations in use. Organizations that aren't billed per seat, including those with unlimited seats, see no seat change.
 
 ---
 
@@ -14685,10 +14761,23 @@ As your team grows or shrinks:
 
 - **Add a seat** — Invite a new team member and a seat is added automatically. You'll be billed for the additional seat on your next billing cycle.
 - **Remove a seat** — Deactivate a user in Settings > Team Members. The seat is freed up and your bill adjusts on the next cycle.
+- **Cancel an invitation** — If an invitation added a paid seat, cancelling it from **Settings > Team Members** (the **X** on the invitation row) removes that seat again, with proration. The seat stays if removing it would leave fewer seats than the members and pending invitations you have. See [Cancelling an invitation](../settings/user-management.mdx#cancelling-an-invitation).
 
 ## Updating payment info
 
 Click **Update Payment Method** on the billing page to change your credit card or payment details.
+
+## If a payment fails
+
+When a subscription charge doesn't go through, owners and admins see an amber banner on every page, with an **Update payment** button. The **Update payment** button opens Stripe's page for updating your card. The billing page shows its own **Payment failed** warning with an **Update Payment** button that opens Stripe's billing portal. Other team members don't see the banner.
+
+The banner says one of these:
+
+- **Payment failed.** "Your card was declined. Update your card by [date] to keep your subscription; after that it will be canceled and your account moves to Free."
+- **Payment failed.** "Your last subscription charge didn't go through. Update your payment method to keep your subscription active." You see this version when there is no fix-by date to show.
+- **Account limited.** "Your payment didn't go through, so your account is limited to Free features. Update your payment method to restore Pro access."
+
+DocJacket also emails you. The email explains what kind of decline it was and, when a retry is coming, the date of the next automatic try. It gives the date by which the payment needs to go through, and says your account still has full access for now and your deals and documents stay. Its **Update payment method** button takes an owner or admin straight to Stripe's page for updating the card; anyone else lands on the billing page.
 
 ## Managing seats
 

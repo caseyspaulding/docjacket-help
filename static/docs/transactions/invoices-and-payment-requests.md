@@ -13,9 +13,9 @@ DocJacket lets a transaction coordinator (or org admin) bill their **transaction
 
 ## Can I send an invoice without a transaction?
 
-**No.** Every invoice in DocJacket lives on a transaction. You create invoices from a deal's **Payments tab**, so there's no standalone invoice or "invoice a contact" that isn't attached to a transaction. If you want to bill for a file, open (or create) the transaction first, then add the invoice there.
+**Yes, to a contact.** Most invoices are created from a deal's **Payments tab**, which puts the property, agent, and deal details on the invoice automatically and lets you see who has paid right on the deal.
 
-This keeps the property, agent, and deal details on the invoice automatically, and lets you see who has paid right on the deal.
+To bill someone outside any deal, open the contact, go to the **Invoices** tab, and click **Send invoice**. That invoice is billed straight to the contact and isn't attached to a transaction. Team members who are limited to their own deals don't see the contact's Invoices tab.
 
 ## What invoices are — and aren't
 
@@ -45,6 +45,17 @@ You only have to do this once. After that, sending an invoice is a two-click flo
    - **Due date** — optional
 5. Save it. The invoice starts as a **Draft** so you can review it before it goes out.
 
+### If DocJacket won't create the invoice
+
+DocJacket needs a payer name and a valid payer email before it creates an invoice. If one is missing, it tells you what to fill in:
+
+- **"This deal has no agent to bill. Enter the payer's name."** The deal has no agent to pre-fill from, so type the payer's name.
+- **"Enter the payer's name."** The deal's agent has no name on file. Type the payer's name.
+- **"This deal's agent has no email address. Enter the payer's email."** Type the email to bill.
+- **"Enter a valid payer email."** The address you typed isn't a valid email address.
+
+When an invoice is billed to a contact, the messages are **"Enter the payer's name."** and **"This contact has no email address. Enter the payer's email."**
+
 ## Send the invoice
 
 Click **Send**. DocJacket:
@@ -58,6 +69,12 @@ The payer clicks **Pay Invoice**, pays by card or bank on a secure checkout page
 :::tip Copy a pay link instead of emailing
 If you'd rather send the pay link yourself (over text, in your own email, etc.), you can generate a payment link for the invoice instead of having DocJacket email it.
 :::
+
+## Public pay page
+
+**Settings > Get Paid** has a **Public pay page** card with an on/off switch. It is a permanent page that shows how you accept payment, so you can put it on a business card or in your email signature. When you're paying a specific fee, the agent still uses the link or QR code you send them, which carries the exact amount.
+
+With the switch on, the page's address shows with **Copy link** and **Show QR** buttons. With it off, the address is greyed out and reads "Turn this on to share the link. Until then the page shows "Page not found"." The two buttons are hidden until you turn it on.
 
 ## Can I modify the invoice design?
 

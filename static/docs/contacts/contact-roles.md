@@ -140,3 +140,9 @@ If the built-in roles do not cover your workflow, create or edit roles in **Sett
 ## Primary contacts
 
 A transaction contact can also be marked **Primary**. Use this when one buyer, seller, agent, or service contact should be treated as the main contact for that role. Marking one contact Primary un-marks any other primary contact in the same role on that transaction.
+
+### Changing someone's role on a deal
+
+On a contact's card on the **Contacts** tab, use the **Role** dropdown to move them to another role on that deal. If they were the primary contact and the new role already has a primary, the existing primary stays primary and the person you moved comes in as not primary. The confirmation says so, for example "Alex is now Seller, not primary. Seller already had a primary." Mark them **Primary** afterward if you want to switch.
+
+The deal's **Activity** feed records these changes as **Removed Contact**, **Restored Contact**, and **Changed Contact Role**, each naming the person and role (for a role change, "name: old role → new role").

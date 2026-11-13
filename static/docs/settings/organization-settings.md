@@ -26,6 +26,12 @@ From here, you can:
 - Review the DocJacket subdomain
 - Confirm whether a custom domain is verified
 
+## Primary State and "What best describes you?"
+
+**Primary State** is the state where your organization mainly works. Pick it from the dropdown and click **Save Primary State**.
+
+Below it, **What best describes you?** lets you choose **Transaction coordinator**, **Real-estate agent**, **Broker / team lead**, or **Something else / a mix**, then click **Save**. It helps DocJacket tailor tips, and you can change it any time. Owners and admins can change both.
+
 ## Can I change my DocJacket subdomain?
 
 No. The subdomain (the `your-name` part of `your-name.docjacket.com`) is chosen when the account is first set up. **Settings > Organization** shows it as read-only text, with no edit field, so it can't be changed from there, and changing your organization name later does not change it.
