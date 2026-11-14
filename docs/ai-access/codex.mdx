@@ -198,6 +198,15 @@ Inside DocJacket:
 - **Activity log** shows every tool call: who, what, when, what arguments, what result.
 - **Revoke** any client with one click. The next request returns HTTP 401 — the assistant will fall back to re-consent if you want to reconnect.
 
+## Not seeing a new tool?
+
+DocJacket adds new tools from time to time. ChatGPT keeps the list of DocJacket tools from the day you connected, so it may not show the new ones. To get them:
+
+1. In ChatGPT, open **Settings**, then **Plugins**, then **DocJacket**.
+2. Scroll to **Manage app**.
+3. Press **Refresh tools**.
+4. Start a new chat.
+
 ## Troubleshooting
 
 **"Authorization with the MCP server failed"** — Remove the connector from Codex / ChatGPT settings and re-add it to clear stale state. If the problem persists, send the reference ID the assistant shows to <a href="mailto:support@docjacket.com">support@docjacket.com</a>.

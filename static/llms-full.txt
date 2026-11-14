@@ -9922,6 +9922,23 @@ Where this sits in ChatGPT's settings depends on your plan, and some plans and w
 
 More detail: [Connect Codex / ChatGPT](/docs/ai-access/codex).
 
+## Not seeing a new tool?
+
+DocJacket adds new tools from time to time. Your assistant may not pick them up on its own.
+
+**ChatGPT** keeps the list of DocJacket tools from the day you connected. To get the new ones:
+
+1. In ChatGPT, open **Settings**, then **Plugins**, then **DocJacket**.
+2. Scroll to **Manage app**.
+3. Press **Refresh tools**.
+4. Start a new chat.
+
+**Claude** reads the list again when you start a new chat. {/* VERIFY: Claude picks up new tools in a new chat */} If a new tool still does not appear:
+
+1. Click **Customize** in the left sidebar, then open **Connectors**.
+2. Find **DocJacket**, then disconnect it.
+3. Connect it again.
+
 ## The consent screen
 
 After you sign in, DocJacket shows a screen titled **Connect (assistant name) to DocJacket**. It lists the access the assistant is asking for. There are three levels:
@@ -10107,6 +10124,15 @@ Inside DocJacket:
 - **Settings → API & AI Access** lists every connected client with last-used timestamp.
 - **Activity log** shows every tool call: who, what, when, what arguments, what result.
 - **Revoke** any client with one click. The next request returns HTTP 401 — the assistant will fall back to re-consent if you want to reconnect.
+
+## Not seeing a new tool?
+
+DocJacket adds new tools from time to time. ChatGPT keeps the list of DocJacket tools from the day you connected, so it may not show the new ones. To get them:
+
+1. In ChatGPT, open **Settings**, then **Plugins**, then **DocJacket**.
+2. Scroll to **Manage app**.
+3. Press **Refresh tools**.
+4. Start a new chat.
 
 ## Troubleshooting
 
