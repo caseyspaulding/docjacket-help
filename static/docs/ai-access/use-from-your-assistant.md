@@ -35,13 +35,13 @@ You need the DocJacket address:
 https://mcp.docjacket.com/mcp
 ```
 
-1. In Claude.ai, open **Customize**, then **Connectors**. <!-- VERIFY IN HOST: Claude.ai menu names; source https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp (read 2026-11-14) -->
-2. Click **+ Add**, then **Add custom connector**. <!-- VERIFY IN HOST: same source -->
-3. Type a name, such as DocJacket. Paste the address above. Click **Continue**. <!-- VERIFY IN HOST: same source -->
+1. In Claude, click **Customize** in the left sidebar, then open the **Connectors** tab.
+2. Click **Add** at the top right, then **Add custom connector**.
+3. Type a name, such as DocJacket, paste the address above, and add the connector.
 4. Sign in to DocJacket if asked.
-5. On the DocJacket screen, choose the access you want and click **Allow**. <!-- LABEL FROM SOURCE: Features/Mcp/OAuth/McpOAuthEndpoints.cs (docjacket-v3), button text "Allow" -->
+5. On the DocJacket screen, choose the access you want and click **Allow**.
 
-On a Claude Team or Enterprise plan, an Owner of your Claude organization adds the connector first. Then you open **Customize**, then **Connectors**, and click **Connect**. <!-- VERIFY IN HOST: same source -->
+On a Claude Team or Enterprise plan, an owner of your Claude organization may need to add the connector before you can connect to it.
 
 Using Claude Desktop, Claude Code or Cowork? See [Connect Claude](/docs/ai-access/claude).
 
@@ -49,34 +49,30 @@ Using Claude Desktop, Claude Code or Cowork? See [Connect Claude](/docs/ai-acces
 
 Use the same address: `https://mcp.docjacket.com/mcp`
 
-1. Open ChatGPT on the web. Go to **Plugins** and click the plus button. <!-- VERIFY IN HOST: ChatGPT menu names; source https://developers.openai.com/api/docs/guides/developer-mode (read 2026-11-14). help.openai.com returned HTTP 403, so the official help article could not be read. Third-party guides describe Settings, Connectors or Apps, and Developer mode instead; menu names differ by plan and rollout. -->
-2. Choose **Add custom MCP server**. <!-- VERIFY IN HOST: same source -->
-3. Type a name. Paste the address above. Set sign-in to OAuth. <!-- VERIFY IN HOST: same source -->
-4. Accept the warning that this connector is not checked by OpenAI. <!-- VERIFY IN HOST: same source -->
-5. Sign in to DocJacket, choose the access you want, and click **Allow**. <!-- LABEL FROM SOURCE: Features/Mcp/OAuth/McpOAuthEndpoints.cs (docjacket-v3), button text "Allow" -->
+1. In ChatGPT on the web, add a custom connector. ChatGPT also calls this a custom MCP server.
+2. Type a name, paste the address above, and choose OAuth for sign-in.
+3. Sign in to DocJacket, choose the access you want, and click **Allow**.
 
-Some ChatGPT plans and workspaces do not allow custom connectors. On a business workspace, an admin may need to turn this on first. <!-- VERIFY IN HOST: plan and admin requirements for custom connectors in ChatGPT -->
+Where this sits in ChatGPT's settings depends on your plan, and some plans and workspaces do not allow custom connectors. On a business workspace, an admin may need to turn it on first.
 
 More detail: [Connect Codex / ChatGPT](/docs/ai-access/codex).
 
 ## The consent screen
 
-After you sign in, DocJacket shows a screen titled **Connect (assistant name) to DocJacket**. <!-- LABEL FROM SOURCE: Features/Mcp/OAuth/McpOAuthEndpoints.cs (docjacket-v3), heading "Connect {client} to {product}"; verify the product name shown in the running screen --> It lists the access the assistant is asking for. There are three levels:
+After you sign in, DocJacket shows a screen titled **Connect (assistant name) to DocJacket**. It lists the access the assistant is asking for. There are three levels:
 
 - **Read your data.** It can look at transactions, tasks, key dates and contacts. It cannot change anything.
 - **Update your data.** It can change tasks, key dates, Playbooks and status. These are changes inside DocJacket only. No emails are sent.
 - **Act on your behalf.** It can send emails to your clients and agents, and make changes. Each email is shown to you for a yes before it goes out. If your organization reviews emails, the email waits for approval in DocJacket instead.
 
-<!-- LABEL FROM SOURCE: the three level names and descriptions are quoted from Features/Mcp/OAuth/McpOAuthEndpoints.cs (docjacket-v3) -->
-
 Not sure which to pick? Start with **Read your data**. Pick **Act on your behalf** when you want it to send emails you approve.
 
-Click **Allow** to connect. Click **Cancel** to stop. <!-- LABEL FROM SOURCE: Features/Mcp/OAuth/McpOAuthEndpoints.cs (docjacket-v3), buttons "Allow" and "Cancel" -->
+Click **Allow** to connect. Click **Cancel** to stop.
 
 Who can connect:
 
 - A member with a read-only role (Viewer) can give **Read your data** only.
-- A member whose role is limited to their own deals cannot connect an assistant. DocJacket shows "AI assistant connections are not available for your account." Ask an Owner or Admin. <!-- LABEL FROM SOURCE: Features/Mcp/OAuth/McpOAuthEndpoints.cs (docjacket-v3), LimitedMemberHtml -->
+- A member whose role is limited to their own deals cannot connect an assistant. DocJacket shows "AI assistant connections are not available for your account." Ask an Owner or Admin.
 
 ## Emails are always shown to you first
 
@@ -103,24 +99,24 @@ An assistant also reads emails and documents as information, not as orders. If a
 
 **Owners and Admins**
 
-1. In DocJacket, open **Settings**. Under **Advanced**, click **API & AI Access**. <!-- LABEL FROM SOURCE: ClientApp/src/app/features/settings/settings-nav.component.ts (group "Advanced", item "API & AI Access"); VERIFY IN APP: that the group sits under a "Settings" entry as described, and that the page is reachable as an Owner -->
-2. Open the **Connect an AI assistant** tab. <!-- LABEL FROM SOURCE: ClientApp/src/app/features/settings/api-access/api-access.component.ts (tab label) -->
-3. Find **Connected agents (OAuth)**. This lists the assistants you connected. <!-- LABEL FROM SOURCE: ClientApp/src/app/features/settings/ai-access/ai-access.component.ts -->
-4. Click **Revoke** next to the one you want to remove, and confirm. <!-- LABEL FROM SOURCE: ClientApp/src/app/features/settings/ai-access/ai-access.component.ts (button "Revoke", confirm title "Revoke agent?"); VERIFY IN APP: the confirm dialog buttons, stop at Cancel in testing -->
+1. In DocJacket, open **Settings** (the gear icon in the left bar). Under **Advanced**, click **API & AI Access**.
+2. Open the **Connect an AI assistant** tab.
+3. Find **Connected agents (OAuth)**. This lists the assistants you connected.
+4. Click **Revoke** next to the one you want to remove. DocJacket asks you to confirm; click **Revoke** again.
 
 The assistant loses access to DocJacket. To use it again, connect it again.
 
-As an Owner or Admin you also see **Everyone's connections**. It lists every member's connections. Each connection stays authorized for 90 days and renews while it is in use, so one left running keeps its access until someone ends it. **Revoke** there ends that member's connection. <!-- LABEL FROM SOURCE: ClientApp/src/app/features/settings/ai-access/ai-access.component.ts ("Everyone's connections", "Revoke"); VERIFY IN APP: that this section shows for an Owner and for an Admin -->
+As an Owner or Admin you also see **Everyone's connections**. It lists every member's connections. Each connection stays authorized for 90 days and renews while it is in use, so one left running keeps its access until someone ends it. **Revoke** there ends that member's connection.
 
-To see what an assistant has done, click **Activity log** on the same page. <!-- LABEL FROM SOURCE: ClientApp/src/app/features/settings/ai-access/ai-access.component.ts ("Activity log" link); VERIFY IN APP: where the link sits on the page and that it opens the log -->
+To see what an assistant has done, click **Activity log** at the top of the same page. It lists each action, which assistant made it, and whether it worked.
 
 **Members**
 
 Members cannot open **API & AI Access**. Do one of these:
 
-- Remove the DocJacket connector in your assistant's own settings. In Claude, open **Customize**, then **Connectors**, and choose **Remove**. <!-- VERIFY IN HOST: Claude Remove option, source https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp -->
-- In ChatGPT, remove the DocJacket connector from your plugins or connectors list. <!-- VERIFY IN HOST: ChatGPT removal steps; not confirmed from any official page -->
-- Ask an Owner or Admin to revoke your connection in DocJacket. This is the way to be sure DocJacket ends it. <!-- VERIFY IN APP: whether removing the connector on the assistant side also ends the authorization in DocJacket or only stops the assistant -->
+- Remove the DocJacket connector in your assistant's own settings. In Claude, that is under **Customize**, then **Connectors**.
+- In ChatGPT, remove the DocJacket connector in ChatGPT's settings.
+- Ask an Owner or Admin to revoke your connection in DocJacket. This is the way to be sure DocJacket ends it.
 
 ## Need help?
 
