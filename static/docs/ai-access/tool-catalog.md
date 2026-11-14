@@ -25,7 +25,7 @@ You pick a permission level when you connect, and it is enforced at the token, n
 | Tier | Tools | What it allows |
 |---|---|---|
 | `read` | 73 | Look things up. Nothing in this tier changes a record or contacts anyone. A read-only connection is limited to exactly these tools. |
-| `draft` | 32 | Low-risk writes to your own records — tasks, key dates, checklists, activity notes. Tools in this tier can't write or send an email themselves. Marking a task done can start the follow-up emails linked to it; they wait in your Review queue if your team reviews outgoing email first. |
+| `draft` | 32 | Low-risk writes to your own records — tasks, key dates, checklists, activity notes. Tools in this tier can't write or send an email themselves. When an assistant connected with draft access, and not actions access, marks a task done, the emails that would follow wait in your Review queue for a person to approve. Moving a date can still make an already-scheduled email go out sooner. |
 | `actions` | 52 | Side-effecting work: sending email to a real person, creating and deleting records, and exposing documents outside the organization. |
 
 Every write, in either write tier, is confirmed by you in chat before it runs — the conversation itself is the approval step. Every call is recorded in your [activity log](https://app.docjacket.com/settings/ai-access/activity). See [Permissions & scopes](./permissions.mdx) for how to choose.
@@ -1179,7 +1179,7 @@ Check the whole draft against the same rules Create uses and list what is blocki
 
 ## Draft — 32 tools
 
-Low-risk writes to your own records — tasks, key dates, checklists, activity notes. **Tools in this tier can't write or send an email themselves.** Marking a task done can start the follow-up emails linked to it; they wait in your Review queue if your team reviews outgoing email first.
+Low-risk writes to your own records — tasks, key dates, checklists, activity notes. **Tools in this tier can't write or send an email themselves.** When an assistant connected with draft access, and not actions access, marks a task done, the emails that would follow wait in your Review queue for a person to approve. Moving a date can still make an already-scheduled email go out sooner.
 
 ### `add_key_dates_batch`
 

@@ -39,7 +39,7 @@ description: How DocJacket's OAuth 2.1 flow works — discovery, Dynamic Client 
       "name": "What are scopes, and why does the consent screen ask about read, draft, and actions?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Scopes are coarse permission buckets, and all three are live and enforced per token. Read covers searching and viewing data. Draft lets an assistant update your own records — tasks, key dates, Playbooks, and status. It can't write or send an email itself, though marking a task done starts the follow-up emails linked to it. Actions covers sending email and making other changes on your behalf. The tier you grant at consent is exactly what the token can do."
+        "text": "Scopes are coarse permission buckets, and all three are live and enforced per token. Read covers searching and viewing data. Draft lets an assistant update your own records — tasks, key dates, Playbooks, and status. It can't write or send an email itself, and when an assistant with draft access and not actions access marks a task done, the emails that would follow wait in your Review queue for a person to approve. Actions covers sending email and making other changes on your behalf. The tier you grant at consent is exactly what the token can do."
       }
     }
   ]
