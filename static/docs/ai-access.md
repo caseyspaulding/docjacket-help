@@ -43,6 +43,7 @@ DocJacket exposes **67 tools** over MCP, in three permission tiers. You choose a
 
 Pick the assistant you want to connect:
 
+- [Use DocJacket from your AI assistant](/docs/ai-access/use-from-your-assistant) — what it can do, how to connect Claude or ChatGPT, and how to disconnect
 - [Connect Claude](/docs/ai-access/claude) — Claude.ai, Claude Desktop, Claude Code
 - [Connect Codex / ChatGPT](/docs/ai-access/codex) — Codex CLI, Codex for Work, ChatGPT connectors
 - [Connect Cowork](/docs/ai-access/cowork) — Anthropic's team workspace
