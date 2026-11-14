@@ -48,7 +48,7 @@ const TIERS = [
     scope: 'draft',
     label: 'Draft',
     blurb:
-      'Low-risk writes to your own records — tasks, key dates, checklists, activity notes. **Nothing in this tier sends anything to anyone.**',
+      'Low-risk writes to your own records — tasks, key dates, checklists, activity notes. **Tools in this tier can\'t write or send an email themselves.** Marking a task done can start the follow-up emails linked to it; they wait in your Review queue if your team reviews outgoing email first.',
   },
   {
     scope: 'actions',
