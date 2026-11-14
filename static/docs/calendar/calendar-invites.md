@@ -120,7 +120,7 @@ Cancelling or archiving a deal that has calendar invites still ahead asks about 
 
 **When it asks**
 
-- Moving the deal to a **Cancelled**-type status asks. That covers the status chip on the deal, the status cell and the bulk **Status** menu on the Transactions list, dragging the card into a Cancelled column on the Pipeline, and the **Status** field on the deal's Edit form. Moving a deal from Closed to a Cancelled-type status asks too. A deal that is already in a Cancelled-type status doesn't ask again.
+- Moving the deal to a **Cancelled**-type status asks. That covers the status chip on the deal, the status cell and the bulk **Status** menu on the Transactions list, dragging the card into a Cancelled column on the Pipeline, the **Status** field on the deal's Edit form, and **Apply to Transaction** on the deal's **Forms** tab when the form sets the deal to a Cancelled-type status. Moving a deal from Closed to a Cancelled-type status asks too. A deal that is already in a Cancelled-type status doesn't ask again.
 - Archiving asks, after the usual archive confirmation, from the row's ⋮ menu and from **Archive Transaction** on the Edit form. The bulk **Archive** button on the Transactions list asks once for the whole selection.
 - It only asks when a key date on the deal has a live invite and the date hasn't passed yet. Otherwise the deal is cancelled or archived without the extra question.
 - **Closing a deal never asks.** A closed deal's invites stay on guests' calendars as they are.
