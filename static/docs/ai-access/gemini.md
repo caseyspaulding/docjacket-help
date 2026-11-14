@@ -93,7 +93,7 @@ No tokens to copy, no `mcp.json` to edit, per-user revocation. Until then, the t
 
 **Tools don't appear after restart** — Check the JSON syntax in `mcp.json`. A missing comma or extra brace will make the Gemini CLI skip the server entry. Validate with `cat ~/.gemini/mcp.json | jq`.
 
-**Pro plan required** — Connecting is free, but actually loading tools requires a DocJacket Pro plan on the connecting user's account. Upgrade at [docjacket.com/pricing](https://www.docjacket.com/pricing).
+**Which DocJacket plan do I need?** — Any. AI Access is included with every DocJacket plan, so there's nothing to upgrade before you connect or load tools.
 
 ## Read more
 
