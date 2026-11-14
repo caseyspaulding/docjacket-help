@@ -69,7 +69,7 @@ On the Transactions list they can tag and untag their own deals, create a tag, a
 
 On a deal they are on, they can also edit and delete the deal's TC fees, record and delete fee payments, and download a fee's PDF. They can edit, resolve, and reopen waiting-on items, rename a checklist item, see its upload history, and decide whether a conditional item applies. They can open a key date's history and change the deal email address settings, including **New address**.
 
-If your organization has **Allow team members to edit Playbooks and settings** turned on, limited members can also save Playbooks, checklists, task-list templates, the Key Date Library, and document lists. They can link checklist emails. The reminder rules on **Settings > Automation Rules** apply to every deal in the organization, so limited members can't create, edit, switch on or off, or delete them. They still see the page, with the line "These rules apply to every deal in your organization and are managed by an owner or admin." **New Rule**, **Edit** and **Delete** are hidden, each rule has a **View** button that opens it read-only, and the on/off switch shows the rule's state but can't be changed. They also can't save email templates or use the setup assistant.
+If your organization has **Allow team members to edit Playbooks and settings** turned on, limited members can also save Playbooks, checklists, task-list templates, the Key Date Library, and document lists. They can link checklist emails. On Playbooks, checklists and their emails, they can pick contact roles and team members as recipients, but can't type in an email address. Addresses already on a rule stay, and an Owner or Admin manages them. The reminder rules on **Settings > Automation Rules** apply to every deal in the organization, so limited members can't create, edit, switch on or off, or delete them. They still see the page, with the line "These rules apply to every deal in your organization and are managed by an owner or admin." **New Rule**, **Edit** and **Delete** are hidden, each rule has a **View** button that opens it read-only, and the on/off switch shows the rule's state but can't be changed. They also can't save email templates or use the setup assistant.
 
 ### Email about deals they aren't on
 
@@ -85,6 +85,7 @@ These are closed to them today:
 - Send documents for e-signature. <!-- until: docjacket-v3#6963 -->
 - Save changes to email templates. <!-- until: docjacket-v3#6969 -->
 - Edit deal roles, deal statuses or SMS settings. <!-- until: docjacket-v3#6969 -->
+- Type an email address into a Playbook or checklist email's recipients. They can pick roles and team members.
 - Open Reports.
 - Review online form submissions.
 - Import contacts.
