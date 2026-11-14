@@ -9443,7 +9443,7 @@ Some things stay with you, even if you ask and would approve:
 - **Passwords and connections.** It doesn't connect your email account or handle sign-in details. It takes you to the page where you do it.
 - **Deleting your account.** It has no way to delete your account or organization.
 - **Changing what clients see on the portal.** It doesn't change which tasks or notes show on the client portal.
-- **Deleting deals, contacts, key dates or notes, or permanently deleting email templates.** Taking someone off a deal can be undone for 7 days, and their contact record is kept. Removing a note archives it. To take a key date off a deal, it marks it not applicable. Undoing a new template turns it off instead of deleting it.
+- **Permanently deleting deals, contacts, key dates, notes or email templates.** Taking someone off a deal can be undone for 7 days, and their contact record is kept. Removing a note archives it. To take a key date off a deal, it marks it not applicable. Undoing a new template turns it off instead of deleting it.
 
 ## Related
 
