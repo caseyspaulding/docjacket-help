@@ -9,17 +9,17 @@ description: How DocJacket's MCP scopes work — the read, draft, and action tie
 
 # Permissions & scopes
 
-DocJacket's MCP server exposes **67 tools** across three **scope tiers**, and supports **per-tool toggles** inside the AI client. All three tiers are live. You choose one when you consent, and it is enforced at the token — a read-only connection cannot call a write tool even if the assistant tries.
+DocJacket's MCP server exposes **157 tools** across three **scope tiers**, and supports **per-tool toggles** inside the AI client. All three tiers are live. You choose one when you consent, and it is enforced at the token — a read-only connection cannot call a write tool even if the assistant tries.
 
 ## The three scopes
 
 | Scope | What it covers | Approval flow |
 |---|---|---|
-| **`read`** (40 tools) | Search, lookup, list — e.g. `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions`, `mcp_health_check`. With `read`, an assistant can also read a deal's internal notes, its email including message bodies, its text-message threads, scheduled sends, consistency checks, change log, key-date history, agreements, and TC fees and invoices (no payment links). Nothing here changes a record or contacts anyone. | Auto-approved per conversation in most clients |
-| **`draft`** (7 tools) | Low-risk writes to your own records — `create_tasks`, `complete_task`, `update_key_date`, `add_key_dates_batch`, `apply_checklist`, `log_activity`, `save_status_summary`. **Nothing in this tier sends anything to anyone.** | DocJacket marks these as write tools; the assistant asks first if its approval setting for the tool is on |
-| **`actions`** (20 tools) | Side-effecting work — sending email (`send_client_update`, `send_document_request`, `send_agent_followup`, `send_email_to_agent`), creating and deleting records, and disclosure packages that expose documents outside the org. | DocJacket marks these as write tools; the assistant asks first if its approval setting for the tool is on |
+| **`read`** (73 tools) | Search, lookup, list — e.g. `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions`, `mcp_health_check`. With `read`, an assistant can also read a deal's internal notes, its email including message bodies, its text-message threads, scheduled sends, consistency checks, change log, key-date history, agreements, and TC fees and invoices (no payment links). Nothing here changes a record or contacts anyone. | Auto-approved per conversation in most clients |
+| **`draft`** (32 tools) | Low-risk writes to your own records — `create_tasks`, `complete_task`, `update_key_date`, `add_key_dates_batch`, `apply_checklist`, `log_activity`, `save_status_summary`. **Nothing in this tier sends anything to anyone.** | DocJacket marks these as write tools; the assistant asks first if its approval setting for the tool is on |
+| **`actions`** (52 tools) | Side-effecting work — sending email (`send_client_update`, `send_document_request`, `send_agent_followup`, `send_email_to_agent`), creating and deleting records, and disclosure packages that expose documents outside the org. | DocJacket marks these as write tools; the assistant asks first if its approval setting for the tool is on |
 
-The draft tier is the useful middle setting: an assistant can keep your tasks and deadlines current without ever being able to email a client. **[Browse all 67 tools →](/docs/ai-access/tool-catalog)** to see exactly what sits in each tier.
+The draft tier is the useful middle setting: an assistant can keep your tasks and deadlines current without ever being able to email a client. **[Browse all 157 tools →](/docs/ai-access/tool-catalog)** to see exactly what sits in each tier.
 
 ## The conversation is the approval gate
 

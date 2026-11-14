@@ -15,7 +15,7 @@ description: Connect DocJacket to Claude.ai, Claude Desktop, Claude Code, or Cow
       "name": "How do I connect DocJacket to Claude?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "In Claude.ai, open Settings → Connectors → Add custom connector. Paste https://mcp.docjacket.com/mcp as the server URL, click Continue, and complete the consent screen. Claude loads the DocJacket tools available to your granted scopes. All 67 tools are live across three tiers — read (40), draft (7), and actions (20) — and the tier you pick at consent is enforced at the token."
+        "text": "In Claude.ai, open Settings → Connectors → Add custom connector. Paste https://mcp.docjacket.com/mcp as the server URL, click Continue, and complete the consent screen. Claude loads the DocJacket tools available to your granted scopes. All 157 tools are live across three tiers — read (40), draft (7), and actions (20) — and the tier you pick at consent is enforced at the token."
       }
     },
     {
@@ -133,15 +133,15 @@ Other good prompts:
 
 ## What Claude can do
 
-DocJacket exposes **67 tools** over MCP, in three permission tiers:
+DocJacket exposes **157 tools** over MCP, in three permission tiers:
 
 | Tier | Tools | For example |
 |---|---|---|
-| `read` | 40 | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
-| `draft` | 7 | `create_tasks`, `update_key_date`, `apply_checklist` |
-| `actions` | 20 | `send_client_update`, `apply_extraction`, `create_reminder` |
+| `read` | 73 | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
+| `draft` | 32 | `create_tasks`, `update_key_date`, `apply_checklist` |
+| `actions` | 52 | `send_client_update`, `apply_extraction`, `create_reminder` |
 
-**[Browse all 67 tools →](/docs/ai-access/tool-catalog)** — the complete catalog with descriptions, gotchas, and example calls.
+**[Browse all 157 tools →](/docs/ai-access/tool-catalog)** — the complete catalog with descriptions, gotchas, and example calls.
 
 You don't need to remember tool names; Claude picks the right tool from your question. To see the inventory *your* token can reach, ask Claude to use `mcp_catalog`.
 
