@@ -9166,7 +9166,7 @@ Text **`weekly report`** (or *recap* / *summary*) any time for an instant rundow
 
 # What the Ask AI Assistant Can Do for You
 
-Ask AI is the assistant inside DocJacket. Open it with **Ask a question** in the left sidebar. It answers questions, and it can also do work for you: fill in a form, prepare changes on a deal, check a deal for problems, and help set up your organization.
+Ask AI is the assistant inside DocJacket. Open it with **Ask a question** in the left sidebar. It answers questions, and it can also do work for you: fill in a form, complete or skip tasks, add a note, change key dates, check a deal for problems, and help set up your organization.
 
 One rule holds for all of it: **the assistant prepares, you approve.** Nothing is saved until you press the form's own button or approve the change on a card.
 
@@ -9211,7 +9211,10 @@ If the form already has something typed in it, or is still saving, the assistant
 When you ask for a change, the assistant puts it on a card under its answer. For example, it can prepare:
 
 - Adding, renaming, rescheduling or reassigning tasks
+- Completing, skipping or reopening tasks (see [below](#task-outcomes))
 - Moving a key date, or marking it done, waived or not applicable
+- Adding a key date, changing its details, resetting or recalculating dates, and more (see [Key dates](#key-dates))
+- Adding, editing, pinning or removing an internal note (see [Internal notes](#internal-notes))
 - Adding someone to a deal, taking them off, or moving them to another role
 - Restoring an archived deal (see [below](#restore-archived-deal))
 - Deleting tasks. Their subtasks go with them, and their unsent reminders, scheduled follow-up emails and review drafts are cancelled. See [Deleting tasks](#deleting-tasks).
@@ -9225,6 +9228,68 @@ The card's heading reads **Ready to do — nothing happens until you approve**. 
 - When a change can be undone, its row shows **Undo** after you approve it. For example, taking someone off a deal can be undone for 7 days.
 
 If your seat is view-only, the card says *"Your seat is view-only, so this can't be applied."*
+
+### Completing, skipping or reopening tasks {#task-outcomes}
+
+Tell the assistant what happened, and it puts the change on a card. For example:
+
+- *"Mark the inspection tasks done."*
+- *"Skip the appraisal tasks. It's a cash deal."*
+- *"Reopen the title order task. I closed it by mistake."*
+
+One card can cover up to 25 tasks on one deal. You can say when a task was done if it wasn't today, and add a note or a reason for skipping.
+
+The card says what else happens before you approve, the same things that happen on the **Tasks** tab:
+
+- **Completing** unblocks tasks that were waiting on these, closes a linked key date once its last task is done, runs your task-completion rules, notifies the assignee, and starts any follow-up emails linked to the tasks. Those emails follow your email review setting. Pending reminders for the tasks go out or stop. If your client portal shows completed tasks, a task that shows there will show as done.
+- **Skipping** lets waiting tasks start without moving their dates, and sends nothing. Follow-up emails timed to the tasks stop while they're skipped, and any waiting in your review queue are withdrawn.
+- **Reopening** puts linked key dates back to open, and tasks dated from these tasks go back to their planned dates. An email already sent stays sent. Reopening a task that was skipped can send a follow-up email that came due while it was skipped. If your team reviews emails first, that email waits as a draft instead.
+
+A task that is already completed can't be skipped (or the other way round) until it is reopened. Tasks that are already the way you asked are left as they are.
+
+If some of the tasks changed after the card was made, the ones that changed are left alone, and the finished card names them. For example: *"Completed 2 of 3. Left as it was: Order title (changed after the card was made)."*
+
+The assistant can see a deal's completed and skipped tasks as well as its open ones, so you can ask about a task that's already closed, or ask to reopen one.
+
+For what Undo does on these cards, see [Undo and what can't be undone](#undo).
+
+### Internal notes {#internal-notes}
+
+Ask the assistant to add a note to a deal, and it shows the note on a card first. For example:
+
+- *"Add a note that the buyer wants a Friday closing."*
+- *"Pin the note about the lender call."*
+
+It can add, edit, pin, unpin, remove and bring back a deal's internal notes. The card shows:
+
+- **The note**, which you can edit before you approve.
+- **Seen by:** *"Your team only. Clients and agents never see notes on the portal."* Notes are never emailed.
+- **Transaction Summary:** *"Included only when its template has Internal Notes."*
+- **Written as:** a note the assistant adds shows as *Assistant for* your name.
+
+You can edit, remove or bring back only notes you wrote, including ones the assistant added for you. Removing a note archives it; it isn't deleted.
+
+The assistant can't add or change comments on a task or a document. Add those from the task's drawer or the document's preview.
+
+### Key dates {#key-dates}
+
+Beyond moving a date or marking it done, waived or not applicable, the assistant can:
+
+- **Add key dates**, up to 10 at a time, with or without a date, time or location. *"Add a key date for the final walk-through on Dec 18 at 4 PM."*
+- **Change a key date's name, notes, time or location.**
+- **Reset a hand-set date** to the date its rule gives.
+- **Recalculate the deal's dates** from the dates they are counted from. Hand-set, completed and not-applicable dates stay as they are.
+- **Reorder** the key dates on the deal.
+- **Link a task to a key date, or unlink it.**
+- **Apply or dismiss suggested date changes** that are waiting on the deal. You can choose which dates to move.
+
+It runs the same steps as the deal page's own controls, so dependent dates, linked tasks, reminders and scheduled emails move the way they do there. The card lists the dates and tasks that will move before you approve.
+
+If guests already have a calendar invite for a date that moves, they get an update email. The card says so, and Undo can't take that email back.
+
+The assistant never deletes a key date. To take one off a deal, it marks it not applicable.
+
+If the dates on the deal change after the card was made, approving is refused and nothing changes. Ask again to get a fresh card.
 
 ### Deleting tasks {#deleting-tasks}
 
@@ -9244,7 +9309,9 @@ Open a task on a deal's **Tasks** tab and click **Ask the assistant** in the tas
 
 ### Questions about a deal's notes, email and texts {#deal-reads}
 
-On a deal, Ask AI can look up the deal's notes, email, text messages, scheduled sends, checks, change history, key-date history, agreements and fees. Use it for questions like *"What did the lender say in the last email?"* It only reads. It doesn't mark an email as read or change anything on the deal. It reads the deals you can see; if your role is limited to your own deals, that means the deals you are on.
+On a deal, Ask AI can look up the deal's internal notes, email, text messages, scheduled sends, consistency checks, change history, key-date history, agreements, and TC fees and invoices. Use it for questions like *"What did the lender say in the last email?"* It only reads. It doesn't mark an email as read or change anything on the deal, and it never shows payment links. It reads the deals you can see; if your role is limited to your own deals, that means the deals you are on.
+
+AI apps you connect to DocJacket can read the same parts of a deal. See [AI Access](../ai-access/index.mdx).
 
 ## "Is anything wrong with this deal?" {#deal-check}
 
@@ -9347,6 +9414,27 @@ When the assistant looks something up and finds nothing, it tells you that nothi
 - **Contacts:** deleted contacts are not searched.
 - **Email templates:** searches include both Active and Draft (turned-off) templates.
 
+## Undo and what can't be undone {#undo}
+
+After you approve a card, most changes show **Undo** on the card for 7 days.
+
+| Change | Undo on the card |
+|---|---|
+| Completing tasks | Yes, for 7 days. It reopens them. Emails already sent stay sent, and tasks, reminders or notifications the completion created stay. If completing closed a key date early and that moved other key dates, Undo doesn't move them back. |
+| Skipping tasks | Yes, for 7 days. It reopens them. Withdrawn review emails don't come back. |
+| Reopening tasks that were skipped | Yes, for 7 days. It skips them again. |
+| Reopening tasks that were completed | No. To close one again, complete it, which runs the completion steps again. The card says so. |
+| Deleting tasks | Yes, for 7 days. See [Deleting tasks](#deleting-tasks). |
+| Adding, editing, pinning, removing or bringing back a note | Yes, for 7 days. |
+| Adding key dates | Yes, for 7 days. Undo marks them not applicable; they aren't deleted. |
+| Changing a key date's name, notes, time or location | Yes, for 7 days. |
+| Resetting a hand-set date | Yes, for 7 days, when the key date had a date before. It puts that date back as a hand-set date. |
+| Reordering key dates, or linking or unlinking a task | Yes, for 7 days. |
+| Recalculating the deal's dates | No. Each date can still be changed by hand. The card says so. |
+| Applying or dismissing suggested date changes | No. The card says so. |
+
+Undo never unsends an email or a calendar update that already went out.
+
 ## What the assistant won't do {#what-it-wont-do}
 
 Some things stay with you, even if you ask and would approve:
@@ -9354,7 +9442,8 @@ Some things stay with you, even if you ask and would approve:
 - **Billing and seats.** It never buys a seat or changes your plan. If an invite needs a seat you don't have, it takes you to **Settings > Team Members**.
 - **Passwords and connections.** It doesn't connect your email account or handle sign-in details. It takes you to the page where you do it.
 - **Deleting your account.** It has no way to delete your account or organization.
-- **Permanently deleting deals, contacts or email templates.** Taking someone off a deal can be undone for 7 days, and their contact record is kept. Undoing a new template turns it off instead of deleting it.
+- **Changing what clients see on the portal.** It doesn't change which tasks or notes show on the client portal.
+- **Permanently deleting deals, contacts, key dates, notes or email templates.** Taking someone off a deal can be undone for 7 days, and their contact record is kept. Removing a note archives it. To take a key date off a deal, it marks it not applicable. Undoing a new template turns it off instead of deleting it.
 
 ## Related
 
