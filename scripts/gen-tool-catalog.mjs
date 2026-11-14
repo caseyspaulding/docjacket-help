@@ -70,7 +70,10 @@ const prose = (s) =>
     .replace(/</g, '\\<')
     .trim();
 
-const anchor = (name) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+// Docusaurus slugs the heading `get_offer` to `get_offer` (underscores survive),
+// so the link target is the tool name itself. Hyphenating it breaks the build
+// (onBrokenAnchors: 'throw').
+const anchor = (name) => name.toLowerCase();
 
 const snapshot = JSON.parse(await readFile(SPEC_FILE, 'utf8'));
 const tools = snapshot.tools ?? [];

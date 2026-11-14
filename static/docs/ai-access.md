@@ -29,15 +29,15 @@ The assistant calls into DocJacket, gets a grounded answer from your real book o
 
 ## What's connected today
 
-DocJacket exposes **67 tools** over MCP, in three permission tiers. You choose a tier when you consent, and it is enforced at the token — a read-only connection cannot write, whatever the assistant tries.
+DocJacket exposes **157 tools** over MCP, in three permission tiers. You choose a tier when you consent, and it is enforced at the token — a read-only connection cannot write, whatever the assistant tries.
 
 | Tier | Tools | For example |
 |---|---|---|
-| `read` | 40 | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
-| `draft` | 7 | `create_tasks`, `update_key_date`, `apply_checklist` |
-| `actions` | 20 | `send_client_update`, `apply_extraction`, `create_reminder` |
+| `read` | 73 | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
+| `draft` | 32 | `create_tasks`, `update_key_date`, `apply_checklist` |
+| `actions` | 52 | `send_client_update`, `apply_extraction`, `create_reminder` |
 
-**[Browse all 67 tools →](/docs/ai-access/tool-catalog)** — the complete catalog with descriptions, gotchas, and example calls, readable without connecting anything.
+**[Browse all 157 tools →](/docs/ai-access/tool-catalog)** — the complete catalog with descriptions, gotchas, and example calls, readable without connecting anything.
 
 ## Get started
 

@@ -75,15 +75,15 @@ The "Use DocJacket to…" prefix is the convention OpenAI's surfaces follow when
 
 ## What Codex and ChatGPT can do
 
-DocJacket exposes **67 tools** over MCP, in three permission tiers. You pick a tier when you consent, and it is enforced at the token — a read-only connection cannot call a write tool even if the assistant tries.
+DocJacket exposes **157 tools** over MCP, in three permission tiers. You pick a tier when you consent, and it is enforced at the token — a read-only connection cannot call a write tool even if the assistant tries.
 
 | Tier | Tools | For example |
 |---|---|---|
-| `read` | 40 | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
-| `draft` | 7 | `create_tasks`, `update_key_date`, `apply_checklist` |
-| `actions` | 20 | `send_client_update`, `apply_extraction`, `create_reminder` |
+| `read` | 73 | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
+| `draft` | 32 | `create_tasks`, `update_key_date`, `apply_checklist` |
+| `actions` | 52 | `send_client_update`, `apply_extraction`, `create_reminder` |
 
-**[Browse all 67 tools →](/docs/ai-access/tool-catalog)** — the complete catalog with descriptions, gotchas, and example calls.
+**[Browse all 157 tools →](/docs/ai-access/tool-catalog)** — the complete catalog with descriptions, gotchas, and example calls.
 
 You don't need to remember tool names; Codex and ChatGPT pick the right tool from your question. To see the inventory *your* token can reach, ask:
 
@@ -132,7 +132,7 @@ Inside DocJacket:
 ## Read more
 
 - [Contract Intake](/docs/ai-access/contract-intake) — external PDF intake when action tools are enabled; otherwise use the in-app Upload Documents wizard
-- [Tool catalog](/docs/ai-access/tool-catalog) — all 67 tools, grouped by scope, with gotchas and example calls
+- [Tool catalog](/docs/ai-access/tool-catalog) — all 157 tools, grouped by scope, with gotchas and example calls
 - [How the OAuth flow works](/docs/ai-access/oauth) — the underlying protocol
 - [AI Access overview](/docs/ai-access) — section index
 - [Connect Claude](/docs/ai-access/claude) — sister guide for Anthropic surfaces
