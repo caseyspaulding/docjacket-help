@@ -48,7 +48,7 @@ const TIERS = [
     scope: 'draft',
     label: 'Draft',
     blurb:
-      'Low-risk writes to your own records — tasks, key dates, checklists, activity notes. **Tools in this tier can\'t write or send an email themselves.** Marking a task done can start the follow-up emails linked to it; they wait in your Review queue if your team reviews outgoing email first.',
+      'Low-risk writes to your own records — tasks, key dates, checklists, activity notes. **Tools in this tier can\'t write or send an email themselves.** When an assistant connected with draft access, and not actions access, marks a task done, the emails that would follow wait in your Review queue for a person to approve. Moving a date can still make an already-scheduled email go out sooner.',
   },
   {
     scope: 'actions',
