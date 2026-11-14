@@ -16,7 +16,7 @@ Upgrade when you're ready to:
 
 - Run **unlimited active transactions** (the free plan caps how many you can have open)
 - Get higher **AI contract extraction** limits
-- Turn on **SMS messaging**, a **custom domain**, and **MCP access**
+- Turn on **SMS messaging** and a **custom domain**
 - Get **priority support**
 
 ## How to upgrade

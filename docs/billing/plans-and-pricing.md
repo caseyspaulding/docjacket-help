@@ -30,8 +30,9 @@ The free plan is a great way to try DocJacket before committing. It includes:
 - **Up to 2 team members**
 - Unlimited intake forms and unlimited client & agent portals
 - Email automation, templates, and Playbook templates
+- AI Access: connect Claude, ChatGPT, Codex and other AI assistants (included with every plan)
 
-Upgrade to a paid plan for unlimited active transactions and AI extractions, SMS messaging, a custom domain, MCP access, and priority support.
+Upgrade to a paid plan for unlimited active transactions and AI extractions, SMS messaging, a custom domain, and priority support.
 
 ## Seats and team members
 

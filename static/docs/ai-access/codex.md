@@ -20,7 +20,7 @@ The same DocJacket MCP server backs all three. Connect once per surface.
 
 ## Before you start
 
-- **A DocJacket Pro plan.** Connecting is free, but loading tools requires Pro on the connecting user's account. On Free, upgrade at [docjacket.com/pricing](https://www.docjacket.com/pricing).
+- **A DocJacket account on any plan.** AI Access is included with every DocJacket plan.
 - **For ChatGPT specifically:** custom MCP connectors require Plus, Team, or Enterprise. Free-tier ChatGPT cannot add custom servers.
 
 ## Quick start (Codex CLI)

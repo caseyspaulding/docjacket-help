@@ -9860,7 +9860,7 @@ Inside DocJacket:
 
 **"Token is invalid, expired, or revoked"** — Your token has been revoked (from DocJacket → Settings → API & AI Access) or your assistant has been disconnected for more than 90 days. Re-consent to reconnect.
 
-**Pro plan required** — Connecting is free, but actually loading tools requires a DocJacket Pro plan on the connecting user's account. If you're on Free, upgrade at [docjacket.com/pricing](https://www.docjacket.com/pricing).
+**Which DocJacket plan do I need?** — Any. AI Access is included with every DocJacket plan, so there's nothing to upgrade before you connect or load tools.
 
 ## Read more
 
@@ -10024,7 +10024,7 @@ The same DocJacket MCP server backs all three. Connect once per surface.
 
 ## Before you start
 
-- **A DocJacket Pro plan.** Connecting is free, but loading tools requires Pro on the connecting user's account. On Free, upgrade at [docjacket.com/pricing](https://www.docjacket.com/pricing).
+- **A DocJacket account on any plan.** AI Access is included with every DocJacket plan.
 - **For ChatGPT specifically:** custom MCP connectors require Plus, Team, or Enterprise. Free-tier ChatGPT cannot add custom servers.
 
 ## Quick start (Codex CLI)
@@ -10257,7 +10257,7 @@ We publish release notes in the [plugin repo](https://github.com/docjacket-inc/c
 
 **Skill or slash command not appearing** — Hit **Update** in the Cowork plugin list to pull the latest manifest. If still missing, [file an issue](https://github.com/docjacket-inc/claude-plugin/issues) on the plugin repo.
 
-**Pro plan required** — Installing is free, but actually loading tools requires a DocJacket Pro plan on the org the token belongs to. Upgrade at [docjacket.com/pricing](https://www.docjacket.com/pricing).
+**Which DocJacket plan do I need?** — Any. AI Access is included with every DocJacket plan, so there's nothing to upgrade before you connect or load tools.
 
 ## Read more
 
@@ -10355,7 +10355,7 @@ No tokens to copy, no `mcp.json` to edit, per-user revocation. Until then, the t
 
 **Tools don't appear after restart** — Check the JSON syntax in `mcp.json`. A missing comma or extra brace will make the Gemini CLI skip the server entry. Validate with `cat ~/.gemini/mcp.json | jq`.
 
-**Pro plan required** — Connecting is free, but actually loading tools requires a DocJacket Pro plan on the connecting user's account. Upgrade at [docjacket.com/pricing](https://www.docjacket.com/pricing).
+**Which DocJacket plan do I need?** — Any. AI Access is included with every DocJacket plan, so there's nothing to upgrade before you connect or load tools.
 
 ## Read more
 
@@ -16713,8 +16713,9 @@ The free plan is a great way to try DocJacket before committing. It includes:
 - **Up to 2 team members**
 - Unlimited intake forms and unlimited client & agent portals
 - Email automation, templates, and Playbook templates
+- AI Access: connect Claude, ChatGPT, Codex and other AI assistants (included with every plan)
 
-Upgrade to a paid plan for unlimited active transactions and AI extractions, SMS messaging, a custom domain, MCP access, and priority support.
+Upgrade to a paid plan for unlimited active transactions and AI extractions, SMS messaging, a custom domain, and priority support.
 
 ## Seats and team members
 
@@ -16813,7 +16814,7 @@ Upgrade when you're ready to:
 
 - Run **unlimited active transactions** (the free plan caps how many you can have open)
 - Get higher **AI contract extraction** limits
-- Turn on **SMS messaging**, a **custom domain**, and **MCP access**
+- Turn on **SMS messaging** and a **custom domain**
 - Get **priority support**
 
 ## How to upgrade
