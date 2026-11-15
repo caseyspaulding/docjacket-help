@@ -1,20 +1,20 @@
 ---
-sidebar_label: Tool Catalog (all 157 tools)
+sidebar_label: Tool Catalog (all 161 tools)
 sidebar_position: 8
-description: Every tool on the DocJacket MCP server — all 157, grouped by scope tier, with descriptions, gotchas, pairings, and example calls. Generated from the live catalog.
+description: Every tool on the DocJacket MCP server — all 161, grouped by scope tier, with descriptions, gotchas, pairings, and example calls. Generated from the live catalog.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/ai-access/tool-catalog -->
 <!-- Source: docs/ai-access/tool-catalog.mdx -->
 
 {/* GENERATED FILE — do not edit by hand.
-     Source: spec/mcp-catalog.json (157 tools)
+     Source: spec/mcp-catalog.json (161 tools)
      Regenerate: npm run fetch-mcp-catalog && npm run gen-tool-catalog
      Generator: scripts/gen-tool-catalog.mjs */}
 
-# MCP tool catalog — all 157 tools
+# MCP tool catalog — all 161 tools
 
-This is the complete inventory of what an AI assistant can do with DocJacket over the [Model Context Protocol](./index.mdx): **157 tools** — **73** read · **32** draft · **52** actions.
+This is the complete inventory of what an AI assistant can do with DocJacket over the [Model Context Protocol](./index.mdx): **161 tools** — **76** read · **32** draft · **53** actions.
 
 You do not need to connect anything to read this page. It is generated from the live catalog and rendered as static HTML, so a person comparing platforms — or an agent answering *"what can DocJacket actually do?"* — can see the whole surface first.
 
@@ -24,9 +24,9 @@ You pick a permission level when you connect, and it is enforced at the token, n
 
 | Tier | Tools | What it allows |
 |---|---|---|
-| `read` | 73 | Look things up. Nothing in this tier changes a record or contacts anyone. A read-only connection is limited to exactly these tools. |
+| `read` | 76 | Look things up. Nothing in this tier changes a record or contacts anyone. A read-only connection is limited to exactly these tools. |
 | `draft` | 32 | Low-risk writes to your own records — tasks, key dates, checklists, activity notes. Tools in this tier can't write or send an email themselves. When an assistant connected with draft access, and not actions access, marks a task done, the emails that would follow wait in your Review queue for a person to approve. Moving a date can still make an already-scheduled email go out sooner. |
-| `actions` | 52 | Side-effecting work: sending email to a real person, creating and deleting records, and exposing documents outside the organization. |
+| `actions` | 53 | Side-effecting work: sending email to a real person, creating and deleting records, and exposing documents outside the organization. |
 
 Every write, in either write tier, is confirmed by you in chat before it runs — the conversation itself is the approval step. Every call is recorded in your [activity log](https://app.docjacket.com/settings/ai-access/activity). See [Permissions & scopes](./permissions.mdx) for how to choose.
 
@@ -39,9 +39,9 @@ Every write, in either write tier, is confirmed by you in chat before it runs �
 
 Calling `mcp_catalog` from a connected assistant returns this same inventory, filtered to the scopes *your* token holds.
 
-**Prefer structured data?** The full inventory is also served as JSON at [help.docjacket.com/mcp-catalog.json](https://help.docjacket.com/mcp-catalog.json) — same 157 tools with per-tool scope, gotchas, pairings, and example calls, generated from the same source as this page.
+**Prefer structured data?** The full inventory is also served as JSON at [help.docjacket.com/mcp-catalog.json](https://help.docjacket.com/mcp-catalog.json) — same 161 tools with per-tool scope, gotchas, pairings, and example calls, generated from the same source as this page.
 
-## Read — 73 tools
+## Read — 76 tools
 
 Look things up. Nothing in this tier changes a record or contacts anyone. A read-only connection is limited to exactly these tools.
 
@@ -56,6 +56,8 @@ Classify a document by filename and/or content preview. Returns a suggested docu
 Compare every offer on a listing side by side. Returns one column per offer with the current version's effective terms: amount, financing, down payment, earnest money, closing date, flexible-closing, offer expiration, and structured escalation (increment, cap, clause text, requires-competing-offer-proof), plus seller concessions and notes. Escalation is advisory — the increment and cap are reported, never a computed winning price. Read-only; accepting an offer is a human decision made in the app.
 
 *Requires `read`.*
+
+*Optional toolset `offers`: listed only when it is ticked on the consent screen; callable either way.*
 
 **Gotchas**
 
@@ -76,6 +78,8 @@ Compare every offer on a listing side by side. Returns one column per offer with
 Diagnose what is wrong with one deal's key dates, open tasks, side and agents, in one call. Call this first whenever the user says something on a deal looks wrong, overdue, duplicated, missing or stuck, and before explaining any date, badge or task on that deal, or why a person is on the deal or shown as its agent. It also says who holds each agent seat and how they were added, what the client portal's Team Member Card shows, whether the deal's agent field names someone else, and which key dates are waiting on open linked tasks. Each finding says what is wrong, which rows (with their ids), where on the deal the user sees them, and which tool fixes it or that there is nothing to do; overdue comes from DocJacket's own rule, so a contract-start date such as the Effective Date is reported as not overdue, never as something to complete. Do not use it to list every key date or task (call get_key_dates or get_open_tasks), for documents, or across deals (call get_upcoming_key_dates).
 
 *Requires `read`.*
+
+*Deprecated: hidden from `tools/list` but still callable. Use `review_deal_health`. Earliest removal: 2027-02-12.*
 
 **Gotchas**
 
@@ -133,6 +137,7 @@ Get a link to Stripe's secure checkout page where an owner or admin can subscrib
 - Only an owner or admin gets a link; anyone else gets NOT_OWNER_OR_ADMIN with the names of who can subscribe.
 - Each call creates a new Stripe checkout session; at most 5 per organization per hour.
 - An organization that already has a subscription is refused; changes happen on the billing page.
+- An organization already on the requested plan or a higher one gets ALREADY_ON_PLAN, even when it has no subscription (a plan granted by DocJacket).
 - Never open the link or attempt payment: show it to the person.
 
 **Pairs with** [`get_plan`](#get_plan)
@@ -148,6 +153,8 @@ Get a link to Stripe's secure checkout page where an owner or admin can subscrib
 Return a deal arranged for the compliance system its brokerage files in (such as Dotloop, SkySlope or KW Command): the deal's fields under plain names (county, earnest money holder, commissions, parcel id), its parties with roles, each document with the name it should carry in that system, how documents can be delivered, and for Dotloop short tested steps that stop before anything is shared or submitted. Call it when the user asks to enter, file or set up a deal in the brokerage's system. It reads the saved compliance system; when none is saved it returns status system_not_set and no packet, so ask the user and save the answer with set_compliance_system. Pass system only to try a different system for one call; nothing is saved. It does not return document links or file contents and sends nothing. Do not use it for deadlines (get_key_dates).
 
 *Requires `read`.*
+
+*Deprecated: hidden from `tools/list` but still callable. Use `prepare_compliance_handoff`. Earliest removal: 2027-02-12.*
 
 **Gotchas**
 
@@ -263,7 +270,7 @@ Get how THIS organization normally works a deal like this one — their Playbook
 
 ### `get_deal_section`
 
-Read one part of a deal that the deal record does not include: its internal notes, the comments on its tasks and documents, email, text messages, scheduled sends, consistency checks, change log, key-date change history, agreements, or TC fees and invoices. Returns a short page of items, each with the id a follow-up call or a change needs (noteId, messageId, threadId, scheduledEmailId, commitId, keyDateId, feeId, invoiceId); pass itemId to read one note, email or text thread in full, or one task's or document's comments. Use it when the user asks what was said, sent, scheduled, changed, agreed or billed on a deal. Do not use it for the deal's parties, key dates, tasks or documents: call get_transaction_context, get_key_dates, get_open_tasks or list_documents. It changes nothing; reading an email here does not mark it read.
+Read one part of a deal that the deal record does not include: its internal notes, the comments on its tasks and documents, email, text messages, scheduled sends, consistency checks, change log, key-date change history, agreements, TC fees and invoices, or the Documents Needed list. Returns a short page of items, each with the id a follow-up call or a change needs (noteId, messageId, threadId, scheduledEmailId, commitId, keyDateId, feeId, invoiceId, rowId); pass itemId to read one note, email or text thread in full, or one task's or document's comments. Use it when the user asks what was said, sent, scheduled, changed, agreed or billed on a deal. Do not use it for the deal's parties, key dates, tasks or documents: call get_transaction_context, get_key_dates, get_open_tasks or list_documents. It changes nothing; reading an email here does not mark it read.
 
 *Requires `read` · granular scope `transactions:read`.*
 
@@ -307,11 +314,15 @@ Get the per-recipient activity report for a disclosure package — engagement (I
 
 *Requires `read`.*
 
+*Optional toolset `disclosures`: listed only when it is ticked on the consent screen; callable either way.*
+
 ### `get_disclosure_package`
 
 Get a disclosure package by id — settings, items (joined to transaction_documents), and recipients without raw tokens. Use after create_disclosure_package or whenever you need the current shape of a package before adding items or inviting recipients. Returns PACKAGE_NOT_FOUND if the id isn't in this org.
 
 *Requires `read`.*
+
+*Optional toolset `disclosures`: listed only when it is ticked on the consent screen; callable either way.*
 
 ### `get_document_categories`
 
@@ -364,7 +375,7 @@ Get one email template's full text by id or slug: subject, body (HTML), category
 
 ### `get_extraction_results`
 
-Read the current state of an extraction job. Use after extract_existing_document, kick_off_extraction or upload_document_for_extraction starts a job — poll this every 2-3 seconds until status='complete' (or 'failed'). When complete, the response includes `fullResult` with all extracted parties, dates, financials, property details, agents, title, and listing fields. Present those to the user for review, then call apply_extraction to create the transaction. Typical extraction takes 50-350 seconds; max-wait 10 minutes.
+Read the current state of an extraction job. Use after extract_existing_document, kick_off_extraction or upload_document_for_extraction starts a job. The call waits on the server up to `waitSeconds` (default 30, max 45) for the job to finish and answers as soon as it does; if status is still pending or processing, call it again straight away (no need to pause between calls). Pass waitSeconds 0 for an immediate read. When complete, the response includes `fullResult` with all extracted parties, dates, financials, property details, agents, title, and listing fields. Present those to the user for review, then call apply_extraction to create the transaction. Typical extraction takes 50-350 seconds; stop after 10 minutes in total.
 
 *Requires `read` · granular scope `documents:read`.*
 
@@ -509,6 +520,8 @@ Get a single buyer offer with its full revision history. Returns the thread summ
 
 *Requires `read`.*
 
+*Optional toolset `offers`: listed only when it is ticked on the consent screen; callable either way.*
+
 **Gotchas**
 
 - Escalation terms are advisory — increment and cap only, never a computed winning price.
@@ -553,7 +566,7 @@ Get THIS organization's account at a glance: name, primary state, subscription s
 
 - The organization is the credential's; an organizationId argument is ignored.
 - ai_chat_tools_enabled / ai_chat_writes_enabled are null when the org has never set them (the platform default applies).
-- active_deal_count counts transactions with status Active only.
+- active_deal_count is the count billing and get_plan use: deals that are not deleted, not archived and not closed or cancelled, so Pending and Under Contract deals count.
 - automation.deal_inbox_enabled is the auto-file cascade, not the new-deal address; use intake_addresses.new_deal.enabled.
 - A contract emailed to the new-deal address from a non-member's address waits in the Review Queue instead of creating a deal.
 - A mailbox whose health is not ok cannot send until the user reconnects it in Settings.
@@ -577,7 +590,8 @@ Get THIS organization's DocJacket plan: plan name, whether it is paid, subscript
 - The organization is the credential's; an organizationId argument is ignored.
 - A limit of null means unlimited.
 - On a capped plan, deals.used counts every deal ever created (the Free cap is lifetime); on an unlimited plan it counts active deals.
-- can_subscribe_here is false when the organization already has a subscription or is billed through a partner.
+- can_subscribe_here is false when the organization already has a subscription, is billed through a partner, or is already on the highest plan it could buy.
+- A plan can be held without a subscription (granted by DocJacket); plans at or below the current tier are then not purchasable.
 - Only an owner or admin can subscribe; who_can_subscribe names them.
 
 **Pairs with** [`get_checkout_link`](#get_checkout_link) · [`get_organization_summary`](#get_organization_summary)
@@ -618,6 +632,24 @@ Get the deal's client portal link: the newest active Buyer/Seller link that is n
 
 *Requires `read`.*
 
+### `get_procedure`
+
+Return DocJacket's step-by-step procedures for multi-step jobs: with no name, the list of procedures (name and one-line purpose); with a name, that procedure's full text, including the tools it uses. Call it before a multi-step job such as setting up a deal from a contract, a daily review of what needs attention, follow-up emails or a closing check, when your host did not load DocJacket's skills. It changes nothing and holds no deal data: call the deal tools for facts, and if your host already loaded the DocJacket skills, use those instead.
+
+*Requires `read`.*
+
+**Gotchas**
+
+- Names are exact and lowercase, as the list returns them; references are named by file stem (document-types).
+
+**Pairs with** [`mcp_catalog`](#mcp_catalog)
+
+**Example call**
+
+```json
+{"name":"daily-triage"}
+```
+
 ### `get_recent_support_history`
 
 Get THIS organization's recent support history: the last 10 help-desk messages as triage verdicts (when, intent, subtype, status — never the message text) and its open bug reports (when, status, a short summary). Use to spot a repeat question, to avoid filing a bug that is already open, or to see whether an earlier reply was sent. Takes no arguments.
@@ -640,14 +672,14 @@ Get THIS organization's recent support history: the last 10 help-desk messages a
 
 ### `get_reminders`
 
-List the reminders on one transaction: sent and unsent, held or suppressed (with the reason), their send time, deadline, recipients and template or note. Returns reminderId for each. Use it to find the reminderId before updating or cancelling a reminder.
+List the reminders on one transaction: sent and unsent, held or cancelled (with the reason), their send time, deadline, recipients and template or note. Returns reminderId for each. Use it to find the reminderId before updating or cancelling a reminder.
 
 *Requires `read`.*
 
 **Gotchas**
 
 - An empty list is a valid response; TRANSACTION_NOT_FOUND means the id is missing, cross-tenant or not one of the caller's deals.
-- state is sent, awaiting_review, held (suppressed, with suppressionReason) or scheduled. kind is personal for a per-user task reminder, deal otherwise.
+- state is sent, awaiting_review, cancelled (off for good, e.g. 'Manually cancelled' or 'Deal closed'; suppressionReason says why), held (parked and may still send, with suppressionReason) or scheduled. kind is personal for a per-user task reminder, deal otherwise.
 - Returns only a template name and a short note preview, never the body.
 
 **Pairs with** [`update_reminder`](#update_reminder) · [`cancel_reminder`](#cancel_reminder) · [`get_key_dates`](#get_key_dates)
@@ -744,6 +776,8 @@ Get the relationship graph for a transaction — parties by role, key dates, ope
 
 *Requires `read`.*
 
+*Deprecated: hidden from `tools/list` but still callable. Use `get_transaction_context`. Earliest removal: 2027-02-12.*
+
 **Gotchas**
 
 - Returns TRANSACTION_NOT_FOUND for both missing IDs and IDs in another tenant (no existence leak).
@@ -789,13 +823,13 @@ Get upcoming Key Dates across all active transactions in the current organizatio
 
 ### `get_upload_link_status`
 
-Check a link from `create_upload_link`: waiting (user hasn't dropped a file yet), uploading, submitted (returns `extractionJobId`; continue with `get_extraction_results`, show the user the fields, confirm, then `apply_extraction`), failed (returns `errorCode`; relay it), or expired (create a new link). Poll about every 10 seconds.
+Check a link from `create_upload_link`: waiting (user hasn't dropped a file yet), uploading, submitted (returns `extractionJobId`; continue with `get_extraction_results`, show the user the fields, confirm, then `apply_extraction`), failed (returns `errorCode`; relay it), or expired (create a new link). The call waits on the server up to `waitSeconds` (default 30, max 45) and answers as soon as the link is submitted, failed or expired; while it is still waiting or uploading, call again straight away. Pass waitSeconds 0 for an immediate read.
 
 *Requires `read` · granular scope `documents:read`.*
 
 **Gotchas**
 
-- Poll no more than every 10 seconds; the link lives for 30 minutes.
+- The call waits on the server up to waitSeconds (default 30) for the upload; while it still says waiting or uploading, call again straight away. The link lives for 30 minutes.
 - submitted means the file was handed to extraction, not that extraction has finished: continue with get_extraction_results.
 
 **Pairs with** [`create_upload_link`](#create_upload_link) · [`get_extraction_results`](#get_extraction_results) · [`apply_extraction`](#apply_extraction)
@@ -925,7 +959,7 @@ List the online form templates in the organization, plus the read-only SYSTEM st
 
 ### `list_held_emails`
 
-List the emails DocJacket is holding in its review queue for this organization, newest first: emails an assistant wrote, Playbook task emails, task-completion emails, reminders and scheduled emails that are waiting for a person instead of going out. Each item gives the actionId, deal, source, subject, recipients, when it was created and expires, any requested send time, and holdReasons: why it is held, each with blocking true when the email cannot be approved until it is changed, and a fix. Use it when the user asks what is waiting, stuck or unsent, or before telling them an automatic email went out. Nothing listed here has been sent, and this call sends nothing. Use get_held_email to read one in full, and discard_held_email to remove one; to write a new email use a send_* tool instead.
+List the emails DocJacket is holding in its review queue for this organization, newest first: emails an assistant wrote, Playbook task emails, task-completion emails, reminders and scheduled emails that are waiting for a person instead of going out. Each item gives the actionId, deal, source, subject, recipients, when it was created and expires, any requested send time, and holdReasons: why it is held, each with blocking true when the email cannot be approved until it is changed (except person_must_approve, which only a team member can approve, in DocJacket, and which no assistant can release), and a fix. Use it when the user asks what is waiting, stuck or unsent, or before telling them an automatic email went out. Nothing listed here has been sent, and this call sends nothing. Use get_held_email to read one in full, and discard_held_email to remove one; to write a new email use a send_* tool instead.
 
 *Requires `read`.*
 
@@ -969,6 +1003,8 @@ List contracts recently emailed to this organization's new-deal intake address (
 List buyer-offer threads on the organization's listings. Omit listing_transaction_id to see every offer across all listings (the Buyer Offers pipeline); pass it to scope to one listing. Returns one row per offer with buyer, agent, amount, status, review state, expiration, and whether it has an escalation clause. Use compare_offers for a full side-by-side of terms, or get_offer for one offer's revision history. Read-only; accepting an offer is done by a human in the app, not through this API.
 
 *Requires `read`.*
+
+*Optional toolset `offers`: listed only when it is ticked on the consent screen; callable either way.*
 
 **Gotchas**
 
@@ -1048,7 +1084,7 @@ Read one list the draft can use: contact_roles, library_key_dates, custom_date_a
 
 ### `mcp_catalog`
 
-List every MCP tool you currently have scope to call, enriched with metadata that tools/list doesn't carry: gotchas (non-obvious behaviors), pairsWith (tools that go together), exampleCall (a realistic argument shape), and deprecation notices. Use this when planning a workflow that touches more than a couple of tools, or when integrating and you want a single round-trip view of the surface. Identical output regardless of call args; safe to cache for a session.
+List every MCP tool you currently have scope to call, enriched with metadata that tools/list doesn't carry: gotchas (non-obvious behaviors), pairsWith (tools that go together), exampleCall (a realistic argument shape), and deprecation notices. Use this when planning a workflow that touches more than a couple of tools, or when integrating and you want a single round-trip view of the surface. Identical output regardless of call args; safe to cache for a session. Each entry also carries its toolset and whether this connection lists it in tools/list. Every entry can be called by name; one with listed: false and a toolset other than core can be added to the list by reconnecting DocJacket and ticking that toolset on the consent screen.
 
 *Requires `read`.*
 
@@ -1057,6 +1093,28 @@ List every MCP tool you currently have scope to call, enriched with metadata tha
 Verify the MCP server can authenticate your token, reach its database, and tell you which scopes and organization the token grants. Call this first when integrating, or when a tool call surprises you with an auth/scope error — the response makes the gap explicit. Intended to be unmetered (does not count against future rate limits). Also surfaces deprecation notices for tools heading toward retirement, so an integrating agent can update its plan before a tool starts returning errors.
 
 *Requires `read`.*
+
+### `prepare_compliance_handoff`
+
+Return a deal arranged for the compliance system its brokerage files in (such as Dotloop, SkySlope or KW Command): the deal's fields under plain names (county, earnest money holder, commissions, parcel id), its parties with roles, each document with the name it should carry in that system, how documents can be delivered, and for Dotloop short tested steps that stop before anything is shared or submitted. Call it when the user asks to enter, file or set up a deal in the brokerage's system. It reads the saved compliance system; when none is saved it returns status system_not_set and no packet, so ask the user and save the answer with set_compliance_system. Pass system only to try a different system for one call; nothing is saved. It does not return document links or file contents and sends nothing. Do not use it for deadlines (get_key_dates).
+
+*Requires `read`.*
+
+*The name `tools/list` shows for `get_compliance_packet`; both names run the same tool.*
+
+**Gotchas**
+
+- With no saved system and no system argument it returns status system_not_set and no deal, parties or documents.
+- Fields that are empty on the deal are left out; do not fill them in or guess them.
+- steps exist for Dotloop only; for any other system work from the fields and documents.
+
+**Pairs with** [`get_compliance_system`](#get_compliance_system) · [`set_compliance_system`](#set_compliance_system) · [`get_key_dates`](#get_key_dates)
+
+**Example call**
+
+```json
+{"transactionId":"00000000-0000-0000-0000-000000000000"}
+```
 
 ### `preview_dates`
 
@@ -1121,6 +1179,30 @@ Render a saved email template against one deal: every merge field (\{\{property_
 
 ```json
 {"templateId": "0e1c2b3a-4d5e-6f70-8192-a3b4c5d6e7f8", "transactionId": "7a1b2c3d-4e5f-6071-8293-b4c5d6e7f809"}
+```
+
+### `review_deal_health`
+
+Diagnose what is wrong with one deal's key dates, open tasks, side and agents, in one call. Call this first whenever the user says something on a deal looks wrong, overdue, duplicated, missing or stuck, and before explaining any date, badge or task on that deal, or why a person is on the deal or shown as its agent. It also says who holds each agent seat and how they were added, what the client portal's Team Member Card shows, whether the deal's agent field names someone else, and which key dates are waiting on open linked tasks. Each finding says what is wrong, which rows (with their ids), where on the deal the user sees them, and which tool fixes it or that there is nothing to do; overdue comes from DocJacket's own rule, so a contract-start date such as the Effective Date is reported as not overdue, never as something to complete. Do not use it to list every key date or task (call get_key_dates or get_open_tasks), for documents, or across deals (call get_upcoming_key_dates).
+
+*Requires `read`.*
+
+*The name `tools/list` shows for `diagnose_deal`; both names run the same tool.*
+
+**Gotchas**
+
+- TRANSACTION_NOT_FOUND covers a missing id, another organization's deal, and a deal the caller's role may not see.
+- A not_overdue_contract_start note means nothing to do: never suggest completing an Effective Date or Contract Date to clear a badge.
+- fix.available false means the fixing tool is not built yet; tell the user what is wrong and where, and do not invent a control.
+- Only key dates, open tasks, the side, who holds the agent seats (and anyone added automatically) and the portal's Team Member Card are checked; documents and emails are not.
+- A person who is not a contact on the deal gets no finding of their own: say they are not a contact on this deal, and say which surface shows them (the portal's Team Member Card, or an email field that names the deal's team member).
+
+**Pairs with** [`update_key_date`](#update_key_date) · [`reschedule_task`](#reschedule_task) · [`add_contact_to_transaction`](#add_contact_to_transaction) · [`get_key_dates`](#get_key_dates) · [`get_open_tasks`](#get_open_tasks)
+
+**Example call**
+
+```json
+{"transactionId": "0e1c2b3a-4d5e-6f70-8192-a3b4c5d6e7f8"}
 ```
 
 ### `search_contacts`
@@ -1211,7 +1293,7 @@ Apply a Playbook (a deal checklist) to a deal: its key dates, tasks, documents a
 
 ### `complete_task`
 
-Mark a task complete on a transaction. Cascades to dependent tasks (unblocks them), auto-completes any milestone whose tasks are now all done, fires workflow rules, and publishes the task.completed webhook. Returns any email templates linked to this task via task_email_templates — when present and completionEmailsHeld is false, the agent should render + send those next (canonical example: 'Send weekly buyer update' task completes → templates surface here → render_email_template → send_client_update). **The user must have confirmed completion in chat** before you call this — the chat is the approval gate. When completionEmailsHeld is true, the emails this completion triggers are held, NOT sent, and are never yours to send: `heldEmails` lists their actionIds (or, when it is empty, find them with list_held_emails). Show each with prepare_held_email_approval and confirm_email_send only on an explicit yes, or discard it. For several tasks, a skip or a reopen, use set_task_outcome, which also offers a 7-day undo.
+Mark a task complete on a transaction. Cascades to dependent tasks (unblocks them), auto-completes any milestone whose tasks are now all done, fires workflow rules, and publishes the task.completed webhook. DocJacket sends or holds the emails linked to the task itself; never send them again. With only the draft scope, every email a completion triggers waits in the user's Review queue for a person (heldFor: "person"). With the actions scope in an organization that lets an assistant release held email, they are held for your confirmation (heldFor: "assistant"). **The user must have confirmed completion in chat** before you call this — the chat is the approval gate. When completionEmailsHeld is true, the emails this completion triggers are held, NOT sent, and are never yours to send: `heldEmails` lists their actionIds (or, when it is empty, find them with list_held_emails). Show each with prepare_held_email_approval and confirm_email_send only on an explicit yes, or discard it. For several tasks, a skip or a reopen, use set_task_outcome, which also offers a 7-day undo.
 
 *Requires `draft`.*
 
@@ -1387,7 +1469,7 @@ Save a markdown status summary as a note on the transaction. Audience-tagged ('a
 
 ### `set_key_date_outcome`
 
-Record what happened to one key date on a deal: complete (it was met), waive, not_applicable, or reopen (make a closed date open again). It runs the same steps as the deal page's own buttons: completing also stops that date's pending reminders and scheduled emails, leaves its calendar invite in place, and moves dependent dates when it is completed early. Use it when the user says a deadline was met, waived or does not apply, or wants a closed date reopened; take keyDateId from diagnose_deal or get_key_dates. Do not use it to change a date (call update_key_date), and never on a contract-start date such as Effective Date or Contract Date, which is never overdue and has no outcome; that is refused. Confirm with the user first.
+Record what happened to one key date on a deal: complete (it was met), waive, not_applicable, or reopen (make a closed date open again). It runs the same steps as the deal page's own buttons: completing also stops that date's pending reminders and scheduled emails, leaves its calendar invite in place, and moves dependent dates when it is completed early. Use it when the user says a deadline was met, waived or does not apply, or wants a closed date reopened; take keyDateId from review_deal_health or get_key_dates. Do not use it to change a date (call update_key_date), and never on a contract-start date such as Effective Date or Contract Date, which is never overdue and has no outcome; that is refused. Confirm with the user first.
 
 *Requires `draft`.*
 
@@ -1407,7 +1489,7 @@ Record what happened to one key date on a deal: complete (it was met), waive, no
 
 ### `set_task_outcome`
 
-Record what happened to one or more tasks on one deal: complete (it was done), skip (it does not need doing), or reopen (make a completed or skipped task open again). It runs the same steps as the Tasks tab: completing unblocks and re-dates dependent tasks, closes a linked key date once its last task is done, runs completion rules and starts the task's follow-up emails; skipping unblocks dependants and sends nothing; reopening puts linked key dates and dependent dates back, but an email already sent stays sent. Use it when the user says tasks are done, not needed, or were closed by mistake; take taskIds from get_open_tasks (status "closed" for closed tasks), all on one deal, at most 25. Do not use it to rename, re-date, reassign or delete a task (update_task, reschedule_task, reassign_task, delete_tasks), and it never changes what the client portal shows. **The user must have confirmed the change in chat** before you call this — the chat is the approval gate. When completionEmailsHeld is true, the emails this completion triggers are held, not sent, and are never yours to send: show each with prepare_held_email_approval and confirm_email_send only on an explicit yes, or discard it. A complete or skip can be undone for 7 days with undo_task_outcome and the preparedWorkId this returns.
+Record what happened to one or more tasks on one deal: complete (it was done), skip (it does not need doing), or reopen (make a completed or skipped task open again). It runs the same steps as the Tasks tab: completing unblocks and re-dates dependent tasks, closes a linked key date once its last task is done, runs completion rules and starts the task's follow-up emails; skipping unblocks dependants and sends nothing; reopening puts linked key dates and dependent dates back, but an email already sent stays sent. Use it when the user says tasks are done, not needed, or were closed by mistake; take taskIds from get_open_tasks (status "closed" for closed tasks), all on one deal, at most 25. Do not use it to rename, re-date, reassign or delete a task (update_task, reschedule_task, reassign_task, delete_tasks), and it never changes what the client portal shows. **The user must have confirmed the change in chat** before you call this — the chat is the approval gate. DocJacket sends or holds the emails linked to the task itself; never send them again. With only the draft scope, every email a completion triggers waits in the user's Review queue for a person (heldFor: "person"). With the actions scope in an organization that lets an assistant release held email, they are held for your confirmation (heldFor: "assistant"). When completionEmailsHeld is true, the emails this completion triggers are held, not sent, and are never yours to send: show each with prepare_held_email_approval and confirm_email_send only on an explicit yes, or discard it. A complete or skip can be undone for 7 days with undo_task_outcome and the preparedWorkId this returns.
 
 *Requires `draft`.*
 
@@ -1465,7 +1547,7 @@ Change one task's details: rename it, change its description, instructions or pr
 {"taskId":"5b7d9f1a-2c3e-4a5b-8c7d-9e0f1a2b3c4d","showOnReport":false,"distribution":[{"role":"Agent","sent":true}]}
 ```
 
-## Actions — 52 tools
+## Actions — 53 tools
 
 Side-effecting work: sending email to a real person, creating and deleting records, and exposing documents outside the organization.
 
@@ -1474,6 +1556,8 @@ Side-effecting work: sending email to a real person, creating and deleting recor
 Flip a Draft disclosure package to Active so recipient links start resolving. Idempotent on already-Active. Rejects Archived (PACKAGE_ARCHIVED) — create a new package rather than reviving an archived one. Returns PACKAGE_NOT_FOUND if the id isn't in this org.
 
 *Requires `actions`.*
+
+*Optional toolset `disclosures`: listed only when it is ticked on the consent screen; callable either way.*
 
 ### `add_contact_to_transaction`
 
@@ -1668,6 +1752,8 @@ Create a disclosure package on a transaction — bundle selected transaction doc
 
 *Requires `actions`.*
 
+*Optional toolset `disclosures`: listed only when it is ticked on the consent screen; callable either way.*
+
 ### `create_email_template`
 
 Create a reusable email template in the organization. Templates hold a subject and body with merge fields like \{\{property_address\}\} or \{\{buyer_name\}\} that fill in per transaction at send time (call get_merge_fields to see what's available). Provide a name and category; subject and body are recommended. Created as a DRAFT by default for human review — pass isActive=true to publish immediately. Returns the template id and any unrecognized merge fields. Test it with render_email_template.
@@ -1733,7 +1819,7 @@ Create one or more blank transactions (deals) from addresses, without a document
 
 ### `create_upload_link`
 
-The way to get a contract the user attached in chat into DocJacket when it isn't already there: works in every client, no code sandbox, nothing in chat context. Returns a link; tell the user to open it in the browser where they use DocJacket and drop the PDF there, then poll `get_upload_link_status`. Contract intake, in this order: (1) Already in DocJacket? `list_documents` then `extract_existing_document`. (2) Default in every client: `create_upload_link`; the user opens it and drops the PDF; poll `get_upload_link_status`. (3) Or the user emails the PDF from their own address to `get_organization_summary` > `intake_addresses.new_deal.address` (other senders wait for review); poll `list_new_deal_intake`. (4) If your sandbox can reach the `uploadHost` from `request_upload_url`: PUT, then `kick_off_extraction`. (5) Last resort, a PDF under about 1 MB: `upload_document_for_extraction`.
+The way to get a contract the user attached in chat into DocJacket when it isn't already there: works in every client, no code sandbox, nothing in chat context. Returns a link; tell the user to open it in the browser where they use DocJacket and drop the PDF there, then call `get_upload_link_status` (it waits on the server for the upload). Contract intake, in this order: (1) Already in DocJacket? `list_documents` then `extract_existing_document`. (2) Default in every client: `create_upload_link`; the user opens it and drops the PDF; poll `get_upload_link_status`. (3) Or the user emails the PDF from their own address to `get_organization_summary` > `intake_addresses.new_deal.address` (other senders wait for review); poll `list_new_deal_intake`. (4) If your sandbox can reach the `uploadHost` from `request_upload_url`: PUT, then `kick_off_extraction`. (5) Last resort, a PDF under about 1 MB: `upload_document_for_extraction`.
 
 *Requires `actions` · granular scope `upload_document`.*
 
@@ -1778,7 +1864,7 @@ Discard an email that DocJacket is holding in its review queue, so it is never s
 
 ### `extract_existing_document`
 
-Start the extraction pipeline on a document that's already in DocJacket (uploaded via DocDrop, email intake, the web wizard, or a prior MCP call). The canonical intake path: works in every MCP client because bytes never leave DocJacket. Pass the `documentId` returned by `list_documents`. Returns the same `extractionJobId` + `cacheHit` shape as the other intake tools — poll `get_extraction_results` every 2-3 seconds until complete, then call `apply_extraction`. Duplicate calls on the same document reuse the prior result via content-hash dedup (cacheHit=true).
+Start the extraction pipeline on a document that's already in DocJacket (uploaded via DocDrop, email intake, the web wizard, or a prior MCP call). The canonical intake path: works in every MCP client because bytes never leave DocJacket. Pass the `documentId` returned by `list_documents`. Returns the same `extractionJobId` + `cacheHit` shape as the other intake tools — call `get_extraction_results` (it waits on the server for the job) until complete, then call `apply_extraction`. Duplicate calls on the same document reuse the prior result via content-hash dedup (cacheHit=true).
 
 *Requires `actions` · granular scope `upload_document`.*
 
@@ -1805,19 +1891,21 @@ Install one of DocJacket's starter email packs into the organization's template 
 
 ### `invite_disclosure_recipient`
 
-Invite a recipient to an Active disclosure package. Returns the raw share token + URL ONCE — only the SHA256 hash is persisted, so you must surface the URL to the user in your reply. Optionally link to a known contactId, otherwise the recipient is ad-hoc (label + optional email). When an email is given, DocJacket EMAILS the recipient the share link immediately (the result's send outcome says whether it went); that email cannot be recalled, so confirm the recipient with the user first. Omit the email to create the link without sending anything. Returns PACKAGE_NOT_FOUND or PACKAGE_NOT_ACTIVE.
+Invite a recipient to an Active disclosure package. Without an email, creates the share link and sends nothing: the raw share token + URL are returned ONCE (only the SHA256 hash is persisted), so surface the URL to the user in your reply. With an email, the first call creates and sends nothing: it returns status preview_pending_confirmation, the exact email (to, subject, body, with the link shown as a placeholder) and a confirmCode. Show the preview to the user; only if they approve, call again with just packageId, displayLabel and that confirmCode, and DocJacket then creates the link and EMAILS the recipient the share link, using what was previewed (other arguments on the confirming call are ignored). That email cannot be recalled. The code works once, for 30 minutes. If the organization reviews outgoing email, an email invite is refused with REVIEW_REQUIRED (the user invites from DocJacket instead). Optionally link to a known contactId. Returns PACKAGE_NOT_FOUND, PACKAGE_NOT_ACTIVE, CONTACT_NOT_FOUND, CONFIRM_CODE_INVALID, CONFIRM_CODE_EXPIRED, CONFIRM_CODE_NOT_YOURS or CONTENT_CHANGED.
 
 *Requires `actions`.*
 
+*Optional toolset `disclosures`: listed only when it is ticked on the consent screen; callable either way.*
+
 ### `kick_off_extraction`
 
-Start the extraction pipeline on a PDF the client already uploaded via `request_upload_url`. Step 2 of the sandbox upload path. Pass the `uploadId` returned by request_upload_url. Returns the same `extractionJobId` + `cacheHit` shape as `upload_document_for_extraction` — poll `get_extraction_results` every 2-3 seconds until complete, then call `apply_extraction`. Duplicate uploads of the same PDF reuse the prior result (cacheHit=true).
+Start the extraction pipeline on a PDF the client already uploaded via `request_upload_url`. Step 2 of the sandbox upload path. Pass the `uploadId` returned by request_upload_url. Returns the same `extractionJobId` + `cacheHit` shape as `upload_document_for_extraction` — call `get_extraction_results` (it waits on the server for the job) until complete, then call `apply_extraction`. Duplicate uploads of the same PDF reuse the prior result (cacheHit=true).
 
 *Requires `actions` · granular scope `upload_document`.*
 
 ### `manage_deal_contact`
 
-Change one person's place on a deal: remove takes them off the deal (the link is archived and can be undone for 7 days; their contact record is kept), change_role moves them to another existing role, and set_primary makes them the primary holder of their role and un-marks any other primary in it. Use it only after the user names the person and says they should not be in that seat, should hold another role, or should be the main one; take transactionContactId from diagnose_deal, or pass contactId with currentRole. Do not use it to add someone (call add_contact_to_transaction), to change a team member's own team role (that is a team setting, not a seat on a deal), or to rename a role. Confirm with the user first.
+Change one person's place on a deal: remove takes them off the deal (the link is archived and can be undone for 7 days; their contact record is kept), change_role moves them to another existing role, and set_primary makes them the primary holder of their role and un-marks any other primary in it. Use it only after the user names the person and says they should not be in that seat, should hold another role, or should be the main one; take transactionContactId from review_deal_health, or pass contactId with currentRole. Do not use it to add someone (call add_contact_to_transaction), to change a team member's own team role (that is a team setting, not a seat on a deal), or to rename a role. Confirm with the user first.
 
 *Requires `actions`.*
 
@@ -1837,14 +1925,14 @@ Change one person's place on a deal: remove takes them off the deal (the link is
 
 ### `prepare_held_email_approval`
 
-Prepare the approval of an email DocJacket is holding in its review queue, so the user can approve it here instead of in DocJacket. Pass the actionId from list_held_emails. This call prepares only: it sends and approves nothing. Status "awaiting_confirmation": show the user the COMPLETE email from preview (recipients, subject, full body, attachments, send time); only if they explicitly say yes, call confirm_email_send with confirmCode (decision "discard" if they say no). Status "cannot_release": a blocking hold reason must be fixed first (holdReasons, each with fix); no code is issued. Works only in an organization that allows its connected assistant to release held emails; elsewhere it returns NOT_ENABLED and a team member approves the email in DocJacket. An impersonated session or a role that cannot approve emails gets IMPERSONATED_SESSION or ROLE_CANNOT_APPROVE.
+Prepare the approval of an email DocJacket is holding in its review queue, so the user can approve it here instead of in DocJacket. Pass the actionId from list_held_emails. This call prepares only: it sends and approves nothing. Status "awaiting_confirmation": show the user the COMPLETE email from preview (recipients, subject, full body, attachments, send time); only if they explicitly say yes, call confirm_email_send with confirmCode (decision "discard" if they say no). Status "cannot_release": a blocking hold reason must be fixed first (holdReasons, each with fix); no code is issued. person_must_approve cannot be fixed: only a team member can approve that email, in DocJacket, and no assistant can release it. Works only in an organization that allows its connected assistant to release held emails; elsewhere it returns NOT_ENABLED and a team member approves the email in DocJacket. An impersonated session or a role that cannot approve emails gets IMPERSONATED_SESSION or ROLE_CANNOT_APPROVE.
 
 *Requires `actions`.*
 
 **Gotchas**
 
 - Most organizations have this turned off; the call then answers NOT_ENABLED and a team member approves the email in DocJacket.
-- Status cannot_release means a blocking hold reason must be fixed first; no code is issued.
+- Status cannot_release means a blocking hold reason must be fixed first; no code is issued. person_must_approve cannot be fixed: only a team member can approve that email, in DocJacket, and no assistant can release it.
 - A held email whose requested send time has passed is cannot_release (requested_send_time_passed); only DocJacket's web app can choose a new time or send it now.
 - The code works once, for 30 minutes, for this user and connection, and only for exactly the email previewed.
 
@@ -1905,7 +1993,7 @@ Check a PDF on a deal for blank signature, initials and date lines: a vision mod
 **Gotchas**
 
 - A second call while a review runs returns that run with alreadyRunning true; it starts nothing.
-- The review is saved against the file's Documents Needed row; a file linked to no row cannot be reviewed.
+- The review is saved against the file's Documents Needed row. A file linked to no row is reviewed too: requiredDocumentId is then null and the result is saved on the file.
 
 **Pairs with** [`get_signature_review`](#get_signature_review) · [`list_documents`](#list_documents)
 
@@ -1920,6 +2008,8 @@ Check a PDF on a deal for blank signature, initials and date lines: a vision mod
 Revoke one recipient's link to a disclosure package. Their next request returns access-ended. Idempotent — second revoke is a no-op. Historical events stay in the activity report. Returns RECIPIENT_NOT_FOUND if the recipient id isn't in this org or doesn't belong to the given package.
 
 *Requires `actions`.*
+
+*Optional toolset `disclosures`: listed only when it is ticked on the consent screen; callable either way.*
 
 ### `save_email_template`
 
@@ -1973,6 +2063,28 @@ Send an email to listing/buyer/lender/title/referral agent on a specific topic. 
 Send an email update to the buyer, seller, or co-agent summarizing where the deal stands. Call get_transaction, get_contacts, and get_key_dates first to gather context, then compose subject + body inline and call this tool. Nothing is sent by this call. There are two outcomes. Status "parked_for_review": the email waits in DocJacket's review queue for a team member to approve; tell the user it is awaiting approval, never that it was sent (reviewReason says why). Status "awaiting_confirmation": show the user the COMPLETE email from preview (recipients, subject, full body, attachments); only if they say yes, call confirm_email_send with confirmCode (or decision "discard" if they say no). An unconfirmed email waits in the review queue. The recipient must be a contact on the deal. To schedule the email, pass sendAt (and optionally sendAtTimezone); the preview shows the resolved send time, and confirming it schedules the email for that time instead of sending now.
 
 *Requires `actions`.*
+
+### `send_compliance_documents`
+
+Email chosen PDF documents of a deal to the email-in address of the deal's compliance system (a dotloop folder's @upload.dotloop.com address or a SkySlope file's @skyslope.com address), each as its own attachment named the way it should appear in that system. This sends REAL email from the user's connected Gmail or Outlook mailbox, so confirm with the user which documents go and to which address before calling. Use it after get_compliance_system says the deal's system is Dotloop or SkySlope; do not use it for any other recipient or system. For dotloop, each folder of a loop has its own address and the user must give it to you; never invent or guess an address. Nothing is sent by this call: it returns status "parked_for_review" (the email waits in DocJacket's review queue; tell the user it is awaiting approval) or "awaiting_confirmation" with a preview listing every attachment under its new name and a confirmCode; show the user the preview and, only if they say yes, call confirm_email_send with that code.
+
+*Requires `actions`.*
+
+**Gotchas**
+
+- Only the exact email-in host of the deal's saved compliance system is accepted: @upload.dotloop.com for Dotloop, @skyslope.com for SkySlope.
+- Each dotloop folder has its own address; ask the user for it. Never make one up.
+- Only PDFs on this deal, 20 MB in all. A subject starting "new loop" is refused.
+- It sends from the user's connected Gmail or Outlook mailbox, never from DocJacket's mail service.
+- MCP: nothing is sent until confirm_email_send; if the deal's compliance system changes first, the confirm is refused.
+
+**Pairs with** [`get_compliance_system`](#get_compliance_system) · [`get_compliance_packet`](#get_compliance_packet) · [`list_documents`](#list_documents) · [`confirm_email_send`](#confirm_email_send)
+
+**Example call**
+
+```json
+{"transactionId":"00000000-0000-0000-0000-000000000000","toAddress":"folder-1234@upload.dotloop.com","documents":[{"documentId":"00000000-0000-0000-0000-000000000001","fileName":"Purchase Agreement.pdf"}]}
+```
 
 ### `send_document_request`
 
@@ -2093,7 +2205,7 @@ Update fields on an existing contact by ID. Partial update — only the fields y
 
 ### `update_deal`
 
-Change fields on one deal's own record: MLS, escrow and APN numbers, notes, money terms other than the price, the office, Waiting On and custom field values, up to 10 in one call. Each change is checked the way the deal's Edit page checks it, a field the call does not name is never touched, and the result lists each field's old and new value with an undo handle good for 7 days. Use it only for a value the user gave or confirmed; read the current values with get_transaction_context and custom field ids with get_custom_fields first. Do not use it for key dates or the closing date (call update_key_date), the deal's status, close out or archive, who is on the deal (manage_deal_contact), the TC fee or portal settings, and never infer a property's state.
+Change fields on one deal's own record: MLS, escrow and APN numbers, notes, money terms (price, earnest money, commission and broker-fee terms), side, transaction type, financing, the address and state, the office, Waiting On and custom field values, up to 10 in one call. Each change is checked the way the deal's Edit page checks it, a field the call does not name is never touched, and the result lists each field's old and new value with an undo handle good for 7 days. Use it only for a value the user gave or confirmed; read the current values with get_transaction_context and custom field ids with get_custom_fields first. Do not use it for key dates or the closing date (call update_key_date), the deal's status, close out or archive, who is on the deal (manage_deal_contact), the TC fee or portal settings, and never infer a property's state.
 
 *Requires `actions`.*
 
@@ -2102,6 +2214,9 @@ Change fields on one deal's own record: MLS, escrow and APN numbers, notes, mone
 - Only the fields named are changed; every other field on the deal keeps its value.
 - Key dates, the status, the people on the deal and the TC fee are refused with the tool or page that changes them.
 - Never infer the county or the property's state from an address, a ZIP code, a document or other deals.
+- A price, financing, address, side, type or state change also moves other things on the deal; the card and the result's alsoChanged say which.
+- A side change re-targets the deal's unsent emails and the agent portal; propose it only when the user said to.
+- property_state needs stateSource: user (they typed it) or document (an uploaded document on this deal was classified with it).
 
 **Pairs with** [`get_transaction_context`](#get_transaction_context) · [`get_custom_fields`](#get_custom_fields) · [`update_key_date`](#update_key_date) · [`manage_deal_contact`](#manage_deal_contact)
 
@@ -2117,6 +2232,8 @@ Replace the documents in a disclosure package with the given list (in order). RE
 
 *Requires `actions`.*
 
+*Optional toolset `disclosures`: listed only when it is ticked on the consent screen; callable either way.*
+
 ### `update_reminder`
 
 Change an UNSENT reminder: how many days before its deadline it fires (daysBeforeReminder), the time of day, who it goes to (recipientEmails / recipientRoles — role names match EXACTLY, e.g. 'Listing Agent'), the email template or the note. Send only the fields to change; the rest are kept. A reminder that was already sent, or a personal 'My Reminders' reminder, cannot be changed. **Confirm the change with the user in chat** before calling.
@@ -2125,7 +2242,7 @@ Change an UNSENT reminder: how many days before its deadline it fires (daysBefor
 
 ### `upload_document_for_extraction`
 
-Upload a contract PDF as base64 and start the extraction pipeline in one call. LAST RESORT: the bytes ride in chat context for the rest of the conversation. Contract intake, in this order: (1) Already in DocJacket? `list_documents` then `extract_existing_document`. (2) Default in every client: `create_upload_link`; the user opens it and drops the PDF; poll `get_upload_link_status`. (3) Or the user emails the PDF from their own address to `get_organization_summary` > `intake_addresses.new_deal.address` (other senders wait for review); poll `list_new_deal_intake`. (4) If your sandbox can reach the `uploadHost` from `request_upload_url`: PUT, then `kick_off_extraction`. (5) Last resort, a PDF under about 1 MB: `upload_document_for_extraction`. Returns an `extractionJobId` — poll `get_extraction_results` every 2-3 seconds until status='complete', then call `apply_extraction`. Duplicate uploads reuse the prior result (cacheHit=true). Max 22 MB base64 (~16 MB binary).
+Upload a contract PDF as base64 and start the extraction pipeline in one call. LAST RESORT: the bytes ride in chat context for the rest of the conversation. Contract intake, in this order: (1) Already in DocJacket? `list_documents` then `extract_existing_document`. (2) Default in every client: `create_upload_link`; the user opens it and drops the PDF; poll `get_upload_link_status`. (3) Or the user emails the PDF from their own address to `get_organization_summary` > `intake_addresses.new_deal.address` (other senders wait for review); poll `list_new_deal_intake`. (4) If your sandbox can reach the `uploadHost` from `request_upload_url`: PUT, then `kick_off_extraction`. (5) Last resort, a PDF under about 1 MB: `upload_document_for_extraction`. Returns an `extractionJobId` — call `get_extraction_results` (it waits on the server for the job) until status='complete', then call `apply_extraction`. Duplicate uploads reuse the prior result (cacheHit=true). Max 22 MB base64 (~16 MB binary).
 
 *Requires `actions` · granular scope `upload_document`.*
 
