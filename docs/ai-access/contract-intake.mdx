@@ -1,6 +1,6 @@
 ---
 sidebar_label: Contract Intake
-sidebar_position: 6
+sidebar_position: 7
 description: External PDF intake for connections granted the actions tier; read-only and draft connections should use the in-app Upload Documents wizard.
 ---
 

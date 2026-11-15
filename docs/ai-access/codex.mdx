@@ -1,7 +1,7 @@
 ---
 title: Connect Codex / ChatGPT
 sidebar_label: Connect Codex / ChatGPT
-sidebar_position: 3
+sidebar_position: 4
 description: Connect DocJacket to OpenAI Codex (CLI, Codex for Work) and ChatGPT using the official Codex plugin. Paste-URL-and-go via OAuth 2.1.
 ---
 
@@ -16,7 +16,7 @@ description: Connect DocJacket to OpenAI Codex (CLI, Codex for Work) and ChatGPT
       "name": "How do I connect DocJacket to Codex or ChatGPT?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "In Codex (or ChatGPT with MCP connectors enabled), add a new MCP server with the URL https://mcp.docjacket.com/mcp. Complete the OAuth consent screen DocJacket shows. Codex will load the DocJacket tools available to your granted scopes. All 157 tools are live across three tiers — read (40), draft (7), and actions (20) — and the tier you pick at consent is enforced at the token."
+        "text": "In Codex, install the DocJacket plugin (codex plugin marketplace add docjacket-inc/codex-plugin, then codex plugin install docjacket) and sign in to DocJacket on first use. In ChatGPT, add a custom connector with the address https://mcp.docjacket.com/mcp and sign in. On the DocJacket screen, choose read, update (draft) or act on your behalf (actions); DocJacket enforces the level you pick. On some plans ChatGPT only allows read-only connectors; if DocJacket cannot make changes from ChatGPT, check your ChatGPT plan."
       }
     },
     {
@@ -24,7 +24,7 @@ description: Connect DocJacket to OpenAI Codex (CLI, Codex for Work) and ChatGPT
       "name": "What's the difference between Codex CLI and Codex for Work?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Codex CLI is the open-source command-line interface developers use locally. Codex for Work is OpenAI's hosted version for teams. ChatGPT (with MCP connectors enabled) is the consumer chat surface. DocJacket works with all three using the same plugin."
+        "text": "Codex CLI is the open-source command-line interface developers use locally. Codex for Work is OpenAI's hosted version for teams. ChatGPT (with MCP connectors enabled) is the consumer chat surface. DocJacket works with all three through the same DocJacket address and sign-in."
       }
     },
     {
@@ -32,7 +32,7 @@ description: Connect DocJacket to OpenAI Codex (CLI, Codex for Work) and ChatGPT
       "name": "What's the Daily Triage skill for Codex?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Daily Triage is a pre-built skill that returns every transaction needing your attention today, pre-ranked overdue-first. In Codex you invoke it as $docjacket-daily-triage. It calls get_next_required_actions under the hood and formats the result as a ranked list."
+        "text": "Daily Triage is one of the fourteen skills in the DocJacket plugin for Codex. It returns every transaction needing your attention today, ranked overdue-first. In Codex you invoke it as $docjacket-daily-triage. It calls get_next_required_actions under the hood and formats the result as a ranked list."
       }
     }
   ]
@@ -60,25 +60,25 @@ description: Connect DocJacket to OpenAI Codex (CLI, Codex for Work) and ChatGPT
       "@type": "HowToStep",
       "position": 1,
       "name": "Open your MCP server configuration",
-      "text": "In Codex CLI, open ~/.codex/connectors.json. In ChatGPT, open Settings → Connectors (requires Plus, Team, or Enterprise)."
+      "text": "In Codex, run codex plugin marketplace add docjacket-inc/codex-plugin, then codex plugin install docjacket. In ChatGPT, add a custom connector in ChatGPT's settings; this depends on your ChatGPT plan."
     },
     {
       "@type": "HowToStep",
       "position": 2,
-      "name": "Add the DocJacket MCP endpoint",
-      "text": "Add https://mcp.docjacket.com/mcp as an MCP server."
+      "name": "Add the DocJacket address",
+      "text": "In ChatGPT, paste https://mcp.docjacket.com/mcp as the connector address. The Codex plugin already has it."
     },
     {
       "@type": "HowToStep",
       "position": 3,
       "name": "Complete the DocJacket consent screen",
-      "text": "Sign in and choose a permission tier: read-only, read + draft, or full read + draft + actions."
+      "text": "Sign in and choose the access you want: read your data, update your data, or act on your behalf. Then click Allow."
     },
     {
       "@type": "HowToStep",
       "position": 4,
       "name": "Verify the tools loaded",
-      "text": "Run codex tools list, or ask the assistant to use DocJacket's mcp_catalog to list what it can reach."
+      "text": "Ask the assistant to use DocJacket's mcp_catalog to list what it can reach."
     }
   ]
 })}
@@ -97,40 +97,29 @@ The same DocJacket MCP server backs all three. Connect once per surface.
 
 ## Before you start
 
-- **A DocJacket account on any plan.** AI Access is included with every DocJacket plan.
-- **For ChatGPT specifically:** custom MCP connectors require Plus, Team, or Enterprise. Free-tier ChatGPT cannot add custom servers.
+- **A DocJacket account on any plan.** On DocJacket's Free plan, your organization gets 100 AI tool calls a month; paid plans have no monthly limit. See [Free plan limit](/docs/ai-access/use-from-your-assistant#free-plan-limit).
+- **For ChatGPT:** your ChatGPT plan must allow custom connectors. Not every plan does, and on a business workspace an admin may need to turn it on first.
+- **On some plans, ChatGPT only allows read-only connectors.** If DocJacket can read your deals from ChatGPT but can't make changes, check your ChatGPT plan.
 
-## Quick start (Codex CLI)
+## Quick start (Codex)
 
-1. Open your Codex configuration directory (`~/.codex/` on Mac/Linux).
-2. Open or create `connectors.json`.
-3. Add a DocJacket entry:
+Install the DocJacket plugin for Codex:
 
-```json
-{
-  "connectors": {
-    "docjacket": {
-      "url": "https://mcp.docjacket.com/mcp",
-      "transport": "http"
-    }
-  }
-}
+```bash
+codex plugin marketplace add docjacket-inc/codex-plugin
+codex plugin install docjacket
 ```
 
-4. Restart Codex. On first call, Codex opens a browser window with DocJacket's OAuth consent screen.
-5. **Allow** the connection. Codex stores the access + refresh tokens in your local keychain.
-6. Run `codex tools list` — you should see the DocJacket read tools available to your token. Additional draft or action tools appear only when those rollout scopes are enabled for your account.
+On the first DocJacket tool call, your browser opens the DocJacket sign-in and consent screen. Choose the access you want and click **Allow**. Codex keeps the sign-in in your computer's keychain. You don't paste a token.
 
-For the full plugin (with the skill set and `.codex-plugin` package), see [docjacket-inc/codex-plugin](https://github.com/docjacket-inc/codex-plugin) on GitHub.
+The plugin is on GitHub at [docjacket-inc/codex-plugin](https://github.com/docjacket-inc/codex-plugin).
 
 ## Quick start (ChatGPT)
 
-1. Open **ChatGPT** in a browser, sign in.
-2. **Settings** → **Connectors** → **+ Add MCP server**. (Available on Plus / Team / Enterprise.)
-3. Paste `https://mcp.docjacket.com/mcp`.
-4. Click **Continue**. ChatGPT redirects you to DocJacket's consent screen.
-5. **Allow** the connection.
-6. Start a new chat — DocJacket's read tools are now available. Additional draft or action tools appear only when your account has those scopes enabled.
+1. In ChatGPT on the web, add a custom connector. ChatGPT also calls this a custom MCP server. Where this sits in ChatGPT's settings depends on your plan.
+2. Type a name, such as DocJacket, paste `https://mcp.docjacket.com/mcp`, and choose OAuth for sign-in.
+3. Sign in to DocJacket, choose the access you want, and click **Allow**.
+4. Start a new chat. DocJacket's tools are now available for the access you chose.
 
 ## Try it
 
@@ -152,25 +141,27 @@ The "Use DocJacket to…" prefix is the convention OpenAI's surfaces follow when
 
 ## What Codex and ChatGPT can do
 
-DocJacket exposes **157 tools** over MCP, in three permission tiers. You pick a tier when you consent, and it is enforced at the token — a read-only connection cannot call a write tool even if the assistant tries.
+DocJacket's tools come in three permission tiers. You pick one when you consent, and DocJacket enforces it. A read-only connection cannot call a write tool even if the assistant tries.
 
-| Tier | Tools | For example |
+| Tier | What it allows | For example |
 |---|---|---|
-| `read` | 73 | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
-| `draft` | 32 | `create_tasks`, `update_key_date`, `apply_checklist` |
-| `actions` | 52 | `send_client_update`, `apply_extraction`, `create_reminder` |
+| `read` | Look things up. Changes nothing. | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
+| `draft` | Change tasks, key dates, Playbooks and status inside DocJacket. Sends no email. | `create_tasks`, `update_key_date`, `apply_checklist` |
+| `actions` | Send emails you approve, and make other changes | `send_client_update`, `apply_extraction`, `create_reminder` |
 
-**[Browse all 157 tools →](/docs/ai-access/tool-catalog)** — the complete catalog with descriptions, gotchas, and example calls.
+**[Browse every tool →](/docs/ai-access/tool-catalog)**: the complete catalog with descriptions, gotchas, and example calls.
 
-You don't need to remember tool names; Codex and ChatGPT pick the right tool from your question. To see the inventory *your* token can reach, ask:
+You don't need to remember tool names; Codex and ChatGPT pick the right tool from your question. To see the inventory *your* connection can reach, ask:
 
 > "Use DocJacket's `mcp_catalog` to list the tools by category."
 
 ## Skills shipped with the plugin
 
-The Codex plugin ships nine pre-built workflow skills the assistant picks from automatically:
+The Codex plugin (version 0.9.0) ships fourteen workflow skills the assistant picks from automatically:
 
-`daily-triage` · `email-triage` · `contract-intake` · `document-filing` · `closing-prep` · `follow-up-drafting` · `execution-workflow` · `contact-management` · `tc-context`
+`daily-triage` · `email-triage` · `contract-intake` · `document-filing` · `closing-prep` · `follow-up-drafting` · `deal-updates` · `contact-management` · `playbook-builder` · `workspace-setup` · `compliance-filing` · `execution-workflow` · `tc-context` · `dj-cli`
+
+What each one does: [Connect Cowork](/docs/ai-access/cowork#skills) (the Claude and Codex plugins share the same skills).
 
 Each is a recipe the assistant follows when you ask the corresponding question. Example invocations:
 
@@ -218,7 +209,7 @@ DocJacket adds new tools from time to time. ChatGPT keeps the list of DocJacket 
 ## Read more
 
 - [Contract Intake](/docs/ai-access/contract-intake) — external PDF intake when action tools are enabled; otherwise use the in-app Upload Documents wizard
-- [Tool catalog](/docs/ai-access/tool-catalog) — all 157 tools, grouped by scope, with gotchas and example calls
+- [Tool catalog](/docs/ai-access/tool-catalog) — every tool, grouped by scope, with gotchas and example calls
 - [How the OAuth flow works](/docs/ai-access/oauth) — the underlying protocol
 - [AI Access overview](/docs/ai-access) — section index
 - [Connect Claude](/docs/ai-access/claude) — sister guide for Anthropic surfaces

@@ -182,9 +182,8 @@ Notice the `resource=https://mcp.docjacket.com/mcp` parameter in the authorizati
 
 ## When you'd skip OAuth and use a token instead
 
-A few clients don't (yet) support paste-URL OAuth and need a personal access token instead:
+Claude, Cowork, ChatGPT and the Codex plugin all use paste-URL OAuth and need no token. A few other cases use a personal access token instead:
 
-- **Cowork** — org-installed plugin; a long-lived token is the right primitive for org-wide install. ([setup](/docs/ai-access/cowork))
 - **Gemini CLI** — Dynamic Client Registration support isn't shipped on Gemini's MCP client yet. ([setup](/docs/ai-access/gemini))
 - **Codex CLI** — works either way; many users prefer the token + `codex secret set` flow. ([setup](/docs/ai-access/codex))
 - **Your own scripts and back-office tools** — when the account is yours, a token you paste into your `Authorization: Bearer …` header is simpler than a consent flow, and there is nobody to ask for consent anyway.

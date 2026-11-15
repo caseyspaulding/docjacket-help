@@ -1,7 +1,7 @@
 ---
 sidebar_label: Connect Gemini
-sidebar_position: 5
-description: Connect DocJacket to Google Gemini via the Gemini CLI's MCP support. Bearer-token today, paste-URL OAuth coming.
+sidebar_position: 6
+description: Where Gemini stands with DocJacket. The Gemini app steps are being verified; developers can connect the Gemini CLI with a personal token today.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/ai-access/gemini -->
@@ -9,25 +9,37 @@ description: Connect DocJacket to Google Gemini via the Gemini CLI's MCP support
 
 # Connect Gemini
 
-DocJacket works with the **Gemini CLI** today via personal access token. Paste-URL OAuth (the easier flow you'll see on the Claude and ChatGPT pages) will land here as soon as the Gemini CLI's MCP client adds [Dynamic Client Registration](https://datatracker.ietf.org/doc/html/rfc7591) support.
+:::caution Being verified: steps coming soon
+We are testing the DocJacket connection in the Gemini app now. We'll add step-by-step instructions here once it is confirmed to work.
+:::
 
-## Quick start (Gemini CLI, bearer token)
+Where Gemini stands today depends on which Gemini you use:
 
-1. **Mint a token:**
-   - Open [app.docjacket.com/settings/api-access](https://app.docjacket.com/settings/api-access).
-   - Click **New token**, label it `Gemini`, scope `read`.
-   - **Copy the plaintext token immediately** — it's shown exactly once.
+- **The Gemini app (personal Google accounts).** Since mid-2026, the Gemini app accepts custom connectors. Steps for DocJacket are being verified.
+- **Gemini inside Google Workspace** (a work or school Google account). You can't add your own connector here yet. Gemini only offers connectors from Google's partner list.
+- **Gemini Enterprise.** Admins can add custom MCP servers for their organization. Ask your Gemini admin.
 
-2. **Configure Gemini CLI:**
+If you try the Gemini app before the steps are ready, use the DocJacket address:
 
-   Open your Gemini CLI configuration (`~/.gemini/mcp.json` on Mac / Linux) and add a DocJacket entry:
+```
+https://mcp.docjacket.com/mcp
+```
+
+Want something that works today? [Claude, ChatGPT and Codex](/docs/ai-access/use-from-your-assistant#which-ai-should-i-use) connect now.
+
+## For developers: Gemini CLI
+
+The Gemini CLI is a command-line tool for developers. It connects to DocJacket with a personal token.
+
+1. **Create a token.** An Owner or Admin opens [app.docjacket.com/settings/api-access](https://app.docjacket.com/settings/api-access) (**Settings**, then **API & AI Access**). Create a new token, label it `Gemini`, and pick the access it needs. Start with `read`.
+2. **Copy the token right away.** It is shown only once.
+3. **Add DocJacket to the Gemini CLI.** In the Gemini CLI's settings file, add a DocJacket server entry like this:
 
    ```json
    {
-     "servers": {
+     "mcpServers": {
        "docjacket": {
-         "url": "https://mcp.docjacket.com/mcp",
-         "transport": "http",
+         "httpUrl": "https://mcp.docjacket.com/mcp",
          "headers": {
            "Authorization": "Bearer YOUR_TOKEN_HERE"
          }
@@ -36,69 +48,28 @@ DocJacket works with the **Gemini CLI** today via personal access token. Paste-U
    }
    ```
 
-   Replace `YOUR_TOKEN_HERE` with the plaintext token from step 1.
+   Replace `YOUR_TOKEN_HERE` with your token. Check the Gemini CLI's own documentation for where its settings file lives on your computer.
 
-3. **Restart the Gemini CLI.** Run `gemini tools list` — you should see DocJacket's tools in the inventory.
+4. **Restart the Gemini CLI** and ask:
 
-## Try it
+   > "Use DocJacket to show me what needs my attention today."
 
-Ask Gemini:
+To see what your token can reach, ask it to use DocJacket's `mcp_catalog` tool. The full list is in the [Tool Catalog](/docs/ai-access/tool-catalog).
 
-> "Use DocJacket to show me what needs my attention today."
+On DocJacket's Free plan, your organization gets 100 AI tool calls a month, and Gemini CLI calls count. Paid plans have no monthly limit. Details: [Free plan limit](/docs/ai-access/use-from-your-assistant#free-plan-limit).
 
-Gemini will call `get_next_required_actions` and return a ranked overdue-first list of transactions with rationales.
+### Revoke the token
 
-Other good prompts:
+An Owner or Admin can revoke the token under **Settings**, then **API & AI Access**. The next call from the Gemini CLI fails.
 
-- "Use DocJacket to search for deals at 123 Main."
-- "Use DocJacket to list deadlines this week."
-- "Use DocJacket to show open tasks on the [property] deal."
-- "Use DocJacket to look up the listing agent on [property]."
+### Troubleshooting
 
-## What Gemini can do
+**"Authorization failed".** The token is wrong or was revoked. Create a new one and update the Gemini CLI settings.
 
-DocJacket exposes **157 tools** over MCP, in three permission tiers:
-
-| Tier | Tools | For example |
-|---|---|---|
-| `read` | 73 | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
-| `draft` | 32 | `create_tasks`, `update_key_date`, `apply_checklist` |
-| `actions` | 52 | `send_client_update`, `apply_extraction`, `create_reminder` |
-
-**[Browse all 157 tools →](/docs/ai-access/tool-catalog)** — the complete catalog with descriptions, gotchas, and example calls.
-
-To see the inventory *your* token can reach:
-
-> "Use DocJacket's `mcp_catalog` to list the tools by category."
-
-## When paste-URL OAuth lands
-
-Once the Gemini CLI supports RFC 7591 Dynamic Client Registration, this page will be updated to lead with the paste-URL flow:
-
-1. Add `https://mcp.docjacket.com/mcp` as an MCP server in Gemini.
-2. Sign in to DocJacket and click **Allow** on the consent screen.
-3. Done.
-
-No tokens to copy, no `mcp.json` to edit, per-user revocation. Until then, the token path above is the supported flow.
-
-## Permissions, audit, revocation
-
-- **Settings → API & AI Access** lists your Gemini token alongside other connected clients.
-- **Activity log** shows every tool call: who, what, when, what arguments, what result.
-- **Revoke** the Gemini token with one click. The next CLI tool call returns HTTP 401.
-
-## Troubleshooting
-
-**"Authorization failed"** — The token is invalid, expired, or revoked. Mint a fresh one at [settings/api-access](https://app.docjacket.com/settings/api-access) and update `~/.gemini/mcp.json`.
-
-**Tools don't appear after restart** — Check the JSON syntax in `mcp.json`. A missing comma or extra brace will make the Gemini CLI skip the server entry. Validate with `cat ~/.gemini/mcp.json | jq`.
-
-**Which DocJacket plan do I need?** — Any. AI Access is included with every DocJacket plan, so there's nothing to upgrade before you connect or load tools.
+**DocJacket tools don't appear.** Check the settings file for a missing comma or extra brace. A broken file makes the Gemini CLI skip the server.
 
 ## Read more
 
-- [Connect Claude](/docs/ai-access/claude) — uses paste-URL OAuth today
-- [Connect Codex / ChatGPT](/docs/ai-access/codex) — also paste-URL OAuth
-- [How OAuth works](/docs/ai-access/oauth) — the underlying protocol Gemini will use once it adds DCR
-- [Permissions](/docs/ai-access/permissions) — read / draft / actions scope tiers
-- [AI Access overview](/docs/ai-access) — section index
+- [Connect your AI](/docs/ai-access/use-from-your-assistant): which AI to pick and how connecting works
+- [Permissions & Scopes](/docs/ai-access/permissions): what read, draft and actions allow
+- [How the OAuth flow works](/docs/ai-access/oauth)

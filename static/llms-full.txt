@@ -9693,25 +9693,27 @@ The assistant calls into DocJacket, gets a grounded answer from your real book o
 
 ## What's connected today
 
-DocJacket exposes **157 tools** over MCP, in three permission tiers. You choose a tier when you consent, and it is enforced at the token — a read-only connection cannot write, whatever the assistant tries.
+DocJacket's tools come in three permission tiers. You choose a tier when you consent, and it is enforced at the token — a read-only connection cannot write, whatever the assistant tries.
 
-| Tier | Tools | For example |
+| Tier | What it allows | For example |
 |---|---|---|
-| `read` | 73 | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
-| `draft` | 32 | `create_tasks`, `update_key_date`, `apply_checklist` |
-| `actions` | 52 | `send_client_update`, `apply_extraction`, `create_reminder` |
+| `read` | Look things up. Changes nothing. | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
+| `draft` | Change tasks, key dates, Playbooks and status inside DocJacket. Sends no email. | `create_tasks`, `update_key_date`, `apply_checklist` |
+| `actions` | Send emails you approve, and make other changes | `send_client_update`, `apply_extraction`, `create_reminder` |
 
-**[Browse all 157 tools →](/docs/ai-access/tool-catalog)** — the complete catalog with descriptions, gotchas, and example calls, readable without connecting anything.
+**[Browse every tool →](/docs/ai-access/tool-catalog)** — the complete catalog with descriptions, gotchas, and example calls, readable without connecting anything.
+
+**Free plan:** your organization gets 100 AI tool calls a month. Paid plans have no monthly limit. See [Free plan limit](/docs/ai-access/use-from-your-assistant#free-plan-limit).
 
 ## Get started
 
-Pick the assistant you want to connect:
+Start with **[Connect your AI](/docs/ai-access/use-from-your-assistant)**: which AI to pick, how to connect in three steps, and how to disconnect. Then the longer guides:
 
-- [Use DocJacket from your AI assistant](/docs/ai-access/use-from-your-assistant) — what it can do, how to connect Claude or ChatGPT, and how to disconnect
-- [Connect Claude](/docs/ai-access/claude) — Claude.ai, Claude Desktop, Claude Code
-- [Connect Codex / ChatGPT](/docs/ai-access/codex) — Codex CLI, Codex for Work, ChatGPT connectors
-- [Connect Cowork](/docs/ai-access/cowork) — Anthropic's team workspace
-- [Connect Gemini](/docs/ai-access/gemini) — Google Gemini CLI
+- [Connect Claude](/docs/ai-access/claude) — Claude on the web, Claude Desktop, Claude Code
+- [Connect Codex / ChatGPT](/docs/ai-access/codex) — Codex and ChatGPT connectors
+- [Connect Cowork](/docs/ai-access/cowork) — Claude's workspace for longer tasks, plus the optional DocJacket plugin
+- [Connect Gemini](/docs/ai-access/gemini) — Gemini app being verified; Gemini CLI for developers
+- [Connect Grok](/docs/ai-access/grok) — being verified
 
 Each guide walks you through the connector setup and the OAuth consent flow.
 
@@ -9721,7 +9723,7 @@ Each guide walks you through the connector setup and the OAuth consent flow.
 
 ## Learn more
 
-- [Slash Commands](/docs/ai-access/slash-commands) — the 9 pre-built `/docjacket:` commands the plugin adds to Cowork + Claude Code
+- [Slash Commands](/docs/ai-access/slash-commands) — the pre-built `/docjacket:` commands the plugin adds to Cowork + Claude Code
 - [Tool Catalog](/docs/ai-access/tool-catalog) — the live `mcp_catalog` inventory of every tool with description, scope, and example call
 - [Permissions & Scopes](/docs/ai-access/permissions) — what `read`, `draft`, and `actions` cover
 - [How the OAuth flow works](/docs/ai-access/oauth) — Discovery, Dynamic Client Registration, consent, scopes, token rotation, revocation
@@ -9730,6 +9732,183 @@ Each guide walks you through the connector setup and the OAuth consent flow.
 ## Need help?
 
 If a connection fails, the most common cause is your AI assistant having stale state from a previous failed attempt. Disconnect and reconnect to clear it. If the problem persists, contact <a href="mailto:support@docjacket.com">support@docjacket.com</a> with the reference ID your assistant shows on the error screen — we can correlate it with our diagnostic logs.
+
+---
+
+# Connect your AI
+
+Bring the AI you already use. Connect it to DocJacket, and it can see your deals, deadlines and documents. It can answer questions about any deal, and it can do some of the work for you.
+
+You don't have to explain a deal from scratch each time. DocJacket keeps the full history of every deal, so your AI can pick up where you left off.
+
+## Which AI should I use?
+
+Use the one you already pay for. They all connect to the same DocJacket account.
+
+| AI | Plan needed | Can make changes? | Setup |
+|---|---|---|---|
+| **[Claude](/docs/ai-access/claude)** (web, Claude Desktop, [Cowork](/docs/ai-access/cowork)) | Any Claude plan. The Free plan allows one custom connector. On Team or Enterprise, an owner adds connectors. | Yes | Paste the address, sign in |
+| **[ChatGPT](/docs/ai-access/codex)** | A ChatGPT plan that allows custom connectors | Depends on your ChatGPT plan. Some plans allow read-only connectors only. | Paste the address, sign in |
+| **[Codex](/docs/ai-access/codex)** | A ChatGPT plan that includes Codex | Yes | Install the DocJacket plugin, sign in |
+| **[Gemini](/docs/ai-access/gemini)** | Coming soon | Being verified | Steps coming soon |
+| **[Grok](/docs/ai-access/grok)** | Coming soon | Being verified | Steps coming soon |
+
+Not sure? Claude is the simplest to set up today.
+
+## What you can ask it to do
+
+- **Set up a deal from a signed contract.** "Set up the deal from this contract."
+- **See what needs attention today.** "What needs my attention today?"
+- **Match emails to deals.** "Which of my new emails belong to a deal?" Your AI needs its own email connection for this one.
+- **Identify a document.** "What is this document, which deal is it for, and what is still missing?"
+- **Draft follow-ups and client updates.** "Draft a note to the buyer's agent about the missing inspection report."
+- **Update tasks, key dates and reminders.** "Move the appraisal task to Friday."
+- **Run a pre-closing check.** "Check 1234 Main St before closing."
+- **Find, add and link contacts.** "Add the title officer to the Main St deal."
+
+What it can do depends on the access you give it. See [The consent screen](#the-consent-screen).
+
+## Connect in 3 steps
+
+You need the DocJacket address:
+
+```
+https://mcp.docjacket.com/mcp
+```
+
+1. **Add a custom connector.** In your AI's settings, add a custom connector. Give it a name, such as DocJacket, and paste the address above.
+2. **Sign in to DocJacket.** Your AI opens a DocJacket sign-in page. Sign in if asked.
+3. **Choose access and click Allow.** On the DocJacket screen, pick the access you want and click **Allow**.
+
+That's it. Start a new chat and ask, "What needs my attention today?"
+
+Longer guides: [Connect Claude](/docs/ai-access/claude), [Connect Cowork](/docs/ai-access/cowork), [Connect Codex / ChatGPT](/docs/ai-access/codex).
+
+### Connect Claude
+
+1. In Claude, click **Customize** in the left sidebar, then open the **Connectors** tab.
+2. Click **Add** at the top right, then **Add custom connector**.
+3. Type a name, such as DocJacket, paste the address above, and add the connector.
+4. Sign in to DocJacket if asked.
+5. On the DocJacket screen, choose the access you want and click **Allow**.
+
+On a Claude Team or Enterprise plan, an owner of your Claude organization may need to add the connector before you can connect to it. The connector also works in Claude Desktop and Cowork.
+
+### Connect ChatGPT
+
+1. In ChatGPT on the web, add a custom connector. ChatGPT also calls this a custom MCP server.
+2. Type a name, paste the address above, and choose OAuth for sign-in.
+3. Sign in to DocJacket, choose the access you want, and click **Allow**.
+
+Where this sits in ChatGPT's settings depends on your plan, and some plans and workspaces do not allow custom connectors. On a business workspace, an admin may need to turn it on first.
+
+On some plans, ChatGPT only allows read-only connectors. If ChatGPT can read your deals but can't make changes, check your ChatGPT plan.
+
+## Not seeing a new tool?
+
+DocJacket adds new tools from time to time. Your AI may not pick them up on its own.
+
+**ChatGPT** keeps the list of DocJacket tools from the day you connected. To get the new ones:
+
+1. In ChatGPT, open **Settings**, then **Plugins**, then **DocJacket**.
+2. Scroll to **Manage app**.
+3. Press **Refresh tools**.
+4. Start a new chat.
+
+**Claude** reads the list again when you start a new chat. {/* VERIFY: Claude picks up new tools in a new chat */} If a new tool still does not appear:
+
+1. Click **Customize** in the left sidebar, then open **Connectors**.
+2. Find **DocJacket**, then disconnect it.
+3. Connect it again.
+
+## The consent screen
+
+After you sign in, DocJacket shows a screen titled **Connect (assistant name) to DocJacket**. It lists the access the AI is asking for. There are three levels:
+
+- **Read your data.** It can look at transactions, tasks, key dates and contacts. It cannot change anything.
+- **Update your data.** It can change tasks, key dates, Playbooks and status. These are changes inside DocJacket only. No emails are sent.
+- **Act on your behalf.** It can send emails to your clients and agents, and make changes. Each email is shown to you for a yes before it goes out. If your organization reviews emails, the email waits for approval in DocJacket instead.
+
+Not sure which to pick? Start with **Read your data**. Pick **Act on your behalf** when you want it to send emails you approve.
+
+Under **Also allow (optional)** you can tick extra tools most people don't need: **Disclosure packages** and **Offers**. Leave them unticked unless you use them. To change this later, connect again.
+
+Click **Allow** to connect. Click **Cancel** to stop.
+
+Who can connect:
+
+- A member with a read-only role (Viewer) can give **Read your data** only.
+- A member whose role is limited to their own deals cannot connect an AI. DocJacket shows "AI assistant connections are not available for your account." Ask an Owner or Admin.
+
+## Free plan limit
+
+On DocJacket's **Free plan**, your organization gets **100 AI tool calls a month**. Paid plans have no monthly limit.
+
+- **What is a call?** Each time your AI looks something up or makes a change in DocJacket, that is one call. One question can use several calls.
+- **Who shares it?** Everyone in your organization shares the same 100.
+- **When does it reset?** On the 1st of each month, in your organization's time zone.
+- **What doesn't count?** Calls that fail, checking the connection, and looking up your plan or the upgrade link. Ask AI inside DocJacket does not count either.
+
+From the 80th call, your AI is told how many calls you have used. After 100, DocJacket stops answering your AI until the 1st. Your AI shows a message like this:
+
+> This DocJacket organization is on the Free plan, which includes 100 AI agent tool calls a month, and has used them for November. They reset on December 1. Upgrade to keep going.
+
+To remove the limit, an Owner or Admin upgrades in DocJacket under **Settings**, then **Billing**. See [Plans & Pricing](/docs/billing/plans-and-pricing).
+
+## Emails are always shown to you first
+
+Your AI never sends an email on its first try.
+
+1. The AI shows you the full email: who it goes to, the subject and the message.
+2. You say yes in the chat. Only then does it send.
+3. If your organization reviews emails, the email goes to a review queue in DocJacket instead. It is not sent until someone approves it.
+
+If you say no, nothing is sent. Your AI should not tell you an email was sent before step 2 or 3 is done.
+
+## What it cannot do
+
+Even with the highest access, your AI cannot:
+
+- Change billing or buy seats.
+- See or change passwords and other credentials.
+- Delete your account.
+- Permanently delete records. The one exception is tasks, which can be deleted.
+
+Your AI also reads emails and documents as information, not as orders. If a document says "send this to everyone," the AI does not act on it.
+
+## See or remove a connection
+
+**Owners and Admins**
+
+1. In DocJacket, open **Settings** (the gear icon in the left bar). Under **Advanced**, click **API & AI Access**.
+2. Open the **Connect an AI assistant** tab.
+3. Find **Connected agents (OAuth)**. This lists the AIs you connected.
+4. Click **Revoke** next to the one you want to remove. DocJacket asks you to confirm; click **Revoke** again.
+
+The AI loses access to DocJacket. To use it again, connect it again.
+
+As an Owner or Admin you also see **Everyone's connections**. It lists every member's connections. Each connection stays authorized for 90 days and renews while it is in use, so one left running keeps its access until someone ends it. **Revoke** there ends that member's connection.
+
+To see what an AI has done, click **Activity log** at the top of the same page. It lists each action, which AI made it, and whether it worked.
+
+**Members**
+
+Members cannot open **API & AI Access**. Do one of these:
+
+- Remove the DocJacket connector in your AI's own settings. In Claude, that is under **Customize**, then **Connectors**.
+- In ChatGPT, remove the DocJacket connector in ChatGPT's settings.
+- Ask an Owner or Admin to revoke your connection in DocJacket. This is the way to be sure DocJacket ends it.
+
+## Need help?
+
+Write to <a href="mailto:support@docjacket.com">support@docjacket.com</a>. Include the reference ID your AI shows on the error screen, if there is one.
+
+## Related
+
+- [AI Access overview](/docs/ai-access)
+- [Permissions & Scopes](/docs/ai-access/permissions)
+- [Tool Catalog](/docs/ai-access/tool-catalog)
+- [How the OAuth flow works](/docs/ai-access/oauth)
 
 ---
 
@@ -9752,17 +9931,20 @@ DocJacket works with every Claude surface:
 - **Claude Code** — Anthropic's CLI for developers
 - **Cowork** — Anthropic's collaboration surface for teams
 
-You connect each surface once. The same DocJacket MCP server backs all four.
+The same DocJacket MCP server backs all four. A connector you add in Claude also shows up in Claude Desktop and Cowork. Claude Code connects through the DocJacket plugin.
 
-## Quick start (Claude.ai sidebar)
+New to this? Start with [Connect your AI](/docs/ai-access/use-from-your-assistant).
 
-1. Open **Claude.ai** in a browser, sign in.
-2. Bottom-left → your name → **Settings**.
-3. **Connectors** in the left nav → **+ Add custom connector**.
-4. Paste `https://mcp.docjacket.com/mcp` as the URL.
-5. Click **Continue**. Claude will redirect you to DocJacket's consent screen.
-6. **Allow** the connection, choosing a permission tier: read-only, read + draft, or full read + draft + actions. The tier is enforced server-side at the token — a read-only connection cannot write, whatever the assistant tries.
-7. You're back in Claude with **DocJacket** showing as a custom connector and the tools available to your scopes loaded. Read tools run inline; any enabled write tools pause for your confirmation in chat.
+## Quick start (Claude on the web)
+
+1. In Claude, click **Customize** in the left sidebar, then open the **Connectors** tab.
+2. Click **Add** at the top right, then **Add custom connector**.
+3. Type a name, such as DocJacket, paste `https://mcp.docjacket.com/mcp`, and add the connector.
+4. Sign in to DocJacket if asked.
+5. On the DocJacket screen, choose the access you want and click **Allow**: read only, update your data, or act on your behalf. DocJacket enforces the level you pick, so a read-only connection cannot make changes, whatever the assistant tries.
+6. Start a new chat. DocJacket's tools are loaded for the access you chose.
+
+Plan notes: Claude's Free plan allows one custom connector. On a Claude Team or Enterprise plan, an owner of your Claude organization adds connectors. The same connector also works in Claude Desktop and Cowork.
 
 ## Try it
 
@@ -9782,62 +9964,52 @@ Other good prompts:
 
 ## What Claude can do
 
-DocJacket exposes **157 tools** over MCP, in three permission tiers:
+DocJacket's tools come in three permission tiers:
 
-| Tier | Tools | For example |
+| Tier | What it allows | For example |
 |---|---|---|
-| `read` | 73 | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
-| `draft` | 32 | `create_tasks`, `update_key_date`, `apply_checklist` |
-| `actions` | 52 | `send_client_update`, `apply_extraction`, `create_reminder` |
+| `read` | Look things up. Changes nothing. | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
+| `draft` | Change tasks, key dates, Playbooks and status inside DocJacket. Sends no email. | `create_tasks`, `update_key_date`, `apply_checklist` |
+| `actions` | Send emails you approve, and make other changes | `send_client_update`, `apply_extraction`, `create_reminder` |
 
-**[Browse all 157 tools →](/docs/ai-access/tool-catalog)** — the complete catalog with descriptions, gotchas, and example calls.
+**[Browse every tool →](/docs/ai-access/tool-catalog)**: the complete catalog with descriptions, gotchas, and example calls.
 
-You don't need to remember tool names; Claude picks the right tool from your question. To see the inventory *your* token can reach, ask Claude to use `mcp_catalog`.
+You don't need to remember tool names; Claude picks the right tool from your question. To see the inventory *your* connection can reach, ask Claude to use `mcp_catalog`.
 
-## Cowork — skills, slash commands, sub-agent
+## The DocJacket plugin (optional): skills and slash commands
 
-[Cowork](https://www.anthropic.com/cowork) is Anthropic's collaboration surface. The DocJacket plugin for Cowork ships nine workflow skills, nine slash commands, and a sub-agent.
+The DocJacket plugin (version 0.9.0) adds fourteen skills, ten `/docjacket:` slash commands and a read-only Status Reporter. It works in Cowork and Claude Code. The plugin is optional; the connector above is all you need to use DocJacket.
 
-**Skills** (the assistant picks the right one automatically based on what you ask):
-
-- `daily-triage` — what needs attention today, overdue-first
-- `email-triage` — match Gmail / Outlook threads against active deals
-- `contract-intake` — PDF extraction review; transaction creation requires action tools
-- `document-filing` — classify uploaded docs, file them to the right deal
-- `closing-prep` — pre-closing checklist audit
-- `follow-up-drafting` — compose a chase email with the right context already loaded
-- `execution-workflow` — the confirm-then-execute pattern for write tools
-- `tc-context` — vocabulary + matching priority + safety rules
+**Skills** (Claude picks the right one from what you ask): `daily-triage`, `email-triage`, `contract-intake`, `document-filing`, `closing-prep`, `follow-up-drafting`, `deal-updates`, `contact-management`, `playbook-builder`, `workspace-setup`, `compliance-filing`, `execution-workflow`, `tc-context` and `dj-cli`. What each one does: [Connect Cowork](/docs/ai-access/cowork#skills).
 
 **Slash commands** (typed explicitly):
 
 ```
 /docjacket:morning-briefing      /docjacket:whats-next
-/docjacket:email-triage          /docjacket:send-template
-/docjacket:intake-contract       /docjacket:doc-check
-/docjacket:share-portal          /docjacket:weekly-report
-/docjacket:check-submissions
+/docjacket:daily-triage          /docjacket:email-triage
+/docjacket:doc-check             /docjacket:weekly-report
+/docjacket:share-portal          /docjacket:send-template
+/docjacket:intake-contract       /docjacket:check-submissions
 ```
 
-**Sub-agent:** mention `@docjacket-status-reporter` for a structured weekly briefing grouped by deal state.
+**Status Reporter:** mention `@status-reporter` for a weekly briefing across your active deals.
 
-To install the plugin in Cowork, see [docjacket-inc/claude-plugin](https://github.com/docjacket-inc/claude-plugin) on GitHub.
+To use the plugin in Cowork, see [Connect Cowork](/docs/ai-access/cowork).
 
-## Claude Code — slash commands
+## Claude Code: install the plugin
 
-In Claude Code (the CLI), the DocJacket plugin registers the same nine slash commands listed above. Drop in `/docjacket:` to see the menu, then pick one — most TCs start with `/docjacket:morning-briefing` or `/docjacket:whats-next`.
+In Claude Code (the CLI), run:
 
-Install per the instructions at [docjacket-inc/claude-plugin](https://github.com/docjacket-inc/claude-plugin).
+```
+/plugin marketplace add docjacket-inc/claude-plugin
+/plugin install docjacket@docjacket
+```
+
+On the first tool call, your browser opens the DocJacket sign-in and consent screen. Then type `/docjacket:` to see the commands. Most people start with `/docjacket:morning-briefing` or `/docjacket:whats-next`.
 
 ## Claude Desktop
 
-Claude Desktop (Mac / Windows native app) uses the same custom-connector flow as Claude.ai:
-
-1. **Settings** → **Connectors** → **+ Add custom connector**.
-2. Paste `https://mcp.docjacket.com/mcp`.
-3. Complete the OAuth consent.
-
-Once connected, Claude Desktop has access to the same DocJacket tools available to that connector's granted scopes.
+Claude Desktop (the Mac / Windows app) uses the custom connectors from your Claude account. If you added DocJacket in Claude on the web, it is already there. If not, add it the same way, from **Customize**, then **Connectors**, and complete the DocJacket sign-in.
 
 ## Permissions, audit, and revocation
 
@@ -9860,155 +10032,16 @@ Inside DocJacket:
 
 **"Token is invalid, expired, or revoked"** — Your token has been revoked (from DocJacket → Settings → API & AI Access) or your assistant has been disconnected for more than 90 days. Re-consent to reconnect.
 
-**Which DocJacket plan do I need?** — Any. AI Access is included with every DocJacket plan, so there's nothing to upgrade before you connect or load tools.
+**Which DocJacket plan do I need?** — Any. AI Access is included with every DocJacket plan. On the Free plan, your organization gets 100 AI tool calls a month; paid plans have no monthly limit. See [Free plan limit](/docs/ai-access/use-from-your-assistant#free-plan-limit).
 
 ## Read more
 
 - [Contract Intake](/docs/ai-access/contract-intake) — external PDF intake when action tools are enabled; otherwise use the in-app Upload Documents wizard
-- [Slash Commands](/docs/ai-access/slash-commands) — full reference for the 9 `/docjacket:` commands the plugin adds to Cowork + Claude Code
+- [Slash Commands](/docs/ai-access/slash-commands) — full reference for the `/docjacket:` commands the plugin adds to Cowork + Claude Code
 - [Tool Catalog (`mcp_catalog`)](/docs/ai-access/tool-catalog) — the self-discovery tool that returns DocJacket's live inventory
 - [How the OAuth flow works](/docs/ai-access/oauth) — the underlying protocol
 - [AI Access overview](/docs/ai-access) — section index
 - [Connect Codex / ChatGPT](/docs/ai-access/codex) — sister guide for the OpenAI surfaces
-
----
-
-# Use DocJacket from your AI assistant
-
-You can connect Claude or ChatGPT to your DocJacket account. Then you can ask it questions about your deals, in the chat you already use. It can also do some of the work for you.
-
-This page is the short version. Each assistant has a longer setup guide, linked below.
-
-## What you can ask it to do
-
-- **Set up a deal from a signed contract.** "Set up the deal from this contract."
-- **See what needs attention today.** "What needs my attention today?"
-- **Match emails to deals.** "Which of my new emails belong to a deal?" Your assistant needs its own email connection for this one.
-- **Identify a document.** "What is this document, which deal is it for, and what is still missing?"
-- **Draft follow-ups and client updates.** "Draft a note to the buyer's agent about the missing inspection report."
-- **Update tasks, key dates and reminders.** "Move the appraisal task to Friday."
-- **Run a pre-closing check.** "Check 1234 Main St before closing."
-- **Find, add and link contacts.** "Add the title officer to the Main St deal."
-
-What it can do depends on the access you give it. See [The consent screen](#the-consent-screen).
-
-## Connect Claude
-
-You need the DocJacket address:
-
-```
-https://mcp.docjacket.com/mcp
-```
-
-1. In Claude, click **Customize** in the left sidebar, then open the **Connectors** tab.
-2. Click **Add** at the top right, then **Add custom connector**.
-3. Type a name, such as DocJacket, paste the address above, and add the connector.
-4. Sign in to DocJacket if asked.
-5. On the DocJacket screen, choose the access you want and click **Allow**.
-
-On a Claude Team or Enterprise plan, an owner of your Claude organization may need to add the connector before you can connect to it.
-
-Using Claude Desktop, Claude Code or Cowork? See [Connect Claude](/docs/ai-access/claude).
-
-## Connect ChatGPT
-
-Use the same address: `https://mcp.docjacket.com/mcp`
-
-1. In ChatGPT on the web, add a custom connector. ChatGPT also calls this a custom MCP server.
-2. Type a name, paste the address above, and choose OAuth for sign-in.
-3. Sign in to DocJacket, choose the access you want, and click **Allow**.
-
-Where this sits in ChatGPT's settings depends on your plan, and some plans and workspaces do not allow custom connectors. On a business workspace, an admin may need to turn it on first.
-
-More detail: [Connect Codex / ChatGPT](/docs/ai-access/codex).
-
-## Not seeing a new tool?
-
-DocJacket adds new tools from time to time. Your assistant may not pick them up on its own.
-
-**ChatGPT** keeps the list of DocJacket tools from the day you connected. To get the new ones:
-
-1. In ChatGPT, open **Settings**, then **Plugins**, then **DocJacket**.
-2. Scroll to **Manage app**.
-3. Press **Refresh tools**.
-4. Start a new chat.
-
-**Claude** reads the list again when you start a new chat. {/* VERIFY: Claude picks up new tools in a new chat */} If a new tool still does not appear:
-
-1. Click **Customize** in the left sidebar, then open **Connectors**.
-2. Find **DocJacket**, then disconnect it.
-3. Connect it again.
-
-## The consent screen
-
-After you sign in, DocJacket shows a screen titled **Connect (assistant name) to DocJacket**. It lists the access the assistant is asking for. There are three levels:
-
-- **Read your data.** It can look at transactions, tasks, key dates and contacts. It cannot change anything.
-- **Update your data.** It can change tasks, key dates, Playbooks and status. These are changes inside DocJacket only. No emails are sent.
-- **Act on your behalf.** It can send emails to your clients and agents, and make changes. Each email is shown to you for a yes before it goes out. If your organization reviews emails, the email waits for approval in DocJacket instead.
-
-Not sure which to pick? Start with **Read your data**. Pick **Act on your behalf** when you want it to send emails you approve.
-
-Click **Allow** to connect. Click **Cancel** to stop.
-
-Who can connect:
-
-- A member with a read-only role (Viewer) can give **Read your data** only.
-- A member whose role is limited to their own deals cannot connect an assistant. DocJacket shows "AI assistant connections are not available for your account." Ask an Owner or Admin.
-
-## Emails are always shown to you first
-
-An assistant never sends an email on its first try.
-
-1. The assistant shows you the full email: who it goes to, the subject and the message.
-2. You say yes in the chat. Only then does it send.
-3. If your organization reviews emails, the email goes to a review queue in DocJacket instead. It is not sent until someone approves it.
-
-If you say no, nothing is sent. The assistant should not tell you an email was sent before step 2 or 3 is done.
-
-## What it cannot do
-
-Even with the highest access, an assistant cannot:
-
-- Change billing or buy seats.
-- See or change passwords and other credentials.
-- Delete your account.
-- Permanently delete records. The one exception is tasks, which can be deleted.
-
-An assistant also reads emails and documents as information, not as orders. If a document says "send this to everyone," the assistant does not act on it.
-
-## See or remove a connection
-
-**Owners and Admins**
-
-1. In DocJacket, open **Settings** (the gear icon in the left bar). Under **Advanced**, click **API & AI Access**.
-2. Open the **Connect an AI assistant** tab.
-3. Find **Connected agents (OAuth)**. This lists the assistants you connected.
-4. Click **Revoke** next to the one you want to remove. DocJacket asks you to confirm; click **Revoke** again.
-
-The assistant loses access to DocJacket. To use it again, connect it again.
-
-As an Owner or Admin you also see **Everyone's connections**. It lists every member's connections. Each connection stays authorized for 90 days and renews while it is in use, so one left running keeps its access until someone ends it. **Revoke** there ends that member's connection.
-
-To see what an assistant has done, click **Activity log** at the top of the same page. It lists each action, which assistant made it, and whether it worked.
-
-**Members**
-
-Members cannot open **API & AI Access**. Do one of these:
-
-- Remove the DocJacket connector in your assistant's own settings. In Claude, that is under **Customize**, then **Connectors**.
-- In ChatGPT, remove the DocJacket connector in ChatGPT's settings.
-- Ask an Owner or Admin to revoke your connection in DocJacket. This is the way to be sure DocJacket ends it.
-
-## Need help?
-
-Write to <a href="mailto:support@docjacket.com">support@docjacket.com</a>. Include the reference ID your assistant shows on the error screen, if there is one.
-
-## Related
-
-- [AI Access overview](/docs/ai-access)
-- [Permissions & Scopes](/docs/ai-access/permissions)
-- [How the OAuth flow works](/docs/ai-access/oauth)
 
 ---
 
@@ -10024,40 +10057,29 @@ The same DocJacket MCP server backs all three. Connect once per surface.
 
 ## Before you start
 
-- **A DocJacket account on any plan.** AI Access is included with every DocJacket plan.
-- **For ChatGPT specifically:** custom MCP connectors require Plus, Team, or Enterprise. Free-tier ChatGPT cannot add custom servers.
+- **A DocJacket account on any plan.** On DocJacket's Free plan, your organization gets 100 AI tool calls a month; paid plans have no monthly limit. See [Free plan limit](/docs/ai-access/use-from-your-assistant#free-plan-limit).
+- **For ChatGPT:** your ChatGPT plan must allow custom connectors. Not every plan does, and on a business workspace an admin may need to turn it on first.
+- **On some plans, ChatGPT only allows read-only connectors.** If DocJacket can read your deals from ChatGPT but can't make changes, check your ChatGPT plan.
 
-## Quick start (Codex CLI)
+## Quick start (Codex)
 
-1. Open your Codex configuration directory (`~/.codex/` on Mac/Linux).
-2. Open or create `connectors.json`.
-3. Add a DocJacket entry:
+Install the DocJacket plugin for Codex:
 
-```json
-{
-  "connectors": {
-    "docjacket": {
-      "url": "https://mcp.docjacket.com/mcp",
-      "transport": "http"
-    }
-  }
-}
+```bash
+codex plugin marketplace add docjacket-inc/codex-plugin
+codex plugin install docjacket
 ```
 
-4. Restart Codex. On first call, Codex opens a browser window with DocJacket's OAuth consent screen.
-5. **Allow** the connection. Codex stores the access + refresh tokens in your local keychain.
-6. Run `codex tools list` — you should see the DocJacket read tools available to your token. Additional draft or action tools appear only when those rollout scopes are enabled for your account.
+On the first DocJacket tool call, your browser opens the DocJacket sign-in and consent screen. Choose the access you want and click **Allow**. Codex keeps the sign-in in your computer's keychain. You don't paste a token.
 
-For the full plugin (with the skill set and `.codex-plugin` package), see [docjacket-inc/codex-plugin](https://github.com/docjacket-inc/codex-plugin) on GitHub.
+The plugin is on GitHub at [docjacket-inc/codex-plugin](https://github.com/docjacket-inc/codex-plugin).
 
 ## Quick start (ChatGPT)
 
-1. Open **ChatGPT** in a browser, sign in.
-2. **Settings** → **Connectors** → **+ Add MCP server**. (Available on Plus / Team / Enterprise.)
-3. Paste `https://mcp.docjacket.com/mcp`.
-4. Click **Continue**. ChatGPT redirects you to DocJacket's consent screen.
-5. **Allow** the connection.
-6. Start a new chat — DocJacket's read tools are now available. Additional draft or action tools appear only when your account has those scopes enabled.
+1. In ChatGPT on the web, add a custom connector. ChatGPT also calls this a custom MCP server. Where this sits in ChatGPT's settings depends on your plan.
+2. Type a name, such as DocJacket, paste `https://mcp.docjacket.com/mcp`, and choose OAuth for sign-in.
+3. Sign in to DocJacket, choose the access you want, and click **Allow**.
+4. Start a new chat. DocJacket's tools are now available for the access you chose.
 
 ## Try it
 
@@ -10079,25 +10101,27 @@ The "Use DocJacket to…" prefix is the convention OpenAI's surfaces follow when
 
 ## What Codex and ChatGPT can do
 
-DocJacket exposes **157 tools** over MCP, in three permission tiers. You pick a tier when you consent, and it is enforced at the token — a read-only connection cannot call a write tool even if the assistant tries.
+DocJacket's tools come in three permission tiers. You pick one when you consent, and DocJacket enforces it. A read-only connection cannot call a write tool even if the assistant tries.
 
-| Tier | Tools | For example |
+| Tier | What it allows | For example |
 |---|---|---|
-| `read` | 73 | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
-| `draft` | 32 | `create_tasks`, `update_key_date`, `apply_checklist` |
-| `actions` | 52 | `send_client_update`, `apply_extraction`, `create_reminder` |
+| `read` | Look things up. Changes nothing. | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
+| `draft` | Change tasks, key dates, Playbooks and status inside DocJacket. Sends no email. | `create_tasks`, `update_key_date`, `apply_checklist` |
+| `actions` | Send emails you approve, and make other changes | `send_client_update`, `apply_extraction`, `create_reminder` |
 
-**[Browse all 157 tools →](/docs/ai-access/tool-catalog)** — the complete catalog with descriptions, gotchas, and example calls.
+**[Browse every tool →](/docs/ai-access/tool-catalog)**: the complete catalog with descriptions, gotchas, and example calls.
 
-You don't need to remember tool names; Codex and ChatGPT pick the right tool from your question. To see the inventory *your* token can reach, ask:
+You don't need to remember tool names; Codex and ChatGPT pick the right tool from your question. To see the inventory *your* connection can reach, ask:
 
 > "Use DocJacket's `mcp_catalog` to list the tools by category."
 
 ## Skills shipped with the plugin
 
-The Codex plugin ships nine pre-built workflow skills the assistant picks from automatically:
+The Codex plugin (version 0.9.0) ships fourteen workflow skills the assistant picks from automatically:
 
-`daily-triage` · `email-triage` · `contract-intake` · `document-filing` · `closing-prep` · `follow-up-drafting` · `execution-workflow` · `contact-management` · `tc-context`
+`daily-triage` · `email-triage` · `contract-intake` · `document-filing` · `closing-prep` · `follow-up-drafting` · `deal-updates` · `contact-management` · `playbook-builder` · `workspace-setup` · `compliance-filing` · `execution-workflow` · `tc-context` · `dj-cli`
+
+What each one does: [Connect Cowork](/docs/ai-access/cowork#skills) (the Claude and Codex plugins share the same skills).
 
 Each is a recipe the assistant follows when you ask the corresponding question. Example invocations:
 
@@ -10145,7 +10169,7 @@ DocJacket adds new tools from time to time. ChatGPT keeps the list of DocJacket 
 ## Read more
 
 - [Contract Intake](/docs/ai-access/contract-intake) — external PDF intake when action tools are enabled; otherwise use the in-app Upload Documents wizard
-- [Tool catalog](/docs/ai-access/tool-catalog) — all 157 tools, grouped by scope, with gotchas and example calls
+- [Tool catalog](/docs/ai-access/tool-catalog) — every tool, grouped by scope, with gotchas and example calls
 - [How the OAuth flow works](/docs/ai-access/oauth) — the underlying protocol
 - [AI Access overview](/docs/ai-access) — section index
 - [Connect Claude](/docs/ai-access/claude) — sister guide for Anthropic surfaces
@@ -10154,142 +10178,156 @@ DocJacket adds new tools from time to time. ChatGPT keeps the list of DocJacket 
 
 # Connect Cowork
 
-2-minute walkthrough — install the plugin, paste the token, ask "what needs attention today"
+[Cowork](https://www.anthropic.com/cowork) is Claude's workspace for longer tasks. DocJacket works in Cowork the same way it works in Claude: you add DocJacket as a custom connector and sign in.
 
-[Cowork](https://www.anthropic.com/cowork) is Anthropic's collaboration surface for teams. The DocJacket plugin installs **org-wide** — every member of your Cowork workspace gets the same skills, slash commands, and sub-agent without configuring anything themselves.
+There are two parts. Only the first is required.
 
-## What you get
+1. **Add the DocJacket connector.** This gives Cowork your deals, deadlines and documents.
+2. **Add the DocJacket plugin (optional).** This adds ready-made skills and `/docjacket:` slash commands.
 
-- **9 workflow skills** the assistant picks from automatically
-- **9 slash commands** for explicit invocation (`/docjacket:morning-briefing` etc.)
-- **`@docjacket-status-reporter` sub-agent** for structured weekly briefings
-- **Read-first DocJacket tools** — search transactions, read key dates, list tasks, inspect contacts, and triage what needs attention
+## Step 1: Add the DocJacket connector
 
-## Install (org admin role required)
+Custom connectors work in Claude, Cowork and Claude Desktop. If you already connected DocJacket in Claude, skip to [Check it works](#check-it-works).
 
-1. In Cowork, open **Organization settings → Plugins**.
-2. **+ Add plugin → GitHub** as the source.
-3. Enter `docjacket-inc/claude-plugin` (owner/repo format) and approve.
-4. Cowork validates the manifest and auto-syncs from the repo. Trigger a manual sync any time via the **Update** button.
+You need the DocJacket address:
 
-## Wire up the token
+```
+https://mcp.docjacket.com/mcp
+```
 
-Cowork uses a personal access token (not paste-URL OAuth) because the plugin is installed once for the whole workspace.
+1. In your Claude settings, add a custom connector. In Claude on the web, click **Customize** in the left sidebar, open **Connectors**, click **Add**, then **Add custom connector**.
+2. Type a name, such as DocJacket, and paste the address above.
+3. Sign in to DocJacket if asked.
+4. On the DocJacket screen, choose the access you want and click **Allow**.
 
-1. Open [app.docjacket.com/settings/api-access](https://app.docjacket.com/settings/api-access).
-2. Click **New token**, pick the **Cowork Plugin** preset for the label, scope `read`.
-3. **Copy the plaintext token immediately** — it's shown exactly once.
-4. In Cowork, open **Settings → Connectors → DocJacket** and paste it.
+Things to know:
 
-That's it. Every Cowork member now has the DocJacket read tools, skills, and slash commands allowed by that token.
+- **Claude Free** allows one custom connector.
+- **Claude Team or Enterprise:** an owner of your Claude organization adds the connector. Then each person connects with their own DocJacket login.
+- Not sure which access to pick? See [The consent screen](/docs/ai-access/use-from-your-assistant#the-consent-screen).
 
-## Verify
+## Check it works
 
-Open any Cowork conversation and type:
+Open a Cowork task and type:
 
 > "What needs my attention today?"
 
-Cowork's Daily Triage skill fires, calls `get_next_required_actions`, and comes back with a ranked overdue-first list per transaction.
+Cowork should come back with a list of your deals that need attention, most overdue first.
 
-Or summon the sub-agent:
+## Step 2: Add the DocJacket plugin (optional)
 
-> "@docjacket-status-reporter brief me on this week"
+The plugin teaches Cowork how a transaction coordinator works. It does not change what DocJacket lets the AI see or do. That is still set by the access you chose in Step 1.
 
-## Skills (auto-selected)
+The plugin is published on GitHub as `docjacket-inc/claude-plugin`. In Cowork, add a plugin and point it at that repository. On a Claude Team or Enterprise plan, an owner may need to add it for your organization.
 
-The assistant picks the right skill based on your question — you rarely need to invoke them by name:
+The plugin signs in with the same DocJacket connection. You don't paste a token.
 
-| Skill | When it fires |
+### What you get
+
+Version 0.9.0 includes:
+
+- **Fourteen skills.** Cowork picks the right one from what you ask.
+- **Ten slash commands.** Type `/docjacket:` to see them.
+- **Status Reporter.** A read-only helper for a weekly briefing across your active deals.
+
+### Skills
+
+| Skill | What it helps with |
 |---|---|
 | `daily-triage` | "What needs attention today?" |
-| `email-triage` | "Match these threads against active deals" |
-| `contract-intake` | "Review extraction results from this PDF" |
-| `document-filing` | "Where does this doc belong?" |
-| `closing-prep` | "Audit the closing checklist for [property]" |
-| `follow-up-drafting` | "Draft a chase email to the listing agent on [property]" |
-| `execution-workflow` | The confirm-then-execute pattern for accounts with draft or action scopes |
-| `contact-management` | "Find Jane Doe or summarize contact context for [property]" |
-| `tc-context` | Loads vocabulary + safety rules into every conversation |
+| `email-triage` | Matching email threads to your active deals |
+| `contract-intake` | Getting a signed contract into DocJacket and setting up the deal |
+| `document-filing` | Working out what a document is and which deal it belongs to |
+| `closing-prep` | Checking a deal before closing |
+| `follow-up-drafting` | Drafting a chase email with the deal's details filled in |
+| `deal-updates` | Changing a live deal: key dates, tasks, notes and contacts |
+| `contact-management` | Finding, adding and linking contacts |
+| `playbook-builder` | Building or changing a Playbook |
+| `workspace-setup` | Setting up your organization: agents, fees, templates and forms |
+| `compliance-filing` | Sending a deal's documents to your compliance system and checking signatures |
+| `execution-workflow` | Showing you each change and email before it happens |
+| `tc-context` | Real estate terms and safety rules, used in every conversation |
+| `dj-cli` | The DocJacket command-line tool, for technical users |
 
-## Slash commands (explicit)
-
-Drop `/docjacket:` to see the menu:
+### Slash commands
 
 ```
 /docjacket:morning-briefing      /docjacket:whats-next
-/docjacket:email-triage          /docjacket:send-template
-/docjacket:intake-contract       /docjacket:doc-check
-/docjacket:share-portal          /docjacket:weekly-report
-/docjacket:check-submissions
+/docjacket:daily-triage          /docjacket:email-triage
+/docjacket:doc-check             /docjacket:weekly-report
+/docjacket:share-portal          /docjacket:send-template
+/docjacket:intake-contract       /docjacket:check-submissions
 ```
 
-Full reference: [Slash Commands](/docs/ai-access/slash-commands).
+What each one does: [Slash Commands](/docs/ai-access/slash-commands).
 
-## Status Reporter sub-agent
+### Status Reporter
 
-`@docjacket-status-reporter` produces a structured weekly briefing grouped by deal state — typical Friday-afternoon use:
+Ask for a weekly report across every active deal:
 
-> "@docjacket-status-reporter give me this week's report on every active deal"
+> "@status-reporter brief me on this week"
 
-It's read-only. It doesn't send emails, modify deals, or write to DocJacket — it summarizes.
+It only reads. It doesn't send emails or change your deals.
 
-## Permissions, audit, revocation
+## Free plan limit
 
-Same as every other AI Access connection:
+On DocJacket's Free plan, your organization gets 100 AI tool calls a month. Paid plans have no monthly limit. Details: [Free plan limit](/docs/ai-access/use-from-your-assistant#free-plan-limit).
 
-- **Settings → API & AI Access** lists the Cowork token alongside any per-user OAuth connections.
-- **Activity log** shows every tool call: who, what, when, what arguments, what result.
-- **Revoke** the Cowork token with one click. The plugin stops working instantly for every Cowork member; the install record stays so you can re-paste a fresh token without re-installing.
+## See or remove a connection
 
-The single token is per-org. To revoke just one Cowork member without affecting the rest, you'd remove them from your Cowork workspace — Cowork enforces that, not DocJacket.
-
-## Update the plugin
-
-Cowork auto-syncs from `docjacket-inc/claude-plugin` whenever we ship to that repo's `main` branch. To trigger a manual sync, hit **Update** on the plugin row in your Cowork plugin list.
-
-We publish release notes in the [plugin repo](https://github.com/docjacket-inc/claude-plugin) — version-bumped whenever a new tool, skill, or slash command lands.
+Each person's Cowork connection shows up in DocJacket like any other AI connection. An Owner or Admin can see and revoke it under **Settings**, then **API & AI Access**. See [See or remove a connection](/docs/ai-access/use-from-your-assistant#see-or-remove-a-connection).
 
 ## Troubleshooting
 
-**Plugin shows but tools aren't loading** — Check that the token is actually pasted in **Cowork → Settings → Connectors → DocJacket**. The plugin install is one step; the connector token is a separate step.
+**DocJacket doesn't show up in Cowork.** Check that the DocJacket connector is added and connected in your Claude settings. The plugin alone is not enough; it needs the connector.
 
-**"Authorization failed" on tool calls** — The token may have been revoked from DocJacket. Mint a fresh one at [settings/api-access](https://app.docjacket.com/settings/api-access) and update the Cowork connector.
+**"Authorization failed".** Disconnect the DocJacket connector and connect it again. If it still fails, send the reference ID on the error screen to <a href="mailto:support@docjacket.com">support@docjacket.com</a>.
 
-**Skill or slash command not appearing** — Hit **Update** in the Cowork plugin list to pull the latest manifest. If still missing, [file an issue](https://github.com/docjacket-inc/claude-plugin/issues) on the plugin repo.
-
-**Which DocJacket plan do I need?** — Any. AI Access is included with every DocJacket plan, so there's nothing to upgrade before you connect or load tools.
+**A skill or slash command is missing.** Update the plugin to the latest version, then start a new task.
 
 ## Read more
 
-- [Connect Claude](/docs/ai-access/claude) — Claude.ai, Desktop, and Claude Code (paste-URL OAuth)
-- [Slash Commands](/docs/ai-access/slash-commands) — full reference for `/docjacket:*`
-- [Tool Catalog](/docs/ai-access/tool-catalog) — the self-discovery tool that lists DocJacket's live inventory
-- [AI Access overview](/docs/ai-access) — section index
-- [Cowork plugin source](https://github.com/docjacket-inc/claude-plugin) — canonical install repo
+- [Connect your AI](/docs/ai-access/use-from-your-assistant): which AI to pick, the consent screen and the Free plan limit
+- [Connect Claude](/docs/ai-access/claude): Claude on the web, Claude Desktop and Claude Code
+- [Slash Commands](/docs/ai-access/slash-commands): what each `/docjacket:` command does
+- [Tool Catalog](/docs/ai-access/tool-catalog): every DocJacket tool your AI can use
+- [DocJacket plugin on GitHub](https://github.com/docjacket-inc/claude-plugin)
 
 ---
 
 # Connect Gemini
 
-DocJacket works with the **Gemini CLI** today via personal access token. Paste-URL OAuth (the easier flow you'll see on the Claude and ChatGPT pages) will land here as soon as the Gemini CLI's MCP client adds [Dynamic Client Registration](https://datatracker.ietf.org/doc/html/rfc7591) support.
+:::caution Being verified: steps coming soon
+We are testing the DocJacket connection in the Gemini app now. We'll add step-by-step instructions here once it is confirmed to work.
+:::
 
-## Quick start (Gemini CLI, bearer token)
+Where Gemini stands today depends on which Gemini you use:
 
-1. **Mint a token:**
-   - Open [app.docjacket.com/settings/api-access](https://app.docjacket.com/settings/api-access).
-   - Click **New token**, label it `Gemini`, scope `read`.
-   - **Copy the plaintext token immediately** — it's shown exactly once.
+- **The Gemini app (personal Google accounts).** Since mid-2026, the Gemini app accepts custom connectors. Steps for DocJacket are being verified.
+- **Gemini inside Google Workspace** (a work or school Google account). You can't add your own connector here yet. Gemini only offers connectors from Google's partner list.
+- **Gemini Enterprise.** Admins can add custom MCP servers for their organization. Ask your Gemini admin.
 
-2. **Configure Gemini CLI:**
+If you try the Gemini app before the steps are ready, use the DocJacket address:
 
-   Open your Gemini CLI configuration (`~/.gemini/mcp.json` on Mac / Linux) and add a DocJacket entry:
+```
+https://mcp.docjacket.com/mcp
+```
+
+Want something that works today? [Claude, ChatGPT and Codex](/docs/ai-access/use-from-your-assistant#which-ai-should-i-use) connect now.
+
+## For developers: Gemini CLI
+
+The Gemini CLI is a command-line tool for developers. It connects to DocJacket with a personal token.
+
+1. **Create a token.** An Owner or Admin opens [app.docjacket.com/settings/api-access](https://app.docjacket.com/settings/api-access) (**Settings**, then **API & AI Access**). Create a new token, label it `Gemini`, and pick the access it needs. Start with `read`.
+2. **Copy the token right away.** It is shown only once.
+3. **Add DocJacket to the Gemini CLI.** In the Gemini CLI's settings file, add a DocJacket server entry like this:
 
    ```json
    {
-     "servers": {
+     "mcpServers": {
        "docjacket": {
-         "url": "https://mcp.docjacket.com/mcp",
-         "transport": "http",
+         "httpUrl": "https://mcp.docjacket.com/mcp",
          "headers": {
            "Authorization": "Bearer YOUR_TOKEN_HERE"
          }
@@ -10298,72 +10336,31 @@ DocJacket works with the **Gemini CLI** today via personal access token. Paste-U
    }
    ```
 
-   Replace `YOUR_TOKEN_HERE` with the plaintext token from step 1.
+   Replace `YOUR_TOKEN_HERE` with your token. Check the Gemini CLI's own documentation for where its settings file lives on your computer.
 
-3. **Restart the Gemini CLI.** Run `gemini tools list` — you should see DocJacket's tools in the inventory.
+4. **Restart the Gemini CLI** and ask:
 
-## Try it
+   > "Use DocJacket to show me what needs my attention today."
 
-Ask Gemini:
+To see what your token can reach, ask it to use DocJacket's `mcp_catalog` tool. The full list is in the [Tool Catalog](/docs/ai-access/tool-catalog).
 
-> "Use DocJacket to show me what needs my attention today."
+On DocJacket's Free plan, your organization gets 100 AI tool calls a month, and Gemini CLI calls count. Paid plans have no monthly limit. Details: [Free plan limit](/docs/ai-access/use-from-your-assistant#free-plan-limit).
 
-Gemini will call `get_next_required_actions` and return a ranked overdue-first list of transactions with rationales.
+### Revoke the token
 
-Other good prompts:
+An Owner or Admin can revoke the token under **Settings**, then **API & AI Access**. The next call from the Gemini CLI fails.
 
-- "Use DocJacket to search for deals at 123 Main."
-- "Use DocJacket to list deadlines this week."
-- "Use DocJacket to show open tasks on the [property] deal."
-- "Use DocJacket to look up the listing agent on [property]."
+### Troubleshooting
 
-## What Gemini can do
+**"Authorization failed".** The token is wrong or was revoked. Create a new one and update the Gemini CLI settings.
 
-DocJacket exposes **157 tools** over MCP, in three permission tiers:
-
-| Tier | Tools | For example |
-|---|---|---|
-| `read` | 73 | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
-| `draft` | 32 | `create_tasks`, `update_key_date`, `apply_checklist` |
-| `actions` | 52 | `send_client_update`, `apply_extraction`, `create_reminder` |
-
-**[Browse all 157 tools →](/docs/ai-access/tool-catalog)** — the complete catalog with descriptions, gotchas, and example calls.
-
-To see the inventory *your* token can reach:
-
-> "Use DocJacket's `mcp_catalog` to list the tools by category."
-
-## When paste-URL OAuth lands
-
-Once the Gemini CLI supports RFC 7591 Dynamic Client Registration, this page will be updated to lead with the paste-URL flow:
-
-1. Add `https://mcp.docjacket.com/mcp` as an MCP server in Gemini.
-2. Sign in to DocJacket and click **Allow** on the consent screen.
-3. Done.
-
-No tokens to copy, no `mcp.json` to edit, per-user revocation. Until then, the token path above is the supported flow.
-
-## Permissions, audit, revocation
-
-- **Settings → API & AI Access** lists your Gemini token alongside other connected clients.
-- **Activity log** shows every tool call: who, what, when, what arguments, what result.
-- **Revoke** the Gemini token with one click. The next CLI tool call returns HTTP 401.
-
-## Troubleshooting
-
-**"Authorization failed"** — The token is invalid, expired, or revoked. Mint a fresh one at [settings/api-access](https://app.docjacket.com/settings/api-access) and update `~/.gemini/mcp.json`.
-
-**Tools don't appear after restart** — Check the JSON syntax in `mcp.json`. A missing comma or extra brace will make the Gemini CLI skip the server entry. Validate with `cat ~/.gemini/mcp.json | jq`.
-
-**Which DocJacket plan do I need?** — Any. AI Access is included with every DocJacket plan, so there's nothing to upgrade before you connect or load tools.
+**DocJacket tools don't appear.** Check the settings file for a missing comma or extra brace. A broken file makes the Gemini CLI skip the server.
 
 ## Read more
 
-- [Connect Claude](/docs/ai-access/claude) — uses paste-URL OAuth today
-- [Connect Codex / ChatGPT](/docs/ai-access/codex) — also paste-URL OAuth
-- [How OAuth works](/docs/ai-access/oauth) — the underlying protocol Gemini will use once it adds DCR
-- [Permissions](/docs/ai-access/permissions) — read / draft / actions scope tiers
-- [AI Access overview](/docs/ai-access) — section index
+- [Connect your AI](/docs/ai-access/use-from-your-assistant): which AI to pick and how connecting works
+- [Permissions & Scopes](/docs/ai-access/permissions): what read, draft and actions allow
+- [How the OAuth flow works](/docs/ai-access/oauth)
 
 ---
 
@@ -10478,148 +10475,6 @@ The fastest way to see it work:
 - **[Connect Claude](/docs/ai-access/claude)** / **[Connect Codex / ChatGPT](/docs/ai-access/codex)** — install the connector if you haven't
 - **[Contract Extraction (in-app)](/docs/ai-features/contract-extraction)** — same engine, web-app workflow if you prefer not to use chat
 - **[Smart Document Splitting](/docs/ai-features/smart-document-splitting)** — split a multi-doc PDF first if you have one
-- **[AI Access overview](/docs/ai-access)** — section index
-
----
-
-# Slash Commands
-
-:::note Not the same as Transaction Playbooks
-These AI slash commands are a developer/power-user feature and are sometimes loosely called "playbooks." They are **not** [Transaction Playbooks](../templates/transaction-playbooks.md) — the reusable deal setups (formerly called checklists) under **Templates** that most people mean by "playbooks" in DocJacket.
-:::
-
-The DocJacket plugin ships nine pre-built slash commands. Each one is a pre-written workflow that chains the right DocJacket MCP tools. Current read-first commands work with a read token; commands that send messages, create transactions, or update records require draft or action scopes to be enabled for your account.
-
-The commands work in:
-
-- **Cowork** — Anthropic's collaboration surface. Slash commands appear in the `/` menu.
-- **Claude Code** — Anthropic's CLI. Run `/docjacket:` and tab-complete.
-
-In **Claude.ai** and **Claude Desktop**, slash commands aren't a plugin surface (yet), but the same workflows run via plain-English prompts ("do a morning briefing", "what's due this week"). The assistant follows the same recipes.
-
-Each command chains DocJacket MCP tools — see the [full tool catalog](/docs/ai-access/tool-catalog) for what each one does.
-
-## Quick reference
-
-| Command | What it does |
-|---|---|
-| **`/docjacket:morning-briefing`** | Brief across every active deal — today's calendar, this week's deadlines, overdue items, unread mail from parties, missing docs |
-| **`/docjacket:whats-next`** | Tier-ranked feed of tasks + key dates that need attention (overdue → due-72h → due-2w → due-4w) |
-| **`/docjacket:email-triage`** | Match Gmail / Outlook inbox to active transactions, classify attachments, surface deadline-proximate threads |
-| **`/docjacket:doc-check`** | Document-completeness audit — for one transaction, or org-wide with urgency flags on closings within 14 days |
-| **`/docjacket:weekly-report`** | Closing-this-week, closed-this-week, new-files, stuck-deals, upcoming-closings, and stats — for the broker, the team, or your own records |
-| **`/docjacket:share-portal`** | Get the portal URL + calendar feed for a transaction; email delivery requires the actions scope |
-| **`/docjacket:check-submissions`** | Review new intake-form submissions, see what each contains, decide next move per submission |
-| **`/docjacket:send-template`** | Pick a saved email template and render with merge fields; sending requires the actions scope |
-| **`/docjacket:intake-contract`** | Review extraction from a contract PDF; creating the transaction requires action-tool access |
-
-## Triage commands
-
-### `/docjacket:morning-briefing`
-
-> *"Brief me on what needs attention across all my active deals."*
-
-Walks every active transaction, surfaces what's on the calendar today + this week, flags overdue items, checks the connected mailbox for unread mail from parties, and lists missing docs across deals.
-
-**Chains:** `list_active_transactions` → `get_next_required_actions` → `get_missing_documents` + `get_checklist_status` per closing-soon deal, plus Gmail/Outlook reads if connected.
-
-**Best as your first interaction of the day.** Leads with the most urgent items, skips deals with nothing demanding attention, and ends with a "want me to act on any of this?" offer.
-
-### `/docjacket:whats-next`
-
-> *"Show the ranked list of tasks and key dates that need attention next."*
-
-Tighter than morning-briefing — just the prioritized action feed. Calls `get_next_required_actions` (the flagship judgment tool) and presents the result grouped by urgency tier: overdue → due in 72h → due in 2 weeks → due in 4 weeks.
-
-**Chains:** `get_next_required_actions` (org-wide, or scoped to one transaction if you mention it).
-
-**Best when you have 5 minutes and want to know what to do next.** Lighter than morning-briefing; doesn't check email or calendar.
-
-### `/docjacket:email-triage`
-
-> *"Match my inbox to my active deals and surface what needs action."*
-
-Reads recent unread mail from the connected Gmail/Outlook, matches each sender to a DocJacket contact, groups threads by transaction, classifies any attachments, and flags emails that touch a key date in the next 7 days. Unmatched mail lands in a final group with a "should this be on a deal?" prompt.
-
-**Chains:** `list_active_transactions` (cached) → email connector reads → `find_contact_by_email` per sender → `search_transactions` fallback → `classify_document` per attachment → `get_missing_documents` for gap-filling attachments.
-
-**Requires the Gmail or Outlook connector active in Cowork.** Best after coming back from a half-day off, or any time the inbox feels out of control.
-
-### `/docjacket:doc-check`
-
-> *"Run a document completeness audit."*
-
-Two modes:
-
-- **With a transaction in context** — runs `get_missing_documents` for that one deal, names which recipient role typically provides each missing item, and can suggest a chase message. Sending that chase requires the actions scope.
-- **No transaction in context** — org-wide audit across active deals, flagging anything closing within 14 days that still has gaps.
-
-**Best 24-48 hours before a closing**, or when a broker asks "what's the state of doc completeness across the team?"
-
-### `/docjacket:weekly-report`
-
-> *"Summarize the week's activity across all transactions."*
-
-A weekly recap formatted for forwarding to a broker, team meeting, or your own records. Sections: closing this week, closed this week, new files, stuck deals, upcoming closings, plus aggregate stats (active count, closings this month, volume).
-
-**Chains:** `list_active_transactions` (cached) → `get_next_required_actions` (org-wide) → optional `get_open_tasks` per deal for activity rollup.
-
-**Best Friday afternoon.** Caveats called out inline — "closed this week" is a heuristic from closing-date proximity, not an actual-close signal.
-
-## Workflow commands
-
-### `/docjacket:intake-contract`
-
-> *"Intake a contract PDF and build the full transaction in one conversation."*
-
-The PDF-to-transaction workflow, which needs the actions tier. On a read-only or draft connection, use the in-app Upload Documents wizard for transaction creation. See the full reference at **[Contract Intake](/docs/ai-access/contract-intake)**.
-
-**Read-first version:** summarize extraction status and review available results.
-
-**Action-scope version:** upload or locate a PDF, run extraction, review fields, and call `apply_extraction` only after you confirm in chat.
-
-### `/docjacket:send-template`
-
-> *"Send the buyer intro email on the Smith deal."*
-
-Pick a saved email template, render it with the transaction's merge fields resolved, and show the rendered email inline for review. Sending through Gmail or Outlook requires the actions scope.
-
-**Read-first version:** resolve the deal, find contacts, and prepare the rendered template for review.
-
-**Actions-scope version:** send the reviewed message through the connected mailbox.
-
-### `/docjacket:share-portal`
-
-> *"Share the portal with Sarah on the 412 Oak deal."*
-
-Pulls the portal URL + calendar feed URL for a transaction. With the actions scope, the assistant can also send a share email to a party on the deal.
-
-**Chains:** `search_transactions` (if needed) → `get_portal_link` → `get_contacts`.
-
-### `/docjacket:check-submissions`
-
-> *"What's new in my intake forms?"*
-
-Surveys recent intake-form submissions across your active forms, summarizes what each one contains, and offers obvious next moves per submission. Creating a transaction or sending a reply requires the actions scope; logging a dismissal needs only draft.
-
-**Chains:** `list_form_links` → `list_form_submissions` per form → `get_form_submission` for interesting ones → `get_form_definition` if you want to see the form schema → next-action handoff.
-
-## Customizing or writing your own
-
-The commands are markdown playbooks in the public [`docjacket-inc/claude-plugin`](https://github.com/docjacket-inc/claude-plugin) repository — `commands/<name>.md` files with a frontmatter `description` and a numbered playbook body. Customize:
-
-1. **Fork** [`docjacket-inc/claude-plugin`](https://github.com/docjacket-inc/claude-plugin) on GitHub.
-2. **Edit** any `commands/*.md` file — change wording, adjust the recipe, add brokerage-specific steps, add new commands.
-3. **Install your fork** instead of the upstream plugin (`/plugin marketplace add <your-org>/claude-plugin` in Claude Code, or the Cowork install URL pointed at your fork).
-
-The DocJacket MCP server doesn't care which plugin produced a tool call. Auth and the tool surface are the same regardless of which plugin invoked them, so customizations stay client-side without any DocJacket-side changes.
-
-If you write a command worth sharing back, open a PR against the upstream repo — happy to land community recipes.
-
-## Read more
-
-- **[Contract Intake](/docs/ai-access/contract-intake)** — full reference for the `/docjacket:intake-contract` workflow
-- **[Connect Claude](/docs/ai-access/claude)** / **[Connect Codex / ChatGPT](/docs/ai-access/codex)** — install the connector if you haven't
 - **[AI Access overview](/docs/ai-access)** — section index
 
 ---
@@ -12935,9 +12790,8 @@ Notice the `resource=https://mcp.docjacket.com/mcp` parameter in the authorizati
 
 ## When you'd skip OAuth and use a token instead
 
-A few clients don't (yet) support paste-URL OAuth and need a personal access token instead:
+Claude, Cowork, ChatGPT and the Codex plugin all use paste-URL OAuth and need no token. A few other cases use a personal access token instead:
 
-- **Cowork** — org-installed plugin; a long-lived token is the right primitive for org-wide install. ([setup](/docs/ai-access/cowork))
 - **Gemini CLI** — Dynamic Client Registration support isn't shipped on Gemini's MCP client yet. ([setup](/docs/ai-access/gemini))
 - **Codex CLI** — works either way; many users prefer the token + `codex secret set` flow. ([setup](/docs/ai-access/codex))
 - **Your own scripts and back-office tools** — when the account is yours, a token you paste into your `Authorization: Bearer …` header is simpler than a consent flow, and there is nobody to ask for consent anyway.
@@ -12964,17 +12818,17 @@ If OAuth fails, the assistant will show a reference ID on the error screen. Send
 
 # Permissions & scopes
 
-DocJacket's MCP server exposes **157 tools** across three **scope tiers**, and supports **per-tool toggles** inside the AI client. All three tiers are live. You choose one when you consent, and it is enforced at the token — a read-only connection cannot call a write tool even if the assistant tries.
+DocJacket's MCP server groups its tools into three **scope tiers**, and supports **per-tool toggles** inside the AI client. All three tiers are live. You choose one when you consent, and it is enforced at the token — a read-only connection cannot call a write tool even if the assistant tries.
 
 ## The three scopes
 
 | Scope | What it covers | Approval flow |
 |---|---|---|
-| **`read`** (73 tools) | Search, lookup, list — e.g. `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions`, `get_open_tasks`, `get_deal_section`, `diagnose_deal`. With `read`, an assistant can also read a deal's internal notes and the comments on its tasks and documents, its email including message bodies, its text-message threads, scheduled sends, consistency checks, change log, key-date history, agreements, and TC fees and invoices (no payment links). It can see each task's settings, including whether the task shows on the SitRep report and on the client portal. Nothing here changes a record or contacts anyone. | Auto-approved per conversation in most clients |
-| **`draft`** (32 tools) | Low-risk writes to your own records — `create_tasks`, `complete_task`, `set_task_outcome` (complete, skip or reopen up to 25 tasks), `update_task`, `update_key_date`, `manage_key_date`, `manage_note` (internal notes and comments), `apply_checklist`, `log_activity`, `save_status_summary`. **Tools in this tier can't write or send an email themselves.** When an assistant connected with draft access, and not actions access, marks a task done, the emails that would follow wait in your Review queue for a person to approve. Moving a date can still make an already-scheduled email go out sooner. | DocJacket marks these as write tools; the assistant asks first if its approval setting for the tool is on |
-| **`actions`** (52 tools) | Side-effecting work — sending email (`send_client_update`, `send_document_request`, `send_agent_followup`, `send_email_to_agent`), changing a deal's own details (`update_deal`), changing who is on a deal (`manage_deal_contact`), deleting tasks (`delete_tasks`), restoring an archived deal (`restore_deal`), creating and deleting records, and disclosure packages that expose documents outside the org. | DocJacket marks these as write tools; the assistant asks first if its approval setting for the tool is on |
+| **`read`** | Search, lookup, list — e.g. `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions`, `get_open_tasks`, `get_deal_section`, `review_deal_health`. With `read`, an assistant can also read a deal's internal notes and the comments on its tasks and documents, its email including message bodies, its text-message threads, scheduled sends, consistency checks, change log, key-date history, agreements, and TC fees and invoices (no payment links). It can see each task's settings, including whether the task shows on the SitRep report and on the client portal. Nothing here changes a record or contacts anyone. | Auto-approved per conversation in most clients |
+| **`draft`** | Low-risk writes to your own records — `create_tasks`, `complete_task`, `set_task_outcome` (complete, skip or reopen up to 25 tasks), `update_task`, `update_key_date`, `manage_key_date`, `manage_note` (internal notes and comments), `apply_checklist`, `log_activity`, `save_status_summary`. **Tools in this tier can't write or send an email themselves.** When an assistant connected with draft access, and not actions access, marks a task done, the emails that would follow wait in your Review queue for a person to approve. Moving a date can still make an already-scheduled email go out sooner. | DocJacket marks these as write tools; the assistant asks first if its approval setting for the tool is on |
+| **`actions`** | Side-effecting work — sending email (`send_client_update`, `send_document_request`, `send_agent_followup`, `send_email_to_agent`), changing a deal's own details (`update_deal`), changing who is on a deal (`manage_deal_contact`), deleting tasks (`delete_tasks`), restoring an archived deal (`restore_deal`), creating and deleting records, and disclosure packages that expose documents outside the org. | DocJacket marks these as write tools; the assistant asks first if its approval setting for the tool is on |
 
-The draft tier is the useful middle setting: an assistant can keep your tasks and deadlines current without being able to write or send an email of its own. **[Browse all 157 tools →](/docs/ai-access/tool-catalog)** to see exactly what sits in each tier.
+The draft tier is the useful middle setting: an assistant can keep your tasks and deadlines current without being able to write or send an email of its own. **[Browse every tool →](/docs/ai-access/tool-catalog)** to see exactly what sits in each tier.
 
 ## The conversation is the approval gate
 
@@ -13063,6 +12917,185 @@ Tenant isolation is enforced at the SQL layer. Every MCP tool call adds `WHERE O
 - [How OAuth works](/docs/ai-access/oauth) — the underlying protocol and token model
 - [Tool Catalog](/docs/ai-access/tool-catalog) — the live tool inventory grouped by category
 - [AI Access overview](/docs/ai-access) — section index
+
+---
+
+# Connect Grok
+
+:::caution Being verified: steps coming soon
+We are testing the DocJacket connection in Grok now. We'll add step-by-step instructions here once it is confirmed to work. Until then, we can't promise Grok will connect.
+:::
+
+Grok lets you add your own connectors. There are two places this may work:
+
+- **Grok on the web**, at grok.com/connectors, under **New Connector**, then **Custom**.
+- **Grok Bot.**
+
+If you try it before the steps are ready, use the DocJacket address:
+
+```
+https://mcp.docjacket.com/mcp
+```
+
+Want something that works today? [Claude, ChatGPT and Codex](/docs/ai-access/use-from-your-assistant#which-ai-should-i-use) connect now.
+
+## Read more
+
+- [Connect your AI](/docs/ai-access/use-from-your-assistant): which AI to pick and how connecting works
+- [Permissions & Scopes](/docs/ai-access/permissions)
+
+---
+
+# Slash Commands
+
+:::note Not the same as Transaction Playbooks
+These AI slash commands are a developer/power-user feature and are sometimes loosely called "playbooks." They are **not** [Transaction Playbooks](../templates/transaction-playbooks.md) — the reusable deal setups (formerly called checklists) under **Templates** that most people mean by "playbooks" in DocJacket.
+:::
+
+The DocJacket plugin (version 0.9.0) ships ten pre-built slash commands. Each one is a pre-written workflow that chains the right DocJacket MCP tools. Current read-first commands work with a read token; commands that send messages, create transactions, or update records require draft or action scopes to be enabled for your account.
+
+The commands work in:
+
+- **Cowork** — Anthropic's collaboration surface. Slash commands appear in the `/` menu.
+- **Claude Code** — Anthropic's CLI. Run `/docjacket:` and tab-complete.
+
+In **Claude.ai** and **Claude Desktop**, slash commands aren't a plugin surface (yet), but the same workflows run via plain-English prompts ("do a morning briefing", "what's due this week"). The assistant follows the same recipes.
+
+Each command chains DocJacket MCP tools — see the [full tool catalog](/docs/ai-access/tool-catalog) for what each one does.
+
+## Quick reference
+
+| Command | What it does |
+|---|---|
+| **`/docjacket:morning-briefing`** | Brief across every active deal — today's calendar, this week's deadlines, overdue items, unread mail from parties, missing docs |
+| **`/docjacket:daily-triage`** | Every transaction that needs attention today, ranked overdue-first with a reason for each |
+| **`/docjacket:whats-next`** | Tier-ranked feed of tasks + key dates that need attention (overdue → due-72h → due-2w → due-4w) |
+| **`/docjacket:email-triage`** | Match Gmail / Outlook inbox to active transactions, classify attachments, surface deadline-proximate threads |
+| **`/docjacket:doc-check`** | Document-completeness audit — for one transaction, or org-wide with urgency flags on closings within 14 days |
+| **`/docjacket:weekly-report`** | Closing-this-week, closed-this-week, new-files, stuck-deals, upcoming-closings, and stats — for the broker, the team, or your own records |
+| **`/docjacket:share-portal`** | Get the portal URL + calendar feed for a transaction; email delivery requires the actions scope |
+| **`/docjacket:check-submissions`** | Review new intake-form submissions, see what each contains, decide next move per submission |
+| **`/docjacket:send-template`** | Pick a saved email template and render with merge fields; sending requires the actions scope |
+| **`/docjacket:intake-contract`** | Review extraction from a contract PDF; creating the transaction requires action-tool access |
+
+## Triage commands
+
+### `/docjacket:morning-briefing`
+
+> *"Brief me on what needs attention across all my active deals."*
+
+Walks every active transaction, surfaces what's on the calendar today + this week, flags overdue items, checks the connected mailbox for unread mail from parties, and lists missing docs across deals.
+
+**Chains:** `list_active_transactions` → `get_next_required_actions` → `get_missing_documents` + `get_checklist_status` per closing-soon deal, plus Gmail/Outlook reads if connected.
+
+**Best as your first interaction of the day.** Leads with the most urgent items, skips deals with nothing demanding attention, and ends with a "want me to act on any of this?" offer.
+
+### `/docjacket:whats-next`
+
+> *"Show the ranked list of tasks and key dates that need attention next."*
+
+Tighter than morning-briefing — just the prioritized action feed. Calls `get_next_required_actions` (the flagship judgment tool) and presents the result grouped by urgency tier: overdue → due in 72h → due in 2 weeks → due in 4 weeks.
+
+**Chains:** `get_next_required_actions` (org-wide, or scoped to one transaction if you mention it).
+
+**Best when you have 5 minutes and want to know what to do next.** Lighter than morning-briefing; doesn't check email or calendar.
+
+### `/docjacket:daily-triage`
+
+> *"What needs my attention today?"*
+
+Runs the Daily Triage skill: one call to `get_next_required_actions`, which returns every transaction needing attention today, already ranked overdue-first, with the reason each one is on the list.
+
+**Chains:** `get_next_required_actions`.
+
+**Best when you want the day's list and nothing else.** Same feed as plain-English "what needs attention today?"
+
+### `/docjacket:email-triage`
+
+> *"Match my inbox to my active deals and surface what needs action."*
+
+Reads recent unread mail from the connected Gmail/Outlook, matches each sender to a DocJacket contact, groups threads by transaction, classifies any attachments, and flags emails that touch a key date in the next 7 days. Unmatched mail lands in a final group with a "should this be on a deal?" prompt.
+
+**Chains:** `list_active_transactions` (cached) → email connector reads → `find_contact_by_email` per sender → `search_transactions` fallback → `classify_document` per attachment → `get_missing_documents` for gap-filling attachments.
+
+**Requires the Gmail or Outlook connector active in Cowork.** Best after coming back from a half-day off, or any time the inbox feels out of control.
+
+### `/docjacket:doc-check`
+
+> *"Run a document completeness audit."*
+
+Two modes:
+
+- **With a transaction in context** — runs `get_missing_documents` for that one deal, names which recipient role typically provides each missing item, and can suggest a chase message. Sending that chase requires the actions scope.
+- **No transaction in context** — org-wide audit across active deals, flagging anything closing within 14 days that still has gaps.
+
+**Best 24-48 hours before a closing**, or when a broker asks "what's the state of doc completeness across the team?"
+
+### `/docjacket:weekly-report`
+
+> *"Summarize the week's activity across all transactions."*
+
+A weekly recap formatted for forwarding to a broker, team meeting, or your own records. Sections: closing this week, closed this week, new files, stuck deals, upcoming closings, plus aggregate stats (active count, closings this month, volume).
+
+**Chains:** `list_active_transactions` (cached) → `get_next_required_actions` (org-wide) → optional `get_open_tasks` per deal for activity rollup.
+
+**Best Friday afternoon.** Caveats called out inline — "closed this week" is a heuristic from closing-date proximity, not an actual-close signal.
+
+## Workflow commands
+
+### `/docjacket:intake-contract`
+
+> *"Intake a contract PDF and build the full transaction in one conversation."*
+
+The PDF-to-transaction workflow, which needs the actions tier. On a read-only or draft connection, use the in-app Upload Documents wizard for transaction creation. See the full reference at **[Contract Intake](/docs/ai-access/contract-intake)**.
+
+**Read-first version:** summarize extraction status and review available results.
+
+**Action-scope version:** upload or locate a PDF, run extraction, review fields, and call `apply_extraction` only after you confirm in chat.
+
+### `/docjacket:send-template`
+
+> *"Send the buyer intro email on the Smith deal."*
+
+Pick a saved email template, render it with the transaction's merge fields resolved, and show the rendered email inline for review. Sending through Gmail or Outlook requires the actions scope.
+
+**Read-first version:** resolve the deal, find contacts, and prepare the rendered template for review.
+
+**Actions-scope version:** send the reviewed message through the connected mailbox.
+
+### `/docjacket:share-portal`
+
+> *"Share the portal with Sarah on the 412 Oak deal."*
+
+Pulls the portal URL + calendar feed URL for a transaction. With the actions scope, the assistant can also send a share email to a party on the deal.
+
+**Chains:** `search_transactions` (if needed) → `get_portal_link` → `get_contacts`.
+
+### `/docjacket:check-submissions`
+
+> *"What's new in my intake forms?"*
+
+Surveys recent intake-form submissions across your active forms, summarizes what each one contains, and offers obvious next moves per submission. Creating a transaction or sending a reply requires the actions scope; logging a dismissal needs only draft.
+
+**Chains:** `list_form_links` → `list_form_submissions` per form → `get_form_submission` for interesting ones → `get_form_definition` if you want to see the form schema → next-action handoff.
+
+## Customizing or writing your own
+
+The commands are markdown playbooks in the public [`docjacket-inc/claude-plugin`](https://github.com/docjacket-inc/claude-plugin) repository — `commands/<name>.md` files with a frontmatter `description` and a numbered playbook body. Customize:
+
+1. **Fork** [`docjacket-inc/claude-plugin`](https://github.com/docjacket-inc/claude-plugin) on GitHub.
+2. **Edit** any `commands/*.md` file — change wording, adjust the recipe, add brokerage-specific steps, add new commands.
+3. **Install your fork** instead of the upstream plugin (`/plugin marketplace add <your-org>/claude-plugin` in Claude Code, or the Cowork install URL pointed at your fork).
+
+The DocJacket MCP server doesn't care which plugin produced a tool call. Auth and the tool surface are the same regardless of which plugin invoked them, so customizations stay client-side without any DocJacket-side changes.
+
+If you write a command worth sharing back, open a PR against the upstream repo — happy to land community recipes.
+
+## Read more
+
+- **[Contract Intake](/docs/ai-access/contract-intake)** — full reference for the `/docjacket:intake-contract` workflow
+- **[Connect Claude](/docs/ai-access/claude)** / **[Connect Codex / ChatGPT](/docs/ai-access/codex)** — install the connector if you haven't
+- **[AI Access overview](/docs/ai-access)** — section index
 
 ---
 
@@ -16713,7 +16746,7 @@ The free plan is a great way to try DocJacket before committing. It includes:
 - **Up to 2 team members**
 - Unlimited intake forms and unlimited client & agent portals
 - Email automation, templates, and Playbook templates
-- AI Access: connect Claude, ChatGPT, Codex and other AI assistants (included with every plan)
+- AI Access: connect Claude, ChatGPT, Codex and other AI assistants (included with every plan; on Free, your organization gets 100 AI tool calls a month, while paid plans have no monthly limit; see [Connect your AI](../ai-access/use-from-your-assistant.mdx#free-plan-limit))
 
 Upgrade to a paid plan for unlimited active transactions and AI extractions, SMS messaging, a custom domain, and priority support.
 

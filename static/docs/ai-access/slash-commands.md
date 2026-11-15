@@ -1,7 +1,7 @@
 ---
 sidebar_label: Slash Commands
-sidebar_position: 7
-description: Nine pre-built slash commands for Cowork and Claude Code — morning-briefing, whats-next, email-triage, contract intake, and more.
+sidebar_position: 7.5
+description: Ten pre-built slash commands for Cowork and Claude Code — morning-briefing, whats-next, email-triage, contract intake, and more.
 ---
 
 <!-- Canonical: https://help.docjacket.com/docs/ai-access/slash-commands -->
@@ -13,7 +13,7 @@ description: Nine pre-built slash commands for Cowork and Claude Code — mornin
 These AI slash commands are a developer/power-user feature and are sometimes loosely called "playbooks." They are **not** [Transaction Playbooks](../templates/transaction-playbooks.md) — the reusable deal setups (formerly called checklists) under **Templates** that most people mean by "playbooks" in DocJacket.
 :::
 
-The DocJacket plugin ships nine pre-built slash commands. Each one is a pre-written workflow that chains the right DocJacket MCP tools. Current read-first commands work with a read token; commands that send messages, create transactions, or update records require draft or action scopes to be enabled for your account.
+The DocJacket plugin (version 0.9.0) ships ten pre-built slash commands. Each one is a pre-written workflow that chains the right DocJacket MCP tools. Current read-first commands work with a read token; commands that send messages, create transactions, or update records require draft or action scopes to be enabled for your account.
 
 The commands work in:
 
@@ -29,6 +29,7 @@ Each command chains DocJacket MCP tools — see the [full tool catalog](/docs/ai
 | Command | What it does |
 |---|---|
 | **`/docjacket:morning-briefing`** | Brief across every active deal — today's calendar, this week's deadlines, overdue items, unread mail from parties, missing docs |
+| **`/docjacket:daily-triage`** | Every transaction that needs attention today, ranked overdue-first with a reason for each |
 | **`/docjacket:whats-next`** | Tier-ranked feed of tasks + key dates that need attention (overdue → due-72h → due-2w → due-4w) |
 | **`/docjacket:email-triage`** | Match Gmail / Outlook inbox to active transactions, classify attachments, surface deadline-proximate threads |
 | **`/docjacket:doc-check`** | Document-completeness audit — for one transaction, or org-wide with urgency flags on closings within 14 days |
@@ -59,6 +60,16 @@ Tighter than morning-briefing — just the prioritized action feed. Calls `get_n
 **Chains:** `get_next_required_actions` (org-wide, or scoped to one transaction if you mention it).
 
 **Best when you have 5 minutes and want to know what to do next.** Lighter than morning-briefing; doesn't check email or calendar.
+
+### `/docjacket:daily-triage`
+
+> *"What needs my attention today?"*
+
+Runs the Daily Triage skill: one call to `get_next_required_actions`, which returns every transaction needing attention today, already ranked overdue-first, with the reason each one is on the list.
+
+**Chains:** `get_next_required_actions`.
+
+**Best when you want the day's list and nothing else.** Same feed as plain-English "what needs attention today?"
 
 ### `/docjacket:email-triage`
 

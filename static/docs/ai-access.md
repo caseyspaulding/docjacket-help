@@ -29,25 +29,27 @@ The assistant calls into DocJacket, gets a grounded answer from your real book o
 
 ## What's connected today
 
-DocJacket exposes **157 tools** over MCP, in three permission tiers. You choose a tier when you consent, and it is enforced at the token — a read-only connection cannot write, whatever the assistant tries.
+DocJacket's tools come in three permission tiers. You choose a tier when you consent, and it is enforced at the token — a read-only connection cannot write, whatever the assistant tries.
 
-| Tier | Tools | For example |
+| Tier | What it allows | For example |
 |---|---|---|
-| `read` | 73 | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
-| `draft` | 32 | `create_tasks`, `update_key_date`, `apply_checklist` |
-| `actions` | 52 | `send_client_update`, `apply_extraction`, `create_reminder` |
+| `read` | Look things up. Changes nothing. | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
+| `draft` | Change tasks, key dates, Playbooks and status inside DocJacket. Sends no email. | `create_tasks`, `update_key_date`, `apply_checklist` |
+| `actions` | Send emails you approve, and make other changes | `send_client_update`, `apply_extraction`, `create_reminder` |
 
-**[Browse all 157 tools →](/docs/ai-access/tool-catalog)** — the complete catalog with descriptions, gotchas, and example calls, readable without connecting anything.
+**[Browse every tool →](/docs/ai-access/tool-catalog)** — the complete catalog with descriptions, gotchas, and example calls, readable without connecting anything.
+
+**Free plan:** your organization gets 100 AI tool calls a month. Paid plans have no monthly limit. See [Free plan limit](/docs/ai-access/use-from-your-assistant#free-plan-limit).
 
 ## Get started
 
-Pick the assistant you want to connect:
+Start with **[Connect your AI](/docs/ai-access/use-from-your-assistant)**: which AI to pick, how to connect in three steps, and how to disconnect. Then the longer guides:
 
-- [Use DocJacket from your AI assistant](/docs/ai-access/use-from-your-assistant) — what it can do, how to connect Claude or ChatGPT, and how to disconnect
-- [Connect Claude](/docs/ai-access/claude) — Claude.ai, Claude Desktop, Claude Code
-- [Connect Codex / ChatGPT](/docs/ai-access/codex) — Codex CLI, Codex for Work, ChatGPT connectors
-- [Connect Cowork](/docs/ai-access/cowork) — Anthropic's team workspace
-- [Connect Gemini](/docs/ai-access/gemini) — Google Gemini CLI
+- [Connect Claude](/docs/ai-access/claude) — Claude on the web, Claude Desktop, Claude Code
+- [Connect Codex / ChatGPT](/docs/ai-access/codex) — Codex and ChatGPT connectors
+- [Connect Cowork](/docs/ai-access/cowork) — Claude's workspace for longer tasks, plus the optional DocJacket plugin
+- [Connect Gemini](/docs/ai-access/gemini) — Gemini app being verified; Gemini CLI for developers
+- [Connect Grok](/docs/ai-access/grok) — being verified
 
 Each guide walks you through the connector setup and the OAuth consent flow.
 
@@ -57,7 +59,7 @@ Each guide walks you through the connector setup and the OAuth consent flow.
 
 ## Learn more
 
-- [Slash Commands](/docs/ai-access/slash-commands) — the 9 pre-built `/docjacket:` commands the plugin adds to Cowork + Claude Code
+- [Slash Commands](/docs/ai-access/slash-commands) — the pre-built `/docjacket:` commands the plugin adds to Cowork + Claude Code
 - [Tool Catalog](/docs/ai-access/tool-catalog) — the live `mcp_catalog` inventory of every tool with description, scope, and example call
 - [Permissions & Scopes](/docs/ai-access/permissions) — what `read`, `draft`, and `actions` cover
 - [How the OAuth flow works](/docs/ai-access/oauth) — Discovery, Dynamic Client Registration, consent, scopes, token rotation, revocation
