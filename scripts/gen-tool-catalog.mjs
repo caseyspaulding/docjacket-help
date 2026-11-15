@@ -173,6 +173,16 @@ for (const tier of TIERS) {
       : '';
     out += `*Requires ${code(tier.scope)}${granular}.*\n\n`;
 
+    // Wire-name status from mcp_catalog (McpToolNames and McpToolsets in docjacket-v3).
+    if (t.aliasOf) out += `*The name \`tools/list\` shows for ${code(t.aliasOf)}; both names run the same tool.*\n\n`;
+    if (t.deprecatedBy) {
+      const eta = t.removalEta ? ` Earliest removal: ${t.removalEta}.` : '';
+      out += `*Deprecated: hidden from \`tools/list\` but still callable. Use ${code(t.deprecatedBy)}.${eta}*\n\n`;
+    }
+    if (t.toolset && t.toolset !== 'core') {
+      out += `*Optional toolset ${code(t.toolset)}: listed only when it is ticked on the consent screen; callable either way.*\n\n`;
+    }
+
     if (t.gotchas?.length) {
       out += `**Gotchas**\n\n`;
       for (const g of t.gotchas) out += `- ${prose(g)}\n`;
@@ -214,6 +224,8 @@ const jsonDoc = {
   mcpEndpoint: 'https://mcp.docjacket.com/mcp',
   humanDocs: 'https://help.docjacket.com/docs/ai-access/tool-catalog',
   totalCount: total,
+  // Names an alias adds are not separate tools.
+  toolCount: tools.filter((t) => !t.aliasOf).length,
   scopeCounts: Object.fromEntries(TIERS.map((t) => [t.scope, counts[t.scope]])),
   tools: [...tools]
     .sort((a, b) => a.name.localeCompare(b.name))
@@ -225,6 +237,10 @@ const jsonDoc = {
       gotchas: t.gotchas ?? [],
       pairsWith: t.pairsWith ?? [],
       exampleCall: t.exampleCall ?? null,
+      toolset: t.toolset ?? 'core',
+      listed: t.listed ?? true,
+      ...(t.aliasOf ? {aliasOf: t.aliasOf} : {}),
+      ...(t.deprecatedBy ? {deprecatedBy: t.deprecatedBy, removalEta: t.removalEta ?? null} : {}),
     })),
 };
 await writeFile(JSON_OUT_FILE, `${JSON.stringify(jsonDoc, null, 2)}\n`, 'utf8');
