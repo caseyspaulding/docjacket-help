@@ -99,7 +99,7 @@ const config: Config = {
         '@context': 'https://schema.org',
         '@type': 'Organization',
         name: 'DocJacket',
-        legalName: 'DocJacket Inc.',
+        legalName: 'DocJacket Software Inc',
         url: 'https://www.docjacket.com',
         logo: 'https://help.docjacket.com/img/logo-full.svg',
         sameAs: [
@@ -247,7 +247,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} DocJacket Inc. All rights reserved.`,
+      copyright: `Copyright © ${new Date().getFullYear()} DocJacket Software Inc. All rights reserved.`,
     },
     prism: {
       theme: prismThemes.github,
