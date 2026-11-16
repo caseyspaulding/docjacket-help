@@ -1,6 +1,6 @@
 ---
 sidebar_label: Connect Claude
-sidebar_position: 2
+sidebar_position: 3
 description: Connect DocJacket to Claude.ai, Claude Desktop, Claude Code, or Cowork using the official Claude plugin. Paste-URL-and-go via OAuth 2.1.
 ---
 
@@ -26,17 +26,20 @@ DocJacket works with every Claude surface:
 - **Claude Code** — Anthropic's CLI for developers
 - **Cowork** — Anthropic's collaboration surface for teams
 
-You connect each surface once. The same DocJacket MCP server backs all four.
+The same DocJacket MCP server backs all four. A connector you add in Claude also shows up in Claude Desktop and Cowork. Claude Code connects through the DocJacket plugin.
 
-## Quick start (Claude.ai sidebar)
+New to this? Start with [Connect your AI](/docs/ai-access/use-from-your-assistant).
 
-1. Open **Claude.ai** in a browser, sign in.
-2. Bottom-left → your name → **Settings**.
-3. **Connectors** in the left nav → **+ Add custom connector**.
-4. Paste `https://mcp.docjacket.com/mcp` as the URL.
-5. Click **Continue**. Claude will redirect you to DocJacket's consent screen.
-6. **Allow** the connection, choosing a permission tier: read-only, read + draft, or full read + draft + actions. The tier is enforced server-side at the token — a read-only connection cannot write, whatever the assistant tries.
-7. You're back in Claude with **DocJacket** showing as a custom connector and the tools available to your scopes loaded. Read tools run inline; any enabled write tools pause for your confirmation in chat.
+## Quick start (Claude on the web)
+
+1. In Claude, click **Customize** in the left sidebar, then open the **Connectors** tab.
+2. Click **Add** at the top right, then **Add custom connector**.
+3. Type a name, such as DocJacket, paste `https://mcp.docjacket.com/mcp`, and add the connector.
+4. Sign in to DocJacket if asked.
+5. On the DocJacket screen, choose the access you want and click **Allow**: read only, update your data, or act on your behalf. DocJacket enforces the level you pick, so a read-only connection cannot make changes, whatever the assistant tries.
+6. Start a new chat. DocJacket's tools are loaded for the access you chose.
+
+Plan notes: Claude's Free plan allows one custom connector. On a Claude Team or Enterprise plan, an owner of your Claude organization adds connectors. The same connector also works in Claude Desktop and Cowork.
 
 ## Try it
 
@@ -56,62 +59,52 @@ Other good prompts:
 
 ## What Claude can do
 
-DocJacket exposes **161 tools** over MCP, in three permission tiers:
+DocJacket's tools come in three permission tiers:
 
-| Tier | Tools | For example |
+| Tier | What it allows | For example |
 |---|---|---|
-| `read` | 76 | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
-| `draft` | 32 | `create_tasks`, `update_key_date`, `apply_checklist` |
-| `actions` | 53 | `send_client_update`, `apply_extraction`, `create_reminder` |
+| `read` | Look things up. Changes nothing. | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
+| `draft` | Change tasks, key dates, Playbooks and status inside DocJacket. Sends no email. | `create_tasks`, `update_key_date`, `apply_checklist` |
+| `actions` | Send emails you approve, and make other changes | `send_client_update`, `apply_extraction`, `create_reminder` |
 
-**[Browse all 161 tools →](/docs/ai-access/tool-catalog)** — the complete catalog with descriptions, gotchas, and example calls.
+**[Browse every tool →](/docs/ai-access/tool-catalog)**: the complete catalog with descriptions, gotchas, and example calls.
 
-You don't need to remember tool names; Claude picks the right tool from your question. To see the inventory *your* token can reach, ask Claude to use `mcp_catalog`.
+You don't need to remember tool names; Claude picks the right tool from your question. To see the inventory *your* connection can reach, ask Claude to use `mcp_catalog`.
 
-## Cowork — skills, slash commands, sub-agent
+## The DocJacket plugin (optional): skills and slash commands
 
-[Cowork](https://www.anthropic.com/cowork) is Anthropic's collaboration surface. The DocJacket plugin for Cowork ships nine workflow skills, nine slash commands, and a sub-agent.
+The DocJacket plugin (version 0.9.0) adds fourteen skills, ten `/docjacket:` slash commands and a read-only Status Reporter. It works in Cowork and Claude Code. The plugin is optional; the connector above is all you need to use DocJacket.
 
-**Skills** (the assistant picks the right one automatically based on what you ask):
-
-- `daily-triage` — what needs attention today, overdue-first
-- `email-triage` — match Gmail / Outlook threads against active deals
-- `contract-intake` — PDF extraction review; transaction creation requires action tools
-- `document-filing` — classify uploaded docs, file them to the right deal
-- `closing-prep` — pre-closing checklist audit
-- `follow-up-drafting` — compose a chase email with the right context already loaded
-- `execution-workflow` — the confirm-then-execute pattern for write tools
-- `tc-context` — vocabulary + matching priority + safety rules
+**Skills** (Claude picks the right one from what you ask): `daily-triage`, `email-triage`, `contract-intake`, `document-filing`, `closing-prep`, `follow-up-drafting`, `deal-updates`, `contact-management`, `playbook-builder`, `workspace-setup`, `compliance-filing`, `execution-workflow`, `tc-context` and `dj-cli`. What each one does: [Connect Cowork](/docs/ai-access/cowork#skills).
 
 **Slash commands** (typed explicitly):
 
 ```
 /docjacket:morning-briefing      /docjacket:whats-next
-/docjacket:email-triage          /docjacket:send-template
-/docjacket:intake-contract       /docjacket:doc-check
-/docjacket:share-portal          /docjacket:weekly-report
-/docjacket:check-submissions
+/docjacket:daily-triage          /docjacket:email-triage
+/docjacket:doc-check             /docjacket:weekly-report
+/docjacket:share-portal          /docjacket:send-template
+/docjacket:intake-contract       /docjacket:check-submissions
 ```
 
-**Sub-agent:** mention `@docjacket-status-reporter` for a structured weekly briefing grouped by deal state.
+**Status Reporter:** mention `@status-reporter` for a weekly briefing across your active deals.
 
-To install the plugin in Cowork, see [docjacket-inc/claude-plugin](https://github.com/docjacket-inc/claude-plugin) on GitHub.
+To use the plugin in Cowork, see [Connect Cowork](/docs/ai-access/cowork).
 
-## Claude Code — slash commands
+## Claude Code: install the plugin
 
-In Claude Code (the CLI), the DocJacket plugin registers the same nine slash commands listed above. Drop in `/docjacket:` to see the menu, then pick one — most TCs start with `/docjacket:morning-briefing` or `/docjacket:whats-next`.
+In Claude Code (the CLI), run:
 
-Install per the instructions at [docjacket-inc/claude-plugin](https://github.com/docjacket-inc/claude-plugin).
+```
+/plugin marketplace add docjacket-inc/claude-plugin
+/plugin install docjacket@docjacket
+```
+
+On the first tool call, your browser opens the DocJacket sign-in and consent screen. Then type `/docjacket:` to see the commands. Most people start with `/docjacket:morning-briefing` or `/docjacket:whats-next`.
 
 ## Claude Desktop
 
-Claude Desktop (Mac / Windows native app) uses the same custom-connector flow as Claude.ai:
-
-1. **Settings** → **Connectors** → **+ Add custom connector**.
-2. Paste `https://mcp.docjacket.com/mcp`.
-3. Complete the OAuth consent.
-
-Once connected, Claude Desktop has access to the same DocJacket tools available to that connector's granted scopes.
+Claude Desktop (the Mac / Windows app) uses the custom connectors from your Claude account. If you added DocJacket in Claude on the web, it is already there. If not, add it the same way, from **Customize**, then **Connectors**, and complete the DocJacket sign-in.
 
 ## Permissions, audit, and revocation
 
@@ -134,12 +127,12 @@ Inside DocJacket:
 
 **"Token is invalid, expired, or revoked"** — Your token has been revoked (from DocJacket → Settings → API & AI Access) or your assistant has been disconnected for more than 90 days. Re-consent to reconnect.
 
-**Which DocJacket plan do I need?** — Any. AI Access is included with every DocJacket plan, so there's nothing to upgrade before you connect or load tools.
+**Which DocJacket plan do I need?** — Any. AI Access is included with every DocJacket plan. On the Free plan, your organization gets 50 AI tool calls a month; paid plans have no monthly limit. See [Free plan limit](/docs/ai-access/use-from-your-assistant#free-plan-limit).
 
 ## Read more
 
 - [Contract Intake](/docs/ai-access/contract-intake) — external PDF intake when action tools are enabled; otherwise use the in-app Upload Documents wizard
-- [Slash Commands](/docs/ai-access/slash-commands) — full reference for the 9 `/docjacket:` commands the plugin adds to Cowork + Claude Code
+- [Slash Commands](/docs/ai-access/slash-commands) — full reference for the `/docjacket:` commands the plugin adds to Cowork + Claude Code
 - [Tool Catalog (`mcp_catalog`)](/docs/ai-access/tool-catalog) — the self-discovery tool that returns DocJacket's live inventory
 - [How the OAuth flow works](/docs/ai-access/oauth) — the underlying protocol
 - [AI Access overview](/docs/ai-access) — section index
