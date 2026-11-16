@@ -56,7 +56,7 @@ The Gemini CLI is a command-line tool for developers. It connects to DocJacket w
 
 To see what your token can reach, ask it to use DocJacket's `mcp_catalog` tool. The full list is in the [Tool Catalog](/docs/ai-access/tool-catalog).
 
-On DocJacket's Free plan, your organization gets 100 AI tool calls a month, and Gemini CLI calls count. Paid plans have no monthly limit. Details: [Free plan limit](/docs/ai-access/use-from-your-assistant#free-plan-limit).
+On DocJacket's Free plan, your organization gets 50 AI tool calls a month, and Gemini CLI calls count. Paid plans have no monthly limit. Details: [Free plan limit](/docs/ai-access/use-from-your-assistant#free-plan-limit).
 
 ### Revoke the token
 

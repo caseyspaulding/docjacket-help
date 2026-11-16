@@ -102,7 +102,7 @@ It only reads. It doesn't send emails or change your deals.
 
 ## Free plan limit
 
-On DocJacket's Free plan, your organization gets 100 AI tool calls a month. Paid plans have no monthly limit. Details: [Free plan limit](/docs/ai-access/use-from-your-assistant#free-plan-limit).
+On DocJacket's Free plan, your organization gets 50 AI tool calls a month. Paid plans have no monthly limit. Details: [Free plan limit](/docs/ai-access/use-from-your-assistant#free-plan-limit).
 
 ## See or remove a connection
 

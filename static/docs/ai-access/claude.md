@@ -127,7 +127,7 @@ Inside DocJacket:
 
 **"Token is invalid, expired, or revoked"** — Your token has been revoked (from DocJacket → Settings → API & AI Access) or your assistant has been disconnected for more than 90 days. Re-consent to reconnect.
 
-**Which DocJacket plan do I need?** — Any. AI Access is included with every DocJacket plan. On the Free plan, your organization gets 100 AI tool calls a month; paid plans have no monthly limit. See [Free plan limit](/docs/ai-access/use-from-your-assistant#free-plan-limit).
+**Which DocJacket plan do I need?** — Any. AI Access is included with every DocJacket plan. On the Free plan, your organization gets 50 AI tool calls a month; paid plans have no monthly limit. See [Free plan limit](/docs/ai-access/use-from-your-assistant#free-plan-limit).
 
 ## Read more
 

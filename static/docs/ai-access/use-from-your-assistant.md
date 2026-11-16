@@ -115,16 +115,16 @@ Who can connect:
 
 ## Free plan limit
 
-On DocJacket's **Free plan**, your organization gets **100 AI tool calls a month**. Paid plans have no monthly limit.
+On DocJacket's **Free plan**, your organization gets **50 AI tool calls a month**. Paid plans have no monthly limit.
 
 - **What is a call?** Each time your AI looks something up or makes a change in DocJacket, that is one call. One question can use several calls.
 - **Who shares it?** Everyone in your organization shares the same 100.
 - **When does it reset?** On the 1st of each month, in your organization's time zone.
 - **What doesn't count?** Calls that fail, checking the connection, and looking up your plan or the upgrade link. Ask AI inside DocJacket does not count either.
 
-From the 80th call, your AI is told how many calls you have used. After 100, DocJacket stops answering your AI until the 1st. Your AI shows a message like this:
+From the 40th call, your AI is told how many calls you have used. After 50, DocJacket stops answering your AI until the 1st. Your AI shows a message like this:
 
-> This DocJacket organization is on the Free plan, which includes 100 AI agent tool calls a month, and has used them for November. They reset on December 1. Upgrade to keep going.
+> This DocJacket organization is on the Free plan, which includes 50 AI agent tool calls a month, and has used them for November. They reset on December 1. Upgrade to keep going.
 
 To remove the limit, an Owner or Admin upgrades in DocJacket under **Settings**, then **Billing**. See [Plans & Pricing](/docs/billing/plans-and-pricing).
 

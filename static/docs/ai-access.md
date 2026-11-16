@@ -39,7 +39,7 @@ DocJacket's tools come in three permission tiers. You choose a tier when you con
 
 **[Browse every tool →](/docs/ai-access/tool-catalog)** — the complete catalog with descriptions, gotchas, and example calls, readable without connecting anything.
 
-**Free plan:** your organization gets 100 AI tool calls a month. Paid plans have no monthly limit. See [Free plan limit](/docs/ai-access/use-from-your-assistant#free-plan-limit).
+**Free plan:** your organization gets 50 AI tool calls a month. Paid plans have no monthly limit. See [Free plan limit](/docs/ai-access/use-from-your-assistant#free-plan-limit).
 
 ## Get started
 

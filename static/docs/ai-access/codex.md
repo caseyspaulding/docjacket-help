@@ -20,7 +20,7 @@ The same DocJacket MCP server backs all three. Connect once per surface.
 
 ## Before you start
 
-- **A DocJacket account on any plan.** On DocJacket's Free plan, your organization gets 100 AI tool calls a month; paid plans have no monthly limit. See [Free plan limit](/docs/ai-access/use-from-your-assistant#free-plan-limit).
+- **A DocJacket account on any plan.** On DocJacket's Free plan, your organization gets 50 AI tool calls a month; paid plans have no monthly limit. See [Free plan limit](/docs/ai-access/use-from-your-assistant#free-plan-limit).
 - **For ChatGPT:** your ChatGPT plan must allow custom connectors. Not every plan does, and on a business workspace an admin may need to turn it on first.
 - **On some plans, ChatGPT only allows read-only connectors.** If DocJacket can read your deals from ChatGPT but can't make changes, check your ChatGPT plan.
 
