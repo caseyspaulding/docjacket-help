@@ -67,6 +67,8 @@ DocJacket's tools come in three permission tiers:
 | `draft` | Change tasks, key dates, Playbooks and status inside DocJacket. Sends no email. | `create_tasks`, `update_key_date`, `apply_checklist` |
 | `actions` | Send emails you approve, and make other changes | `send_client_update`, `apply_extraction`, `create_reminder` |
 
+An email sent from the `actions` tier goes out only from your own connected Gmail or Outlook account, never from DocJacket's email service. Connect one in DocJacket under **Settings > Integrations** first. See [Emails send from your own mailbox](/docs/ai-access/use-from-your-assistant#own-mailbox).
+
 **[Browse every tool →](/docs/ai-access/tool-catalog)**: the complete catalog with descriptions, gotchas, and example calls.
 
 You don't need to remember tool names; Claude picks the right tool from your question. To see the inventory *your* connection can reach, ask Claude to use `mcp_catalog`.
