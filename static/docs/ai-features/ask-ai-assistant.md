@@ -61,6 +61,7 @@ When you ask for a change, the assistant puts it on a card under its answer. For
 - Adding, editing, pinning or removing an internal note (see [Internal notes](#internal-notes))
 - Adding someone to a deal, taking them off, or moving them to another role
 - Restoring an archived deal (see [below](#restore-archived-deal))
+- Emailing an update to the buyer, seller or co-agent, sent from your own connected mailbox (see [below](#client-update-email))
 - Deleting tasks. Their subtasks go with them, and their unsent reminders, scheduled follow-up emails and review drafts are cancelled. See [Deleting tasks](#deleting-tasks).
 
 The card's heading reads **Ready to do — nothing happens until you approve**. On the card:
@@ -150,6 +151,14 @@ Undo is only on the card. The **Delete** button on a deal's **Tasks** tab has no
 Open a task on a deal's **Tasks** tab and click **Ask the assistant** in the task's drawer. Hover text on the button reads "Open Ask AI about this task. Nothing changes until you approve it." Ask AI opens with this in the message box: *Help me get this task done: "[the task name]". Tell me what it needs, and propose anything you can do for me to approve.* Nothing is sent until you press **Send**. View-only seats see the button too, because asking changes nothing.
 
 ![A task drawer with the Ask the assistant button, and Ask AI open beside it with the message "Help me get this task done" filled in and not yet sent](/img/ai-features/ask-the-assistant-task-drawer.png)
+
+### Emailing an update to someone on the deal {#client-update-email}
+
+Ask the assistant to email the buyer, seller or co-agent where the deal stands, and it puts the email on a card. The card shows who it goes to (a contact already on the deal), the subject, the full message and when it sends. It can't attach files.
+
+The email sends only from **your own** connected Gmail or Outlook mailbox. It never goes from DocJacket's email service or from the account owner's mailbox, whatever your organization's **Only send transaction email from a connected mailbox** setting says. Connect a mailbox under **Settings > Integrations** first. With no connected mailbox, approving the card sends nothing: "Connect your Gmail or Outlook account to send this email. Nothing was sent."
+
+After you approve, the card says "Queued to send from your connected mailbox", not "Sent", because the email can still fail in your mailbox. If your organization reviews emails first, the card says **In your Review Queue** instead. Whoever approves it there needs their own connected mailbox; if they have none, the email is not sent and the approval fails with the same message.
 
 ### Questions about a deal's notes, email and texts {#deal-reads}
 

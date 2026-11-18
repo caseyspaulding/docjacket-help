@@ -5908,6 +5908,7 @@ depending on how it was sent:
 | A portal link email you send (**Send Portal Links**, a link's **Send via Email**, or an agent's portal link) | **Your own** mailbox: the deal's pin if the pinned mailbox is yours, otherwise your default mailbox. If you have no connected mailbox, the send is refused. There is no fallback, whatever the setting below says (see [Sharing Portal Links](../client-portal/sharing-portal-links.mdx#portal-link-emails-come-from-your-own-mailbox)) |
 | Task emails, reminders, scheduled emails, and automation-rule emails, including ones that carry `{{portal_link}}` | The deal's **assignee's default mailbox**. If the deal is unassigned, or the assignee has no connected mailbox, see [Requiring a connected mailbox](#requiring-a-connected-mailbox) |
 | Transaction Summaries and other scheduled reports | The person who **created the schedule** |
+| An email an assistant wrote: Ask AI, Claude, ChatGPT, Codex, or the DocJacket API (client updates, agent follow-ups, document requests, compliance sends) | The connected mailbox of the person who **confirms or approves it**. Never DocJacket's email service and never the account owner's mailbox, whatever the setting below says. With no connected mailbox, nothing is sent: "Connect your Gmail or Outlook account to send this email. Nothing was sent." See [Email from your AI assistant](../ai-access/use-from-your-assistant.mdx#own-mailbox) |
 
 If that person hasn't connected a mailbox, what happens depends on one organization setting:
 
@@ -9223,6 +9224,7 @@ When you ask for a change, the assistant puts it on a card under its answer. For
 - Adding, editing, pinning or removing an internal note (see [Internal notes](#internal-notes))
 - Adding someone to a deal, taking them off, or moving them to another role
 - Restoring an archived deal (see [below](#restore-archived-deal))
+- Emailing an update to the buyer, seller or co-agent, sent from your own connected mailbox (see [below](#client-update-email))
 - Deleting tasks. Their subtasks go with them, and their unsent reminders, scheduled follow-up emails and review drafts are cancelled. See [Deleting tasks](#deleting-tasks).
 
 The card's heading reads **Ready to do — nothing happens until you approve**. On the card:
@@ -9312,6 +9314,14 @@ Undo is only on the card. The **Delete** button on a deal's **Tasks** tab has no
 Open a task on a deal's **Tasks** tab and click **Ask the assistant** in the task's drawer. Hover text on the button reads "Open Ask AI about this task. Nothing changes until you approve it." Ask AI opens with this in the message box: *Help me get this task done: "[the task name]". Tell me what it needs, and propose anything you can do for me to approve.* Nothing is sent until you press **Send**. View-only seats see the button too, because asking changes nothing.
 
 ![A task drawer with the Ask the assistant button, and Ask AI open beside it with the message "Help me get this task done" filled in and not yet sent](/img/ai-features/ask-the-assistant-task-drawer.png)
+
+### Emailing an update to someone on the deal {#client-update-email}
+
+Ask the assistant to email the buyer, seller or co-agent where the deal stands, and it puts the email on a card. The card shows who it goes to (a contact already on the deal), the subject, the full message and when it sends. It can't attach files.
+
+The email sends only from **your own** connected Gmail or Outlook mailbox. It never goes from DocJacket's email service or from the account owner's mailbox, whatever your organization's **Only send transaction email from a connected mailbox** setting says. Connect a mailbox under **Settings > Integrations** first. With no connected mailbox, approving the card sends nothing: "Connect your Gmail or Outlook account to send this email. Nothing was sent."
+
+After you approve, the card says "Queued to send from your connected mailbox", not "Sent", because the email can still fail in your mailbox. If your organization reviews emails first, the card says **In your Review Queue** instead. Whoever approves it there needs their own connected mailbox; if they have none, the email is not sent and the approval fails with the same message.
 
 ### Questions about a deal's notes, email and texts {#deal-reads}
 
@@ -9707,6 +9717,8 @@ DocJacket's tools come in three permission tiers. You choose a tier when you con
 | `draft` | Change tasks, key dates, Playbooks and status inside DocJacket. Sends no email. | `create_tasks`, `update_key_date`, `apply_checklist` |
 | `actions` | Send emails you approve, and make other changes | `send_client_update`, `apply_extraction`, `create_reminder` |
 
+An email sent from the `actions` tier goes out only from your own connected Gmail or Outlook account, never from DocJacket's email service. Connect one in DocJacket under **Settings > Integrations** first. See [Emails send from your own mailbox](/docs/ai-access/use-from-your-assistant#own-mailbox).
+
 **[Browse every tool →](/docs/ai-access/tool-catalog)** — the complete catalog with descriptions, gotchas, and example calls, readable without connecting anything.
 
 **Free plan:** your organization gets 50 AI tool calls a month. Paid plans have no monthly limit. See [Free plan limit](/docs/ai-access/use-from-your-assistant#free-plan-limit).
@@ -9871,6 +9883,24 @@ Your AI never sends an email on its first try.
 
 If you say no, nothing is sent. Your AI should not tell you an email was sent before step 2 or 3 is done.
 
+## Emails send from your own mailbox {#own-mailbox}
+
+Before your AI can send an email, connect your Gmail or Outlook account in DocJacket under **Settings > Integrations**. Every email your AI writes (client updates, agent follow-ups, emails to agents, document requests, held emails it releases, and documents sent to your compliance system) goes out only from the connected mailbox of the person who says yes. It never goes from DocJacket's email service or from the account owner's mailbox, whatever your organization's **Only send transaction email from a connected mailbox** setting says.
+
+If you say yes and you have no connected mailbox, nothing is sent and your AI is told:
+
+> Connect your Gmail or Outlook account to send this email. Nothing was sent.
+
+For documents sent to your compliance system, the message names the system, for example "Connect your Gmail or Outlook account to send documents to SkySlope."
+
+The email stays in your **Review queue**, where a teammate with a connected mailbox can approve it. Or connect your own mailbox and ask your AI to prepare the email again, so you get a fresh preview.
+
+If the email waits in the Review queue and someone with no connected mailbox approves it there, it is not sent either. The approval fails with the same message.
+
+The DocJacket API follows the same rule: `POST /api/v1/emails/confirm` answers `409` with the code `NO_CONNECTED_MAILBOX`.
+
+Only email your AI writes works this way. Automated email from your Playbooks and Automation Rules follows your organization's settings, and sign-in links come from DocJacket's email service. See [How Email Sending Works](/docs/messages/how-email-sending-works).
+
 ## What it cannot do
 
 Even with the highest access, your AI cannot:
@@ -9977,6 +10007,8 @@ DocJacket's tools come in three permission tiers:
 | `read` | Look things up. Changes nothing. | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
 | `draft` | Change tasks, key dates, Playbooks and status inside DocJacket. Sends no email. | `create_tasks`, `update_key_date`, `apply_checklist` |
 | `actions` | Send emails you approve, and make other changes | `send_client_update`, `apply_extraction`, `create_reminder` |
+
+An email sent from the `actions` tier goes out only from your own connected Gmail or Outlook account, never from DocJacket's email service. Connect one in DocJacket under **Settings > Integrations** first. See [Emails send from your own mailbox](/docs/ai-access/use-from-your-assistant#own-mailbox).
 
 **[Browse every tool →](/docs/ai-access/tool-catalog)**: the complete catalog with descriptions, gotchas, and example calls.
 
@@ -10114,6 +10146,8 @@ DocJacket's tools come in three permission tiers. You pick one when you consent,
 | `read` | Look things up. Changes nothing. | `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions` |
 | `draft` | Change tasks, key dates, Playbooks and status inside DocJacket. Sends no email. | `create_tasks`, `update_key_date`, `apply_checklist` |
 | `actions` | Send emails you approve, and make other changes | `send_client_update`, `apply_extraction`, `create_reminder` |
+
+An email sent from the `actions` tier goes out only from your own connected Gmail or Outlook account, never from DocJacket's email service. Connect one in DocJacket under **Settings > Integrations** first. See [Emails send from your own mailbox](/docs/ai-access/use-from-your-assistant#own-mailbox).
 
 **[Browse every tool →](/docs/ai-access/tool-catalog)**: the complete catalog with descriptions, gotchas, and example calls.
 
@@ -13025,6 +13059,7 @@ Every email an assistant writes is first placed in your **Review queue**. What h
 
 - **If your organization reviews outgoing email, or something about the email requires a review**, it stays in the Review queue until a team member approves it in DocJacket.
 - **If review is off and nothing requires it**, the assistant gets a preview of the exact email and a one-time confirm code that is good for 30 minutes. It shows you the preview, and the email goes out only after you say yes.
+- **It sends only from a connected mailbox.** The email goes from the Gmail or Outlook account of the person who confirms or approves it, never from DocJacket's email service or the account owner's mailbox, whatever the organization's connected-mailbox setting says. With no connected mailbox, the confirm is refused with `NO_CONNECTED_MAILBOX` ("Connect your Gmail or Outlook account to send this email. Nothing was sent."; over the API, a `409`) and the email stays in the Review queue. See [Emails send from your own mailbox](/docs/ai-access/use-from-your-assistant#own-mailbox).
 - **After you say yes, the email is queued, not yet sent.** Whether it went out arrives afterwards as an `email.sent` or `email.failed` [webhook event](/docs/api/webhooks) for anyone listening.
 - **Who it can email.** An assistant can email the contacts on the deal and the active members of your own organization. An email to anyone else stays in the Review queue.
 - **Held emails.** An assistant can list and read the emails held in your Review queue, and discard one. It can approve and release a held email only in an organization that has that turned on; elsewhere, a team member approves it in DocJacket.
@@ -16603,6 +16638,10 @@ Use **Settings > Organization** to turn on **Only send transaction email from a 
 - If no mailbox is connected, a manual send is blocked with a prompt to connect one, and an automated send is held until a mailbox is connected. The account owner is notified so it can be reconnected.
 
 This setting is on by default. Turn it off to let DocJacket's email service send as a fallback when a connected mailbox isn't available. See [How Email Sending Works](../messages/how-email-sending-works.mdx).
+
+Emails written by an AI assistant (Ask AI, Claude, ChatGPT or the DocJacket API) always send from a connected mailbox, whatever this setting says. They go from the mailbox of the person who confirms or approves them, never from DocJacket's email service and never from the account owner's mailbox. If that person has no connected mailbox, nothing is sent and they're asked to connect Gmail or Outlook.
+
+Automated email, such as task emails, reminders and Automation Rule emails, still follows this setting. Sign-in links still come from DocJacket's email service.
 
 ## Working Hours
 

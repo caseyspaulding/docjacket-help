@@ -138,6 +138,24 @@ Your AI never sends an email on its first try.
 
 If you say no, nothing is sent. Your AI should not tell you an email was sent before step 2 or 3 is done.
 
+## Emails send from your own mailbox {#own-mailbox}
+
+Before your AI can send an email, connect your Gmail or Outlook account in DocJacket under **Settings > Integrations**. Every email your AI writes (client updates, agent follow-ups, emails to agents, document requests, held emails it releases, and documents sent to your compliance system) goes out only from the connected mailbox of the person who says yes. It never goes from DocJacket's email service or from the account owner's mailbox, whatever your organization's **Only send transaction email from a connected mailbox** setting says.
+
+If you say yes and you have no connected mailbox, nothing is sent and your AI is told:
+
+> Connect your Gmail or Outlook account to send this email. Nothing was sent.
+
+For documents sent to your compliance system, the message names the system, for example "Connect your Gmail or Outlook account to send documents to SkySlope."
+
+The email stays in your **Review queue**, where a teammate with a connected mailbox can approve it. Or connect your own mailbox and ask your AI to prepare the email again, so you get a fresh preview.
+
+If the email waits in the Review queue and someone with no connected mailbox approves it there, it is not sent either. The approval fails with the same message.
+
+The DocJacket API follows the same rule: `POST /api/v1/emails/confirm` answers `409` with the code `NO_CONNECTED_MAILBOX`.
+
+Only email your AI writes works this way. Automated email from your Playbooks and Automation Rules follows your organization's settings, and sign-in links come from DocJacket's email service. See [How Email Sending Works](/docs/messages/how-email-sending-works).
+
 ## What it cannot do
 
 Even with the highest access, your AI cannot:
