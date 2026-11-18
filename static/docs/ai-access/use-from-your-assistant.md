@@ -38,7 +38,7 @@ Not sure? Claude is the simplest to set up today.
 - **Update tasks, key dates and reminders.** "Move the appraisal task to Friday."
 - **Run a pre-closing check.** "Check 1234 Main St before closing."
 - **Find, add and link contacts.** "Add the title officer to the Main St deal."
-- **Build, publish and share an Online Form.** "Build a buyer intake form and make me a link." Your AI shows you what it will create and waits for your yes first. See [Building, publishing and sharing an Online Form](/docs/ai-features/ask-ai-assistant#online-forms). This needs the **Act on your behalf** access.
+- **Build, publish and share an Online Form.** "Build a buyer intake form and make me a link." Your AI must show you a preview and get your yes before it publishes, shares, switches off or deletes; making a draft follows your AI app's own approval step. See [Building, publishing and sharing an Online Form](/docs/ai-features/ask-ai-assistant#online-forms). This needs the **Act on your behalf** access.
 
 What it can do depends on the access you give it. See [The consent screen](#the-consent-screen).
 

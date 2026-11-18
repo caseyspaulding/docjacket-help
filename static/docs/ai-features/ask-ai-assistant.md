@@ -168,7 +168,7 @@ AI apps you connect to DocJacket can read the same parts of a deal. See [AI Acce
 
 ## Building, publishing and sharing an Online Form {#online-forms}
 
-Ask Ask AI to build an [Online Form](../templates/online-forms.md) and it can do the work in the chat. For example:
+Ask Ask AI to build an [Online Form](../templates/online-forms.md) and it can do the work in the chat. This is about Ask AI; it doesn't read form submissions. For example:
 
 - *"Build a buyer intake form: name, email, phone, price range, and whether they're pre-approved. Each submission should start a new deal."*
 - *"Copy the Seller Intake starter form and add a question about occupancy."*
@@ -187,7 +187,7 @@ Forms the assistant builds are normal Online Forms. They appear under **My Forms
 
 ### It shows you a preview and waits for your yes
 
-The assistant never creates, publishes or shares a form on its first reply. It shows a preview and asks. Nothing happens until you answer **yes** in your next message. The preview lists:
+The assistant never creates, publishes or shares a form on its first reply. It shows a preview and asks. In Ask AI, nothing is created, copied, changed, published or shared until you answer **yes** in your next message. (A connected AI works differently: see [Connect your AI](../ai-access/use-from-your-assistant.mdx).) The preview lists:
 
 - What the form is for, and what each submission does. A submission always waits in your inbox for review first.
 - Every field, in order, with its section. A field that shows only when another answer matches says so in words, for example *Show 'Lender name' only when 'Pre-approved' equals 'yes'*.
