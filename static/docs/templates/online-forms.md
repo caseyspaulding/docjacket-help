@@ -30,6 +30,16 @@ The builder has three steps:
 - **Fields** — Field canvas, field palette, field properties, ordering, and conditional display
 - **Share** — Public or transaction-specific links, version history, and form preview
 
+## Building a form with Ask AI
+
+You can also ask [Ask AI](../ai-features/ask-ai-assistant.mdx#online-forms) (open it with **Ask a question** in the left sidebar), or an AI you have connected to DocJacket, to build a form for you: *"Build a buyer intake form with name, email, phone and price range."* It can create a form from your description or copy one of the **DocJacket Forms** starters, add fields, publish the form, create a share link, switch a link off, and delete a draft that was never published and has no submissions.
+
+- **It asks first.** In Ask AI the assistant shows a preview: the purpose, every field, which answers are saved onto the deal and which are captured only on the submission, and for a share link, that anyone with the link can open it, plus its expiry and submission limit. In Ask AI, nothing is created, published or shared until you reply **yes** in the conversation, and a preview is good for 30 minutes. If you use a connected AI, it must show you a preview and get your yes before it publishes, shares, switches off or deletes; making a draft follows your AI app's own approval step.
+- **The result is a normal form.** It appears under **My Forms**. Open it in the builder to change the fields, welcome message, theme or Playbook Binding, or to deactivate or delete it.
+- **Some forms need you.** The assistant won't create a share link for a form with file uploads, contact or company pickers, or participant fields. It can build and publish the form; open the **Share** step in the builder to review it and create the link yourself.
+- **Limits.** It works for people who can change forms themselves (an Owner or Admin, or any team member when an Owner has turned on **Allow team members to edit Playbooks and settings**), not for view-only seats or members limited to their own deals. An organization can have the assistant create up to 20 forms and 20 share links in 24 hours.
+- **Undo.** Switch a link off, or delete a draft. It can't delete a published form or one that has a submission; use the form builder for those.
+
 ## My Forms and DocJacket Forms
 
 The Online Forms page has two tabs:

@@ -2,14 +2,14 @@
 title: What the Ask AI Assistant Can Do for You
 sidebar_label: Ask AI Assistant
 sidebar_position: 7
-description: Ask AI can open forms already filled in, prepare changes you approve on a card (tasks, key dates, internal notes and more), read a deal's notes and email, check a deal for problems, restore an archived deal, write email templates, and help set up your organization. Nothing is saved until you approve it.
+description: Ask AI can open forms already filled in, prepare changes you approve on a card (tasks, key dates, internal notes and more), build, publish and share an Online Form after you say yes, read a deal's notes and email, check a deal for problems, restore an archived deal, write email templates, and help set up your organization. Nothing is saved until you approve it.
 ---
 
 # What the Ask AI Assistant Can Do for You
 
 Ask AI is the assistant inside DocJacket. Open it with **Ask a question** in the left sidebar. It answers questions, and it can also do work for you: fill in a form, complete or skip tasks, add a note, change key dates, check a deal for problems, and help set up your organization.
 
-One rule holds for all of it: **the assistant prepares, you approve.** Nothing is saved until you press the form's own button or approve the change on a card.
+One rule holds for all of it: **the assistant prepares, you approve.** Nothing is saved until you press the form's own button, approve the change on a card, or, for [Online Forms](#online-forms), say yes to the preview in the chat.
 
 ## It opens forms already filled in {#forms-filled-in}
 
@@ -163,6 +163,59 @@ On a deal, Ask AI can look up the deal's internal notes, email, text messages, s
 
 AI apps you connect to DocJacket can read the same parts of a deal. See [AI Access](../ai-access/index.mdx).
 
+## Building, publishing and sharing an Online Form {#online-forms}
+
+Ask Ask AI to build an [Online Form](../templates/online-forms.md) and it can do the work in the chat. This is about Ask AI; it doesn't read form submissions. For example:
+
+- *"Build a buyer intake form: name, email, phone, price range, and whether they're pre-approved. Each submission should start a new deal."*
+- *"Copy the Seller Intake starter form and add a question about occupancy."*
+- *"Publish it and give me a link that stops after 100 submissions."*
+
+It can:
+
+- Create a form from your description, or copy one of the **DocJacket Forms** starters into **My Forms**.
+- Add fields to a form your organization owns.
+- Publish a form.
+- Create a share link, with an expiry date or a limit on submissions if you ask for one.
+- Switch a share link off.
+- Delete a draft that was never published and has no submissions.
+
+Forms the assistant builds are normal Online Forms. They appear under **My Forms**, and you can open them in the form builder and change anything afterwards.
+
+### It shows you a preview and waits for your yes
+
+The assistant never creates, publishes or shares a form on its first reply. It shows a preview and asks. In Ask AI, nothing is created, copied, changed, published or shared until you answer **yes** in your next message. (A connected AI works differently: see [Connect your AI](../ai-access/use-from-your-assistant.mdx).) The preview lists:
+
+- What the form is for, and what each submission does. A submission always waits in your inbox for review first.
+- Every field, in order, with its section. A field that shows only when another answer matches says so in words, for example *Show 'Lender name' only when 'Pre-approved' equals 'yes'*.
+- Which answers are saved onto the deal and which are **captured only** on the submission. If an answer is captured only, the preview says so.
+- For a share link: who can fill it in (anyone who has the link), when it expires, and how many submissions it takes. If you didn't set an expiry or a limit, the preview says **it never expires** and **there is no cap on submissions**, so you can ask for one before you say yes.
+- Anything that looks wrong, such as a form where no field would be saved as the property address, a buyer or a seller.
+
+Change your mind or want an edit? Say so instead of yes, and the assistant previews again. Your yes applies only to the exact preview you were shown. If the preview is more than 30 minutes old, or you ask for something different, the assistant shows a new preview first.
+
+When it's done, the assistant gives you the share link in the chat. The link uses your organization's own web address.
+
+:::note A published form is not the same as a shared form
+Publishing saves the form's fields as its live version. It's the share link that lets people open the form, and a form with a link can be filled in whether or not it is published. Publishing can't be undone, so the assistant says that in its preview.
+:::
+
+### What it won't do with forms
+
+- **Share a form with file uploads, contact or company pickers, or participant fields.** The assistant can still create and publish that form, but it refuses to create the share link and says why. Open the form in the builder, review it, and create the link in the **Share** step yourself.
+- **Delete a published form, or a form that has any submission.** It also only deletes drafts you created yourself. For anything else, switch the link off, or delete the form in the builder.
+- **Edit a DocJacket starter form.** Starters are read-only. The assistant copies one into **My Forms** and works on the copy.
+- **Work for everyone.** Changing forms takes the same permission as changing them yourself: an Owner or Admin, or any other team member when an Owner has turned on **Allow team members to edit Playbooks and settings**. A view-only seat can't. A member limited to their own deals can't use the assistant for forms.
+- **Run without limits.** Each organization can have the assistant create up to 20 forms and 20 share links in 24 hours, and a form can have up to 12 sections and 80 fields. Past that, build in the form builder or try again later.
+
+To change the form's welcome message, theme or Playbook Binding, use the form builder. The assistant doesn't set those.
+
+### Undoing it
+
+- **Switch a share link off.** Ask the assistant to turn off the link. People who have it can no longer open the form. You can turn it back on later: in the form builder's **Share** step, hover the link's button and choose **Activate**.
+- **Delete a draft.** While the form is unpublished and has no submissions, ask the assistant to delete it. Its share links stop working with it.
+- **Anything else.** Open the form under **Templates > Online Forms** and edit, deactivate or delete it there. See [Online Forms](../templates/online-forms.md).
+
 ## "Is anything wrong with this deal?" {#deal-check}
 
 Open a deal and ask *"Is anything wrong with this deal?"*, or say what looks off (*"Why is the appraisal showing overdue?"*). The assistant checks the deal's key dates, its open tasks, its side and agents, and the people on it. Then it tells you what it found and shows you where. If it finds nothing wrong, it says so.
@@ -277,6 +330,7 @@ After you approve a card, most changes show **Undo** on the card for 7 days.
 | Deleting tasks | Yes, for 7 days. See [Deleting tasks](#deleting-tasks). |
 | Adding, editing, pinning, removing or bringing back a note | Yes, for 7 days. |
 | Adding key dates | Yes, for 7 days. Undo marks them not applicable; they aren't deleted. |
+| Creating, publishing or sharing an online form | No Undo button on a card, because there is no card. Switch the share link off, or delete a draft that was never published and has no submissions. See [Undoing it](#undoing-it). |
 | Changing a key date's name, notes, time or location | Yes, for 7 days. |
 | Resetting a hand-set date | Yes, for 7 days, when the key date had a date before. It puts that date back as a hand-set date. |
 | Reordering key dates, or linking or unlinking a task | Yes, for 7 days. |
@@ -300,6 +354,7 @@ Some things stay with you, even if you ask and would approve:
 - [AI Features overview](./index.mdx)
 - [Text the Assistant (SMS)](./text-the-assistant.mdx)
 - [Restoring an Archived Transaction](../transactions/restoring-an-archived-transaction.mdx)
+- [Online Forms](../templates/online-forms.md)
 - [Email Templates](../templates/email-templates.md)
 - [User Management](../settings/user-management.mdx)
 - [Organization Settings](../settings/organization-settings.mdx)
