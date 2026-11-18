@@ -52,10 +52,12 @@ Document statuses with existing usage cannot be deleted. Change the affected doc
 
 ### Set a status on a document
 
+For the full steps, including how to approve a file, see [Approve a document or set its review status](../documents/uploading-documents.mdx#approve-a-document-or-set-its-review-status).
+
 Statuses you create here appear on a transaction's **Documents** tab, **Files** subtab (Documents Received). Only active statuses are offered. There are three ways to set one:
 
 - Click the status badge on a file's row (its tooltip reads "Click to change status") and pick a status.
-- Open the row's **...** menu, or right-click the row, and choose **Set status**.
+- Open the row's **...** menu, or right-click the row, and choose **Set status**. Use this when the **Document Status** column is out of view on a smaller window.
 - Tick several rows and click **Set status** in the bar above the list to change them all at once.
 
 Team members on a read-only seat cannot change a status.
@@ -69,7 +71,7 @@ Setting a file to **Rejected** from the Documents tab:
 - shows a warning chip on the file's row (the same chip appears for **Revision Requested**);
 - does **not** email the other party, send a correction request, add a note to the deal, or reopen the matching Documents Needed item.
 
-The Documents tab does not ask for a reason when you reject a file.
+DocJacket asks **What's wrong with this document? (optional)** before it saves the rejection. The reason you type is included in the uploader's notification and email, and shows when you hover the **Rejected** chip on the row.
 
 To record the problem and request a corrected copy, follow [When a received document is wrong](../documents/audit-mode.mdx#when-a-received-document-is-wrong).
 
