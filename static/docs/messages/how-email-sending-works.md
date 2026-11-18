@@ -142,9 +142,9 @@ Because DocJacket never reads your inbox, a reply that only went to Gmail or Out
 
 ## Requiring a connected mailbox
 
-Organizations that want every deal email to come from a real mailbox — never a
-`@docjacket.com` address — can turn on **Only send transaction email from a
-connected mailbox** in **Settings > Organization**.
+**Only send transaction email from a connected mailbox**, in
+**Settings > Organization**, makes every deal email come from a real mailbox,
+never a `@docjacket.com` address. It is on by default.
 
 When this is on:
 
