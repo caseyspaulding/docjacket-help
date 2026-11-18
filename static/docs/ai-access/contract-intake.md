@@ -84,6 +84,7 @@ When you confirm `apply_extraction`:
 - ✅ **All parties added** as transaction contacts (existing contacts are matched by email when possible to avoid duplicates)
 - ✅ **Key dates** populated on the timeline — inspection, financing, appraisal, closing, EMD due
 - ✅ **Key dates available for timeline/checklist workflows** after the transaction is created
+- ✅ **Playbook** applied only when exactly one of your organization's Playbooks matches the deal. Otherwise none is applied, and the assistant tells you which workflow it suggests so you can choose
 
 Everything is editable in the DocJacket web app afterward.
 
@@ -111,7 +112,7 @@ The fastest way to see it work:
 2. Grab any sample purchase contract PDF.
 3. Drop it in chat and say: *"Open this and set up the deal."*
 4. Review the extracted fields, fix anything wrong, confirm.
-5. Open DocJacket → Transactions — the new deal is there with parties, dates, checklist, and reminders.
+5. Open DocJacket → Transactions — the new deal is there with its parties and key dates, plus a Playbook if exactly one of yours matched the deal.
 
 ## Read more
 

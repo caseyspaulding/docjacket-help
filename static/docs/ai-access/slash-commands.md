@@ -45,9 +45,9 @@ Each command chains DocJacket MCP tools — see the [full tool catalog](/docs/ai
 
 > *"Brief me on what needs attention across all my active deals."*
 
-Walks every active transaction, surfaces what's on the calendar today + this week, flags overdue items, checks the connected mailbox for unread mail from parties, and lists missing docs across deals.
+Walks every active transaction, surfaces what's on the calendar today + this week, flags overdue items, checks the connected mailbox for unread mail from parties, and lists missing docs on deals closing within 14 days.
 
-**Chains:** `list_active_transactions` → `get_next_required_actions` → `get_missing_documents` + `get_checklist_status` per closing-soon deal, plus Gmail/Outlook reads if connected.
+**Chains:** one `get_next_required_actions` call → `get_missing_documents` per deal closing within 14 days, plus Gmail/Outlook/Calendar reads if connected. `list_active_transactions` only if you ask for the list of your deals.
 
 **Best as your first interaction of the day.** Leads with the most urgent items, skips deals with nothing demanding attention, and ends with a "want me to act on any of this?" offer.
 
