@@ -73,6 +73,42 @@ Pick the document category before uploading. The category picker uses the active
 
 Admins can manage document types, document statuses, and naming rules in **Settings > Documents**.
 
+## Approve a document or set its review status
+
+To approve a document, set its status to **Approved** on the file's row. This is the review status of an uploaded file on the **Documents** tab, **Files** subtab. It is separate from checking a requirement off the **Documents Needed** checklist (see [Required-document uploads](#required-document-uploads) below).
+
+The statuses are the ones your organization has active in **Settings > Documents > Document Statuses**. A new organization starts with **Pending**, **Reviewed**, **Approved**, **Rejected**, and **Revision Requested**; an admin can add, rename, or turn off statuses (see [Document Settings](../settings/document-settings.md#document-statuses)).
+
+### Set a status on one file
+
+1. Open the transaction and click the **Documents** tab, then stay on the **Files** subtab.
+2. Find the file's row. In the **Document Status** column, click the status badge (its tooltip reads **Click to change status**) and pick the new status.
+
+If you can't see the **Document Status** column, you have two other ways to set a status from the row itself:
+
+- Click the **...** button at the right end of the row (hover text **More actions**, or right-click the row) and choose **Set status**. The status picker for that row opens, and you choose the status there.
+- Tick the row's checkbox and click **Set status** in the bar above the list.
+
+On a laptop-sized window the file table is wider than the space it has, so the **Document Type**, **Section**, and **Document Status** columns can sit under the **Actions** column or past the right edge of the table. Scroll the table sideways, or zoom the browser out, to bring the **Document Status** column into view. The **...** button stays visible in the **Actions** column.
+
+### Set a status on several files at once
+
+Tick the checkbox on each row, then click **Set status** in the bar above the list and pick a status. Rejecting several files asks one question for all of them.
+
+### What each status does
+
+| Status | What happens |
+| --- | --- |
+| **Approved** | Saves the status and writes "Document approved" to the activity log. The person who uploaded the file gets a **Document Approved** notification in the bell, plus an email if their **Document activity** notification preference is on. Nobody is notified about their own approval, so if you uploaded the file and approve it yourself, you get neither. An uploader who is limited to their own deals and is no longer on this deal is not notified either. |
+| **Rejected** | DocJacket asks **What's wrong with this document? (optional)** before it saves. The status is saved, "Document rejected" is written to the activity log, and the uploader is notified with the reason you typed (same rules as Approved). The row shows a **Rejected** chip with the reason on hover. |
+| **Revision Requested** | Saves the status and shows a **Revision requested** chip on the row. It does not send a notification. |
+| **Reviewed** | Saves the status. It does not send a notification. |
+| **Pending** | Saves the status. It does not send a notification. |
+
+None of these statuses emails the other party in the deal or checks anything off **Documents Needed**. To request a corrected copy from someone, see [When a received document is wrong](./audit-mode.mdx#when-a-received-document-is-wrong).
+
+Team members on a read-only seat cannot change a status.
+
 ## Required-document uploads
 
 If the file satisfies a required document, upload it from the **Documents Needed** checklist instead. That path links the uploaded file directly to the placeholder, updates the received count, and keeps the requirement history together.
