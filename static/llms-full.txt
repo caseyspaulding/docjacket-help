@@ -7804,6 +7804,10 @@ You can only remove a submission that has not changed the deal. **Remove submiss
 
 To clean up a test, remove the submission, then delete the form link itself from the **Form Links** list on the same tab if you no longer need it.
 
+A form that creates a deal has no deal yet, so its submission has no **Remove submission** button. It waits in the Inbox under **Form submissions**. Open it and click **Dismiss** to archive it without creating a deal.
+
+To try a form before you send it, open the builder's **Fields** step and click **Preview & test** to fill it in and test **Submit** as a recipient would.
+
 Create-transaction submissions may enter the intake flow for review and routing before becoming a transaction record.
 
 For the full mapping workflow — including how to capture contingency dates — see [Applying Form Submissions](./applying-form-submissions.md).
