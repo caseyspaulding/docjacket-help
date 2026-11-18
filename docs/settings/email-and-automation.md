@@ -45,7 +45,7 @@ Use **Settings > Organization** to turn on **Only send transaction email from a 
 - The email sends from the sender's connected mailbox, or the account owner's if the sender hasn't connected one.
 - If no mailbox is connected, a manual send is blocked with a prompt to connect one, and an automated send is held until a mailbox is connected. The account owner is notified so it can be reconnected.
 
-Leave this off (the default) to let DocJacket's email service send as a fallback when a connected mailbox isn't available. See [How Email Sending Works](../messages/how-email-sending-works.mdx).
+This setting is on by default. Turn it off to let DocJacket's email service send as a fallback when a connected mailbox isn't available. See [How Email Sending Works](../messages/how-email-sending-works.mdx).
 
 ## Working Hours
 

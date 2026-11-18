@@ -43,8 +43,8 @@ depending on how it was sent:
 
 If that person hasn't connected a mailbox, what happens depends on one organization setting:
 
-- **Setting off (the default):** automated email goes out through DocJacket's email service from a `@docjacket.com` address instead.
-- **Setting on** (**Only send transaction email from a connected mailbox**): it goes from the **account owner's** connected mailbox. If nobody has a connected mailbox, the email waits and the owner is nudged to connect one.
+- **Setting on (the default)** (**Only send transaction email from a connected mailbox**): it goes from the **account owner's** connected mailbox. If nobody has a connected mailbox, the email waits and the owner is nudged to connect one.
+- **Setting off:** automated email goes out through DocJacket's email service from a `@docjacket.com` address instead.
 
 ### Your default mailbox
 
@@ -126,8 +126,8 @@ Automated deal email never sends from someone who is no longer an active member 
 
 What happens to an email for such a deal depends on the **Only send transaction email from a connected mailbox** setting (see [Requiring a connected mailbox](#requiring-a-connected-mailbox)):
 
-- **Setting on:** the email goes from the account owner's connected mailbox. If the owner has none, the email is held and the owner is nudged to connect one.
-- **Setting off (the default):** the email goes through DocJacket's email service, with the account owner as the Reply-To address, so replies reach the owner.
+- **Setting on (the default):** the email goes from the account owner's connected mailbox. If the owner has none, the email is held and the owner is nudged to connect one.
+- **Setting off:** the email goes through DocJacket's email service, with the account owner as the Reply-To address, so replies reach the owner.
 
 A one-off email that a departed member scheduled is not sent. It is marked failed with this message: "The person who scheduled this email is no longer an active member of this organization. Open the scheduled message and send it from your own mailbox."
 
@@ -142,9 +142,9 @@ Because DocJacket never reads your inbox, a reply that only went to Gmail or Out
 
 ## Requiring a connected mailbox
 
-Organizations that want every deal email to come from a real mailbox — never a
-`@docjacket.com` address — can turn on **Only send transaction email from a
-connected mailbox** in **Settings > Organization**.
+**Only send transaction email from a connected mailbox**, in
+**Settings > Organization**, makes every deal email come from a real mailbox,
+never a `@docjacket.com` address. It is on by default.
 
 When this is on:
 
@@ -154,7 +154,7 @@ When this is on:
   prompt to connect one, and an automated send is **held** until a mailbox is
   connected (the account owner is notified).
 
-When it's off (the default), email still prefers a connected mailbox but falls
+When it's off, email still prefers a connected mailbox but falls
 back to DocJacket's email service when none is available.
 
 :::tip
