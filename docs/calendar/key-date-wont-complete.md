@@ -33,7 +33,19 @@ The key date and every listed task are completed together.
 
 Want the key date done but the tasks left open? Uncheck that box before clicking **Complete** — only the key date is completed.
 
-The same dialog appears if you change the key date's **status** in the drawer to one that counts as complete (such as **Completed**). **Waived** and **N/A** close the key date without asking about its tasks. If the date has a calendar invite out and is still ahead, they ask **Also cancel the calendar invite?** instead; see [Calendar Invites](./calendar-invites.md#waived-and-na-dates).
+The same dialog appears if you change the key date's **status** in the drawer to one that counts as complete (such as **Completed**).
+
+## Waived and N/A: skip the linked tasks too
+
+When you set a key date to **Waived** or **N/A** and it still has open linked tasks, DocJacket asks **Also skip the linked tasks?** and lists them, with **Also skip these linked tasks** (or **Also skip this linked task**) checked. Click the button to set the status: the key date closes and every listed task is marked **Skipped**. The same question appears when you click **Mark N/A** on its row in the Key Dates list: there, the highlighted **Skip** button skips them and **Keep them open** closes only the key date.
+
+- Skipped tasks stop their own reminders, so nothing about that work goes out.
+- Nothing is deleted. A skipped task stays on the **Tasks** tab; reopen it to bring it back, and its reminders that haven't passed come back with it.
+- Want the tasks left open? Uncheck the box (or choose **Keep them open**) before you confirm.
+
+If the date also has a calendar invite out and is still ahead, DocJacket first asks **Also cancel the calendar invite?**; see [Calendar Invites](./calendar-invites.md#waived-and-na-dates).
+
+When Ask AI or a connected AI client marks a date waived or not applicable, nobody is asked, so the open linked tasks are skipped by default. Ask AI's card lists how many it will skip before you approve it, and **Undo** reopens them.
 
 ## Option 3: Unlink a task that doesn't belong
 
@@ -49,7 +61,7 @@ To finish it: complete the task again, or unlink it from the key date (Option 3)
 
 To undo a completed key date, open its drawer and click **Reopen**. (For a key date marked **Waived** or **N/A**, the button says **Restore**.)
 
-Closing a key date (**Completed**, **Waived** or **N/A**, or deleting it) cancels its reminders and scheduled emails that haven't gone out yet, and **Reopen** or **Restore** doesn't start them again. Add a new reminder if you still want one. An email for that date that was dismissed or is being held for approval can't be restored or approved once the date is closed. Calendar invites are different: completing a date doesn't cancel an invite that has already gone out, and **Waived** or **N/A** ask first.
+Closing a key date (**Completed**, **Waived** or **N/A**, or deleting it) cancels the key date's own reminders and scheduled emails that haven't gone out yet, and **Reopen** or **Restore** doesn't start them again. A reminder you set on a linked task belongs to the task: it stops only when the task is completed or skipped. Add a new reminder if you still want one. An email for that date that was dismissed or is being held for approval can't be restored or approved once the date is closed. Calendar invites are different: completing a date doesn't cancel an invite that has already gone out, and **Waived** or **N/A** ask first.
 
 :::note Read-only seats
 The **Complete**, **Reopen**, and **Restore** buttons are hidden for team members with a read-only seat. Ask an Owner or Admin, or someone with edit access, to complete the key date.
