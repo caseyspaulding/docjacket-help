@@ -10445,6 +10445,7 @@ When you confirm `apply_extraction`:
 - ✅ **All parties added** as transaction contacts (existing contacts are matched by email when possible to avoid duplicates)
 - ✅ **Key dates** populated on the timeline — inspection, financing, appraisal, closing, EMD due
 - ✅ **Key dates available for timeline/checklist workflows** after the transaction is created
+- ✅ **Playbook** applied only when exactly one of your organization's Playbooks matches the deal. Otherwise none is applied, and the assistant tells you which workflow it suggests so you can choose
 
 Everything is editable in the DocJacket web app afterward.
 
@@ -10472,7 +10473,7 @@ The fastest way to see it work:
 2. Grab any sample purchase contract PDF.
 3. Drop it in chat and say: *"Open this and set up the deal."*
 4. Review the extracted fields, fix anything wrong, confirm.
-5. Open DocJacket → Transactions — the new deal is there with parties, dates, checklist, and reminders.
+5. Open DocJacket → Transactions — the new deal is there with its parties and key dates, plus a Playbook if exactly one of yours matched the deal.
 
 ## Read more
 
@@ -10484,13 +10485,13 @@ The fastest way to see it work:
 ---
 
 {/* GENERATED FILE — do not edit by hand.
-     Source: spec/mcp-catalog.json (161 tools)
+     Source: spec/mcp-catalog.json (163 tools)
      Regenerate: npm run fetch-mcp-catalog && npm run gen-tool-catalog
      Generator: scripts/gen-tool-catalog.mjs */}
 
-# MCP tool catalog — all 161 tools
+# MCP tool catalog — all 163 tools
 
-This is the complete inventory of what an AI assistant can do with DocJacket over the [Model Context Protocol](./index.mdx): **161 tools** — **76** read · **32** draft · **53** actions.
+This is the complete inventory of what an AI assistant can do with DocJacket over the [Model Context Protocol](./index.mdx): **163 tools** — **76** read · **33** draft · **54** actions.
 
 You do not need to connect anything to read this page. It is generated from the live catalog and rendered as static HTML, so a person comparing platforms — or an agent answering *"what can DocJacket actually do?"* — can see the whole surface first.
 
@@ -10501,8 +10502,8 @@ You pick a permission level when you connect, and it is enforced at the token, n
 | Tier | Tools | What it allows |
 |---|---|---|
 | `read` | 76 | Look things up. Nothing in this tier changes a record or contacts anyone. A read-only connection is limited to exactly these tools. |
-| `draft` | 32 | Low-risk writes to your own records — tasks, key dates, checklists, activity notes. Tools in this tier can't write or send an email themselves. When an assistant connected with draft access, and not actions access, marks a task done, the emails that would follow wait in your Review queue for a person to approve. Moving a date can still make an already-scheduled email go out sooner. |
-| `actions` | 53 | Side-effecting work: sending email to a real person, creating and deleting records, and exposing documents outside the organization. |
+| `draft` | 33 | Low-risk writes to your own records — tasks, key dates, checklists, activity notes. Tools in this tier can't write or send an email themselves. When an assistant connected with draft access, and not actions access, marks a task done, the emails that would follow wait in your Review queue for a person to approve. Moving a date can still make an already-scheduled email go out sooner. |
+| `actions` | 54 | Side-effecting work: sending email to a real person, creating and deleting records, and exposing documents outside the organization. |
 
 Every write, in either write tier, is confirmed by you in chat before it runs — the conversation itself is the approval step. Every call is recorded in your [activity log](https://app.docjacket.com/settings/ai-access/activity). See [Permissions & scopes](./permissions.mdx) for how to choose.
 
@@ -10515,7 +10516,7 @@ Every write, in either write tier, is confirmed by you in chat before it runs �
 
 Calling `mcp_catalog` from a connected assistant returns this same inventory, filtered to the scopes *your* token holds.
 
-**Prefer structured data?** The full inventory is also served as JSON at [help.docjacket.com/mcp-catalog.json](https://help.docjacket.com/mcp-catalog.json) — same 161 tools with per-tool scope, gotchas, pairings, and example calls, generated from the same source as this page.
+**Prefer structured data?** The full inventory is also served as JSON at [help.docjacket.com/mcp-catalog.json](https://help.docjacket.com/mcp-catalog.json) — same 163 tools with per-tool scope, gotchas, pairings, and example calls, generated from the same source as this page.
 
 ## Read — 76 tools
 
@@ -10599,6 +10600,8 @@ Get the aggregate checklist status for one transaction — total/complete/pendin
 
 *Requires `read`.*
 
+*Deprecated: hidden from `tools/list` but still callable. Use `get_open_tasks`. Earliest removal: 2027-02-12.*
+
 **Pairs with** [`get_open_tasks`](#get_open_tasks) · [`complete_task`](#complete_task)
 
 ### `get_checkout_link`
@@ -10670,6 +10673,8 @@ Return which compliance system (such as Dotloop, SkySlope or KW Command) a deal 
 Get the full record for a single contact by ID — identity, address, license, every active transaction they're a party on (with role), and the recent activity timeline. Use after search_contacts / find_contact_by_email to inspect a contact before drafting email, linking them to a transaction, or answering 'who is X'. Returns CONTACT_NOT_FOUND if the ID doesn't exist in this org.
 
 *Requires `read`.*
+
+*Deprecated: hidden from `tools/list` but still callable. Use `search_contacts`. Earliest removal: 2027-02-12.*
 
 ### `get_contact_roles`
 
@@ -10746,7 +10751,7 @@ Get how THIS organization normally works a deal like this one — their Playbook
 
 ### `get_deal_section`
 
-Read one part of a deal that the deal record does not include: its internal notes, the comments on its tasks and documents, email, text messages, scheduled sends, consistency checks, change log, key-date change history, agreements, TC fees and invoices, or the Documents Needed list. Returns a short page of items, each with the id a follow-up call or a change needs (noteId, messageId, threadId, scheduledEmailId, commitId, keyDateId, feeId, invoiceId, rowId); pass itemId to read one note, email or text thread in full, or one task's or document's comments. Use it when the user asks what was said, sent, scheduled, changed, agreed or billed on a deal. Do not use it for the deal's parties, key dates, tasks or documents: call get_transaction_context, get_key_dates, get_open_tasks or list_documents. It changes nothing; reading an email here does not mark it read.
+Read one part of a deal that the deal record does not include: its internal notes, the comments on its tasks and documents, email, text messages, scheduled sends, consistency checks, change log, key-date change history, agreements, TC fees and invoices, the Documents Needed list, the deal's files, or the deal's status and the statuses it can move to. Returns a short page of items, each with the id a follow-up call or a change needs (noteId, messageId, threadId, scheduledEmailId, commitId, keyDateId, feeId, invoiceId, rowId, documentId); pass itemId to read one note, email or text thread in full, or one task's or document's comments. Use it when the user asks what was said, sent, scheduled, changed, agreed or billed on a deal. Do not use it for the deal's parties, key dates or tasks: call get_transaction_context, get_key_dates or get_open_tasks. It changes nothing; reading an email here does not mark it read.
 
 *Requires `read` · granular scope `transactions:read`.*
 
@@ -10872,7 +10877,7 @@ Return one form template with its full field list — each field's key, label, t
 **Example call**
 
 ```json
-{"formDefinitionId": "..."}
+{"formDefinitionId": "6f1c2d3e-4a5b-4c6d-8e7f-90a1b2c3d4e5"}
 ```
 
 ### `get_form_submission`
@@ -10892,7 +10897,7 @@ Return field-level data for one form submission — each submitted value alongsi
 **Example call**
 
 ```json
-{"submissionId": "..."}
+{"submissionId": "3b2a1c0d-9e8f-4a7b-8c6d-5e4f3a2b1c0d"}
 ```
 
 ### `get_held_email`
@@ -10916,7 +10921,7 @@ Get one email from DocJacket's review queue by its actionId: the deal, source, r
 
 ### `get_intake_status`
 
-Return a composite snapshot of intake progress for a transaction: parties present, key dates count, checklist applied, reminders scheduled, plus a pre-computed list of missing recommended steps (no_checklist_applied, no_closing_date, etc.). Use this when the user resumes an intake conversation on a new chat surface, after a follow-up tool call partially failed, or any time the LLM needs to re-orient on 'what's done vs. what isn't' for a transaction.
+Return a composite snapshot of intake progress for a transaction: parties present, key dates count, whether the deal has a Playbook or checklist of record (checklist.applied is true only then; key dates alone do not count), reminders scheduled, partiesMissingEmail (people on the deal with a name and no email address), plus a pre-computed list of missing recommended steps (no_checklist_applied, party_missing_email, no_closing_date, etc.). It reports what is recorded and never infers a deal's state, side or Playbook. Use this when the user resumes an intake conversation on a new chat surface, after a follow-up tool call partially failed, or any time the LLM needs to re-orient on 'what's done vs. what isn't' for a transaction.
 
 *Requires `read` · granular scope `transactions:read`.*
 
@@ -10986,7 +10991,7 @@ List the required documents that haven't been uploaded yet on a transaction. Whe
 
 ### `get_next_required_actions`
 
-Get a ranked list of what needs attention next — open tasks and Key Dates merged into one feed, with overdue items first, then due-within-72h, due-within-2-weeks, due-within-4-weeks. Each row comes with an urgency tier and a one-line rationale. Use this when the user asks 'what should I work on next?', 'give me a TC briefing', or 'what's at risk?'. This is the most efficient way to answer those questions — one call returns everything, already prioritized.
+Get a ranked list of what needs attention next — open tasks and Key Dates merged into one feed, with overdue items first, then due-within-72h, due-within-2-weeks, due-within-4-weeks. Each row comes with an urgency tier and a one-line rationale. Use this when the user asks 'what should I work on next?', 'give me a TC briefing', or 'what's at risk?'. This is the most efficient way to answer those questions — one call returns everything, already prioritized. summary counts every qualifying item; `truncated` is true when `actions` holds fewer; raise `limit` (max 100) or pass `transactionId`.
 
 *Requires `read`.*
 
@@ -11014,7 +11019,7 @@ Get a single buyer offer with its full revision history. Returns the thread summ
 
 ### `get_open_tasks`
 
-Get open tasks (not completed, not skipped) — across the whole org or filtered to one transaction. Returns name, due date, priority, assigned user, the transaction the task belongs to, and each task's SitRep report flag, the parties it was marked sent to, its status from its status list, and any waiting portal "marked done" request. Use this when the user asks 'what tasks do I have?', 'what's open on the Johnson deal?', 'what's overdue?', or whether a task is on the report or was sent to someone. Prefer get_key_dates for contract-level deadlines. Pass status "closed" to read completed or skipped tasks, and taskId to read one task in full, including the names in its status list.
+Get open tasks (not completed, not skipped) — across the whole org or filtered to one transaction. Returns name, due date, priority, assigned user, the transaction the task belongs to, and each task's SitRep report flag, the parties it was marked sent to, its status from its status list, and any waiting portal "marked done" request. Use this when the user asks 'what tasks do I have?', 'what's open on the Johnson deal?', 'what's overdue?', or whether a task is on the report or was sent to someone. Prefer get_key_dates for contract-level deadlines. Pass status "closed" to read completed or skipped tasks, and taskId to read one task in full, including the names in its status list. With transactionId, the result also has summary: the deal's total, complete, pending and overdue task counts.
 
 *Requires `read`.*
 
@@ -11023,6 +11028,7 @@ Get open tasks (not completed, not skipped) — across the whole org or filtered
 - Lists open top-level tasks by default; pass status "closed" for completed or skipped tasks and includeSubtasks to add subtasks.
 - totalCount is the number of tasks returned (capped by limit), not the number that exist; pass `search` to narrow.
 - Pass taskId for one task's full detail; list lines show the report flag, sent-to boxes, status and portal request only when they differ from the default.
+- With transactionId, summary counts every top-level task on the deal (total, complete, pending, overdue), whatever search, status or limit narrowed the list to.
 
 **Pairs with** [`set_task_outcome`](#set_task_outcome) · [`get_transaction`](#get_transaction)
 
@@ -11068,7 +11074,7 @@ Get THIS organization's DocJacket plan: plan name, whether it is paid, subscript
 - On a capped plan, deals.used counts every deal ever created (the Free cap is lifetime); on an unlimited plan it counts active deals.
 - can_subscribe_here is false when the organization already has a subscription, is billed through a partner, or is already on the highest plan it could buy.
 - A plan can be held without a subscription (granted by DocJacket); plans at or below the current tier are then not purchasable.
-- Only an owner or admin can subscribe; who_can_subscribe names them.
+- Only an owner or admin can subscribe; who_can_subscribe names them (by email address when one has no name).
 
 **Pairs with** [`get_checkout_link`](#get_checkout_link) · [`get_organization_summary`](#get_organization_summary)
 
@@ -11293,7 +11299,7 @@ Get the reviewed real-estate rules that govern this deal's key dates and tasks �
 
 ### `get_upcoming_key_dates`
 
-Get upcoming Key Dates across all active transactions in the current organization. Returns dates due within the next N days (default 14, max 60), joined with the transaction address. Sorted soonest-first. Use this when the user asks 'what's due this week?', 'what's on the calendar?', or 'what's coming up?' — much faster than calling get_key_dates per transaction. Already excludes completed / waived / closed deals.
+Get upcoming Key Dates across all active transactions in the current organization. Returns dates due within the next N days (default 14, max 60), joined with the transaction address. Sorted soonest-first. Use this when the user asks 'what's due this week?', 'what's on the calendar?', or 'what's coming up?' — much faster than calling get_key_dates per transaction. Already excludes completed / waived / closed deals. Does not return overdue dates (summary.overdue is always 0); use get_next_required_actions for overdue items.
 
 *Requires `read`.*
 
@@ -11388,7 +11394,7 @@ List form links sent on a transaction — intake forms, disclosures, BYOF templa
 **Example call**
 
 ```json
-{"transactionId": "..."}
+{"transactionId": "0e1c2b3a-4d5e-6f70-8192-a3b4c5d6e7f8"}
 ```
 
 ### `list_form_submissions`
@@ -11683,7 +11689,7 @@ Diagnose what is wrong with one deal's key dates, open tasks, side and agents, i
 
 ### `search_contacts`
 
-Search contacts in the current organization by free-text query against name, email, phone, or company. Returns a compact picker list (id, full name, email, phone, company, type, license). Use when the TC asks 'do we have a contact for X', 'lookup the lender at Y', or needs to find a contact before linking them to a transaction. Optional contactType filter restricts to one category (e.g. 'Agent', 'Lender', 'TitleCompany'). For exact-email matches from inbound mail, prefer find_contact_by_email — it's the definitive single-result lookup.
+Search contacts in the current organization by free-text query against name, email, phone, or company. Returns a compact picker list (id, full name, email, phone, company, type, license). Use when the TC asks 'do we have a contact for X', 'lookup the lender at Y', or needs to find a contact before linking them to a transaction. Optional contactType filter restricts to one category (e.g. 'Agent', 'Lender', 'TitleCompany'). For exact-email matches from inbound mail, prefer find_contact_by_email — it's the definitive single-result lookup. Pass contactId instead of query to read one contact in full: the result's contact field has address, license, every active deal they are on (with role) and recent activity.
 
 *Requires `read`.*
 
@@ -11692,8 +11698,9 @@ Search contacts in the current organization by free-text query against name, ema
 - LIKE-match across multiple fields — broad query strings produce broad result sets. Cap with limit when querying common terms.
 - For exact-email lookup (e.g. matching an inbound email), prefer find_contact_by_email. This tool is for fuzzy human-typed queries.
 - Empty results suggest create_contact; the breadcrumbs surface that follow-up automatically.
+- Pass query or contactId; a call with neither fails VALIDATION_FAILED. With contactId the full record is under contact.
 
-**Pairs with** [`get_contact`](#get_contact) · [`find_contact_by_email`](#find_contact_by_email) · [`create_contact`](#create_contact) · [`add_contact_to_transaction`](#add_contact_to_transaction)
+**Pairs with** [`find_contact_by_email`](#find_contact_by_email) · [`create_contact`](#create_contact) · [`add_contact_to_transaction`](#add_contact_to_transaction)
 
 **Example call**
 
@@ -11723,7 +11730,7 @@ Semantic search over a single transaction's indexed text (documents, and — as 
 
 ### `search_transactions`
 
-Search transactions in the current organization by address, buyer name, seller name, or MLS number. Returns a paginated list with status, addresses, and key dates. Use this when the user is asking about which deals match a query, or as the first step to find the transaction ID before calling other tools.
+Search transactions in the current organization by address, buyer name or seller name (partial, case-insensitive). MLS numbers are not matched. Archived deals and listings are left out. Returns a paginated list with status, addresses, and key dates. Use this when the user is asking about which deals match a query, or as the first step to find the transaction ID before calling other tools.
 
 *Requires `read`.*
 
@@ -11735,7 +11742,7 @@ Check the whole draft against the same rules Create uses and list what is blocki
 
 **Pairs with** [`start_playbook_draft`](#start_playbook_draft) · [`commit_playbook_draft`](#commit_playbook_draft)
 
-## Draft — 32 tools
+## Draft — 33 tools
 
 Low-risk writes to your own records — tasks, key dates, checklists, activity notes. **Tools in this tier can't write or send an email themselves.** When an assistant connected with draft access, and not actions access, marks a task done, the emails that would follow wait in your Review queue for a person to approve. Moving a date can still make an already-scheduled email go out sooner.
 
@@ -11864,6 +11871,20 @@ Change some fields on several existing tasks in the draft at once, for example m
 Log a non-send activity against a transaction — phone call, meeting, in-person handoff, manual SMS, plain note. Use when you helped the user with something that doesn't fit the send_* / create_tasks / update_key_date tools (e.g. "log that you just called the lender and got verbal CTC confirmation"). The audit row shows up on the transaction's Activity feed with Source: AI. The user must have asked you to log it — don't fabricate activity.
 
 *Requires `draft`.*
+
+### `manage_document_checklist`
+
+Change rows on one deal's Documents Needed list, up to 10 in one call: mark a row received without a file or undo that, attach a document already on the deal to a row or detach it, record whether a conditional row applies, and mark a received row fully executed or undo that. Each change is checked the way the Documents Needed list checks it, runs at once, and comes back with before and after for each row and an undo handle good for 7 days. Read the rows and their ids with get_deal_section section documents_needed and the deal's files with section documents first. Do not use it to upload, rename or remove a document (manage_document), to add or remove a row, or to send a document request.
+
+*Requires `draft`.*
+
+**Pairs with** [`get_deal_section`](#get_deal_section) · [`list_documents`](#list_documents)
+
+**Example call**
+
+```json
+{"transactionId":"0e1c2b3a-4d5e-6f70-8192-a3b4c5d6e7f8","items":[{"rowId":"5b0c7e1a-2f3d-4c5b-8a9e-0d1f2a3b4c5d","action":"link_file","documentId":"9a8b7c6d-5e4f-4a3b-2c1d-0e9f8a7b6c5d"},{"rowId":"6c1d8f2b-3a4e-4d6c-9b0f-1e2a3b4c5d6e","action":"does_not_apply"}]}
+```
 
 ### `manage_key_date`
 
@@ -12023,7 +12044,7 @@ Change one task's details: rename it, change its description, instructions or pr
 {"taskId":"5b7d9f1a-2c3e-4a5b-8c7d-9e0f1a2b3c4d","showOnReport":false,"distribution":[{"role":"Agent","sent":true}]}
 ```
 
-## Actions — 53 tools
+## Actions — 54 tools
 
 Side-effecting work: sending email to a real person, creating and deleting records, and exposing documents outside the organization.
 
@@ -12060,12 +12081,12 @@ Add sections and fields to an existing form template, keeping everything already
 **Example call**
 
 ```json
-{"formDefinitionId":"...","sections":[{"name":"Compensation","fields":[{"key":"listing_commission_rate","label":"Listing Commission %","type":"number","mapsTo":"ListingCommissionRate"}]}]}
+{"formDefinitionId":"6f1c2d3e-4a5b-4c6d-8e7f-90a1b2c3d4e5","sections":[{"name":"Compensation","fields":[{"key":"listing_commission_rate","label":"Listing Commission %","type":"number","mapsTo":"ListingCommissionRate"}]}]}
 ```
 
 ### `apply_extraction`
 
-Create a transaction from a completed extraction job. Use after get_extraction_results returns status='complete' and the user has reviewed the extracted fields in chat. Pass any user-edited fields as `overrides` — a flat map of camelCase keys like \{ "closingDate": "2026-06-20", "buyerEmail": "sarah@example.com" \}. The tool creates the transaction + parties + key dates + auto-applies the default state/type/side checklist template. Returns the new `transactionId` to pin follow-up tool calls to. **Confirm with the user in chat BEFORE calling** — the transaction is created immediately.
+Create a transaction from a completed extraction job. Use after get_extraction_results returns status='complete' and the user has reviewed the extracted fields in chat. Pass any user-edited fields as `overrides` — a flat map of camelCase keys like \{ "closingDate": "2026-06-20", "buyerEmail": "sarah@example.com" \}. The tool creates the transaction + parties + key dates. It applies the organization's Playbook only when exactly one matches the deal; otherwise it applies nothing and returns `suggestedWorkflow` for the user to choose (see `appliedWorkflow` and `summary`). Returns the new `transactionId` to pin follow-up tool calls to. **Confirm with the user in chat BEFORE calling** — the transaction is created immediately.
 
 *Requires `actions` · granular scope `transactions:create`.*
 
@@ -12129,6 +12150,26 @@ Cancel an UNSENT reminder so it never fires. A reminder that was already sent, o
 
 *Requires `actions`.*
 
+### `change_deal_status`
+
+Change one deal's status to another of the organization's statuses, which is also how a closed or cancelled deal is reopened. Read the statuses and what each would do with get_deal_section section status first. It cannot close out or cancel an open deal yet (a status the read marks endsTheDeal): that is refused, and the user does it with the deal's status control. A plain status change comes back with an undo handle good for 7 days; a reopen cannot be undone, and what closing or cancelling ended stays ended. Emails a status change starts wait in the Review queue. Do not use it for an archived deal (restore_deal) or to delete a deal, and never infer that a deal closed or fell through from an email or document without the user saying so.
+
+*Requires `actions`.*
+
+**Gotchas**
+
+- Read the statuses with get_deal_section section status first and pass the name exactly as listed.
+- Closing out or cancelling an open deal is refused for now; the user does it with the deal's status control.
+- A reopen cannot be undone, and skipped tasks, not-applicable key dates and cancelled emails stay that way.
+
+**Pairs with** [`get_deal_section`](#get_deal_section)
+
+**Example call**
+
+```json
+{"transactionId":"0e1c2b3a-4d5e-6f70-8192-a3b4c5d6e7f8","action":"set_status","status":"Pending"}
+```
+
 ### `change_org_setting`
 
 Change one organization-wide setting: the Primary State (setting "primary_state", value a 2-letter US state code), the default TC fee posted to every new deal ("default_tc_fee", value a dollar amount, 0 for no fee, or null to clear it) or that fee's description ("default_tc_fee_description", value text or null). One setting per call; the change is made immediately and can be undone for 7 days with undo_setting_change (undoUntil in the result). Use it only for a value the user stated: confirm it with them before calling, never take a state from an address, contract or deal, and never invent a fee. For a client agent's own fee or coordinator call set_agent_defaults instead; side-specific fees are not changed here.
@@ -12167,7 +12208,7 @@ Copy an existing form template into this organization as an editable draft, keep
 **Example call**
 
 ```json
-{"formDefinitionId": "...", "name": "Listing Agreement Intake"}
+{"formDefinitionId": "6f1c2d3e-4a5b-4c6d-8e7f-90a1b2c3d4e5", "name": "Listing Agreement Intake"}
 ```
 
 ### `commit_playbook_draft`
@@ -12315,7 +12356,7 @@ The way to get a contract the user attached in chat into DocJacket when it isn't
 
 ### `delete_tasks`
 
-Delete one or more tasks from a transaction (the same as the UI's bulk-delete). Cascades to subtasks, unblocks any tasks that depended on the deleted ones, and removes linked follow-up emails and unsent reminders. It cannot be undone from this tool. **The user must have confirmed deletion in chat** before you call this — the chat is the approval gate. Get task IDs from get_open_tasks or get_checklist_status. All tasks must be on the same transaction; call once per transaction.
+Delete one or more tasks from a transaction (the same as the UI's bulk-delete). Cascades to subtasks, unblocks any tasks that depended on the deleted ones, and removes linked follow-up emails and unsent reminders. It cannot be undone from this tool. **The user must have confirmed deletion in chat** before you call this — the chat is the approval gate. Get task IDs from get_open_tasks. All tasks must be on the same transaction; call once per transaction.
 
 *Requires `actions`.*
 
@@ -12540,6 +12581,20 @@ Send an email update to the buyer, seller, or co-agent summarizing where the dea
 
 *Requires `actions`.*
 
+**Gotchas**
+
+- The recipient must be a contact already on this deal.
+- MCP: nothing is sent by the call; show the preview and call confirm_email_send only after the user says yes.
+- In the app it proposes a card and cannot attach documents; the email leaves only from the user's connected mailbox.
+
+**Pairs with** [`get_contacts`](#get_contacts) · [`get_key_dates`](#get_key_dates) · [`confirm_email_send`](#confirm_email_send)
+
+**Example call**
+
+```json
+{"transactionId":"00000000-0000-0000-0000-000000000000","recipientContactId":"00000000-0000-0000-0000-000000000001","audience":"buyer","focus":"weekly","subject":"Where we are on 123 Main","bodyHtml":"<p>Hi Sarah, the inspection is done and the appraisal is ordered.</p>"}
+```
+
 ### `send_compliance_documents`
 
 Email chosen PDF documents of a deal to the email-in address of the deal's compliance system (a dotloop folder's @upload.dotloop.com address or a SkySlope file's @skyslope.com address), each as its own attachment named the way it should appear in that system. This sends REAL email from the user's connected Gmail or Outlook mailbox, so confirm with the user which documents go and to which address before calling. Use it after get_compliance_system says the deal's system is Dotloop or SkySlope; do not use it for any other recipient or system. For dotloop, each folder of a loop has its own address and the user must give it to you; never invent or guess an address. Nothing is sent by this call: it returns status "parked_for_review" (the email waits in DocJacket's review queue; tell the user it is awaiting approval) or "awaiting_confirmation" with a preview listing every attachment under its new name and a confirmCode; show the user the preview and, only if they say yes, call confirm_email_send with that code.
@@ -12673,11 +12728,11 @@ Undo an email template change made with save_email_template or install_template_
 
 ### `update_contact`
 
-Update fields on an existing contact by ID. Partial update — only the fields you provide are changed; omitted fields are left untouched. Fields cannot be cleared through this tool (there is no way to blank a field back to empty in v1). The notes field REPLACES the stored notes wholesale rather than appending — if you want to add to existing notes, call get_contact first, merge the text yourself, and send the combined result. Use search_contacts or get_contact first to find the contactId.
+Update fields on an existing contact by ID. Partial update — only the fields you provide are changed; omitted fields are left untouched. Fields cannot be cleared through this tool (there is no way to blank a field back to empty in v1). The notes field REPLACES the stored notes wholesale rather than appending — if you want to add to existing notes, call search_contacts with the contactId first, merge the text yourself, and send the combined result. Use search_contacts first to find the contactId.
 
 *Requires `actions`.*
 
-**Pairs with** [`get_contact`](#get_contact) · [`search_contacts`](#search_contacts) · [`create_contact`](#create_contact)
+**Pairs with** [`search_contacts`](#search_contacts) · [`create_contact`](#create_contact)
 
 ### `update_deal`
 
@@ -13105,9 +13160,9 @@ Each command chains DocJacket MCP tools — see the [full tool catalog](/docs/ai
 
 > *"Brief me on what needs attention across all my active deals."*
 
-Walks every active transaction, surfaces what's on the calendar today + this week, flags overdue items, checks the connected mailbox for unread mail from parties, and lists missing docs across deals.
+Walks every active transaction, surfaces what's on the calendar today + this week, flags overdue items, checks the connected mailbox for unread mail from parties, and lists missing docs on deals closing within 14 days.
 
-**Chains:** `list_active_transactions` → `get_next_required_actions` → `get_missing_documents` + `get_checklist_status` per closing-soon deal, plus Gmail/Outlook reads if connected.
+**Chains:** one `get_next_required_actions` call → `get_missing_documents` per deal closing within 14 days, plus Gmail/Outlook/Calendar reads if connected. `list_active_transactions` only if you ask for the list of your deals.
 
 **Best as your first interaction of the day.** Leads with the most urgent items, skips deals with nothing demanding attention, and ends with a "want me to act on any of this?" offer.
 
