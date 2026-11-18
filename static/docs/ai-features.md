@@ -23,7 +23,7 @@ These are the AI features inside DocJacket. They are separate from **[AI Access]
 - **Risk Insights** — Review transaction-level risk assessments and document-level checks
 - **Smart Document Splitting** — Upload a multi-document PDF and AI detects the documents, page ranges, and primary contract
 - **Communication Drafting** — AI drafts emails and messages inside DocJacket composers or review queues before they send
-- **Ask AI Assistant** — Ask AI opens forms already filled in, prepares changes you approve on a card, checks a deal for problems, restores archived deals, and helps set up your organization
+- **Ask AI Assistant** — Ask AI opens forms already filled in, prepares changes you approve on a card, builds and shares an Online Form after you say yes, checks a deal for problems, restores archived deals, and helps set up your organization
 
 ## In this section
 
