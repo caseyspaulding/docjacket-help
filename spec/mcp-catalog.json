@@ -1,6 +1,6 @@
 {
   "fetchedFrom": "mcp-catalog.json",
-  "totalCount": 161,
+  "totalCount": 163,
   "tools": [
     {
       "name": "activate_disclosure_package",
@@ -43,7 +43,7 @@
         "create_form_template",
         "clone_form_template"
       ],
-      "exampleCall": "{\"formDefinitionId\":\"...\",\"sections\":[{\"name\":\"Compensation\",\"fields\":[{\"key\":\"listing_commission_rate\",\"label\":\"Listing Commission %\",\"type\":\"number\",\"mapsTo\":\"ListingCommissionRate\"}]}]}",
+      "exampleCall": "{\"formDefinitionId\":\"6f1c2d3e-4a5b-4c6d-8e7f-90a1b2c3d4e5\",\"sections\":[{\"name\":\"Compensation\",\"fields\":[{\"key\":\"listing_commission_rate\",\"label\":\"Listing Commission %\",\"type\":\"number\",\"mapsTo\":\"ListingCommissionRate\"}]}]}",
       "toolset": "core",
       "listed": true
     },
@@ -85,7 +85,7 @@
     },
     {
       "name": "apply_extraction",
-      "description": "Create a transaction from a completed extraction job. Use after get_extraction_results returns status='complete' and the user has reviewed the extracted fields in chat. Pass any user-edited fields as `overrides` — a flat map of camelCase keys like { \"closingDate\": \"2026-06-20\", \"buyerEmail\": \"sarah@example.com\" }. The tool creates the transaction + parties + key dates + auto-applies the default state/type/side checklist template. Returns the new `transactionId` to pin follow-up tool calls to. **Confirm with the user in chat BEFORE calling** — the transaction is created immediately.",
+      "description": "Create a transaction from a completed extraction job. Use after get_extraction_results returns status='complete' and the user has reviewed the extracted fields in chat. Pass any user-edited fields as `overrides` — a flat map of camelCase keys like { \"closingDate\": \"2026-06-20\", \"buyerEmail\": \"sarah@example.com\" }. The tool creates the transaction + parties + key dates. It applies the organization's Playbook only when exactly one matches the deal; otherwise it applies nothing and returns `suggestedWorkflow` for the user to choose (see `appliedWorkflow` and `summary`). Returns the new `transactionId` to pin follow-up tool calls to. **Confirm with the user in chat BEFORE calling** — the transaction is created immediately.",
       "requiredScope": "actions",
       "requiredGranularScope": "transactions:create",
       "hasOutputSchema": false,
@@ -178,6 +178,24 @@
       "listed": true
     },
     {
+      "name": "change_deal_status",
+      "description": "Change one deal's status to another of the organization's statuses, which is also how a closed or cancelled deal is reopened. Read the statuses and what each would do with get_deal_section section status first. It cannot close out or cancel an open deal yet (a status the read marks endsTheDeal): that is refused, and the user does it with the deal's status control. A plain status change comes back with an undo handle good for 7 days; a reopen cannot be undone, and what closing or cancelling ended stays ended. Emails a status change starts wait in the Review queue. Do not use it for an archived deal (restore_deal) or to delete a deal, and never infer that a deal closed or fell through from an email or document without the user saying so.",
+      "requiredScope": "actions",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [
+        "Read the statuses with get_deal_section section status first and pass the name exactly as listed.",
+        "Closing out or cancelling an open deal is refused for now; the user does it with the deal's status control.",
+        "A reopen cannot be undone, and skipped tasks, not-applicable key dates and cancelled emails stay that way."
+      ],
+      "pairsWith": [
+        "get_deal_section"
+      ],
+      "exampleCall": "{\"transactionId\":\"0e1c2b3a-4d5e-6f70-8192-a3b4c5d6e7f8\",\"action\":\"set_status\",\"status\":\"Pending\"}",
+      "toolset": "core",
+      "listed": true
+    },
+    {
       "name": "change_org_setting",
       "description": "Change one organization-wide setting: the Primary State (setting \"primary_state\", value a 2-letter US state code), the default TC fee posted to every new deal (\"default_tc_fee\", value a dollar amount, 0 for no fee, or null to clear it) or that fee's description (\"default_tc_fee_description\", value text or null). One setting per call; the change is made immediately and can be undone for 7 days with undo_setting_change (undoUntil in the result). Use it only for a value the user stated: confirm it with them before calling, never take a state from an address, contract or deal, and never invent a fee. For a client agent's own fee or coordinator call set_agent_defaults instead; side-specific fees are not changed here.",
       "requiredScope": "actions",
@@ -224,7 +242,7 @@
         "get_form_definition",
         "add_form_template_fields"
       ],
-      "exampleCall": "{\"formDefinitionId\": \"...\", \"name\": \"Listing Agreement Intake\"}",
+      "exampleCall": "{\"formDefinitionId\": \"6f1c2d3e-4a5b-4c6d-8e7f-90a1b2c3d4e5\", \"name\": \"Listing Agreement Intake\"}",
       "toolset": "core",
       "listed": true
     },
@@ -473,7 +491,7 @@
     },
     {
       "name": "delete_tasks",
-      "description": "Delete one or more tasks from a transaction (the same as the UI's bulk-delete). Cascades to subtasks, unblocks any tasks that depended on the deleted ones, and removes linked follow-up emails and unsent reminders. It cannot be undone from this tool. **The user must have confirmed deletion in chat** before you call this — the chat is the approval gate. Get task IDs from get_open_tasks or get_checklist_status. All tasks must be on the same transaction; call once per transaction.",
+      "description": "Delete one or more tasks from a transaction (the same as the UI's bulk-delete). Cascades to subtasks, unblocks any tasks that depended on the deleted ones, and removes linked follow-up emails and unsent reminders. It cannot be undone from this tool. **The user must have confirmed deletion in chat** before you call this — the chat is the approval gate. Get task IDs from get_open_tasks. All tasks must be on the same transaction; call once per transaction.",
       "requiredScope": "actions",
       "requiredGranularScope": "",
       "hasOutputSchema": false,
@@ -700,8 +718,10 @@
         "get_open_tasks",
         "complete_task"
       ],
+      "deprecatedBy": "get_open_tasks",
+      "removalEta": "2027-02-12",
       "toolset": "core",
-      "listed": true
+      "listed": false
     },
     {
       "name": "get_checkout_link",
@@ -772,8 +792,10 @@
       "hasOutputSchema": false,
       "gotchas": [],
       "pairsWith": [],
+      "deprecatedBy": "search_contacts",
+      "removalEta": "2027-02-12",
       "toolset": "core",
-      "listed": true
+      "listed": false
     },
     {
       "name": "get_contact_roles",
@@ -853,7 +875,7 @@
     },
     {
       "name": "get_deal_section",
-      "description": "Read one part of a deal that the deal record does not include: its internal notes, the comments on its tasks and documents, email, text messages, scheduled sends, consistency checks, change log, key-date change history, agreements, TC fees and invoices, or the Documents Needed list. Returns a short page of items, each with the id a follow-up call or a change needs (noteId, messageId, threadId, scheduledEmailId, commitId, keyDateId, feeId, invoiceId, rowId); pass itemId to read one note, email or text thread in full, or one task's or document's comments. Use it when the user asks what was said, sent, scheduled, changed, agreed or billed on a deal. Do not use it for the deal's parties, key dates, tasks or documents: call get_transaction_context, get_key_dates, get_open_tasks or list_documents. It changes nothing; reading an email here does not mark it read.",
+      "description": "Read one part of a deal that the deal record does not include: its internal notes, the comments on its tasks and documents, email, text messages, scheduled sends, consistency checks, change log, key-date change history, agreements, TC fees and invoices, the Documents Needed list, the deal's files, or the deal's status and the statuses it can move to. Returns a short page of items, each with the id a follow-up call or a change needs (noteId, messageId, threadId, scheduledEmailId, commitId, keyDateId, feeId, invoiceId, rowId, documentId); pass itemId to read one note, email or text thread in full, or one task's or document's comments. Use it when the user asks what was said, sent, scheduled, changed, agreed or billed on a deal. Do not use it for the deal's parties, key dates or tasks: call get_transaction_context, get_key_dates or get_open_tasks. It changes nothing; reading an email here does not mark it read.",
       "requiredScope": "read",
       "requiredGranularScope": "transactions:read",
       "hasOutputSchema": false,
@@ -991,7 +1013,7 @@
         "list_form_links",
         "list_form_submissions"
       ],
-      "exampleCall": "{\"formDefinitionId\": \"...\"}",
+      "exampleCall": "{\"formDefinitionId\": \"6f1c2d3e-4a5b-4c6d-8e7f-90a1b2c3d4e5\"}",
       "toolset": "core",
       "listed": true
     },
@@ -1010,7 +1032,7 @@
         "list_form_submissions",
         "get_form_definition"
       ],
-      "exampleCall": "{\"submissionId\": \"...\"}",
+      "exampleCall": "{\"submissionId\": \"3b2a1c0d-9e8f-4a7b-8c6d-5e4f3a2b1c0d\"}",
       "toolset": "core",
       "listed": true
     },
@@ -1035,7 +1057,7 @@
     },
     {
       "name": "get_intake_status",
-      "description": "Return a composite snapshot of intake progress for a transaction: parties present, key dates count, checklist applied, reminders scheduled, plus a pre-computed list of missing recommended steps (no_checklist_applied, no_closing_date, etc.). Use this when the user resumes an intake conversation on a new chat surface, after a follow-up tool call partially failed, or any time the LLM needs to re-orient on 'what's done vs. what isn't' for a transaction.",
+      "description": "Return a composite snapshot of intake progress for a transaction: parties present, key dates count, whether the deal has a Playbook or checklist of record (checklist.applied is true only then; key dates alone do not count), reminders scheduled, partiesMissingEmail (people on the deal with a name and no email address), plus a pre-computed list of missing recommended steps (no_checklist_applied, party_missing_email, no_closing_date, etc.). It reports what is recorded and never infers a deal's state, side or Playbook. Use this when the user resumes an intake conversation on a new chat surface, after a follow-up tool call partially failed, or any time the LLM needs to re-orient on 'what's done vs. what isn't' for a transaction.",
       "requiredScope": "read",
       "requiredGranularScope": "transactions:read",
       "hasOutputSchema": false,
@@ -1114,7 +1136,7 @@
     },
     {
       "name": "get_next_required_actions",
-      "description": "Get a ranked list of what needs attention next — open tasks and Key Dates merged into one feed, with overdue items first, then due-within-72h, due-within-2-weeks, due-within-4-weeks. Each row comes with an urgency tier and a one-line rationale. Use this when the user asks 'what should I work on next?', 'give me a TC briefing', or 'what's at risk?'. This is the most efficient way to answer those questions — one call returns everything, already prioritized.",
+      "description": "Get a ranked list of what needs attention next — open tasks and Key Dates merged into one feed, with overdue items first, then due-within-72h, due-within-2-weeks, due-within-4-weeks. Each row comes with an urgency tier and a one-line rationale. Use this when the user asks 'what should I work on next?', 'give me a TC briefing', or 'what's at risk?'. This is the most efficient way to answer those questions — one call returns everything, already prioritized. summary counts every qualifying item; `truncated` is true when `actions` holds fewer; raise `limit` (max 100) or pass `transactionId`.",
       "requiredScope": "read",
       "requiredGranularScope": "",
       "hasOutputSchema": false,
@@ -1144,14 +1166,15 @@
     },
     {
       "name": "get_open_tasks",
-      "description": "Get open tasks (not completed, not skipped) — across the whole org or filtered to one transaction. Returns name, due date, priority, assigned user, the transaction the task belongs to, and each task's SitRep report flag, the parties it was marked sent to, its status from its status list, and any waiting portal \"marked done\" request. Use this when the user asks 'what tasks do I have?', 'what's open on the Johnson deal?', 'what's overdue?', or whether a task is on the report or was sent to someone. Prefer get_key_dates for contract-level deadlines. Pass status \"closed\" to read completed or skipped tasks, and taskId to read one task in full, including the names in its status list.",
+      "description": "Get open tasks (not completed, not skipped) — across the whole org or filtered to one transaction. Returns name, due date, priority, assigned user, the transaction the task belongs to, and each task's SitRep report flag, the parties it was marked sent to, its status from its status list, and any waiting portal \"marked done\" request. Use this when the user asks 'what tasks do I have?', 'what's open on the Johnson deal?', 'what's overdue?', or whether a task is on the report or was sent to someone. Prefer get_key_dates for contract-level deadlines. Pass status \"closed\" to read completed or skipped tasks, and taskId to read one task in full, including the names in its status list. With transactionId, the result also has summary: the deal's total, complete, pending and overdue task counts.",
       "requiredScope": "read",
       "requiredGranularScope": "",
       "hasOutputSchema": false,
       "gotchas": [
         "Lists open top-level tasks by default; pass status \"closed\" for completed or skipped tasks and includeSubtasks to add subtasks.",
         "totalCount is the number of tasks returned (capped by limit), not the number that exist; pass `search` to narrow.",
-        "Pass taskId for one task's full detail; list lines show the report flag, sent-to boxes, status and portal request only when they differ from the default."
+        "Pass taskId for one task's full detail; list lines show the report flag, sent-to boxes, status and portal request only when they differ from the default.",
+        "With transactionId, summary counts every top-level task on the deal (total, complete, pending, overdue), whatever search, status or limit narrowed the list to."
       ],
       "pairsWith": [
         "set_task_outcome",
@@ -1198,7 +1221,7 @@
         "On a capped plan, deals.used counts every deal ever created (the Free cap is lifetime); on an unlimited plan it counts active deals.",
         "can_subscribe_here is false when the organization already has a subscription, is billed through a partner, or is already on the highest plan it could buy.",
         "A plan can be held without a subscription (granted by DocJacket); plans at or below the current tier are then not purchasable.",
-        "Only an owner or admin can subscribe; who_can_subscribe names them."
+        "Only an owner or admin can subscribe; who_can_subscribe names them (by email address when one has no name)."
       ],
       "pairsWith": [
         "get_checkout_link",
@@ -1424,7 +1447,7 @@
     },
     {
       "name": "get_upcoming_key_dates",
-      "description": "Get upcoming Key Dates across all active transactions in the current organization. Returns dates due within the next N days (default 14, max 60), joined with the transaction address. Sorted soonest-first. Use this when the user asks 'what's due this week?', 'what's on the calendar?', or 'what's coming up?' — much faster than calling get_key_dates per transaction. Already excludes completed / waived / closed deals.",
+      "description": "Get upcoming Key Dates across all active transactions in the current organization. Returns dates due within the next N days (default 14, max 60), joined with the transaction address. Sorted soonest-first. Use this when the user asks 'what's due this week?', 'what's on the calendar?', or 'what's coming up?' — much faster than calling get_key_dates per transaction. Already excludes completed / waived / closed deals. Does not return overdue dates (summary.overdue is always 0); use get_next_required_actions for overdue items.",
       "requiredScope": "read",
       "requiredGranularScope": "",
       "hasOutputSchema": false,
@@ -1575,7 +1598,7 @@
         "list_form_submissions",
         "get_form_definition"
       ],
-      "exampleCall": "{\"transactionId\": \"...\"}",
+      "exampleCall": "{\"transactionId\": \"0e1c2b3a-4d5e-6f70-8192-a3b4c5d6e7f8\"}",
       "toolset": "core",
       "listed": true
     },
@@ -1786,6 +1809,21 @@
         "get_contact_roles"
       ],
       "exampleCall": "{\"transactionId\":\"0e1c2b3a-4d5e-6f70-8192-a3b4c5d6e7f8\",\"contactId\":\"5b7d9f1a-2c3e-4a5b-8c7d-9e0f1a2b3c4d\",\"currentRole\":\"Buying Agent\",\"action\":\"change_role\",\"role\":\"Transaction Coordinator\"}",
+      "toolset": "core",
+      "listed": true
+    },
+    {
+      "name": "manage_document_checklist",
+      "description": "Change rows on one deal's Documents Needed list, up to 10 in one call: mark a row received without a file or undo that, attach a document already on the deal to a row or detach it, record whether a conditional row applies, and mark a received row fully executed or undo that. Each change is checked the way the Documents Needed list checks it, runs at once, and comes back with before and after for each row and an undo handle good for 7 days. Read the rows and their ids with get_deal_section section documents_needed and the deal's files with section documents first. Do not use it to upload, rename or remove a document (manage_document), to add or remove a row, or to send a document request.",
+      "requiredScope": "draft",
+      "requiredGranularScope": "",
+      "hasOutputSchema": false,
+      "gotchas": [],
+      "pairsWith": [
+        "get_deal_section",
+        "list_documents"
+      ],
+      "exampleCall": "{\"transactionId\":\"0e1c2b3a-4d5e-6f70-8192-a3b4c5d6e7f8\",\"items\":[{\"rowId\":\"5b0c7e1a-2f3d-4c5b-8a9e-0d1f2a3b4c5d\",\"action\":\"link_file\",\"documentId\":\"9a8b7c6d-5e4f-4a3b-2c1d-0e9f8a7b6c5d\"},{\"rowId\":\"6c1d8f2b-3a4e-4d6c-9b0f-1e2a3b4c5d6e\",\"action\":\"does_not_apply\"}]}",
       "toolset": "core",
       "listed": true
     },
@@ -2197,17 +2235,17 @@
     },
     {
       "name": "search_contacts",
-      "description": "Search contacts in the current organization by free-text query against name, email, phone, or company. Returns a compact picker list (id, full name, email, phone, company, type, license). Use when the TC asks 'do we have a contact for X', 'lookup the lender at Y', or needs to find a contact before linking them to a transaction. Optional contactType filter restricts to one category (e.g. 'Agent', 'Lender', 'TitleCompany'). For exact-email matches from inbound mail, prefer find_contact_by_email — it's the definitive single-result lookup.",
+      "description": "Search contacts in the current organization by free-text query against name, email, phone, or company. Returns a compact picker list (id, full name, email, phone, company, type, license). Use when the TC asks 'do we have a contact for X', 'lookup the lender at Y', or needs to find a contact before linking them to a transaction. Optional contactType filter restricts to one category (e.g. 'Agent', 'Lender', 'TitleCompany'). For exact-email matches from inbound mail, prefer find_contact_by_email — it's the definitive single-result lookup. Pass contactId instead of query to read one contact in full: the result's contact field has address, license, every active deal they are on (with role) and recent activity.",
       "requiredScope": "read",
       "requiredGranularScope": "",
       "hasOutputSchema": false,
       "gotchas": [
         "LIKE-match across multiple fields — broad query strings produce broad result sets. Cap with limit when querying common terms.",
         "For exact-email lookup (e.g. matching an inbound email), prefer find_contact_by_email. This tool is for fuzzy human-typed queries.",
-        "Empty results suggest create_contact; the breadcrumbs surface that follow-up automatically."
+        "Empty results suggest create_contact; the breadcrumbs surface that follow-up automatically.",
+        "Pass query or contactId; a call with neither fails VALIDATION_FAILED. With contactId the full record is under contact."
       ],
       "pairsWith": [
-        "get_contact",
         "find_contact_by_email",
         "create_contact",
         "add_contact_to_transaction"
@@ -2237,7 +2275,7 @@
     },
     {
       "name": "search_transactions",
-      "description": "Search transactions in the current organization by address, buyer name, seller name, or MLS number. Returns a paginated list with status, addresses, and key dates. Use this when the user is asking about which deals match a query, or as the first step to find the transaction ID before calling other tools.",
+      "description": "Search transactions in the current organization by address, buyer name or seller name (partial, case-insensitive). MLS numbers are not matched. Archived deals and listings are left out. Returns a paginated list with status, addresses, and key dates. Use this when the user is asking about which deals match a query, or as the first step to find the transaction ID before calling other tools.",
       "requiredScope": "read",
       "requiredGranularScope": "",
       "hasOutputSchema": false,
@@ -2263,8 +2301,17 @@
       "requiredScope": "actions",
       "requiredGranularScope": "",
       "hasOutputSchema": false,
-      "gotchas": [],
-      "pairsWith": [],
+      "gotchas": [
+        "The recipient must be a contact already on this deal.",
+        "MCP: nothing is sent by the call; show the preview and call confirm_email_send only after the user says yes.",
+        "In the app it proposes a card and cannot attach documents; the email leaves only from the user's connected mailbox."
+      ],
+      "pairsWith": [
+        "get_contacts",
+        "get_key_dates",
+        "confirm_email_send"
+      ],
+      "exampleCall": "{\"transactionId\":\"00000000-0000-0000-0000-000000000000\",\"recipientContactId\":\"00000000-0000-0000-0000-000000000001\",\"audience\":\"buyer\",\"focus\":\"weekly\",\"subject\":\"Where we are on 123 Main\",\"bodyHtml\":\"<p>Hi Sarah, the inspection is done and the appraisal is ordered.</p>\"}",
       "toolset": "core",
       "listed": true
     },
@@ -2496,13 +2543,12 @@
     },
     {
       "name": "update_contact",
-      "description": "Update fields on an existing contact by ID. Partial update — only the fields you provide are changed; omitted fields are left untouched. Fields cannot be cleared through this tool (there is no way to blank a field back to empty in v1). The notes field REPLACES the stored notes wholesale rather than appending — if you want to add to existing notes, call get_contact first, merge the text yourself, and send the combined result. Use search_contacts or get_contact first to find the contactId.",
+      "description": "Update fields on an existing contact by ID. Partial update — only the fields you provide are changed; omitted fields are left untouched. Fields cannot be cleared through this tool (there is no way to blank a field back to empty in v1). The notes field REPLACES the stored notes wholesale rather than appending — if you want to add to existing notes, call search_contacts with the contactId first, merge the text yourself, and send the combined result. Use search_contacts first to find the contactId.",
       "requiredScope": "actions",
       "requiredGranularScope": "",
       "hasOutputSchema": false,
       "gotchas": [],
       "pairsWith": [
-        "get_contact",
         "search_contacts",
         "create_contact"
       ],
