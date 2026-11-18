@@ -38,7 +38,8 @@ depending on how it was sent:
 | Email | Sends from |
 |---|---|
 | You compose, reply, or forward from a deal; approve a draft in the Review queue; or use **Review & send** | The mailbox chosen in the **From** field (see [Email you send by hand](#email-you-send-by-hand)) |
-| Task emails, reminders, scheduled emails, portal link emails, and automation-rule emails | The deal's **assignee's default mailbox**. If the deal is unassigned, or the assignee has no connected mailbox, see [Requiring a connected mailbox](#requiring-a-connected-mailbox) |
+| A portal link email you send (**Send Portal Links**, a link's **Send via Email**, or an agent's portal link) | **Your own** mailbox: the deal's pin if the pinned mailbox is yours, otherwise your default mailbox. If you have no connected mailbox, the send is refused. There is no fallback, whatever the setting below says (see [Sharing Portal Links](../client-portal/sharing-portal-links.mdx#portal-link-emails-come-from-your-own-mailbox)) |
+| Task emails, reminders, scheduled emails, and automation-rule emails, including ones that carry `{{portal_link}}` | The deal's **assignee's default mailbox**. If the deal is unassigned, or the assignee has no connected mailbox, see [Requiring a connected mailbox](#requiring-a-connected-mailbox) |
 | Transaction Summaries and other scheduled reports | The person who **created the schedule** |
 
 If that person hasn't connected a mailbox, what happens depends on one organization setting:
@@ -155,7 +156,8 @@ When this is on:
   connected (the account owner is notified).
 
 When it's off, email still prefers a connected mailbox but falls
-back to DocJacket's email service when none is available.
+back to DocJacket's email service when none is available. Portal link emails
+you send are the exception: they never fall back, whether this setting is on or off.
 
 :::tip
 Connect a mailbox for every team member who sends deal email, so their messages
