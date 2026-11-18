@@ -51,6 +51,22 @@ You can send the portal link by:
 - **Copy and paste** — Copy the link URL and share it however you prefer (email, text, etc.)
 - **Transaction Contacts tab** — Use each contact card to create, copy, regenerate, or revoke that contact's portal link
 
+### Portal link emails come from your own mailbox
+
+A portal link email you send always goes out from **your own connected Gmail or Outlook**, never from a `@docjacket.com` address and never from a teammate's mailbox. This is true for every organization, whatever the **Only send transaction email from a connected mailbox** setting says. If the deal is pinned to your mailbox, that mailbox sends; otherwise your default mailbox does. If the deal is pinned to a teammate's mailbox, your own mailbox sends.
+
+If you have no connected mailbox, the email is not sent and nothing is created or changed. Send Portal Links, and the link's **Send via Email** option on the Portal tab, show:
+
+> Connect your Gmail or Outlook account in Settings → Integrations to email portal links. You can still copy the link and send it yourself.
+
+The **Send Agent Portal Link** dialog and **Regenerate portal link** on an agent contact show:
+
+> Connect your Gmail or Outlook account to send the portal link from your mailbox.
+
+Both messages have a **Connect your email** button that opens **Settings > Integrations** and brings you back to the page you were on once you connect. A refused regenerate leaves the agent's current link working. See [How Email Sending Works](../messages/how-email-sending-works.mdx).
+
+Without a mailbox you can still copy a link and share it yourself, and text messages still send. If you ticked both email and text in Send Portal Links, the texts go and the result says no emails were sent. In the agent dialog, **Create link without emailing** still works.
+
 Texts use your organization's SMS setup and safeguards. You don't need to create a link first. For each contact you text, DocJacket sends that contact's client portal link and creates one if they don't have it yet. Agent contacts get the deal's general client link. If a contact's link has been revoked or has expired, or the contact is set to Notify only, DocJacket skips that text and tells you why. To text a contact whose link is turned off, create a new link from their row on the **Contacts** tab, then send again.
 
 ## Can portal links go out automatically?
