@@ -44,6 +44,18 @@ Yes. You can send a PDF for signature from a contact's record, with no deal invo
 
 The file's row then shows **Out for signature · 0 of N signed**. When everyone has signed, a copy is saved on the contact's **Files** tab, labelled **Signed copy**, and each signer is emailed a copy. A file that has been sent for signature can't be deleted.
 
+### Send a PDF from your File Library
+
+If you send the same PDF to many contacts, upload it once to **Settings › File Library** and send it from there. For example, upload your agent agreement or MSA once, then send it to each new agent from their contact.
+
+1. Open the contact and go to the **Files** tab
+2. Click **Send from File Library** (next to **Upload**)
+3. In the **Send from File Library** dialog, click a PDF. Only PDFs are listed.
+4. The PDF is copied onto the contact's **Files** tab as a new file, and the **Send for Signature** drawer opens with the contact already filled in as a signer
+5. From here it works the same as an uploaded file: add signers, tick **Require signers to sign in order** if needed, and click **Send for Signature**
+
+Your File Library original is not changed. Each send uses the contact's own copy.
+
 To send a document that belongs to a deal, use its **Documents** tab as described above.
 
 ## Tracking status
