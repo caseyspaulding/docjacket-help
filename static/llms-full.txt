@@ -3252,7 +3252,20 @@ For a document-level request, signer roles are simple labels. They do not need t
 
 ## Can I send a signature request for a contact instead of a deal?
 
-No. A signature request is always sent from a document on a deal or listing, so it can't be started from a contact or tracked against one. Open the deal, go to its **Documents** tab, and send the document from there. The signers you add are just names and emails, so the person does not have to be a contact on the deal.
+Yes. You can send a PDF for signature from a contact's record, with no deal involved. A common use is a transaction coordinator sending an agent's MSA or onboarding agreement.
+
+1. Open the contact
+2. Go to the **Files** tab
+3. **Upload** the PDF
+4. On the file's row, click the pen icon (hover text: **Send for Signature**)
+5. The drawer opens with the contact's name and email already filled in as a signer
+6. Click **Add Signer** to add anyone else, for example yourself to countersign
+7. Tick **Require signers to sign in order** if signers must go one at a time. Later signers are emailed only after the previous one signs.
+8. Click **Send for Signature**
+
+The file's row then shows **Out for signature · 0 of N signed**. When everyone has signed, a copy is saved on the contact's **Files** tab, labelled **Signed copy**, and each signer is emailed a copy. A file that has been sent for signature can't be deleted.
+
+To send a document that belongs to a deal, use its **Documents** tab as described above.
 
 ## Tracking status
 
