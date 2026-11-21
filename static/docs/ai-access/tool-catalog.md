@@ -26,7 +26,7 @@ You pick a permission level when you connect, and it is enforced at the token, n
 |---|---|---|
 | `read` | 76 | Look things up. Nothing in this tier changes a record or contacts anyone. A read-only connection is limited to exactly these tools. |
 | `draft` | 33 | Nothing in this tier deletes anything. Low-risk writes to your own records — tasks, key dates, checklists, activity notes. Tools in this tier can't write or send an email themselves. When an assistant connected with draft access, and not actions access, marks a task done, the emails that would follow wait in your Review queue for a person to approve. Moving a date can still make an already-scheduled email go out sooner. |
-| `actions` | 54 | Side-effecting work: sending email to a real person, creating and deleting records, and exposing documents outside the organization. |
+| `actions` | 54 | Side-effecting work: sending email to a real person, creating records, deleting tasks (kept 7 days so they can be undone), and exposing documents outside the organization. |
 
 Every write, in either write tier, is confirmed by you in chat before it runs — the conversation itself is the approval step. Every call is recorded in your [activity log](https://app.docjacket.com/settings/ai-access/activity). See [Permissions & scopes](./permissions.mdx) for how to choose.
 
@@ -1569,7 +1569,7 @@ Change one task's details: rename it, change its description, instructions or pr
 
 ## Actions — 54 tools
 
-Side-effecting work: sending email to a real person, creating and deleting records, and exposing documents outside the organization.
+Side-effecting work: sending email to a real person, creating records, deleting tasks (kept 7 days so they can be undone), and exposing documents outside the organization.
 
 ### `activate_disclosure_package`
 

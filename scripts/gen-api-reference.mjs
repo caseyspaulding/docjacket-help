@@ -124,7 +124,7 @@ Organization credentials — keys and OAuth tokens alike — carry one or more *
 |---|---|
 | ${code('read')} | Read operations (GET). |
 | ${code('draft')} | Low-risk writes — complete a task, log activity, apply a checklist, add key dates. Nothing in this tier deletes. |
-| ${code('actions')} | Side-effecting writes — sending email, creating and deleting records, provisioning. |
+| ${code('actions')} | Side-effecting writes — sending email, deleting tasks, which are kept 7 days for undo, provisioning. |
 
 See [Authentication & API keys](./authentication.mdx) for creating, scoping, rotating, and revoking keys.
 

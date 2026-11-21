@@ -54,7 +54,7 @@ const TIERS = [
     scope: 'actions',
     label: 'Actions',
     blurb:
-      'Side-effecting work: sending email to a real person, creating and deleting records, and exposing documents outside the organization.',
+      'Side-effecting work: sending email to a real person, creating records, deleting tasks (kept 7 days so they can be undone), and exposing documents outside the organization.',
   },
 ];
 
