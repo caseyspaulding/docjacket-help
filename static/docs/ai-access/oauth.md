@@ -149,7 +149,7 @@ DocJacket exposes three scopes — all live, all enforced per token:
 | Scope | What it covers |
 |---|---|
 | `read` | Search transactions, get details, list deadlines, contingencies, missing docs, contacts |
-| `draft` | Update your own records: tasks, key dates, checklists, notes, and status. Nothing is sent to anyone. |
+| `draft` | Update your own records: tasks, key dates, checklists, notes, and status. Nothing is sent to anyone, and nothing is deleted. |
 | `actions` | Send email, create and delete records, and manage disclosure packages on your behalf |
 
 The tier you grant at consent is exactly what the token can do — tiers are checked exactly, not hierarchically, and a client registered for a narrower scope can never request a wider one.

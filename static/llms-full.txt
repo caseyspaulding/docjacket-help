@@ -10699,7 +10699,7 @@ You pick a permission level when you connect, and it is enforced at the token, n
 | Tier | Tools | What it allows |
 |---|---|---|
 | `read` | 76 | Look things up. Nothing in this tier changes a record or contacts anyone. A read-only connection is limited to exactly these tools. |
-| `draft` | 33 | Low-risk writes to your own records — tasks, key dates, checklists, activity notes. Tools in this tier can't write or send an email themselves. When an assistant connected with draft access, and not actions access, marks a task done, the emails that would follow wait in your Review queue for a person to approve. Moving a date can still make an already-scheduled email go out sooner. |
+| `draft` | 33 | Nothing in this tier deletes anything. Low-risk writes to your own records — tasks, key dates, checklists, activity notes. Tools in this tier can't write or send an email themselves. When an assistant connected with draft access, and not actions access, marks a task done, the emails that would follow wait in your Review queue for a person to approve. Moving a date can still make an already-scheduled email go out sooner. |
 | `actions` | 54 | Side-effecting work: sending email to a real person, creating and deleting records, and exposing documents outside the organization. |
 
 Every write, in either write tier, is confirmed by you in chat before it runs — the conversation itself is the approval step. Every call is recorded in your [activity log](https://app.docjacket.com/settings/ai-access/activity). See [Permissions & scopes](./permissions.mdx) for how to choose.
@@ -11941,7 +11941,7 @@ Check the whole draft against the same rules Create uses and list what is blocki
 
 ## Draft — 33 tools
 
-Low-risk writes to your own records — tasks, key dates, checklists, activity notes. **Tools in this tier can't write or send an email themselves.** When an assistant connected with draft access, and not actions access, marks a task done, the emails that would follow wait in your Review queue for a person to approve. Moving a date can still make an already-scheduled email go out sooner.
+Nothing in this tier deletes anything. Low-risk writes to your own records — tasks, key dates, checklists, activity notes. **Tools in this tier can't write or send an email themselves.** When an assistant connected with draft access, and not actions access, marks a task done, the emails that would follow wait in your Review queue for a person to approve. Moving a date can still make an already-scheduled email go out sooner.
 
 ### `add_key_dates_batch`
 
@@ -13130,7 +13130,7 @@ DocJacket exposes three scopes — all live, all enforced per token:
 | Scope | What it covers |
 |---|---|
 | `read` | Search transactions, get details, list deadlines, contingencies, missing docs, contacts |
-| `draft` | Update your own records: tasks, key dates, checklists, notes, and status. Nothing is sent to anyone. |
+| `draft` | Update your own records: tasks, key dates, checklists, notes, and status. Nothing is sent to anyone, and nothing is deleted. |
 | `actions` | Send email, create and delete records, and manage disclosure packages on your behalf |
 
 The tier you grant at consent is exactly what the token can do — tiers are checked exactly, not hierarchically, and a client registered for a narrower scope can never request a wider one.
@@ -13198,8 +13198,8 @@ DocJacket's MCP server groups its tools into three **scope tiers**, and supports
 | Scope | What it covers | Approval flow |
 |---|---|---|
 | **`read`** | Search, lookup, list — e.g. `search_transactions`, `get_upcoming_key_dates`, `get_next_required_actions`, `get_open_tasks`, `get_deal_section`, `review_deal_health`. With `read`, an assistant can also read a deal's internal notes and the comments on its tasks and documents, its email including message bodies, its text-message threads, scheduled sends, consistency checks, change log, key-date history, agreements, and TC fees and invoices (no payment links). It can see each task's settings, including whether the task shows on the SitRep report and on the client portal. Nothing here changes a record or contacts anyone. | Auto-approved per conversation in most clients |
-| **`draft`** | Low-risk writes to your own records — `create_tasks`, `complete_task`, `set_task_outcome` (complete, skip or reopen up to 25 tasks), `update_task`, `update_key_date`, `manage_key_date`, `manage_note` (internal notes and comments), `apply_checklist`, `log_activity`, `save_status_summary`. **Tools in this tier can't write or send an email themselves.** When an assistant connected with draft access, and not actions access, marks a task done, the emails that would follow wait in your Review queue for a person to approve. Moving a date can still make an already-scheduled email go out sooner. | DocJacket marks these as write tools; the assistant asks first if its approval setting for the tool is on |
-| **`actions`** | Side-effecting work — sending email (`send_client_update`, `send_document_request`, `send_agent_followup`, `send_email_to_agent`), changing a deal's own details (`update_deal`), changing who is on a deal (`manage_deal_contact`), deleting tasks (`delete_tasks`), restoring an archived deal (`restore_deal`), creating and deleting records, and disclosure packages that expose documents outside the org. | DocJacket marks these as write tools; the assistant asks first if its approval setting for the tool is on |
+| **`draft`** | Low-risk writes to your own records — `create_tasks`, `complete_task`, `set_task_outcome` (complete, skip or reopen up to 25 tasks), `update_task`, `update_key_date`, `manage_key_date`, `manage_note` (internal notes and comments), `apply_checklist` and `apply_playbook` (adding only), `log_activity`, `save_status_summary`. **Nothing in this tier deletes anything.** The only thing it removes is a note or comment you wrote, which is archived and can be brought back. It can't clear a key date or replace a deal's checklist. **Tools in this tier can't write or send an email themselves.** When an assistant connected with draft access, and not actions access, marks a task done, the emails that would follow wait in your Review queue for a person to approve. Moving a date can still make an already-scheduled email go out sooner. | DocJacket marks these as write tools; the assistant asks first if its approval setting for the tool is on |
+| **`actions`** | Side-effecting work — sending email (`send_client_update`, `send_document_request`, `send_agent_followup`, `send_email_to_agent`), changing a deal's own details (`update_deal`), changing who is on a deal (`manage_deal_contact`), deleting tasks (`delete_tasks`; DocJacket keeps a copy for 7 days, and `undo_task_deletion` puts them back), restoring an archived deal (`restore_deal`), archiving contact roles and document categories, removing a webhook subscription, and disclosure packages that expose documents outside the org. **A connected assistant never deletes a file, a deal, a contact or your account.** It archives instead, and you can bring back what it archived. | DocJacket marks these as write tools; the assistant asks first if its approval setting for the tool is on |
 
 The draft tier is the useful middle setting: an assistant can keep your tasks and deadlines current without being able to write or send an email of its own. **[Browse every tool →](/docs/ai-access/tool-catalog)** to see exactly what sits in each tier.
 
@@ -13613,7 +13613,7 @@ Scopes are tiers — each includes progressively more power. Grant the minimum a
 | Scope | Grants |
 |---|---|
 | `read` | All GET endpoints — transactions, contacts, tasks, key dates, documents, and more |
-| `draft` | Low-risk writes — complete a task, log activity, apply a checklist, add key dates |
+| `draft` | Low-risk writes — complete a task, log activity, apply a checklist, add key dates. Nothing in this tier deletes. |
 | `actions` | Side-effect writes — create contacts, upload & extract documents, send emails, manage disclosure packages |
 
 You can change a key's scopes at any time from **Settings → API & AI Access → Edit scopes** — the key keeps working with the new grant, and the change is recorded in the [activity log](/docs/ai-access/permissions). Every change is auditable.
@@ -14113,7 +14113,7 @@ Organization credentials — keys and OAuth tokens alike — carry one or more *
 | Scope | Grants |
 |---|---|
 | `read` | Read operations (GET). |
-| `draft` | Low-risk writes — completing a task, logging activity, applying a checklist. |
+| `draft` | Low-risk writes — complete a task, log activity, apply a checklist, add key dates. Nothing in this tier deletes. |
 | `actions` | Side-effecting writes — sending email, creating and deleting records, provisioning. |
 
 See [Authentication & API keys](./authentication.mdx) for creating, scoping, rotating, and revoking keys.

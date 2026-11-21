@@ -25,7 +25,7 @@ You pick a permission level when you connect, and it is enforced at the token, n
 | Tier | Tools | What it allows |
 |---|---|---|
 | `read` | 76 | Look things up. Nothing in this tier changes a record or contacts anyone. A read-only connection is limited to exactly these tools. |
-| `draft` | 33 | Low-risk writes to your own records — tasks, key dates, checklists, activity notes. Tools in this tier can't write or send an email themselves. When an assistant connected with draft access, and not actions access, marks a task done, the emails that would follow wait in your Review queue for a person to approve. Moving a date can still make an already-scheduled email go out sooner. |
+| `draft` | 33 | Nothing in this tier deletes anything. Low-risk writes to your own records — tasks, key dates, checklists, activity notes. Tools in this tier can't write or send an email themselves. When an assistant connected with draft access, and not actions access, marks a task done, the emails that would follow wait in your Review queue for a person to approve. Moving a date can still make an already-scheduled email go out sooner. |
 | `actions` | 54 | Side-effecting work: sending email to a real person, creating and deleting records, and exposing documents outside the organization. |
 
 Every write, in either write tier, is confirmed by you in chat before it runs — the conversation itself is the approval step. Every call is recorded in your [activity log](https://app.docjacket.com/settings/ai-access/activity). See [Permissions & scopes](./permissions.mdx) for how to choose.
@@ -1267,7 +1267,7 @@ Check the whole draft against the same rules Create uses and list what is blocki
 
 ## Draft — 33 tools
 
-Low-risk writes to your own records — tasks, key dates, checklists, activity notes. **Tools in this tier can't write or send an email themselves.** When an assistant connected with draft access, and not actions access, marks a task done, the emails that would follow wait in your Review queue for a person to approve. Moving a date can still make an already-scheduled email go out sooner.
+Nothing in this tier deletes anything. Low-risk writes to your own records — tasks, key dates, checklists, activity notes. **Tools in this tier can't write or send an email themselves.** When an assistant connected with draft access, and not actions access, marks a task done, the emails that would follow wait in your Review queue for a person to approve. Moving a date can still make an already-scheduled email go out sooner.
 
 ### `add_key_dates_batch`
 

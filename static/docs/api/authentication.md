@@ -51,7 +51,7 @@ Scopes are tiers — each includes progressively more power. Grant the minimum a
 | Scope | Grants |
 |---|---|
 | `read` | All GET endpoints — transactions, contacts, tasks, key dates, documents, and more |
-| `draft` | Low-risk writes — complete a task, log activity, apply a checklist, add key dates |
+| `draft` | Low-risk writes — complete a task, log activity, apply a checklist, add key dates. Nothing in this tier deletes. |
 | `actions` | Side-effect writes — create contacts, upload & extract documents, send emails, manage disclosure packages |
 
 You can change a key's scopes at any time from **Settings → API & AI Access → Edit scopes** — the key keeps working with the new grant, and the change is recorded in the [activity log](/docs/ai-access/permissions). Every change is auditable.
