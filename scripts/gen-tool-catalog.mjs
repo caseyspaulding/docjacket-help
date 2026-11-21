@@ -48,13 +48,13 @@ const TIERS = [
     scope: 'draft',
     label: 'Draft',
     blurb:
-      'Low-risk writes to your own records — tasks, key dates, checklists, activity notes. **Tools in this tier can\'t write or send an email themselves.** When an assistant connected with draft access, and not actions access, marks a task done, the emails that would follow wait in your Review queue for a person to approve. Moving a date can still make an already-scheduled email go out sooner.',
+      'Nothing in this tier deletes anything. Low-risk writes to your own records — tasks, key dates, checklists, activity notes. **Tools in this tier can\'t write or send an email themselves.** When an assistant connected with draft access, and not actions access, marks a task done, the emails that would follow wait in your Review queue for a person to approve. Moving a date can still make an already-scheduled email go out sooner.',
   },
   {
     scope: 'actions',
     label: 'Actions',
     blurb:
-      'Side-effecting work: sending email to a real person, creating and deleting records, and exposing documents outside the organization.',
+      'Side-effecting work: sending email to a real person, creating records, deleting tasks (kept 7 days so they can be undone), and exposing documents outside the organization.',
   },
 ];
 
