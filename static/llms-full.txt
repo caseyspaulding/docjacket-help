@@ -9441,11 +9441,15 @@ Ask Ask AI to build an [Online Form](../templates/online-forms.md) and it can do
 - *"Build a buyer intake form: name, email, phone, price range, and whether they're pre-approved. Each submission should start a new deal."*
 - *"Copy the Seller Intake starter form and add a question about occupancy."*
 - *"Publish it and give me a link that stops after 100 submissions."*
+- *"On my buyer intake form, rename 'Text 1' to 'Preferred move-in date' and make it required."*
 
 It can:
 
 - Create a form from your description, or copy one of the **DocJacket Forms** starters into **My Forms**.
 - Add fields to a form your organization owns.
+- Change fields already on the form: rename a label, make a field required or optional, edit its help text, placeholder, width, section or choices, change which deal field an answer is saved to, and set when a field shows.
+- Remove fields from the form.
+- Reorder fields and move them between sections.
 - Publish a form.
 - Create a share link, with an expiry date or a limit on submissions if you ask for one.
 - Switch a share link off.
@@ -9470,6 +9474,15 @@ When it's done, the assistant gives you the share link in the chat. The link use
 :::note A published form is not the same as a shared form
 Publishing saves the form's fields as its live version. It's the share link that lets people open the form, and a form with a link can be filled in whether or not it is published. Publishing can't be undone, so the assistant says that in its preview.
 :::
+
+### Changing, removing and reordering fields {#editing-fields}
+
+The assistant previews these like everything else, and waits for your yes.
+
+- **On a published form, the change is live straight away.** The public form shows it as soon as you say yes, and a new version is recorded.
+- **A field's type can't be changed.** To turn a text field into a dropdown, for example, ask the assistant to remove it and add a new one.
+- **Removing a field can't be undone by the assistant.** The field stops collecting answers, but answers already submitted under it stay on those submissions. The preview says how many submissions hold answers to it. If other fields only show based on the one you're removing, the preview says so and asks before clearing those rules, so the other fields stay visible.
+- **To restore a removed field,** add it again, through the assistant or in the form builder.
 
 ### What it won't do with forms
 
