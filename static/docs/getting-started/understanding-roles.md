@@ -81,8 +81,8 @@ When a limited member tries something that is closed to them, they see an amber 
 
 These are closed to them today:
 
-- Attach a file to an email. <!-- until: docjacket-v3#6963 -->
-- Send documents for e-signature. <!-- until: docjacket-v3#6963 -->
+- Attach a file to an email.
+- Send documents for e-signature.
 - Save changes to email templates. <!-- until: docjacket-v3#6969 -->
 - Edit deal roles, deal statuses or SMS settings. <!-- until: docjacket-v3#6969 -->
 - Type an email address into a Playbook or checklist email's recipients. They can pick roles and team members.

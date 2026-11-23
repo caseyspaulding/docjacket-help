@@ -328,8 +328,8 @@ When a limited member tries something that is closed to them, they see an amber 
 
 These are closed to them today:
 
-- Attach a file to an email. <!-- until: docjacket-v3#6963 -->
-- Send documents for e-signature. <!-- until: docjacket-v3#6963 -->
+- Attach a file to an email.
+- Send documents for e-signature.
 - Save changes to email templates. <!-- until: docjacket-v3#6969 -->
 - Edit deal roles, deal statuses or SMS settings. <!-- until: docjacket-v3#6969 -->
 - Type an email address into a Playbook or checklist email's recipients. They can pick roles and team members.
@@ -810,6 +810,10 @@ Depending on the draft, you may be able to:
 - Use **Approve All** when every ready item should proceed
 
 This tab is the review-first safety step for automation output. Click a card to open the detail view. Nothing sends from here until you approve, send, skip, or dismiss the item.
+
+### Portal links ready
+
+A new deal with a client or one of your agents who has not been sent a portal link gets a **Portal links ready** card. It lists who would get a link and which one. Untick anyone, then click **Send portal links**, or click **Dismiss**. This card has its own buttons and is left out of **Approve All**, so it only sends when you choose who gets a link. See [Sharing Portal Links](../client-portal/sharing-portal-links.mdx#the-portal-links-ready-card).
 
 ### Emails from Automation Rules
 
@@ -15013,7 +15017,39 @@ Texts use your organization's SMS setup and safeguards. You don't need to create
 
 ## Can portal links go out automatically?
 
-DocJacket does not send portal links when a deal is created. You send them yourself with **Send Portal Links** on the Portal or Contacts tab, or you put the **Client Portal Link** smart field, `{{portal_link}}`, in the email of a Playbook task.
+DocJacket never sends a portal link on its own. For a new deal it prepares the send for you, and it goes out when you approve it.
+
+### The Portal links ready card
+
+When a new deal has a client or one of your agents who has not been sent a portal link, a **Portal links ready** card appears in your [Review queue](../operations/pending-review.md), usually within about 5 minutes.
+
+- The card lists each person with their role, their email address, and which link they will get: **Client portal** or **Agent portal (all their deals)**.
+- Everyone is ticked to start. Untick anyone you don't want to send to, then click **Send portal links**. Nothing is sent until you click it.
+- A client gets their own client portal link, the same email **Send Portal Links** sends. An agent on your side gets their agent portal link.
+- The emails go from your connected mailbox, so you need Gmail or Outlook connected in **Settings > Integrations**. Without one, the card reports that nothing was sent.
+- An agent who already opens their agent portal is listed but not ticked, because the new deal already shows there.
+- People are added to the card as you add them to the deal, until you send or dismiss it.
+
+Who is listed:
+
+- **Clients on your side**: the buyer on a deal where you represent the buyer, the seller where you represent the seller, both on a dual deal, and anyone in a custom client role.
+- **Agents on your side** of the deal.
+- The other side's buyer or seller, the cooperating agent, the lender and the title company are never listed. Use **Send Portal Links** for them.
+
+When the card does not appear:
+
+- The deal came from an import (CSV, Nekst, Open To Close, or monday).
+- The deal is more than 72 hours old, or it is closed, cancelled or archived.
+- Nobody on the deal qualifies yet, or everyone who does has no email address.
+- A portal link on the deal has already been shared.
+
+Each deal gets one card. If you send links from the deal yourself, the open card closes. **Dismiss** is final for that deal, and a card nobody answers goes away after 14 days. You can always use **Send Portal Links** afterwards.
+
+To turn the card off for your organization, go to **Settings > Client Portal** and switch off **Prepare portal links for new deals**.
+
+### Smart fields in a Playbook email
+
+You can also put the **Client Portal Link** smart field, `{{portal_link}}`, in the email of a Playbook task.
 
 - `{{portal_link}}` is the deal's shared Buyer/Seller link. DocJacket creates that link the first time the smart field is used, so you don't have to create it first.
 - A task email that uses it follows the normal delivery rules. With **Require review before sending** on (the default), the email waits in your Review queue until you approve it. See [Email Automation](../tasks/email-automation.mdx#review-before-sending).
