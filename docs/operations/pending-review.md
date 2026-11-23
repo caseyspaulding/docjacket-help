@@ -44,6 +44,10 @@ Depending on the draft, you may be able to:
 
 This tab is the review-first safety step for automation output. Click a card to open the detail view. Nothing sends from here until you approve, send, skip, or dismiss the item.
 
+### Portal links ready
+
+A new deal with a client or one of your agents who has not been sent a portal link gets a **Portal links ready** card. It lists who would get a link and which one. Untick anyone, then click **Send portal links**, or click **Dismiss**. This card has its own buttons and is left out of **Approve All**, so it only sends when you choose who gets a link. See [Sharing Portal Links](../client-portal/sharing-portal-links.mdx#the-portal-links-ready-card).
+
 ### Emails from Automation Rules
 
 A rule that sends when a deal enters a status, or when a Playbook task is completed, can land here even if your organization lets other automated emails send without review. DocJacket holds it when a smart field has no value on the deal, a merge field in the template can't be filled in, or the template was deleted, is inactive, or has no wording. The card says what the problem is, and you can't approve it until the blanks are filled in. Open the draft, fill them in, save, then send. See [Automation Rules](../settings/email-and-automation.md#what-does-a-status-or-task-rule-send).
