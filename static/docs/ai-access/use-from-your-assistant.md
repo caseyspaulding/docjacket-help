@@ -31,7 +31,7 @@ Not sure? Claude is the simplest to set up today.
 ## What you can ask it to do
 
 - **Set up a deal from a signed contract.** "Set up the deal from this contract."
-- **See what needs attention today.** "What needs my attention today?"
+- **See what needs attention today.** "What needs my attention today?" The answer covers what's due and what's waiting for your approval in the review queue (emails to review, documents to file, new deals from email), each with a link to the item in DocJacket. Approving happens in DocJacket, not in the chat.
 - **Match emails to deals.** "Which of my new emails belong to a deal?" Your AI needs its own email connection for this one.
 - **Identify a document.** "What is this document, which deal is it for, and what is still missing?"
 - **Draft follow-ups and client updates.** "Draft a note to the buyer's agent about the missing inspection report."
