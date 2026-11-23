@@ -1,12 +1,12 @@
 ---
 sidebar_label: Restoring & Deleting
 sidebar_position: 13
-description: Bring an archived DocJacket deal back to your active list, what restoring returns and what it deliberately doesn't, and how permanent deletion works — including when DocJacket refuses to delete a deal.
+description: Bring an archived DocJacket deal back to your active list, what restoring returns and what it deliberately doesn't, how deleting works, and how an Owner or Admin restores a deleted deal from Recently deleted — including when DocJacket refuses to delete a deal.
 ---
 
 # Restoring or Deleting an Archived Transaction
 
-An archived deal is easy to bring back: you can pull it into your active list at any time, yourself. A deleted deal has no undelete button in the app, but DocJacket keeps it, and DocJacket support can restore it for you. See [Deleted a deal by mistake?](#deleted-by-mistake)
+An archived deal is easy to bring back: you can pull it into your active list at any time, yourself. A deleted deal can be brought back too: DocJacket keeps it, and an Owner or Admin can restore it from **Recently deleted** on the Transactions page. See [Deleted a deal by mistake?](#deleted-by-mistake)
 
 ## Viewing your archived deals
 
@@ -48,31 +48,36 @@ This is deliberate: restoring shouldn't silently reopen work someone decided was
 
 If you're restoring a deal only to look something up — far and away the most common reason — none of this matters. It matters when you're putting a deal back into active service.
 
-## Deleting a transaction permanently
+## Deleting a transaction
 
-Deletion is a separate, heavier action, and it lives away from the list on purpose. Only an Owner or Admin can permanently delete a deal. Anyone else who can edit deals can archive and restore them, and doesn't see **Delete Transaction**.
+Deletion is a separate, heavier action, and it lives away from the list on purpose. Only an Owner or Admin can delete a deal, or restore a deleted one. Anyone else who can edit deals can archive and restore archived deals, and doesn't see **Delete Transaction**.
 
 1. Open the transaction and click **Edit**
 2. In the footer, click **Delete Transaction**
-3. Confirm with **Delete Permanently**
+3. Confirm with **Delete Transaction**
 
-![Delete Transaction dialog explaining that the deal is permanently deleted and suggesting Archive instead, with Cancel and Delete Permanently buttons](/img/transactions/delete-transaction-dialog.png)
+![Delete Transaction dialog explaining what deleting does and that an Owner or Admin can restore the deal from Recently deleted, with Cancel and Delete Transaction buttons](/img/transactions/delete-transaction-dialog.png)
 
-The confirmation reads: *"This permanently deletes the transaction. It will no longer appear in any list, including the Archived view, and its key dates, tasks, documents and emails go with it. Unsent scheduled emails, reminders and messages are cancelled, and its client portal links stop working. This cannot be undone."* Underneath: *"If you might want to recover it later, use Archive instead."* Its client portal and agent portal links stop working everywhere, including the portal message board.
+The confirmation reads: *"This deletes the transaction. It disappears from every list, including the Archived view. Its unsent scheduled emails, reminders and messages are cancelled and do not come back, and its client portal links stop working."* Underneath: *"An Owner or Admin can restore it from Recently deleted on the Transactions page. To take it off your list without deleting it, use Archive instead."* Its client portal and agent portal links stop working everywhere, including the portal message board, until the deal is restored.
 
 If someone who isn't an Owner or Admin reaches the delete anyway, it is refused with *"Only an Owner or Admin can permanently delete a transaction. You can archive it instead."*
 
 ### Deleted a deal by mistake? {#deleted-by-mistake}
 
-If you accidentally deleted a transaction and want to get it back, DocJacket support can recover it. Deleting hides the deal everywhere in the app, but the deal is kept, with its tasks, documents, key dates and contacts. There is no undelete button for you to press, so:
+Deleting hides the deal everywhere in the app, but the deal is kept, with its tasks, documents, key dates and contacts. An Owner or Admin can bring it back:
 
-1. Open **Ask AI** and use **Send to support**.
-2. Give the deal's **address** (and roughly when it was deleted, if you know), and say you want the deleted deal restored.
+1. On the **Transactions** page, click **Recently deleted** (next to **Archived**).
+2. Find the deal. Each row shows when it was deleted and the status it comes back in.
+3. Click **Restore** and confirm.
 
-Support restores it and replies under **Help & Support › Support requests**. One thing does not come back: deleting removed the deal's **unsent scheduled emails and reminders**, and the restore does not bring them back. After the restore, check the deal's scheduled emails and reminders and set up again any you still need.
+The deal comes back with the status it had when it was deleted. A deal that was archived when it was deleted comes back to the **Archived** view. For a deal deleted before November 2026, DocJacket did not save its status; the row says so and shows the status it will get instead (your first open status), and you can change it after restoring.
+
+What does not come back: deleting removed the deal's **unsent scheduled emails and reminders** and cancelled its unsent text messages, and the restore does not bring them back. Review-queue suggestions the delete expired stay expired. After the restore, check the deal's scheduled emails and reminders and set up again any you still need.
+
+If you are not an Owner or Admin, ask yours to restore it, or open **Ask AI** and use **Send to support** with the deal's **address**. Ask AI can also find a deleted deal for you: ask it about the deal you deleted.
 
 :::danger Archive is almost always the right choice
-There is no undelete button: getting a deleted deal back means asking support. If there is any chance you'll want the record — for a commission dispute, an audit, a broker file review, or just to remember what happened — **archive it instead**. Archiving costs you nothing: archived deals don't count against your active deals and don't appear in your working list.
+Deleting cancels the deal's unsent emails, reminders and messages for good, and only an Owner or Admin can bring the deal back. If there is any chance you'll want the record — for a commission dispute, an audit, a broker file review, or just to remember what happened — **archive it instead**. Archiving costs you nothing: archived deals don't count against your active deals and don't appear in your working list.
 :::
 
 ## When DocJacket refuses to delete a deal

@@ -27,7 +27,7 @@ DocJacket includes these built-in roles:
 - **Assistant** — Works deals: documents, dates, tasks, and email
 - **Viewer** — Read-only: can open deals and their documents, but can't change anything
 
-Only Owners and Admins can permanently delete a deal. Every other role that can edit deals can archive and restore them. **Settings > Roles** shows this as **Permanently delete deals**.
+Only Owners and Admins can permanently delete a deal, and only they can restore a deleted deal from **Recently deleted** on the Transactions page. Every other role that can edit deals can archive and restore archived deals. **Settings > Roles** shows this as **Permanently delete deals**.
 
 **By default, every team member sees every deal.** A role decides what a person can change — settings, the team, billing, saved passwords — and Viewer is read-only. To focus on your own work, use the **Mine** view on Transactions or **Assigned to me** on Tasks; these filter your own view and don't hide anything from anyone else. To actually keep a role to its own deals, use the **Deal visibility** setting below.
 
