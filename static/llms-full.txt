@@ -2495,7 +2495,7 @@ Nothing expires. An archived deal stays exactly as you left it until you restore
 
 # Restoring or Deleting an Archived Transaction
 
-A permanently deleted transaction cannot be restored: there is no undelete in the app. An archived deal is different. You can pull it back into your active list at any time, or — if you're certain — remove it for good.
+An archived deal is easy to bring back: you can pull it into your active list at any time, yourself. A deleted deal has no undelete button in the app, but DocJacket keeps it, and DocJacket support can restore it for you. See [Deleted a deal by mistake?](#deleted-by-mistake)
 
 ## Viewing your archived deals
 
@@ -2551,8 +2551,17 @@ The confirmation reads: *"This permanently deletes the transaction. It will no l
 
 If someone who isn't an Owner or Admin reaches the delete anyway, it is refused with *"Only an Owner or Admin can permanently delete a transaction. You can archive it instead."*
 
+### Deleted a deal by mistake? {#deleted-by-mistake}
+
+If you accidentally deleted a transaction and want to get it back, DocJacket support can recover it. Deleting hides the deal everywhere in the app, but the deal is kept, with its tasks, documents, key dates and contacts. There is no undelete button for you to press, so:
+
+1. Open **Ask AI** and use **Send to support**.
+2. Give the deal's **address** (and roughly when it was deleted, if you know), and say you want the deleted deal restored.
+
+Support restores it and replies under **Help & Support › Support requests**. One thing does not come back: deleting removed the deal's **unsent scheduled emails and reminders**, and the restore does not bring them back. After the restore, check the deal's scheduled emails and reminders and set up again any you still need.
+
 :::danger Archive is almost always the right choice
-There is no undelete. If there is any chance you'll want the record — for a commission dispute, an audit, a broker file review, or just to remember what happened — **archive it instead**. Archiving costs you nothing: archived deals don't count against your active deals and don't appear in your working list.
+There is no undelete button: getting a deleted deal back means asking support. If there is any chance you'll want the record — for a commission dispute, an audit, a broker file review, or just to remember what happened — **archive it instead**. Archiving costs you nothing: archived deals don't count against your active deals and don't appear in your working list.
 :::
 
 ## When DocJacket refuses to delete a deal
