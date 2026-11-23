@@ -73,6 +73,8 @@ Deleting hides the deal everywhere in the app, but the deal is kept, with its ta
 2. Find the deal. Each row shows when it was deleted and the status it comes back in.
 3. Click **Restore** and confirm.
 
+![Recently deleted page listing deleted deals, each with the date it was deleted, the status it comes back as, the tasks and documents kept, and a Restore button](/img/transactions/recently-deleted.png)
+
 The deal comes back with the status it had when it was deleted. A deal that was archived when it was deleted comes back to the **Archived** view. For a deal deleted before November 2026, DocJacket did not save its status; the row says so and shows the status it will get instead (your first open status), and you can change it after restoring.
 
 What does not come back: deleting removed the deal's **unsent scheduled emails and reminders** and cancelled its unsent text messages, and the restore does not bring them back. Review-queue suggestions the delete expired stay expired. After the restore, check the deal's scheduled emails and reminders and set up again any you still need.
