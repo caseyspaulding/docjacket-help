@@ -64,6 +64,8 @@ Text **`weekly report`** (or *recap* / *summary*) any time for an instant rundow
 
 - **It answers questions; it doesn't send anything on your behalf.** The assistant reads your deal data and replies — it won't email a client or change a deal.
 - **Answers are kept short for text.** For the full picture, open the deal in the DocJacket app.
+- **Some things never go out by text.** A text can be read on a lock screen, and a phone number can be reassigned, so the assistant never texts money amounts (price, commission, fees, earnest money), links, notes, document or email text, or your clients' phone numbers and email addresses. It says "(in the app)" in their place. The other agent's, lender's, title's and escrow's contact details are included. See [How DocJacket's AI is controlled](./ai-controls.mdx).
+- **Ask "what needs me?"** The answer includes what's waiting for your approval, such as emails to review and documents to file, along with what's due.
 - **Stop any time.** Reply **STOP** to unlink your number and opt out, or **HELP** for help. You can also unlink from **Settings → SMS**.
 - **This is different from your business SMS number.** The number you *text the assistant* is DocJacket's assistant line — separate from the dedicated business number your clients see for deal texts.
 
