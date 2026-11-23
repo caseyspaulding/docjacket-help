@@ -176,7 +176,7 @@ Task lists on a deal — create, list, comment on, complete, and delete tasks.
 | DELETE | `/api/v1/tasks/{taskId}/comments/{commentId}` | Delete a task comment (author only) | `draft` |
 | POST | `/api/v1/tasks/{taskId}/complete` | Mark a task complete | `draft` |
 | POST | `/api/v1/tasks/{taskId}/reschedule` | Reschedule (postpone) a task's due date | `draft` |
-| POST | `/api/v1/tasks/delete` | Delete tasks (bulk, permanent) | `actions` |
+| POST | `/api/v1/tasks/delete` | Delete tasks on one deal (kept 7 days for undo) | `actions` |
 
 ### Documents
 
@@ -187,7 +187,7 @@ Files on a deal — request an upload URL, list and classify documents, share th
 | GET | `/api/v1/documents` | List recently-uploaded documents with extraction state | `read` |
 | POST | `/api/v1/documents` | Upload a document (base64) and start extraction | `actions` |
 | PATCH | `/api/v1/documents/{documentId}` | Rename or re-classify a document | `draft` |
-| DELETE | `/api/v1/documents/{documentId}` | Soft-delete a document | `draft` |
+| DELETE | `/api/v1/documents/{documentId}` | Soft-delete a document | `actions` |
 | POST | `/api/v1/documents/{documentId}/extract` | Start extraction for a document already in DocJacket | `actions` |
 | POST | `/api/v1/documents/{documentId}/split` | Split a multi-page PDF into separate documents | `draft` |
 | POST | `/api/v1/documents/{documentId}/versions` | Replace a document with a new uploaded version | `draft` |
@@ -230,7 +230,7 @@ Seller disclosure packages — assemble documents, activate, invite and revoke r
 | POST | `/api/v1/disclosure-packages/{packageId}/activate` | Activate a disclosure package (idempotent) | `actions` |
 | GET | `/api/v1/disclosure-packages/{packageId}/activity` | Get the recipient-activity report for a disclosure package | `read` |
 | PUT | `/api/v1/disclosure-packages/{packageId}/documents` | Replace a disclosure package's document list | `actions` |
-| POST | `/api/v1/disclosure-packages/{packageId}/recipients` | Invite a recipient to a disclosure package (sends the share email) | `actions` |
+| POST | `/api/v1/disclosure-packages/{packageId}/recipients` | Invite a recipient to a disclosure package: the link only, or an email after preview and confirm | `actions` |
 | DELETE | `/api/v1/disclosure-packages/{packageId}/recipients/{recipientId}` | Revoke a disclosure recipient's access (idempotent) | `actions` |
 
 ### Proposals
