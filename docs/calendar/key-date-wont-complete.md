@@ -14,6 +14,8 @@ A key date can have tasks linked to it (from a Playbook, or ones you linked your
 
 If even one linked task is still open, the key date stays open. So when **MLS Go-Live** has three linked tasks and you complete two, the key date is not complete yet — the third open task is holding it.
 
+In a Playbook, a task is linked to a key date by its **Lives under** setting. A task whose **Due date is based on** a key date is only scheduled from it: completing that task never completes the key date, and leaving it open never holds the key date open. See ["Lives under" and "Due date is based on" are separate settings](../templates/timeline-templates.md#lives-under-and-due-date-is-based-on-are-separate-settings).
+
 To see which tasks are linked, open the transaction **Overview**, find the key date in the closing timeline, and expand it (click the row) — its linked tasks are listed underneath with a checkbox each. Or click the key date's name to open its drawer and look at **Linked Tasks**.
 
 Open linked tasks **never stop you completing the key date yourself.** You have three ways to resolve it.
