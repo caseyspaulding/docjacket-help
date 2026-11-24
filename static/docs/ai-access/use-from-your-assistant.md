@@ -121,7 +121,7 @@ On DocJacket's **Free plan**, your organization gets **50 AI tool calls a month*
 - **What is a call?** Each time your AI looks something up or makes a change in DocJacket, that is one call. One question can use several calls.
 - **Who shares it?** Everyone in your organization shares the same 100.
 - **When does it reset?** On the 1st of each month, in your organization's time zone.
-- **What doesn't count?** Calls that fail, checking the connection, and looking up your plan or the upgrade link. Ask AI inside DocJacket does not count either.
+- **What doesn't count?** Calls that fail, checking the connection, and looking up your plan or the upgrade link. Sofia inside DocJacket does not count either.
 
 From the 40th call, your AI is told how many calls you have used. After 50, DocJacket stops answering your AI until the 1st. Your AI shows a message like this:
 

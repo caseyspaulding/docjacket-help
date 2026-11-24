@@ -48,7 +48,7 @@ When you set a key date to **Waived** or **N/A** and it still has open linked ta
 
 If the date also has a calendar invite out and is still ahead, DocJacket first asks **Also cancel the calendar invite?**; see [Calendar Invites](./calendar-invites.md#waived-and-na-dates).
 
-When Ask AI or a connected AI client marks a date waived or not applicable, nobody is asked, so the open linked tasks are skipped by default. Ask AI's card lists how many it will skip before you approve it, and **Undo** reopens them.
+When Sofia or a connected AI client marks a date waived or not applicable, nobody is asked, so the open linked tasks are skipped by default. Sofia's card lists how many it will skip before you approve it, and **Undo** reopens them.
 
 ## Option 3: Unlink a task that doesn't belong
 

@@ -291,7 +291,7 @@ A limited member is "on" a deal when any one of these is true:
 - They are **listed on the deal as an agent** (a contact on the deal with their email address and an agent role, such as Listing Agent or Buyer's Agent)
 - They are **assigned a task** on the deal. An assigned task shares the whole deal with that person, so assign a task to bring someone onto a deal without reassigning it.
 
-For a limited member, a deal they aren't on behaves as if it doesn't exist. It doesn't appear in the deal list, pipeline, search, Tasks, Calendar, the dashboard, Ask AI answers, or the morning brief, and opening its link shows **Transaction not found** (or **Listing not found** for a listing).
+For a limited member, a deal they aren't on behaves as if it doesn't exist. It doesn't appear in the deal list, pipeline, search, Tasks, Calendar, the dashboard, Sofia's answers, or the morning brief, and opening its link shows **Transaction not found** (or **Listing not found** for a listing).
 
 A few things work differently for a limited member:
 
@@ -521,7 +521,7 @@ You can reach the DocJacket team from inside the app, and every reply comes back
 
 ## Sending a support request
 
-- **From Ask AI.** In the Ask AI panel, click **Send to support**. DocJacket drafts the request with the page you're on and an excerpt of the conversation. Review it, remove anything private, and click **Send request**.
+- **From Sofia.** In the Sofia panel, click **Send to support**. DocJacket drafts the request with the page you're on and an excerpt of the conversation. Review it, remove anything private, and click **Send request**.
 - **From the Contact Support page.** On the **Your Support Requests** tab, type your question and click **Send request**.
 - **Reporting a problem.** Open the **Help & Support** menu (the help icon in the top bar) and choose **Report a problem**. After you submit, DocJacket takes you to the **Support Tickets** tab so you can follow it.
 
@@ -2243,7 +2243,7 @@ A common surprise: you update the **Contract Date** or **Closing Date**, but the
 
 ## What happens when you change an anchor date
 
-When a key date's value changes — say you push Closing back a week — DocJacket automatically recalculates everything built to depend on it. This happens however the date was set: typing it, the deal edit page, a contract uploaded onto the deal, a form submission, an e-signature confirmation, Follow Up Boss, the public API, Ask AI or a connected assistant, and Undo.
+When a key date's value changes — say you push Closing back a week — DocJacket automatically recalculates everything built to depend on it. This happens however the date was set: typing it, the deal edit page, a contract uploaded onto the deal, a form submission, an e-signature confirmation, Follow Up Boss, the public API, Sofia or a connected assistant, and Undo.
 
 What follows the change:
 
@@ -2509,7 +2509,7 @@ To unarchive a deal (bring it back from the archive), use any of these:
 2. **Use the row's ⋮ menu** and choose **Restore**, or
 3. **Open the archived deal** — it still opens, with an amber banner reading *"This transaction is archived"* and the date — and click **Restore transaction** in the banner
 
-You can also ask Ask AI to restore it. The assistant puts up a Restore card, nothing changes until you approve it, and **Undo** on the card archives the deal again for 7 days. Restoring this way does the same thing as the **Restore transaction** button. See [Restoring an archived deal with Ask AI](../ai-features/ask-ai-assistant.mdx#restore-archived-deal).
+You can also ask Sofia to restore it. The assistant puts up a Restore card, nothing changes until you approve it, and **Undo** on the card archives the deal again for 7 days. Restoring this way does the same thing as the **Restore transaction** button. See [Restoring an archived deal with Sofia](../ai-features/ask-ai-assistant.mdx#restore-archived-deal).
 
 An archived deal is not locked: you can open it and read every tab without restoring it. Restore only when you want it back in your active list.
 
@@ -2565,7 +2565,7 @@ The deal comes back with the status it had when it was deleted. A deal that was 
 
 What does not come back: deleting removed the deal's **unsent scheduled emails and reminders** and cancelled its unsent text messages, and the restore does not bring them back. Review-queue suggestions the delete expired stay expired. After the restore, check the deal's scheduled emails and reminders and set up again any you still need.
 
-If you are not an Owner or Admin, ask yours to restore it, or open **Ask AI** and use **Send to support** with the deal's **address**. Ask AI can also find a deleted deal for you: ask it about the deal you deleted.
+If you are not an Owner or Admin, ask yours to restore it, or open **Ask Sofia** and use **Send to support** with the deal's **address**. Sofia can also find a deleted deal for you: ask her about the deal you deleted.
 
 :::danger Archive is almost always the right choice
 Deleting cancels the deal's unsent emails, reminders and messages for good, and only an Owner or Admin can bring the deal back. If there is any chance you'll want the record — for a commission dispute, an audit, a broker file review, or just to remember what happened — **archive it instead**. Archiving costs you nothing: archived deals don't count against your active deals and don't appear in your working list.
@@ -4554,11 +4554,11 @@ Marking a past date **Waived** or **N/A** doesn't ask about the invite at all, a
 
 Editing a date that has already passed (moving it to another past date, renaming it, changing its place, or changing who's invited) updates the event without emailing anyone. Guests who use Google Calendar see the change on their calendar. Guests on Outlook or Apple keep the version they were sent. Moving a past date to a date that is still ahead emails everyone an updated invitation, and so does moving a date that is ahead to one that has passed. Sending a new invite for a date that has already passed still emails the people you invite.
 
-### Closing out dates from Ask AI
+### Closing out dates from Sofia {#closing-out-dates-from-ask-ai}
 
-When you mark a date done, waived or N/A through Ask AI or a connected assistant, the invite is never cancelled. The approval card says the calendar invite stays on guests' calendars. To cancel one from there, ask the assistant to cancel the invites for that date.
+When you mark a date done, waived or N/A through Sofia or a connected assistant, the invite is never cancelled. The approval card says the calendar invite stays on guests' calendars. To cancel one from there, ask the assistant to cancel the invites for that date.
 
-The same is true when a deal is cancelled or archived through the public API, Ask AI or a connected assistant: those never cancel invites, and there is no question to answer. Only the app's own screens ask. To cancel the invites afterward, use **Cancel invite** on each key date, or ask the assistant to cancel them.
+The same is true when a deal is cancelled or archived through the public API, Sofia or a connected assistant: those never cancel invites, and there is no question to answer. Only the app's own screens ask. To cancel the invites afterward, use **Cancel invite** on each key date, or ask the assistant to cancel them.
 
 ## Turning it on
 
@@ -4627,7 +4627,7 @@ When you set a key date to **Waived** or **N/A** and it still has open linked ta
 
 If the date also has a calendar invite out and is still ahead, DocJacket first asks **Also cancel the calendar invite?**; see [Calendar Invites](./calendar-invites.md#waived-and-na-dates).
 
-When Ask AI or a connected AI client marks a date waived or not applicable, nobody is asked, so the open linked tasks are skipped by default. Ask AI's card lists how many it will skip before you approve it, and **Undo** reopens them.
+When Sofia or a connected AI client marks a date waived or not applicable, nobody is asked, so the open linked tasks are skipped by default. Sofia's card lists how many it will skip before you approve it, and **Undo** reopens them.
 
 ## Option 3: Unlink a task that doesn't belong
 
@@ -6023,7 +6023,7 @@ depending on how it was sent:
 | A portal link email you send (**Send Portal Links**, a link's **Send via Email**, or an agent's portal link) | **Your own** mailbox: the deal's pin if the pinned mailbox is yours, otherwise your default mailbox. If you have no connected mailbox, the send is refused. There is no fallback, whatever the setting below says (see [Sharing Portal Links](../client-portal/sharing-portal-links.mdx#portal-link-emails-come-from-your-own-mailbox)) |
 | Task emails, reminders, scheduled emails, and automation-rule emails, including ones that carry `{{portal_link}}` | The deal's **assignee's default mailbox**. If the deal is unassigned, or the assignee has no connected mailbox, see [Requiring a connected mailbox](#requiring-a-connected-mailbox) |
 | Transaction Summaries and other scheduled reports | The person who **created the schedule** |
-| An email an assistant wrote: Ask AI, Claude, ChatGPT, Codex, or the DocJacket API (client updates, agent follow-ups, document requests, compliance sends) | The connected mailbox of the person who **confirms or approves it**. Never DocJacket's email service and never the account owner's mailbox, whatever the setting below says. With no connected mailbox, nothing is sent: "Connect your Gmail or Outlook account to send this email. Nothing was sent." See [Email from your AI assistant](../ai-access/use-from-your-assistant.mdx#own-mailbox) |
+| An email an assistant wrote: Sofia, Claude, ChatGPT, Codex, or the DocJacket API (client updates, agent follow-ups, document requests, compliance sends) | The connected mailbox of the person who **confirms or approves it**. Never DocJacket's email service and never the account owner's mailbox, whatever the setting below says. With no connected mailbox, nothing is sent: "Connect your Gmail or Outlook account to send this email. Nothing was sent." See [Email from your AI assistant](../ai-access/use-from-your-assistant.mdx#own-mailbox) |
 
 If that person hasn't connected a mailbox, what happens depends on one organization setting:
 
@@ -7611,11 +7611,11 @@ If a smart field is valid but the transaction does not have the data yet, the pr
 
 When creating or editing an organization-owned template, you can use the AI email generator to draft a starting point. Enter the email you need, choose a tone, generate a result, then apply it to the form and edit before saving.
 
-## Have Ask AI write a template
+## Have Sofia write a template {#have-ask-ai-write-a-template}
 
 Ask the assistant to write an email template and it opens the **New Email Template** page with the name, category, subject and body filled in. Nothing is saved until you press **Save**.
 
-The setup assistant can also write or change a template, or install DocJacket's starter email packs, and save it from a card you approve. The card previews the email on one of your deals, the next automatic email from a template it wrote or rewrote waits once in your Review Queue, and the change can be undone for 7 days. See [Email templates with Ask AI](../ai-features/ask-ai-assistant.mdx#email-templates).
+The setup assistant can also write or change a template, or install DocJacket's starter email packs, and save it from a card you approve. The card previews the email on one of your deals, the next automatic email from a template it wrote or rewrote waits once in your Review Queue, and the change can be undone for 7 days. See [Email templates with Sofia](../ai-features/ask-ai-assistant.mdx#email-templates).
 
 ## Common templates to create
 
@@ -7787,11 +7787,11 @@ The builder has three steps:
 - **Fields** — Field canvas, field palette, field properties, ordering, and conditional display
 - **Share** — Public or transaction-specific links, version history, and form preview
 
-## Building a form with Ask AI
+## Building a form with Sofia {#building-a-form-with-ask-ai}
 
-You can also ask [Ask AI](../ai-features/ask-ai-assistant.mdx#online-forms) (open it with **Ask a question** in the left sidebar), or an AI you have connected to DocJacket, to build a form for you: *"Build a buyer intake form with name, email, phone and price range."* It can create a form from your description or copy one of the **DocJacket Forms** starters, add fields, publish the form, create a share link, switch a link off, and delete a draft that was never published and has no submissions.
+You can also ask [Sofia](../ai-features/ask-ai-assistant.mdx#online-forms) (open her with **Ask Sofia** in the left sidebar), or an AI you have connected to DocJacket, to build a form for you: *"Build a buyer intake form with name, email, phone and price range."* It can create a form from your description or copy one of the **DocJacket Forms** starters, add fields, publish the form, create a share link, switch a link off, and delete a draft that was never published and has no submissions.
 
-- **It asks first.** In Ask AI the assistant shows a preview: the purpose, every field, which answers are saved onto the deal and which are captured only on the submission, and for a share link, that anyone with the link can open it, plus its expiry and submission limit. In Ask AI, nothing is created, published or shared until you reply **yes** in the conversation, and a preview is good for 30 minutes. If you use a connected AI, it must show you a preview and get your yes before it publishes, shares, switches off or deletes; making a draft follows your AI app's own approval step.
+- **It asks first.** Sofia shows a preview: the purpose, every field, which answers are saved onto the deal and which are captured only on the submission, and for a share link, that anyone with the link can open it, plus its expiry and submission limit. With Sofia, nothing is created, published or shared until you reply **yes** in the conversation, and a preview is good for 30 minutes. If you use a connected AI, it must show you a preview and get your yes before it publishes, shares, switches off or deletes; making a draft follows your AI app's own approval step.
 - **The result is a normal form.** It appears under **My Forms**. Open it in the builder to change the fields, welcome message, theme or Playbook Binding, or to deactivate or delete it.
 - **Some forms need you.** The assistant won't create a share link for a form with file uploads, **Contact Picker**, **Organization Picker** or **Participant** fields. It can build and publish the form; open the **Share** step in the builder to review it and create the link yourself.
 - **Limits.** It works for people who can change forms themselves (an Owner or Admin, or any team member when an Owner has turned on **Allow team members to edit Playbooks and settings**), not for view-only seats or members limited to their own deals. An organization can have the assistant create up to 20 forms and 20 share links in 24 hours.
@@ -8837,7 +8837,7 @@ The Playbook builder walks you through a new [Playbook](./timeline-templates.md)
 
 - Go to **Templates → Playbooks**, stay on the **My Playbooks** tab, click **New Playbook**, and choose **✦ Create with AI**. (**Start blank** opens the regular Playbook editor instead.)
 - If you have no Playbooks of your own yet, the empty list shows a **Build your own with AI** button.
-- Inside one of your own Playbooks, click **Improve with the assistant** to change it with the builder. On a DocJacket Playbook the button reads **Copy and improve with the assistant**: you build a new Playbook of your own from it, and the DocJacket one is left as it is.
+- Inside one of your own Playbooks, click **Improve with Sofia** to change it with the builder. On a DocJacket Playbook the button reads **Copy and improve with Sofia**: you build a new Playbook of your own from it, and the DocJacket one is left as it is.
 
 The builder is open to people who can edit your organization's Playbooks and settings. If you don't see **Create with AI**, the builder may not be available on your account; **New Playbook** then opens the regular editor.
 
@@ -8894,7 +8894,7 @@ After the Playbook is created, click **Open** and the Playbook's name to go to i
 
 ## Improving a Playbook you already have
 
-**Improve with the assistant** opens the same steps, titled **Improve** and your Playbook's name. Every change is listed on **Review**, and nothing changes until you press **Save changes**. If deals already use the Playbook, Review tells you how many. Those deals keep the tasks, dates and emails they already have.
+**Improve with Sofia** opens the same steps, titled **Improve** and your Playbook's name. Every change is listed on **Review**, and nothing changes until you press **Save changes**. If deals already use the Playbook, Review tells you how many. Those deals keep the tasks, dates and emails they already have.
 
 When a task's condition changes, Review lists it as **Condition: before → after**, for example **Condition: none → Cash deal**. A task with no condition shows as `none`.
 
@@ -9008,7 +9008,7 @@ These are the AI features inside DocJacket. They are separate from **[AI Access]
 - **Risk Insights** — Review transaction-level risk assessments and document-level checks
 - **Smart Document Splitting** — Upload a multi-document PDF and AI detects the documents, page ranges, and primary contract
 - **Communication Drafting** — AI drafts emails and messages inside DocJacket composers or review queues before they send
-- **Ask AI Assistant** — Ask AI opens forms already filled in, prepares changes you approve on a card, builds and shares an Online Form after you say yes, checks a deal for problems, restores archived deals, and helps set up your organization
+- **Sofia, your AI assistant** — Sofia opens forms already filled in, prepares changes you approve on a card, builds and shares an Online Form after you say yes, checks a deal for problems, restores archived deals, and helps set up your organization
 
 ## In this section
 
@@ -9016,7 +9016,7 @@ These are the AI features inside DocJacket. They are separate from **[AI Access]
 - [AI Task Generation](./ai-task-generation.mdx) — Let AI build your task Playbook
 - [Risk Insights](./ai-insights.mdx) — Risk assessments and document checks
 - [Smart Document Splitting](./smart-document-splitting.mdx) — Automatically split bundled PDFs
-- [Ask AI Assistant](./ask-ai-assistant.mdx) — Filled-in forms, changes you approve, deal checks, and setup
+- [Sofia, your AI assistant](./ask-ai-assistant.mdx) — Filled-in forms, changes you approve, deal checks, and setup
 
 ---
 
@@ -9298,11 +9298,21 @@ Text **`weekly report`** (or *recap* / *summary*) any time for an instant rundow
 
 ---
 
-# What the Ask AI Assistant Can Do for You
+# Meet Sofia, Your AI Assistant
 
-Ask AI is the assistant inside DocJacket. Open it with **Ask a question** in the left sidebar. It answers questions, and it can also do work for you: fill in a form, complete or skip tasks, add a note, change key dates, check a deal for problems, and help set up your organization.
+<img src="/img/sofia/sofia-256.png" alt="Sofia's avatar: an illustrated portrait of a woman with long dark hair in a navy blazer, in a blue circle" width="96" height="96" style={{borderRadius: '50%', background: '#078DEE'}} />
 
-One rule holds for all of it: **the assistant prepares, you approve.** Nothing is saved until you press the form's own button, approve the change on a card, or, for [Online Forms](#online-forms), say yes to the preview in the chat.
+Sofia is the AI assistant inside DocJacket. She used to be called **Ask AI**; on November 24, 2026 she got her name. Everything Ask AI did, Sofia does.
+
+Open her with **Ask Sofia** at the bottom of the left sidebar, or from the **Help** menu at the top of the page. She answers questions, and she can also do work for you: fill in a form, complete or skip tasks, add a note, change key dates, check a deal for problems, and help set up your organization.
+
+![The bottom of the left sidebar, with the Ask Sofia button showing Sofia's avatar](/img/sofia/ask-sofia-sidebar.png)
+
+![Sofia's panel open on the right, with her avatar, "Hi, I'm Sofia", suggested questions, and the Ask Sofia message box](/img/sofia/sofia-panel.png)
+
+Sofia is an AI, not a person, and she says so if you ask. She never signs an email or text she drafts with her own name: what she writes goes out under your name, after you approve it.
+
+One rule holds for all of it: **Sofia prepares, you approve.** Nothing is saved until you press the form's own button, approve the change on a card, or, for [Online Forms](#online-forms), say yes to the preview in the chat.
 
 ## It opens forms already filled in {#forms-filled-in}
 
@@ -9390,7 +9400,7 @@ For what Undo does on these cards, see [Undo and what can't be undone](#undo).
 
 ### Internal notes {#internal-notes}
 
-Ask the assistant to add a note to a deal, and it shows the note on a card first. For example:
+Ask Sofia to add a note to a deal, and it shows the note on a card first. For example:
 
 - *"Add a note that the buyer wants a Friday closing."*
 - *"Pin the note about the lender call."*
@@ -9432,19 +9442,19 @@ When the assistant prepares a task deletion, the subtasks of those tasks are del
 
 **Undo** on the card works for 7 days. The tasks come back with their subtasks, notes, comments and follow-up email setup, and the card then shows **Undone**. Emails and reminders that were cancelled stay cancelled, and undo sends nothing.
 
-![An approved task deletion card in Ask AI, marked Done, with Show me and Undo buttons](/img/ai-features/ask-ai-task-deletion-undo.png)
+![An approved task deletion card with Sofia, marked Done, with Show me and Undo buttons](/img/ai-features/ask-ai-task-deletion-undo.png)
 
 Undo is only on the card. The **Delete** button on a deal's **Tasks** tab has no undo.
 
 ### Asking about a task {#ask-about-a-task}
 
-Open a task on a deal's **Tasks** tab and click **Ask the assistant** in the task's drawer. Hover text on the button reads "Open Ask AI about this task. Nothing changes until you approve it." Ask AI opens with this in the message box: *Help me get this task done: "[the task name]". Tell me what it needs, and propose anything you can do for me to approve.* Nothing is sent until you press **Send**. View-only seats see the button too, because asking changes nothing.
+Open a task on a deal's **Tasks** tab and click **Ask Sofia** in the task's drawer. Hover text on the button reads "Ask Sofia about this task. Nothing changes until you approve it." Sofia opens with this in the message box: *Help me get this task done: "[the task name]". Tell me what it needs, and propose anything you can do for me to approve.* Nothing is sent until you press **Send**. View-only seats see the button too, because asking changes nothing.
 
-![A task drawer with the Ask the assistant button, and Ask AI open beside it with the message "Help me get this task done" filled in and not yet sent](/img/ai-features/ask-the-assistant-task-drawer.png)
+![A task drawer with the Ask Sofia button, and Sofia open beside it with the message "Help me get this task done" filled in and not yet sent](/img/ai-features/ask-the-assistant-task-drawer.png)
 
 ### Emailing an update to someone on the deal {#client-update-email}
 
-Ask the assistant to email the buyer, seller or co-agent where the deal stands, and it puts the email on a card. The card shows who it goes to (a contact already on the deal), the subject, the full message and when it sends. It can't attach files.
+Ask Sofia to email the buyer, seller or co-agent where the deal stands, and it puts the email on a card. The card shows who it goes to (a contact already on the deal), the subject, the full message and when it sends. It can't attach files.
 
 The email sends only from **your own** connected Gmail or Outlook mailbox. It never goes from DocJacket's email service or from the account owner's mailbox, whatever your organization's **Only send transaction email from a connected mailbox** setting says. Connect a mailbox under **Settings > Integrations** first. With no connected mailbox, approving the card sends nothing: "Connect your Gmail or Outlook account to send this email. Nothing was sent."
 
@@ -9452,13 +9462,13 @@ After you approve, the card says "Queued to send from your connected mailbox", n
 
 ### Questions about a deal's notes, email and texts {#deal-reads}
 
-On a deal, Ask AI can look up the deal's internal notes, email, text messages, scheduled sends, consistency checks, change history, key-date history, agreements, and TC fees and invoices. Use it for questions like *"What did the lender say in the last email?"* It only reads. It doesn't mark an email as read or change anything on the deal, and it never shows payment links. It reads the deals you can see; if your role is limited to your own deals, that means the deals you are on.
+On a deal, Sofia can look up the deal's internal notes, email, text messages, scheduled sends, consistency checks, change history, key-date history, agreements, and TC fees and invoices. Use it for questions like *"What did the lender say in the last email?"* It only reads. It doesn't mark an email as read or change anything on the deal, and it never shows payment links. It reads the deals you can see; if your role is limited to your own deals, that means the deals you are on.
 
 AI apps you connect to DocJacket can read the same parts of a deal. See [AI Access](../ai-access/index.mdx).
 
 ## Building, publishing and sharing an Online Form {#online-forms}
 
-Ask Ask AI to build an [Online Form](../templates/online-forms.md) and it can do the work in the chat. This is about Ask AI; it doesn't read form submissions. For example:
+Ask Sofia to build an [Online Form](../templates/online-forms.md) and it can do the work in the chat. This is about Sofia; it doesn't read form submissions. For example:
 
 - *"Build a buyer intake form: name, email, phone, price range, and whether they're pre-approved. Each submission should start a new deal."*
 - *"Copy the Seller Intake starter form and add a question about occupancy."*
@@ -9481,7 +9491,7 @@ Forms the assistant builds are normal Online Forms. They appear under **My Forms
 
 ### It shows you a preview and waits for your yes
 
-The assistant never creates, publishes or shares a form on its first reply. It shows a preview and asks. In Ask AI, nothing is created, copied, changed, published or shared until you answer **yes** in your next message. (A connected AI works differently: see [Connect your AI](../ai-access/use-from-your-assistant.mdx).) The preview lists:
+The assistant never creates, publishes or shares a form on its first reply. It shows a preview and asks. With Sofia, nothing is created, copied, changed, published or shared until you answer **yes** in your next message. (A connected AI works differently: see [Connect your AI](../ai-access/use-from-your-assistant.mdx).) The preview lists:
 
 - What the form is for, and what each submission does. A submission always waits in your inbox for review first.
 - Every field, in order, with its section. A field that shows only when another answer matches says so in words, for example *Show 'Lender name' only when 'Pre-approved' equals 'yes'*.
@@ -9518,7 +9528,7 @@ To change the form's welcome message, theme or Playbook Binding, use the form bu
 
 ### Undoing it
 
-- **Switch a share link off.** Ask the assistant to turn off the link. People who have it can no longer open the form. You can turn it back on later: in the form builder's **Share** step, hover the link's button and choose **Activate**.
+- **Switch a share link off.** Ask Sofia to turn off the link. People who have it can no longer open the form. You can turn it back on later: in the form builder's **Share** step, hover the link's button and choose **Activate**.
 - **Delete a draft.** While the form is unpublished and has no submissions, ask the assistant to delete it. Its share links stop working with it.
 - **Anything else.** Open the form under **Templates > Online Forms** and edit, deactivate or delete it there. See [Online Forms](../templates/online-forms.md).
 
@@ -9539,9 +9549,9 @@ Things it looks for include:
 
 ## Restoring an archived deal {#restore-archived-deal}
 
-Ask the assistant to bring an archived deal back, and it puts up a Restore card for you to approve. Nothing on an archived deal can be changed until it is restored. So if you ask for another change on an archived deal, the assistant offers the Restore card first; approve it, then ask again.
+Ask Sofia to bring an archived deal back, and it puts up a Restore card for you to approve. Nothing on an archived deal can be changed until it is restored. So if you ask for another change on an archived deal, the assistant offers the Restore card first; approve it, then ask again.
 
-Restoring with the assistant does the same thing as the **Restore transaction** button. See [Restoring an Archived Transaction](../transactions/restoring-an-archived-transaction.mdx).
+Restoring with Sofia does the same thing as the **Restore transaction** button. See [Restoring an Archived Transaction](../transactions/restoring-an-archived-transaction.mdx).
 
 **What comes back:**
 
@@ -9562,7 +9572,7 @@ Restoring is not limited by your plan.
 
 **In any conversation**, ask the assistant to write an email template and it opens the **New Email Template** page with the name, category, subject and body filled in. Read every field, fix what you want, then press **Save**. This is for owners, admins, and teammates allowed to edit Playbooks and settings.
 
-**The setup assistant** (see [Set up with the assistant](#set-up-with-the-assistant)) can also write a new template, change one of yours, or install DocJacket's starter email packs, and save it from a card:
+**The setup assistant** (see [Set up with Sofia](#set-up-with-the-assistant)) can also write a new template, change one of yours, or install DocJacket's starter email packs, and save it from a card:
 
 - **You see the email before anything is saved.** The card shows it filled in on one of your deals (**Previewed on**), or with sample values. **Open in editor** opens it in the template editor.
 - **DocJacket's own emails are never changed.** Asking to change one gets you your own copy, and DocJacket's original stays as it is. If you already have a copy, the assistant changes your copy instead of making a second one.
@@ -9579,17 +9589,17 @@ Changing a Draft template's text keeps it a Draft. The assistant can't turn a te
 
 See [Email Templates](../templates/email-templates.md) for building templates by hand.
 
-## Set up with the assistant {#set-up-with-the-assistant}
+## Set up with Sofia {#set-up-with-the-assistant}
 
 The setup assistant helps you get your organization set up, one step at a time, with each change shown on a card for you to approve.
 
 ### Starting it
 
-- **From an answer.** Ask Ask AI for setup help, such as *"Help me get set up"* or *"Set my default TC fee to $350"*. The answer carries a **Set up with the assistant** button just above it. Press it and the setup assistant picks up your request in the same conversation.
-- **From Settings > Organization.** Click **Set up with the assistant** at the top of the page.
-- **From your dashboard.** While required setup steps are still open, your dashboard may show a card offering to set DocJacket up with the assistant. Click **Start**.
+- **From an answer.** Ask Sofia for setup help, such as *"Help me get set up"* or *"Set my default TC fee to $350"*. The answer carries a **Set up with Sofia** button just above it. Press it and the setup assistant picks up your request in the same conversation.
+- **From Settings > Organization.** Click **Set up with Sofia** at the top of the page.
+- **From your dashboard.** While required setup steps are still open, your dashboard may show a card offering to set DocJacket up with Sofia. Click **Start**.
 
-While it is running, the Ask AI panel's header shows **Setup assistant**.
+While it is running, the Sofia panel's header shows **Setup assistant**.
 
 ### What it does
 
@@ -9613,7 +9623,7 @@ The setup assistant works for an organization on a paid plan, including while th
 
 ### Leaving setup
 
-Press **Leave setup** at the top of the Ask AI panel. This clears the setup conversation, and Ask AI goes back to answering as usual. Leaving does not undo changes you already approved.
+Press **Leave setup** at the top of the Sofia panel. This clears the setup conversation, and Sofia goes back to answering as usual. Leaving does not undo changes you already approved.
 
 ## When a search finds nothing {#empty-results}
 
@@ -10139,7 +10149,7 @@ On DocJacket's **Free plan**, your organization gets **50 AI tool calls a month*
 - **What is a call?** Each time your AI looks something up or makes a change in DocJacket, that is one call. One question can use several calls.
 - **Who shares it?** Everyone in your organization shares the same 100.
 - **When does it reset?** On the 1st of each month, in your organization's time zone.
-- **What doesn't count?** Calls that fail, checking the connection, and looking up your plan or the upgrade link. Ask AI inside DocJacket does not count either.
+- **What doesn't count?** Calls that fail, checking the connection, and looking up your plan or the upgrade link. Sofia inside DocJacket does not count either.
 
 From the 40th call, your AI is told how many calls you have used. After 50, DocJacket stops answering your AI until the 1st. Your AI shows a message like this:
 
@@ -15996,9 +16006,9 @@ Access Settings from the sidebar — it's at the bottom of the navigation.
 
 Use **Settings > Organization** for account-wide settings that affect your whole organization.
 
-## Set up with the assistant
+## Set up with Sofia {#set-up-with-the-assistant}
 
-When the setup assistant is available to you, a **Set up with the assistant** button appears at the top of this page. It is for owners, admins, and teammates allowed to edit Playbooks and settings. It starts the setup assistant in Ask AI, which works through your setup one step at a time, starting with your Primary State if you haven't set one. Each change is shown on a card for you to approve. Press **Leave setup** at the top of the Ask AI panel to stop. See [Set up with the assistant](../ai-features/ask-ai-assistant.mdx#set-up-with-the-assistant).
+When the setup assistant is available to you, a **Set up with Sofia** button appears at the top of this page. It is for owners, admins, and teammates allowed to edit Playbooks and settings. It starts the setup assistant with Sofia, which works through your setup one step at a time, starting with your Primary State if you haven't set one. Each change is shown on a card for you to approve. Press **Leave setup** at the top of the Sofia panel to stop. See [Set up with the assistant](../ai-features/ask-ai-assistant.mdx#set-up-with-the-assistant).
 
 ## Organization identity
 
@@ -16359,7 +16369,7 @@ Add team members to your DocJacket organization and control what they can access
 
 They'll receive an email with a link to join your organization.
 
-You can also ask Ask AI to invite someone, such as *"Invite jane@example.com as a Transaction Coordinator."* It opens the **Invite Team Member** drawer with the email and role filled in. Check both, then click **Send Invite** yourself; nothing is sent until you do. If no seat is free, the assistant takes you to this page instead of opening the form. See [Ask AI Assistant](../ai-features/ask-ai-assistant.mdx#forms-filled-in).
+You can also ask Sofia to invite someone, such as *"Invite jane@example.com as a Transaction Coordinator."* It opens the **Invite Team Member** drawer with the email and role filled in. Check both, then click **Send Invite** yourself; nothing is sent until you do. If no seat is free, the assistant takes you to this page instead of opening the form. See [Sofia Assistant](../ai-features/ask-ai-assistant.mdx#forms-filled-in).
 
 The Team Members page also shows seat usage. If your plan is at capacity, DocJacket may prompt you to upgrade or add another seat before sending the invite.
 
@@ -16947,7 +16957,7 @@ Use **Settings > Organization** to turn on **Only send transaction email from a 
 
 This setting is on by default. Turn it off to let DocJacket's email service send as a fallback when a connected mailbox isn't available. See [How Email Sending Works](../messages/how-email-sending-works.mdx).
 
-Emails written by an AI assistant (Ask AI, Claude, ChatGPT or the DocJacket API) always send from a connected mailbox, whatever this setting says. They go from the mailbox of the person who confirms or approves them, never from DocJacket's email service and never from the account owner's mailbox. If that person has no connected mailbox, nothing is sent and they're asked to connect Gmail or Outlook.
+Emails written by an AI assistant (Sofia, Claude, ChatGPT or the DocJacket API) always send from a connected mailbox, whatever this setting says. They go from the mailbox of the person who confirms or approves them, never from DocJacket's email service and never from the account owner's mailbox. If that person has no connected mailbox, nothing is sent and they're asked to connect Gmail or Outlook.
 
 Automated email, such as task emails, reminders and Automation Rule emails, still follows this setting. Sign-in links still come from DocJacket's email service.
 

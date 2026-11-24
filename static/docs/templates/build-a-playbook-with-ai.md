@@ -15,7 +15,7 @@ The Playbook builder walks you through a new [Playbook](./timeline-templates.md)
 
 - Go to **Templates → Playbooks**, stay on the **My Playbooks** tab, click **New Playbook**, and choose **✦ Create with AI**. (**Start blank** opens the regular Playbook editor instead.)
 - If you have no Playbooks of your own yet, the empty list shows a **Build your own with AI** button.
-- Inside one of your own Playbooks, click **Improve with the assistant** to change it with the builder. On a DocJacket Playbook the button reads **Copy and improve with the assistant**: you build a new Playbook of your own from it, and the DocJacket one is left as it is.
+- Inside one of your own Playbooks, click **Improve with Sofia** to change it with the builder. On a DocJacket Playbook the button reads **Copy and improve with Sofia**: you build a new Playbook of your own from it, and the DocJacket one is left as it is.
 
 The builder is open to people who can edit your organization's Playbooks and settings. If you don't see **Create with AI**, the builder may not be available on your account; **New Playbook** then opens the regular editor.
 
@@ -72,7 +72,7 @@ After the Playbook is created, click **Open** and the Playbook's name to go to i
 
 ## Improving a Playbook you already have
 
-**Improve with the assistant** opens the same steps, titled **Improve** and your Playbook's name. Every change is listed on **Review**, and nothing changes until you press **Save changes**. If deals already use the Playbook, Review tells you how many. Those deals keep the tasks, dates and emails they already have.
+**Improve with Sofia** opens the same steps, titled **Improve** and your Playbook's name. Every change is listed on **Review**, and nothing changes until you press **Save changes**. If deals already use the Playbook, Review tells you how many. Those deals keep the tasks, dates and emails they already have.
 
 When a task's condition changes, Review lists it as **Condition: before → after**, for example **Condition: none → Cash deal**. A task with no condition shows as `none`.
 

@@ -23,7 +23,7 @@ To unarchive a deal (bring it back from the archive), use any of these:
 2. **Use the row's ⋮ menu** and choose **Restore**, or
 3. **Open the archived deal** — it still opens, with an amber banner reading *"This transaction is archived"* and the date — and click **Restore transaction** in the banner
 
-You can also ask Ask AI to restore it. The assistant puts up a Restore card, nothing changes until you approve it, and **Undo** on the card archives the deal again for 7 days. Restoring this way does the same thing as the **Restore transaction** button. See [Restoring an archived deal with Ask AI](../ai-features/ask-ai-assistant.mdx#restore-archived-deal).
+You can also ask Sofia to restore it. The assistant puts up a Restore card, nothing changes until you approve it, and **Undo** on the card archives the deal again for 7 days. Restoring this way does the same thing as the **Restore transaction** button. See [Restoring an archived deal with Sofia](../ai-features/ask-ai-assistant.mdx#restore-archived-deal).
 
 An archived deal is not locked: you can open it and read every tab without restoring it. Restore only when you want it back in your active list.
 
@@ -79,7 +79,7 @@ The deal comes back with the status it had when it was deleted. A deal that was 
 
 What does not come back: deleting removed the deal's **unsent scheduled emails and reminders** and cancelled its unsent text messages, and the restore does not bring them back. Review-queue suggestions the delete expired stay expired. After the restore, check the deal's scheduled emails and reminders and set up again any you still need.
 
-If you are not an Owner or Admin, ask yours to restore it, or open **Ask AI** and use **Send to support** with the deal's **address**. Ask AI can also find a deleted deal for you: ask it about the deal you deleted.
+If you are not an Owner or Admin, ask yours to restore it, or open **Ask Sofia** and use **Send to support** with the deal's **address**. Sofia can also find a deleted deal for you: ask her about the deal you deleted.
 
 :::danger Archive is almost always the right choice
 Deleting cancels the deal's unsent emails, reminders and messages for good, and only an Owner or Admin can bring the deal back. If there is any chance you'll want the record — for a commission dispute, an audit, a broker file review, or just to remember what happened — **archive it instead**. Archiving costs you nothing: archived deals don't count against your active deals and don't appear in your working list.
