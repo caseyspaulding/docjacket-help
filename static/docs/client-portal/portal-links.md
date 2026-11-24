@@ -41,4 +41,4 @@ From the Portal Links page you can:
 
 ## When to use this page
 
-Use the transaction's **Portal** tab when you are creating or previewing links for one deal. Use the transaction's **Contacts** tab when you are managing a specific transaction contact's portal link. Use the organization-wide **Portal Links** page when you need cross-transaction visibility, expiring-link review, or bulk portal-link cleanup.
+Use the transaction's **Portal** tab when you are sending or previewing links for one deal. Use the transaction's **Contacts** tab when you are managing a specific transaction contact's portal link. Use the organization-wide **Portal Links** page when you need cross-transaction visibility, expiring-link review, or bulk portal-link cleanup.

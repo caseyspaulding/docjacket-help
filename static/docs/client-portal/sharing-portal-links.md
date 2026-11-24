@@ -13,17 +13,21 @@ Portal links are how clients, agents, and other transaction parties access their
 
 There are two transaction-level places to work with portal links:
 
-- **Portal tab** — Create links, preview the portal, manage branding, review analytics, send portal-link emails, and manage link details.
+- **Portal tab** — Send portal links, preview the portal, manage branding, review analytics, and manage link details.
 - **Contacts tab** — Manage each transaction contact's link from their contact card, including create, copy, regenerate, revoke, and send portal-link delivery options.
 
 ## Creating a portal link
 
+Most of the time you don't need to create a link. **Send portal links** gives each person their own link and sends it. Create one yourself only when you want a link without sending it, an agent or vendor view, or a link that expires.
+
 1. Open a transaction and go to the **Portal** tab
-2. Click **Create Link**
+2. Click **More link options (agent view, vendor view, expiring link)** under the list of links
 3. Choose the portal type: Buyer/Seller, Agent, or Vendor
 4. Select a transaction contact
 5. Set an expiration period: 7 days, 30 days, 90 days, or never
-6. Click **Create**
+6. Click **Create Link**
+
+If the person already has a Buyer/Seller link, the drawer doesn't make a second one. It shows **Copy their link** and **Resend their link** instead.
 
 DocJacket generates a unique URL for that recipient. The Portal tab also shows a live preview so you can check the mobile or desktop view before sending.
 
@@ -48,8 +52,8 @@ Portal links are different from Disclosure Package links. Use a portal link when
 
 You can send the portal link by:
 
-- **Email from DocJacket** — Click the send button next to the link to compose and send an invitation email right from DocJacket
-- **Portal tab > Send Portal Links** — Select transaction contacts and choose email, text, or both for each one, or add email addresses by hand
+- **Email from DocJacket** — Open a link's details and send an invitation email right from DocJacket
+- **Portal tab > Send portal links** — The one button in the **This deal's portal links** header. Select transaction contacts and choose email, text, or both for each one, or add email addresses by hand
 - **Contacts tab > Send Portal Links** — Select transaction contacts and choose email, text, or both for each one
 - **Copy and paste** — Copy the link URL and share it however you prefer (email, text, etc.)
 - **Transaction Contacts tab** — Use each contact card to create, copy, regenerate, or revoke that contact's portal link
@@ -71,6 +75,14 @@ Both messages have a **Connect your email** button that opens **Settings > Integ
 Without a mailbox you can still copy a link and share it yourself, and text messages still send. If you ticked both email and text in Send Portal Links, the texts go and the result says no emails were sent. In the agent dialog, **Create link without emailing** still works.
 
 Texts use your organization's SMS setup and safeguards. You don't need to create a link first. For each contact you text, DocJacket sends that contact's client portal link and creates one if they don't have it yet. Agent contacts get the deal's general client link. If a contact's link has been revoked or has expired, or the contact is set to Notify only, DocJacket skips that text and tells you why. To text a contact whose link is turned off, create a new link from their row on the **Contacts** tab, then send again.
+
+### Who was already sent a link
+
+The send window shows **Sent** and the date next to each person who already has a link. When you open it again, it ticks only people who haven't been sent one, so a second click doesn't email everyone again. If everyone has a link, nothing is ticked. Tick anyone to send theirs again. They get the same link, not a new one.
+
+Until something on the deal has been sent, a line under the header reads "Not sent to anyone yet. Send it so your client can follow along."
+
+The deal's shared client link, the one `{{portal_link}}` puts in emails, shows as a one-line note with **Copy** until it is used. Once it has been sent or opened it shows as a **Shared client link** card.
 
 ## Can portal links go out automatically?
 
@@ -126,7 +138,7 @@ From the transaction **Portal** tab, you can see active and inactive links for t
 - **View stats** — See how many times each link has been viewed
 - **Extend** — Push back the expiry date
 - **Revoke** — Immediately disable a link if you need to cut off access
-- **Reactivate or delete** — Restore an expired/revoked link when appropriate, or delete a link you no longer want to keep
+- **Reactivate or delete** — Restore an expired/revoked link when appropriate. A link that was never sent and never opened has a **Delete** button. A link someone has opened can't be deleted. Revoke it instead; its history is kept
 - **Preview** — Select a link to view the portal in the embedded mobile or desktop preview
 - **Send by email** — Open a portal-link email composer from the link detail drawer
 - **Review access details** — See last access time, last IP when available, calendar feed status, and revocation information
@@ -135,7 +147,7 @@ From the transaction **Portal** tab, you can see active and inactive links for t
 
 ## Tips
 
-- Create separate links for each party — buyers, sellers, and agents each get their own link with appropriate visibility
+- Each party gets their own link with appropriate visibility — buyers, sellers, and agents are different views
 - Set expiration dates for sensitive transactions
 - Check the stats to see if clients have actually viewed the portal — if they haven't, follow up
 - Regenerate a contact's portal link when you need a new URL but want to keep portal access available

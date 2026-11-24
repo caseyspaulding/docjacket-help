@@ -30,6 +30,12 @@ Each transaction card can show:
 
 The hub is meant for quick triage. Agents can see which deals are active, how many visible documents and pending tasks are available, then use **Calendar** for the transaction feed or **View Details** to open the full portal for one deal.
 
+## The other side's agent
+
+Each of your own agents has one agent portal that covers all their deals with you. The other side's agent isn't on your side, so they don't get that. They get this deal's client view instead, without commissions or fees.
+
+On the deal's **Portal** tab, the **Agent portal** card lists the agents on the deal. For the other side's agent, click **Send this deal's link**. It opens the send window with only that agent ticked. It is the same link **Send portal links** gives them, so you don't need to create anything for them first.
+
 ## Cards or a table
 
 Agents can switch the deal list between **Cards** and **Table** with the toggle above the list. The choice is remembered in that browser, so an agent who prefers the table sees it next time.
