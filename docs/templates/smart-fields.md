@@ -132,7 +132,7 @@ There are two different issues:
 - **Missing value** - The smart field is valid, but the transaction does not have that data filled in yet.
 - **Unrecognized placeholder** - The placeholder does not match a known smart field, usually because of a typo or removed field.
 
-Fix unrecognized placeholders in the template. Fix missing values by updating the transaction data.
+An unrecognized placeholder does not block sending. In Review & send it is left out of the email and flagged, and **Use …** can fill in the field DocJacket thinks you meant, for that email only. To fix it for next time, correct the template; see [A merge field isn't recognized](../tasks/email-automation.mdx#a-merge-field-isnt-recognized). Fix missing values by updating the transaction data.
 
 ## Buyer's Representative is not the buyer's agent
 
@@ -208,7 +208,7 @@ A map link builds from the **address on file** (street, city, state, ZIP) for th
 | Seller Title Company Email | `{{seller_title_company_email}}` |
 | Seller Title Company Address | `{{seller_title_company_address}}` |
 | Seller Title Company Map Link | `{{seller_title_company_map_link}}` |
-| Lender Name | `{{lender_name}}` |
+| Lender Name | `{{lender_name}}` (`{{lender_company}}` works too) |
 | Loan Officer | `{{loan_officer}}` |
 | Lender Phone | `{{lender_phone}}` |
 | Lender Email | `{{lender_email}}` |

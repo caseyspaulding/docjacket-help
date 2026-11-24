@@ -213,6 +213,16 @@ You control whether an automated email waits for your approval or sends on its o
 
 Either way, the promise is the same: **nothing reaches a client or agent until you approve it.** Automation does the tedious part — picking the template, resolving recipients by role, filling smart fields, attaching documents — and leaves the send button to you.
 
+### A merge field isn't recognized
+
+If a merge field isn't one DocJacket knows, for example a typo like `{{buyer_nmae}}`, Review & send still sends. An amber banner reads "1 merge field isn't a DocJacket field, so it was left out of this email." (with more than one, "2 merge fields aren't DocJacket fields, so they were left out of this email."). It lists each field, and the email goes out with that field left out.
+
+Where DocJacket can tell which field you meant, the banner shows a **Use …** button next to it, such as **Use Buyer Name**. Click it and this email is rebuilt with that field filled in. It changes this email only, not the template. If DocJacket can't tell, the banner says "Type it in below if it's needed." Click **Fill it in** to jump to the message and type the text yourself.
+
+A field that is malformed, such as one with a missing brace, still blocks the send until you fix it.
+
+To fix it for next time, edit the template. Use **Edit wording** on the task to change this deal's copy, or open the template in **Templates > Email Templates** to change it for every deal. See [The email in Review & send shows old wording](#the-email-in-review--send-shows-old-wording).
+
 ## Can I track a status like Ready to Draft, Draft Prepared, Sent for Review, Sent?
 
 No. A task email has no workflow status of your own to move through, and there is no rule that flags an email as overdue the next business day. The closest things are:
@@ -225,7 +235,7 @@ No. A task email has no workflow status of your own to move through, and there i
 
 When the Playbook is applied to a transaction, DocJacket creates the tasks and their email automation rules. Before sending or parking a draft for review, DocJacket renders smart fields against that transaction.
 
-If data is missing or a placeholder is unrecognized, review the email before sending. Missing transaction data should be fixed on the transaction. Unrecognized placeholders should be fixed in the email template.
+If data is missing or a placeholder is unrecognized, review the email before sending. Missing transaction data should be fixed on the transaction. An unrecognized placeholder does not block the send. It is left out of the email and flagged in Review & send; see [A merge field isn't recognized](#a-merge-field-isnt-recognized).
 
 Review-required emails appear in the topbar **Review queue** under **Ready for Review**. Scheduled emails appear under **Scheduled** when they are waiting, held, or ready for schedule management. Nothing sends from the review-required path until a user approves, sends, skips, or dismisses the prepared email.
 
