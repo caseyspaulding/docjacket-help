@@ -86,7 +86,7 @@ If a party isn't on the deal yet, its contact block simply renders nothing — s
 
 If a valid smart field does not have data on the transaction, DocJacket can show a missing-variable warning. Update the transaction data or edit the email before sending.
 
-If a placeholder is not recognized, fix the template syntax before using it with clients.
+If a placeholder is not recognized, Review & send still sends the email with that field left out and shows a banner. See [A merge field isn't recognized](../tasks/email-automation.mdx#a-merge-field-isnt-recognized).
 
 ## Tips
 

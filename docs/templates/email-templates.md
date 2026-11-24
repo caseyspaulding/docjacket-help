@@ -148,7 +148,7 @@ Use **Send Test** to send a test email before activating a new or heavily edited
 A new template is Active as soon as you save it, so switch it to **Draft** (the switch appears after the first save) while you are still building it, and send yourself a test send once conditions or auto-attached documents are involved. A template linked to a task sends on its own when the task comes due — so it's worth confirming it renders correctly before it goes out unattended.
 :::
 
-If a smart field is valid but the transaction does not have the data yet, the preview can show a missing-variable warning. If a field name is not recognized, fix the placeholder in the template.
+If a smart field is valid but the transaction does not have the data yet, the preview can show a missing-variable warning. If a field name is not recognized, Review & send still sends the email with that field left out and shows a banner. See [A merge field isn't recognized](../tasks/email-automation.mdx#a-merge-field-isnt-recognized).
 
 ## AI email generator
 
