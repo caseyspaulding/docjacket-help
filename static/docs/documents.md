@@ -40,5 +40,6 @@ The transaction tab has two subtabs: **Files** for uploaded documents and **Form
 - [Approved Form Templates](./approved-form-templates.md) — Upload blank PDFs, map fields, and publish office-approved forms
 - [Form Packets](./esignature-form-packets.md) — Send approved form packets and track signer progress
 - [Disclosure Packages](./disclosure-packages.mdx) — Share disclosure packages from a transaction
+- [Send to Compliance](./send-to-compliance.mdx) — Have Sofia file a deal in dotloop, SkySlope or KW Command, or export a labeled bundle
 - [Google Drive Integration](./google-drive-integration.mdx) — Import, export, and link Drive folders
 - [DocDrop](./docdrop.mdx) — Let contacts email documents directly into the transaction

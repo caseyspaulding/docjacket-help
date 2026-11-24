@@ -2736,6 +2736,7 @@ The transaction tab has two subtabs: **Files** for uploaded documents and **Form
 - [Approved Form Templates](./approved-form-templates.md) — Upload blank PDFs, map fields, and publish office-approved forms
 - [Form Packets](./esignature-form-packets.md) — Send approved form packets and track signer progress
 - [Disclosure Packages](./disclosure-packages.mdx) — Share disclosure packages from a transaction
+- [Send to Compliance](./send-to-compliance.mdx) — Have Sofia file a deal in dotloop, SkySlope or KW Command, or export a labeled bundle
 - [Google Drive Integration](./google-drive-integration.mdx) — Import, export, and link Drive folders
 - [DocDrop](./docdrop.mdx) — Let contacts email documents directly into the transaction
 
@@ -2849,7 +2850,7 @@ Renaming changes only the name shown in DocJacket and on downloads; the file its
 To rename every document on a deal to a consistent pattern — for example `123 Main St - Purchase Agreement.pdf`:
 
 1. Open the transaction's **Documents** tab
-2. Click **Batch Rename** in the toolbar (tooltip: *Rename all documents using naming rules*). The button appears when the deal has a property address
+2. Click the **⋯** menu (**More document actions**) in the toolbar, then **Batch Rename**. It appears when the deal has a property address
 3. In the **Batch Rename Documents** panel, check the **Property Address** used in the names
 4. Click **Rename All**
 
@@ -3645,6 +3646,88 @@ Use Disclosure Packages for listing disclosures, buyer review packets, broker re
 - Review document visibility before sending, but remember that portal visibility does not control disclosure-package access. The package's document list and recipient links control what package recipients can open.
 - Confirm recipients are correct before sharing sensitive documents.
 - Keep required document lists up to date so missing files are easier to spot before sending a package.
+
+---
+
+# Send a Deal to Your Compliance System
+
+If your brokerage files every deal in dotloop, SkySlope or KW Command, the **Send to compliance** button on a deal's **Documents** tab handles it. It has two choices:
+
+- **Have Sofia file it.** Sofia opens your compliance system in a browser you can watch, and enters the deal, its people and its documents.
+- **Download or email a bundle.** DocJacket relabels the deal's documents to match the system's checklist and gives you a ZIP, or opens an email with it.
+
+## Who can use it {#availability}
+
+**Have Sofia file it** is a pilot. It is available to organizations in the early-access pilot, and only on a paid plan. If it isn't turned on for your organization, you won't see it in the menu. Contact support to ask about joining the pilot.
+
+**Download or email a bundle** doesn't depend on the pilot. If your organization has no export destinations turned on, the drawer says so.
+
+You need permission to edit the deal. Read-only seats don't see the **Send to compliance** button.
+
+## What works today {#what-works}
+
+- **dotloop** is the one Sofia has been proven on, from start to finish.
+- **SkySlope** and **KW Command** are early. Sofia's steps for them haven't been tried on real files yet. When you choose one, the drawer tells you the steps are new and asks you to watch closely and take control if anything looks off.
+- **Bring documents** works with dotloop only.
+
+## Have Sofia file a deal {#file-a-deal}
+
+1. Open the deal and go to the **Documents** tab.
+2. Click **Send to compliance**, then **Have Sofia file it**. A drawer opens.
+3. **Pick the system, if asked.** If DocJacket doesn't know which system this deal files in, it asks. Choose the system, then choose the agent or brokerage to save it on, so you aren't asked next time. You can type an account name if that agent or brokerage uses more than one (for example, a team account). Leave it empty for your main account. Click **Save and continue**.
+4. **Say yes once.** The first time you use a system, DocJacket explains that your sign-in is kept in a browser DocJacket runs for you, so you don't sign in every time. Click **Accept and start**. You can disconnect anytime.
+5. Click **File this deal in** your system (for example, **File this deal in dotloop**).
+6. **Watch and sign in.** The browser shows live in the drawer, with a colored border. Blue means Sofia is working, amber means it's your turn, and green means she's finished. The first time, the system asks you to sign in. Sofia never types your password. She asks you to, and waits.
+7. Sofia finds this deal's loop (or file, or transaction) in your system, or asks before creating one. She enters the details, people and documents.
+8. When she's done, **review it in your system and press Submit yourself.** Sofia never presses Submit.
+
+### Stay in control {#control}
+
+- **Take control** hands the browser to you. Click **I'm done, give control back** when you're finished.
+- **Stop** ends the run.
+- Type into the box under the chat to message Sofia. When she asks a question, the box reads **Answer Sofia**.
+- **Pop out** opens the live browser in its own window.
+- Closing the drawer while Sofia is working asks whether to stop her.
+
+### Disconnecting {#disconnect}
+
+On the first screen of the drawer, click **Disconnect** your system (for example, **Disconnect dotloop**) and confirm. The saved sign-in is deleted and you sign in again next time.
+
+## Bring documents from dotloop {#bring-documents}
+
+Use this to pull a loop's documents into the deal.
+
+1. Open the deal's **Documents** tab, click **Send to compliance**, then **Have Sofia file it**.
+2. Click **Bring documents from dotloop**.
+3. Sofia opens the loop and downloads each document that isn't on the deal yet. Nothing in dotloop changes.
+4. When the run finishes, the drawer says how many documents she brought and how many she skipped. Click **See them on the Documents tab**.
+
+The documents arrive:
+
+- **Uncategorized**, so you can file them yourself.
+- **Not on the client portal.**
+- With a note that starts **Brought from dotloop by Sofia**.
+
+Run it again later and Sofia skips documents that are already on the deal. One run brings at most 60 documents. If any can't be brought, the drawer says how many, and the chat says why.
+
+## Download or email a bundle {#bundle}
+
+This was the **Export bundle** button. It now lives under **Send to compliance**.
+
+1. On the **Documents** tab, click **Send to compliance**, then **Download or email a bundle**.
+2. Choose where the documents are going and click **Continue**.
+3. Review the list. Each file has a label for that system's checklist. Fix any that say **needs a label**, and untick files you don't want to send.
+4. Click **Download ZIP**. For systems that take documents by email, click **Open email…** instead. **Download ZIP** is still there as a backup.
+
+## Other toolbar actions {#toolbar}
+
+The **⋯** menu (**More document actions**) next to **Send to compliance** holds **Batch Rename** and **Refresh**. See [Renaming all documents at once](./uploading-documents.mdx#renaming-all-documents-at-once-batch-rename).
+
+## Related
+
+- [Meet Sofia, Your AI Assistant](../ai-features/ask-ai-assistant.mdx)
+- [Uploading Documents](./uploading-documents.mdx)
+- [Importing deals from SkySlope](../getting-started/importing-deals-from-skyslope.mdx)
 
 ---
 
@@ -9568,6 +9651,10 @@ Restoring with Sofia does the same thing as the **Restore transaction** button. 
 
 Restoring is not limited by your plan.
 
+## Filing a deal in your compliance system {#compliance-filing}
+
+In the early-access pilot, Sofia can file a deal in dotloop, SkySlope or KW Command in a browser you watch, and can bring a dotloop loop's documents into the deal. You sign in yourself, and you press Submit yourself. See [Send a Deal to Your Compliance System](../documents/send-to-compliance.mdx).
+
 ## Email templates {#email-templates}
 
 **In any conversation**, ask the assistant to write an email template and it opens the **New Email Template** page with the name, category, subject and body filled in. Read every field, fix what you want, then press **Save**. This is for owners, admins, and teammates allowed to edit Playbooks and settings.
@@ -9670,6 +9757,7 @@ Some things stay with you, even if you ask and would approve:
 - [AI Features overview](./index.mdx)
 - [Text the Assistant (SMS)](./text-the-assistant.mdx)
 - [Restoring an Archived Transaction](../transactions/restoring-an-archived-transaction.mdx)
+- [Send a Deal to Your Compliance System](../documents/send-to-compliance.mdx)
 - [Online Forms](../templates/online-forms.md)
 - [Email Templates](../templates/email-templates.md)
 - [User Management](../settings/user-management.mdx)
