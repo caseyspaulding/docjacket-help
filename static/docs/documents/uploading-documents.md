@@ -115,7 +115,7 @@ Renaming changes only the name shown in DocJacket and on downloads; the file its
 To rename every document on a deal to a consistent pattern — for example `123 Main St - Purchase Agreement.pdf`:
 
 1. Open the transaction's **Documents** tab
-2. Click **Batch Rename** in the toolbar (tooltip: *Rename all documents using naming rules*). The button appears when the deal has a property address
+2. Click the **⋯** menu (**More document actions**) in the toolbar, then **Batch Rename**. It appears when the deal has a property address
 3. In the **Batch Rename Documents** panel, check the **Property Address** used in the names
 4. Click **Rename All**
 
