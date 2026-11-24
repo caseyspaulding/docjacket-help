@@ -13,7 +13,7 @@ You can reach the DocJacket team from inside the app, and every reply comes back
 
 ## Sending a support request
 
-- **From Ask AI.** In the Ask AI panel, click **Send to support**. DocJacket drafts the request with the page you're on and an excerpt of the conversation. Review it, remove anything private, and click **Send request**.
+- **From Sofia.** In the Sofia panel, click **Send to support**. DocJacket drafts the request with the page you're on and an excerpt of the conversation. Review it, remove anything private, and click **Send request**.
 - **From the Contact Support page.** On the **Your Support Requests** tab, type your question and click **Send request**.
 - **Reporting a problem.** Open the **Help & Support** menu (the help icon in the top bar) and choose **Report a problem**. After you submit, DocJacket takes you to the **Support Tickets** tab so you can follow it.
 

@@ -11,9 +11,9 @@ description: Manage organization identity, report branding, reminder defaults, s
 
 Use **Settings > Organization** for account-wide settings that affect your whole organization.
 
-## Set up with the assistant
+## Set up with Sofia {#set-up-with-the-assistant}
 
-When the setup assistant is available to you, a **Set up with the assistant** button appears at the top of this page. It is for owners, admins, and teammates allowed to edit Playbooks and settings. It starts the setup assistant in Ask AI, which works through your setup one step at a time, starting with your Primary State if you haven't set one. Each change is shown on a card for you to approve. Press **Leave setup** at the top of the Ask AI panel to stop. See [Set up with the assistant](../ai-features/ask-ai-assistant.mdx#set-up-with-the-assistant).
+When the setup assistant is available to you, a **Set up with Sofia** button appears at the top of this page. It is for owners, admins, and teammates allowed to edit Playbooks and settings. It starts the setup assistant with Sofia, which works through your setup one step at a time, starting with your Primary State if you haven't set one. Each change is shown on a card for you to approve. Press **Leave setup** at the top of the Sofia panel to stop. See [Set up with the assistant](../ai-features/ask-ai-assistant.mdx#set-up-with-the-assistant).
 
 ## Organization identity
 

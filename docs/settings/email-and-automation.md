@@ -47,7 +47,7 @@ Use **Settings > Organization** to turn on **Only send transaction email from a 
 
 This setting is on by default. Turn it off to let DocJacket's email service send as a fallback when a connected mailbox isn't available. See [How Email Sending Works](../messages/how-email-sending-works.mdx).
 
-Emails written by an AI assistant (Ask AI, Claude, ChatGPT or the DocJacket API) always send from a connected mailbox, whatever this setting says. They go from the mailbox of the person who confirms or approves them, never from DocJacket's email service and never from the account owner's mailbox. If that person has no connected mailbox, nothing is sent and they're asked to connect Gmail or Outlook.
+Emails written by an AI assistant (Sofia, Claude, ChatGPT or the DocJacket API) always send from a connected mailbox, whatever this setting says. They go from the mailbox of the person who confirms or approves them, never from DocJacket's email service and never from the account owner's mailbox. If that person has no connected mailbox, nothing is sent and they're asked to connect Gmail or Outlook.
 
 Automated email, such as task emails, reminders and Automation Rule emails, still follows this setting. Sign-in links still come from DocJacket's email service.
 

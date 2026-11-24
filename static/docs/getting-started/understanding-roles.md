@@ -44,7 +44,7 @@ A limited member is "on" a deal when any one of these is true:
 - They are **listed on the deal as an agent** (a contact on the deal with their email address and an agent role, such as Listing Agent or Buyer's Agent)
 - They are **assigned a task** on the deal. An assigned task shares the whole deal with that person, so assign a task to bring someone onto a deal without reassigning it.
 
-For a limited member, a deal they aren't on behaves as if it doesn't exist. It doesn't appear in the deal list, pipeline, search, Tasks, Calendar, the dashboard, Ask AI answers, or the morning brief, and opening its link shows **Transaction not found** (or **Listing not found** for a listing).
+For a limited member, a deal they aren't on behaves as if it doesn't exist. It doesn't appear in the deal list, pipeline, search, Tasks, Calendar, the dashboard, Sofia's answers, or the morning brief, and opening its link shows **Transaction not found** (or **Listing not found** for a listing).
 
 A few things work differently for a limited member:
 

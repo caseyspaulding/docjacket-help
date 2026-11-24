@@ -149,11 +149,11 @@ Marking a past date **Waived** or **N/A** doesn't ask about the invite at all, a
 
 Editing a date that has already passed (moving it to another past date, renaming it, changing its place, or changing who's invited) updates the event without emailing anyone. Guests who use Google Calendar see the change on their calendar. Guests on Outlook or Apple keep the version they were sent. Moving a past date to a date that is still ahead emails everyone an updated invitation, and so does moving a date that is ahead to one that has passed. Sending a new invite for a date that has already passed still emails the people you invite.
 
-### Closing out dates from Ask AI
+### Closing out dates from Sofia {#closing-out-dates-from-ask-ai}
 
-When you mark a date done, waived or N/A through Ask AI or a connected assistant, the invite is never cancelled. The approval card says the calendar invite stays on guests' calendars. To cancel one from there, ask the assistant to cancel the invites for that date.
+When you mark a date done, waived or N/A through Sofia or a connected assistant, the invite is never cancelled. The approval card says the calendar invite stays on guests' calendars. To cancel one from there, ask the assistant to cancel the invites for that date.
 
-The same is true when a deal is cancelled or archived through the public API, Ask AI or a connected assistant: those never cancel invites, and there is no question to answer. Only the app's own screens ask. To cancel the invites afterward, use **Cancel invite** on each key date, or ask the assistant to cancel them.
+The same is true when a deal is cancelled or archived through the public API, Sofia or a connected assistant: those never cancel invites, and there is no question to answer. Only the app's own screens ask. To cancel the invites afterward, use **Cancel invite** on each key date, or ask the assistant to cancel them.
 
 ## Turning it on
 

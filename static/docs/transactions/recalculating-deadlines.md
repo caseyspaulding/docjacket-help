@@ -20,7 +20,7 @@ A common surprise: you update the **Contract Date** or **Closing Date**, but the
 
 ## What happens when you change an anchor date
 
-When a key date's value changes — say you push Closing back a week — DocJacket automatically recalculates everything built to depend on it. This happens however the date was set: typing it, the deal edit page, a contract uploaded onto the deal, a form submission, an e-signature confirmation, Follow Up Boss, the public API, Ask AI or a connected assistant, and Undo.
+When a key date's value changes — say you push Closing back a week — DocJacket automatically recalculates everything built to depend on it. This happens however the date was set: typing it, the deal edit page, a contract uploaded onto the deal, a form submission, an e-signature confirmation, Follow Up Boss, the public API, Sofia or a connected assistant, and Undo.
 
 What follows the change:
 
