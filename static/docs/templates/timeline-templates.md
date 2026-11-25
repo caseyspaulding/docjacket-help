@@ -594,15 +594,20 @@ tasks, then apply the right Playbook — it adds cleanly to what's left.
 
 A deal holds one key date of each Key Date Type. So if both Playbooks have a **Closing Date** (or an **Effective Date**, an **Inspection Deadline**, and so on), applying the second one doesn't create a duplicate: DocJacket merges them into the key date already on the deal. Tasks from both Playbooks that live under that key date are linked to the same one, so it completes once all of them are done.
 
-Which date the deal keeps depends on where the date on the deal came from. The **Apply Playbook** dialog shows it on each key date row before you apply:
+Which date the deal keeps depends on where the date on the deal came from. The first Playbook that calculates a key date keeps it: applying a second Playbook never recalculates a date another Playbook set. The **Apply Playbook** dialog shows what will happen on each key date row before you apply:
 
 | What the deal has | What applying the second Playbook does | Row in the dialog |
 |---|---|---|
 | A date from the contract, or one someone typed in | Keeps that date. The key date takes the second Playbook's name. Untick the row to leave it exactly as it is. | **Keeps your existing date** |
-| A date the first Playbook calculated that nobody has changed | Recalculates it with the **second** Playbook's rule (its offset) and gives it the second Playbook's name. The Playbook you apply last wins. | **Already on this deal**, plus **· recalculates to** and the new date when the date changes |
+| A date the first Playbook calculated | Keeps the first Playbook's date. The second Playbook's rule (its offset) isn't used. | **Already on this deal · keeps the date another Playbook set** |
+| The key date, but with no date yet | Fills in the date with the second Playbook's rule. From then on, that key date belongs to the second Playbook. | **Already on this deal · fills in the date:** and the new date |
 | A date someone changed by hand, or marked Completed, Waived or N/A | Leaves it exactly as it is. | **Already on this deal · keeps your date** |
 
-To keep the first Playbook's calculated date, change the date by hand on the deal before you apply the second Playbook. The row then reads **Already on this deal · keeps your date**.
+Applying the **same** Playbook again still recalculates the dates it set, unless someone changed them by hand. The row reads **Already on this deal · this Playbook recalculates it to** and the new date.
+
+To use the second Playbook's date instead of the first one's, change the date by hand on the deal.
+
+Some key dates added by a Playbook before November 25, 2026 don't record which Playbook calculated them. No Playbook recalculates those dates, not even the one that set them, so the row reads **keeps the date another Playbook set** even when you re-apply the same Playbook. Change the date by hand if it needs updating.
 
 Key dates with no Key Date Type are matched by exact name. Two custom key dates with different names stay separate.
 
