@@ -180,6 +180,32 @@ A scheduled email saved before this rule can still have no To. In the **Schedule
 
 ![Playbook task editor showing task details, priority, phase, due-date context, and an automation count on the selected task](/img/templates/checklist-task-automation.png)
 
+## "Lives under" and "Due date is based on" are separate settings
+
+A Playbook task can be tied to a key date in two ways, and they do different things. Linking a task to a key date for its due date is **not** the same as setting **Lives under**.
+
+- **Due date is based on** (under **When it's due**) only sets the task's schedule, for example 3 days before **Closing Date**. When that key date moves on a deal, the task's due date moves with it. Checking off the task does nothing to the key date.
+- **Lives under** (under **Task Details**) files the task under one key date, like a parent. The task shows with that key date's other tasks, and the key date **marks itself complete once every task that lives under it is completed or skipped**. It does not change when the task is due.
+
+You can use either one, both, or neither, and they don't have to name the same key date.
+
+**To count a task's due date from a key date without completing that key date when the task is checked off:**
+
+1. Open the task in the Playbook builder.
+2. Under **When it's due**, pick the key date in **Due date is based on** and set **Days** and **Before / after**.
+3. Under **Task Details**, set **Lives under** to **No key date**, or to a different key date the task belongs with.
+
+When **Lives under** is set, the **Preview** adds a line such as *"When completed, this task also marks Closing Date complete."* That key date still waits for every other task that lives under it. If the line isn't there, checking off the task won't complete any key date.
+
+What each list offers:
+
+- **Lives under** lists only this Playbook's own key dates.
+- **Due date is based on** lists this Playbook's key dates, the deal's own dates (the ones with a calendar icon, such as **Closing Date** and **Effective Date**), your date custom fields, and, under **When another task is done**, the Playbook's other tasks.
+
+Tasks added with **Paste Task List** come in with both settings on the same key date. Change **Lives under** on any of them that shouldn't complete it.
+
+On a deal, the same rule decides when a key date completes. See [Why a Key Date Won't Mark Complete](../calendar/key-date-wont-complete.md).
+
 ## A task due the same day as a key date
 
 Yes — a task can be due **on** a key date, not just before or after it. Enter **0** days:
@@ -563,6 +589,30 @@ the deal) at once, not just the one you meant to fix. Instead, go to the **Tasks
 tab, click the trash icon on the specific checklist's header to remove just its
 tasks, then apply the right Playbook — it adds cleanly to what's left.
 :::
+
+#### When both Playbooks have the same key date
+
+A deal holds one key date of each Key Date Type. So if both Playbooks have a **Closing Date** (or an **Effective Date**, an **Inspection Deadline**, and so on), applying the second one doesn't create a duplicate: DocJacket merges them into the key date already on the deal. Tasks from both Playbooks that live under that key date are linked to the same one, so it completes once all of them are done.
+
+Which date the deal keeps depends on where the date on the deal came from. The **Apply Playbook** dialog shows it on each key date row before you apply:
+
+| What the deal has | What applying the second Playbook does | Row in the dialog |
+|---|---|---|
+| A date from the contract, or one someone typed in | Keeps that date. The key date takes the second Playbook's name. Untick the row to leave it exactly as it is. | **Keeps your existing date** |
+| A date the first Playbook calculated that nobody has changed | Recalculates it with the **second** Playbook's rule (its offset) and gives it the second Playbook's name. The Playbook you apply last wins. | **Already on this deal**, plus **· recalculates to** and the new date when the date changes |
+| A date someone changed by hand, or marked Completed, Waived or N/A | Leaves it exactly as it is. | **Already on this deal · keeps your date** |
+
+To keep the first Playbook's calculated date, change the date by hand on the deal before you apply the second Playbook. The row then reads **Already on this deal · keeps your date**.
+
+Key dates with no Key Date Type are matched by exact name. Two custom key dates with different names stay separate.
+
+#### Tasks in the second Playbook that count from Closing Date
+
+A task's due date is calculated from the dates on the deal, not only from the key dates in its own Playbook. If the second Playbook has a task due 5 days before **Closing Date**, that task uses the **Closing Date** already on the deal, whether it came from the contract, was typed in, or was added by the first Playbook. The second Playbook doesn't need a **Closing Date** key date of its own for this. In the builder, pick the deal date **Closing Date** (the one with the calendar icon) in **Due date is based on**.
+
+If the deal has no closing date yet, the task is added without a due date. It gets one as soon as a closing date is entered on the deal.
+
+**Lives under** is different: it only offers key dates in the same Playbook. For a task in the second Playbook to complete the deal's **Closing Date**, that Playbook needs a **Closing Date** key date too. See ["Lives under" and "Due date is based on" are separate settings](#lives-under-and-due-date-is-based-on-are-separate-settings).
 
 ## Saving a transaction as a Playbook
 
