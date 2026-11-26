@@ -1,6 +1,7 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import unescapeImageAlt from './src/remark/unescape-image-alt.mjs';
 
 const config: Config = {
   title: 'DocJacket Help Center',
@@ -66,6 +67,8 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          // Reverses the double escaping of markdown image alt/title text.
+          remarkPlugins: [unescapeImageAlt],
           // Populates metadata.lastUpdatedAt (used for dateModified in the
           // per-doc TechArticle JSON-LD emitted by src/theme/DocItem/Layout).
           showLastUpdateTime: true,
