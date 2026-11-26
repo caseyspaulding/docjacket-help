@@ -55,6 +55,9 @@ jobs:
       - name: Build
         run: npm exec docusaurus build
 
+      - name: Check image alt text is escaped once
+        run: npm run check-image-alt
+
       - name: Write build metadata
         run: node scripts/write-build-info.mjs
 
