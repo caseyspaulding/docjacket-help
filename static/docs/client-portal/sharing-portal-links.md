@@ -33,7 +33,7 @@ DocJacket generates a unique URL for that recipient. The Portal tab also shows a
 
 You can also create a portal link directly from the transaction **Contacts** tab. On a contact card, click the portal-link action. DocJacket creates the link, copies it to your clipboard, and marks that contact as having an active portal link.
 
-![Create Portal Link drawer](/img/client-portal/create-portal-link-dialog.png)
+![Create a link without sending it drawer with Portal Type set to Buyer/Seller, Contact, Expires After, and Cancel and Create Link buttons](/img/client-portal/create-portal-link-dialog.png)
 
 ## What the link opens
 
@@ -143,7 +143,7 @@ From the transaction **Portal** tab, you can see active and inactive links for t
 - **Send by email** — Open a portal-link email composer from the link detail drawer
 - **Review access details** — See last access time, last IP when available, calendar feed status, and revocation information
 
-![Portal link management with active-link stats](/img/client-portal/portal-link-management.png)
+![This deal's portal links with Send portal links, the shared client link with Copy and Preview, and More link options](/img/client-portal/portal-link-management.png)
 
 ## Tips
 
